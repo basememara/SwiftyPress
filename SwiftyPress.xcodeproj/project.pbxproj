@@ -35,6 +35,29 @@
 		8B3360411CA885180033B2AE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360401CA885180033B2AE /* ComplicationController.swift */; };
 		8B3360431CA885180033B2AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3360421CA885180033B2AE /* Assets.xcassets */; };
 		8B3360471CA885180033B2AE /* SwiftyPress Example Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B3360251CA885180033B2AE /* SwiftyPress Example Watch.app */; };
+		8B3360611CA88EE10033B2AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605A1CA88EE10033B2AE /* Alamofire.framework */; };
+		8B3360621CA88EE10033B2AE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605B1CA88EE10033B2AE /* Realm.framework */; };
+		8B3360631CA88EE10033B2AE /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605C1CA88EE10033B2AE /* SwiftyTimer.framework */; };
+		8B3360641CA88EE10033B2AE /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605D1CA88EE10033B2AE /* SwiftyUserDefaults.framework */; };
+		8B3360651CA88EE10033B2AE /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605E1CA88EE10033B2AE /* Timepiece.framework */; };
+		8B3360661CA88EE10033B2AE /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33605F1CA88EE10033B2AE /* Unbox.framework */; };
+		8B3360671CA88EE10033B2AE /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3360601CA88EE10033B2AE /* ZamzamKit.framework */; };
+		8B3360701CA88F190033B2AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3360681CA88F190033B2AE /* Alamofire.framework */; };
+		8B3360711CA88F190033B2AE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3360691CA88F190033B2AE /* Realm.framework */; };
+		8B3360721CA88F190033B2AE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606A1CA88F190033B2AE /* RealmSwift.framework */; };
+		8B3360731CA88F190033B2AE /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606B1CA88F190033B2AE /* SwiftyTimer.framework */; };
+		8B3360741CA88F190033B2AE /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606C1CA88F190033B2AE /* SwiftyUserDefaults.framework */; };
+		8B3360751CA88F190033B2AE /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606D1CA88F190033B2AE /* Timepiece.framework */; };
+		8B3360761CA88F190033B2AE /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606E1CA88F190033B2AE /* Unbox.framework */; };
+		8B3360771CA88F190033B2AE /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33606F1CA88F190033B2AE /* ZamzamKit.framework */; };
+		8B3360791CA88F420033B2AE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3360781CA88F420033B2AE /* RealmSwift.framework */; };
+		8B3360811CA88F7E0033B2AE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607A1CA88F7D0033B2AE /* Alamofire.framework */; };
+		8B3360821CA88F7E0033B2AE /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607B1CA88F7D0033B2AE /* Realm.framework */; };
+		8B3360831CA88F7E0033B2AE /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607C1CA88F7D0033B2AE /* RealmSwift.framework */; };
+		8B3360841CA88F7E0033B2AE /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607D1CA88F7D0033B2AE /* SwiftyTimer.framework */; };
+		8B3360851CA88F7E0033B2AE /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607E1CA88F7D0033B2AE /* SwiftyUserDefaults.framework */; };
+		8B3360861CA88F7E0033B2AE /* Unbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B33607F1CA88F7D0033B2AE /* Unbox.framework */; };
+		8B3360871CA88F7E0033B2AE /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3360801CA88F7D0033B2AE /* ZamzamKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +156,29 @@
 		8B3360401CA885180033B2AE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		8B3360421CA885180033B2AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B3360441CA885180033B2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B33605A1CA88EE10033B2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		8B33605B1CA88EE10033B2AE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/Realm.framework"; sourceTree = "<group>"; };
+		8B33605C1CA88EE10033B2AE /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "Carthage/Checkouts/SwiftyTimer/build/Debug-iphoneos/SwiftyTimer.framework"; sourceTree = "<group>"; };
+		8B33605D1CA88EE10033B2AE /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "Carthage/Checkouts/SwiftyUserDefaults/build/Debug-iphoneos/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
+		8B33605E1CA88EE10033B2AE /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Carthage/Checkouts/Timepiece/build/Debug-iphoneos/Timepiece.framework"; sourceTree = "<group>"; };
+		8B33605F1CA88EE10033B2AE /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = "Carthage/Checkouts/unbox/build/Debug-iphoneos/Unbox.framework"; sourceTree = "<group>"; };
+		8B3360601CA88EE10033B2AE /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "Carthage/Checkouts/ZamzamKit/build/Debug-iphoneos/ZamzamKit.framework"; sourceTree = "<group>"; };
+		8B3360681CA88F190033B2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-watchos/Alamofire.framework"; sourceTree = "<group>"; };
+		8B3360691CA88F190033B2AE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/Realm.framework"; sourceTree = "<group>"; };
+		8B33606A1CA88F190033B2AE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/RealmSwift.framework"; sourceTree = "<group>"; };
+		8B33606B1CA88F190033B2AE /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "Carthage/Checkouts/SwiftyTimer/build/Debug-watchos/SwiftyTimer.framework"; sourceTree = "<group>"; };
+		8B33606C1CA88F190033B2AE /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "Carthage/Checkouts/SwiftyUserDefaults/build/Debug-watchos/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
+		8B33606D1CA88F190033B2AE /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "Carthage/Checkouts/Timepiece/build/Debug-watchos/Timepiece.framework"; sourceTree = "<group>"; };
+		8B33606E1CA88F190033B2AE /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = "Carthage/Checkouts/unbox/build/Debug-watchos/Unbox.framework"; sourceTree = "<group>"; };
+		8B33606F1CA88F190033B2AE /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "Carthage/Checkouts/ZamzamKit/build/Debug-watchos/ZamzamKit.framework"; sourceTree = "<group>"; };
+		8B3360781CA88F420033B2AE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/RealmSwift.framework"; sourceTree = "<group>"; };
+		8B33607A1CA88F7D0033B2AE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Carthage/Checkouts/Alamofire/build/Debug-appletvos/Alamofire.framework"; sourceTree = "<group>"; };
+		8B33607B1CA88F7D0033B2AE /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/Realm.framework"; sourceTree = "<group>"; };
+		8B33607C1CA88F7D0033B2AE /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Carthage/Checkouts/realm-cocoa/build/Debug/RealmSwift.framework"; sourceTree = "<group>"; };
+		8B33607D1CA88F7D0033B2AE /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "Carthage/Checkouts/SwiftyTimer/build/Debug-appletvos/SwiftyTimer.framework"; sourceTree = "<group>"; };
+		8B33607E1CA88F7D0033B2AE /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "Carthage/Checkouts/SwiftyUserDefaults/build/Debug-appletvos/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
+		8B33607F1CA88F7D0033B2AE /* Unbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Unbox.framework; path = "Carthage/Checkouts/unbox/build/Debug-appletvos/Unbox.framework"; sourceTree = "<group>"; };
+		8B3360801CA88F7D0033B2AE /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "Carthage/Checkouts/ZamzamKit/build/Debug-appletvos/ZamzamKit.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +186,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3360611CA88EE10033B2AE /* Alamofire.framework in Frameworks */,
+				8B3360621CA88EE10033B2AE /* Realm.framework in Frameworks */,
+				8B3360791CA88F420033B2AE /* RealmSwift.framework in Frameworks */,
+				8B3360631CA88EE10033B2AE /* SwiftyTimer.framework in Frameworks */,
+				8B3360641CA88EE10033B2AE /* SwiftyUserDefaults.framework in Frameworks */,
+				8B3360651CA88EE10033B2AE /* Timepiece.framework in Frameworks */,
+				8B3360661CA88EE10033B2AE /* Unbox.framework in Frameworks */,
+				8B3360671CA88EE10033B2AE /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +201,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3360701CA88F190033B2AE /* Alamofire.framework in Frameworks */,
+				8B3360711CA88F190033B2AE /* Realm.framework in Frameworks */,
+				8B3360721CA88F190033B2AE /* RealmSwift.framework in Frameworks */,
+				8B3360731CA88F190033B2AE /* SwiftyTimer.framework in Frameworks */,
+				8B3360741CA88F190033B2AE /* SwiftyUserDefaults.framework in Frameworks */,
+				8B3360751CA88F190033B2AE /* Timepiece.framework in Frameworks */,
+				8B3360761CA88F190033B2AE /* Unbox.framework in Frameworks */,
+				8B3360771CA88F190033B2AE /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +216,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B3360811CA88F7E0033B2AE /* Alamofire.framework in Frameworks */,
+				8B3360821CA88F7E0033B2AE /* Realm.framework in Frameworks */,
+				8B3360831CA88F7E0033B2AE /* RealmSwift.framework in Frameworks */,
+				8B3360841CA88F7E0033B2AE /* SwiftyTimer.framework in Frameworks */,
+				8B3360851CA88F7E0033B2AE /* SwiftyUserDefaults.framework in Frameworks */,
+				8B3360861CA88F7E0033B2AE /* Unbox.framework in Frameworks */,
+				8B3360871CA88F7E0033B2AE /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +269,7 @@
 				8B3360101CA884F30033B2AE /* SwiftyPress Example */,
 				8B3360261CA885180033B2AE /* SwiftyPress Example Watch */,
 				8B3360351CA885180033B2AE /* SwiftyPress Example Watch Extension */,
+				8B3360881CA88F850033B2AE /* Frameworks */,
 				8B335FB31CA880A20033B2AE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -369,6 +439,36 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8B3360881CA88F850033B2AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B33607A1CA88F7D0033B2AE /* Alamofire.framework */,
+				8B33607B1CA88F7D0033B2AE /* Realm.framework */,
+				8B33607C1CA88F7D0033B2AE /* RealmSwift.framework */,
+				8B33607D1CA88F7D0033B2AE /* SwiftyTimer.framework */,
+				8B33607E1CA88F7D0033B2AE /* SwiftyUserDefaults.framework */,
+				8B33607F1CA88F7D0033B2AE /* Unbox.framework */,
+				8B3360801CA88F7D0033B2AE /* ZamzamKit.framework */,
+				8B3360781CA88F420033B2AE /* RealmSwift.framework */,
+				8B3360681CA88F190033B2AE /* Alamofire.framework */,
+				8B3360691CA88F190033B2AE /* Realm.framework */,
+				8B33606A1CA88F190033B2AE /* RealmSwift.framework */,
+				8B33606B1CA88F190033B2AE /* SwiftyTimer.framework */,
+				8B33606C1CA88F190033B2AE /* SwiftyUserDefaults.framework */,
+				8B33606D1CA88F190033B2AE /* Timepiece.framework */,
+				8B33606E1CA88F190033B2AE /* Unbox.framework */,
+				8B33606F1CA88F190033B2AE /* ZamzamKit.framework */,
+				8B33605A1CA88EE10033B2AE /* Alamofire.framework */,
+				8B33605B1CA88EE10033B2AE /* Realm.framework */,
+				8B33605C1CA88EE10033B2AE /* SwiftyTimer.framework */,
+				8B33605D1CA88EE10033B2AE /* SwiftyUserDefaults.framework */,
+				8B33605E1CA88EE10033B2AE /* Timepiece.framework */,
+				8B33605F1CA88EE10033B2AE /* Unbox.framework */,
+				8B3360601CA88EE10033B2AE /* ZamzamKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

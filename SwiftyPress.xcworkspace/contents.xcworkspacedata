@@ -7,4 +7,25 @@
    <FileRef
       location = "group:SwiftyPress.playground">
    </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Alamofire/Alamofire.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/realm-cocoa/Realm.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/SwiftyTimer/SwiftyTimer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/SwiftyUserDefaults/SwiftyUserDefaults.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Timepiece/Timepiece.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/unbox/Unbox.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/ZamzamKit/ZamzamKit.xcodeproj">
+   </FileRef>
 </Workspace>

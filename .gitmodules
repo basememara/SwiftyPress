@@ -1,0 +1,20 @@
+[submodule "Carthage/Checkouts/Alamofire"]
+	url = https://github.com/Alamofire/Alamofire.git
+[submodule "Carthage/Checkouts/realm-cocoa"]
+	path = Carthage/Checkouts/realm-cocoa
+	url = https://github.com/realm/realm-cocoa.git
+[submodule "Carthage/Checkouts/SwiftyTimer"]
+	path = Carthage/Checkouts/SwiftyTimer
+	url = https://github.com/radex/SwiftyTimer.git
+[submodule "Carthage/Checkouts/SwiftyUserDefaults"]
+	path = Carthage/Checkouts/SwiftyUserDefaults
+	url = https://github.com/radex/SwiftyUserDefaults.git
+[submodule "Carthage/Checkouts/Timepiece"]
+	path = Carthage/Checkouts/Timepiece
+	url = https://github.com/naoty/Timepiece.git
+[submodule "Carthage/Checkouts/unbox"]
+	path = Carthage/Checkouts/unbox
+	url = https://github.com/johnsundell/unbox.git
+[submodule "Carthage/Checkouts/ZamzamKit"]
+	path = Carthage/Checkouts/ZamzamKit
+	url = https://github.com/ZamzamInc/ZamzamKit.git
