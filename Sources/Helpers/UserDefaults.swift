@@ -20,6 +20,7 @@ public extension DefaultsKeys {
     public static let darkMode = DefaultsKey<Bool>("darkMode")
     public static let tintColor = DefaultsKey<String>("tintColor")
     public static let titleColor = DefaultsKey<String>("titleColor")
+    public static let changeMainTabTitleColor = DefaultsKey<Bool>("changeMainTabTitleColor")
     public static let imagePlaceholderURL = DefaultsKey<String>("imagePlaceholderURL")
     public static let designedBy = DefaultsKey<String>("designedBy")
     public static let designedByURL = DefaultsKey<String>("designedByURL")

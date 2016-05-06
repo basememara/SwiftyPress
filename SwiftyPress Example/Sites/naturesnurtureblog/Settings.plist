@@ -20,6 +20,8 @@
 	<string>150,199,80</string>
 	<key>titleColor</key>
 	<string>90,61,35</string>
+	<key>changeMainTabTitleColor</key>
+	<true/>
 	<key>imagePlaceholderURL</key>
 	<string>http://naturesnurtureblog.com/wp-content/uploads/2015/05/Naturesnurture_wide-956px-white.png</string>
 	<key>categories</key>

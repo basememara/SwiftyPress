@@ -34,6 +34,12 @@ public extension ApplicationPressable {
             controller.tabBar.items?.get(1)?.selectedImage = UIImage(named: "top-charts-filled", inBundle: AppConstants.bundle)
             controller.tabBar.items?.get(2)?.image = UIImage(named: "explore", inBundle: AppConstants.bundle)
             controller.tabBar.items?.get(2)?.selectedImage = UIImage(named: "explore-filled", inBundle: AppConstants.bundle)
+            
+            if AppGlobal.userDefaults[.changeMainTabTitleColor] {
+                controller.tabBar.items?.get(2)?.setTitleTextAttributes([
+                    NSForegroundColorAttributeName: UIColor(rgb: AppGlobal.userDefaults[.titleColor])
+                ], forState: .Selected)
+            }
         }
     
         return handleRequest
