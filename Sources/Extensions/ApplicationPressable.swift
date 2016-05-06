@@ -20,6 +20,12 @@ public extension ApplicationPressable {
         
         window?.tintColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
         
+        if !AppGlobal.userDefaults[.titleColor].isEmpty {
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSForegroundColorAttributeName: UIColor(rgb: AppGlobal.userDefaults[.titleColor])
+            ]
+        }
+        
         // Configure tab bar
         if let controller = window?.rootViewController as? UITabBarController {
             controller.selectedIndex = 2
