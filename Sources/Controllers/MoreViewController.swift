@@ -11,16 +11,11 @@ import MessageUI
 
 public class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    public var mainModels: [(title: String?, link: String?, icon: String?)] = []
-    public var socialModels: [(title: String?, link: String?, icon: String?, app: String?)] = []
-    public var otherModels: (title: String?, link: String?)?
+    public var mainModels = MenuService.storedMoreItems
+    public var socialModels = SocialService.storedItems
+    public var designedBy = (title: AppGlobal.userDefaults[.designedBy], link: AppGlobal.userDefaults[.designedByURL])
     
     var statusBar: UIView?
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        loadData()
-    }
     
     public override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -39,19 +34,6 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
         statusBar = tabBarController?.addStatusBar(AppGlobal.userDefaults[.darkMode]
             ? UIColor(white: 0, alpha: 0.8)
             : UIColor(rgb: (239, 239, 244), alpha: 0.8))
-    }
-    
-    public func loadData() {
-        // Retrieve data from defaults
-        mainModels = AppGlobal.userDefaults[.moreMenu].map {
-            ($0["title"] as? String, $0["link"] as? String, $0["icon"] as? String)
-        }
-        
-        socialModels = AppGlobal.userDefaults[.social].map {
-            ($0["title"] as? String, $0["link"] as? String, $0["icon"] as? String, $0["app"] as? String)
-        }
-        
-        otherModels = (AppGlobal.userDefaults[.designedBy], AppGlobal.userDefaults[.designedByURL])
     }
     
     public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -89,8 +71,7 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
             //case 1:
             
             case 2:
-                guard let designedBy = otherModels?.title else { break }
-                title = "Designed by \(designedBy)"
+                title = "Designed by \(designedBy.title)"
                 icon = "design"
             default: break
         }
@@ -122,7 +103,7 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
             //case 1:
             
             case 2:
-                link = otherModels?.link
+                link = designedBy.link
             default: break
         }
         

@@ -26,6 +26,7 @@
                     <navigationItem key="navigationItem" id="hAC-Jv-F04"/>
                     <connections>
                         <segue destination="jZj-FO-trp" kind="show" identifier="PostDetailSegue" id="xzf-Tt-5VG"/>
+                        <segue destination="ZhN-PK-zcZ" kind="show" identifier="CategorySegue" id="DMO-2e-n3K"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpN-J0-x26" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -39,6 +40,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EkW-GF-m7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2308.5" y="-493"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="ioZ-UQ-zvI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Categories" id="ZhN-PK-zcZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uo-Qf-oFS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2307" y="-760"/>
         </scene>
         <!--Explore-->
         <scene sceneID="hBu-iD-J61">

@@ -14,7 +14,7 @@ import Stencil
 
 public class PostDetailViewController: UIViewController, WKNavigationDelegate {
     
-    public static var detailSegueIdentifier = "PostDetailSegue"
+    public static var segueIdentifier = "PostDetailSegue"
     public static var detailTemplateFile = "post.html"
     
     public var model: Postable!

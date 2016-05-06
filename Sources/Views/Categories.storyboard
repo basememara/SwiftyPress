@@ -7,7 +7,7 @@
         <!--Categories-->
         <scene sceneID="7aC-VH-cOp">
             <objects>
-                <tableViewController id="bYw-SC-Lia" customClass="SPCategoriesViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bYw-SC-Lia" customClass="CategoriesViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="q64-Ux-ASo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,8 +28,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="RWs-w3-txB">
-                        <barButtonItem key="leftBarButtonItem" title="All" id="400-xN-e1j"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="meq-cf-KSm"/>
+                        <barButtonItem key="leftBarButtonItem" title="All" id="400-xN-e1j">
+                            <connections>
+                                <action selector="allTapped:" destination="bYw-SC-Lia" id="vXd-Fk-rj1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="meq-cf-KSm">
+                            <connections>
+                                <action selector="closeTapped:" destination="bYw-SC-Lia" id="NZq-Zs-Cus"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICT-de-sky" userLabel="First Responder" sceneMemberID="firstResponder"/>

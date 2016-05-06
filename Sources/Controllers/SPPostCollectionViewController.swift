@@ -9,7 +9,7 @@
 import UIKit
 import ZamzamKit
 
-public class SPPostCollectionViewController: UICollectionViewController, DataControllable, CHTCollectionViewDelegateWaterfallLayout {
+public class SPPostCollectionViewController: UICollectionViewController, PostControllable, CHTCollectionViewDelegateWaterfallLayout {
 
     public let cellNibName = "PostCollectionViewCell"
     public var cellWidth = 0
@@ -17,6 +17,7 @@ public class SPPostCollectionViewController: UICollectionViewController, DataCon
     public var models: [Postable] = []
     public var activityIndicator: UIActivityIndicatorView?
     public var categoryMenu: [String] = []
+    public var selectedCategoryID: Int = 0
     
     public var dataView: DataViewable {
         return collectionView!
@@ -76,16 +77,15 @@ public class SPPostCollectionViewController: UICollectionViewController, DataCon
     }
     
     public override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.detailSegueIdentifier, sender: nil)
+        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
     }
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let indexPath = collectionView?.indexPathsForSelectedItems()?.first else { return }
+        guard let segueIdentifier = segue.identifier else { return }
         
-        if let controller = segue.destinationViewController as? PostDetailViewController {
-            // Store model on detail page if applicable
-            controller.model = models[indexPath.row]
-        }
+        prepareForSegue(segueIdentifier,
+            indexPath: collectionView?.indexPathsForSelectedItems()?.first,
+            destinationViewController: segue.destinationViewController)
     }
 
 }

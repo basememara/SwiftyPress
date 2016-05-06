@@ -9,12 +9,13 @@
 import UIKit
 import ZamzamKit
 
-public class SPPostTableViewController: UITableViewController, DataControllable {
+public class SPPostTableViewController: UITableViewController, PostControllable {
 
     public let cellNibName = "PostTableViewCell"
     public let service = PostService()
     public var models: [Postable] = []
     public var activityIndicator: UIActivityIndicatorView?
+    public var selectedCategoryID: Int = 0
     
     public var dataView: DataViewable {
         return tableView
@@ -40,16 +41,15 @@ public class SPPostTableViewController: UITableViewController, DataControllable 
     }
     
     public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.detailSegueIdentifier, sender: nil)
+        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
     }
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let row = self.tableView.indexPathForSelectedRow?.row else { return }
+        guard let segueIdentifier = segue.identifier else { return }
         
-        if let controller = segue.destinationViewController as? PostDetailViewController {
-            // Store model on detail page if applicable
-            controller.model = models[row]
-        }
+        prepareForSegue(segueIdentifier,
+            indexPath: tableView.indexPathForSelectedRow,
+            destinationViewController: segue.destinationViewController)
     }
 
 }

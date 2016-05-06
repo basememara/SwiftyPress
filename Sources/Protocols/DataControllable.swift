@@ -19,6 +19,7 @@ public protocol DataControllable: class {
     var cellBundleIdentifier: String { get }
     var activityIndicator: UIActivityIndicatorView? { get set }
     
+    func loadData()
     func setupActivityIndicator(
         viewStyle: UIActivityIndicatorViewStyle, color: UIColor) -> UIActivityIndicatorView
 }

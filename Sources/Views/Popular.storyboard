@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Popular View Controller-->
+        <!--Popular-->
         <scene sceneID="SMj-7H-UUb">
             <objects>
                 <tableViewController id="WP0-EX-6l3" customClass="PopularViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                             <outlet property="delegate" destination="WP0-EX-6l3" id="a9y-PZ-Jya"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="QR3-jq-gHO"/>
+                    <navigationItem key="navigationItem" title="Popular" id="QR3-jq-gHO"/>
                     <connections>
                         <segue destination="tBN-ei-Xcr" kind="show" identifier="PostDetailSegue" id="wwt-uF-0mO"/>
                     </connections>
