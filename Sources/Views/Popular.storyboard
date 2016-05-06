@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pZl-zE-KT7">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Popular View Controller-->
+        <scene sceneID="SMj-7H-UUb">
+            <objects>
+                <tableViewController id="WP0-EX-6l3" customClass="PopularViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="5lL-sJ-Wex">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="WP0-EX-6l3" id="Xk8-fQ-egV"/>
+                            <outlet property="delegate" destination="WP0-EX-6l3" id="a9y-PZ-Jya"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="QR3-jq-gHO"/>
+                    <connections>
+                        <segue destination="tBN-ei-Xcr" kind="show" identifier="PostDetailSegue" id="wwt-uF-0mO"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4sJ-0c-Nnu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685" y="272"/>
+        </scene>
+        <!--PostDetail-->
+        <scene sceneID="m65-EO-kaq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PostDetail" id="tBN-ei-Xcr" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tsg-JU-oHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2347.5" y="272"/>
+        </scene>
+        <!--Popular-->
+        <scene sceneID="A0M-8u-j7b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pZl-zE-KT7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Popular" id="DUr-oj-B0s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Omw-u4-2Xy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WP0-EX-6l3" kind="relationship" relationship="rootViewController" id="yXP-7q-peY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Z0-38-4Yx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="835" y="272"/>
+        </scene>
+    </scenes>
+</document>

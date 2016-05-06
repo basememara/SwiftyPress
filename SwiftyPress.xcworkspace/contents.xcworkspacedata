@@ -8,24 +8,27 @@
       location = "group:SwiftyPress.playground">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/Alamofire/Alamofire.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/realm-cocoa/Realm.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/SwiftyTimer/SwiftyTimer.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/SwiftyUserDefaults/SwiftyUserDefaults.xcodeproj">
+      location = "group:Carthage/Checkouts/ZamzamKit/ZamzamKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Carthage/Checkouts/Timepiece/Timepiece.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/unbox/Unbox.xcodeproj">
+      location = "group:Carthage/Checkouts/SwiftyUserDefaults/SwiftyUserDefaults.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Carthage/Checkouts/ZamzamKit/ZamzamKit.xcodeproj">
+      location = "group:Carthage/Checkouts/SwiftyTimer/SwiftyTimer.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/JASON/JASON.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Alamofire/Alamofire.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Kingfisher/Kingfisher.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/Stencil/Stencil.xcodeproj">
    </FileRef>
 </Workspace>

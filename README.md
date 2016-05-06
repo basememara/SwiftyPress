@@ -24,6 +24,11 @@ pod "SwiftyPress"
 
 Zamzam Inc., contact@zamzam.io
 
+## Roadmap
+
+*Offline support
+*Companion administrator app
+
 ## License
 
 SwiftyPress is available under the MIT license. See the LICENSE file for more info.

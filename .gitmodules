@@ -1,8 +1,5 @@
 [submodule "Carthage/Checkouts/Alamofire"]
 	url = https://github.com/Alamofire/Alamofire.git
-[submodule "Carthage/Checkouts/realm-cocoa"]
-	path = Carthage/Checkouts/realm-cocoa
-	url = https://github.com/realm/realm-cocoa.git
 [submodule "Carthage/Checkouts/SwiftyTimer"]
 	path = Carthage/Checkouts/SwiftyTimer
 	url = https://github.com/radex/SwiftyTimer.git
@@ -12,9 +9,17 @@
 [submodule "Carthage/Checkouts/Timepiece"]
 	path = Carthage/Checkouts/Timepiece
 	url = https://github.com/naoty/Timepiece.git
-[submodule "Carthage/Checkouts/unbox"]
-	path = Carthage/Checkouts/unbox
-	url = https://github.com/johnsundell/unbox.git
 [submodule "Carthage/Checkouts/ZamzamKit"]
 	path = Carthage/Checkouts/ZamzamKit
 	url = https://github.com/ZamzamInc/ZamzamKit.git
+[submodule "Carthage/Checkouts/Kingfisher"]
+	path = Carthage/Checkouts/Kingfisher
+	url = https://github.com/onevcat/Kingfisher.git
+[submodule "Carthage/Checkouts/CHTCollectionViewWaterfallLayout"]
+	url = https://github.com/ZamzamInc/CHTCollectionViewWaterfallLayout.git
+[submodule "Carthage/Checkouts/Stencil"]
+	path = Carthage/Checkouts/Stencil
+	url = https://github.com/ZamzamInc/Stencil.git
+[submodule "Carthage/Checkouts/JASON"]
+	path = Carthage/Checkouts/JASON
+	url = https://github.com/ZamzamInc/JASON.git
