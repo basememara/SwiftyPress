@@ -14,12 +14,15 @@ public class SPPostTableViewController: UITableViewController, PostControllable 
     public let cellNibName = "PostTableViewCell"
     public let service = PostService()
     public var models: [Postable] = []
-    public var activityIndicator: UIActivityIndicatorView?
     public var selectedCategoryID: Int = 0
     
     public var dataView: DataViewable {
         return tableView
     }
+    
+    public lazy var activityIndicator: UIActivityIndicatorView = {
+        return self.setupActivityIndicator()
+    }()
 
     public override func viewDidLoad() {
         super.viewDidLoad()

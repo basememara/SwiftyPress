@@ -40,6 +40,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="51g-Z6-jxP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="xiC-iN-I9W"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3tK-Xu-xkh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

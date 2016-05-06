@@ -74,6 +74,8 @@
 		8B8E687C1CDCB31700171E14 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687B1CDCB31700171E14 /* CategoryService.swift */; };
 		8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687D1CDCB52B00171E14 /* MenuService.swift */; };
 		8B8E68801CDCB54300171E14 /* SocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687F1CDCB54300171E14 /* SocialService.swift */; };
+		8B8E68821CDCD97900171E14 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68811CDCD97900171E14 /* SearchViewController.swift */; };
+		8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68831CDCFCB400171E14 /* HistoryViewController.swift */; };
 		8BA904F51CAFCCEB0023354F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B20B21C1CAE4A1900CA693B /* Kingfisher.framework */; };
 		8BA904F61CAFCCEB0023354F /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4CFAE61CABEB7E00D2B1D7 /* Timepiece.framework */; };
 		8BA904F71CAFCCEB0023354F /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */; };
@@ -243,6 +245,8 @@
 		8B8E687B1CDCB31700171E14 /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		8B8E687D1CDCB52B00171E14 /* MenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
 		8B8E687F1CDCB54300171E14 /* SocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialService.swift; sourceTree = "<group>"; };
+		8B8E68811CDCD97900171E14 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8B8E68831CDCFCB400171E14 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		8BA904F81CAFCCEC0023354F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		8BA904F91CAFCCEC0023354F /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
 		8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
@@ -540,6 +544,8 @@
 				8B5EDAE21CDC48B000F1C81C /* PostDetailViewController.swift */,
 				8B5EDADF1CDC48B000F1C81C /* MoreViewController.swift */,
 				8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */,
+				8B8E68811CDCD97900171E14 /* SearchViewController.swift */,
+				8B8E68831CDCFCB400171E14 /* HistoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -827,8 +833,10 @@
 				8B33609C1CA890470033B2AE /* Serviceable.swift in Sources */,
 				8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */,
 				8B5EDAF31CDC5A3E00F1C81C /* ApplicationPressable.swift in Sources */,
+				8B8E68821CDCD97900171E14 /* SearchViewController.swift in Sources */,
 				8BB891AC1CB1E04800D8F3EC /* SPPostCollectionViewController.swift in Sources */,
 				8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */,
+				8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */,
 				8B3360A21CA8904F0033B2AE /* PostService.swift in Sources */,
 				8B411F2A1CD845A900623CAD /* Alamofire.swift in Sources */,
 				8B3FAD701CAC4473006E90B6 /* PostTableViewCell.swift in Sources */,

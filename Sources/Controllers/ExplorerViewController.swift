@@ -16,9 +16,10 @@ public class ExploreViewController: SPPostCollectionViewController {
         navigationItem.title = AppGlobal.userDefaults[.appName]
         
         // Add toolbar buttons
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(imageName: "list", target: self, action: #selector(catagoryTapped), bundleIdentifier: AppConstants.bundleIdentifier)
-        ]
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "list",
+            target: self,
+            action: #selector(catagoryTapped),
+            bundleIdentifier: AppConstants.bundleIdentifier)
     }
     
     func catagoryTapped() {

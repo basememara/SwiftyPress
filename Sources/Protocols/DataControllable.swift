@@ -17,7 +17,7 @@ public protocol DataControllable: class {
     var cellNibName: String { get }
     var cellReuseIdentifier: String { get }
     var cellBundleIdentifier: String { get }
-    var activityIndicator: UIActivityIndicatorView? { get set }
+    var activityIndicator: UIActivityIndicatorView { get }
     
     func loadData()
     func setupActivityIndicator(
@@ -43,18 +43,15 @@ public extension DataControllable where Self: UIViewController {
         self.dataView.registerNib(cellNibName,
             cellIdentifier: cellReuseIdentifier,
             bundleIdentifier: cellBundleIdentifier)
-        
-        activityIndicator = setupActivityIndicator(
-            .WhiteLarge, color: .grayColor())
     }
     
     public func loadData() {
-        activityIndicator?.startAnimating()
+        activityIndicator.startAnimating()
         
         service.get { models in
             self.models = models
             self.dataView.reloadData()
-            self.activityIndicator?.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }
     }
 }

@@ -15,9 +15,12 @@ public class SPPostCollectionViewController: UICollectionViewController, PostCon
     public var cellWidth = 0
     public let service = PostService()
     public var models: [Postable] = []
-    public var activityIndicator: UIActivityIndicatorView?
     public var categoryMenu: [String] = []
     public var selectedCategoryID: Int = 0
+    
+    public lazy var activityIndicator: UIActivityIndicatorView = {
+        return self.setupActivityIndicator()
+    }()
     
     public var dataView: DataViewable {
         return collectionView!

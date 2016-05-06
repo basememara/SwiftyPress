@@ -28,6 +28,7 @@ public extension DefaultsKeys {
     public static let moreMenu = DefaultsKey<[[String: AnyObject]]>("moreMenu")
     public static let social = DefaultsKey<[[String: AnyObject]]>("social")
     public static let tutorial = DefaultsKey<[[String: AnyObject]]>("tutorial")
+    public static let searchHistory = DefaultsKey<[String]>("searchHistory")
 }
 
 public extension NSUserDefaults {
