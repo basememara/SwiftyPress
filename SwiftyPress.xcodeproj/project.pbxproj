@@ -28,7 +28,7 @@
 		8B3360411CA885180033B2AE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360401CA885180033B2AE /* ComplicationController.swift */; };
 		8B3360431CA885180033B2AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B3360421CA885180033B2AE /* Assets.xcassets */; };
 		8B3360471CA885180033B2AE /* SwiftyPress Example Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B3360251CA885180033B2AE /* SwiftyPress Example Watch.app */; };
-		8B33608E1CA8903D0033B2AE /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360891CA8903D0033B2AE /* Author.swift */; };
+		8B33608E1CA8903D0033B2AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360891CA8903D0033B2AE /* User.swift */; };
 		8B3360911CA8903D0033B2AE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33608C1CA8903D0033B2AE /* Post.swift */; };
 		8B3360921CA8903D0033B2AE /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33608D1CA8903D0033B2AE /* Term.swift */; };
 		8B33609C1CA890470033B2AE /* Serviceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360961CA890470033B2AE /* Serviceable.swift */; };
@@ -68,6 +68,7 @@
 		8B63E4351CDBBAAC0053C060 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63E4341CDBBAAC0053C060 /* UIViewController.swift */; };
 		8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */; };
 		8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C301CAFBC8700B471CC /* DataViewable.swift */; };
+		8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687C1CDDFC9800710CA5 /* Page.swift */; };
 		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
 		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
@@ -202,7 +203,7 @@
 		8B3360401CA885180033B2AE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		8B3360421CA885180033B2AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B3360441CA885180033B2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B3360891CA8903D0033B2AE /* Author.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		8B3360891CA8903D0033B2AE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B33608C1CA8903D0033B2AE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8B33608D1CA8903D0033B2AE /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		8B3360961CA890470033B2AE /* Serviceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serviceable.swift; sourceTree = "<group>"; };
@@ -241,6 +242,7 @@
 		8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataControllable.swift; sourceTree = "<group>"; };
 		8B6D0C301CAFBC8700B471CC /* DataViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewable.swift; sourceTree = "<group>"; };
 		8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/ZamzamKit.framework"; sourceTree = "<group>"; };
+		8B79687C1CDDFC9800710CA5 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8B8E68791CDCAEA200171E14 /* PostControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostControllable.swift; sourceTree = "<group>"; };
 		8B8E687B1CDCB31700171E14 /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		8B8E687D1CDCB52B00171E14 /* MenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -448,9 +450,10 @@
 		8B3360511CA885690033B2AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8B3360891CA8903D0033B2AE /* Author.swift */,
+				8B79687C1CDDFC9800710CA5 /* Page.swift */,
 				8B33608C1CA8903D0033B2AE /* Post.swift */,
 				8B33608D1CA8903D0033B2AE /* Term.swift */,
+				8B3360891CA8903D0033B2AE /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -825,10 +828,11 @@
 				8B5EDAE51CDC48B000F1C81C /* FavoritesViewController.swift in Sources */,
 				8B5EDAE31CDC48B000F1C81C /* ExplorerViewController.swift in Sources */,
 				8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */,
+				8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */,
 				8BB891A31CB1C96700D8F3EC /* SPPostTableViewController.swift in Sources */,
 				8B5EDAE71CDC48B000F1C81C /* PostDetailViewController.swift in Sources */,
 				8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */,
-				8B33608E1CA8903D0033B2AE /* Author.swift in Sources */,
+				8B33608E1CA8903D0033B2AE /* User.swift in Sources */,
 				8B3FAD6E1CAC4473006E90B6 /* PostCollectionViewCell.swift in Sources */,
 				8B33609C1CA890470033B2AE /* Serviceable.swift in Sources */,
 				8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */,

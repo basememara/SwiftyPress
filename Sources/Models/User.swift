@@ -11,38 +11,41 @@ import Foundation
 import RealmSwift
 import JASON
 
-public protocol Authorable: class {
+public protocol Userable: class {
 
-    var ID: Int { get set }
+    var id: Int { get set }
     var username: String { get set }
     var name: String { get set }
-    var nickname: String { get set }
+    var email: String { get set }
+    var content: String { get set }
+    var url: String { get set }
     var slug: String { get set }
-    var URL: String { get set }
-    var avatar: String { get set }
-    var bio: String { get set }
     var registered: NSDate? { get set }
+    var avatar: String { get set }
+    var isAdmin: Bool { get set }
 }
 
-public class Author: Object, Authorable {
+public class User: Object, Userable {
     
-    public dynamic var ID = 0
+    public dynamic var id = 0
     public dynamic var username = ""
     public dynamic var name = ""
-    public dynamic var nickname = ""
+    public dynamic var email = ""
+    public dynamic var content = ""
+    public dynamic var url = ""
     public dynamic var slug = ""
-    public dynamic var URL = ""
-    public dynamic var avatar = ""
-    public dynamic var bio = ""
     public dynamic var registered: NSDate?
+    public dynamic var avatar = ""
+    public dynamic var isAdmin = false
     
     public override static func primaryKey() -> String? {
-        return "ID"
+        return "id"
     }
     
     public override static func indexedProperties() -> [String] {
         return [
             "username",
+            "email",
             "slug"
         ]
     }
@@ -50,15 +53,16 @@ public class Author: Object, Authorable {
     public convenience init(json: JSON) {
         self.init()
         
-        ID = json[.ID]
+        id = json[.id]
         username = json[.username]
         name = json[.name]
-        nickname = json[.nickname]
+        email = json[.email]
+        content = json[.description]
+        url = json[.url]
         slug = json[.slug]
-        URL = json[.URL]
-        avatar = json[.avatar]
-        bio = json[.description]
         registered = json[.registered]
+        avatar = json[.avatar]
+        isAdmin = json[.isAdmin]
     }
     
 }

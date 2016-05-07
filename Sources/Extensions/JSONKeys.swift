@@ -9,13 +9,15 @@
 import JASON
 
 extension JSONKeys {
-    static let ID = JSONKey<Int>("ID")
+    static let id = JSONKey<Int>("ID")
     static let slug = JSONKey<String>("slug")
+    static let parent = JSONKey<Int>("parent")
     
     static let title = JSONKey<String>("title")
     static let content = JSONKey<String>("content")
     static let description = JSONKey<String>("description")
     static let link = JSONKey<String>("link")
+    static let email = JSONKey<String>("email")
     
     static let excerpt = JSONKey<String>("excerpt")
     static let status = JSONKey<String>("status")
@@ -23,12 +25,19 @@ extension JSONKeys {
     static let date = JSONKey<NSDate?>("date")
     static let modified = JSONKey<NSDate?>("modified")
     
+    static let favorite = JSONKey<Bool>("favorite")
+    static let read = JSONKey<Bool>("read")
+    static let viewsCount = JSONKey<Int>("viewsCount")
+    static let commentsCount = JSONKey<Int>("commentsCount")
+    static let popularOrder = JSONKey<Int>("popularOrder")
+    static let menuOrder = JSONKey<Int>("menuOrder")
+        
     static let username = JSONKey<String>("username")
     static let name = JSONKey<String>("name")
-    static let nickname = JSONKey<String>("nickname")
-    static let URL = JSONKey<String>("URL")
+    static let url = JSONKey<String>("url")
     static let avatar = JSONKey<String>("avatar")
     static let registered = JSONKey<NSDate?>("registered")
+    static let isAdmin = JSONKey<Bool>("isAdmin")
     
     static let taxonomy = JSONKey<String>("taxonomy")
     static let count = JSONKey<Int>("count")

@@ -13,7 +13,7 @@ import JASON
 
 public protocol Postable: class {
     
-    var ID: Int { get set }
+    var id: Int { get set }
     var title: String { get set }
     var content: String { get set }
     var excerpt: String { get set }
@@ -31,7 +31,7 @@ public protocol Postable: class {
     var thumbnailWidth: Int { get set }
     var thumbnailHeight: Int { get set }
     
-    var author: Author? { get set }
+    var author: User? { get set }
     var categories: List<Term> { get }
     var tags: List<Term> { get }
     
@@ -39,11 +39,12 @@ public protocol Postable: class {
     var read: Bool { get set }
     var viewsCount: Int { get set }
     var commentsCount: Int { get set }
+    var popularOrder: Int { get set }
 }
 
 public class Post: Object, Postable {
     
-    public dynamic var ID = 0
+    public dynamic var id = 0
     public dynamic var title = ""
     public dynamic var content = ""
     public dynamic var excerpt = ""
@@ -65,13 +66,14 @@ public class Post: Object, Postable {
     public dynamic var read = false
     public dynamic var viewsCount = 0
     public dynamic var commentsCount = 0
+    public dynamic var popularOrder = 0
     
-    public dynamic var author: Author?
+    public dynamic var author: User?
     public var categories = List<Term>()
     public var tags = List<Term>()
     
     public override static func primaryKey() -> String? {
-        return "ID"
+        return "id"
     }
     
     public override static func indexedProperties() -> [String] {
@@ -80,14 +82,15 @@ public class Post: Object, Postable {
             "slug",
             "favorite",
             "read",
-            "date"
+            "date",
+            "popularOrder"
         ]
     }
     
     public convenience init(json: JSON) {
         self.init()
         
-        ID = json[.ID]
+        id = json[.id]
         title = json[.title]
         content = json[.content]
         excerpt = json[.excerpt]
@@ -105,71 +108,14 @@ public class Post: Object, Postable {
         thumbnailWidth = json[.thumbnailWidth]
         thumbnailHeight = json[.thumbnailHeight]
         
-        author = Author(json: json[.author])
+        favorite = json[.favorite]
+        read = json[.read]
+        viewsCount = json[.viewsCount]
+        commentsCount = json[.commentsCount]
+        popularOrder = json[.popularOrder]
+        
+        author = User(json: json[.author])
         categories = List<Term>(json[.category].map(Term.init))
         tags = List<Term>(json[.tag].map(Term.init))
     }
 }
-
-/*extension BlogPostEntity {
-    
-    public static func fromJSON(json: JSON, inout _ hasChanges: Bool) -> BlogPostEntity? {
-        if json.type != .Null {
-            var entity = ZamzamDataContext.sharedInstance.blogPosts.firstOrCreated { $0.id == json["ID"].int32 }
-            
-            // New or modified entity
-            if entity.modifiedDate == nil
-                || entity.modifiedDate! < json["modified"].string?.dateFromFormat(ZamzamConstants.DateTime.JSON_FORMAT) {
-                    entity.title = json["title"].string
-                    entity.summary = json["excerpt"].string
-                    entity.content = json["content"].string
-                    entity.url = json["link"].string
-                    entity.type = json["type"].string
-                    entity.slug = json["slug"].string
-                    entity.status = json["status"].string
-                    
-                    if let value = json["date"].string {
-                        let date = value.dateFromFormat(ZamzamConstants.DateTime.JSON_FORMAT)
-                        entity.creationDate = date
-                        entity.publicationDate = date
-                    }
-                    
-                    if let value = json["modified"].string {
-                        entity.modifiedDate = value.dateFromFormat(ZamzamConstants.DateTime.JSON_FORMAT)
-                    }
-                    
-                    if let value = ImageEntity.fromJSON(json["featured_image"], &hasChanges) {
-                        entity.image = value
-                    }
-                    
-                    if let value = AuthorEntity.fromJSON(json["author"]) {
-                        entity.author = value
-                    }
-                    
-                    entity.terms = []
-                    
-                    if json["terms"]["category"].type != .Null {
-                        for (subKey: String, subJson: JSON) in json["terms"]["category"] {
-                            if let value = TermEntity.fromJSON(subJson) {
-                                entity.terms.insert(value)
-                            }
-                        }
-                    }
-                    
-                    if json["terms"]["post_tag"].type != .Null {
-                        for (subKey: String, subJson: JSON) in json["terms"]["post_tag"] {
-                            if let value = TermEntity.fromJSON(subJson) {
-                                entity.terms.insert(value)
-                            }
-                        }
-                    }
-                    
-                    hasChanges = true
-            }
-            
-            return entity
-        }
-        
-        return nil
-    }
-}*/

@@ -113,11 +113,11 @@ public class PostDetailViewController: UIViewController, WKNavigationDelegate {
     }
     
     func commentsTapped() {
-        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.ID)")
+        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
     }
     
     func relatedTapped() {
-        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.ID)")
+        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)")
     }
     
     func browserTapped() {
