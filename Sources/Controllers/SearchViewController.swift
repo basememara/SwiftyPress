@@ -87,12 +87,6 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
     }
 
     // MARK: UISearchBarDelegate
-
-    public func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("The custom search bar keyboard search button was tapped: \(searchBar).")
-        
-        searchBar.resignFirstResponder()
-    }
     
     public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         filterString = nil
@@ -113,8 +107,9 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
     }
     
     public func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
-        if let text = searchBar.text
-            where !AppGlobal.userDefaults[.searchHistory].contains(text) {
+        // Append search to history if new query
+        if let text = searchBar.text where !text.isEmpty
+            && !AppGlobal.userDefaults[.searchHistory].contains(text) {
                 AppGlobal.userDefaults[.searchHistory].append(text)
         }
         
