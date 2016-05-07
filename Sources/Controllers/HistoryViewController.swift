@@ -37,6 +37,7 @@ public class HistoryViewController: UITableViewController {
         let model = models[indexPath.row]
         
         cell.textLabel?.text = model
+        cell.imageView?.image = cell.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
         
         return cell
     }

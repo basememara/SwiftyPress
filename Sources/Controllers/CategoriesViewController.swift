@@ -31,7 +31,6 @@ public class CategoriesViewController: UITableViewController {
         cell.textLabel?.text = model.title
         
         if let icon = model.icon {
-            cell.imageView?.tintColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
             cell.imageView?.image = UIImage(named: icon)?.imageWithRenderingMode(.AlwaysTemplate)
         }
         

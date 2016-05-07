@@ -81,7 +81,6 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
             cell.textLabel?.text = title
             
             if let icon = icon {
-                cell.imageView?.tintColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
                 cell.imageView?.image = UIImage(named: icon, inBundle: AppConstants.bundle)?
                     .imageWithRenderingMode(.AlwaysTemplate)
             }
