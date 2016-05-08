@@ -37,15 +37,19 @@
         <!--Popular-->
         <scene sceneID="A0M-8u-j7b">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pZl-zE-KT7" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="pZl-zE-KT7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Popular" id="DUr-oj-B0s"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Omw-u4-2Xy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="1a5-3P-f5p">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="WP0-EX-6l3" kind="relationship" relationship="rootViewController" id="yXP-7q-peY"/>
                     </connections>

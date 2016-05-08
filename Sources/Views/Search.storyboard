@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="Pkq-AF-c2V">
             <objects>
                 <tableViewController id="Jdm-KH-MVH" customClass="SearchViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,9 +77,7 @@
                             <outlet property="delegate" destination="Jdm-KH-MVH" id="oN8-qW-IF3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gdj-f1-N5A">
-                        <nil key="title"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="gdj-f1-N5A"/>
                     <connections>
                         <outlet property="scopeSegmentedControl" destination="w58-dT-yht" id="gZu-v3-KGD"/>
                         <outlet property="scopeView" destination="X0y-OV-mlN" id="hQj-YC-TQ2"/>
@@ -150,15 +148,19 @@
         <!--Navigation Controller-->
         <scene sceneID="dlV-aj-Mcq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6zh-48-Qo3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="6zh-48-Qo3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="657-6K-WbO"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="weu-fZ-8bf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="MIs-YB-BpX">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Jdm-KH-MVH" kind="relationship" relationship="rootViewController" id="pmc-md-Azw"/>
                     </connections>

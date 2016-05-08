@@ -9,34 +9,34 @@
 import UIKit
 import MessageUI
 
-public class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate {
     
-    public var mainModels = MenuService.storedMoreItems
-    public var socialModels = SocialService.storedItems
-    public var designedBy = (title: AppGlobal.userDefaults[.designedBy], link: AppGlobal.userDefaults[.designedByURL])
+    var mainModels = MenuService.storedMoreItems
+    var socialModels = SocialService.storedItems
+    var designedBy = (title: AppGlobal.userDefaults[.designedBy], link: AppGlobal.userDefaults[.designedByURL])
     
     var statusBar: UIView?
     
-    public override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupInterface()
     }
     
-    public override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Status bar no longer needed
         statusBar?.removeFromSuperview()
     }
     
-    public func setupInterface() {
+    func setupInterface() {
         // Update status bar background since transparent on scroll
         statusBar = tabBarController?.addStatusBar(AppGlobal.userDefaults[.darkMode]
             ? UIColor(white: 0, alpha: 0.8)
             : UIColor(rgb: (239, 239, 244), alpha: 0.8))
     }
     
-    public override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
             case 0: return AppGlobal.userDefaults[.appName]
             case 1: return "SOCIAL"
@@ -45,11 +45,11 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
         }
     }
     
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case 0: return mainModels.count
             case 1: return 1
@@ -58,7 +58,7 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
         }
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         var title: String? = nil
         var icon: String? = nil
@@ -92,7 +92,7 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
         return cell
     }
     
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var link: String? = nil
         
         switch indexPath.section {
@@ -145,7 +145,7 @@ public class MoreViewController: UITableViewController, MFMailComposeViewControl
             message: "Your device could not send e-mail. Please check e-mail configuration and try again.")
     }
     
-    public func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }

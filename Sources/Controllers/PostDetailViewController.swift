@@ -12,15 +12,15 @@ import ZamzamKit
 import Timepiece
 import Stencil
 
-public class PostDetailViewController: UIViewController, WKNavigationDelegate {
+class PostDetailViewController: UIViewController, WKNavigationDelegate {
     
-    public static var segueIdentifier = "PostDetailSegue"
-    public static var detailTemplateFile = "post.html"
+    static var segueIdentifier = "PostDetailSegue"
+    static var detailTemplateFile = "post.html"
     
-    public var model: Postable!
+    var model: Postable!
     
     /// Web view for display content detail
-    public lazy var webView: WKWebView = {
+    lazy var webView: WKWebView = {
         // Create preferences on how the web page should be loaded
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
@@ -49,25 +49,31 @@ public class PostDetailViewController: UIViewController, WKNavigationDelegate {
         return Template(templateString: templateString)
     }()
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add toolbar buttons
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped)),
-            UIBarButtonItem(imageName: "star", target: self, action: #selector(favoriteTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(imageName: "comments", target: self, action: #selector(commentsTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+        toolbarItems = [
+            UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
             UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier)
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(imageName: "comments", target: self, action: #selector(commentsTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(imageName: "star", target: self, action: #selector(favoriteTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
         ]
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         // Render template to web view
         webView.loadHTMLString(loadTemplate(), baseURL:
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
+        
+        navigationController?.toolbarHidden = false
     }
     
     func loadTemplate() -> String {
@@ -78,7 +84,8 @@ public class PostDetailViewController: UIViewController, WKNavigationDelegate {
             return try template.render(Context(dictionary: [
                 "title": model.title,
                 "content": model.content,
-                "date": model.date?.stringFromFormat("MMMM dd, yyyy")
+                "date": model.date?.stringFromFormat("MMMM dd, yyyy"),
+                "isAffiliate": true
             ]))
         } catch {
             // Error returns raw unformatted content
@@ -86,17 +93,17 @@ public class PostDetailViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
-    public func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         // Start the network activity indicator when the web view is loading
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
     }
   
-    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         // Stop the network activity indicator when the loading finishes
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
   
-    public func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.Allow)
     }
     

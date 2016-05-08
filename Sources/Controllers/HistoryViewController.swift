@@ -9,30 +9,30 @@
 import UIKit
 import ZamzamKit
 
-public class HistoryViewController: UITableViewController {
+class HistoryViewController: UITableViewController {
     
-    public static var segueIdentifier = "HistorySegue"
+    static var segueIdentifier = "HistorySegue"
     
-    public var models: [String] {
+    var models: [String] {
         return AppGlobal.userDefaults[.searchHistory]
     }
     
     var prepareForUnwind: (String -> Void)? = nil
     
-    public override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         let model = models[indexPath.row]
         
@@ -42,7 +42,7 @@ public class HistoryViewController: UITableViewController {
         return cell
     }
     
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         dismissViewController(models[indexPath.row])
     }
     

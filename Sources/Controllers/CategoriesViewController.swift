@@ -8,23 +8,23 @@
 
 import UIKit
 
-public class CategoriesViewController: UITableViewController {
+class CategoriesViewController: UITableViewController {
     
-    public static var segueIdentifier = "CategorySegue"
+    static var segueIdentifier = "CategorySegue"
     
-    public var models = CategoryService.storedItems
-    public var selectedID: Int = 0
+    var models = CategoryService.storedItems
+    var selectedID: Int = 0
     var prepareForUnwind: (Int -> Void)? = nil
     
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         let model = models[indexPath.row]
         
@@ -44,7 +44,7 @@ public class CategoriesViewController: UITableViewController {
         return cell
     }
     
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedID = models[indexPath.row].id
         
         // Uncheck all rows

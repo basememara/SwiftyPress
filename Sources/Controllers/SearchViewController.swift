@@ -9,20 +9,20 @@
 import UIKit
 import ZamzamKit
 
-public class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
-    public let service = PostService()
-    public var models: [Postable] = []
-    public var filteredModels: [Postable] = []
+    let service = PostService()
+    var models: [Postable] = []
+    var filteredModels: [Postable] = []
     
     @IBOutlet weak var scopeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scopeView: UIView!
     
-    public lazy var activityIndicator: UIActivityIndicatorView = {
+    lazy var activityIndicator: UIActivityIndicatorView = {
         return self.setupActivityIndicator()
     }()
     
-    public lazy var searchController: UISearchController = {
+    lazy var searchController: UISearchController = {
         // Create the search controller and make it perform the results updating.
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -56,14 +56,19 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
         }
     }
 
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         
         navigationItem.titleView = searchController.searchBar
     }
     
-    public func loadData() {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.toolbarHidden = true
+    }
+    
+    func loadData() {
         activityIndicator.startAnimating()
         
         service.get { models in
@@ -74,7 +79,7 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
         }
     }
     
-    public func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
         /*
             `updateSearchResultsForSearchController(_:)` is called when the controller is
             being dismissed to allow those who are using the controller they are search
@@ -88,12 +93,12 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
 
     // MARK: UISearchBarDelegate
     
-    public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         filterString = nil
         searchBar.resignFirstResponder()
     }
 
-    public func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+    func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
         if AppGlobal.userDefaults[.searchHistory].isEmpty {
             return alert("No search history yet")
         }
@@ -101,12 +106,12 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
         performSegueWithIdentifier(HistoryViewController.segueIdentifier, sender: nil)
     }
     
-    public func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
     
         return true
     }
     
-    public func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
         // Append search to history if new query
         if let text = searchBar.text where !text.isEmpty
             && !AppGlobal.userDefaults[.searchHistory].contains(text) {
@@ -122,15 +127,15 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
     
     // MARK: UITableViewControllerDelegate
     
-    public override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    public override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredModels.count
     }
     
-    public override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         let model = filteredModels[indexPath.row]
         
@@ -142,11 +147,11 @@ public class SearchViewController: UITableViewController, UISearchControllerDele
         return cell
     }
     
-    public override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
     }
     
-    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else { return }
         
         switch (segueIdentifier, segue.destinationViewController) {

@@ -9,5 +9,10 @@
 import UIKit
 
 class PopularViewController: RealmPostTableViewController {
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        categoryID = 502
+    }
 }

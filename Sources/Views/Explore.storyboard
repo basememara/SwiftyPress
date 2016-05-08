@@ -52,15 +52,19 @@
         <!--Explore-->
         <scene sceneID="hBu-iD-J61">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lP9-vn-wDM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="lP9-vn-wDM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" id="hiP-j7-1Ey"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aCY-6S-jqO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fd5-FG-nAl">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="env-LG-QaM" kind="relationship" relationship="rootViewController" id="VBb-c1-96Q"/>
                     </connections>

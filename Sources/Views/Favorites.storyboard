@@ -37,15 +37,19 @@
         <!--Navigation Controller-->
         <scene sceneID="TbE-bh-Pcb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="51g-Z6-jxP" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="51g-Z6-jxP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="xiC-iN-I9W"/>
                     <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3tK-Xu-xkh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jFF-hF-6cI">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="PBw-Ap-7Mt" kind="relationship" relationship="rootViewController" id="IYg-Ug-7RS"/>
                     </connections>

@@ -44,6 +44,11 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         didLoad()
         setupCollectionView()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.toolbarHidden = true
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         prepareForSegue(segue)
@@ -80,14 +85,14 @@ extension RealmPostCollectionViewController {
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        var height = cellWidth
-        
         // Determine dynamic size
         if let model = models?[indexPath.row] where !model.imageURL.isEmpty && model.imageWidth > 0 && model.imageHeight > 0 {
-            height = Int((Float(model.imageHeight) * Float(cellWidth) / Float(model.imageWidth)) + 48)
+            let height = Int((Float(model.imageHeight) * Float(cellWidth) / Float(model.imageWidth)) + 48)
+            return CGSize(width: cellWidth, height: height)
         }
         
-        return CGSize(width: cellWidth, height: height)
+        // Placeholder image size if no image found
+        return CGSize(width: cellWidth, height: 189)
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
