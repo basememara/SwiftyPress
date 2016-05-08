@@ -28,7 +28,7 @@ extension JSONKeys {
     static let favorite = JSONKey<Bool>("favorite")
     static let read = JSONKey<Bool>("read")
     static let viewCount = JSONKey<Int>("view_count")
-    static let commentCount = JSONKey<Int>(path: "comment_count", "approved")
+    static let commentCount = JSONKey<Int>(path: "comment_count", "all")
     static let menuOrder = JSONKey<Int>("menuOrder")
         
     static let username = JSONKey<String>("username")
