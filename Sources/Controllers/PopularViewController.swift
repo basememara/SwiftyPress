@@ -8,6 +8,6 @@
 
 import UIKit
 
-public class PopularViewController: SPPostTableViewController {
+class PopularViewController: RealmPostTableViewController {
 
 }

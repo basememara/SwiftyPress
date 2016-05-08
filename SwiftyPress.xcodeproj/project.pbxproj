@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */; };
+		8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A781CDF8D7F00871275 /* RealmControllable.swift */; };
+		8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */; };
 		8B1E51861CD9D8A500BB30CB /* PressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E51851CD9D8A500BB30CB /* PressManager.swift */; };
 		8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E51871CD9D98700BB30CB /* AppConstants.swift */; };
 		8B20B21B1CAE471400CA693B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B20B21A1CAE471400CA693B /* Media.xcassets */; };
@@ -33,7 +36,6 @@
 		8B3360921CA8903D0033B2AE /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33608D1CA8903D0033B2AE /* Term.swift */; };
 		8B33609C1CA890470033B2AE /* Serviceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360961CA890470033B2AE /* Serviceable.swift */; };
 		8B3360A21CA8904F0033B2AE /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360A01CA8904F0033B2AE /* PostService.swift */; };
-		8B3360BF1CA8E5490033B2AE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3360BE1CA8E5490033B2AE /* Router.swift */; };
 		8B33A8961CD917FC00F2EB13 /* Sites in Resources */ = {isa = PBXBuildFile; fileRef = 8B33A8951CD917FC00F2EB13 /* Sites */; };
 		8B3FAD6E1CAC4473006E90B6 /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3FAD6A1CAC4473006E90B6 /* PostCollectionViewCell.swift */; };
 		8B3FAD6F1CAC4473006E90B6 /* PostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3FAD6B1CAC4473006E90B6 /* PostCollectionViewCell.xib */; };
@@ -69,6 +71,7 @@
 		8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */; };
 		8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C301CAFBC8700B471CC /* DataViewable.swift */; };
 		8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687C1CDDFC9800710CA5 /* Page.swift */; };
+		8B79687F1CDE147000710CA5 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687E1CDE147000710CA5 /* Realm.swift */; };
 		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
 		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
@@ -89,8 +92,6 @@
 		8BA905231CAFCD9E0023354F /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */; };
 		8BA905241CAFCD9E0023354F /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4CFAE61CABEB7E00D2B1D7 /* Timepiece.framework */; };
 		8BA905261CAFCD9E0023354F /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */; };
-		8BB891A31CB1C96700D8F3EC /* SPPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB891A21CB1C96700D8F3EC /* SPPostTableViewController.swift */; };
-		8BB891AC1CB1E04800D8F3EC /* SPPostCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB891AB1CB1E04800D8F3EC /* SPPostCollectionViewController.swift */; };
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
@@ -166,6 +167,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostCollectionViewController.swift; sourceTree = "<group>"; };
+		8B162A781CDF8D7F00871275 /* RealmControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmControllable.swift; sourceTree = "<group>"; };
+		8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostTableViewController.swift; sourceTree = "<group>"; };
 		8B1E51851CD9D8A500BB30CB /* PressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressManager.swift; sourceTree = "<group>"; };
 		8B1E51871CD9D98700BB30CB /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		8B20B21A1CAE471400CA693B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -208,7 +212,6 @@
 		8B33608D1CA8903D0033B2AE /* Term.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		8B3360961CA890470033B2AE /* Serviceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serviceable.swift; sourceTree = "<group>"; };
 		8B3360A01CA8904F0033B2AE /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
-		8B3360BE1CA8E5490033B2AE /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8B33A8951CD917FC00F2EB13 /* Sites */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sites; sourceTree = "<group>"; };
 		8B3FAD6A1CAC4473006E90B6 /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		8B3FAD6B1CAC4473006E90B6 /* PostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 		8B6D0C301CAFBC8700B471CC /* DataViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewable.swift; sourceTree = "<group>"; };
 		8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/ZamzamKit.framework"; sourceTree = "<group>"; };
 		8B79687C1CDDFC9800710CA5 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		8B79687E1CDE147000710CA5 /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		8B8E68791CDCAEA200171E14 /* PostControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostControllable.swift; sourceTree = "<group>"; };
 		8B8E687B1CDCB31700171E14 /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		8B8E687D1CDCB52B00171E14 /* MenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -252,8 +256,6 @@
 		8BA904F81CAFCCEC0023354F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		8BA904F91CAFCCEC0023354F /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
 		8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
-		8BB891A21CB1C96700D8F3EC /* SPPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostTableViewController.swift; sourceTree = "<group>"; };
-		8BB891AB1CB1E04800D8F3EC /* SPPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPPostCollectionViewController.swift; sourceTree = "<group>"; };
 		8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
@@ -353,7 +355,6 @@
 				8B3FAD691CAC4473006E90B6 /* Views */,
 				8B1E51871CD9D98700BB30CB /* AppConstants.swift */,
 				8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */,
-				8B3360BE1CA8E5490033B2AE /* Router.swift */,
 				8B335FB51CA880A20033B2AE /* SwiftyPress.h */,
 				8B20B21A1CAE471400CA693B /* Media.xcassets */,
 				8B335FD61CA8810D0033B2AE /* Info-iOS.plist */,
@@ -443,6 +444,7 @@
 				8B3360541CA885700033B2AE /* iOS */,
 				8B411F291CD845A900623CAD /* Alamofire.swift */,
 				8B411F2B1CD845E500623CAD /* JSONKeys.swift */,
+				8B79687E1CDE147000710CA5 /* Realm.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -464,6 +466,7 @@
 				8B5EDAF21CDC5A3E00F1C81C /* ApplicationPressable.swift */,
 				8B6D0C301CAFBC8700B471CC /* DataViewable.swift */,
 				8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */,
+				8B162A781CDF8D7F00871275 /* RealmControllable.swift */,
 				8B8E68791CDCAEA200171E14 /* PostControllable.swift */,
 				8B3360961CA890470033B2AE /* Serviceable.swift */,
 			);
@@ -556,8 +559,8 @@
 		8BB891A11CB1C95600D8F3EC /* Supers */ = {
 			isa = PBXGroup;
 			children = (
-				8BB891AB1CB1E04800D8F3EC /* SPPostCollectionViewController.swift */,
-				8BB891A21CB1C96700D8F3EC /* SPPostTableViewController.swift */,
+				8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */,
+				8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */,
 			);
 			name = Supers;
 			sourceTree = "<group>";
@@ -829,7 +832,6 @@
 				8B5EDAE31CDC48B000F1C81C /* ExplorerViewController.swift in Sources */,
 				8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */,
 				8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */,
-				8BB891A31CB1C96700D8F3EC /* SPPostTableViewController.swift in Sources */,
 				8B5EDAE71CDC48B000F1C81C /* PostDetailViewController.swift in Sources */,
 				8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */,
 				8B33608E1CA8903D0033B2AE /* User.swift in Sources */,
@@ -838,17 +840,18 @@
 				8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */,
 				8B5EDAF31CDC5A3E00F1C81C /* ApplicationPressable.swift in Sources */,
 				8B8E68821CDCD97900171E14 /* SearchViewController.swift in Sources */,
-				8BB891AC1CB1E04800D8F3EC /* SPPostCollectionViewController.swift in Sources */,
+				8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */,
 				8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */,
 				8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */,
 				8B3360A21CA8904F0033B2AE /* PostService.swift in Sources */,
+				8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */,
 				8B411F2A1CD845A900623CAD /* Alamofire.swift in Sources */,
 				8B3FAD701CAC4473006E90B6 /* PostTableViewCell.swift in Sources */,
 				8B63E4351CDBBAAC0053C060 /* UIViewController.swift in Sources */,
-				8B3360BF1CA8E5490033B2AE /* Router.swift in Sources */,
 				8B411F2C1CD845E500623CAD /* JSONKeys.swift in Sources */,
 				8B5EDAE41CDC48B000F1C81C /* MoreViewController.swift in Sources */,
 				8B3360911CA8903D0033B2AE /* Post.swift in Sources */,
+				8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */,
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
 				8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */,
@@ -859,6 +862,7 @@
 				8B5EDAE61CDC48B000F1C81C /* PopularViewController.swift in Sources */,
 				8B20B21F1CAE4A5A00CA693B /* UIImageView.swift in Sources */,
 				8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */,
+				8B79687F1CDE147000710CA5 /* Realm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

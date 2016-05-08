@@ -22,4 +22,4 @@
 	url = https://github.com/ZamzamInc/Stencil.git
 [submodule "Carthage/Checkouts/JASON"]
 	path = Carthage/Checkouts/JASON
-	url = https://github.com/ZamzamInc/JASON.git
+	url = https://github.com/delba/JASON.git

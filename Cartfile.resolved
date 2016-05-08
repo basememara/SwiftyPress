@@ -1,5 +1,5 @@
 github "Alamofire/Alamofire" "3.3.1"
-github "ZamzamInc/JASON" "v2.1.1.1"
+github "delba/JASON" "v2.2"
 github "onevcat/Kingfisher" "2.4.0"
 github "ZamzamInc/Stencil" "0.5.4.1"
 github "radex/SwiftyTimer" "1.4.0"

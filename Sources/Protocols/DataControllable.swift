@@ -8,23 +8,20 @@
 
 import UIKit
 
-public protocol DataControllable: class {
-    associatedtype ServiceType: Serviceable
-    
-    var service: ServiceType { get }
-    var models: [ServiceType.DataType] { get set }
+protocol DataControllable: class {
     var dataView: DataViewable { get }
     var cellNibName: String { get }
     var cellReuseIdentifier: String { get }
     var cellBundleIdentifier: String { get }
+    var indexPathForSelectedItem: NSIndexPath? { get }
     var activityIndicator: UIActivityIndicatorView { get }
     
-    func loadData()
+    func setupDataSource()
     func setupActivityIndicator(
         viewStyle: UIActivityIndicatorViewStyle, color: UIColor) -> UIActivityIndicatorView
 }
 
-public extension DataControllable where Self: UIViewController {
+extension DataControllable where Self: UIViewController {
     
     var cellReuseIdentifier: String {
         return "Cell"
@@ -34,24 +31,14 @@ public extension DataControllable where Self: UIViewController {
         return AppConstants.bundleIdentifier
     }
     
-    public func didLoad() {
+    func didLoad() {
         setupInterface()
-        loadData()
+        setupDataSource()
     }
     
-    public func setupInterface() {
+    func setupInterface() {
         self.dataView.registerNib(cellNibName,
             cellIdentifier: cellReuseIdentifier,
             bundleIdentifier: cellBundleIdentifier)
-    }
-    
-    public func loadData() {
-        activityIndicator.startAnimating()
-        
-        service.get { models in
-            self.models = models
-            self.dataView.reloadData()
-            self.activityIndicator.stopAnimating()
-        }
     }
 }

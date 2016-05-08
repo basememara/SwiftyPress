@@ -9,8 +9,18 @@
 import Foundation
 
 public protocol DataViewable {
+    var contentInset: UIEdgeInsets { get set }
+    
     func reloadData()
     func registerNib(nibName: String, cellIdentifier: String, bundleIdentifier: String?)
+    func setContentOffset(contentOffset: CGPoint, animated: Bool)
+}
+
+public extension DataViewable {
+    
+    func scrollToTop(animated: Bool = true) {
+        setContentOffset(CGPointMake(0, -(contentInset.top)), animated: animated)
+    }
 }
 
 extension UITableView: DataViewable {}

@@ -6,11 +6,9 @@
 //
 //
 
-import Foundation
-
 public protocol Serviceable {
     associatedtype DataType
     
     func get(handler: [DataType] -> Void)
-    
+    func seedFromDisk()
 }

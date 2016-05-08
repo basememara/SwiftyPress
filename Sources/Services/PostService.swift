@@ -9,19 +9,111 @@
 import Foundation
 import Alamofire
 import JASON
+import RealmSwift
+import ZamzamKit
 
 public struct PostService: Serviceable {
+
+    private enum Router: URLRequestConvertible {
+        case ReadPost(Int)
+        case ReadPosts(Int)
+
+        var URLRequest: NSMutableURLRequest {
+            let result: (path: String, parameters: [String: AnyObject]) = {
+                switch self {
+                case .ReadPost(let id):
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/\(id)", [:])
+                case .ReadPosts(let page):
+                    return ("/\(AppGlobal.userDefaults[.baseREST])", ["filter": [
+                        "posts_per_page": 50,
+                        "orderby": "date",
+                        "order": "desc",
+                        "page": page
+                    ]])
+                }
+            }()
+
+            let URL = NSURL(string: AppGlobal.userDefaults[.baseURL])!
+            let URLRequest = NSURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
+            let encoding = Alamofire.ParameterEncoding.URL
+
+            return encoding.encode(URLRequest, parameters: result.parameters).0
+        }
+    }
 
     public init() {
         JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
     }
+}
+
+extension PostService {
 
     public func get(handler: [Postable] -> Void) {
-        Alamofire.request(Router.ReadPosts()).responseJASON { response in
+        // Get database context
+        guard let realm = try? Realm() else { return handler([]) }
+        
+        let posts = realm.objects(Post)
+        
+        // Initial data seed if applicable
+        if posts.isEmpty {
+            // Start seeding from UI background thread
+            dispatch_async(dispatch_get_main_queue()) {
+                self.seedFromDisk {
+                    // Refetch data from within current thread
+                    let realm = try? Realm()
+                    handler(realm?.objects(Post).map { $0 } ?? [])
+                }
+            }
+            
+            return
+        }
+        
+        handler(posts.map { $0 })
+    }
+
+    public func getRemote(page: Int = 1, handler: [Postable] -> Void) {
+        Alamofire.request(Router.ReadPosts(page)).responseJASON { response in
             guard let json = response.result.value where response.result.isSuccess
                 else { return }
             
             handler(json.flatMap(Post.init).flatMap { $0 as Postable })
+        }
+    }
+    
+    public func seedFromDisk() {
+        seedFromDisk(nil)
+    }
+    
+    public func seedFromDisk(handler: (() -> Void)?) {
+        seedFromDisk(1, handler: handler)
+    }
+    
+    func seedFromDisk(page: Int, handler: (() -> Void)? = nil) {
+        guard let realm = try? Realm(),
+            let path = NSBundle.mainBundle().pathForResource("posts\(page)", ofType: "json",
+                inDirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
+            let data = try? NSData(contentsOfFile: path, options: [])
+                else {
+                    handler?()
+                    return
+                }
+        
+        realm.beginWrite()
+        
+        // Parse JSON
+        JSON(data).flatMap(Post.init).forEach { item in
+            // Persist object to database
+            realm.add(item, update: true)
+        }
+            
+        do {
+            try realm.commitWrite()
+            
+            // Recursively collect all files
+            seedFromDisk(page + 1, handler: handler)
+        } catch {
+            // Log error and do something
+            handler?()
         }
     }
     

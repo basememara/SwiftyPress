@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Favorites-->
+        <!--FAVORITES-->
         <scene sceneID="05C-Yf-8Cp">
             <objects>
                 <tableViewController id="PBw-Ap-7Mt" customClass="FavoritesViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                             <outlet property="delegate" destination="PBw-Ap-7Mt" id="1rx-W8-Ld2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="Kz1-0F-JjF"/>
+                    <navigationItem key="navigationItem" title="FAVORITES" id="Kz1-0F-JjF"/>
                     <connections>
                         <segue destination="cCj-hg-sVi" kind="show" identifier="PostDetailSegue" id="kg6-C8-Oye"/>
                     </connections>

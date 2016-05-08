@@ -8,6 +8,6 @@
 
 import UIKit
 
-public class FavoritesViewController: SPPostTableViewController {
+class FavoritesViewController: RealmPostTableViewController {
 
 }

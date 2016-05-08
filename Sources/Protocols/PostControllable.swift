@@ -8,32 +8,51 @@
 
 import Foundation
 
-public protocol PostControllable: DataControllable {
-    var selectedCategoryID: Int { get set }
+protocol PostControllable: RealmControllable {
+    associatedtype DataType: Post
+    
+    var categoryID: Int { get set }
 }
 
 extension PostControllable where Self: UIViewController {
 
-    func prepareForSegue(segueIdentifier: String, indexPath: NSIndexPath?, destinationViewController: UIViewController) {
-        switch (segueIdentifier, destinationViewController) {
+    func filterByCategory() {
+        // Filter view when set
+        if categoryID > 0 {
+            models = realm?.objects(DataType.self)
+                .filter("ANY categories.id == %@", categoryID)
+                .sorted(sortProperty, ascending: sortAscending)
+        }
+        else {
+            models = realm?.objects(DataType.self)
+                .sorted(sortProperty, ascending: sortAscending)
+        }
+
+        dataView.reloadData()
+        dataView.scrollToTop()
+    }
+
+    func prepareForSegue(segue: UIStoryboardSegue) {
+        guard let segueIdentifier = segue.identifier else { return }
+        
+        switch (segueIdentifier, segue.destinationViewController) {
             case (PostDetailViewController.segueIdentifier, let controller as PostDetailViewController):
                 // Set post detail
-                guard let row = indexPath?.row, let model = models[row] as? Postable else { break }
+                guard let row = indexPathForSelectedItem?.row,
+                    let model = models?[row] as? Postable else { break }
                 controller.model = model
             case (CategoriesViewController.segueIdentifier, let navController as UINavigationController):
-                guard let controller = navController.topViewController as? CategoriesViewController
-                    else { break }
+                guard let controller = navController.topViewController as? CategoriesViewController else { break }
                     
                 // Set category and prepare to retrieve category
-                controller.selectedID = selectedCategoryID
+                controller.selectedID = categoryID
                 controller.prepareForUnwind = { [unowned self] id in
-                    self.selectedCategoryID = id
-                    self.loadData()
-                    self.navigationItem.title = self.selectedCategoryID > 0
+                    self.categoryID = id
+                    self.navigationItem.title = (self.categoryID > 0
                         ? CategoryService.storedItems
-                            .first({ $0.id == self.selectedCategoryID })?.title
+                            .first { $0.id == self.categoryID }?.title
                                 ?? AppGlobal.userDefaults[.appName]
-                        : AppGlobal.userDefaults[.appName]
+                        : AppGlobal.userDefaults[.appName]).uppercaseString
                 }
             default: break
         }

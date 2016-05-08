@@ -6,11 +6,11 @@
 	<dict>
 		<key>CHANGELOG.md</key>
 		<data>
-		jItLUlaL/Vy42U4vJzhEtTQtto4=
+		y/icKj1GGnCvaAN9GhUv5h3yW2I=
 		</data>
 		<key>Headers/RLMArray.h</key>
 		<data>
-		5gTc3lWsvrCv7F5MLEYf15jFawo=
+		9/88fK1ryi07+daG4A+pbjvz5kE=
 		</data>
 		<key>Headers/RLMCollection.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Headers/RLMConstants.h</key>
 		<data>
-		NZEDTe6v5s7DW4WSq2QQ6X0gM8w=
+		uh37KYuEVQDqgoNb5NtYZenYlaY=
 		</data>
 		<key>Headers/RLMDefines.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/RLMObject.h</key>
 		<data>
-		Y4lzOC0ItQpYQKgjRS0BpxZDDog=
+		zS3llykiLtoNX6dRtlzfZj2Cu2U=
 		</data>
 		<key>Headers/RLMObjectBase.h</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Headers/RLMRealm.h</key>
 		<data>
-		4yLfk/1TWmt63yfWUK7l/srZCTA=
+		9SfwtDA0OPwElxBwfNQvpQ1N670=
 		</data>
 		<key>Headers/RLMRealmConfiguration.h</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Uw+iE2FHRcz2Lau/vjerb0NVWFI=
+		gCOF6Jwgfanh3IIRNK40G0nx4+U=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -155,22 +155,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jItLUlaL/Vy42U4vJzhEtTQtto4=
+			y/icKj1GGnCvaAN9GhUv5h3yW2I=
 			</data>
 			<key>hash2</key>
 			<data>
-			OYv56sSSfirjrR6RCOC/VXy05H89zt3+FMLBHqGrf1k=
+			YIMbUypJuxcKrfuQLtrmbwT/2sYgSU0Z6H8YA54ca50=
 			</data>
 		</dict>
 		<key>Headers/RLMArray.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			5gTc3lWsvrCv7F5MLEYf15jFawo=
+			9/88fK1ryi07+daG4A+pbjvz5kE=
 			</data>
 			<key>hash2</key>
 			<data>
-			awARJC87FEKgOxU4rStfWZH6/BfdQaDNSC/mrBx4i+0=
+			50ANXcktnmNBhI3H8wA1l+gpyNmUx32htIsd/sQ9CsI=
 			</data>
 		</dict>
 		<key>Headers/RLMCollection.h</key>
@@ -188,11 +188,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NZEDTe6v5s7DW4WSq2QQ6X0gM8w=
+			uh37KYuEVQDqgoNb5NtYZenYlaY=
 			</data>
 			<key>hash2</key>
 			<data>
-			obC8C6iUWY+tuXbQ9LNG0v0mvN3YRvxbPdnkYC9zedM=
+			TsArUAeLJawtjh3eKzz55WXq9npVaLD7ywXKTH2S58w=
 			</data>
 		</dict>
 		<key>Headers/RLMDefines.h</key>
@@ -221,11 +221,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Y4lzOC0ItQpYQKgjRS0BpxZDDog=
+			zS3llykiLtoNX6dRtlzfZj2Cu2U=
 			</data>
 			<key>hash2</key>
 			<data>
-			1/J7uQO1ti1ORrBe503QwAI7QEr3fs8hPQYhahCiG5E=
+			fP8FpG+FYfJc4lZIZZQmIPcT6SnpmnmCaQ03MeBlUiY=
 			</data>
 		</dict>
 		<key>Headers/RLMObjectBase.h</key>
@@ -287,11 +287,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4yLfk/1TWmt63yfWUK7l/srZCTA=
+			9SfwtDA0OPwElxBwfNQvpQ1N670=
 			</data>
 			<key>hash2</key>
 			<data>
-			yjSeUY6bAb/rwKHq/HepdpG1rxZzDOS88jp6mYqcDf8=
+			2l19AbKnQclEdJGuvxqiYjrTB8zKEenv6i4Dfuqdk7o=
 			</data>
 		</dict>
 		<key>Headers/RLMRealmConfiguration.h</key>

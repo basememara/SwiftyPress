@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class ExploreViewController: SPPostCollectionViewController {
+class ExploreViewController: RealmPostCollectionViewController {
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = AppGlobal.userDefaults[.appName]
+        navigationItem.title = AppGlobal.userDefaults[.appName].uppercaseString
         
         // Add toolbar buttons
         navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "list",

@@ -29,7 +29,6 @@ extension JSONKeys {
     static let read = JSONKey<Bool>("read")
     static let viewsCount = JSONKey<Int>("viewsCount")
     static let commentsCount = JSONKey<Int>("commentsCount")
-    static let popularOrder = JSONKey<Int>("popularOrder")
     static let menuOrder = JSONKey<Int>("menuOrder")
         
     static let username = JSONKey<String>("username")

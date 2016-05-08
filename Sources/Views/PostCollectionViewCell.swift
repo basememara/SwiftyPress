@@ -29,17 +29,9 @@ public class PostCollectionViewCell: UICollectionViewCell {
         layer.rasterizationScale = UIScreen.mainScreen().scale
         
         // Style
-        contentView.layer.cornerRadius = 2
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.clearColor().CGColor
-        contentView.layer.masksToBounds = true
-
         layer.shadowColor = UIColor.grayColor().CGColor
         layer.shadowOffset = CGSizeZero
         layer.shadowRadius = 1
         layer.shadowOpacity = 1
-        layer.masksToBounds = false
-        layer.shadowPath = UIBezierPath(roundedRect: bounds,
-            cornerRadius:contentView.layer.cornerRadius).CGPath
     }
 }
