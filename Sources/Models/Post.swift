@@ -37,8 +37,8 @@ public protocol Postable: class {
     
     var favorite: Bool { get set }
     var read: Bool { get set }
-    var viewsCount: Int { get set }
-    var commentsCount: Int { get set }
+    var viewCount: Int { get set }
+    var commentCount: Int { get set }
 }
 
 public class Post: Object, Postable {
@@ -63,8 +63,8 @@ public class Post: Object, Postable {
     
     public dynamic var favorite = false
     public dynamic var read = false
-    public dynamic var viewsCount = 0
-    public dynamic var commentsCount = 0
+    public dynamic var viewCount = 0
+    public dynamic var commentCount = 0
     
     public dynamic var author: User?
     public var categories = List<Term>()
@@ -81,7 +81,8 @@ public class Post: Object, Postable {
             "favorite",
             "read",
             "date",
-            "viewsCount"
+            "viewCount",
+            "commentCount"
         ]
     }
     
@@ -108,8 +109,8 @@ public class Post: Object, Postable {
         
         favorite = json[.favorite]
         read = json[.read]
-        viewsCount = json[.viewsCount]
-        commentsCount = json[.commentsCount]
+        viewCount = json[.viewCount]
+        commentCount = json[.commentCount]
         
         author = User(json: json[.author])
         categories = List<Term>(json[.category].map(Term.init))
