@@ -16,8 +16,7 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()
-
-    let cellNibName = "PostTableViewCell"
+    let cellNibName: String? = "PostTableViewCell"
     
     var dataView: DataViewable {
         return tableView
@@ -26,10 +25,6 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     var indexPathForSelectedItem: NSIndexPath? {
         return tableView.indexPathForSelectedRow
     }
-    
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        return self.setupActivityIndicator()
-    }()
     
     var categoryID: Int = 0 {
         didSet { filterByCategory() }

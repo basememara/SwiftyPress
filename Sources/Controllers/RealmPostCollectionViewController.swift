@@ -16,8 +16,7 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()
-
-    let cellNibName = "PostCollectionViewCell"
+    let cellNibName: String? = "PostCollectionViewCell"
     
     lazy var cellWidth: Int = {
         return Int(UIScreen.mainScreen().bounds.width / 2.0)
@@ -30,10 +29,6 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
     var indexPathForSelectedItem: NSIndexPath? {
         return collectionView?.indexPathsForSelectedItems()?.first
     }
-    
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        return self.setupActivityIndicator()
-    }()
     
     var categoryID: Int = 0 {
         didSet { filterByCategory() }

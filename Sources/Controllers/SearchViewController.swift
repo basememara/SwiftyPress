@@ -7,20 +7,27 @@
 //
 
 import UIKit
+import RealmSwift
 import ZamzamKit
 
-class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable {
     
+    var realm: Realm?
+    var notificationToken: NotificationToken?
+    var models: Results<Post>?
     let service = PostService()
-    var models: [Postable] = []
-    var filteredModels: [Postable] = []
+    let cellNibName: String? = nil
+    
+    var dataView: DataViewable {
+        return tableView
+    }
+    
+    var indexPathForSelectedItem: NSIndexPath? {
+        return tableView.indexPathForSelectedRow
+    }
     
     @IBOutlet weak var scopeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scopeView: UIView!
-    
-    lazy var activityIndicator: UIActivityIndicatorView = {
-        return self.setupActivityIndicator()
-    }()
     
     lazy var searchController: UISearchController = {
         // Create the search controller and make it perform the results updating.
@@ -39,17 +46,17 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         return searchController
     }()
     
-    /// A `nil` / empty filter string means show all results. Otherwise, show only results containing the filter.
+    /// Empty filter string means show all results, otherwise show only results containing the filter.
     var filterString: String? = nil {
         didSet {
             if (filterString ?? "").isEmpty {
-                filteredModels = models
+                //filteredModels = models
             }
             else {
                 // Filter the results using a predicate based on the filter string.
                 let filterPredicate = NSPredicate(format: "self contains[c] %@", argumentArray: [filterString!])
 
-                filteredModels = models.filter { filterPredicate.evaluateWithObject($0.title) }
+                //filteredModels = models.filter { filterPredicate.evaluateWithObject($0.title) }
             }
 
             tableView.reloadData()
@@ -58,7 +65,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        didLoad()
         
         navigationItem.titleView = searchController.searchBar
     }
@@ -67,27 +74,12 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         super.viewWillAppear(animated)
         navigationController?.toolbarHidden = true
     }
-    
-    func loadData() {
-        activityIndicator.startAnimating()
-        
-        service.get { models in
-            self.models = models
-            self.filteredModels = models
-            self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
-        }
-    }
+}
+
+extension SearchViewController {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        /*
-            `updateSearchResultsForSearchController(_:)` is called when the controller is
-            being dismissed to allow those who are using the controller they are search
-            as the results controller a chance to reset their state. No need to update
-            anything if we're being dismissed.
-        */
         guard searchController.active else { return }
-        
         filterString = searchController.searchBar.text
     }
 
@@ -124,32 +116,9 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {
     
     }
-    
-    // MARK: UITableViewControllerDelegate
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredModels.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView[indexPath]
-        let model = filteredModels[indexPath.row]
-        
-        cell.textLabel?.text = model.title.decodeHTML()
-        cell.detailTextLabel?.text = model.categories
-            .map { $0.name.decodeHTML() }
-            .joinWithSeparator(", ")
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
-    }
+}
+
+extension SearchViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let segueIdentifier = segue.identifier else { return }
@@ -157,8 +126,9 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         switch (segueIdentifier, segue.destinationViewController) {
             case (PostDetailViewController.segueIdentifier, let controller as PostDetailViewController):
                 // Set post detail
-                guard let row = tableView.indexPathForSelectedRow?.row else { break }
-                controller.model = filteredModels[row]
+                guard let row = indexPathForSelectedItem?.row,
+                    let model = models?[row] as? Postable else { break }
+                controller.model = model
             case (HistoryViewController.segueIdentifier, let navController as UINavigationController):
                 guard let controller = navController.topViewController as? HistoryViewController
                     else { break }
@@ -171,5 +141,33 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
                 }
             default: break
         }
+    }
+}
+
+/// MARK: UITableViewControllerDelegate
+extension SearchViewController {
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return models?.count ?? 0
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView[indexPath]
+        guard let model = models?[indexPath.row] else { return cell }
+        
+        cell.textLabel?.text = model.title.decodeHTML()
+        cell.detailTextLabel?.text = model.categories
+            .map { $0.name.decodeHTML() }
+            .joinWithSeparator(", ")
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
     }
 }

@@ -10,15 +10,12 @@ import UIKit
 
 protocol DataControllable: class {
     var dataView: DataViewable { get }
-    var cellNibName: String { get }
+    var cellNibName: String? { get }
     var cellReuseIdentifier: String { get }
     var cellBundleIdentifier: String { get }
     var indexPathForSelectedItem: NSIndexPath? { get }
-    var activityIndicator: UIActivityIndicatorView { get }
     
     func setupDataSource()
-    func setupActivityIndicator(
-        viewStyle: UIActivityIndicatorViewStyle, color: UIColor) -> UIActivityIndicatorView
 }
 
 extension DataControllable where Self: UIViewController {
@@ -37,8 +34,10 @@ extension DataControllable where Self: UIViewController {
     }
     
     func setupInterface() {
-        self.dataView.registerNib(cellNibName,
-            cellIdentifier: cellReuseIdentifier,
-            bundleIdentifier: cellBundleIdentifier)
+        if let cellNibName = cellNibName {
+            self.dataView.registerNib(cellNibName,
+                cellIdentifier: cellReuseIdentifier,
+                bundleIdentifier: cellBundleIdentifier)
+        }
     }
 }
