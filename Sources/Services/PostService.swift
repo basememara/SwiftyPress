@@ -33,9 +33,13 @@ public struct PostService: Serviceable {
                         "page": page
                     ]])
                 case .CommentCount(let id):
-                    return ("/\(AppGlobal.userDefaults[.baseREST])/comment_count/\(id)", [:])
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/comments/\(id)/count", [
+                        "cache": NSDate().timeIntervalSince1970
+                    ])
                 case .CommentsCount:
-                    return ("/\(AppGlobal.userDefaults[.baseREST])/comment_count", [:])
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/comments/count", [
+                        "cache": NSDate().timeIntervalSince1970
+                    ])
                 }
             }()
 

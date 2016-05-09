@@ -91,11 +91,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
         
         refreshFavoriteIcon()
-        
-        service.getRemoteCommentCount(model.id) { count in
-            self.commentBarButton.badgeString =
-                count > 0 ? "\(count)" : nil
-        }
+        refreshCommentIcon()
         
         navigationController?.toolbarHidden = false
     }
@@ -121,6 +117,29 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         // Update favorite indicator
         favoriteBarButton.image = UIImage(named: model.favorite ? "star-filled" : "star",
             inBundle: AppConstants.bundle)
+    }
+    
+    func refreshCommentIcon() {
+        commentBarButton.badgeString = model.commentCount > 0
+            ? "\(model.commentCount)" : nil
+        
+        service.getRemoteCommentCount(model.id) { count in
+            // Validate if not changed
+            if self.model.commentCount == count {
+                return
+            }
+            
+            self.commentBarButton.badgeString = "\(count)"
+            
+            do {
+                // Persist latest comment count
+                try AppGlobal.realm?.write {
+                    self.model.commentCount = count
+                }
+            } catch {
+                // TODO: Log error
+            }
+        }
     }
     
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
