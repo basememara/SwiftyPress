@@ -69,18 +69,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add toolbar buttons
-        toolbarItems = [
-            UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            commentBarButton,
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            favoriteBarButton,
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
-        ]
+        loadToolbar()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,11 +79,15 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         webView.loadHTMLString(loadTemplate(), baseURL:
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
         
+        // Display and update toolbar
+        navigationController?.toolbarHidden = false
         refreshFavoriteIcon()
         refreshCommentIcon()
-        
-        navigationController?.toolbarHidden = false
     }
+}
+
+// MARK: - Web view functions
+extension PostDetailViewController {
     
     func loadTemplate() -> String {
         guard let template = template else { return model.content }
@@ -113,6 +106,39 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
+    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        // Start the network activity indicator when the web view is loading
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+  
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        // Stop the network activity indicator when the loading finishes
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
+  
+    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+        decisionHandler(.Allow)
+    }
+}
+
+// MARK: - Toolbar functions
+extension PostDetailViewController {
+
+    func loadToolbar() {
+        // Add toolbar buttons
+        toolbarItems = [
+            UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            commentBarButton,
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            favoriteBarButton,
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
+        ]
+    }
+
     func refreshFavoriteIcon() {
         // Update favorite indicator
         favoriteBarButton.image = UIImage(named: model.favorite ? "star-filled" : "star",
@@ -140,20 +166,6 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
                 // TODO: Log error
             }
         }
-    }
-    
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        // Start the network activity indicator when the web view is loading
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-    }
-  
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        // Stop the network activity indicator when the loading finishes
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-    }
-  
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.Allow)
     }
     
     func shareTapped() {
