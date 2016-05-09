@@ -23,7 +23,7 @@ class FavoritesViewController: RealmPostTableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if let model = models?[indexPath.row] where editingStyle == .Delete {
             do {
-                try realm?.write {
+                try AppGlobal.realm?.write {
                     model.favorite = false
                 }
             } catch {

@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftyPress
-import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
@@ -22,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
         realm.beginWrite()
         realm.deleteAll()
         try! realm.commitWrite()*/
+        
         
         AppGlobal.userDefaults.registerSite("Sites/naturesnurtureblog")
     }

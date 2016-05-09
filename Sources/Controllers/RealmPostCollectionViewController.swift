@@ -12,7 +12,6 @@ import RealmSwift
 
 class RealmPostCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout, PostControllable {
 
-    var realm: Realm?
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()

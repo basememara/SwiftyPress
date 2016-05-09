@@ -17,19 +17,25 @@ public struct PostService: Serviceable {
     private enum Router: URLRequestConvertible {
         case ReadPost(Int)
         case ReadPosts(Int)
+        case CommentCount(Int)
+        case CommentsCount
 
         var URLRequest: NSMutableURLRequest {
             let result: (path: String, parameters: [String: AnyObject]) = {
                 switch self {
                 case .ReadPost(let id):
-                    return ("/\(AppGlobal.userDefaults[.baseREST])/\(id)", [:])
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/posts/\(id)", [:])
                 case .ReadPosts(let page):
-                    return ("/\(AppGlobal.userDefaults[.baseREST])", ["filter": [
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/posts", ["filter": [
                         "posts_per_page": 50,
                         "orderby": "date",
                         "order": "desc",
                         "page": page
                     ]])
+                case .CommentCount(let id):
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/comment_count/\(id)", [:])
+                case .CommentsCount:
+                    return ("/\(AppGlobal.userDefaults[.baseREST])/comment_count", [:])
                 }
             }()
 
@@ -50,7 +56,7 @@ extension PostService {
 
     public func get(handler: [Postable] -> Void) {
         // Get database context
-        guard let realm = try? Realm() else { return handler([]) }
+        guard let realm = AppGlobal.realm else { return handler([]) }
         
         let posts = realm.objects(Post)
         
@@ -79,6 +85,16 @@ extension PostService {
             handler(json.flatMap(Post.init).flatMap { $0 as Postable })
         }
     }
+
+    public func getRemoteCommentCount(id: Int, handler: Int -> Void) {
+        Alamofire.request(Router.CommentCount(id)).responseString { response in
+            guard let value = response.result.value where response.result.isSuccess else {
+                return handler(0)
+            }
+            
+            handler(Int(value) ?? 0)
+        }
+    }
     
     public func seedFromDisk() {
         seedFromDisk(nil)
@@ -89,7 +105,7 @@ extension PostService {
     }
     
     func seedFromDisk(page: Int, handler: (() -> Void)? = nil) {
-        guard let realm = try? Realm(),
+        guard let realm = AppGlobal.realm,
             let path = NSBundle.mainBundle().pathForResource("posts\(page)", ofType: "json",
                 inDirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
             let data = try? NSData(contentsOfFile: path, options: [])

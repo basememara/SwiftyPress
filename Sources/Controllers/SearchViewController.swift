@@ -12,7 +12,6 @@ import ZamzamKit
 
 class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable {
     
-    var realm: Realm?
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()

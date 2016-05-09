@@ -11,7 +11,7 @@
 	<key>baseURL</key>
 	<string>http://naturesnurtureblog.com</string>
 	<key>baseREST</key>
-	<string>wp-json/posts</string>
+	<string>wp-json</string>
 	<key>email</key>
 	<string>sarah@naturesnurtureblog.com</string>
 	<key>darkMode</key>
@@ -234,7 +234,7 @@
 		</dict>
 	</array>
 	<key>designedBy</key>
-	<string>Zamzam Inc.</string>
+	<string>Zamzam</string>
 	<key>designedByURL</key>
 	<string>http://zamzam.io</string>
 	<key>moreMenu</key>

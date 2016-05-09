@@ -18,8 +18,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
     
-    var realm: Realm?
     var model: Post!
+    var service = PostService()
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         return UIBarButtonItem(imageName: "star",
@@ -29,10 +29,11 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     }()
     
     lazy var commentBarButton: UIBarButtonItem = {
-        return UIBarButtonItem(imageName: "comments",
+        return UIBarButtonItem(badge: nil,
+            image: UIImage(named: "comments", inBundle: AppConstants.bundle)!
+                .imageWithRenderingMode(.AlwaysTemplate),
             target: self,
-            action: #selector(commentsTapped),
-            bundleIdentifier: AppConstants.bundleIdentifier)
+            action: #selector(commentsTapped))
     }()
     
     /// Web view for display content detail
@@ -68,12 +69,6 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {
-            realm = try Realm()
-        } catch {
-            // TODO: Log error
-        }
-        
         // Add toolbar buttons
         toolbarItems = [
             UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
@@ -96,6 +91,11 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
         
         refreshFavoriteIcon()
+        
+        service.getRemoteCommentCount(model.id) { count in
+            self.commentBarButton.badgeString =
+                count > 0 ? "\(count)" : nil
+        }
         
         navigationController?.toolbarHidden = false
     }
@@ -147,7 +147,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     
     func favoriteTapped() {
         do {
-            try realm?.write {
+            try AppGlobal.realm?.write {
                 model.favorite = !model.favorite
             }
             
@@ -162,7 +162,13 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     }
     
     func relatedTapped() {
-        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)")
+        var url = "\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)"
+        
+        if !AppGlobal.userDefaults[.darkMode] {
+            url += "&theme=light"
+        }
+        
+        presentSafariController(url)
     }
     
     func browserTapped() {

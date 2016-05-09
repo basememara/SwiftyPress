@@ -14,7 +14,6 @@ protocol RealmControllable: DataControllable {
     associatedtype ServiceType: Serviceable
     associatedtype DataType: Object
     
-    var realm: Realm? { get set }
     var notificationToken: NotificationToken? { get set }
     var service: ServiceType { get }
     var models: Results<DataType>? { get set }
@@ -31,13 +30,7 @@ extension RealmControllable {
     }
     
     func setupDataSource() {
-        do {
-            realm = try Realm()
-        } catch {
-            // TODO: Log error
-        }
-        
-        models = realm?.objects(DataType).sorted(
+        models = AppGlobal.realm?.objects(DataType.self).sorted(
             sortProperty, ascending: sortAscending)
         
         // Set results notification block
@@ -52,13 +45,15 @@ extension RealmControllable {
             }
         }
         
-        if realm?.objects(DataType).count == 0 {
+        if models?.count ?? 0 == 0 {
             service.seedFromDisk()
+        } else {
+            dataView.reloadData()
         }
     }
     
     func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil) {
-        guard let realm = realm else { return }
+        guard let realm = AppGlobal.realm else { return }
         
         var temp = realm.objects(DataType.self)
             .sorted(sortProperty, ascending: ascending ?? sortAscending)

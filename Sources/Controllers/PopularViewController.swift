@@ -25,7 +25,7 @@ class PopularViewController: RealmPostTableViewController {
         let favorite = UITableViewRowAction(style: .Normal, title: "Favorite".localized) { action, index in
             if let model = self.models?[indexPath.row] {
                 do {
-                    try self.realm?.write {
+                    try AppGlobal.realm?.write {
                         model.favorite = true
                     }
                 } catch {

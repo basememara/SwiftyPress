@@ -72,6 +72,7 @@
 		8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C301CAFBC8700B471CC /* DataViewable.swift */; };
 		8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687C1CDDFC9800710CA5 /* Page.swift */; };
 		8B79687F1CDE147000710CA5 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687E1CDE147000710CA5 /* Realm.swift */; };
+		8B7C82881CE04A5300A6DF30 /* ButtonBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */; };
 		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
 		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
@@ -247,6 +248,7 @@
 		8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/ZamzamKit.framework"; sourceTree = "<group>"; };
 		8B79687C1CDDFC9800710CA5 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8B79687E1CDE147000710CA5 /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBadge.swift; sourceTree = "<group>"; };
 		8B8E68791CDCAEA200171E14 /* PostControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostControllable.swift; sourceTree = "<group>"; };
 		8B8E687B1CDCB31700171E14 /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		8B8E687D1CDCB52B00171E14 /* MenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 		8BCB81C71CD2F62400C5CB6D /* External */ = {
 			isa = PBXGroup;
 			children = (
+				8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */,
 				8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */,
 			);
 			path = External;
@@ -859,6 +862,7 @@
 				8B8E68801CDCB54300171E14 /* SocialService.swift in Sources */,
 				8B5EDAD71CDC18C100F1C81C /* CategoriesViewController.swift in Sources */,
 				8B8E687C1CDCB31700171E14 /* CategoryService.swift in Sources */,
+				8B7C82881CE04A5300A6DF30 /* ButtonBadge.swift in Sources */,
 				8B5EDAE61CDC48B000F1C81C /* PopularViewController.swift in Sources */,
 				8B20B21F1CAE4A5A00CA693B /* UIImageView.swift in Sources */,
 				8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */,
