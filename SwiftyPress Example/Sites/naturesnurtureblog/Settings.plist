@@ -20,8 +20,8 @@
 	<string>150,199,80</string>
 	<key>titleColor</key>
 	<string>90,61,35</string>
-	<key>changeMainTabTitleColor</key>
-	<true/>
+	<key>tabTitleColor</key>
+	<string>120,159,64</string>
 	<key>categories</key>
 	<array>
 		<dict>

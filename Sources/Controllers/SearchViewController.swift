@@ -49,17 +49,31 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     /// Empty filter string means show all results, otherwise show only results containing the filter.
     var filterString: String? = nil {
         didSet {
-            if (filterString ?? "").isEmpty {
-                //filteredModels = models
+            var predicates: [String] = []
+            
+            if !(filterString ?? "").isEmpty {
+                // By title
+                if scopeSegmentedControl.selectedSegmentIndex == 0
+                    || scopeSegmentedControl.selectedSegmentIndex == 1 {
+                        predicates.append("title CONTAINS[c] '\(filterString!)'")
+                }
+                
+                // By content
+                if scopeSegmentedControl.selectedSegmentIndex == 0
+                    || scopeSegmentedControl.selectedSegmentIndex == 2 {
+                        predicates.append("content CONTAINS[c] '\(filterString!)'")
+                }
+                
+                // By keywords
+                if scopeSegmentedControl.selectedSegmentIndex == 0
+                    || scopeSegmentedControl.selectedSegmentIndex == 3 {
+                        predicates.append("ANY categories.name CONTAINS[c] '\(filterString!)'")
+                        predicates.append("ANY tags.name CONTAINS[c] '\(filterString!)'")
+                }
             }
-            else {
-                // Filter the results using a predicate based on the filter string.
-                let filterPredicate = NSPredicate(format: "self contains[c] %@", argumentArray: [filterString!])
-
-                //filteredModels = models.filter { filterPredicate.evaluateWithObject($0.title) }
-            }
-
-            tableView.reloadData()
+            
+            applyFilterAndSort(filter: !predicates.isEmpty
+                ? predicates.joinWithSeparator(" OR ") : nil)
         }
     }
 
@@ -98,11 +112,6 @@ extension SearchViewController {
         performSegueWithIdentifier(HistoryViewController.segueIdentifier, sender: nil)
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-    
-        return true
-    }
-    
     func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
         // Append search to history if new query
         if let text = searchBar.text where !text.isEmpty
@@ -114,7 +123,9 @@ extension SearchViewController {
     }
 
     @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {
-    
+        // Kick didSet
+        let temp = filterString
+        filterString = temp
     }
 }
 
@@ -127,7 +138,7 @@ extension SearchViewController {
             case (PostDetailViewController.segueIdentifier, let controller as PostDetailViewController):
                 // Set post detail
                 guard let row = indexPathForSelectedItem?.row,
-                    let model = models?[row] as? Postable else { break }
+                    let model = models?[row] else { break }
                 controller.model = model
             case (HistoryViewController.segueIdentifier, let navController as UINavigationController):
                 guard let controller = navController.topViewController as? HistoryViewController

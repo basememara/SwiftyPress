@@ -34,7 +34,7 @@ extension RealmControllable {
         do {
             realm = try Realm()
         } catch {
-            // Log error
+            // TODO: Log error
         }
         
         models = realm?.objects(DataType).sorted(
@@ -52,6 +52,28 @@ extension RealmControllable {
             }
         }
         
-        service.seedFromDisk()
+        if realm?.objects(DataType).count == 0 {
+            service.seedFromDisk()
+        }
+    }
+    
+    func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil) {
+        guard let realm = realm else { return }
+        
+        var temp = realm.objects(DataType.self)
+            .sorted(sortProperty, ascending: ascending ?? sortAscending)
+        
+        if let filter = filter where !filter.isEmpty {
+            temp = temp.filter(filter)
+        }
+        
+        if let sort = sort where !sort.isEmpty {
+            temp = temp.sorted(sort, ascending: ascending ?? sortAscending)
+        }
+
+        models = temp
+        
+        dataView.reloadData()
+        dataView.scrollToTop()
     }
 }

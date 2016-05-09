@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
     override init() {
         super.init()
         
-        let realm = try! Realm()
+        /*let realm = try! Realm()
         realm.beginWrite()
         realm.deleteAll()
-        try! realm.commitWrite()
+        try! realm.commitWrite()*/
         
         AppGlobal.userDefaults.registerSite("Sites/naturesnurtureblog")
     }

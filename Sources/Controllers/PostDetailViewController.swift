@@ -11,13 +11,29 @@ import WebKit
 import ZamzamKit
 import Timepiece
 import Stencil
+import RealmSwift
 
 class PostDetailViewController: UIViewController, WKNavigationDelegate {
     
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
     
-    var model: Postable!
+    var realm: Realm?
+    var model: Post!
+    
+    lazy var favoriteBarButton: UIBarButtonItem = {
+        return UIBarButtonItem(imageName: "star",
+            target: self,
+            action: #selector(favoriteTapped),
+            bundleIdentifier: AppConstants.bundleIdentifier)
+    }()
+    
+    lazy var commentBarButton: UIBarButtonItem = {
+        return UIBarButtonItem(imageName: "comments",
+            target: self,
+            action: #selector(commentsTapped),
+            bundleIdentifier: AppConstants.bundleIdentifier)
+    }()
     
     /// Web view for display content detail
     lazy var webView: WKWebView = {
@@ -52,15 +68,21 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        do {
+            realm = try Realm()
+        } catch {
+            // TODO: Log error
+        }
+        
         // Add toolbar buttons
         toolbarItems = [
             UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
             UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(imageName: "comments", target: self, action: #selector(commentsTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            commentBarButton,
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(imageName: "star", target: self, action: #selector(favoriteTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            favoriteBarButton,
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
             UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
         ]
@@ -72,6 +94,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         // Render template to web view
         webView.loadHTMLString(loadTemplate(), baseURL:
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
+        
+        refreshFavoriteIcon()
         
         navigationController?.toolbarHidden = false
     }
@@ -91,6 +115,12 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
             // Error returns raw unformatted content
             return model.content
         }
+    }
+    
+    func refreshFavoriteIcon() {
+        // Update favorite indicator
+        favoriteBarButton.image = UIImage(named: model.favorite ? "star-filled" : "star",
+            inBundle: AppConstants.bundle)
     }
     
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -116,7 +146,15 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
     }
     
     func favoriteTapped() {
-        alert("Not implemented yet")
+        do {
+            try realm?.write {
+                model.favorite = !model.favorite
+            }
+            
+            refreshFavoriteIcon()
+        } catch {
+            // TODO: Log error
+        }
     }
     
     func commentsTapped() {

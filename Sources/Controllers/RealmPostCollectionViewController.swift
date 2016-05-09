@@ -31,7 +31,10 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
     }
     
     var categoryID: Int = 0 {
-        didSet { filterByCategory() }
+        didSet { 
+            applyFilterAndSort(filter: categoryID > 0
+                ? "ANY categories.id == \(categoryID)" : nil)
+        }
     }
 
     override func viewDidLoad() {
