@@ -31,4 +31,7 @@
    <FileRef
       location = "group:Carthage/Checkouts/Stencil/Stencil.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/AlertOnboarding/AlertOnboarding.xcodeproj">
+   </FileRef>
 </Workspace>

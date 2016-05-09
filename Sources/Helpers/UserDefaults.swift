@@ -30,6 +30,8 @@ public extension DefaultsKeys {
     public static let social = DefaultsKey<[[String: AnyObject]]>("social")
     public static let tutorial = DefaultsKey<[[String: AnyObject]]>("tutorial")
     public static let searchHistory = DefaultsKey<[String]>("searchHistory")
+    
+    public static let isTutorialFinished = DefaultsKey<Bool>("isTutorialFinished")
 }
 
 public extension NSUserDefaults {

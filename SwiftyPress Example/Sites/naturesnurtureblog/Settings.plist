@@ -187,8 +187,8 @@
 			<string>Welcome to Nature’s Nurture!</string>
 			<key>desc</key>
 			<string>Thank you for downloading the Nature’s Nurture mobile app! We were inspired to create this app because so many of you are viewing our blog on your mobile device. We want this to be a better experience for you with extra perks, like offline capabilities, more sharing options, advanced search, favorites, notifications, and more!</string>
-			<key>icon</key>
-			<string>icon-md</string>
+			<key>image</key>
+			<string>page1</string>
 			<key>bgImage</key>
 			<string>bg1</string>
 		</dict>
@@ -197,8 +197,8 @@
 			<string>Blog Posts</string>
 			<key>desc</key>
 			<string>View our blog posts in an easy to read format. Use the search and filters to narrow down your results. Switch between new and unread posts. Share directly from within the app. View related posts. Read posts even when you’re offline!</string>
-			<key>icon</key>
-			<string>title1a</string>
+			<key>image</key>
+			<string>page2</string>
 			<key>bgImage</key>
 			<string>bg1</string>
 		</dict>
@@ -207,8 +207,8 @@
 			<string>Favorites</string>
 			<key>desc</key>
 			<string>Never forget a blog post again! Mark your favorite posts for easy referencing later. Check out popular posts that our community has found helpful or interesting.</string>
-			<key>icon</key>
-			<string>title2</string>
+			<key>image</key>
+			<string>page3</string>
 			<key>bgImage</key>
 			<string>bg1</string>
 		</dict>
@@ -217,8 +217,8 @@
 			<string>Notifications</string>
 			<key>desc</key>
 			<string>Stay up to date with the latest messages directly from me, Sarah. View our past and current newsletters all in one place. Leave comments on messages and newsletters. Be sure to allow notifications when prompted to get my notifications right on your device.</string>
-			<key>icon</key>
-			<string>title3</string>
+			<key>image</key>
+			<string>page4</string>
 			<key>bgImage</key>
 			<string>bg1</string>
 		</dict>
@@ -227,8 +227,8 @@
 			<string>Newsletter</string>
 			<key>desc</key>
 			<string>Sign up for our newsletter and get the latest giveaways, tips, tricks, and DIYs right in your inbox!</string>
-			<key>icon</key>
-			<string>icon-md</string>
+			<key>image</key>
+			<string>page1</string>
 			<key>bgImage</key>
 			<string>bg1</string>
 		</dict>

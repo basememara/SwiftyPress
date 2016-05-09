@@ -15,7 +15,8 @@
     "11233B504DD7D9116C4688A539003A9C9B7A5267" : 0,
     "583F90EC3DD082D4EA7AAAF45E99CF0F32F8BCC3" : 0,
     "75AC3D175AFB266425E0F0C33FCD333575C62CB4" : 0,
-    "D6A830889B24347ABC85EE5EE9C4421CCE53EE73" : 0
+    "D6A830889B24347ABC85EE5EE9C4421CCE53EE73" : 0,
+    "417DA844190160FFB3F58D48426B7A6D3CE34ECA" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1602DAF0-117B-4649-BB4C-1B798B3DF8FC",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
@@ -30,7 +31,8 @@
     "11233B504DD7D9116C4688A539003A9C9B7A5267" : "SwiftyPress\/Carthage\/Checkouts\/CHTCollectionViewWaterfallLayout\/",
     "583F90EC3DD082D4EA7AAAF45E99CF0F32F8BCC3" : "SwiftyPress\/Carthage\/Checkouts\/JASON\/",
     "75AC3D175AFB266425E0F0C33FCD333575C62CB4" : "SwiftyPress\/Carthage\/Checkouts\/SwiftyTimer\/",
-    "D6A830889B24347ABC85EE5EE9C4421CCE53EE73" : "SwiftyPress\/Carthage\/Checkouts\/Timepiece\/"
+    "D6A830889B24347ABC85EE5EE9C4421CCE53EE73" : "SwiftyPress\/Carthage\/Checkouts\/Timepiece\/",
+    "417DA844190160FFB3F58D48426B7A6D3CE34ECA" : "SwiftyPress\/Carthage\/Checkouts\/AlertOnboarding\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftyPress",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -50,6 +52,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ZamzamInc\/Stencil.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3DA8097D366B6AFDAEA91946C35253AA1EBC780B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/basememara\/AlertOnboarding.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "417DA844190160FFB3F58D48426B7A6D3CE34ECA"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/delba\/JASON.git",

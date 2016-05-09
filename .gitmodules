@@ -23,3 +23,6 @@
 [submodule "Carthage/Checkouts/JASON"]
 	path = Carthage/Checkouts/JASON
 	url = https://github.com/delba/JASON.git
+[submodule "Carthage/Checkouts/AlertOnboarding"]
+	path = Carthage/Checkouts/AlertOnboarding
+	url = https://github.com/basememara/AlertOnboarding.git

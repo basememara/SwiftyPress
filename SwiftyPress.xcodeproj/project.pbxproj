@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B03D2661CE0F77D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */; };
+		8B03D2681CE0F79D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */; };
+		8B03D26C1CE115A800144D76 /* Tutorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B03D26B1CE115A800144D76 /* Tutorable.swift */; };
 		8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */; };
 		8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A781CDF8D7F00871275 /* RealmControllable.swift */; };
 		8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */; };
@@ -96,7 +99,6 @@
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
-		8BF6F4081CE0A9EF0044B486 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6F4071CE0A9EF0044B486 /* UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
+		8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
+		8B03D26B1CE115A800144D76 /* Tutorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorable.swift; sourceTree = "<group>"; };
 		8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostCollectionViewController.swift; sourceTree = "<group>"; };
 		8B162A781CDF8D7F00871275 /* RealmControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmControllable.swift; sourceTree = "<group>"; };
 		8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostTableViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +267,6 @@
 		8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		8BF6F4071CE0A9EF0044B486 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +284,7 @@
 				8BA904FC1CAFCCEC0023354F /* Alamofire.framework in Frameworks */,
 				8BA904F51CAFCCEB0023354F /* Kingfisher.framework in Frameworks */,
 				8B5E3A041CD80DA2006ECF8E /* Stencil.framework in Frameworks */,
+				8B03D2661CE0F77D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +311,7 @@
 				8BA905201CAFCD9E0023354F /* Alamofire.framework in Frameworks */,
 				8BA905211CAFCD9E0023354F /* Kingfisher.framework in Frameworks */,
 				8B5E3A0B1CD80E0F006ECF8E /* Stencil.framework in Frameworks */,
+				8B03D2681CE0F79D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +479,7 @@
 				8B162A781CDF8D7F00871275 /* RealmControllable.swift */,
 				8B8E68791CDCAEA200171E14 /* PostControllable.swift */,
 				8B3360961CA890470033B2AE /* Serviceable.swift */,
+				8B03D26B1CE115A800144D76 /* Tutorable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -491,7 +498,6 @@
 		8B3360541CA885700033B2AE /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8BF6F4071CE0A9EF0044B486 /* UIButton.swift */,
 				8B20B21E1CAE4A5A00CA693B /* UIImageView.swift */,
 				8B63E4341CDBBAAC0053C060 /* UIViewController.swift */,
 			);
@@ -510,6 +516,8 @@
 		8B3360881CA88F850033B2AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */,
+				8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */,
 				8B411F031CD811E100623CAD /* Realm.framework */,
 				8B411F041CD811E100623CAD /* RealmSwift.framework */,
 				8B411EFF1CD811D500623CAD /* Realm.framework */,
@@ -818,6 +826,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlertOnboarding_iOS.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
@@ -835,6 +844,7 @@
 			files = (
 				8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */,
 				8B5EDAE51CDC48B000F1C81C /* FavoritesViewController.swift in Sources */,
+				8B03D26C1CE115A800144D76 /* Tutorable.swift in Sources */,
 				8B5EDAE31CDC48B000F1C81C /* ExplorerViewController.swift in Sources */,
 				8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */,
 				8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */,
@@ -858,7 +868,6 @@
 				8B5EDAE41CDC48B000F1C81C /* MoreViewController.swift in Sources */,
 				8B3360911CA8903D0033B2AE /* Post.swift in Sources */,
 				8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */,
-				8BF6F4081CE0A9EF0044B486 /* UIButton.swift in Sources */,
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
 				8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */,
@@ -1207,6 +1216,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/realm-swift/ios",
+					"$(PROJECT_DIR)/Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1263,6 +1273,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/realm-swift/ios",
+					"$(PROJECT_DIR)/Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;

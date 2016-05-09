@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate {
+class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable {
     
     var mainModels = MenuService.storedMoreItems
     var socialModels = SocialService.storedItems
@@ -144,7 +144,7 @@ extension MoreViewController {
         if let link = link {
             switch link {
                 case "{{tutorial}}":
-                    print(link)
+                    showTutorial()
                 case "{{feedback}}":
                     let mailComposeViewController = configuredMailComposeViewController()
                     if MFMailComposeViewController.canSendMail() {

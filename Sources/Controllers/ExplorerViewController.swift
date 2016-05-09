@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ExploreViewController: RealmPostCollectionViewController {
+class ExploreViewController: RealmPostCollectionViewController, Tutorable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,11 @@ class ExploreViewController: RealmPostCollectionViewController {
             target: self,
             action: #selector(catagoryTapped),
             bundleIdentifier: AppConstants.bundleIdentifier)
+        
+        showTutorial(false)
     }
     
     func catagoryTapped() {
         performSegueWithIdentifier(CategoriesViewController.segueIdentifier, sender: nil)
     }
-
 }
