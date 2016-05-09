@@ -17,6 +17,8 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     var statusBar: UIView?
     
+    @IBOutlet weak var socialStackView: UIStackView!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupInterface()
@@ -36,17 +38,34 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
             : UIColor(rgb: (239, 239, 244), alpha: 0.8))
     }
     
+    func socialTapped(sender: UIButton) {
+        guard let social = socialModels.first({
+            $0.title == sender.restorationIdentifier
+        }) else { return }
+        
+        // Open social app or url
+        if let app = social.app
+            where UIApplication.sharedApplication().canOpenURL(NSURL(string: app)!) {
+                UIApplication.sharedApplication().openURL(NSURL(string: app)!)
+        } else if let link = social.link {
+            UIApplication.sharedApplication().openURL(NSURL(string: link)!)
+        }
+    }
+}
+
+extension MoreViewController {
+
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
             case 0: return AppGlobal.userDefaults[.appName]
-            case 1: return "SOCIAL"
-            case 2: return "OTHER"
+            case 1: return "SOCIAL".localized
+            case 2: return "OTHER".localized
             default: return ""
         }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,8 +87,26 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
                 let model = mainModels[indexPath.row]
                 title = model.title
                 icon = model.icon
-            //case 1:
-            
+            case 1:
+                // Add button for each social link
+                socialModels.forEach { item in
+                    if let icon = item.icon,
+                        let image = UIImage(named: icon, inBundle: AppConstants.bundle) {
+                            let button = UIButton(type: .Custom)
+                            button.setBackgroundImage(image, forState: .Normal)
+                            button.restorationIdentifier = item.title
+                            button.addTarget(self, action: #selector(socialTapped(_:)), forControlEvents: .TouchUpInside)
+                            button.widthAnchor.constraintEqualToConstant(32).active = true
+                            button.heightAnchor.constraintEqualToConstant(32).active = true
+                            socialStackView.addArrangedSubview(button)
+                    }
+                }
+                
+                // Position icons in cell
+                socialStackView.translatesAutoresizingMaskIntoConstraints = false
+                cell.addSubview(socialStackView)
+                socialStackView.leftAnchor.constraintEqualToAnchor(cell.leftAnchor, constant: 12).active = true
+                socialStackView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor).active = true
             case 2:
                 title = "Designed by \(designedBy.title)"
                 icon = "design"
@@ -99,8 +136,6 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
             case 0:
                 let model = mainModels[indexPath.row]
                 link = model.link
-            //case 1:
-            
             case 2:
                 link = designedBy.link
             default: break
@@ -130,7 +165,10 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
             }
         }
     }
-    
+}
+
+extension MoreViewController {
+
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposer = MFMailComposeViewController()
         mailComposer.mailComposeDelegate = self

@@ -28,8 +28,15 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="more" id="USS-CD-p2G"/>
+                    <connections>
+                        <outlet property="socialStackView" destination="8bs-xh-i3V" id="On8-lb-YiI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JB3-cO-XCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="equalSpacing" spacing="10" id="8bs-xh-i3V">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </stackView>
             </objects>
             <point key="canvasLocation" x="835" y="2653"/>
         </scene>

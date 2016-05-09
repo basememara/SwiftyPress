@@ -96,6 +96,7 @@
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
+		8BF6F4081CE0A9EF0044B486 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6F4071CE0A9EF0044B486 /* UIButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -261,6 +262,7 @@
 		8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		8BF6F4071CE0A9EF0044B486 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +491,7 @@
 		8B3360541CA885700033B2AE /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				8BF6F4071CE0A9EF0044B486 /* UIButton.swift */,
 				8B20B21E1CAE4A5A00CA693B /* UIImageView.swift */,
 				8B63E4341CDBBAAC0053C060 /* UIViewController.swift */,
 			);
@@ -855,6 +858,7 @@
 				8B5EDAE41CDC48B000F1C81C /* MoreViewController.swift in Sources */,
 				8B3360911CA8903D0033B2AE /* Post.swift in Sources */,
 				8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */,
+				8BF6F4081CE0A9EF0044B486 /* UIButton.swift in Sources */,
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
 				8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */,
