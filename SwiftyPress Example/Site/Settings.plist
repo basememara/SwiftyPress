@@ -24,6 +24,8 @@
 	<string>219,112,5</string>
 	<key>tabTitleColor</key>
 	<string>120,159,64</string>
+	<key>styleSheet</key>
+	<string>http://naturesnurtureblog.com/wp-content/themes/ewd-natures-nurture/style.css</string>
 	<key>categories</key>
 	<array>
 		<dict>

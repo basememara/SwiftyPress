@@ -17,9 +17,7 @@
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='natures-nuture-theme-css'
-          href='http://naturesnurtureblog.com/wp-content/themes/ewd-natures-nurture/style.css?ver=2.2.4' type='text/css'
-          media='all'/>
+    {{style}}
     <link rel='stylesheet' id='orgseries-default-css-css'
           href='http://naturesnurtureblog.com/wp-content/plugins/organize-series/orgSeries.css?ver=4.5.1'
           type='text/css' media='all'/>
@@ -47,7 +45,8 @@
         top: -1000em;
         width: 1px;
     } </style>
-    <style type="text/css">    @import url(http://fonts.googleapis.com/css?family=Arvo|Sanchez);
+    <style type="text/css">
+    @import url(http://fonts.googleapis.com/css?family=Arvo|Sanchez);
 
     .blog-yumprint-recipe .blog-yumprint-recipe-title {
         color: rgb(100, 175, 30);
@@ -269,11 +268,9 @@
                     <div class="entry-content">
                         {{ content }}
                     </div>
-                    <footer class="entry-footer"><p class="entry-meta"><span class="entry-categories"><a
-                            href="http://naturesnurtureblog.com/category/household-cleaning/" rel="category tag">Household
-                        Cleaning</a></span> <i class="fa fa-comment"></i> <span class="entry-comments-link"><a
-                            href="http://naturesnurtureblog.com/homemade-cleaning-wipes/#comments">12
-                        Comments</a></span></p></footer>
+                    <footer class="entry-footer"><p class="entry-meta"><span class="entry-categories">
+                        {{categories}}
+                    </span></p></footer>
                 </article>
             </main>
         </div>

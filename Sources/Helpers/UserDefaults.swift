@@ -22,7 +22,7 @@ public extension DefaultsKeys {
     public static let titleColor = DefaultsKey<String>("titleColor")
     public static let secondaryTintColor = DefaultsKey<String>("secondaryTintColor")
     public static let tabTitleColor = DefaultsKey<String>("tabTitleColor")
-    public static let imagePlaceholderURL = DefaultsKey<String>("imagePlaceholderURL")
+    public static let styleSheet = DefaultsKey<String>("styleSheet")
     public static let designedBy = DefaultsKey<String>("designedBy")
     public static let designedByURL = DefaultsKey<String>("designedByURL")
     

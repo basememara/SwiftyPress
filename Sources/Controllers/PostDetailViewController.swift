@@ -12,6 +12,7 @@ import ZamzamKit
 import Timepiece
 import Stencil
 import RealmSwift
+import SystemConfiguration
 
 class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBarrable {
     
@@ -112,13 +113,20 @@ extension PostDetailViewController {
     func loadTemplate() -> String {
         guard let template = template else { return model.content }
         
+        let style = SCNetworkReachability.isOnline
+            ? "<link rel='stylesheet' href='\(AppGlobal.userDefaults[.styleSheet])' type='text/css' media='all' />"
+            : "<style>" + (NSBundle.stringOfFile("style.css",
+                inDirectory: AppGlobal.userDefaults[.baseDirectory]) ?? "") + "</style>"
+        
         do {
             // Bind data to template
             return try template.render(Context(dictionary: [
                 "title": model.title,
                 "content": model.content,
                 "date": model.date?.stringFromFormat("MMMM dd, yyyy"),
-                "isAffiliate": true
+                "categories": model.categories.flatMap({ item in item.name }).joinWithSeparator(", "),
+                "isAffiliate": true,
+                "style": style
             ]))
         } catch {
             // Error returns raw unformatted content
