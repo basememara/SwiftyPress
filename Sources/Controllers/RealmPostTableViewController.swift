@@ -34,7 +34,7 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        didLoad()
+        didDataControllableLoad()
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

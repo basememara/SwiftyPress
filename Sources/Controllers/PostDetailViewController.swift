@@ -134,6 +134,16 @@ extension PostDetailViewController {
         // Stop the network activity indicator when the loading finishes
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
+    
+    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+        // Open external links in browser
+        if navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+            decisionHandler(.Cancel)
+            return presentSafariController(navigationAction.request.URLString)
+        }
+        
+        decisionHandler(.Allow)
+    }
   
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.Allow)

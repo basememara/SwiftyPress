@@ -10,12 +10,13 @@ import UIKit
 import RealmSwift
 import ZamzamKit
 
-class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable {
+class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Restorable {
     
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = nil
+    var restorationHandlers: [() -> Void] = []
     
     var dataView: DataViewable {
         return tableView
@@ -78,9 +79,11 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        didLoad()
         
         navigationItem.titleView = searchController.searchBar
+        
+        didDataControllableLoad()
+        didRestorableLoad()
     }
 }
 
@@ -115,6 +118,12 @@ extension SearchViewController {
         return true
     }
     
+    func applySearch(text: String) {
+        filterString = text
+        searchController.searchBar.text = text
+        searchController.active = true
+    }
+    
     @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {
         // Kick didSet
         let temp = filterString
@@ -142,9 +151,7 @@ extension SearchViewController {
                     
                 // Prepare to retrieve selected history
                 controller.prepareForUnwind = { [unowned self] text in
-                    self.filterString = text
-                    self.searchController.searchBar.text = text
-                    self.searchController.active = true
+                    self.applySearch(text)
                 }
             default: break
         }

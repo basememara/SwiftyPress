@@ -7,7 +7,7 @@
         <!--Post Detail View Controller-->
         <scene sceneID="1E9-iS-ZHP">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="dZ9-YZ-Wxa" customClass="PostDetailViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewController" hidesBottomBarWhenPushed="YES" id="dZ9-YZ-Wxa" customClass="PostDetailViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cuj-iE-mus"/>
                         <viewControllerLayoutGuide type="bottom" id="sMh-4o-BRJ"/>

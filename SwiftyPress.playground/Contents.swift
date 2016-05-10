@@ -2,11 +2,7 @@
 
 import Foundation
 
-var value: String? = ""
-//value = "k"
-
-if value?.isEmpty ?? true {
-    print("nil or empty")
-} else {
-    print("has something")
-}
+var value = "http://naturesnurtureblog.com/homemade-cleaning-wipes/?abc=123#test"
+var urlComponents = NSURL(string: value)
+urlComponents?.host
+urlComponents?.path?.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "/"))

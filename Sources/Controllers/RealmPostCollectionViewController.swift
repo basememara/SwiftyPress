@@ -38,7 +38,7 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        didLoad()
+        didDataControllableLoad()
         setupCollectionView()
     }
 

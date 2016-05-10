@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyPress
+import ZamzamKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
@@ -16,17 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
 
     override init() {
         super.init()
-        
-        /*let realm = try! Realm()
-        realm.beginWrite()
-        realm.deleteAll()
-        try! realm.commitWrite()*/
-        
-        
         AppGlobal.userDefaults.registerSite("Sites/naturesnurtureblog")
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return didFinishLaunchingSite()
+        return didFinishLaunchingSite(application, launchOptions: launchOptions)
+    }
+    
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        return continueUserActivity(application, continueUserActivity: userActivity, restorationHandler: restorationHandler)
     }
 }

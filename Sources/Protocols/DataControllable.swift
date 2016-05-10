@@ -28,7 +28,7 @@ extension DataControllable where Self: UIViewController {
         return AppConstants.bundleIdentifier
     }
     
-    func didLoad() {
+    func didDataControllableLoad() {
         setupInterface()
         setupDataSource()
     }
