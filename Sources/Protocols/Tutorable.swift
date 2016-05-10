@@ -27,6 +27,8 @@ extension Tutorable where Self: UIViewController {
     
             alertView.percentageRatioHeight = 0.9
             alertView.percentageRatioWidth = 0.9
+            alertView.colorButtonBottomBackground = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
+            alertView.colorButtonText = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
 
             alertView.show()
         }
