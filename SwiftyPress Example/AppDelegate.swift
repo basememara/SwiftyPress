@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
 
     override init() {
         super.init()
-        AppGlobal.userDefaults.registerSite("Sites/naturesnurtureblog")
+        AppGlobal.userDefaults.registerSite()
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

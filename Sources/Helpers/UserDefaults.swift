@@ -20,6 +20,7 @@ public extension DefaultsKeys {
     public static let darkMode = DefaultsKey<Bool>("darkMode")
     public static let tintColor = DefaultsKey<String>("tintColor")
     public static let titleColor = DefaultsKey<String>("titleColor")
+    public static let secondaryTintColor = DefaultsKey<String>("secondaryTintColor")
     public static let tabTitleColor = DefaultsKey<String>("tabTitleColor")
     public static let imagePlaceholderURL = DefaultsKey<String>("imagePlaceholderURL")
     public static let designedBy = DefaultsKey<String>("designedBy")
@@ -41,7 +42,7 @@ public extension NSUserDefaults {
      - parameter baseDirectory: The base directory used to grab settins, templates, and other resources.
      - parameter plistName: Property list where defaults are declared. Settings.plist is the default.
      */
-    public func registerSite(baseDirectory: String) {
+    public func registerSite(baseDirectory: String = "Site") {
         self[.baseDirectory] = baseDirectory
         self.registerDefaults("Settings.plist", inDirectory: baseDirectory)
     }
