@@ -89,11 +89,11 @@ extension UIButton {
 }
 
 extension UIBarButtonItem {
-    convenience init(badge: String?, button: UIButton, target: AnyObject?, action: Selector) {
+    convenience init(badge: String?, button: UIButton, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
         button.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         button.sizeToFit()
         
-        let badgeLabel = UILabel(badgeText: badge ?? "")
+        let badgeLabel = UILabel(badgeText: badge ?? "", color: color)
         button.addSubview(badgeLabel)
         button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .Top, relatedBy: .Equal, toItem: button, attribute: .Top, multiplier: 1, constant: 0))
         button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .CenterX, relatedBy: .Equal, toItem: button, attribute: .Trailing, multiplier: 1, constant: 0))
@@ -105,20 +105,20 @@ extension UIBarButtonItem {
         self.init(customView: button)
     }
     
-    convenience init(badge: String?, image: UIImage, target: AnyObject?, action: Selector) {
+    convenience init(badge: String?, image: UIImage, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
         let button = UIButton(type: .Custom)
         button.frame = CGRectMake(0, 0, image.size.width, image.size.height)
         button.setBackgroundImage(image, forState: .Normal)
 
-        self.init(badge: badge, button: button, target: target, action: action)
+        self.init(badge: badge, button: button, target: target, action: action, color: color)
     }
     
-    convenience init(badge: String?, title: String, target: AnyObject?, action: Selector) {
+    convenience init(badge: String?, title: String, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
         let button = UIButton(type: .System)
         button.setTitle(title, forState: .Normal)
         button.titleLabel?.font = .systemFontOfSize(UIFont.buttonFontSize())
 
-        self.init(badge: badge, button: button, target: target, action: action)
+        self.init(badge: badge, button: button, target: target, action: action, color: color)
     }
 
     var badgeLabel: UILabel? {

@@ -34,7 +34,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBa
             image: UIImage(named: "comments", inBundle: AppConstants.bundle)!
                 .imageWithRenderingMode(.AlwaysTemplate),
             target: self,
-            action: #selector(commentsTapped))
+            action: #selector(commentsTapped),
+            color: UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor]))
     }()
     
     /// Web view for display content detail
