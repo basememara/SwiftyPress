@@ -10,6 +10,7 @@
 		8B03D2661CE0F77D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */; };
 		8B03D2681CE0F79D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */; };
 		8B03D26C1CE115A800144D76 /* Tutorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B03D26B1CE115A800144D76 /* Tutorable.swift */; };
+		8B03D2701CE1564700144D76 /* StatusBarrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B03D26F1CE1564700144D76 /* StatusBarrable.swift */; };
 		8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */; };
 		8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A781CDF8D7F00871275 /* RealmControllable.swift */; };
 		8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */; };
@@ -174,6 +175,7 @@
 		8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
 		8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
 		8B03D26B1CE115A800144D76 /* Tutorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorable.swift; sourceTree = "<group>"; };
+		8B03D26F1CE1564700144D76 /* StatusBarrable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarrable.swift; sourceTree = "<group>"; };
 		8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostCollectionViewController.swift; sourceTree = "<group>"; };
 		8B162A781CDF8D7F00871275 /* RealmControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmControllable.swift; sourceTree = "<group>"; };
 		8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostTableViewController.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				8B162A781CDF8D7F00871275 /* RealmControllable.swift */,
 				8B8E68791CDCAEA200171E14 /* PostControllable.swift */,
 				8B3360961CA890470033B2AE /* Serviceable.swift */,
+				8B03D26F1CE1564700144D76 /* StatusBarrable.swift */,
 				8B03D26B1CE115A800144D76 /* Tutorable.swift */,
 			);
 			path = Protocols;
@@ -871,6 +874,7 @@
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
 				8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */,
+				8B03D2701CE1564700144D76 /* StatusBarrable.swift in Sources */,
 				8B1E51861CD9D8A500BB30CB /* PressManager.swift in Sources */,
 				8B8E68801CDCB54300171E14 /* SocialService.swift in Sources */,
 				8B5EDAD71CDC18C100F1C81C /* CategoriesViewController.swift in Sources */,

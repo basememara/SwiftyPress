@@ -36,11 +36,6 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         super.viewDidLoad()
         didLoad()
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.toolbarHidden = true
-    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         prepareForSegue(segue)

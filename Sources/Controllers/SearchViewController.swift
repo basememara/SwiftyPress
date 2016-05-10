@@ -82,11 +82,6 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         
         navigationItem.titleView = searchController.searchBar
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.toolbarHidden = true
-    }
 }
 
 extension SearchViewController {
@@ -100,7 +95,6 @@ extension SearchViewController {
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         filterString = nil
-        searchBar.resignFirstResponder()
     }
 
     func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
@@ -120,11 +114,14 @@ extension SearchViewController {
         
         return true
     }
-
+    
     @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {
         // Kick didSet
         let temp = filterString
         filterString = temp
+        
+        // Dismiss keyboard
+        searchController.searchBar.resignFirstResponder()
     }
 }
 

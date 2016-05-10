@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable {
+class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable, StatusBarrable {
     
     var mainModels = MenuService.storedMoreItems
     var socialModels = SocialService.storedItems
@@ -21,21 +21,16 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        setupInterface()
+        
+        // Update status bar background since transparent on scroll
+        toggleStatusBar(true, target: tabBarController)
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Status bar no longer needed
-        statusBar?.removeFromSuperview()
-    }
-    
-    func setupInterface() {
-        // Update status bar background since transparent on scroll
-        statusBar = tabBarController?.addStatusBar(AppGlobal.userDefaults[.darkMode]
-            ? UIColor(white: 0, alpha: 0.8)
-            : UIColor(rgb: (239, 239, 244), alpha: 0.8))
+        removeStatusBar()
     }
     
     func socialTapped(sender: UIButton) {

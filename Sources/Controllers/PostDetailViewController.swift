@@ -13,13 +13,14 @@ import Timepiece
 import Stencil
 import RealmSwift
 
-class PostDetailViewController: UIViewController, WKNavigationDelegate {
+class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBarrable {
     
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
     
     var model: Post!
     var service = PostService()
+    var statusBar: UIView?
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         return UIBarButtonItem(imageName: "star",
@@ -70,6 +71,15 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         loadToolbar()
+        
+        // Handle when navigation bar show/hide on swipe
+        navigationController?.barHideOnSwipeGestureRecognizer
+            .addTarget(self, action: #selector(barHideOnSwipe))
+    }
+    
+    func barHideOnSwipe() {
+        // Status bar background transparent by default so fill in
+        toggleStatusBar(navigationController?.navigationBar.hidden)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,6 +93,15 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate {
         navigationController?.toolbarHidden = false
         refreshFavoriteIcon()
         refreshCommentIcon()
+        
+        navigationController?.hidesBarsOnSwipe = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.toolbarHidden = true
+        navigationController?.hidesBarsOnSwipe = false
+        removeStatusBar()
     }
 }
 
