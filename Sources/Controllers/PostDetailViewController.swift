@@ -119,7 +119,9 @@ extension PostDetailViewController {
                 "title": model.title,
                 "content": model.content,
                 "date": model.date?.stringFromFormat("MMMM dd, yyyy"),
-                "categories": model.categories.flatMap({ item in item.name }).joinWithSeparator(", "),
+                "categories": model.categories.flatMap({ item in
+                    "<a href='\(AppGlobal.userDefaults[.baseURL])/category/\(item.slug)'>\(item.name)</a>"
+                }).joinWithSeparator(", "),
                 "isAffiliate": true,
                 "style": style
             ]))

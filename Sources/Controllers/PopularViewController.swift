@@ -37,4 +37,16 @@ class PopularViewController: RealmPostTableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
+    @IBAction func shareTapped(sender: AnyObject) {
+        var message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the popular posts!\n\n"
+        
+        models?.prefix(30).forEach { item in
+            message += item.link + "\n"
+        }
+        
+        let share = [message]
+        let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
+        presentViewController(activity, animated: true, completion: nil)
+    }
 }

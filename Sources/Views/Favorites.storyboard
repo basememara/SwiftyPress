@@ -17,7 +17,13 @@
                             <outlet property="delegate" destination="PBw-Ap-7Mt" id="1rx-W8-Ld2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="FAVORITES" id="Kz1-0F-JjF"/>
+                    <navigationItem key="navigationItem" title="FAVORITES" id="Kz1-0F-JjF">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="bBQ-e8-1pp">
+                            <connections>
+                                <action selector="shareTapped:" destination="PBw-Ap-7Mt" id="iFo-S7-ynm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="cCj-hg-sVi" kind="show" identifier="PostDetailSegue" id="kg6-C8-Oye"/>
                     </connections>

@@ -17,7 +17,13 @@
                             <outlet property="delegate" destination="WP0-EX-6l3" id="a9y-PZ-Jya"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="POPULAR" id="QR3-jq-gHO"/>
+                    <navigationItem key="navigationItem" title="POPULAR" id="QR3-jq-gHO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Cid-c2-TVN">
+                            <connections>
+                                <action selector="shareTapped:" destination="WP0-EX-6l3" id="bMw-ZF-Qg8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="tBN-ei-Xcr" kind="show" identifier="PostDetailSegue" id="wwt-uF-0mO"/>
                     </connections>

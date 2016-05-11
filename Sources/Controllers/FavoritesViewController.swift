@@ -43,4 +43,20 @@ class FavoritesViewController: RealmPostTableViewController {
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return models?.count ?? 0 == 0 ? "No favorites to show." : nil
     }
+    
+    @IBAction func shareTapped(sender: AnyObject) {
+        guard let models = models where models.count > 0 else {
+            return alert("No favorites yet")
+        }
+        
+        var message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out my favorite posts!\n\n"
+        
+        models.prefix(30).forEach { item in
+            message += item.link + "\n"
+        }
+        
+        let share = [message]
+        let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
+        presentViewController(activity, animated: true, completion: nil)
+    }
 }
