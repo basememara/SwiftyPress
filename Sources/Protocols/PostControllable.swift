@@ -12,6 +12,7 @@ protocol PostControllable: RealmControllable {
     associatedtype DataType: Post
     
     var categoryID: Int { get set }
+    func didCategorySelect() -> Void
 }
 
 extension PostControllable where Self: UIViewController {
@@ -32,11 +33,6 @@ extension PostControllable where Self: UIViewController {
                 controller.selectedID = categoryID
                 controller.prepareForUnwind = { [unowned self] id in
                     self.categoryID = id
-                    self.navigationItem.title = (self.categoryID > 0
-                        ? CategoryService.storedItems
-                            .first { $0.id == self.categoryID }?.title
-                                ?? AppGlobal.userDefaults[.appName]
-                        : AppGlobal.userDefaults[.appName]).uppercaseString
                 }
             default: break
         }

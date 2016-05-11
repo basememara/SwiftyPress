@@ -15,7 +15,7 @@ public protocol Restorable: class {
 
 public extension Restorable {
 
-    func didRestorableLoad() {
+    func willRestorableAppear() {
         // Execute any awaiting tasks
         restorationHandlers.removeEach{
             handler in handler()

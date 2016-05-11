@@ -84,6 +84,28 @@ public extension ApplicationPressable {
             controller.restorationHandlers.append({
                 controller.applySearch(query)
             })
+        } else if url.pathComponents?.get(1) == "category" {
+            tabBarController.selectedIndex = 2
+            
+            guard let slug = url.pathComponents?.get(2),
+                let navigationController = tabBarController.selectedViewController as? UINavigationController,
+                let controller = navigationController.topViewController as? ExploreViewController
+                    else { return false }
+            
+            guard let term = AppGlobal.realm?.objects(Term).filter("slug == '\(slug)'").first else {
+                let urlString = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
+                    ?? AppGlobal.userDefaults[.baseURL]
+                
+                // Display browser if post not found
+                navigationController.pushViewController(
+                    SFSafariViewController(URL: NSURL(string: urlString)!), animated: false)
+                return true
+            }
+            
+            // Execute process in the right lifecycle moment
+            controller.restorationHandlers.append({
+                controller.categoryID = term.id
+            })
         } else {
             // Attempt wildcard path
             tabBarController.selectedIndex = 2

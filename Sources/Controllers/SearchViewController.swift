@@ -79,11 +79,14 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        didDataControllableLoad()
         
         navigationItem.titleView = searchController.searchBar
-        
-        didDataControllableLoad()
-        didRestorableLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        willRestorableAppear()
     }
 }
 
@@ -120,8 +123,8 @@ extension SearchViewController {
     
     func applySearch(text: String) {
         filterString = text
-        searchController.searchBar.text = text
         searchController.active = true
+        searchController.searchBar.text = text
     }
     
     @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {

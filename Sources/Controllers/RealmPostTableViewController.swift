@@ -29,6 +29,7 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         didSet { 
             applyFilterAndSort(filter: categoryID > 0
                 ? "ANY categories.id == \(categoryID)" : nil)
+            didCategorySelect()
         }
     }
 
@@ -39,6 +40,10 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         prepareForSegue(segue)
+    }
+    
+    func didCategorySelect() {
+    
     }
 }
 

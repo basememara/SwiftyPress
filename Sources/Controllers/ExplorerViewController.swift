@@ -8,20 +8,41 @@
 
 import Foundation
 
-class ExploreViewController: RealmPostCollectionViewController, Tutorable {
+class ExploreViewController: RealmPostCollectionViewController, Tutorable, Restorable {
+    
+    var restorationHandlers: [() -> Void] = []
+    
+    lazy var categoryButton: UIBarButtonItem = {
+        return UIBarButtonItem(imageName: "list",
+            target: self,
+            action: #selector(catagoryTapped),
+            bundleIdentifier: AppConstants.bundleIdentifier)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = AppGlobal.userDefaults[.appName].uppercaseString
-        
-        // Add toolbar buttons
-        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "list",
-            target: self,
-            action: #selector(catagoryTapped),
-            bundleIdentifier: AppConstants.bundleIdentifier)
+        navigationItem.rightBarButtonItem = categoryButton
         
         showTutorial(false)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        willRestorableAppear()
+    }
+    
+    override func didCategorySelect() {
+        navigationItem.title = (categoryID > 0
+            ? CategoryService.storedItems
+                .first { $0.id == categoryID }?.title
+                    ?? AppGlobal.userDefaults[.appName]
+            : AppGlobal.userDefaults[.appName]).uppercaseString
+        
+        categoryButton.tintColor = categoryID > 0
+            ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
+            : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
     }
     
     func catagoryTapped() {

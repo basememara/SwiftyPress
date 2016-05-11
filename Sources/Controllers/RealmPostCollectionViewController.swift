@@ -33,6 +33,7 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         didSet { 
             applyFilterAndSort(filter: categoryID > 0
                 ? "ANY categories.id == \(categoryID)" : nil)
+            didCategorySelect()
         }
     }
 
@@ -44,6 +45,10 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         prepareForSegue(segue)
+    }
+    
+    func didCategorySelect() {
+    
     }
 }
 
