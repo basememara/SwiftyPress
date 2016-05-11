@@ -50,9 +50,11 @@ extension RealmControllable {
         } else {
             dataView.reloadData()
         }
+        
+        service.updateFromRemote()
     }
     
-    func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil) {
+    func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {
         guard let realm = AppGlobal.realm else { return }
         
         var temp = realm.objects(DataType.self)
@@ -68,7 +70,10 @@ extension RealmControllable {
 
         models = temp
         
-        dataView.reloadData()
+        if reload {
+            dataView.reloadData()
+        }
+        
         dataView.scrollToTop()
     }
 }

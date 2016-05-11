@@ -101,6 +101,8 @@
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
 		8BD08EB21CE27D2E0051080A /* Site in Resources */ = {isa = PBXBuildFile; fileRef = 8BD08EB11CE27D2E0051080A /* Site */; };
+		8BD08EC01CE2914F0051080A /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD08EBF1CE2914F0051080A /* Async.framework */; };
+		8BD08EC21CE2916D0051080A /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BD08EC11CE2916D0051080A /* Async.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +273,8 @@
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		8BD08EB11CE27D2E0051080A /* Site */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Site; sourceTree = "<group>"; };
+		8BD08EBF1CE2914F0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
+		8BD08EC11CE2916D0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,7 @@
 				8BA904FC1CAFCCEC0023354F /* Alamofire.framework in Frameworks */,
 				8BA904F51CAFCCEB0023354F /* Kingfisher.framework in Frameworks */,
 				8B5E3A041CD80DA2006ECF8E /* Stencil.framework in Frameworks */,
+				8BD08EC01CE2914F0051080A /* Async.framework in Frameworks */,
 				8B03D2661CE0F77D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +320,7 @@
 				8BA905201CAFCD9E0023354F /* Alamofire.framework in Frameworks */,
 				8BA905211CAFCD9E0023354F /* Kingfisher.framework in Frameworks */,
 				8B5E3A0B1CD80E0F006ECF8E /* Stencil.framework in Frameworks */,
+				8BD08EC21CE2916D0051080A /* Async.framework in Frameworks */,
 				8B03D2681CE0F79D00144D76 /* AlertOnboarding_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,6 +528,8 @@
 		8B3360881CA88F850033B2AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8BD08EC11CE2916D0051080A /* Async.framework */,
+				8BD08EBF1CE2914F0051080A /* Async.framework */,
 				8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */,
 				8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */,
 				8B411F031CD811E100623CAD /* Realm.framework */,
@@ -832,6 +840,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Async.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlertOnboarding_iOS.framework",
 			);
 			name = "Run Carthage Script";

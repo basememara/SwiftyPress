@@ -35,8 +35,6 @@ public protocol Postable: class {
     var categories: List<Term> { get }
     var tags: List<Term> { get }
     
-    var favorite: Bool { get set }
-    var read: Bool { get set }
     var viewCount: Int { get set }
     var commentCount: Int { get set }
 }
@@ -61,8 +59,6 @@ public class Post: Object, Postable {
     public dynamic var thumbnailWidth = 0
     public dynamic var thumbnailHeight = 0
     
-    public dynamic var favorite = false
-    public dynamic var read = false
     public dynamic var viewCount = 0
     public dynamic var commentCount = 0
     
@@ -78,8 +74,6 @@ public class Post: Object, Postable {
         return [
             "title",
             "slug",
-            "favorite",
-            "read",
             "date",
             "viewCount",
             "commentCount"
@@ -107,8 +101,6 @@ public class Post: Object, Postable {
         thumbnailWidth = json[.thumbnailWidth]
         thumbnailHeight = json[.thumbnailHeight]
         
-        favorite = json[.favorite]
-        read = json[.read]
         viewCount = json[.viewCount]
         commentCount = json[.commentCount]
         

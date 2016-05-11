@@ -26,3 +26,6 @@
 [submodule "Carthage/Checkouts/AlertOnboarding"]
 	path = Carthage/Checkouts/AlertOnboarding
 	url = https://github.com/basememara/AlertOnboarding.git
+[submodule "Carthage/Checkouts/Async"]
+	path = Carthage/Checkouts/Async
+	url = https://github.com/duemunk/Async.git

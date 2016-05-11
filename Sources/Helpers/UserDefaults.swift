@@ -33,6 +33,7 @@ public extension DefaultsKeys {
     public static let searchHistory = DefaultsKey<[String]>("searchHistory")
     
     public static let isTutorialFinished = DefaultsKey<Bool>("isTutorialFinished")
+    public static let favorites = DefaultsKey<[Int]>("favorites")
 }
 
 public extension NSUserDefaults {

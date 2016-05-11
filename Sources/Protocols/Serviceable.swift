@@ -11,4 +11,5 @@ public protocol Serviceable {
     
     func get(handler: [DataType] -> Void)
     func seedFromDisk()
+    func updateFromRemote()
 }

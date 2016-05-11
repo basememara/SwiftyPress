@@ -13,24 +13,30 @@ class FavoritesViewController: RealmPostTableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        applyFilterAndSort(filter: "favorite == 1")
+        applyFavoriteFilter()
     }
     
+    func applyFavoriteFilter(reload: Bool = true) {
+        let favorites = AppGlobal.userDefaults[.favorites]
+            .map(String.init)
+            .joinWithSeparator(",")
+        
+        applyFilterAndSort(filter: "id IN {\(favorites)}", reload: reload)
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return AppGlobal.userDefaults[.favorites].count
+    }
+        
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if let model = models?[indexPath.row] where editingStyle == .Delete {
-            do {
-                try AppGlobal.realm?.write {
-                    model.favorite = false
-                }
-            } catch {
-                // TODO: Log error
-            }
-            
+            service.removeFavorite(model.id)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            applyFavoriteFilter(false)
         }
     }
     

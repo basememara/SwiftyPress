@@ -1,5 +1,6 @@
 github "Alamofire/Alamofire" "3.4.0"
 github "basememara/AlertOnboarding" "1.7.2"
+github "duemunk/Async" "1.7.2"
 github "delba/JASON" "v2.2"
 github "onevcat/Kingfisher" "2.4.1"
 github "ZamzamInc/Stencil" "0.5.4.1"
