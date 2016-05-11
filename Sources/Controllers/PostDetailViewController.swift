@@ -14,7 +14,7 @@ import Stencil
 import RealmSwift
 import SystemConfiguration
 
-class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBarrable {
+class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, StatusBarrable {
     
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
@@ -51,6 +51,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBa
         
         let webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         webView.navigationDelegate = self
+        webView.UIDelegate = self
         
         self.view.addSubview(webView)
         
@@ -73,15 +74,6 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBa
         super.viewDidLoad()
         
         loadToolbar()
-        
-        // Handle when navigation bar show/hide on swipe
-        navigationController?.barHideOnSwipeGestureRecognizer
-            .addTarget(self, action: #selector(barHideOnSwipe))
-    }
-    
-    func barHideOnSwipe() {
-        // Status bar background transparent by default so fill in
-        toggleStatusBar(navigationController?.navigationBar.hidden)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -97,6 +89,9 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, StatusBa
         refreshCommentIcon()
         
         navigationController?.hidesBarsOnSwipe = true
+        
+        // Status bar background transparent by default so fill in
+        toggleStatusBar(true)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -146,9 +141,11 @@ extension PostDetailViewController {
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         // Open external links in browser
-        if navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
-            decisionHandler(.Cancel)
-            return presentSafariController(navigationAction.request.URLString)
+        if navigationAction.navigationType == .LinkActivated
+            && navigationAction.targetFrame?.mainFrame == true
+            && navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+                decisionHandler(.Cancel)
+                return presentSafariController(navigationAction.request.URLString)
         }
         
         decisionHandler(.Allow)
@@ -156,6 +153,20 @@ extension PostDetailViewController {
   
     func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
         decisionHandler(.Allow)
+    }
+    
+    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        // Open "target=_blank" in the same view
+        if navigationAction.targetFrame == nil {
+            // Open external links in browser
+            if navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+                presentSafariController(navigationAction.request.URLString)
+            } else {
+                webView.loadRequest(navigationAction.request)
+            }
+        }
+        
+        return nil
     }
 }
 
@@ -179,8 +190,9 @@ extension PostDetailViewController {
 
     func refreshFavoriteIcon() {
         // Update favorite indicator
-        favoriteBarButton.image = UIImage(named: model.favorite ? "star-filled" : "star",
-            inBundle: AppConstants.bundle)
+        favoriteBarButton.image = UIImage(named: AppGlobal.userDefaults[.favorites].contains(model.id)
+            ? "star-filled" : "star",
+                inBundle: AppConstants.bundle)
     }
     
     func refreshCommentIcon() {
@@ -215,15 +227,8 @@ extension PostDetailViewController {
     }
     
     func favoriteTapped() {
-        do {
-            try AppGlobal.realm?.write {
-                model.favorite = !model.favorite
-            }
-            
-            refreshFavoriteIcon()
-        } catch {
-            // TODO: Log error
-        }
+        service.toggleFavorite(model.id)
+        refreshFavoriteIcon()
     }
     
     func commentsTapped() {
