@@ -13,7 +13,6 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     var mainModels = MenuService.storedMoreItems
     var socialModels = SocialService.storedItems
-    var designedBy = (title: AppGlobal.userDefaults[.designedBy], link: AppGlobal.userDefaults[.designedByURL])
     
     var statusBar: UIView?
     
@@ -103,7 +102,8 @@ extension MoreViewController {
                 socialStackView.leftAnchor.constraintEqualToAnchor(cell.leftAnchor, constant: 12).active = true
                 socialStackView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor).active = true
             case 2:
-                title = "Designed by \(designedBy.title)"
+                let designedByTitle = (AppGlobal.userDefaults[.designedBy]["title"] as? String) ?? ""
+                title = "Designed by \(designedByTitle)"
                 icon = "design"
             default: break
         }
@@ -132,7 +132,7 @@ extension MoreViewController {
                 let model = mainModels[indexPath.row]
                 link = model.link
             case 2:
-                link = designedBy.link
+                link = AppGlobal.userDefaults[.designedBy]["link"] as? String
             default: break
         }
         

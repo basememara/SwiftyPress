@@ -26,6 +26,13 @@
 	<string>120,159,64</string>
 	<key>styleSheet</key>
 	<string>http://naturesnurtureblog.com/wp-content/themes/ewd-natures-nurture/style.css</string>
+	<key>designedBy</key>
+	<dict>
+		<key>title</key>
+		<string>Zamzam</string>
+		<key>link</key>
+		<string>http://zamzam.io</string>
+	</dict>
 	<key>categories</key>
 	<array>
 		<dict>
@@ -237,10 +244,6 @@
 			<string>bg1</string>
 		</dict>
 	</array>
-	<key>designedBy</key>
-	<string>Zamzam</string>
-	<key>designedByURL</key>
-	<string>http://zamzam.io</string>
 	<key>moreMenu</key>
 	<array>
 		<dict>
@@ -255,7 +258,7 @@
 			<key>title</key>
 			<string>Subscribe to newsletter</string>
 			<key>link</key>
-			<string>http://madmimi.com/signups/78082/join</string>
+			<string>http://naturesnurtureblog.com/newsletter/?mobileembed=1</string>
 			<key>icon</key>
 			<string>signup</string>
 		</dict>
