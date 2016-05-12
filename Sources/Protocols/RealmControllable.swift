@@ -50,8 +50,6 @@ extension RealmControllable {
         } else {
             dataView.reloadData()
         }
-        
-        service.updateFromRemote()
     }
     
     func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {

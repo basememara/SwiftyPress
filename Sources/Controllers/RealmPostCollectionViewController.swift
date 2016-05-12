@@ -9,6 +9,7 @@
 import UIKit
 import ZamzamKit
 import RealmSwift
+import RateLimit
 
 class RealmPostCollectionViewController: UICollectionViewController, CHTCollectionViewDelegateWaterfallLayout, PostControllable {
 
@@ -41,6 +42,15 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         super.viewDidLoad()
         didDataControllableLoad()
         setupCollectionView()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Retrieve latest posts not more than every X hours
+        RateLimit.execute(name: "UpdatePostsFromRemote", limit: 10800) {
+            service.updateFromRemote()
+        }
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
