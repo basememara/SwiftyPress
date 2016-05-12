@@ -73,6 +73,17 @@
 		8B7C82881CE04A5300A6DF30 /* ButtonBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */; };
 		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
 		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */; };
+		8B8D92061CE51E7E00C60A0D /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6B1CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework */; };
+		8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */; };
+		8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */; };
+		8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */; };
+		8B8D920A1CE51E7E00C60A0D /* RateLimit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6F1CE4FEC0003A89B5 /* RateLimit.framework */; };
+		8B8D920B1CE51E7E00C60A0D /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB701CE4FEC0003A89B5 /* Stencil.framework */; };
+		8B8D920C1CE51E7E00C60A0D /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB711CE4FEC0003A89B5 /* SwiftyTimer.framework */; };
+		8B8D920D1CE51E7E00C60A0D /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB721CE4FEC0003A89B5 /* SwiftyUserDefaults.framework */; };
+		8B8D920E1CE51E7E00C60A0D /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB731CE4FEC0003A89B5 /* Timepiece.framework */; };
+		8B8D920F1CE51E7E00C60A0D /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB741CE4FEC0003A89B5 /* ZamzamKit.framework */; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
 		8B8E687C1CDCB31700171E14 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687B1CDCB31700171E14 /* CategoryService.swift */; };
 		8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687D1CDCB52B00171E14 /* MenuService.swift */; };
@@ -351,6 +362,17 @@
 				8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */,
 				8B411F051CD811E100623CAD /* Realm.framework in Frameworks */,
 				8B411F071CD811E100623CAD /* RealmSwift.framework in Frameworks */,
+				8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */,
+				8B8D92061CE51E7E00C60A0D /* AlertOnboarding_iOS.framework in Frameworks */,
+				8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */,
+				8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */,
+				8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */,
+				8B8D920A1CE51E7E00C60A0D /* RateLimit.framework in Frameworks */,
+				8B8D920B1CE51E7E00C60A0D /* Stencil.framework in Frameworks */,
+				8B8D920C1CE51E7E00C60A0D /* SwiftyTimer.framework in Frameworks */,
+				8B8D920D1CE51E7E00C60A0D /* SwiftyUserDefaults.framework in Frameworks */,
+				8B8D920E1CE51E7E00C60A0D /* Timepiece.framework in Frameworks */,
+				8B8D920F1CE51E7E00C60A0D /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,6 +1342,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/realm-swift/ios",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1376,6 +1399,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks/realm-swift/ios",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
