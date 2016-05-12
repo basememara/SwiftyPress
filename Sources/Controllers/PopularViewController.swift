@@ -9,12 +9,17 @@
 import UIKit
 import ZamzamKit
 
-class PopularViewController: RealmPostTableViewController {
+class PopularViewController: RealmPostTableViewController, Trackable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categoryID = 502
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        willTrackableAppear("Popular posts")
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -23,10 +28,14 @@ class PopularViewController: RealmPostTableViewController {
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favorite = UITableViewRowAction(style: .Normal, title: "Favorite".localized) { action, index in
-            if let model = self.models?[indexPath.row] {
-                self.service.addFavorite(model.id)
-                self.tableView.setEditing(false, animated: true)
-            }
+            guard let model = self.models?[indexPath.row] else { return }
+            
+            self.service.addFavorite(model.id)
+            self.tableView.setEditing(false, animated: true)
+    
+            // Google Analytics
+            self.trackEvent("Favorite", action: "Post",
+                label: model.title, value: Int(model.id))
         }
         
         favorite.backgroundColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
@@ -48,5 +57,8 @@ class PopularViewController: RealmPostTableViewController {
         let share = [message]
         let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
         presentViewController(activity, animated: true, completion: nil)
+        
+        // Google Analytics
+        trackEvent("Share", action: "Popular")
     }
 }

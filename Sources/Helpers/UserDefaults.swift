@@ -24,6 +24,7 @@ public extension DefaultsKeys {
     public static let tabTitleColor = DefaultsKey<String>("tabTitleColor")
     public static let styleSheet = DefaultsKey<String>("styleSheet")
     public static let designedBy = DefaultsKey<[String: AnyObject]>("designedBy")
+    public static let googleAnalyticsID = DefaultsKey<String>("googleAnalyticsID")
     
     public static let categories = DefaultsKey<[[String: AnyObject]]>("categories")
     public static let moreMenu = DefaultsKey<[[String: AnyObject]]>("moreMenu")

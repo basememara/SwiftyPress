@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FavoritesViewController: RealmPostTableViewController {
+class FavoritesViewController: RealmPostTableViewController, Trackable {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        willTrackableAppear("Favorites")
         
         applyFavoriteFilter()
     }
@@ -58,5 +59,8 @@ class FavoritesViewController: RealmPostTableViewController {
         let share = [message]
         let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
         presentViewController(activity, animated: true, completion: nil)
+        
+        // Google Analytics
+        trackEvent("Share", action: "Favorites")
     }
 }

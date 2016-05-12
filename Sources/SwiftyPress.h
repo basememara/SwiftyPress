@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
+#import "GAILogger.h"
 
 //! Project version number for SwiftyPress.
 FOUNDATION_EXPORT double SwiftyPressVersionNumber;

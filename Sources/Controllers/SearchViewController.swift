@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ZamzamKit
 
-class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Restorable {
+class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Restorable, Trackable {
     
     var notificationToken: NotificationToken?
     var models: Results<Post>?
@@ -74,6 +74,9 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
             
             applyFilterAndSort(filter: !predicates.isEmpty
                 ? predicates.joinWithSeparator(" OR ") : nil)
+            
+            // Google Analytics
+            trackEvent("Search", action: "Post", label: filterString)
         }
     }
 
@@ -87,6 +90,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willRestorableAppear()
+        willTrackableAppear("Search")
     }
 }
 

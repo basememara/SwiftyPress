@@ -60,7 +60,7 @@
 		8B5EDAD71CDC18C100F1C81C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */; };
 		8B5EDAD91CDC3F2200F1C81C /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EDAD81CDC3F2200F1C81C /* Categories.storyboard */; };
 		8B5EDADB1CDC442200F1C81C /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B5EDADA1CDC442200F1C81C /* Explore.storyboard */; };
-		8B5EDAE31CDC48B000F1C81C /* ExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDADE1CDC48B000F1C81C /* ExplorerViewController.swift */; };
+		8B5EDAE31CDC48B000F1C81C /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDADE1CDC48B000F1C81C /* ExploreViewController.swift */; };
 		8B5EDAE41CDC48B000F1C81C /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDADF1CDC48B000F1C81C /* MoreViewController.swift */; };
 		8B5EDAE51CDC48B000F1C81C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDAE01CDC48B000F1C81C /* FavoritesViewController.swift */; };
 		8B5EDAE61CDC48B000F1C81C /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDAE11CDC48B000F1C81C /* PopularViewController.swift */; };
@@ -85,6 +85,21 @@
 		8B8E68801CDCB54300171E14 /* SocialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687F1CDCB54300171E14 /* SocialService.swift */; };
 		8B8E68821CDCD97900171E14 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68811CDCD97900171E14 /* SearchViewController.swift */; };
 		8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68831CDCFCB400171E14 /* HistoryViewController.swift */; };
+		8B8EEB2B1CE43003003A89B5 /* GAI.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB211CE43003003A89B5 /* GAI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB2C1CE43003003A89B5 /* GAIDictionaryBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB221CE43003003A89B5 /* GAIDictionaryBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB2D1CE43003003A89B5 /* GAIEcommerceFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB231CE43003003A89B5 /* GAIEcommerceFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB2E1CE43003003A89B5 /* GAIEcommerceProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB241CE43003003A89B5 /* GAIEcommerceProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB2F1CE43003003A89B5 /* GAIEcommerceProductAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB251CE43003003A89B5 /* GAIEcommerceProductAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB301CE43003003A89B5 /* GAIEcommercePromotion.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB261CE43003003A89B5 /* GAIEcommercePromotion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB311CE43003003A89B5 /* GAIFields.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB271CE43003003A89B5 /* GAIFields.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB321CE43003003A89B5 /* GAILogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB281CE43003003A89B5 /* GAILogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB331CE43003003A89B5 /* GAITrackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB341CE43003003A89B5 /* GAITracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB2A1CE43003003A89B5 /* GAITracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B8EEB361CE43036003A89B5 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */; };
+		8B8EEB391CE431F2003A89B5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */; };
+		8B8EEB3D1CE43278003A89B5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB3C1CE43278003A89B5 /* libz.tbd */; };
+		8B8EEB401CE4370B003A89B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB3A1CE43238003A89B5 /* CoreData.framework */; };
+		8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEB411CE43961003A89B5 /* Trackable.swift */; };
 		8BA904F51CAFCCEB0023354F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B20B21C1CAE4A1900CA693B /* Kingfisher.framework */; };
 		8BA904F61CAFCCEB0023354F /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4CFAE61CABEB7E00D2B1D7 /* Timepiece.framework */; };
 		8BA904F71CAFCCEB0023354F /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */; };
@@ -242,7 +257,7 @@
 		8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8B5EDAD81CDC3F2200F1C81C /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		8B5EDADA1CDC442200F1C81C /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
-		8B5EDADE1CDC48B000F1C81C /* ExplorerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplorerViewController.swift; sourceTree = "<group>"; };
+		8B5EDADE1CDC48B000F1C81C /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		8B5EDADF1CDC48B000F1C81C /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		8B5EDAE01CDC48B000F1C81C /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8B5EDAE11CDC48B000F1C81C /* PopularViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +281,21 @@
 		8B8E687F1CDCB54300171E14 /* SocialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialService.swift; sourceTree = "<group>"; };
 		8B8E68811CDCD97900171E14 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8B8E68831CDCFCB400171E14 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		8B8EEB211CE43003003A89B5 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAI.h; sourceTree = "<group>"; };
+		8B8EEB221CE43003003A89B5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		8B8EEB231CE43003003A89B5 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		8B8EEB241CE43003003A89B5 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		8B8EEB251CE43003003A89B5 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		8B8EEB261CE43003003A89B5 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		8B8EEB271CE43003003A89B5 /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAIFields.h; sourceTree = "<group>"; };
+		8B8EEB281CE43003003A89B5 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAILogger.h; sourceTree = "<group>"; };
+		8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAITrackedViewController.h; sourceTree = "<group>"; };
+		8B8EEB2A1CE43003003A89B5 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAITracker.h; sourceTree = "<group>"; };
+		8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Frameworks/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		8B8EEB3A1CE43238003A89B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		8B8EEB3C1CE43278003A89B5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		8B8EEB411CE43961003A89B5 /* Trackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackable.swift; sourceTree = "<group>"; };
 		8BA904F81CAFCCEC0023354F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		8BA904F91CAFCCEC0023354F /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
 		8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
@@ -282,6 +312,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B8EEB3D1CE43278003A89B5 /* libz.tbd in Frameworks */,
+				8B8EEB391CE431F2003A89B5 /* libsqlite3.tbd in Frameworks */,
+				8B8EEB361CE43036003A89B5 /* libGoogleAnalyticsServices.a in Frameworks */,
+				8B8EEB401CE4370B003A89B5 /* CoreData.framework in Frameworks */,
 				8B411F011CD811D500623CAD /* Realm.framework in Frameworks */,
 				8B411F021CD811D500623CAD /* RealmSwift.framework in Frameworks */,
 				8BA904F71CAFCCEB0023354F /* ZamzamKit.framework in Frameworks */,
@@ -492,6 +526,7 @@
 				8B3360961CA890470033B2AE /* Serviceable.swift */,
 				8B03D26F1CE1564700144D76 /* StatusBarrable.swift */,
 				8B03D26B1CE115A800144D76 /* Tutorable.swift */,
+				8B8EEB411CE43961003A89B5 /* Trackable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -528,6 +563,10 @@
 		8B3360881CA88F850033B2AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B8EEB3C1CE43278003A89B5 /* libz.tbd */,
+				8B8EEB3A1CE43238003A89B5 /* CoreData.framework */,
+				8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */,
+				8B8EEB371CE43041003A89B5 /* GoogleAnalyticsService */,
 				8BD08EC11CE2916D0051080A /* Async.framework */,
 				8BD08EBF1CE2914F0051080A /* Async.framework */,
 				8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */,
@@ -567,11 +606,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8B8EEB371CE43041003A89B5 /* GoogleAnalyticsService */ = {
+			isa = PBXGroup;
+			children = (
+				8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */,
+				8B8EEB211CE43003003A89B5 /* GAI.h */,
+				8B8EEB221CE43003003A89B5 /* GAIDictionaryBuilder.h */,
+				8B8EEB231CE43003003A89B5 /* GAIEcommerceFields.h */,
+				8B8EEB241CE43003003A89B5 /* GAIEcommerceProduct.h */,
+				8B8EEB251CE43003003A89B5 /* GAIEcommerceProductAction.h */,
+				8B8EEB261CE43003003A89B5 /* GAIEcommercePromotion.h */,
+				8B8EEB271CE43003003A89B5 /* GAIFields.h */,
+				8B8EEB281CE43003003A89B5 /* GAILogger.h */,
+				8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */,
+				8B8EEB2A1CE43003003A89B5 /* GAITracker.h */,
+			);
+			name = GoogleAnalyticsService;
+			sourceTree = "<group>";
+		};
 		8BB891A01CB1C93700D8F3EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				8BB891A11CB1C95600D8F3EC /* Supers */,
-				8B5EDADE1CDC48B000F1C81C /* ExplorerViewController.swift */,
+				8B5EDADE1CDC48B000F1C81C /* ExploreViewController.swift */,
 				8B5EDAE11CDC48B000F1C81C /* PopularViewController.swift */,
 				8B5EDAE01CDC48B000F1C81C /* FavoritesViewController.swift */,
 				8B5EDAE21CDC48B000F1C81C /* PostDetailViewController.swift */,
@@ -609,6 +666,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B335FB61CA880A20033B2AE /* SwiftyPress.h in Headers */,
+				8B8EEB2B1CE43003003A89B5 /* GAI.h in Headers */,
+				8B8EEB2C1CE43003003A89B5 /* GAIDictionaryBuilder.h in Headers */,
+				8B8EEB2D1CE43003003A89B5 /* GAIEcommerceFields.h in Headers */,
+				8B8EEB2E1CE43003003A89B5 /* GAIEcommerceProduct.h in Headers */,
+				8B8EEB2F1CE43003003A89B5 /* GAIEcommerceProductAction.h in Headers */,
+				8B8EEB301CE43003003A89B5 /* GAIEcommercePromotion.h in Headers */,
+				8B8EEB311CE43003003A89B5 /* GAIFields.h in Headers */,
+				8B8EEB321CE43003003A89B5 /* GAILogger.h in Headers */,
+				8B8EEB331CE43003003A89B5 /* GAITrackedViewController.h in Headers */,
+				8B8EEB341CE43003003A89B5 /* GAITracker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -860,7 +927,7 @@
 				8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */,
 				8B5EDAE51CDC48B000F1C81C /* FavoritesViewController.swift in Sources */,
 				8B03D26C1CE115A800144D76 /* Tutorable.swift in Sources */,
-				8B5EDAE31CDC48B000F1C81C /* ExplorerViewController.swift in Sources */,
+				8B5EDAE31CDC48B000F1C81C /* ExploreViewController.swift in Sources */,
 				8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */,
 				8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */,
 				8B03D2751CE22F2500144D76 /* Restorable.swift in Sources */,
@@ -883,6 +950,7 @@
 				8B411F2C1CD845E500623CAD /* JSONKeys.swift in Sources */,
 				8B5EDAE41CDC48B000F1C81C /* MoreViewController.swift in Sources */,
 				8B3360911CA8903D0033B2AE /* Post.swift in Sources */,
+				8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */,
 				8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */,
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
@@ -1046,6 +1114,10 @@
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftyPress-iOS";
@@ -1102,6 +1174,10 @@
 				INFOPLIST_FILE = "Sources/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftyPress-iOS";
 				PRODUCT_NAME = SwiftyPress;

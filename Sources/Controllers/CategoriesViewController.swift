@@ -8,13 +8,18 @@
 
 import UIKit
 
-class CategoriesViewController: UITableViewController {
+class CategoriesViewController: UITableViewController, Trackable {
     
     static var segueIdentifier = "CategorySegue"
     
     var models = CategoryService.storedItems
     var selectedID: Int = 0
     var prepareForUnwind: (Int -> Void)? = nil
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        willTrackableAppear("Categories")
+    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -45,7 +50,8 @@ class CategoriesViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedID = models[indexPath.row].id
+        let model = models[indexPath.row]
+        selectedID = model.id
         
         // Uncheck all rows
         tableView.visibleCells.forEach { cell in
@@ -55,6 +61,11 @@ class CategoriesViewController: UITableViewController {
         // Check selected item
         tableView.cellForRowAtIndexPath(indexPath)?
             .accessoryType = .Checkmark
+        
+        // Google Analytics
+        trackEvent("Category", action: "Post",
+            label: model.title,
+            value: selectedID)
         
         dismissViewController()
     }

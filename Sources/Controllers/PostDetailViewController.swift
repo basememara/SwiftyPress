@@ -14,7 +14,7 @@ import Stencil
 import RealmSwift
 import SystemConfiguration
 
-class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, StatusBarrable {
+class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, StatusBarrable, Trackable {
     
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
@@ -78,6 +78,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        willTrackableAppear(
+            "Post detail - \(model.title.decodeHTML())")
         
         // Render template to web view
         webView.loadHTMLString(loadTemplate(), baseURL:
@@ -226,15 +228,27 @@ extension PostDetailViewController {
         let share = [model.title.decodeHTML(), link]
         let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
         presentViewController(activity, animated: true, completion: nil)
+        
+        // Google Analytics
+        trackEvent("Share", action: "Post",
+            label: model.title, value: Int(model.id))
     }
     
     func favoriteTapped() {
         service.toggleFavorite(model.id)
         refreshFavoriteIcon()
+    
+        // Google Analytics
+        trackEvent("Favorite", action: "Post",
+            label: model.title, value: Int(model.id))
     }
     
     func commentsTapped() {
         presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
+            
+        // Google Analytics
+        trackEvent("Comment", action: "Post",
+            label: model.title, value: Int(model.id))
     }
     
     func relatedTapped() {
@@ -245,10 +259,18 @@ extension PostDetailViewController {
         }
         
         presentSafariController(url)
+            
+        // Google Analytics
+        trackEvent("Related", action: "Post",
+            label: model.title, value: Int(model.id))
     }
     
     func browserTapped() {
         UIApplication.sharedApplication().openURL(NSURL(string: model.link)!)
+    
+        // Google Analytics
+        trackEvent("Browser", action: "Post",
+            label: model.title, value: Int(model.id))
     }
 
 }

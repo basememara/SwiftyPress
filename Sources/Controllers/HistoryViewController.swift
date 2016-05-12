@@ -9,7 +9,7 @@
 import UIKit
 import ZamzamKit
 
-class HistoryViewController: UITableViewController {
+class HistoryViewController: UITableViewController, Trackable {
     
     static var segueIdentifier = "HistorySegue"
     
@@ -21,6 +21,8 @@ class HistoryViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        willTrackableAppear("History")
+        
         tableView.reloadData()
     }
     

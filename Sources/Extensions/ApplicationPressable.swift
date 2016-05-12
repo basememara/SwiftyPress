@@ -51,6 +51,12 @@ public extension ApplicationPressable {
                 ], forState: .Selected)
            }
         }
+        
+        // Initialize Google Analytics
+        if !AppGlobal.userDefaults[.googleAnalyticsID].isEmpty {
+            GAI.sharedInstance().trackerWithTrackingId(
+                AppGlobal.userDefaults[.googleAnalyticsID])
+        }
     
         return handleRequest
     }

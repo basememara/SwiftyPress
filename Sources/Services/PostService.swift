@@ -13,7 +13,7 @@ import RealmSwift
 import ZamzamKit
 import Async
 
-public struct PostService: Serviceable {
+public struct PostService: Serviceable, Trackable {
 
     private enum Router: URLRequestConvertible {
         case ReadPost(Int)

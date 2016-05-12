@@ -26,6 +26,8 @@
 	<string>120,159,64</string>
 	<key>styleSheet</key>
 	<string>http://naturesnurtureblog.com/wp-content/themes/ewd-natures-nurture/style.css</string>
+	<key>googleAnalyticsID</key>
+	<string>UA-23832199-3</string>
 	<key>designedBy</key>
 	<dict>
 		<key>title</key>

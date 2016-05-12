@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable, StatusBarrable {
+class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable, StatusBarrable, Trackable {
     
     var mainModels = MenuService.storedMoreItems
     var socialModels = SocialService.storedItems
@@ -20,6 +20,7 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        willTrackableAppear("More")
         
         // Update status bar background since transparent on scroll
         toggleStatusBar(true, target: tabBarController)
@@ -44,6 +45,9 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         } else if let link = social.link {
             UIApplication.sharedApplication().openURL(NSURL(string: link)!)
         }
+        
+        // Google Analytics
+        trackEvent("Social", action: sender.restorationIdentifier ?? "")
     }
 }
 
@@ -131,8 +135,14 @@ extension MoreViewController {
             case 0:
                 let model = mainModels[indexPath.row]
                 link = model.link
+                
+                // Google Analytics
+                trackPage(model.title ?? "")
             case 2:
                 link = AppGlobal.userDefaults[.designedBy]["link"] as? String
+                
+                // Google Analytics
+                trackPage("Designed by")
             default: break
         }
         
@@ -140,21 +150,33 @@ extension MoreViewController {
             switch link {
                 case "{{tutorial}}":
                     showTutorial()
+                    
+                    // Google Analytics
+                    trackEvent("Tutorial", action: "Manual")
                 case "{{feedback}}":
                     let mailComposeViewController = configuredMailComposeViewController()
                     if MFMailComposeViewController.canSendMail() {
-                        self.presentViewController(mailComposeViewController, animated: true, completion: nil)
+                        presentViewController(mailComposeViewController, animated: true, completion: nil)
+                        
+                        // Google Analytics
+                        trackEvent("Feedback", action: "Email")
                     } else {
-                        self.showSendMailErrorAlert()
+                        showSendMailErrorAlert()
                     }
                 case "{{rate}}":
                     UIApplication.sharedApplication().openURL(
                         NSURL(string: "http://appstore.com/\(AppGlobal.userDefaults[.itunesName])")!)
+                        
+                    // Google Analytics
+                    trackEvent("Rate", action: "App")
                 case "{{share}}":
                     let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the app!"
                     let share = [message, link]
                     let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
                     presentViewController(activity, animated: true, completion: nil)
+                    
+                    // Google Analytics
+                    trackEvent("Share", action: "App")
                 default:
                     presentSafariController(link)
             }

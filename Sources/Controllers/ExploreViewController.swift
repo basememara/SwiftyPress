@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ExploreViewController: RealmPostCollectionViewController, Tutorable, Restorable {
+class ExploreViewController: RealmPostCollectionViewController, Tutorable, Restorable, Trackable {
     
     var restorationHandlers: [() -> Void] = []
     
@@ -31,6 +31,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willRestorableAppear()
+        willTrackableAppear("Home - Posts")
     }
     
     override func didCategorySelect() {
