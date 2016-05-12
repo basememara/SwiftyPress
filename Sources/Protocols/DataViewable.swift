@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol DataViewable {
+protocol DataViewable {
     var contentInset: UIEdgeInsets { get set }
     
     func reloadData()
@@ -16,7 +16,7 @@ public protocol DataViewable {
     func setContentOffset(contentOffset: CGPoint, animated: Bool)
 }
 
-public extension DataViewable {
+extension DataViewable {
     
     func scrollToTop(animated: Bool = true) {
         setContentOffset(CGPointMake(0, -(contentInset.top)), animated: animated)

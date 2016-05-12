@@ -8,12 +8,12 @@
 
 import Foundation
 
-public protocol StatusBarrable: class {
+protocol StatusBarrable: class {
 
     var statusBar: UIView? { get set }
 }
 
-public extension StatusBarrable where Self: UIViewController {
+extension StatusBarrable where Self: UIViewController {
 
     private func showStatusBar(target: UIViewController? = nil) {
         if statusBar == nil {
@@ -35,7 +35,7 @@ public extension StatusBarrable where Self: UIViewController {
      - parameter darkMode: Light or dark mode color of status bar.
      - parameter target: View controller to add status bar.
      */
-    public func toggleStatusBar(enable: Bool? = nil, target: UIViewController? = nil) {
+    func toggleStatusBar(enable: Bool? = nil, target: UIViewController? = nil) {
         // Create status bar first time if applicable
         guard let statusBar = statusBar else {
             return enable ?? true
@@ -55,7 +55,7 @@ public extension StatusBarrable where Self: UIViewController {
             : hideStatusBar()
     }
 
-    public func removeStatusBar() {
+    func removeStatusBar() {
         statusBar?.removeFromSuperview()
     }
 }

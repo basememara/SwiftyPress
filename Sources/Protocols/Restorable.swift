@@ -9,11 +9,11 @@
 import Foundation
 import ZamzamKit
 
-public protocol Restorable: class {
+protocol Restorable: class {
     var restorationHandlers: [() -> Void] { get set }
 }
 
-public extension Restorable {
+extension Restorable {
 
     func willRestorableAppear() {
         // Execute any awaiting tasks

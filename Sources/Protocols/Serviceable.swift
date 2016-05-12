@@ -6,7 +6,7 @@
 //
 //
 
-public protocol Serviceable {
+protocol Serviceable {
     associatedtype DataType
     
     func get(handler: [DataType] -> Void)
