@@ -6,7 +6,7 @@
 	<dict>
 		<key>CHANGELOG.md</key>
 		<data>
-		y/icKj1GGnCvaAN9GhUv5h3yW2I=
+		z2xHBtykQ+cucjGub6OecWD6ZPA=
 		</data>
 		<key>Headers/RLMArray.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Headers/RLMMigration.h</key>
 		<data>
-		A4sSaGlSDsQXHcZdUzapdp/hau0=
+		wt7qq0KbJvUPual7kuFD08rLwX0=
 		</data>
 		<key>Headers/RLMObject.h</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>Headers/RLMRealmConfiguration.h</key>
 		<data>
-		lRWgH7446d48qAjpBxNxarPBM30=
+		aq8hgZjsLcoZ21FBZWLqBtwCOaM=
 		</data>
 		<key>Headers/RLMRealm_Dynamic.h</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gCOF6Jwgfanh3IIRNK40G0nx4+U=
+		nBV+h+TVF5Un+caGEgufOJMONl4=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>PrivateHeaders/RLMProperty_Private.h</key>
 		<data>
-		Y5+duvYVhtYSCfmsMTyvhFGrf9U=
+		jzptslwdeNKTZXQ0maiYXdOSl5Q=
 		</data>
 		<key>PrivateHeaders/RLMRealmConfiguration_Private.h</key>
 		<data>
@@ -155,11 +155,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			y/icKj1GGnCvaAN9GhUv5h3yW2I=
+			z2xHBtykQ+cucjGub6OecWD6ZPA=
 			</data>
 			<key>hash2</key>
 			<data>
-			YIMbUypJuxcKrfuQLtrmbwT/2sYgSU0Z6H8YA54ca50=
+			f1Q4qNNLIMxHLm+mNgKb5wRYlFkYJL1v17yGDAa4iiU=
 			</data>
 		</dict>
 		<key>Headers/RLMArray.h</key>
@@ -210,11 +210,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			A4sSaGlSDsQXHcZdUzapdp/hau0=
+			wt7qq0KbJvUPual7kuFD08rLwX0=
 			</data>
 			<key>hash2</key>
 			<data>
-			N402NYDZzB+AJ9Xo3gTxGZTgAN8hAuMxfsLY9iFthjc=
+			0xOFewkjnbqs451Mdo8Rfwpa6TXJfsPmaB7WMA/hqHw=
 			</data>
 		</dict>
 		<key>Headers/RLMObject.h</key>
@@ -298,11 +298,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lRWgH7446d48qAjpBxNxarPBM30=
+			aq8hgZjsLcoZ21FBZWLqBtwCOaM=
 			</data>
 			<key>hash2</key>
 			<data>
-			OSYHeEfW7w6mwA9avoAK4yVjEGPuCx9RWHTK7YldhGM=
+			JFsPhAsP7MGWqmarhxfZKaezuSFrOT7k5m33K2My1ig=
 			</data>
 		</dict>
 		<key>Headers/RLMRealm_Dynamic.h</key>
@@ -463,11 +463,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Y5+duvYVhtYSCfmsMTyvhFGrf9U=
+			jzptslwdeNKTZXQ0maiYXdOSl5Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			5ClVWnhYvNmbfluhQ40ndSuKEBlHKf7ybDwhY7/Skmg=
+			atdFU2MhzAh2KuKlQJUoTcaf7Lq8j/OqpmrbPItiCcM=
 			</data>
 		</dict>
 		<key>PrivateHeaders/RLMRealmConfiguration_Private.h</key>
