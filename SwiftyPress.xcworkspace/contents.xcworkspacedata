@@ -35,6 +35,9 @@
       location = "group:Carthage/Checkouts/Async/Async.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Carthage/Checkouts/RateLimit/RateLimit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Carthage/Checkouts/AlertOnboarding/AlertOnboarding.xcodeproj">
    </FileRef>
 </Workspace>

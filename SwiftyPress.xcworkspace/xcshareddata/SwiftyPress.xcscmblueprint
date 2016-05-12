@@ -7,6 +7,7 @@
     "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : 0,
     "7AF96DB6EA6158C0309065EFFC712F3F9D7E1CC3" : 0,
     "BD53AF6E53619528849BD465976C909990971180" : 0,
+    "05EF67145B186908FD5F9587265AEB2BEC85E099" : 0,
     "C96EA2ED506E396E70D5A08FD4A6BB18D1CBD22C" : 0,
     "8CCFBC236B2D99F3320873838535AF1EA5422AB1" : 0,
     "9FB1FDDBA011002795A1FF5BD3CABFA2F79E6A59" : 0,
@@ -24,6 +25,7 @@
     "3DA8097D366B6AFDAEA91946C35253AA1EBC780B" : "SwiftyPress\/Carthage\/Checkouts\/Stencil\/",
     "7AF96DB6EA6158C0309065EFFC712F3F9D7E1CC3" : "SwiftyPress\/Carthage\/Checkouts\/unbox\/",
     "BD53AF6E53619528849BD465976C909990971180" : "SwiftyPress\/",
+    "05EF67145B186908FD5F9587265AEB2BEC85E099" : "SwiftyPress\/Carthage\/Checkouts\/RateLimit\/",
     "C96EA2ED506E396E70D5A08FD4A6BB18D1CBD22C" : "SwiftyPress\/Carthage\/Checkouts\/SwiftyUserDefaults\/",
     "8CCFBC236B2D99F3320873838535AF1EA5422AB1" : "SwiftyPress\/Carthage\/Checkouts\/Async\/",
     "9FB1FDDBA011002795A1FF5BD3CABFA2F79E6A59" : "SwiftyPress\/Carthage\/Checkouts\/realm-cocoa\/",
@@ -40,6 +42,11 @@
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftyPress.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/soffes\/RateLimit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "05EF67145B186908FD5F9587265AEB2BEC85E099"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ZamzamInc\/CHTCollectionViewWaterfallLayout.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

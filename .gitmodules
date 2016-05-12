@@ -29,3 +29,6 @@
 [submodule "Carthage/Checkouts/Async"]
 	path = Carthage/Checkouts/Async
 	url = https://github.com/duemunk/Async.git
+[submodule "Carthage/Checkouts/RateLimit"]
+	path = Carthage/Checkouts/RateLimit
+	url = https://github.com/soffes/RateLimit.git
