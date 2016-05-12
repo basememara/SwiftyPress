@@ -34,7 +34,7 @@ extension RealmControllable {
             sortProperty, ascending: sortAscending)
         
         // Set results notification block
-        notificationToken = models?.addNotificationBlock { (changes: RealmCollectionChange) in
+        notificationToken = models?.addNotificationBlock { [unowned self] (changes: RealmCollectionChange) in
             switch changes {
             case .Initial, .Update:
                 self.dataView.reloadData()

@@ -203,7 +203,7 @@ extension PostDetailViewController {
         commentBarButton.badgeString = model.commentCount > 0
             ? "\(model.commentCount)" : nil
         
-        service.getRemoteCommentCount(model.id) { count in
+        service.getRemoteCommentCount(model.id) { [unowned self] count in
             // Validate if not changed
             if self.model.commentCount == count {
                 return
