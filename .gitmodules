@@ -5,7 +5,7 @@
 	url = https://github.com/radex/SwiftyTimer.git
 [submodule "Carthage/Checkouts/SwiftyUserDefaults"]
 	path = Carthage/Checkouts/SwiftyUserDefaults
-	url = https://github.com/radex/SwiftyUserDefaults.git
+	url = https://github.com/ZamzamInc/SwiftyUserDefaults.git
 [submodule "Carthage/Checkouts/Timepiece"]
 	path = Carthage/Checkouts/Timepiece
 	url = https://github.com/naoty/Timepiece.git
@@ -25,7 +25,7 @@
 	url = https://github.com/delba/JASON.git
 [submodule "Carthage/Checkouts/AlertOnboarding"]
 	path = Carthage/Checkouts/AlertOnboarding
-	url = https://github.com/basememara/AlertOnboarding.git
+	url = https://github.com/ZamzamInc/AlertOnboarding.git
 [submodule "Carthage/Checkouts/Async"]
 	path = Carthage/Checkouts/Async
 	url = https://github.com/duemunk/Async.git
