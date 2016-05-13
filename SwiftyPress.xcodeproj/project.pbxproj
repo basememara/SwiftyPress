@@ -212,7 +212,6 @@
 		8B335FE21CA883190033B2AE /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		8B335FE31CA883190033B2AE /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		8B335FE41CA883190033B2AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8B335FE51CA883190033B2AE /* SwiftyPress.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftyPress.podspec; sourceTree = "<group>"; };
 		8B335FF11CA884C70033B2AE /* SwiftyPress iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftyPress iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B335FF31CA884C80033B2AE /* SwiftyPress_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyPress_iOSTests.swift; sourceTree = "<group>"; };
 		8B335FF51CA884C80033B2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -437,7 +436,6 @@
 		8B335FE01CA882D40033B2AE /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				8B335FE51CA883190033B2AE /* SwiftyPress.podspec */,
 				8B335FE11CA883190033B2AE /* Cartfile */,
 				8B335FE21CA883190033B2AE /* Cartfile.private */,
 				8B335FE31CA883190033B2AE /* LICENSE */,

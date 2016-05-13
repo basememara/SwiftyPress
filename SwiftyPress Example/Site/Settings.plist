@@ -15,11 +15,11 @@
 	<key>email</key>
 	<string>contact@basememara.com</string>
 	<key>darkMode</key>
-	<true/>
+	<false/>
 	<key>tintColor</key>
 	<string>49,169,234</string>
 	<key>titleColor</key>
-	<string>255,255,255</string>
+	<string>51,51,51</string>
 	<key>secondaryTintColor</key>
 	<string>49,169,234</string>
 	<key>tabTitleColor</key>
@@ -41,19 +41,19 @@
 	<array>
 		<dict>
 			<key>id</key>
-			<string>3</string>
-			<key>title</key>
-			<string>JavaScript</string>
-			<key>icon</key>
-			<string>source-code</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>55</string>
 			<key>title</key>
 			<string>Swift</string>
 			<key>icon</key>
 			<string>plugin</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>3</string>
+			<key>title</key>
+			<string>JavaScript</string>
+			<key>icon</key>
+			<string>source-code</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -169,21 +169,31 @@
 			<key>title</key>
 			<string>Welcome to Basem Emara&apos;s blog</string>
 			<key>desc</key>
-			<string>Thank you for downloading my mobile app! The launch of this app was inspired from uncovering the joys, pains, and realities of web, mobile, and software development. Many of my blog posts dissect this very app and other real-world projects. I also wanted to provide a better user experience, such as offline capabilities, more sharing options, advance search, favorites, notifications, and more.</string>
+			<string>Thank you for downloading my mobile app! The launch of this app was inspired from uncovering the joys, pains, and realities of mobile, web, and software development. Many of my blog posts dissect this very open-source app and other real-world projects.</string>
 			<key>image</key>
 			<string>page1</string>
 			<key>bgImage</key>
-			<string>bg1</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>title</key>
 			<string>Blog Posts</string>
 			<key>desc</key>
-			<string>View my blog posts in an easy to read format. Use the search and filters to narrow down your results. Switch between new and unread posts. Share directly from within the app. View related posts. Read posts even when you’re offline!</string>
+			<string>View my blog posts in an easy to read format. Share directly from within the app. View related posts. Read posts even when you’re offline!</string>
 			<key>image</key>
 			<string>page2</string>
 			<key>bgImage</key>
-			<string>bg1</string>
+			<string></string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Search</string>
+			<key>desc</key>
+			<string>Use the search to narrow down your results. Scope them using various filters, such as title, content, and keywords. View your search history to recall previous searches.</string>
+			<key>image</key>
+			<string>page3</string>
+			<key>bgImage</key>
+			<string></string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -191,19 +201,9 @@
 			<key>desc</key>
 			<string>Never forget a blog post again! Mark your favorite posts for easy referencing later. Check out popular posts that the community has found helpful or interesting.</string>
 			<key>image</key>
-			<string>page3</string>
-			<key>bgImage</key>
-			<string>bg1</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Notifications</string>
-			<key>desc</key>
-			<string>Stay up to date with the latest messages directly from me, Basem. View my past and current newsletters all in one place. Leave comments on messages and newsletters. Be sure to allow notifications when prompted to get my notifications right on your device.</string>
-			<key>image</key>
 			<string>page4</string>
 			<key>bgImage</key>
-			<string>bg1</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>title</key>
@@ -211,9 +211,9 @@
 			<key>desc</key>
 			<string>Thank you for coming along for the journey; I hope you find it as fun and exciting as I do! Be sure to sign up for my personal newsletter and get the latest happenings, tips, tricks, and tutorials right in your inbox!</string>
 			<key>image</key>
-			<string>page1</string>
+			<string>page5</string>
 			<key>bgImage</key>
-			<string>bg1</string>
+			<string></string>
 		</dict>
 	</array>
 	<key>moreMenu</key>

@@ -251,6 +251,10 @@ extension PostDetailViewController {
     }
     
     func commentsTapped() {
+        if !SCNetworkReachability.isOnline {
+            return alert("Device must be online to view comments.")
+        }
+        
         presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
             
         // Google Analytics
@@ -259,6 +263,10 @@ extension PostDetailViewController {
     }
     
     func relatedTapped() {
+        if !SCNetworkReachability.isOnline {
+            return alert("Device must be online to view related posts.")
+        }
+        
         var url = "\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)"
         
         if !AppGlobal.userDefaults[.darkMode] {
@@ -273,6 +281,10 @@ extension PostDetailViewController {
     }
     
     func browserTapped() {
+        if !SCNetworkReachability.isOnline {
+            return alert("Device must be online to view within the browser.")
+        }
+        
         UIApplication.sharedApplication().openURL(NSURL(string: model.link)!)
     
         // Google Analytics

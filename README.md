@@ -1,33 +1,25 @@
 # SwiftyPress
 
 [![CI Status](http://img.shields.io/travis/ZamzamInc/SwiftyPress.svg?style=flat)](https://travis-ci.org/ZamzamInc/SwiftyPress)
-[![Version](https://img.shields.io/cocoapods/v/SwiftyPress.svg?style=flat)](http://cocoapods.org/pods/SwiftyPress)
-[![License](https://img.shields.io/cocoapods/l/SwiftyPress.svg?style=flat)](http://cocoapods.org/pods/SwiftyPress)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftyPress.svg?style=flat)](http://cocoapods.org/pods/SwiftyPress)
+[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the project, clone the repo, and run the example app.
 
 ## Requirements
 
 ## Installation
 
-SwiftyPress is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "SwiftyPress"
+####Carthage
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyPress` by adding it to your `Cartfile`:
+```
+github "ZamzamInc/SwiftyPress"
 ```
 
 ## Author
 
 Zamzam Inc., contact@zamzam.io
-
-## Roadmap
-
-*Offline support
-*Companion administrator app
 
 ## License
 
