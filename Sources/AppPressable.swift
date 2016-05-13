@@ -10,12 +10,12 @@ import Foundation
 import SafariServices
 import ZamzamKit
 
-public protocol ApplicationPressable {
+public protocol AppPressable {
 
     var window: UIWindow? { get set }
 }
 
-public extension ApplicationPressable {
+public extension AppPressable {
 
     /**
      Configures application for currently launched site.
@@ -56,6 +56,15 @@ public extension ApplicationPressable {
         if !AppGlobal.userDefaults[.googleAnalyticsID].isEmpty {
             GAI.sharedInstance().trackerWithTrackingId(
                 AppGlobal.userDefaults[.googleAnalyticsID])
+        }
+        
+        // Configure dark mode if applicable
+        if AppGlobal.userDefaults[.darkMode] {
+            UINavigationBar.appearance().barStyle = .Black
+            UITabBar.appearance().barStyle = .Black
+            UICollectionView.appearance().backgroundColor = .blackColor()
+            UITableView.appearance().backgroundColor = .blackColor()
+            UITableViewCell.appearance().backgroundColor = .clearColor()
         }
     
         return handleRequest

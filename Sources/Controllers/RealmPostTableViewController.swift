@@ -37,6 +37,10 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     override func viewDidLoad() {
         super.viewDidLoad()
         didDataControllableLoad()
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            tableView.separatorColor = .darkGrayColor()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

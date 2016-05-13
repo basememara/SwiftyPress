@@ -14,7 +14,7 @@ class PopularViewController: RealmPostTableViewController, Trackable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryID = 502
+        categoryID = AppGlobal.userDefaults[.featuredCategoryID]
     }
     
     override func viewWillAppear(animated: Bool) {

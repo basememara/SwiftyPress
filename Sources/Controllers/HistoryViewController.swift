@@ -19,6 +19,14 @@ class HistoryViewController: UITableViewController, Trackable {
     
     var prepareForUnwind: (String -> Void)? = nil
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            tableView.separatorColor = .darkGrayColor()
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willTrackableAppear("History")
@@ -40,6 +48,8 @@ class HistoryViewController: UITableViewController, Trackable {
         
         cell.textLabel?.text = model
         cell.imageView?.image = cell.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
+        
+        cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }

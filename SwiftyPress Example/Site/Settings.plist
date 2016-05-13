@@ -3,111 +3,81 @@
 <plist version="1.0">
 <dict>
 	<key>appName</key>
-	<string>Nature&apos;s Nurture</string>
+	<string>Basem Emara</string>
 	<key>itunesName</key>
-	<string>naturesnurture</string>
+	<string>basememara</string>
 	<key>itunesID</key>
-	<string>992314096</string>
+	<string>1021806851</string>
 	<key>baseURL</key>
-	<string>http://naturesnurtureblog.com</string>
+	<string>http://basememara.com</string>
 	<key>baseREST</key>
 	<string>wp-json</string>
 	<key>email</key>
-	<string>sarah@naturesnurtureblog.com</string>
+	<string>contact@basememara.com</string>
 	<key>darkMode</key>
-	<false/>
+	<true/>
 	<key>tintColor</key>
-	<string>150,199,80</string>
+	<string>49,169,234</string>
 	<key>titleColor</key>
-	<string>90,61,35</string>
+	<string>255,255,255</string>
 	<key>secondaryTintColor</key>
-	<string>219,112,5</string>
+	<string>49,169,234</string>
 	<key>tabTitleColor</key>
-	<string>120,159,64</string>
+	<string></string>
 	<key>styleSheet</key>
-	<string>http://naturesnurtureblog.com/wp-content/themes/ewd-natures-nurture/style.css</string>
+	<string>http://basememara.com/wp-content/themes/metro-pro/style.css</string>
 	<key>googleAnalyticsID</key>
-	<string>UA-23832199-3</string>
+	<string>UA-60131988-2</string>
+	<key>featuredCategoryID</key>
+	<integer>64</integer>
 	<key>designedBy</key>
 	<dict>
 		<key>title</key>
-		<string>Zamzam</string>
+		<string>Basem Emara</string>
 		<key>link</key>
-		<string>http://zamzam.io</string>
+		<string>http://basememara.com</string>
 	</dict>
 	<key>categories</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>11</string>
+			<string>3</string>
 			<key>title</key>
-			<string>Cleaning</string>
+			<string>JavaScript</string>
 			<key>icon</key>
-			<string>housekeeping</string>
+			<string>source-code</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>55</string>
+			<key>title</key>
+			<string>Swift</string>
+			<key>icon</key>
+			<string>plugin</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2</string>
+			<key>title</key>
+			<string>.NET</string>
+			<key>icon</key>
+			<string>stack</string>
 		</dict>
 		<dict>
 			<key>id</key>
 			<string>4</string>
 			<key>title</key>
-			<string>Bath &amp; Body</string>
+			<string>Mobile</string>
 			<key>icon</key>
-			<string>towel</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>18</string>
-			<key>title</key>
-			<string>Food</string>
-			<key>icon</key>
-			<string>vegan-food</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>244</string>
-			<key>title</key>
-			<string>Health</string>
-			<key>icon</key>
-			<string>heart-monitor</string>
+			<string>smartphone-tablet</string>
 		</dict>
 		<dict>
 			<key>id</key>
 			<string>7</string>
 			<key>title</key>
-			<string>Garden</string>
+			<string>Web</string>
 			<key>icon</key>
-			<string>flower</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>443</string>
-			<key>title</key>
-			<string>Herbalism</string>
-			<key>icon</key>
-			<string>leaf</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>14</string>
-			<key>title</key>
-			<string>Kitchen Tips</string>
-			<key>icon</key>
-			<string>fork</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>9</string>
-			<key>title</key>
-			<string>Green Living</string>
-			<key>icon</key>
-			<string>tree</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>16</string>
-			<key>title</key>
-			<string>Mothering</string>
-			<key>icon</key>
-			<string>baby-feet</string>
+			<string>online</string>
 		</dict>
 	</array>
 	<key>social</key>
@@ -116,9 +86,9 @@
 			<key>title</key>
 			<string>Facebook</string>
 			<key>link</key>
-			<string>http://facebook.com/naturesnurture</string>
+			<string></string>
 			<key>app</key>
-			<string>fb://profile/214317155258266</string>
+			<string></string>
 			<key>icon</key>
 			<string>facebook</string>
 		</dict>
@@ -126,9 +96,9 @@
 			<key>title</key>
 			<string>Twitter</string>
 			<key>link</key>
-			<string>http://twitter.com/naturesnurture</string>
+			<string>http://twitter.com/basememara</string>
 			<key>app</key>
-			<string>twitter://user?screen_name=naturesnurture</string>
+			<string>twitter://user?screen_name=basememara</string>
 			<key>icon</key>
 			<string>twitter</string>
 		</dict>
@@ -136,9 +106,9 @@
 			<key>title</key>
 			<string>GooglePlus</string>
 			<key>link</key>
-			<string>http://google.com/+Naturesnurtureblog</string>
+			<string>http://google.com/+BasemEmara</string>
 			<key>app</key>
-			<string>gplus://plus.google.com/app/basic/+Naturesnurtureblog/posts</string>
+			<string>gplus://plus.google.com/app/basic/+BasemEmara/posts</string>
 			<key>icon</key>
 			<string>googleplus</string>
 		</dict>
@@ -146,9 +116,9 @@
 			<key>title</key>
 			<string>Pinterest</string>
 			<key>link</key>
-			<string>http://pinterest.com/naturesnurture</string>
+			<string></string>
 			<key>app</key>
-			<string>pinterest://user/naturesnurture</string>
+			<string></string>
 			<key>icon</key>
 			<string>pinterest</string>
 		</dict>
@@ -156,9 +126,9 @@
 			<key>title</key>
 			<string>Instagram</string>
 			<key>link</key>
-			<string>http://instagram.com/naturesnurture</string>
+			<string></string>
 			<key>app</key>
-			<string>instagram://user?username=naturesnurture</string>
+			<string></string>
 			<key>icon</key>
 			<string>instagram</string>
 		</dict>
@@ -176,9 +146,9 @@
 			<key>title</key>
 			<string>LinkedIn</string>
 			<key>link</key>
-			<string></string>
+			<string>https://www.linkedin.com/profile/view?id=36761206</string>
 			<key>app</key>
-			<string></string>
+			<string>linkedin://profile?id=36761206</string>
 			<key>icon</key>
 			<string>linkedin</string>
 		</dict>
@@ -186,7 +156,7 @@
 			<key>title</key>
 			<string>GitHub</string>
 			<key>link</key>
-			<string></string>
+			<string>https://github.com/basememara</string>
 			<key>app</key>
 			<string></string>
 			<key>icon</key>
@@ -197,9 +167,9 @@
 	<array>
 		<dict>
 			<key>title</key>
-			<string>Welcome to Nature’s Nurture!</string>
+			<string>Welcome to Basem Emara&apos;s blog</string>
 			<key>desc</key>
-			<string>Thank you for downloading the Nature’s Nurture mobile app! We were inspired to create this app because so many of you are viewing our blog on your mobile device. We want this to be a better experience for you with extra perks, like offline capabilities, more sharing options, advanced search, favorites, notifications, and more!</string>
+			<string>Thank you for downloading my mobile app! The launch of this app was inspired from uncovering the joys, pains, and realities of web, mobile, and software development. Many of my blog posts dissect this very app and other real-world projects. I also wanted to provide a better user experience, such as offline capabilities, more sharing options, advance search, favorites, notifications, and more.</string>
 			<key>image</key>
 			<string>page1</string>
 			<key>bgImage</key>
@@ -209,7 +179,7 @@
 			<key>title</key>
 			<string>Blog Posts</string>
 			<key>desc</key>
-			<string>View our blog posts in an easy to read format. Use the search and filters to narrow down your results. Switch between new and unread posts. Share directly from within the app. View related posts. Read posts even when you’re offline!</string>
+			<string>View my blog posts in an easy to read format. Use the search and filters to narrow down your results. Switch between new and unread posts. Share directly from within the app. View related posts. Read posts even when you’re offline!</string>
 			<key>image</key>
 			<string>page2</string>
 			<key>bgImage</key>
@@ -219,7 +189,7 @@
 			<key>title</key>
 			<string>Favorites</string>
 			<key>desc</key>
-			<string>Never forget a blog post again! Mark your favorite posts for easy referencing later. Check out popular posts that our community has found helpful or interesting.</string>
+			<string>Never forget a blog post again! Mark your favorite posts for easy referencing later. Check out popular posts that the community has found helpful or interesting.</string>
 			<key>image</key>
 			<string>page3</string>
 			<key>bgImage</key>
@@ -229,7 +199,7 @@
 			<key>title</key>
 			<string>Notifications</string>
 			<key>desc</key>
-			<string>Stay up to date with the latest messages directly from me, Sarah. View our past and current newsletters all in one place. Leave comments on messages and newsletters. Be sure to allow notifications when prompted to get my notifications right on your device.</string>
+			<string>Stay up to date with the latest messages directly from me, Basem. View my past and current newsletters all in one place. Leave comments on messages and newsletters. Be sure to allow notifications when prompted to get my notifications right on your device.</string>
 			<key>image</key>
 			<string>page4</string>
 			<key>bgImage</key>
@@ -239,7 +209,7 @@
 			<key>title</key>
 			<string>Newsletter</string>
 			<key>desc</key>
-			<string>Sign up for our newsletter and get the latest giveaways, tips, tricks, and DIYs right in your inbox!</string>
+			<string>Thank you for coming along for the journey; I hope you find it as fun and exciting as I do! Be sure to sign up for my personal newsletter and get the latest happenings, tips, tricks, and tutorials right in your inbox!</string>
 			<key>image</key>
 			<string>page1</string>
 			<key>bgImage</key>
@@ -252,7 +222,7 @@
 			<key>title</key>
 			<string>About this blog</string>
 			<key>link</key>
-			<string>http://naturesnurtureblog.com/about/?mobileembed=1</string>
+			<string>http://basememara.com/about/?mobileembed=1</string>
 			<key>icon</key>
 			<string>home</string>
 		</dict>
@@ -260,7 +230,7 @@
 			<key>title</key>
 			<string>Subscribe to newsletter</string>
 			<key>link</key>
-			<string>http://naturesnurtureblog.com/newsletter/?mobileembed=1</string>
+			<string>http://eepurl.com/bt5Y2L</string>
 			<key>icon</key>
 			<string>signup</string>
 		</dict>
@@ -268,7 +238,7 @@
 			<key>title</key>
 			<string>Work with me</string>
 			<key>link</key>
-			<string>http://naturesnurtureblog.com/pr-friendly/?mobileembed=1</string>
+			<string>http://basememara.com/portfolio/?mobileembed=1</string>
 			<key>icon</key>
 			<string>idea</string>
 		</dict>
@@ -308,7 +278,7 @@
 			<key>title</key>
 			<string>Disclaimer</string>
 			<key>link</key>
-			<string>http://naturesnurtureblog.com/disclaimer/?mobileembed=1</string>
+			<string>http://basememara.com/disclaimer/?mobileembed=1</string>
 			<key>icon</key>
 			<string>import</string>
 		</dict>

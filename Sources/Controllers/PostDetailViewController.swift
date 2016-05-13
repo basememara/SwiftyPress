@@ -74,6 +74,10 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         super.viewDidLoad()
         
         loadToolbar()
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            navigationController?.toolbar.barStyle = .Black
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -124,6 +128,7 @@ extension PostDetailViewController {
                 "categories": model.categories.flatMap({ item in
                     "<a href='\(AppGlobal.userDefaults[.baseURL])/category/\(item.slug)'>\(item.name)</a>"
                 }).joinWithSeparator(", "),
+                "tags": model.tags.flatMap({ item in item.name }).joinWithSeparator(", "),
                 "isAffiliate": true,
                 "style": style
             ]))
@@ -273,6 +278,10 @@ extension PostDetailViewController {
         // Google Analytics
         trackEvent("Browser", action: "Post",
             label: model.title, value: Int(model.id))
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return AppGlobal.userDefaults[.darkMode] ? .LightContent : .Default
     }
 
 }

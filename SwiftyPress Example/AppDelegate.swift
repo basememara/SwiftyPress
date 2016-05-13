@@ -8,10 +8,9 @@
 
 import UIKit
 import SwiftyPress
-import ZamzamKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ApplicationPressable {
+class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
 
     var window: UIWindow?
 

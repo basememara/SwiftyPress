@@ -18,6 +18,15 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     @IBOutlet weak var socialStackView: UIStackView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            tableView.backgroundColor = .blackColor()
+            tableView.separatorColor = .darkGrayColor()
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willTrackableAppear("More")
@@ -48,6 +57,10 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         
         // Google Analytics
         trackEvent("Social", action: sender.restorationIdentifier ?? "")
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return AppGlobal.userDefaults[.darkMode] ? .LightContent : .Default
     }
 }
 
@@ -124,6 +137,7 @@ extension MoreViewController {
         
         // Set cell style
         cell.selectionStyle = .None
+        cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }

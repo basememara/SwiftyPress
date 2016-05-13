@@ -16,6 +16,14 @@ class CategoriesViewController: UITableViewController, Trackable {
     var selectedID: Int = 0
     var prepareForUnwind: (Int -> Void)? = nil
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            tableView.separatorColor = .darkGrayColor()
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willTrackableAppear("Categories")
@@ -45,6 +53,7 @@ class CategoriesViewController: UITableViewController, Trackable {
         }
         
         cell.selectionStyle = .None
+        cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }

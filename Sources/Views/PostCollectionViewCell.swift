@@ -29,9 +29,14 @@ public class PostCollectionViewCell: UICollectionViewCell {
         layer.rasterizationScale = UIScreen.mainScreen().scale
         
         // Style
-        layer.shadowColor = UIColor.grayColor().CGColor
+        layer.shadowColor = AppGlobal.userDefaults[.darkMode]
+            ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
         layer.shadowOffset = CGSizeZero
         layer.shadowRadius = 1
         layer.shadowOpacity = 1
+        
+        if !AppGlobal.userDefaults[.darkMode] {
+            itemTitle.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
+        }
     }
 }

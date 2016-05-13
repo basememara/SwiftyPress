@@ -29,10 +29,13 @@ public class PostTableViewCell: UITableViewCell {
         layer.rasterizationScale = UIScreen.mainScreen().scale
         
         // Style
-        itemImage.layer.shadowColor = UIColor.grayColor().CGColor
+        itemImage.layer.shadowColor = AppGlobal.userDefaults[.darkMode]
+            ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
         itemImage.layer.shadowOffset = CGSizeZero
         itemImage.layer.shadowRadius = 1
         itemImage.layer.shadowOpacity = 1
         itemImage.layer.masksToBounds = false
+        
+        itemTitle.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
     }
 }

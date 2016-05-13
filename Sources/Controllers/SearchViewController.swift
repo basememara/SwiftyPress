@@ -40,6 +40,10 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         searchController.searchBar.searchBarStyle = .Minimal
         searchController.searchBar.placeholder = "Search".localized
         searchController.searchBar.showsBookmarkButton = true
+        
+        if let searchTextField = searchController.searchBar.valueForKey("searchField") as? UITextField {
+            searchTextField.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
+        }
 
         self.definesPresentationContext = true
         
@@ -85,6 +89,10 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         didDataControllableLoad()
         
         navigationItem.titleView = searchController.searchBar
+        
+        if AppGlobal.userDefaults[.darkMode] {
+            tableView.separatorColor = .darkGrayColor()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -184,6 +192,8 @@ extension SearchViewController {
         cell.detailTextLabel?.text = model.categories
             .map { $0.name.decodeHTML() }
             .joinWithSeparator(", ")
+        
+        cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }
