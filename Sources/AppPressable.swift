@@ -83,8 +83,7 @@ public extension AppPressable {
         // Get root container and extract path from URL if applicable
         guard let tabBarController = window?.rootViewController as? UITabBarController,
             let url = userActivity.webpageURL,
-            let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false),
-            let path = url.path?.lowercaseString
+            let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
                 where userActivity.activityType == NSUserActivityTypeBrowsingWeb
                     else { return false }
         
@@ -99,23 +98,12 @@ public extension AppPressable {
             controller.restorationHandlers.append({
                 controller.applySearch(query)
             })
-        } else if url.pathComponents?.get(1) == "category" {
+        } else if let term = TermService().get(url) {
             tabBarController.selectedIndex = 2
             
-            guard let slug = url.pathComponents?.get(2),
-                let navigationController = tabBarController.selectedViewController as? UINavigationController,
+            guard let navigationController = tabBarController.selectedViewController as? UINavigationController,
                 let controller = navigationController.topViewController as? ExploreViewController
                     else { return false }
-            
-            guard let term = AppGlobal.realm?.objects(Term).filter("slug == '\(slug)'").first else {
-                let urlString = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
-                    ?? AppGlobal.userDefaults[.baseURL]
-                
-                // Display browser if post not found
-                navigationController.pushViewController(
-                    SFSafariViewController(URL: NSURL(string: urlString)!), animated: false)
-                return true
-            }
             
             // Execute process in the right lifecycle moment
             controller.restorationHandlers.append({
@@ -129,11 +117,8 @@ public extension AppPressable {
                 else { return false }
             
             // Extract slug from URL if applicable
-            let slug = path.lowercaseString
-                .replaceRegEx("\\d{4}/\\d{2}/\\d{2}/", replaceValue: "") // Handle legacy permalinks
-                .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "/"))
-            
-            guard let post = AppGlobal.realm?.objects(Post).filter("slug == '\(slug)'").first else {
+            guard let post = PostService().get(url) else {
+                // Failed so open in Safari as fallback
                 let urlString = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
                     ?? AppGlobal.userDefaults[.baseURL]
                 

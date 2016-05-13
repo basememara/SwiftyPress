@@ -82,12 +82,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear(
-            "Post detail - \(model.title.decodeHTML())")
         
-        // Render template to web view
-        webView.loadHTMLString(loadTemplate(), baseURL:
-            NSURL(string: AppGlobal.userDefaults[.baseURL]))
+        loadData()
         
         // Display and update toolbar
         navigationController?.toolbarHidden = false
@@ -108,8 +104,24 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }
 }
 
-// MARK: - Web view functions
+// MARK: - Post functions
 extension PostDetailViewController {
+
+    func loadData(model: Post? = nil) {
+        // Store model if applicable
+        if model != nil {
+            self.model = model
+        }
+        
+        willTrackableAppear(
+            "Post detail - \(self.model.title.decodeHTML())")
+        
+        // Render template to web view
+        webView.loadHTMLString(loadTemplate(), baseURL:
+            NSURL(string: AppGlobal.userDefaults[.baseURL]))
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     func loadTemplate() -> String {
         guard let template = template else { return model.content }
@@ -138,6 +150,31 @@ extension PostDetailViewController {
         }
     }
     
+    func routeToTerm(id: Int) -> Bool {
+        // Get root tab controller
+        guard let tabBarController = UIApplication.sharedApplication()
+            .keyWindow?.rootViewController as? UITabBarController
+                else { return false }
+        
+        // Remove current post detail view from stack and select another view
+        navigationController?.popViewControllerAnimated(true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        tabBarController.selectedIndex = 2
+        
+        // Handle explore view and select category
+        if let controller = (tabBarController.selectedViewController as? UINavigationController)?
+            .topViewController as? ExploreViewController {
+                controller.categoryID = id
+                return true
+        }
+        
+        return false
+    }
+}
+
+// MARK: - Web view functions
+extension PostDetailViewController {
+    
     func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         // Start the network activity indicator when the web view is loading
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -149,12 +186,26 @@ extension PostDetailViewController {
     }
     
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        // Open external links in browser
-        if navigationAction.navigationType == .LinkActivated
-            && navigationAction.targetFrame?.mainFrame == true
-            && navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
-                decisionHandler(.Cancel)
-                return presentSafariController(navigationAction.request.URLString)
+        // Handle links
+        if navigationAction.navigationType == .LinkActivated && navigationAction.targetFrame?.mainFrame == true {
+            // Open same domain links within app
+            if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+                // Deep link to category
+                if let term = TermService().get(navigationAction.request.URL) {
+                    // Display category if applicable
+                    if routeToTerm(term.id) {
+                        return decisionHandler(.Cancel)
+                    }
+                } else if let post = service.get(navigationAction.request.URL) {
+                    // Bind retrieved post to current view
+                    loadData(post)
+                    return decisionHandler(.Cancel)
+                }
+            } else {
+                // Open external links in browser
+                presentSafariController(navigationAction.request.URLString)
+                return decisionHandler(.Cancel)
+            }
         }
         
         decisionHandler(.Allow)
@@ -167,11 +218,24 @@ extension PostDetailViewController {
     func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         // Open "target=_blank" in the same view
         if navigationAction.targetFrame == nil {
-            // Open external links in browser
-            if navigationAction.request.URL?.host != NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
-                presentSafariController(navigationAction.request.URLString)
-            } else {
+            // Open same domain links within app
+            if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+                // Deep link to category
+                if let term = TermService().get(navigationAction.request.URL) {
+                    // Display category if applicable
+                    if routeToTerm(term.id) {
+                        return nil
+                    }
+                } else if let post = service.get(navigationAction.request.URL) {
+                    // Bind retrieved post to current view
+                    loadData(post)
+                    return nil
+                }
+                
                 webView.loadRequest(navigationAction.request)
+            } else {
+                // Open external links in browser
+                presentSafariController(navigationAction.request.URLString)
             }
         }
         

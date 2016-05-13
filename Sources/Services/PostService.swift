@@ -13,7 +13,7 @@ import RealmSwift
 import ZamzamKit
 import Async
 
-public struct PostService: Serviceable, Trackable {
+public struct PostService: Serviceable {
 
     private enum Router: URLRequestConvertible {
         case ReadPost(Int)
@@ -80,6 +80,22 @@ extension PostService {
         }
         
         handler(posts.map { $0 })
+    }
+    
+    /**
+     Get post by url by extracting slug.
+
+     - parameter url: URL of the post.
+
+     - returns: Post matching the extracted slug from the URL.
+     */
+    public func get(url: NSURL?) -> Post? {
+        guard let url = url, let slug = url.path?.lowercaseString
+            .replaceRegEx("\\d{4}/\\d{2}/\\d{2}/", replaceValue: "") // Handle legacy permalinks
+            .stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "/"))
+                 else { return nil }
+            
+        return AppGlobal.realm?.objects(Post).filter("slug == '\(slug)'").first
     }
 
     public func getRemote(page: Int = 1, perPage: Int = 50, orderBy: String = "date", ascending: Bool = false, handler: [Postable] -> Void) {
