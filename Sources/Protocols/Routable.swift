@@ -19,8 +19,8 @@ extension Routable {
     /**
      Navigates to the home tab
      */
-    func toHome() {
-        getRootViewByTab(2)
+    func toHome() -> Bool {
+        return getRootViewByTab(2) != nil
     }
     
     /**
@@ -99,10 +99,12 @@ extension Routable {
         
         // Handle url if applicable
         if url.path?.isEmpty ?? true || url.path == "/" {
-            toHome()
-            return true
-        } else if let query = urlComponents.queryItems?.first({ $0.name == "s" })?.value {
-            return toSearch(query)
+            // Handle search if applicable
+            if let query = urlComponents.queryItems?.first({ $0.name == "s" })?.value {
+                return toSearch(query)
+            }
+            
+            return toHome()
         } else if let term = TermService().get(url) {
             return toTerm(term.id)
         } else if toPost(url) {
