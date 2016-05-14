@@ -57,5 +57,6 @@ extension StatusBarrable where Self: UIViewController {
 
     func removeStatusBar() {
         statusBar?.removeFromSuperview()
+        statusBar = nil
     }
 }
