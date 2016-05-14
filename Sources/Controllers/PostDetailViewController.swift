@@ -87,9 +87,6 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
         // Display and update toolbar
         navigationController?.toolbarHidden = false
-        refreshFavoriteIcon()
-        refreshCommentIcon()
-        
         navigationController?.hidesBarsOnSwipe = true
         
         // Status bar background transparent by default so fill in
@@ -115,12 +112,15 @@ extension PostDetailViewController {
         
         willTrackableAppear(
             "Post detail - \(self.model.title.decodeHTML())")
+        // Update toolbar
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        refreshFavoriteIcon()
+        refreshCommentIcon()
         
         // Render template to web view
         webView.loadHTMLString(loadTemplate(), baseURL:
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
         
-        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func loadTemplate() -> String {
