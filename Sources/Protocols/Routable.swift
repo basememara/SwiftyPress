@@ -20,7 +20,7 @@ extension Routable {
      Navigates to the home tab
      */
     func toHome() {
-        getRootNavigationByTab(2)
+        getRootViewByTab(2)
     }
     
     /**
@@ -98,7 +98,7 @@ extension Routable {
                 else { return false }
         
         // Handle url if applicable
-        if url.path?.isEmpty ?? true {
+        if url.path?.isEmpty ?? true || url.path == "/" {
             toHome()
             return true
         } else if let query = urlComponents.queryItems?.first({ $0.name == "s" })?.value {
