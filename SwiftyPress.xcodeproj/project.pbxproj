@@ -121,6 +121,7 @@
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
 		8BD08EB21CE27D2E0051080A /* Site in Resources */ = {isa = PBXBuildFile; fileRef = 8BD08EB11CE27D2E0051080A /* Site */; };
+		8BE9DEEA1CE67E610045A2F3 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9DEE91CE67E610045A2F3 /* Routable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,6 +322,7 @@
 		8BD08EB11CE27D2E0051080A /* Site */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Site; sourceTree = "<group>"; };
 		8BD08EBF1CE2914F0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
 		8BD08EC11CE2916D0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
+		8BE9DEE91CE67E610045A2F3 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -539,6 +541,7 @@
 				8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */,
 				8B162A781CDF8D7F00871275 /* RealmControllable.swift */,
 				8B8E68791CDCAEA200171E14 /* PostControllable.swift */,
+				8BE9DEE91CE67E610045A2F3 /* Routable.swift */,
 				8B03D2741CE22F2500144D76 /* Restorable.swift */,
 				8B3360961CA890470033B2AE /* Serviceable.swift */,
 				8B03D26F1CE1564700144D76 /* StatusBarrable.swift */,
@@ -957,6 +960,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */,
+				8BE9DEEA1CE67E610045A2F3 /* Routable.swift in Sources */,
 				8B5EDAE51CDC48B000F1C81C /* FavoritesViewController.swift in Sources */,
 				8B03D26C1CE115A800144D76 /* Tutorable.swift in Sources */,
 				8B5EDAE31CDC48B000F1C81C /* ExploreViewController.swift in Sources */,

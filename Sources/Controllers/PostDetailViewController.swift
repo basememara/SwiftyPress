@@ -157,15 +157,28 @@ extension PostDetailViewController {
                 else { return false }
         
         // Remove current post detail view from stack and select another view
-        navigationController?.popViewControllerAnimated(true)
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        tabBarController.selectedIndex = 2
+        if tabBarController.selectedIndex == 2 {
+            navigationController?.popViewControllerAnimated(true)
+            navigationController?.setNavigationBarHidden(false, animated: true)
+        } else {
+            navigationController?.setNavigationBarHidden(false, animated: false)
+            tabBarController.selectedIndex = 2
+        }
+        
+        // Get root navigation controller of tab
+        guard let selectedNavController = tabBarController
+            .selectedViewController as? UINavigationController
+                else { return false }
+        
+        // Pop all views of navigation controller
+        selectedNavController.popToRootViewControllerAnimated(false)
         
         // Handle explore view and select category
-        if let controller = (tabBarController.selectedViewController as? UINavigationController)?
-            .topViewController as? ExploreViewController {
+        if let controller = selectedNavController.topViewController as? ExploreViewController {
+            controller.performRestoration({
                 controller.categoryID = id
-                return true
+            })
+            return true
         }
         
         return false
@@ -191,11 +204,8 @@ extension PostDetailViewController {
             // Open same domain links within app
             if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.URL) {
-                    // Display category if applicable
-                    if routeToTerm(term.id) {
-                        return decisionHandler(.Cancel)
-                    }
+                if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
+                    return decisionHandler(.Cancel)
                 } else if let post = service.get(navigationAction.request.URL) {
                     // Bind retrieved post to current view
                     loadData(post)
@@ -221,11 +231,8 @@ extension PostDetailViewController {
             // Open same domain links within app
             if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.URL) {
-                    // Display category if applicable
-                    if routeToTerm(term.id) {
-                        return nil
-                    }
+                if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
+                    return nil
                 } else if let post = service.get(navigationAction.request.URL) {
                     // Bind retrieved post to current view
                     loadData(post)
