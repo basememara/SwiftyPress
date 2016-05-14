@@ -12,9 +12,9 @@ class FavoritesViewController: RealmPostTableViewController, Trackable {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear("Favorites")
         
         applyFavoriteFilter()
+        trackPage("Favorites")
     }
     
     func applyFavoriteFilter(reload: Bool = true) {

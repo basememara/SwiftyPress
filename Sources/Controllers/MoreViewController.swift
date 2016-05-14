@@ -29,10 +29,11 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear("More")
         
         // Update status bar background since transparent on scroll
         toggleStatusBar(true, target: tabBarController)
+        
+        trackPage("More")
     }
     
     override func viewWillDisappear(animated: Bool) {

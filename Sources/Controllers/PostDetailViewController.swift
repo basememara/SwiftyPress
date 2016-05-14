@@ -110,8 +110,6 @@ extension PostDetailViewController {
             self.model = model
         }
         
-        willTrackableAppear(
-            "Post detail - \(self.model.title.decodeHTML())")
         // Update toolbar
         navigationController?.setNavigationBarHidden(false, animated: true)
         refreshFavoriteIcon()
@@ -121,6 +119,7 @@ extension PostDetailViewController {
         webView.loadHTMLString(loadTemplate(), baseURL:
             NSURL(string: AppGlobal.userDefaults[.baseURL]))
         
+        trackPage("Post detail - \(self.model.title.decodeHTML())")
     }
     
     func loadTemplate() -> String {

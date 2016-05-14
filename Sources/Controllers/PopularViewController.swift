@@ -19,7 +19,7 @@ class PopularViewController: RealmPostTableViewController, Trackable {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear("Popular posts")
+        trackPage("Popular posts")
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -31,7 +31,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willRestorableAppear()
-        willTrackableAppear("Home - Posts")
+        trackPage("Home - Posts")
     }
     
     override func didCategorySelect() {

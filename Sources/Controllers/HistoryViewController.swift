@@ -29,9 +29,9 @@ class HistoryViewController: UITableViewController, Trackable {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear("History")
         
         tableView.reloadData()
+        trackPage("History")
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

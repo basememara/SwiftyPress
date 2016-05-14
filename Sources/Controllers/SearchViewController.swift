@@ -98,7 +98,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         willRestorableAppear()
-        willTrackableAppear("Search")
+        trackPage("Search")
     }
 }
 

@@ -13,10 +13,6 @@ protocol Trackable {
 }
 
 extension Trackable {
-
-    func willTrackableAppear(trackingName: String) {
-        trackPage(trackingName)
-    }
     
     /**
     Track page hit and send to Google Analytics

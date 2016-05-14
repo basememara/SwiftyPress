@@ -26,7 +26,7 @@ class CategoriesViewController: UITableViewController, Trackable {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willTrackableAppear("Categories")
+        trackPage("Categories")
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
