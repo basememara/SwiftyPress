@@ -99,6 +99,12 @@ extension MoreViewController {
                 title = model.title
                 icon = model.icon
             case 1:
+                // Clear stackview
+                socialStackView.arrangedSubviews.forEach {
+                    socialStackView.removeArrangedSubview($0)
+                    $0.removeFromSuperview()
+                }
+                
                 // Add button for each social link
                 socialModels.forEach { item in
                     if let icon = item.icon,
