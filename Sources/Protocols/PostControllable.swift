@@ -31,7 +31,7 @@ extension PostControllable where Self: UIViewController {
                     
                 // Set category and prepare to retrieve category
                 controller.selectedID = categoryID
-                controller.prepareForUnwind = { [unowned self] id in
+                controller.prepareForUnwind = { id in
                     self.categoryID = id
                 }
             default: break

@@ -165,7 +165,7 @@ extension SearchViewController {
                     else { break }
                     
                 // Prepare to retrieve selected history
-                controller.prepareForUnwind = { [unowned self] text in
+                controller.prepareForUnwind = { text in
                     self.applySearch(text)
                 }
             default: break
