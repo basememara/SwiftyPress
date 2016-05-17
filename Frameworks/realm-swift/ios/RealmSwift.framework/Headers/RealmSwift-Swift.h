@@ -280,10 +280,11 @@ SWIFT_CLASS("_TtC10RealmSwift13DynamicObject")
 /// :nodoc: Internal class. Do not use directly. Used for reflection and initialization
 SWIFT_CLASS("_TtC10RealmSwift18LinkingObjectsBase")
 @interface LinkingObjectsBase : NSObject <NSFastEnumeration>
-@property (nonatomic, strong) RLMResults * _Nonnull rlmResults;
 @property (nonatomic, readonly, copy) NSString * _Nonnull objectClassName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull propertyName;
-- (nonnull instancetype)initWithResults:(RLMResults * _Nonnull)results fromClassName:(NSString * _Nonnull)objectClassName property:(NSString * _Nonnull)propertyName OBJC_DESIGNATED_INITIALIZER;
+- (void)attachToObject:(RLMObjectBase * _Nonnull)object property:(RLMProperty * _Nonnull)property;
+@property (nonatomic, readonly, strong) RLMResults * _Nonnull rlmResults;
+- (nonnull instancetype)initFromClassName:(NSString * _Nonnull)objectClassName property:(NSString * _Nonnull)propertyName OBJC_DESIGNATED_INITIALIZER;
 - (NSInteger)countByEnumeratingWithState:(NSFastEnumerationState * _Null_unspecified)state objects:(id _Nullable * _Null_unspecified)buffer count:(NSInteger)len;
 @end
 

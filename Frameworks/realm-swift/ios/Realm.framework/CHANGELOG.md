@@ -1,3 +1,30 @@
+0.102.1 Release notes (2016-05-13)
+=============================================================
+
+### API breaking changes
+
+* None.
+
+### Enhancements
+
+* Return `RLMErrorSchemaMismatch` error rather than the more generic `RLMErrorFail`
+  when a migration is required.
+* Improve the performance of allocating instances of `Object` subclasses
+  that have `LinkingObjects` properties.
+
+### Bugfixes
+
+* `RLMLinkingObjects` properties declared in Swift subclasses of `RLMObject`
+  now work correctly.
+* Fix an assertion failure when deleting all objects of a type, inserting more
+  objects, and then deleting some of the newly inserted objects within a single
+  write transaction when there is an active notification block for a different
+  object type which links to the objects being deleted.
+* Fix crashes and/or incorrect results when querying over multiple levels of
+  `LinkingObjects` properties.
+* Fix opening read-only Realms on multiple threads at once.
+* Fix a `BadTransactLog` exception when storing dates before the unix epoch (1970-01-01).
+
 0.102.0 Release notes (2016-05-09)
 =============================================================
 
