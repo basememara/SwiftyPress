@@ -186,15 +186,14 @@ extension MoreViewController {
                     }
                 case "{{rate}}":
                     UIApplication.sharedApplication().openURL(
-                        NSURL(string: "http://appstore.com/\(AppGlobal.userDefaults[.itunesName])")!)
+                        NSURL(string: "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])")!)
                         
                     // Google Analytics
                     trackEvent("Rate", action: "App")
                 case "{{share}}":
                     let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the app!"
-                    let share = [message, link]
-                    let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
-                    presentViewController(activity, animated: true, completion: nil)
+                    let share = [message, "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])"]
+                    presentActivityViewController(share, sourceView: tableView[indexPath])
                     
                     // Google Analytics
                     trackEvent("Share", action: "App")

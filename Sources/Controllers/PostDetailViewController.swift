@@ -263,7 +263,7 @@ extension PostDetailViewController {
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
             favoriteBarButton,
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped))
+            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped(_:)))
         ]
     }
 
@@ -297,12 +297,10 @@ extension PostDetailViewController {
         }
     }
     
-    func shareTapped() {
+    func shareTapped(sender: UIBarButtonItem) {
         guard let link = NSURL(string: model.link) else { return }
         
-        let share = [model.title.decodeHTML(), link]
-        let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
-        presentViewController(activity, animated: true, completion: nil)
+        presentActivityViewController([model.title.decodeHTML(), link], barButtonItem: sender)
         
         // Google Analytics
         trackEvent("Share", action: "Post",

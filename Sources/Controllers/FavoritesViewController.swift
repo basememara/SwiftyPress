@@ -45,7 +45,7 @@ class FavoritesViewController: RealmPostTableViewController, Trackable {
         return models?.count ?? 0 == 0 ? "No favorites to show." : nil
     }
     
-    @IBAction func shareTapped(sender: AnyObject) {
+    @IBAction func shareTapped(sender: UIBarButtonItem) {
         guard let models = models where models.count > 0 else {
             return alert("No favorites yet")
         }
@@ -56,9 +56,7 @@ class FavoritesViewController: RealmPostTableViewController, Trackable {
             message += item.link + "\n"
         }
         
-        let share = [message]
-        let activity = UIActivityViewController(activityItems: share, applicationActivities: nil)
-        presentViewController(activity, animated: true, completion: nil)
+        presentActivityViewController([message], barButtonItem: sender)
         
         // Google Analytics
         trackEvent("Share", action: "Favorites")
