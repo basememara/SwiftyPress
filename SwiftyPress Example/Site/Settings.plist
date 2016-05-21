@@ -24,6 +24,8 @@
 	<string>49,169,234</string>
 	<key>tabTitleColor</key>
 	<string></string>
+	<key>headerImage</key>
+	<string></string>
 	<key>styleSheet</key>
 	<string>http://basememara.com/wp-content/themes/metro-pro/style.css</string>
 	<key>googleAnalyticsID</key>

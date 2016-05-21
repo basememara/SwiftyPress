@@ -22,6 +22,7 @@ public extension DefaultsKeys {
     public static let titleColor = DefaultsKey<String>("titleColor")
     public static let secondaryTintColor = DefaultsKey<String>("secondaryTintColor")
     public static let tabTitleColor = DefaultsKey<String>("tabTitleColor")
+    public static let headerImage = DefaultsKey<String>("headerImage")
     public static let styleSheet = DefaultsKey<String>("styleSheet")
     public static let designedBy = DefaultsKey<[String: AnyObject]>("designedBy")
     public static let googleAnalyticsID = DefaultsKey<String>("googleAnalyticsID")
