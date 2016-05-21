@@ -5,7 +5,7 @@
 	url = https://github.com/radex/SwiftyTimer.git
 [submodule "Carthage/Checkouts/SwiftyUserDefaults"]
 	path = Carthage/Checkouts/SwiftyUserDefaults
-	url = https://github.com/ZamzamInc/SwiftyUserDefaults.git
+	url = https://github.com/radex/SwiftyUserDefaults.git
 [submodule "Carthage/Checkouts/Timepiece"]
 	path = Carthage/Checkouts/Timepiece
 	url = https://github.com/naoty/Timepiece.git
