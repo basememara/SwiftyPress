@@ -22,6 +22,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     var model: Post!
     var service = PostService()
     var statusBar: UIView?
+    var history: [Post] = []
     
     lazy var favoriteBarButton: UIBarButtonItem = {
         return UIBarButtonItem(imageName: "star",
@@ -206,7 +207,8 @@ extension PostDetailViewController {
                 if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
                     return decisionHandler(.Cancel)
                 } else if let post = service.get(navigationAction.request.URL) {
-                    // Bind retrieved post to current view
+                    // Save history and bind retrieved post to current view
+                    history.append(model)
                     loadData(post)
                     return decisionHandler(.Cancel)
                 }
@@ -233,7 +235,8 @@ extension PostDetailViewController {
                 if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
                     return nil
                 } else if let post = service.get(navigationAction.request.URL) {
-                    // Bind retrieved post to current view
+                    // Save history and bind retrieved post to current view
+                    history.append(model)
                     loadData(post)
                     return nil
                 }
@@ -255,7 +258,7 @@ extension PostDetailViewController {
     func loadToolbar() {
         // Add toolbar buttons
         toolbarItems = [
-            UIBarButtonItem(imageName: "safari", target: self, action: #selector(browserTapped), bundleIdentifier: AppConstants.bundleIdentifier),
+            UIBarButtonItem(imageName: "back", target: self, action: #selector(backTapped), bundleIdentifier: AppConstants.bundleIdentifier),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
             UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
             UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
@@ -300,7 +303,22 @@ extension PostDetailViewController {
     func shareTapped(sender: UIBarButtonItem) {
         guard let link = NSURL(string: model.link) else { return }
         
-        presentActivityViewController([model.title.decodeHTML(), link], barButtonItem: sender)
+        let safariActivity = UIActivity.create("Open in Safari",
+            imageName: "safari-share",
+            imageBundle: ZamzamConstants.bundle) {
+                if !SCNetworkReachability.isOnline {
+                    return self.alert("Device must be online to view within the browser.")
+                }
+                
+                UIApplication.sharedApplication().openURL(link)
+    
+                // Google Analytics
+                self.trackEvent("Browser", action: "Post",
+                    label: self.model.title, value: Int(self.model.id))
+            }
+        
+        presentActivityViewController([model.title.decodeHTML(), link], barButtonItem: sender,
+            applicationActivities: [safariActivity])
         
         // Google Analytics
         trackEvent("Share", action: "Post",
@@ -346,15 +364,15 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    func browserTapped() {
-        if !SCNetworkReachability.isOnline {
-            return alert("Device must be online to view within the browser.")
+    func backTapped() {
+        if history.isEmpty {
+            return alert("No previous post in history")
         }
         
-        UIApplication.sharedApplication().openURL(NSURL(string: model.link)!)
-    
+        loadData(history.popLast())
+        
         // Google Analytics
-        trackEvent("Browser", action: "Post",
+        trackEvent("Back", action: "Post",
             label: model.title, value: Int(model.id))
     }
     
