@@ -22,15 +22,14 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = AppGlobal.userDefaults[.appName].uppercaseString
+        navigationItem.rightBarButtonItem = categoryButton
+        
         // Handle header logo if applicable
         if !AppGlobal.userDefaults[.headerImage].isEmpty {
             navigationItem.titleView = UIImageView(image: UIImage(named:
                 AppGlobal.userDefaults[.headerImage]))
-        } else {
-            navigationItem.title = AppGlobal.userDefaults[.appName].uppercaseString
         }
-        
-        navigationItem.rightBarButtonItem = categoryButton
         
         showTutorial(false)
     }
