@@ -217,6 +217,9 @@ extension PostDetailViewController {
                 presentSafariController(navigationAction.request.URLString)
                 return decisionHandler(.Cancel)
             }
+            
+            // Navigating away from post so keep in history
+            history.append(model)
         }
         
         decisionHandler(.Allow)
@@ -246,6 +249,9 @@ extension PostDetailViewController {
                 // Open external links in browser
                 presentSafariController(navigationAction.request.URLString)
             }
+            
+            // Navigating away from post so keep in history
+            history.append(model)
         }
         
         return nil
