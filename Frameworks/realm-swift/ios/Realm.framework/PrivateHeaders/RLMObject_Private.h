@@ -78,9 +78,6 @@ FOUNDATION_EXTERN RLMRealm *RLMObjectBaseRealm(RLMObjectBase *object);
 FOUNDATION_EXTERN void RLMObjectBaseSetObjectSchema(RLMObjectBase *object, RLMObjectSchema *objectSchema);
 FOUNDATION_EXTERN RLMObjectSchema *RLMObjectBaseObjectSchema(RLMObjectBase *object);
 
-// Get linking objects for an RLMObjectBase
-FOUNDATION_EXTERN NSArray *RLMObjectBaseLinkingObjectsOfClass(RLMObjectBase *object, NSString *className, NSString *property);
-
 // Dynamic access to RLMObjectBase properties
 FOUNDATION_EXTERN id RLMObjectBaseObjectForKeyedSubscript(RLMObjectBase *object, NSString *key);
 FOUNDATION_EXTERN void RLMObjectBaseSetObjectForKeyedSubscript(RLMObjectBase *object, NSString *key, id obj);
@@ -99,18 +96,18 @@ FOUNDATION_EXTERN const NSUInteger RLMDescriptionMaxDepth;
 @class RLMProperty, RLMArray;
 @interface RLMObjectUtil : NSObject
 
-+ (NSArray RLM_GENERIC(NSString *) *)ignoredPropertiesForClass:(Class)cls;
-+ (NSArray RLM_GENERIC(NSString *) *)indexedPropertiesForClass:(Class)cls;
-+ (NSDictionary RLM_GENERIC(NSString *, NSDictionary RLM_GENERIC(NSString *, NSString *)*)*)linkingObjectsPropertiesForClass:(Class)cls;
++ (NSArray<NSString *> *)ignoredPropertiesForClass:(Class)cls;
++ (NSArray<NSString *> *)indexedPropertiesForClass:(Class)cls;
++ (NSDictionary<NSString *, NSDictionary<NSString *, NSString *> *> *)linkingObjectsPropertiesForClass:(Class)cls;
 
-+ (NSArray RLM_GENERIC(NSString *) *)getGenericListPropertyNames:(id)obj;
-+ (NSDictionary RLM_GENERIC(NSString *, NSString *)*)getLinkingObjectsProperties:(id)object;
++ (NSArray<NSString *> *)getGenericListPropertyNames:(id)obj;
++ (NSDictionary<NSString *, NSString *> *)getLinkingObjectsProperties:(id)object;
 
 + (void)initializeListProperty:(RLMObjectBase *)object property:(RLMProperty *)property array:(RLMArray *)array;
 + (void)initializeOptionalProperty:(RLMObjectBase *)object property:(RLMProperty *)property;
 + (void)initializeLinkingObjectsProperty:(RLMObjectBase *)object property:(RLMProperty *)property;
 
-+ (NSDictionary RLM_GENERIC(NSString *, NSNumber *) *)getOptionalProperties:(id)obj;
-+ (NSArray RLM_GENERIC(NSString *) *)requiredPropertiesForClass:(Class)cls;
++ (NSDictionary<NSString *, NSNumber *> *)getOptionalProperties:(id)obj;
++ (NSArray<NSString *> *)requiredPropertiesForClass:(Class)cls;
 
 @end

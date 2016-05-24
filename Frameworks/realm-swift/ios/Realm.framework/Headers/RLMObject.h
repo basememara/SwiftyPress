@@ -20,7 +20,7 @@
 
 #import <Realm/RLMObjectBase.h>
 
-RLM_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 @class RLMPropertyDescriptor;
 @class RLMRealm;
@@ -237,7 +237,7 @@ RLM_ASSUME_NONNULL_BEGIN
  Only supported for string, integer, boolean, and NSDate properties.
  @return    NSArray of property names.
  */
-+ (NSArray RLM_GENERIC(NSString *) *)indexedProperties;
++ (NSArray<NSString *> *)indexedProperties;
 
 /**
  Implement to indicate the default values to be used for each property.
@@ -262,7 +262,7 @@ RLM_ASSUME_NONNULL_BEGIN
  
  @return    NSArray of property names to ignore.
  */
-+ (nullable NSArray RLM_GENERIC(NSString *) *)ignoredProperties;
++ (nullable NSArray<NSString *> *)ignoredProperties;
 
 /**
  Implement to return an array of property names that should not allow storing nil.
@@ -277,7 +277,7 @@ RLM_ASSUME_NONNULL_BEGIN
 
  @return    NSArray of property names that are required.
  */
-+ (NSArray RLM_GENERIC(NSString *) *)requiredProperties;
++ (NSArray<NSString *> *)requiredProperties;
 
 /**
  Implement to return a dictionary providing information related to linking objects properties.
@@ -292,7 +292,7 @@ RLM_ASSUME_NONNULL_BEGIN
 
  @return     NSDictionary mapping property names to RLMPropertyDescriptor objects.
  */
-+ (NSDictionary RLM_GENERIC(NSString *, RLMPropertyDescriptor *) *)linkingObjectsProperties;
++ (NSDictionary<NSString *, RLMPropertyDescriptor *> *)linkingObjectsProperties;
 
 
 #pragma mark - Getting & Querying Objects from the Default Realm
@@ -392,17 +392,6 @@ RLM_ASSUME_NONNULL_BEGIN
 #pragma mark - Other Instance Methods
 
 /**
- Get an `NSArray` of objects of type `className` which have this object as the given property value. This can
- be used to get the inverse relationship value for `RLMObject` and `RLMArray` properties.
-
- @param className   The type of object on which the relationship to query is defined.
- @param property    The name of the property which defines the relationship.
-
- @return    An NSArray of objects of type `className` which have this object as their value for the `property` property.
- */
-- (NSArray *)linkingObjectsOfClass:(NSString *)className forProperty:(NSString *)property DEPRECATED_MSG_ATTRIBUTE("Use an RLMLinkingObjects property");
-
-/**
  Returns YES if another RLMObject points to the same object in an RLMRealm. For RLMObject types
  with a primary, key, `isEqual:` is overridden to use this method (along with a corresponding
  implementation for `hash`.
@@ -438,4 +427,4 @@ RLM_ASSUME_NONNULL_BEGIN
 @protocol RLM_OBJECT_SUBCLASS <NSObject>   \
 @end
 
-RLM_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END
