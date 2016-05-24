@@ -22,6 +22,10 @@
 	<string>51,51,51</string>
 	<key>secondaryTintColor</key>
 	<string>49,169,234</string>
+	<key>collectionCellCornerRadius</key>
+	<integer>1</integer>
+	<key>collectionCellShadowRadius</key>
+	<integer>1</integer>
 	<key>tabTitleColor</key>
 	<string></string>
 	<key>headerImage</key>
@@ -32,13 +36,6 @@
 	<string>UA-60131988-2</string>
 	<key>featuredCategoryID</key>
 	<integer>64</integer>
-	<key>designedBy</key>
-	<dict>
-		<key>title</key>
-		<string>Basem Emara</string>
-		<key>link</key>
-		<string>http://basememara.com</string>
-	</dict>
 	<key>categories</key>
 	<array>
 		<dict>
@@ -283,6 +280,25 @@
 			<string>http://basememara.com/disclaimer/?mobileembed=1</string>
 			<key>icon</key>
 			<string>import</string>
+		</dict>
+	</array>
+	<key>otherMenu</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>Disclaimer</string>
+			<key>link</key>
+			<string>http://basememara.com/disclaimer/?mobileembed=1</string>
+			<key>icon</key>
+			<string>import</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Designed by Basem Emara</string>
+			<key>link</key>
+			<string>http://basememara.com</string>
+			<key>icon</key>
+			<string>design</string>
 		</dict>
 	</array>
 </dict>
