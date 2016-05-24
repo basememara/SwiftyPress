@@ -22,15 +22,9 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = AppGlobal.userDefaults[.appName].uppercaseString
         navigationItem.rightBarButtonItem = categoryButton
         
-        // Handle header logo if applicable
-        if !AppGlobal.userDefaults[.headerImage].isEmpty {
-            navigationItem.titleView = UIImageView(image: UIImage(named:
-                AppGlobal.userDefaults[.headerImage]))
-        }
-        
+        updateTitle()
         showTutorial(false)
     }
     
@@ -41,15 +35,27 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     }
     
     override func didCategorySelect() {
+        categoryButton.tintColor = categoryID > 0
+            ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
+            : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
+        
+        updateTitle()
+    }
+    
+    func updateTitle() {
         navigationItem.title = (categoryID > 0
             ? CategoryService.storedItems
                 .first { $0.id == categoryID }?.title
                     ?? AppGlobal.userDefaults[.appName]
             : AppGlobal.userDefaults[.appName]).uppercaseString
         
-        categoryButton.tintColor = categoryID > 0
-            ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
-            : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
+        // Handle header logo if applicable
+        if !AppGlobal.userDefaults[.headerImage].isEmpty && categoryID == 0 {
+            navigationItem.titleView = UIImageView(image: UIImage(named:
+                AppGlobal.userDefaults[.headerImage]))
+        } else {
+            navigationItem.titleView = nil
+        }
     }
     
     func catagoryTapped() {
