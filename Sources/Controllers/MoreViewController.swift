@@ -12,6 +12,7 @@ import MessageUI
 class MoreViewController: UITableViewController, MFMailComposeViewControllerDelegate, Tutorable, StatusBarrable, Trackable {
     
     var mainModels = MenuService.storedMoreItems
+    var otherModels = MenuService.storedOtherItems
     var socialModels = SocialService.storedItems
     
     var statusBar: UIView?
@@ -84,7 +85,7 @@ extension MoreViewController {
         switch section {
             case 0: return mainModels.count
             case 1: return 1
-            case 2: return 1
+            case 2: return otherModels.count
             default: return 0
         }
     }
@@ -126,9 +127,9 @@ extension MoreViewController {
                 socialStackView.leftAnchor.constraintEqualToAnchor(cell.leftAnchor, constant: 12).active = true
                 socialStackView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor).active = true
             case 2:
-                let designedByTitle = (AppGlobal.userDefaults[.designedBy]["title"] as? String) ?? ""
-                title = "Designed by \(designedByTitle)"
-                icon = "design"
+                let model = otherModels[indexPath.row]
+                title = model.title
+                icon = model.icon
             default: break
         }
         
@@ -160,10 +161,11 @@ extension MoreViewController {
                 // Google Analytics
                 trackPage(model.title ?? "")
             case 2:
-                link = AppGlobal.userDefaults[.designedBy]["link"] as? String
+                let model = otherModels[indexPath.row]
+                link = model.link
                 
                 // Google Analytics
-                trackPage("Designed by")
+                trackPage(model.title ?? "")
             default: break
         }
         
