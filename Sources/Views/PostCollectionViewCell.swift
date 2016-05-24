@@ -29,11 +29,19 @@ public class PostCollectionViewCell: UICollectionViewCell {
         layer.rasterizationScale = UIScreen.mainScreen().scale
         
         // Style
-        layer.shadowColor = AppGlobal.userDefaults[.darkMode]
-            ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
-        layer.shadowOffset = CGSizeZero
-        layer.shadowRadius = 1
-        layer.shadowOpacity = 1
+        if AppGlobal.userDefaults[.collectionCellCornerRadius] > 0 {
+            contentView.layer.cornerRadius = CGFloat(AppGlobal.userDefaults[.collectionCellCornerRadius])
+            contentView.layer.masksToBounds = true
+            layer.backgroundColor = UIColor.clearColor().CGColor
+        }
+
+        if AppGlobal.userDefaults[.collectionCellShadowRadius] > 0 {
+            layer.shadowColor = AppGlobal.userDefaults[.darkMode]
+                ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
+            layer.shadowOffset = CGSizeZero
+            layer.shadowRadius = CGFloat(AppGlobal.userDefaults[.collectionCellShadowRadius])
+            layer.shadowOpacity = 1
+        }
         
         if !AppGlobal.userDefaults[.darkMode] {
             itemTitle.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
