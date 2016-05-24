@@ -29,7 +29,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     @IBOutlet weak var scopeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scopeView: UIView!
     
-    lazy var searchController: UISearchController = { [unowned self] in
+    lazy var searchController: UISearchController = {
         // Create the search controller and make it perform the results updating.
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self

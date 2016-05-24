@@ -41,7 +41,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     }()
     
     /// Web view for display content detail
-    lazy var webView: WKWebView = { [unowned self] in
+    lazy var webView: WKWebView = {
         // Create preferences on how the web page should be loaded
         let preferences = WKPreferences()
         preferences.javaScriptEnabled = true
