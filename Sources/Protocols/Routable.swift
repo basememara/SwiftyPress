@@ -34,7 +34,8 @@ extension Routable {
         guard let controller = getRootViewByTab(3) as? SearchViewController
             else { return false }
         
-        controller.performRestoration({
+        // Run on main UI thread in case too soon
+        dispatch_async(dispatch_get_main_queue(), {
             controller.applySearch(query)
         })
         
@@ -52,7 +53,8 @@ extension Routable {
         guard let controller = getRootViewByTab(2) as? ExploreViewController
             else { return false }
         
-        controller.performRestoration({
+        // Run on main UI thread in case too soon
+        dispatch_async(dispatch_get_main_queue(), {
             controller.categoryID = id
         })
         
@@ -135,7 +137,7 @@ extension Routable {
     func getRootNavigationByTab(index: Int) -> UINavigationController? {
         // Get root tab bar controller
         guard let tabBarController = window?.rootViewController as? UITabBarController
-                else { return nil }
+            else { return nil }
         
         tabBarController.dismissViewControllerAnimated(false, completion: nil)
         

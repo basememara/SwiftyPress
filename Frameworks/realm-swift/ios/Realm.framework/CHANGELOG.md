@@ -1,3 +1,27 @@
+1.0.0 Release notes (2016-05-25)
+=============================================================
+
+No changes since 0.103.2.
+
+0.103.2 Release notes (2016-05-24)
+=============================================================
+
+### API breaking changes
+
+* None.
+
+### Enhancements
+
+* Improve the error messages when an I/O error occurs in `writeCopyToURL`.
+
+### Bugfixes
+
+* Fix an assertion failure which could occur when opening a Realm after opening
+  that Realm failed previously in some specific ways in the same run of the
+  application.
+* Reading optional integers, floats, and doubles from within a migration block
+  now correctly returns `nil` rather than 0 when the stored value is `nil`.
+
 0.103.1 Release notes (2016-05-19)
 =============================================================
 

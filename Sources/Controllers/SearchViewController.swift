@@ -10,13 +10,12 @@ import UIKit
 import RealmSwift
 import ZamzamKit
 
-class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Restorable, Trackable {
+class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Trackable {
     
     var notificationToken: NotificationToken?
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = nil
-    var restorationHandlers: [() -> Void] = []
     
     var dataView: DataViewable {
         return tableView
@@ -31,24 +30,23 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     
     lazy var searchController: UISearchController = {
         // Create the search controller and make it perform the results updating.
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = false
+        $0.searchResultsUpdater = self
+        $0.hidesNavigationBarDuringPresentation = false
+        $0.dimsBackgroundDuringPresentation = false
         
-        searchController.searchBar.delegate = self
-        searchController.searchBar.searchBarStyle = .Minimal
-        searchController.searchBar.placeholder = "Search".localized
-        searchController.searchBar.showsBookmarkButton = true
+        $0.searchBar.delegate = self
+        $0.searchBar.searchBarStyle = .Minimal
+        $0.searchBar.placeholder = "Search".localized
+        $0.searchBar.showsBookmarkButton = true
         
-        if let searchTextField = searchController.searchBar.valueForKey("searchField") as? UITextField {
+        if let searchTextField = $0.searchBar.valueForKey("searchField") as? UITextField {
             searchTextField.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         }
 
         self.definesPresentationContext = true
         
-        return searchController
-    }()
+        return $0
+    }(UISearchController(searchResultsController: nil))
     
     /// Empty filter string means show all results, otherwise show only results containing the filter.
     var filterString: String? = nil {
@@ -97,7 +95,6 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        willRestorableAppear()
         trackPage("Search")
     }
 }

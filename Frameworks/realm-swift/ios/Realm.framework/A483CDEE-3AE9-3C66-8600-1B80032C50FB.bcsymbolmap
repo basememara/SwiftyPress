@@ -8068,7 +8068,6 @@ RLMValidatedProperty
 +[RLMRealm writeableTemporaryPathForFile:]
 +[RLMRealm defaultRealm]
 +[RLMRealm realmWithURL:]
-+[RLMRealm realmWithURL:key:readOnly:inMemory:dynamic:schema:error:]
 +[RLMRealm realmWithSharedRealm:schema:]
 _ZL25RLMRealmSetSchemaAndAlignP8RLMRealmP9RLMSchema
 _ZL14RLMAutoreleaseP11objc_object
@@ -8157,128 +8156,103 @@ OBJC_CLASSLIST_REFERENCES_$_.33
 OBJC_IVAR_$_RLMRealm._dynamic
 _ZTSN5realm21AddressSpaceExhaustedE
 _ZTIN5realm21AddressSpaceExhaustedE
-_unnamed_cfstring_.71
-_unnamed_cfstring_.73
-_unnamed_cfstring_.75
 _ZZ41+[RLMRealm realmWithConfiguration:error:]E8initLock
 _ZGVZ41+[RLMRealm realmWithConfiguration:error:]E8initLock
-OBJC_CLASSLIST_REFERENCES_$_.84
-OBJC_CLASSLIST_REFERENCES_$_.89
+OBJC_CLASSLIST_REFERENCES_$_.73
+OBJC_CLASSLIST_REFERENCES_$_.91
 OBJC_SELECTOR_REFERENCES_.101
-OBJC_SELECTOR_REFERENCES_.103
-OBJC_CLASSLIST_REFERENCES_$_.107
-_unnamed_cfstring_.123
+_unnamed_cfstring_.105
 OBJC_IVAR_$_RLMRealm._notificationHandlers
-OBJC_CLASSLIST_REFERENCES_$_.126
-OBJC_CLASSLIST_REFERENCES_$_.129
-OBJC_SELECTOR_REFERENCES_.137
+OBJC_CLASSLIST_REFERENCES_$_.110
+OBJC_CLASSLIST_REFERENCES_$_.113
 OBJC_IVAR_$_RLMRealm._schema
-_ZTSN5realm4util4File11AccessErrorE
-_ZTIN5realm4util4File11AccessErrorE
+OBJC_SELECTOR_REFERENCES_.137
 OBJC_SELECTOR_REFERENCES_.143
 OBJC_SELECTOR_REFERENCES_.145
 _unnamed_cfstring_.147
-OBJC_METH_VAR_NAME_.148
-OBJC_SELECTOR_REFERENCES_.149
+OBJC_CLASSLIST_SUP_REFS_$_.148
 OBJC_SELECTOR_REFERENCES_.151
-OBJC_CLASSLIST_SUP_REFS_$_.156
-OBJC_CLASSLIST_REFERENCES_$_.157
-_unnamed_cfstring_.167
-OBJC_SELECTOR_REFERENCES_.171
-_unnamed_cfstring_.178
-OBJC_CLASS_NAME_.180
-OBJC_CLASSLIST_REFERENCES_$_.183
-_unnamed_cfstring_.185
-OBJC_SELECTOR_REFERENCES_.187
-OBJC_CLASSLIST_REFERENCES_$_.188
+OBJC_SELECTOR_REFERENCES_.157
+OBJC_CLASS_NAME_.172
+OBJC_CLASSLIST_REFERENCES_$_.175
+OBJC_SELECTOR_REFERENCES_.179
+OBJC_CLASSLIST_REFERENCES_$_.180
+OBJC_CLASSLIST_REFERENCES_$_.187
+_unnamed_cfstring_.189
+OBJC_CLASSLIST_REFERENCES_$_.190
 OBJC_METH_VAR_NAME_.191
 OBJC_SELECTOR_REFERENCES_.192
-OBJC_CLASSLIST_REFERENCES_$_.193
-_unnamed_cfstring_.195
-OBJC_CLASSLIST_REFERENCES_$_.196
-OBJC_SELECTOR_REFERENCES_.204
-_ZTSN5realm4util4File16PermissionDeniedE
-_ZTIN5realm4util4File16PermissionDeniedE
-_ZTSN5realm4util4File6ExistsE
-_ZTIN5realm4util4File6ExistsE
-_ZTSN5realm4util4File8NotFoundE
-_ZTIN5realm4util4File8NotFoundE
-OBJC_METH_VAR_NAME_.205
-OBJC_SELECTOR_REFERENCES_.206
 OBJC_IVAR_$_RLMRealm._collectionEnumerators
+OBJC_CLASS_NAME_.203
 OBJC_METH_VAR_NAME_.207
-OBJC_SELECTOR_REFERENCES_.208
-OBJC_CLASS_NAME_.209
-OBJC_METH_VAR_TYPE_.211
-OBJC_METH_VAR_NAME_.212
+OBJC_METH_VAR_TYPE_.208
+OBJC_METH_VAR_NAME_.209
+OBJC_METH_VAR_TYPE_.213
 OBJC_METH_VAR_TYPE_.214
 OBJC_METH_VAR_NAME_.215
-OBJC_METH_VAR_TYPE_.218
-OBJC_METH_VAR_TYPE_.220
-OBJC_METH_VAR_TYPE_.221
-OBJC_METH_VAR_TYPE_.222
+OBJC_METH_VAR_TYPE_.217
 l_OBJC_$_CLASS_METHODS_RLMRealm
 l_OBJC_METACLASS_RO_$_RLMRealm
-OBJC_CLASS_NAME_.227
-OBJC_METH_VAR_TYPE_.230
-OBJC_METH_VAR_NAME_.231
+OBJC_CLASS_NAME_.219
+OBJC_METH_VAR_TYPE_.222
+OBJC_METH_VAR_TYPE_.227
+OBJC_METH_VAR_NAME_.230
+OBJC_METH_VAR_TYPE_.231
 OBJC_METH_VAR_TYPE_.233
 OBJC_METH_VAR_NAME_.234
-OBJC_METH_VAR_TYPE_.235
+OBJC_METH_VAR_NAME_.235
 OBJC_METH_VAR_NAME_.236
 OBJC_METH_VAR_NAME_.238
-OBJC_METH_VAR_TYPE_.239
 OBJC_METH_VAR_NAME_.240
-OBJC_METH_VAR_TYPE_.241
+OBJC_METH_VAR_NAME_.241
 OBJC_METH_VAR_NAME_.242
-OBJC_METH_VAR_NAME_.243
-OBJC_METH_VAR_NAME_.244
+OBJC_METH_VAR_TYPE_.243
+OBJC_METH_VAR_TYPE_.244
+OBJC_METH_VAR_TYPE_.248
 OBJC_METH_VAR_NAME_.249
-OBJC_METH_VAR_TYPE_.252
-OBJC_METH_VAR_NAME_.253
-OBJC_METH_VAR_NAME_.255
-OBJC_METH_VAR_TYPE_.256
-OBJC_METH_VAR_NAME_.257
-OBJC_METH_VAR_NAME_.259
+OBJC_METH_VAR_NAME_.251
 l_OBJC_$_INSTANCE_METHODS_RLMRealm
-OBJC_METH_VAR_TYPE_.267
-OBJC_METH_VAR_NAME_.268
+OBJC_METH_VAR_TYPE_.257
 l_OBJC_$_INSTANCE_VARIABLES_RLMRealm
+OBJC_PROP_NAME_ATTR_.261
+OBJC_PROP_NAME_ATTR_.262
+OBJC_PROP_NAME_ATTR_.263
+OBJC_PROP_NAME_ATTR_.264
+OBJC_PROP_NAME_ATTR_.265
+OBJC_PROP_NAME_ATTR_.266
 OBJC_PROP_NAME_ATTR_.271
 OBJC_PROP_NAME_ATTR_.272
 OBJC_PROP_NAME_ATTR_.273
 OBJC_PROP_NAME_ATTR_.274
 OBJC_PROP_NAME_ATTR_.275
-OBJC_PROP_NAME_ATTR_.276
-OBJC_PROP_NAME_ATTR_.277
-OBJC_PROP_NAME_ATTR_.278
-OBJC_PROP_NAME_ATTR_.279
-OBJC_PROP_NAME_ATTR_.280
-OBJC_PROP_NAME_ATTR_.281
-OBJC_PROP_NAME_ATTR_.282
-OBJC_PROP_NAME_ATTR_.283
 l_OBJC_$_PROP_LIST_RLMRealm
 l_OBJC_CLASS_RO_$_RLMRealm
 _ZZL31shouldForciblyDisableEncryptionvE17disableEncryption
 _ZGVZL31shouldForciblyDisableEncryptionvE17disableEncryption
-OBJC_CLASSLIST_REFERENCES_$_.285
+.str.276
+OBJC_CLASSLIST_REFERENCES_$_.277
+OBJC_SELECTOR_REFERENCES_.279
+OBJC_METH_VAR_NAME_.280
+OBJC_SELECTOR_REFERENCES_.281
+OBJC_SELECTOR_REFERENCES_.283
+OBJC_METH_VAR_NAME_.284
+OBJC_SELECTOR_REFERENCES_.285
 OBJC_SELECTOR_REFERENCES_.287
-OBJC_SELECTOR_REFERENCES_.289
-OBJC_METH_VAR_NAME_.290
-OBJC_SELECTOR_REFERENCES_.291
-OBJC_METH_VAR_NAME_.292
-OBJC_SELECTOR_REFERENCES_.293
-OBJC_METH_VAR_NAME_.294
-OBJC_SELECTOR_REFERENCES_.295
+_ZTSN5realm4util4File16PermissionDeniedE
+_ZTSN5realm4util4File11AccessErrorE
+_ZTIN5realm4util4File11AccessErrorE
+_ZTIN5realm4util4File16PermissionDeniedE
 _ZTVNSt3__110__function6__funcIZ41+[RLMRealm realmWithConfiguration:error:]E3$_0NS_9allocatorIS2_EEFvNS_10shared_ptrIN5realm5RealmEEES8_EEE
 _ZTSNSt3__110__function6__funcIZ41+[RLMRealm realmWithConfiguration:error:]E3$_0NS_9allocatorIS2_EEFvNS_10shared_ptrIN5realm5RealmEEES8_EEE
 _ZTSNSt3__110__function6__baseIFvNS_10shared_ptrIN5realm5RealmEEES5_EEE
 _ZTINSt3__110__function6__baseIFvNS_10shared_ptrIN5realm5RealmEEES5_EEE
 _ZTINSt3__110__function6__funcIZ41+[RLMRealm realmWithConfiguration:error:]E3$_0NS_9allocatorIS2_EEFvNS_10shared_ptrIN5realm5RealmEEES8_EEE
-OBJC_CLASSLIST_REFERENCES_$_.297
-OBJC_SELECTOR_REFERENCES_.299
-OBJC_METH_VAR_NAME_.300
-OBJC_SELECTOR_REFERENCES_.301
+OBJC_SELECTOR_REFERENCES_.288
+OBJC_CLASSLIST_REFERENCES_$_.289
+OBJC_METH_VAR_NAME_.290
+OBJC_SELECTOR_REFERENCES_.291
+OBJC_METH_VAR_NAME_.292
+OBJC_SELECTOR_REFERENCES_.293
 _ZTSZ41+[RLMRealm realmWithConfiguration:error:]E3$_0
 _ZTIZ41+[RLMRealm realmWithConfiguration:error:]E3$_0
 _ZTVNSt3__110__function6__funcIZ41+[RLMRealm realmWithConfiguration:error:]E3$_1NS_9allocatorIS2_EEFvNS_10shared_ptrIN5realm5RealmEEES8_EEE
@@ -8287,108 +8261,108 @@ _ZTINSt3__110__function6__funcIZ41+[RLMRealm realmWithConfiguration:error:]E3$_1
 _ZTSZ41+[RLMRealm realmWithConfiguration:error:]E3$_1
 _ZTIZ41+[RLMRealm realmWithConfiguration:error:]E3$_1
 forward<std::__1::default_delete<realm::BindingContext> >
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
 /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm
-__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
-__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
-get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &, 0, 0>
-move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &, void>
-__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&>
-get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&, 0, 0>
-move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&> &>
-move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&>
-move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &>
-__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>, void>
-__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> >
-tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> , false>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> >
-forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)> >
-__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, void>
-__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
-forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
-forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
-allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> >
-forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > >
-forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *>
-move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > &>
-allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&>
-__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&, 0>
-move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&> &>
-__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&>
-__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), void>
-__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37), false>
-forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37) &>
-__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
-operator=<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:343:37)>
+__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
+__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
+get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &, 0, 0>
+move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &, void>
+__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&>
+get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&, 0, 0>
+move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&> &>
+move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&>
+move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &>
+__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>, void>
+__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> >
+tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> , false>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> >
+forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)> >
+__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, void>
+__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
+forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
+forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
+allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> >
+forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > >
+forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *>
+move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > &>
+allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&>
+__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&, 0>
+move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&> &>
+__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&>
+__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), void>
+__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37), false>
+forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37) &>
+__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
+operator=<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:320:37)>
 move<std::__1::__function::__base<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *&>
 swap<std::__1::__function::__base<void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *>
 forward<std::__1::shared_ptr<realm::Realm> >
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
-__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
-get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &, 0, 0>
-move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
-__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &, void>
-__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
-forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
-forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
+__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm> >
+get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &, 0, 0>
+move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
+__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &, void>
+__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
+forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
+forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
 _ZZ41+[RLMRealm realmWithConfiguration:error:]EN3$_0C2ERKS_
 _ZZ41+[RLMRealm realmWithConfiguration:error:]EN3$_0C1ERKS_
-get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&, 0, 0>
-move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&> &>
-move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&>
-move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &>
-__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>, void>
-__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> >
-tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> , false>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> >
-forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)> >
-__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, void>
-__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> >
-forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > >
-forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *>
-move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > &>
-allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
-get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&>
-__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&, 0>
-move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&> &>
-__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&>
-__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), void>
-__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
-tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37), false>
-forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
-move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37) &>
-__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
-function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
+get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&, 0, 0>
+move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&> &>
+move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&>
+move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &>
+__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>, void>
+__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> >
+tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> , false>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> >
+forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)> >
+__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, void>
+__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> >
+forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > >
+forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> *>
+move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>, void (std::__1::shared_ptr<realm::Realm>, std::__1::shared_ptr<realm::Realm>)> > > &>
+allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
+get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&>
+__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&, 0>
+move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&> &>
+__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&>
+__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), void>
+__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
+tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37), false>
+forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
+move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37) &>
+__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
+function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
 _ZZ41+[RLMRealm realmWithConfiguration:error:]EN3$_0C2EOS_
 _ZZ41+[RLMRealm realmWithConfiguration:error:]EN3$_0C1EOS_
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
-operator=<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:325:37)>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
+operator=<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMRealm.mm:302:37)>
 is_in_read_transaction
 ~PermissionDenied
 core/include/realm/util/file.hpp
@@ -8450,7 +8424,6 @@ shouldForciblyDisableEncryption
 +[RLMRealm openSharedRealm:error:]
 RLMRealmTranslateException
 +[RLMRealm realmWithSharedRealm:schema:]
-+[RLMRealm realmWithURL:key:readOnly:inMemory:dynamic:schema:error:]
 +[RLMRealm realmWithURL:]
 +[RLMRealm defaultRealm]
 +[RLMRealm writeableTemporaryPathForFile:]
@@ -8519,7 +8492,10 @@ OBJC_IVAR_$_RLMRealmConfiguration._dynamic
 OBJC_IVAR_$_RLMRealmConfiguration._migrationBlock
 OBJC_IVAR_$_RLMRealmConfiguration._customSchema
 OBJC_CLASSLIST_REFERENCES_$_.63
+_unnamed_cfstring_.71
+_unnamed_cfstring_.75
 OBJC_CLASSLIST_REFERENCES_$_.76
+OBJC_CLASSLIST_REFERENCES_$_.89
 OBJC_METH_VAR_TYPE_.98
 l_OBJC_$_CLASS_METHODS_RLMRealmConfiguration
 OBJC_CLASS_NAME_.103
@@ -8781,7 +8757,6 @@ _unnamed_cfstring_.226
 _unnamed_cfstring_.228
 _unnamed_cfstring_.232
 _unnamed_cfstring_.234
-OBJC_METH_VAR_NAME_.235
 OBJC_SELECTOR_REFERENCES_.236
 .str.244
 .str.246
@@ -8796,9 +8771,7 @@ OBJC_CLASSLIST_REFERENCES_$_.269
 OBJC_METH_VAR_NAME_.270
 OBJC_SELECTOR_REFERENCES_.271
 OBJC_SELECTOR_REFERENCES_.274
-OBJC_CLASSLIST_REFERENCES_$_.277
 OBJC_SELECTOR_REFERENCES_.278
-OBJC_SELECTOR_REFERENCES_.279
 /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMResults.mm
 translateErrors<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMResults.mm:402:28)>
 translateErrors<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMResults.mm:398:28)>
@@ -8916,7 +8889,6 @@ __block_descriptor_tmp.59
 __block_literal_global.60
 __block_descriptor_tmp.82
 __block_descriptor_tmp.87
-OBJC_CLASSLIST_REFERENCES_$_.91
 OBJC_CLASSLIST_REFERENCES_$_.96
 OBJC_SELECTOR_REFERENCES_.110
 __block_descriptor_tmp.117
@@ -8930,7 +8902,7 @@ OBJC_CLASS_NAME_.131
 l_OBJC_$_INSTANCE_VARIABLES_RLMSchema
 l_OBJC_$_PROP_LIST_RLMSchema
 l_OBJC_CLASS_RO_$_RLMSchema
-OBJC_SELECTOR_REFERENCES_.157
+OBJC_SELECTOR_REFERENCES_.171
 /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/RLMSchema.mm
 move<std::__1::allocator<realm::ObjectSchema> &>
 forward<std::__1::vector<realm::ObjectSchema, std::__1::allocator<realm::ObjectSchema> > >
@@ -8983,24 +8955,22 @@ OBJC_CLASSLIST_REFERENCES_$_.8
 OBJC_CLASSLIST_REFERENCES_$_.9
 OBJC_CLASSLIST_REFERENCES_$_.53
 OBJC_CLASSLIST_REFERENCES_$_.60
-_unnamed_cfstring_.81
 _ZL26treatFakeObjectAsRLMObject
-OBJC_CLASSLIST_REFERENCES_$_.90
+OBJC_CLASSLIST_REFERENCES_$_.87
 _ZZ21RLMIsObjectOrSubclassP10objc_classE15FakeObjectClass
 _ZGVZ21RLMIsObjectOrSubclassP10objc_classE15FakeObjectClass
 _ZZ19RLMIsObjectSubclassP10objc_classE15FakeObjectClass
 _ZGVZ19RLMIsObjectSubclassP10objc_classE15FakeObjectClass
-OBJC_CLASSLIST_REFERENCES_$_.95
-_unnamed_cfstring_.131
-_unnamed_cfstring_.133
-OBJC_CLASSLIST_REFERENCES_$_.138
+OBJC_CLASSLIST_REFERENCES_$_.92
+OBJC_SELECTOR_REFERENCES_.114
+OBJC_SELECTOR_REFERENCES_.126
+_unnamed_cfstring_.128
+_unnamed_cfstring_.130
+OBJC_CLASSLIST_REFERENCES_$_.135
+OBJC_SELECTOR_REFERENCES_.147
 OBJC_SELECTOR_REFERENCES_.155
-OBJC_METH_VAR_NAME_.157
-OBJC_SELECTOR_REFERENCES_.158
-OBJC_CLASSLIST_REFERENCES_$_.159
-OBJC_CLASSLIST_REFERENCES_$_.161
-__search<bool (*)(char, char), const char *, const char *>
-__str_find<char, unsigned long, std::__1::char_traits<char>, 18446744073709551615>
+OBJC_CLASSLIST_REFERENCES_$_.157
+OBJC_CLASSLIST_REFERENCES_$_.158
 RLMDynamicCast<RLMListBase>
 RLMDynamicCast<RLMArray>
 RLMIsSubclass
@@ -9099,6 +9069,7 @@ compare_by_name
 validate
 Realm/ObjectStore/schema.cpp
 _ZN5realm5Realm6ConfigaSEOS1_
+_ZL24translate_file_exceptionN5realm10StringDataEb
 _ZN5realm27UninitializedRealmExceptionD1Ev
 _ZZN5realm5Realm13update_schemaENSt3__110unique_ptrINS_6SchemaENS1_14default_deleteIS3_EEEEyEN21WriteTransactionGuardD1Ev
 _ZN5realm24IncorrectThreadExceptionD1Ev
@@ -9117,12 +9088,16 @@ _ZNKSt3__110__function6__funcIZN5realm5Realm13update_schemaENS_10unique_ptrINS2_
 _ZNKSt3__110__function6__funcIZN5realm5Realm13update_schemaENS_10unique_ptrINS2_6SchemaENS_14default_deleteIS5_EEEEyE3$_0NS_9allocatorIS9_EEFvPNS2_5GroupERS5_EE11target_typeEv
 _ZNSt3__120__shared_ptr_pointerIPN5realm5RealmENS_14default_deleteIS2_EENS_9allocatorIS2_EEED1Ev
 _ZNSt3__120__shared_ptr_pointerIPN5realm5RealmENS_14default_deleteIS2_EENS_9allocatorIS2_EEED0Ev
+_ZTSN5realm27UninitializedRealmExceptionE
+_ZTIN5realm27UninitializedRealmExceptionE
+_ZTSN5realm4util4File6ExistsE
+_ZTIN5realm4util4File6ExistsE
+_ZTSN5realm4util4File8NotFoundE
+_ZTIN5realm4util4File8NotFoundE
 _ZTSN5realm20IncompatibleLockFileE
 _ZTIN5realm20IncompatibleLockFileE
 _ZTSN5realm25FileFormatUpgradeRequiredE
 _ZTIN5realm25FileFormatUpgradeRequiredE
-_ZTSN5realm27UninitializedRealmExceptionE
-_ZTIN5realm27UninitializedRealmExceptionE
 _ZTVNSt3__110__function6__funcIZN5realm5Realm13update_schemaENS_10unique_ptrINS2_6SchemaENS_14default_deleteIS5_EEEEyE3$_0NS_9allocatorIS9_EEFvPNS2_5GroupERS5_EEE
 _ZTSNSt3__110__function6__funcIZN5realm5Realm13update_schemaENS_10unique_ptrINS2_6SchemaENS_14default_deleteIS5_EEEEyE3$_0NS_9allocatorIS9_EEFvPNS2_5GroupERS5_EEE
 _ZTSNSt3__110__function6__baseIFvPN5realm5GroupERNS2_6SchemaEEEE
@@ -9134,7 +9109,7 @@ _ZTSNSt3__114default_deleteIN5realm5RealmEEE
 _ZTSZN5realm5Realm13update_schemaENSt3__110unique_ptrINS_6SchemaENS1_14default_deleteIS3_EEEEyE3$_0
 _ZTIZN5realm5Realm13update_schemaENSt3__110unique_ptrINS_6SchemaENS1_14default_deleteIS3_EEEEyE3$_0
 forward<void **>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
 shared_ptr<realm::Realm>
 addressof<std::__1::__shared_ptr_pointer<realm::Realm *, std::__1::default_delete<realm::Realm>, std::__1::allocator<realm::Realm> > >
 addressof<const std::__1::default_delete<realm::Realm> >
@@ -9148,51 +9123,51 @@ move<std::__1::default_delete<realm::Realm> &>
 __shared_ptr_pointer
 forward<realm::Realm *>
 /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp
-__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, realm::Group *, realm::Schema &>
-__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, realm::Group *, realm::Schema &>
-get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &, 0, 0>
-move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &, void>
-__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
-get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&>
-__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&, 0, 0>
-move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&> &>
-move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &> &>
-__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&>
-move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &>
-__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>, void>
-__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> >
-tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> , false>
-forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> >
-forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)> >
-__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, void>
-__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
-forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
-forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
-allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>, void (realm::Group *, realm::Schema &)> >
-forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>, void (realm::Group *, realm::Schema &)> > > >
-forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>, void (realm::Group *, realm::Schema &)> *>
-move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>, void (realm::Group *, realm::Schema &)> > > &>
-allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
-get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&>
-__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&, 0>
-move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&> &>
-__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&>
-__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), void>
-__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
-tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31), false>
-forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
-forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
-move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31) &>
-__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
-function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:246:31)>
+__invoke<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, realm::Group *, realm::Schema &>
+__call<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, realm::Group *, realm::Schema &>
+get<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &, 0, 0>
+move<std::__1::tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+__tuple_leaf<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &, void>
+__tuple_impl<0, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &, const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+forward<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+forward_as_tuple<const std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+get<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
+get<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&>
+__libcpp_compressed_pair_imp<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&, 0, 0>
+move<std::__1::tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&> &>
+move<std::__1::tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &> &>
+__compressed_pair<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&>
+move<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &>
+__tuple_leaf<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>, void>
+__tuple_impl<0, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> &&, std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> >
+tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> , false>
+forward<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> >
+forward_as_tuple<std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)> >
+__tuple_leaf<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, void>
+__tuple_impl<0, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &, const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
+forward<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
+forward_as_tuple<const (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
+allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>, void (realm::Group *, realm::Schema &)> >
+forward<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>, void (realm::Group *, realm::Schema &)> > > >
+forward<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>, void (realm::Group *, realm::Schema &)> *>
+move<std::__1::__allocator_destructor<std::__1::allocator<std::__1::__function::__func<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), std::__1::allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>, void (realm::Group *, realm::Schema &)> > > &>
+allocator<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
+get<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&>
+__libcpp_compressed_pair_imp<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&, 0>
+move<std::__1::tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&> &>
+__compressed_pair<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&>
+__tuple_leaf<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), void>
+__tuple_impl<0, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &&, (lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
+tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31), false>
+forward<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
+forward_as_tuple<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
+move<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31) &>
+__not_null<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
+function<(lambda at /Users/realm/workspace/Package iOS Swift/tightdb_objc/Realm/ObjectStore/shared_realm.cpp:265:31)>
 forward<realm::Schema>
 make_unique<realm::Schema, realm::Schema>
 forward<std::__1::default_delete<realm::SharedGroup> >
@@ -9256,8 +9231,12 @@ IncorrectThreadException
 UninitializedRealmException
 move<std::__1::unique_ptr<realm::Schema, std::__1::default_delete<realm::Schema> > &>
 move<std::__1::shared_ptr<realm::_impl::RealmCoordinator> &>
+__search<bool (*)(char, char), const char *, const char *>
+__str_find<char, unsigned long, std::__1::char_traits<char>, 18446744073709551615>
+translate_file_exception
 refresh
 notify
+write_copy
 compact
 invalidate
 cancel_transaction

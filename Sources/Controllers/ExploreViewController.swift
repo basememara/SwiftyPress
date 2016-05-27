@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ZamzamKit
 
 class ExploreViewController: RealmPostCollectionViewController, Tutorable, Restorable, Trackable {
     
