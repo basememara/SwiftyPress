@@ -18,10 +18,6 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     let service = PostService()
     let cellNibName: String? = "PostTableViewCell"
     
-    var dataView: DataViewable {
-        return tableView
-    }
-    
     var indexPathForSelectedItem: NSIndexPath? {
         return tableView.indexPathForSelectedRow
     }

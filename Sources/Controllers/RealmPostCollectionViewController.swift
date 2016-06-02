@@ -22,10 +22,6 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         return Int(UIScreen.mainScreen().bounds.width / 2.0)
     }()
     
-    var dataView: DataViewable {
-        return collectionView!
-    }
-    
     var indexPathForSelectedItem: NSIndexPath? {
         return collectionView?.indexPathsForSelectedItems()?.first
     }

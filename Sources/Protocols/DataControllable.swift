@@ -41,3 +41,15 @@ extension DataControllable where Self: UIViewController {
         }
     }
 }
+
+extension DataControllable where Self: UITableViewController {
+    var dataView: DataViewable {
+        return tableView
+    }
+}
+
+extension DataControllable where Self: UICollectionViewController {
+    var dataView: DataViewable {
+        return collectionView!
+    }
+}
