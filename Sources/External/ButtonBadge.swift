@@ -15,18 +15,18 @@
 import UIKit
 
 extension UILabel {
-    convenience init(badgeText: String, color: UIColor = .redColor(), fontSize: CGFloat = UIFont.smallSystemFontSize()) {
+    convenience init(badgeText: String, color: UIColor = .red, fontSize: CGFloat = .smallSystemFontSize) {
         self.init()
         text = " \(badgeText) "
-        textColor = .whiteColor()
+        textColor = .white
         backgroundColor = color
 
-        font = .systemFontOfSize(fontSize)
+        font = .systemFont(ofSize: fontSize)
         layer.cornerRadius = fontSize * CGFloat(0.6)
         clipsToBounds = true
 
         translatesAutoresizingMaskIntoConstraints = false
-        addConstraint(NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .GreaterThanOrEqual, toItem: self, attribute: .Height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: self, attribute: .height, multiplier: 1, constant: 0))
     }
 }
 
@@ -40,19 +40,19 @@ extension UIButton {
     /// removes other title attributes
     var titleSize: CGFloat {
         get {
-            let titleFont = attributedTitleForState(.Normal)?.attribute(NSFontAttributeName, atIndex: 0, effectiveRange: nil) as? UIFont
-            return titleFont?.pointSize ?? UIFont.buttonFontSize()
+            let titleFont = attributedTitle(for: .normal)?.attribute(NSFontAttributeName, at: 0, effectiveRange: nil) as? UIFont
+            return titleFont?.pointSize ?? UIFont.buttonFontSize
         }
         set {
             // TODO: use current attributedTitleForState(.Normal) if defined
-            if UIFont.buttonFontSize() == newValue || 0 == newValue {
-                setTitle(currentTitle, forState: .Normal)
+            if UIFont.buttonFontSize == newValue || 0 == newValue {
+                setTitle(currentTitle, for: .normal)
             }
             else {
                 let attrTitle = NSAttributedString(string: currentTitle ?? "", attributes:
-                    [NSFontAttributeName: UIFont.systemFontOfSize(newValue), NSForegroundColorAttributeName: currentTitleColor]
+                    [NSFontAttributeName: UIFont.systemFont(ofSize: newValue), NSForegroundColorAttributeName: currentTitleColor]
                 )
-                setAttributedTitle(attrTitle, forState: .Normal)
+                setAttributedTitle(attrTitle, for: .normal)
             }
 
             if rounded {
@@ -61,26 +61,26 @@ extension UIButton {
         }
     }
 
-    func roundWithTitleSize(size: CGFloat) {
+    func roundWithTitleSize(_ size: CGFloat) {
         let padding = size / 4
         layer.cornerRadius = padding + size * 1.2 / 2
         let sidePadding = padding * 1.5
         contentEdgeInsets = UIEdgeInsets(top: padding, left: sidePadding, bottom: padding, right: sidePadding)
 
         if size.isZero {
-            backgroundColor = .clearColor()
-            setTitleColor(tintColor, forState: .Normal)
+            backgroundColor = .clear
+            setTitleColor(tintColor, for: .normal)
         }
         else {
             backgroundColor = tintColor
-            let currentTitleColor = titleColorForState(.Normal)
+            let currentTitleColor = titleColor(for: .normal)
             if currentTitleColor == nil || currentTitleColor == tintColor {
-                setTitleColor(.whiteColor(), forState: .Normal)
+                setTitleColor(.white, for: .normal)
             }
         }
     }
 
-    override public func tintColorDidChange() {
+    override open func tintColorDidChange() {
         super.tintColorDidChange()
         if rounded {
             backgroundColor = tintColor
@@ -89,34 +89,34 @@ extension UIButton {
 }
 
 extension UIBarButtonItem {
-    convenience init(badge: String?, button: UIButton, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
-        button.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+    convenience init(badge: String?, button: UIButton, target: AnyObject?, action: Selector, color: UIColor = .red) {
+        button.addTarget(target, action: action, for: .touchUpInside)
         button.sizeToFit()
         
         let badgeLabel = UILabel(badgeText: badge ?? "", color: color)
         button.addSubview(badgeLabel)
-        button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .Top, relatedBy: .Equal, toItem: button, attribute: .Top, multiplier: 1, constant: 0))
-        button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .CenterX, relatedBy: .Equal, toItem: button, attribute: .Trailing, multiplier: 1, constant: 0))
+        button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .top, relatedBy: .equal, toItem: button, attribute: .top, multiplier: 1, constant: 0))
+        button.addConstraint(NSLayoutConstraint(item: badgeLabel, attribute: .centerX, relatedBy: .equal, toItem: button, attribute: .trailing, multiplier: 1, constant: 0))
         if nil == badge {
-            badgeLabel.hidden = true
+            badgeLabel.isHidden = true
         }
         badgeLabel.tag = UIBarButtonItem.badgeTag
 
         self.init(customView: button)
     }
     
-    convenience init(badge: String?, image: UIImage, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
-        let button = UIButton(type: .Custom)
-        button.frame = CGRectMake(0, 0, image.size.width, image.size.height)
-        button.setBackgroundImage(image, forState: .Normal)
+    convenience init(badge: String?, image: UIImage, target: AnyObject?, action: Selector, color: UIColor = .red) {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        button.setBackgroundImage(image, for: .normal)
 
         self.init(badge: badge, button: button, target: target, action: action, color: color)
     }
     
-    convenience init(badge: String?, title: String, target: AnyObject?, action: Selector, color: UIColor = .redColor()) {
-        let button = UIButton(type: .System)
-        button.setTitle(title, forState: .Normal)
-        button.titleLabel?.font = .systemFontOfSize(UIFont.buttonFontSize())
+    convenience init(badge: String?, title: String, target: AnyObject?, action: Selector, color: UIColor = .red) {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: UIFont.buttonFontSize)
 
         self.init(badge: badge, button: button, target: target, action: action, color: color)
     }
@@ -130,20 +130,20 @@ extension UIBarButtonItem {
     }
 
     var badgeString: String? {
-        get { return badgeLabel?.text?.stringByTrimmingCharactersInSet(.whitespaceCharacterSet()) }
+        get { return badgeLabel?.text?.trimmingCharacters(in: .whitespaces) }
         set {
             if let badgeLabel = badgeLabel {
                 badgeLabel.text = nil == newValue ? nil : " \(newValue!) "
                 badgeLabel.sizeToFit()
-                badgeLabel.hidden = nil == newValue
+                badgeLabel.isHidden = nil == newValue
             }
         }
     }
 
     var badgedTitle: String? {
-        get { return badgedButton?.titleForState(.Normal) }
-        set { badgedButton?.setTitle(newValue, forState: .Normal); badgedButton?.sizeToFit() }
+        get { return badgedButton?.title(for: .normal) }
+        set { badgedButton?.setTitle(newValue, for: .normal); badgedButton?.sizeToFit() }
     }
 
-    private static let badgeTag = 7373
+    fileprivate static let badgeTag = 7373
 }

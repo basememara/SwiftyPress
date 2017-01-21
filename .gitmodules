@@ -19,13 +19,10 @@
 	url = https://github.com/ZamzamInc/CHTCollectionViewWaterfallLayout.git
 [submodule "Carthage/Checkouts/Stencil"]
 	path = Carthage/Checkouts/Stencil
-	url = https://github.com/ZamzamInc/Stencil.git
+	url = https://github.com/kylef/Stencil.git
 [submodule "Carthage/Checkouts/JASON"]
 	path = Carthage/Checkouts/JASON
 	url = https://github.com/delba/JASON.git
-[submodule "Carthage/Checkouts/AlertOnboarding"]
-	path = Carthage/Checkouts/AlertOnboarding
-	url = https://github.com/ZamzamInc/AlertOnboarding.git
 [submodule "Carthage/Checkouts/Async"]
 	path = Carthage/Checkouts/Async
 	url = https://github.com/duemunk/Async.git
