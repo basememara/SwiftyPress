@@ -12,6 +12,42 @@
 		8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */; };
 		8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A781CDF8D7F00871275 /* RealmControllable.swift */; };
 		8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */; };
+		8B16BA391E33EB2300CF166D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2D1E33EB2300CF166D /* Alamofire.framework */; };
+		8B16BA3A1E33EB2300CF166D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2E1E33EB2300CF166D /* Async.framework */; };
+		8B16BA3B1E33EB2300CF166D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2F1E33EB2300CF166D /* JASON.framework */; };
+		8B16BA3C1E33EB2300CF166D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA301E33EB2300CF166D /* Kingfisher.framework */; };
+		8B16BA3D1E33EB2300CF166D /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA311E33EB2300CF166D /* PathKit.framework */; };
+		8B16BA3E1E33EB2300CF166D /* RateLimit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA321E33EB2300CF166D /* RateLimit.framework */; };
+		8B16BA3F1E33EB2300CF166D /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA331E33EB2300CF166D /* Spectre.framework */; };
+		8B16BA401E33EB2300CF166D /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA341E33EB2300CF166D /* Stencil.framework */; };
+		8B16BA411E33EB2300CF166D /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA351E33EB2300CF166D /* SwiftyTimer.framework */; };
+		8B16BA421E33EB2300CF166D /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */; };
+		8B16BA431E33EB2300CF166D /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA371E33EB2300CF166D /* Timepiece.framework */; };
+		8B16BA441E33EB2300CF166D /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA381E33EB2300CF166D /* ZamzamKit.framework */; };
+		8B16BA451E33EB4E00CF166D /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
+		8B16BA461E33EB4E00CF166D /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B16BA4C1E33EB6500CF166D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4A1E33EB6500CF166D /* Realm.framework */; };
+		8B16BA4D1E33EB6500CF166D /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4A1E33EB6500CF166D /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B16BA4E1E33EB6500CF166D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4B1E33EB6500CF166D /* RealmSwift.framework */; };
+		8B16BA4F1E33EB6500CF166D /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4B1E33EB6500CF166D /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B16BA501E33EB8400CF166D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2D1E33EB2300CF166D /* Alamofire.framework */; };
+		8B16BA511E33EB8400CF166D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2E1E33EB2300CF166D /* Async.framework */; };
+		8B16BA521E33EB8400CF166D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA2F1E33EB2300CF166D /* JASON.framework */; };
+		8B16BA531E33EB8400CF166D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA301E33EB2300CF166D /* Kingfisher.framework */; };
+		8B16BA541E33EB8400CF166D /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA311E33EB2300CF166D /* PathKit.framework */; };
+		8B16BA551E33EB8400CF166D /* RateLimit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA321E33EB2300CF166D /* RateLimit.framework */; };
+		8B16BA561E33EB8400CF166D /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA331E33EB2300CF166D /* Spectre.framework */; };
+		8B16BA571E33EB8400CF166D /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA341E33EB2300CF166D /* Stencil.framework */; };
+		8B16BA581E33EB8400CF166D /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA351E33EB2300CF166D /* SwiftyTimer.framework */; };
+		8B16BA591E33EB8400CF166D /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */; };
+		8B16BA5A1E33EB8400CF166D /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA371E33EB2300CF166D /* Timepiece.framework */; };
+		8B16BA5B1E33EB8400CF166D /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA381E33EB2300CF166D /* ZamzamKit.framework */; };
+		8B16BA631E33ED5800CF166D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA5C1E33EC0F00CF166D /* libz.tbd */; };
+		8B16BA641E33ED6000CF166D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA5E1E33EC2000CF166D /* libsqlite3.tbd */; };
+		8B16BA651E33ED6A00CF166D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */; };
+		8B16BA661E33ED6F00CF166D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA611E33EC3700CF166D /* CoreData.framework */; };
+		8B16BA671E33ED8E00CF166D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4A1E33EB6500CF166D /* Realm.framework */; };
+		8B16BA681E33ED8E00CF166D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA4B1E33EB6500CF166D /* RealmSwift.framework */; };
 		8B1E51861CD9D8A500BB30CB /* PressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E51851CD9D8A500BB30CB /* PressManager.swift */; };
 		8B1E51881CD9D98700BB30CB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E51871CD9D98700BB30CB /* AppConstants.swift */; };
 		8B20B21B1CAE471400CA693B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B20B21A1CAE471400CA693B /* Media.xcassets */; };
@@ -42,12 +78,6 @@
 		8B3FAD6F1CAC4473006E90B6 /* PostCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3FAD6B1CAC4473006E90B6 /* PostCollectionViewCell.xib */; };
 		8B3FAD701CAC4473006E90B6 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3FAD6C1CAC4473006E90B6 /* PostTableViewCell.swift */; };
 		8B3FAD711CAC4473006E90B6 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3FAD6D1CAC4473006E90B6 /* PostTableViewCell.xib */; };
-		8B411F011CD811D500623CAD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411EFF1CD811D500623CAD /* Realm.framework */; };
-		8B411F021CD811D500623CAD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411F001CD811D500623CAD /* RealmSwift.framework */; };
-		8B411F051CD811E100623CAD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411F031CD811E100623CAD /* Realm.framework */; };
-		8B411F061CD811E100623CAD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411F031CD811E100623CAD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8B411F071CD811E100623CAD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411F041CD811E100623CAD /* RealmSwift.framework */; };
-		8B411F081CD811E100623CAD /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B411F041CD811E100623CAD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B411F2A1CD845A900623CAD /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B411F291CD845A900623CAD /* Alamofire.swift */; };
 		8B411F2C1CD845E500623CAD /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B411F2B1CD845E500623CAD /* JSONKeys.swift */; };
 		8B5EDAD71CDC18C100F1C81C /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */; };
@@ -70,18 +100,6 @@
 		8B79687D1CDDFC9800710CA5 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687C1CDDFC9800710CA5 /* Page.swift */; };
 		8B79687F1CDE147000710CA5 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B79687E1CDE147000710CA5 /* Realm.swift */; };
 		8B7C82881CE04A5300A6DF30 /* ButtonBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */; };
-		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
-		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */; };
-		8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */; };
-		8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */; };
-		8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */; };
-		8B8D920A1CE51E7E00C60A0D /* RateLimit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6F1CE4FEC0003A89B5 /* RateLimit.framework */; };
-		8B8D920B1CE51E7E00C60A0D /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB701CE4FEC0003A89B5 /* Stencil.framework */; };
-		8B8D920C1CE51E7E00C60A0D /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB711CE4FEC0003A89B5 /* SwiftyTimer.framework */; };
-		8B8D920D1CE51E7E00C60A0D /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB721CE4FEC0003A89B5 /* SwiftyUserDefaults.framework */; };
-		8B8D920E1CE51E7E00C60A0D /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB731CE4FEC0003A89B5 /* Timepiece.framework */; };
-		8B8D920F1CE51E7E00C60A0D /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB741CE4FEC0003A89B5 /* ZamzamKit.framework */; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
 		8B8E687C1CDCB31700171E14 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687B1CDCB31700171E14 /* CategoryService.swift */; };
 		8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687D1CDCB52B00171E14 /* MenuService.swift */; };
@@ -98,21 +116,7 @@
 		8B8EEB321CE43003003A89B5 /* GAILogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB281CE43003003A89B5 /* GAILogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8EEB331CE43003003A89B5 /* GAITrackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8EEB341CE43003003A89B5 /* GAITracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB2A1CE43003003A89B5 /* GAITracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B8EEB361CE43036003A89B5 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */; };
-		8B8EEB391CE431F2003A89B5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */; };
-		8B8EEB3D1CE43278003A89B5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB3C1CE43278003A89B5 /* libz.tbd */; };
-		8B8EEB401CE4370B003A89B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB3A1CE43238003A89B5 /* CoreData.framework */; };
 		8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEB411CE43961003A89B5 /* Trackable.swift */; };
-		8B8EEB751CE4FEC0003A89B5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */; };
-		8B8EEB771CE4FEC0003A89B5 /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */; };
-		8B8EEB781CE4FEC0003A89B5 /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */; };
-		8B8EEB791CE4FEC0003A89B5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */; };
-		8B8EEB7A1CE4FEC0003A89B5 /* RateLimit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6F1CE4FEC0003A89B5 /* RateLimit.framework */; };
-		8B8EEB7B1CE4FEC0003A89B5 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB701CE4FEC0003A89B5 /* Stencil.framework */; };
-		8B8EEB7C1CE4FEC0003A89B5 /* SwiftyTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB711CE4FEC0003A89B5 /* SwiftyTimer.framework */; };
-		8B8EEB7D1CE4FEC0003A89B5 /* SwiftyUserDefaults.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB721CE4FEC0003A89B5 /* SwiftyUserDefaults.framework */; };
-		8B8EEB7E1CE4FEC0003A89B5 /* Timepiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB731CE4FEC0003A89B5 /* Timepiece.framework */; };
-		8B8EEB7F1CE4FEC0003A89B5 /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB741CE4FEC0003A89B5 /* ZamzamKit.framework */; };
 		8B93F9441CE63EBF006E7003 /* TermService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93F9431CE63EBF006E7003 /* TermService.swift */; };
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
@@ -122,6 +126,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8B16BA471E33EB4E00CF166D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B335FA71CA880840033B2AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B335FB11CA880A20033B2AE;
+			remoteInfo = "SwiftyPress iOS";
+		};
 		8B335FF71CA884C80033B2AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8B335FA71CA880840033B2AE /* Project object */;
@@ -143,16 +154,22 @@
 			remoteGlobalIDString = 8B3360241CA885180033B2AE;
 			remoteInfo = "SwiftyPress Example Watch";
 		};
-		8B8AC37A1CD49CDF00D98B00 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B335FA71CA880840033B2AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8B335FB11CA880A20033B2AE;
-			remoteInfo = "SwiftyPress iOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8B16BA491E33EB4E00CF166D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8B16BA4D1E33EB6500CF166D /* Realm.framework in Embed Frameworks */,
+				8B16BA461E33EB4E00CF166D /* SwiftyPress.framework in Embed Frameworks */,
+				8B16BA4F1E33EB6500CF166D /* RealmSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8B33604B1CA885180033B2AE /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,19 +192,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8B8AC37C1CD49CDF00D98B00 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8B411F061CD811E100623CAD /* Realm.framework in Embed Frameworks */,
-				8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */,
-				8B411F081CD811E100623CAD /* RealmSwift.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -196,10 +200,26 @@
 		8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostCollectionViewController.swift; sourceTree = "<group>"; };
 		8B162A781CDF8D7F00871275 /* RealmControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmControllable.swift; sourceTree = "<group>"; };
 		8B162A7A1CDF90F800871275 /* RealmPostTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostTableViewController.swift; sourceTree = "<group>"; };
+		8B16BA2D1E33EB2300CF166D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		8B16BA2E1E33EB2300CF166D /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/iOS/Async.framework; sourceTree = "<group>"; };
+		8B16BA2F1E33EB2300CF166D /* JASON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JASON.framework; path = Carthage/Build/iOS/JASON.framework; sourceTree = "<group>"; };
+		8B16BA301E33EB2300CF166D /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		8B16BA311E33EB2300CF166D /* PathKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PathKit.framework; path = Carthage/Build/iOS/PathKit.framework; sourceTree = "<group>"; };
+		8B16BA321E33EB2300CF166D /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = Carthage/Build/iOS/RateLimit.framework; sourceTree = "<group>"; };
+		8B16BA331E33EB2300CF166D /* Spectre.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spectre.framework; path = Carthage/Build/iOS/Spectre.framework; sourceTree = "<group>"; };
+		8B16BA341E33EB2300CF166D /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/iOS/Stencil.framework; sourceTree = "<group>"; };
+		8B16BA351E33EB2300CF166D /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = Carthage/Build/iOS/SwiftyTimer.framework; sourceTree = "<group>"; };
+		8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
+		8B16BA371E33EB2300CF166D /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = Carthage/Build/iOS/Timepiece.framework; sourceTree = "<group>"; };
+		8B16BA381E33EB2300CF166D /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = Carthage/Build/iOS/ZamzamKit.framework; sourceTree = "<group>"; };
+		8B16BA4A1E33EB6500CF166D /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Frameworks/realm-swift/ios/Realm.framework"; sourceTree = "<group>"; };
+		8B16BA4B1E33EB6500CF166D /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Frameworks/realm-swift/ios/RealmSwift.framework"; sourceTree = "<group>"; };
+		8B16BA5C1E33EC0F00CF166D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		8B16BA5E1E33EC2000CF166D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		8B16BA611E33EC3700CF166D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		8B1E51851CD9D8A500BB30CB /* PressManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressManager.swift; sourceTree = "<group>"; };
 		8B1E51871CD9D98700BB30CB /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		8B20B21A1CAE471400CA693B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		8B20B21C1CAE4A1900CA693B /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Kingfisher.framework"; sourceTree = "<group>"; };
 		8B20B21E1CAE4A5A00CA693B /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		8B335FB21CA880A20033B2AE /* SwiftyPress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B335FB51CA880A20033B2AE /* SwiftyPress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftyPress.h; sourceTree = "<group>"; };
@@ -241,16 +261,8 @@
 		8B3FAD6B1CAC4473006E90B6 /* PostCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCollectionViewCell.xib; sourceTree = "<group>"; };
 		8B3FAD6C1CAC4473006E90B6 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8B3FAD6D1CAC4473006E90B6 /* PostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
-		8B411EFF1CD811D500623CAD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Frameworks/realm-swift/ios/Realm.framework"; sourceTree = "<group>"; };
-		8B411F001CD811D500623CAD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Frameworks/realm-swift/ios/RealmSwift.framework"; sourceTree = "<group>"; };
-		8B411F031CD811E100623CAD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Frameworks/realm-swift/ios/Realm.framework"; sourceTree = "<group>"; };
-		8B411F041CD811E100623CAD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Frameworks/realm-swift/ios/RealmSwift.framework"; sourceTree = "<group>"; };
 		8B411F291CD845A900623CAD /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		8B411F2B1CD845E500623CAD /* JSONKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
-		8B4CFAE61CABEB7E00D2B1D7 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Timepiece.framework"; sourceTree = "<group>"; };
-		8B5E3A011CD80DA2006ECF8E /* JASON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JASON.framework; path = "Carthage/Checkouts/JASON/build/Debug-iphoneos/JASON.framework"; sourceTree = "<group>"; };
-		8B5E3A021CD80DA2006ECF8E /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Stencil.framework"; sourceTree = "<group>"; };
-		8B5E3A0C1CD80E0F006ECF8E /* JASON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JASON.framework; path = "Carthage/Checkouts/JASON/build/Debug-iphoneos/JASON.framework"; sourceTree = "<group>"; };
 		8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		8B5EDAD81CDC3F2200F1C81C /* Categories.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
 		8B5EDADA1CDC442200F1C81C /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
@@ -268,7 +280,6 @@
 		8B63E4341CDBBAAC0053C060 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataControllable.swift; sourceTree = "<group>"; };
 		8B6D0C301CAFBC8700B471CC /* DataViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewable.swift; sourceTree = "<group>"; };
-		8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/ZamzamKit.framework"; sourceTree = "<group>"; };
 		8B79687C1CDDFC9800710CA5 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8B79687E1CDE147000710CA5 /* Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBadge.swift; sourceTree = "<group>"; };
@@ -289,32 +300,12 @@
 		8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAITrackedViewController.h; sourceTree = "<group>"; };
 		8B8EEB2A1CE43003003A89B5 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAITracker.h; sourceTree = "<group>"; };
 		8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Frameworks/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
-		8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
-		8B8EEB3A1CE43238003A89B5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		8B8EEB3C1CE43278003A89B5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		8B8EEB411CE43961003A89B5 /* Trackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackable.swift; sourceTree = "<group>"; };
-		8B8EEB441CE4C732003A89B5 /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = "Carthage/Checkouts/RateLimit/build/Debug-iphoneos/RateLimit.framework"; sourceTree = "<group>"; };
-		8B8EEB461CE4C762003A89B5 /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = "Carthage/Checkouts/RateLimit/build/Debug-iphoneos/RateLimit.framework"; sourceTree = "<group>"; };
-		8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/iOS/Async.framework; sourceTree = "<group>"; };
-		8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JASON.framework; path = Carthage/Build/iOS/JASON.framework; sourceTree = "<group>"; };
-		8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		8B8EEB6F1CE4FEC0003A89B5 /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = Carthage/Build/iOS/RateLimit.framework; sourceTree = "<group>"; };
-		8B8EEB701CE4FEC0003A89B5 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/iOS/Stencil.framework; sourceTree = "<group>"; };
-		8B8EEB711CE4FEC0003A89B5 /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = Carthage/Build/iOS/SwiftyTimer.framework; sourceTree = "<group>"; };
-		8B8EEB721CE4FEC0003A89B5 /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = Carthage/Build/iOS/SwiftyUserDefaults.framework; sourceTree = "<group>"; };
-		8B8EEB731CE4FEC0003A89B5 /* Timepiece.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Timepiece.framework; path = Carthage/Build/iOS/Timepiece.framework; sourceTree = "<group>"; };
-		8B8EEB741CE4FEC0003A89B5 /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = Carthage/Build/iOS/ZamzamKit.framework; sourceTree = "<group>"; };
 		8B93F9431CE63EBF006E7003 /* TermService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermService.swift; sourceTree = "<group>"; };
-		8BA904F81CAFCCEC0023354F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
-		8BA904F91CAFCCEC0023354F /* SwiftyTimer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyTimer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyTimer.framework"; sourceTree = "<group>"; };
-		8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyUserDefaults.framework; path = "../../../../Library/Developer/Xcode/DerivedData/SwiftyPress-fgifftwqwddyynalnhydrgghymzg/Build/Products/Debug-iphonesimulator/SwiftyUserDefaults.framework"; sourceTree = "<group>"; };
 		8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		8BD08EB11CE27D2E0051080A /* Site */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Site; sourceTree = "<group>"; };
-		8BD08EBF1CE2914F0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
-		8BD08EC11CE2916D0051080A /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = "Carthage/Checkouts/Async/build/Debug-iphoneos/Async.framework"; sourceTree = "<group>"; };
 		8BE9DEE91CE67E610045A2F3 /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,22 +314,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B8EEB3D1CE43278003A89B5 /* libz.tbd in Frameworks */,
-				8B8EEB391CE431F2003A89B5 /* libsqlite3.tbd in Frameworks */,
-				8B8EEB361CE43036003A89B5 /* libGoogleAnalyticsServices.a in Frameworks */,
-				8B8EEB401CE4370B003A89B5 /* CoreData.framework in Frameworks */,
-				8B411F011CD811D500623CAD /* Realm.framework in Frameworks */,
-				8B411F021CD811D500623CAD /* RealmSwift.framework in Frameworks */,
-				8B8EEB751CE4FEC0003A89B5 /* Alamofire.framework in Frameworks */,
-				8B8EEB771CE4FEC0003A89B5 /* Async.framework in Frameworks */,
-				8B8EEB781CE4FEC0003A89B5 /* JASON.framework in Frameworks */,
-				8B8EEB791CE4FEC0003A89B5 /* Kingfisher.framework in Frameworks */,
-				8B8EEB7A1CE4FEC0003A89B5 /* RateLimit.framework in Frameworks */,
-				8B8EEB7B1CE4FEC0003A89B5 /* Stencil.framework in Frameworks */,
-				8B8EEB7C1CE4FEC0003A89B5 /* SwiftyTimer.framework in Frameworks */,
-				8B8EEB7D1CE4FEC0003A89B5 /* SwiftyUserDefaults.framework in Frameworks */,
-				8B8EEB7E1CE4FEC0003A89B5 /* Timepiece.framework in Frameworks */,
-				8B8EEB7F1CE4FEC0003A89B5 /* ZamzamKit.framework in Frameworks */,
+				8B16BA631E33ED5800CF166D /* libz.tbd in Frameworks */,
+				8B16BA641E33ED6000CF166D /* libsqlite3.tbd in Frameworks */,
+				8B16BA651E33ED6A00CF166D /* libGoogleAnalyticsServices.a in Frameworks */,
+				8B16BA661E33ED6F00CF166D /* CoreData.framework in Frameworks */,
+				8B16BA671E33ED8E00CF166D /* Realm.framework in Frameworks */,
+				8B16BA681E33ED8E00CF166D /* RealmSwift.framework in Frameworks */,
+				8B16BA391E33EB2300CF166D /* Alamofire.framework in Frameworks */,
+				8B16BA3A1E33EB2300CF166D /* Async.framework in Frameworks */,
+				8B16BA3B1E33EB2300CF166D /* JASON.framework in Frameworks */,
+				8B16BA3C1E33EB2300CF166D /* Kingfisher.framework in Frameworks */,
+				8B16BA3D1E33EB2300CF166D /* PathKit.framework in Frameworks */,
+				8B16BA3E1E33EB2300CF166D /* RateLimit.framework in Frameworks */,
+				8B16BA3F1E33EB2300CF166D /* Spectre.framework in Frameworks */,
+				8B16BA401E33EB2300CF166D /* Stencil.framework in Frameworks */,
+				8B16BA411E33EB2300CF166D /* SwiftyTimer.framework in Frameworks */,
+				8B16BA421E33EB2300CF166D /* SwiftyUserDefaults.framework in Frameworks */,
+				8B16BA431E33EB2300CF166D /* Timepiece.framework in Frameworks */,
+				8B16BA441E33EB2300CF166D /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,19 +347,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */,
-				8B411F051CD811E100623CAD /* Realm.framework in Frameworks */,
-				8B411F071CD811E100623CAD /* RealmSwift.framework in Frameworks */,
-				8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */,
-				8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */,
-				8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */,
-				8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */,
-				8B8D920A1CE51E7E00C60A0D /* RateLimit.framework in Frameworks */,
-				8B8D920B1CE51E7E00C60A0D /* Stencil.framework in Frameworks */,
-				8B8D920C1CE51E7E00C60A0D /* SwiftyTimer.framework in Frameworks */,
-				8B8D920D1CE51E7E00C60A0D /* SwiftyUserDefaults.framework in Frameworks */,
-				8B8D920E1CE51E7E00C60A0D /* Timepiece.framework in Frameworks */,
-				8B8D920F1CE51E7E00C60A0D /* ZamzamKit.framework in Frameworks */,
+				8B16BA501E33EB8400CF166D /* Alamofire.framework in Frameworks */,
+				8B16BA511E33EB8400CF166D /* Async.framework in Frameworks */,
+				8B16BA521E33EB8400CF166D /* JASON.framework in Frameworks */,
+				8B16BA531E33EB8400CF166D /* Kingfisher.framework in Frameworks */,
+				8B16BA541E33EB8400CF166D /* PathKit.framework in Frameworks */,
+				8B16BA551E33EB8400CF166D /* RateLimit.framework in Frameworks */,
+				8B16BA561E33EB8400CF166D /* Spectre.framework in Frameworks */,
+				8B16BA571E33EB8400CF166D /* Stencil.framework in Frameworks */,
+				8B16BA581E33EB8400CF166D /* SwiftyTimer.framework in Frameworks */,
+				8B16BA591E33EB8400CF166D /* SwiftyUserDefaults.framework in Frameworks */,
+				8B16BA5A1E33EB8400CF166D /* Timepiece.framework in Frameworks */,
+				8B16BA5B1E33EB8400CF166D /* ZamzamKit.framework in Frameworks */,
+				8B16BA4C1E33EB6500CF166D /* Realm.framework in Frameworks */,
+				8B16BA451E33EB4E00CF166D /* SwiftyPress.framework in Frameworks */,
+				8B16BA4E1E33EB6500CF166D /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,37 +569,24 @@
 		8B3360881CA88F850033B2AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */,
-				8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */,
-				8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */,
-				8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */,
-				8B8EEB6F1CE4FEC0003A89B5 /* RateLimit.framework */,
-				8B8EEB701CE4FEC0003A89B5 /* Stencil.framework */,
-				8B8EEB711CE4FEC0003A89B5 /* SwiftyTimer.framework */,
-				8B8EEB721CE4FEC0003A89B5 /* SwiftyUserDefaults.framework */,
-				8B8EEB731CE4FEC0003A89B5 /* Timepiece.framework */,
-				8B8EEB741CE4FEC0003A89B5 /* ZamzamKit.framework */,
-				8B8EEB461CE4C762003A89B5 /* RateLimit.framework */,
-				8B8EEB441CE4C732003A89B5 /* RateLimit.framework */,
-				8B8EEB3C1CE43278003A89B5 /* libz.tbd */,
-				8B8EEB3A1CE43238003A89B5 /* CoreData.framework */,
-				8B8EEB381CE431F2003A89B5 /* libsqlite3.tbd */,
+				8B16BA5E1E33EC2000CF166D /* libsqlite3.tbd */,
+				8B16BA5C1E33EC0F00CF166D /* libz.tbd */,
 				8B8EEB371CE43041003A89B5 /* GoogleAnalyticsService */,
-				8BD08EC11CE2916D0051080A /* Async.framework */,
-				8BD08EBF1CE2914F0051080A /* Async.framework */,
-				8B411F031CD811E100623CAD /* Realm.framework */,
-				8B411F041CD811E100623CAD /* RealmSwift.framework */,
-				8B411EFF1CD811D500623CAD /* Realm.framework */,
-				8B411F001CD811D500623CAD /* RealmSwift.framework */,
-				8B5E3A0C1CD80E0F006ECF8E /* JASON.framework */,
-				8B5E3A011CD80DA2006ECF8E /* JASON.framework */,
-				8B5E3A021CD80DA2006ECF8E /* Stencil.framework */,
-				8BA904F81CAFCCEC0023354F /* Alamofire.framework */,
-				8BA904F91CAFCCEC0023354F /* SwiftyTimer.framework */,
-				8BA904FA1CAFCCEC0023354F /* SwiftyUserDefaults.framework */,
-				8B20B21C1CAE4A1900CA693B /* Kingfisher.framework */,
-				8B4CFAE61CABEB7E00D2B1D7 /* Timepiece.framework */,
-				8B6D6D211CAB1D6C00F16EF6 /* ZamzamKit.framework */,
+				8B16BA611E33EC3700CF166D /* CoreData.framework */,
+				8B16BA4A1E33EB6500CF166D /* Realm.framework */,
+				8B16BA4B1E33EB6500CF166D /* RealmSwift.framework */,
+				8B16BA2D1E33EB2300CF166D /* Alamofire.framework */,
+				8B16BA2E1E33EB2300CF166D /* Async.framework */,
+				8B16BA2F1E33EB2300CF166D /* JASON.framework */,
+				8B16BA301E33EB2300CF166D /* Kingfisher.framework */,
+				8B16BA311E33EB2300CF166D /* PathKit.framework */,
+				8B16BA321E33EB2300CF166D /* RateLimit.framework */,
+				8B16BA331E33EB2300CF166D /* Spectre.framework */,
+				8B16BA341E33EB2300CF166D /* Stencil.framework */,
+				8B16BA351E33EB2300CF166D /* SwiftyTimer.framework */,
+				8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */,
+				8B16BA371E33EB2300CF166D /* Timepiece.framework */,
+				8B16BA381E33EB2300CF166D /* ZamzamKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -747,15 +729,15 @@
 				8B33600C1CA884F30033B2AE /* Frameworks */,
 				8B33600D1CA884F30033B2AE /* Resources */,
 				8B33604F1CA885180033B2AE /* Embed Watch Content */,
-				8B8AC37C1CD49CDF00D98B00 /* Embed Frameworks */,
 				8B59661D1CD5EC4F00738A12 /* Run Carthage Script */,
 				8B411F091CD811EB00623CAD /* Run Realm Script */,
+				8B16BA491E33EB4E00CF166D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8B3360461CA885180033B2AE /* PBXTargetDependency */,
-				8B8AC37B1CD49CDF00D98B00 /* PBXTargetDependency */,
+				8B16BA481E33EB4E00CF166D /* PBXTargetDependency */,
 			);
 			name = "SwiftyPress Example";
 			productName = "SwiftyPress Example";
@@ -807,6 +789,7 @@
 				TargetAttributes = {
 					8B335FB11CA880A20033B2AE = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ZYJTUJP7C7;
 						LastSwiftMigration = 0820;
 					};
 					8B335FF01CA884C70033B2AE = {
@@ -927,16 +910,18 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ZamzamKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Timepiece.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyTimer.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/JASON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Async.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JASON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PathKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RateLimit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Spectre.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyTimer.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Timepiece.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ZamzamKit.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
@@ -1028,6 +1013,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8B16BA481E33EB4E00CF166D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B335FB11CA880A20033B2AE /* SwiftyPress iOS */;
+			targetProxy = 8B16BA471E33EB4E00CF166D /* PBXContainerItemProxy */;
+		};
 		8B335FF81CA884C80033B2AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8B335FB11CA880A20033B2AE /* SwiftyPress iOS */;
@@ -1042,11 +1032,6 @@
 			isa = PBXTargetDependency;
 			target = 8B3360241CA885180033B2AE /* SwiftyPress Example Watch */;
 			targetProxy = 8B3360451CA885180033B2AE /* PBXContainerItemProxy */;
-		};
-		8B8AC37B1CD49CDF00D98B00 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8B335FB11CA880A20033B2AE /* SwiftyPress iOS */;
-			targetProxy = 8B8AC37A1CD49CDF00D98B00 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1152,6 +1137,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ZYJTUJP7C7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1220,6 +1206,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = ZYJTUJP7C7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1396,6 +1383,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "SwiftyPress Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftyPress-Example";
@@ -1448,6 +1439,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "SwiftyPress Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/GoogleAnalyticsServicesiOS",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftyPress-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
