@@ -815,14 +815,17 @@
 					8B33600E1CA884F30033B2AE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ZYJTUJP7C7;
+						LastSwiftMigration = 0820;
 					};
 					8B3360241CA885180033B2AE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ZYJTUJP7C7;
+						LastSwiftMigration = 0820;
 					};
 					8B3360301CA885180033B2AE = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = ZYJTUJP7C7;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -934,7 +937,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Async.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RateLimit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlertOnboarding_iOS.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
@@ -1400,6 +1402,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1449,6 +1452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.zamzam.SwiftyPress-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1501,6 +1505,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
@@ -1544,6 +1549,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1597,6 +1603,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 			};
 			name = Debug;
@@ -1641,6 +1648,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 			};
