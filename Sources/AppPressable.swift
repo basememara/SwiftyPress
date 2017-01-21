@@ -25,7 +25,7 @@ public extension AppPressable {
 
      - returns: False if the app cannot handle the URL resource or continue a user activity, otherwise return true. The return value is ignored if the app is launched as a result of a remote notification.
      */
-    public func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [AnyHashable: Any]?) -> Bool {
+    public func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Initialize Google Analytics
         if !AppGlobal.userDefaults[.googleAnalyticsID].isEmpty {
             GAI.sharedInstance().tracker(
@@ -49,7 +49,7 @@ public extension AppPressable {
 
      - returns: True to indicate that your app handled the activity or false to let iOS know that your app did not handle the activity.
      */
-    public func continueUserActivity(_ application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: (([AnyObject]?) -> Void)? = nil) -> Bool {
+    public func continueUserActivity(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             return navigateByURL(userActivity.webpageURL)
         }
