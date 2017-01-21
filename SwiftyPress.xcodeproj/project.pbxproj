@@ -73,7 +73,6 @@
 		8B8AC3781CD49CDF00D98B00 /* SwiftyPress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; };
 		8B8AC3791CD49CDF00D98B00 /* SwiftyPress.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B335FB21CA880A20033B2AE /* SwiftyPress.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */; };
-		8B8D92061CE51E7E00C60A0D /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6B1CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework */; };
 		8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */; };
 		8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */; };
 		8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */; };
@@ -105,7 +104,6 @@
 		8B8EEB401CE4370B003A89B5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB3A1CE43238003A89B5 /* CoreData.framework */; };
 		8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEB411CE43961003A89B5 /* Trackable.swift */; };
 		8B8EEB751CE4FEC0003A89B5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */; };
-		8B8EEB761CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6B1CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework */; };
 		8B8EEB771CE4FEC0003A89B5 /* Async.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */; };
 		8B8EEB781CE4FEC0003A89B5 /* JASON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */; };
 		8B8EEB791CE4FEC0003A89B5 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */; };
@@ -193,8 +191,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
-		8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = "Carthage/Checkouts/AlertOnboarding/build/Debug-iphoneos/AlertOnboarding_iOS.framework"; sourceTree = "<group>"; };
 		8B03D26B1CE115A800144D76 /* Tutorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorable.swift; sourceTree = "<group>"; };
 		8B03D26F1CE1564700144D76 /* StatusBarrable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarrable.swift; sourceTree = "<group>"; };
 		8B162A751CDECABC00871275 /* RealmPostCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmPostCollectionViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +296,6 @@
 		8B8EEB441CE4C732003A89B5 /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = "Carthage/Checkouts/RateLimit/build/Debug-iphoneos/RateLimit.framework"; sourceTree = "<group>"; };
 		8B8EEB461CE4C762003A89B5 /* RateLimit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RateLimit.framework; path = "Carthage/Checkouts/RateLimit/build/Debug-iphoneos/RateLimit.framework"; sourceTree = "<group>"; };
 		8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		8B8EEB6B1CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlertOnboarding_iOS.framework; path = Carthage/Build/iOS/AlertOnboarding_iOS.framework; sourceTree = "<group>"; };
 		8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Async.framework; path = Carthage/Build/iOS/Async.framework; sourceTree = "<group>"; };
 		8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JASON.framework; path = Carthage/Build/iOS/JASON.framework; sourceTree = "<group>"; };
 		8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -335,7 +330,6 @@
 				8B411F011CD811D500623CAD /* Realm.framework in Frameworks */,
 				8B411F021CD811D500623CAD /* RealmSwift.framework in Frameworks */,
 				8B8EEB751CE4FEC0003A89B5 /* Alamofire.framework in Frameworks */,
-				8B8EEB761CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework in Frameworks */,
 				8B8EEB771CE4FEC0003A89B5 /* Async.framework in Frameworks */,
 				8B8EEB781CE4FEC0003A89B5 /* JASON.framework in Frameworks */,
 				8B8EEB791CE4FEC0003A89B5 /* Kingfisher.framework in Frameworks */,
@@ -364,7 +358,6 @@
 				8B411F051CD811E100623CAD /* Realm.framework in Frameworks */,
 				8B411F071CD811E100623CAD /* RealmSwift.framework in Frameworks */,
 				8B8D92051CE51E7E00C60A0D /* Alamofire.framework in Frameworks */,
-				8B8D92061CE51E7E00C60A0D /* AlertOnboarding_iOS.framework in Frameworks */,
 				8B8D92071CE51E7E00C60A0D /* Async.framework in Frameworks */,
 				8B8D92081CE51E7E00C60A0D /* JASON.framework in Frameworks */,
 				8B8D92091CE51E7E00C60A0D /* Kingfisher.framework in Frameworks */,
@@ -582,7 +575,6 @@
 			isa = PBXGroup;
 			children = (
 				8B8EEB6A1CE4FEC0003A89B5 /* Alamofire.framework */,
-				8B8EEB6B1CE4FEC0003A89B5 /* AlertOnboarding_iOS.framework */,
 				8B8EEB6C1CE4FEC0003A89B5 /* Async.framework */,
 				8B8EEB6D1CE4FEC0003A89B5 /* JASON.framework */,
 				8B8EEB6E1CE4FEC0003A89B5 /* Kingfisher.framework */,
@@ -600,8 +592,6 @@
 				8B8EEB371CE43041003A89B5 /* GoogleAnalyticsService */,
 				8BD08EC11CE2916D0051080A /* Async.framework */,
 				8BD08EBF1CE2914F0051080A /* Async.framework */,
-				8B03D2671CE0F79D00144D76 /* AlertOnboarding_iOS.framework */,
-				8B03D2651CE0F77D00144D76 /* AlertOnboarding_iOS.framework */,
 				8B411F031CD811E100623CAD /* Realm.framework */,
 				8B411F041CD811E100623CAD /* RealmSwift.framework */,
 				8B411EFF1CD811D500623CAD /* Realm.framework */,
