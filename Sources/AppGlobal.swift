@@ -13,7 +13,7 @@ import RealmSwift
 public struct AppGlobal {
     
     public static let pressManager = PressManager()
-    public static let userDefaults = NSUserDefaults.standardUserDefaults()
+    public static let userDefaults = UserDefaults.standard
     
     public static var realm: Realm? = {
         do {
@@ -25,5 +25,5 @@ public struct AppGlobal {
     }()
     
     // Prevent others from initializing singleton
-    private init() { }
+    fileprivate init() { }
 }

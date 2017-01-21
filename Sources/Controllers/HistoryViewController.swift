@@ -17,53 +17,53 @@ class HistoryViewController: UITableViewController, Trackable {
         return AppGlobal.userDefaults[.searchHistory]
     }
     
-    var prepareForUnwind: (String -> Void)? = nil
+    var prepareForUnwind: ((String) -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if AppGlobal.userDefaults[.darkMode] {
-            tableView.separatorColor = .darkGrayColor()
+            tableView.separatorColor = .darkGray
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         tableView.reloadData()
         trackPage("History")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         let model = models[indexPath.row]
         
         cell.textLabel?.text = model
-        cell.imageView?.image = cell.imageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
+        cell.imageView?.image = cell.imageView?.image?.withRenderingMode(.alwaysTemplate)
         
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismissViewController(models[indexPath.row])
     }
     
-    func dismissViewController(selected: String) {
+    func dismissViewController(_ selected: String) {
         prepareForUnwind?(selected)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func closeTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 }

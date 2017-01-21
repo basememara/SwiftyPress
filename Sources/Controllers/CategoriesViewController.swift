@@ -14,62 +14,62 @@ class CategoriesViewController: UITableViewController, Trackable {
     
     var models = CategoryService.storedItems
     var selectedID: Int = 0
-    var prepareForUnwind: (Int -> Void)? = nil
+    var prepareForUnwind: ((Int) -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if AppGlobal.userDefaults[.darkMode] {
-            tableView.separatorColor = .darkGrayColor()
+            tableView.separatorColor = .darkGray
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         trackPage("Categories")
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         let model = models[indexPath.row]
         
         cell.textLabel?.text = model.title
         
         if let icon = model.icon {
-            cell.imageView?.image = UIImage(named: icon)?.imageWithRenderingMode(.AlwaysTemplate)
+            cell.imageView?.image = UIImage(named: icon)?.withRenderingMode(.alwaysTemplate)
         }
         
         // Select first or previously selected item
         if model.id == selectedID {
-            cell.accessoryType = .Checkmark
+            cell.accessoryType = .checkmark
         }
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = models[indexPath.row]
         selectedID = model.id
         
         // Uncheck all rows
         tableView.visibleCells.forEach { cell in
-            cell.accessoryType = .None
+            cell.accessoryType = .none
         }
         
         // Check selected item
-        tableView.cellForRowAtIndexPath(indexPath)?
-            .accessoryType = .Checkmark
+        tableView.cellForRow(at: indexPath)?
+            .accessoryType = .checkmark
         
         // Google Analytics
         trackEvent("Category", action: "Post",
@@ -81,15 +81,15 @@ class CategoriesViewController: UITableViewController, Trackable {
     
     func dismissViewController() {
         prepareForUnwind?(selectedID)
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func allTapped(sender: AnyObject) {
+    @IBAction func allTapped(_ sender: AnyObject) {
         selectedID = 0
         dismissViewController()
     }
     
-    @IBAction func closeTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
     }
 }

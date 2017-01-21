@@ -14,7 +14,7 @@ public class PostCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var itemImage: UIImageView!
     @IBOutlet public weak var itemTitle: UILabel!
 
-    public func bind(model: Postable) -> Self {
+    public func bind(_ model: Postable) -> Self {
         configure()
         
         itemImage.setURL(model.imageURL)
@@ -26,19 +26,19 @@ public class PostCollectionViewCell: UICollectionViewCell {
     func configure() {
         // Optimize
         layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.mainScreen().scale
+        layer.rasterizationScale = UIScreen.main.scale
         
         // Style
         if AppGlobal.userDefaults[.collectionCellCornerRadius] > 0 {
             contentView.layer.cornerRadius = CGFloat(AppGlobal.userDefaults[.collectionCellCornerRadius])
             contentView.layer.masksToBounds = true
-            layer.backgroundColor = UIColor.clearColor().CGColor
+            layer.backgroundColor = UIColor.clear.cgColor
         }
 
         if AppGlobal.userDefaults[.collectionCellShadowRadius] > 0 {
             layer.shadowColor = AppGlobal.userDefaults[.darkMode]
-                ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
-            layer.shadowOffset = CGSizeZero
+                ? UIColor.white.cgColor : UIColor.gray.cgColor
+            layer.shadowOffset = .zero
             layer.shadowRadius = CGFloat(AppGlobal.userDefaults[.collectionCellShadowRadius])
             layer.shadowOpacity = 1
         }

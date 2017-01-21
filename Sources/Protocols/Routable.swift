@@ -30,12 +30,12 @@ extension Routable {
 
      - returns: True if the navigation was successful, otherwise false.
      */
-    func toSearch(query: String) -> Bool {
+    func toSearch(_ query: String) -> Bool {
         guard let controller = getRootViewByTab(3) as? SearchViewController
             else { return false }
         
         // Run on main UI thread in case too soon
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             controller.applySearch(query)
         })
         
@@ -49,12 +49,12 @@ extension Routable {
 
      - returns: True if the navigation was successful, otherwise false.
      */
-    func toTerm(id: Int) -> Bool {
+    func toTerm(_ id: Int) -> Bool {
         guard let controller = getRootViewByTab(2) as? ExploreViewController
             else { return false }
         
         // Run on main UI thread in case too soon
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             controller.categoryID = id
         })
         
@@ -68,15 +68,15 @@ extension Routable {
 
      - returns: True if the navigation was successful, otherwise false.
      */
-    func toPost(url: NSURL) -> Bool {
+    func toPost(_ url: URL) -> Bool {
         guard let navigationController = getRootNavigationByTab(2),
             let post = PostService().get(url)
                 else { return false }
             
         // Push post detail view
-        let storyboard = UIStoryboard(name: "PostDetail", bundle: NSBundle(forClass: PostDetailViewController.self))
+        let storyboard = UIStoryboard(name: "PostDetail", bundle: Bundle(for: PostDetailViewController.self))
         guard let detailController = storyboard
-            .instantiateViewControllerWithIdentifier("PostDetailViewController") as? PostDetailViewController
+            .instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController
                 else { return false }
         
         detailController.model = post
@@ -93,16 +93,16 @@ extension Routable {
 
      - returns: True if the navigation was successful, otherwise false.
      */
-    func navigateByURL(url: NSURL?) -> Bool {
+    func navigateByURL(_ url: URL?) -> Bool {
         // Get root container and extract path from URL if applicable
         guard let url = url,
-            let urlComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
+            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
                 else { return false }
         
         // Handle url if applicable
-        if url.path?.isEmpty ?? true || url.path == "/" {
+        if url.path.isEmpty || url.path == "/" {
             // Handle search if applicable
-            if let query = urlComponents.queryItems?.first({ $0.name == "s" })?.value {
+            if let query = urlComponents.queryItems?.first(where: { $0.name == "s" })?.value {
                 return toSearch(query)
             }
             
@@ -113,12 +113,12 @@ extension Routable {
             return true
         } else {
             // Failed so open in Safari as fallback
-            let urlString = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
-                ?? AppGlobal.userDefaults[.baseURL]
+            let mobileembed = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
+            let urlString = !mobileembed.isEmpty ? mobileembed : AppGlobal.userDefaults[.baseURL]
             
             // Display browser if post not found
             getRootNavigationByTab(2)?.pushViewController(
-                SFSafariViewController(URL: NSURL(string: urlString)!), animated: false)
+                SFSafariViewController(url: URL(string: urlString)!), animated: false)
             
             return true
         }
@@ -134,12 +134,12 @@ extension Routable {
 
      - returns: The navigation controller of the requested tab.
      */
-    func getRootNavigationByTab(index: Int) -> UINavigationController? {
+    func getRootNavigationByTab(_ index: Int) -> UINavigationController? {
         // Get root tab bar controller
         guard let tabBarController = window?.rootViewController as? UITabBarController
             else { return nil }
         
-        tabBarController.dismissViewControllerAnimated(false, completion: nil)
+        tabBarController.dismiss(animated: false, completion: nil)
         
         // Select tab
         tabBarController.selectedIndex = index
@@ -150,7 +150,7 @@ extension Routable {
                 else { return nil }
         
         // Pop all views of navigation controller
-        navigationController.popToRootViewControllerAnimated(false)
+        navigationController.popToRootViewController(animated: false)
         
         return navigationController
     }
@@ -162,7 +162,7 @@ extension Routable {
 
      - returns: The view controller of the requested tab.
      */
-    func getRootViewByTab(index: Int) -> UIViewController? {
+    func getRootViewByTab(_ index: Int) -> UIViewController? {
         return getRootNavigationByTab(index)?.topViewController
     }
 }

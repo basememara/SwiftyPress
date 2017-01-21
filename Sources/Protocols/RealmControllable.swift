@@ -31,14 +31,14 @@ extension RealmControllable {
     
     func setupDataSource() {
         models = AppGlobal.realm?.objects(DataType.self).sorted(
-            sortProperty, ascending: sortAscending)
+            byKeyPath: sortProperty, ascending: sortAscending)
         
         // Set results notification block
         notificationToken = models?.addNotificationBlock { [unowned self] (changes: RealmCollectionChange) in
             switch changes {
-            case .Initial, .Update:
+            case .initial, .update:
                 self.dataView.reloadData()
-            case .Error(let err):
+            case .error(let err):
                 // An error occurred while opening the Realm file
                 // on the background worker thread
                 fatalError("\(err)")
@@ -52,18 +52,18 @@ extension RealmControllable {
         }
     }
     
-    func applyFilterAndSort(filter filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {
+    func applyFilterAndSort(_ filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {
         guard let realm = AppGlobal.realm else { return }
         
         var temp = realm.objects(DataType.self)
-            .sorted(sortProperty, ascending: ascending ?? sortAscending)
+            .sorted(byKeyPath: sortProperty, ascending: ascending ?? sortAscending)
         
-        if let filter = filter where !filter.isEmpty {
+        if let filter = filter, !filter.isEmpty {
             temp = temp.filter(filter)
         }
         
-        if let sort = sort where !sort.isEmpty {
-            temp = temp.sorted(sort, ascending: ascending ?? sortAscending)
+        if let sort = sort, !sort.isEmpty {
+            temp = temp.sorted(byKeyPath: sort, ascending: ascending ?? sortAscending)
         }
 
         models = temp

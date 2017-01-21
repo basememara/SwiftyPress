@@ -21,8 +21,8 @@ public protocol Pageable: class {
     var status: String { get set }
     var type: String { get set }
     var link: String { get set }
-    var date: NSDate? { get set }
-    var modified: NSDate? { get set }
+    var date: Date? { get set }
+    var modified: Date? { get set }
     var menuOrder: Int { get set }
     var parent: Int { get set }
     var author: User? { get set }
@@ -38,8 +38,8 @@ public class Page: Object, Pageable {
     public dynamic var status = ""
     public dynamic var type = ""
     public dynamic var link = ""
-    public dynamic var date: NSDate?
-    public dynamic var modified: NSDate?
+    public dynamic var date: Date?
+    public dynamic var modified: Date?
     public dynamic var menuOrder = 0
     public dynamic var parent = 0
     public dynamic var author: User?

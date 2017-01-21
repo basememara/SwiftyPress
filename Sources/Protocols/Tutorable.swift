@@ -7,17 +7,16 @@
 //
 
 import UIKit
-import AlertOnboarding_iOS
 
-protocol Tutorable: class, AlertOnboardingDelegate {
+protocol Tutorable: class /*, AlertOnboardingDelegate*/ {
     
 }
 
 extension Tutorable where Self: UIViewController {
     
-    func showTutorial(displayMultipleTimes: Bool = true) {
+    func showTutorial(_ displayMultipleTimes: Bool = true) {
         // Start tutorial if applicable
-        if displayMultipleTimes || !AppGlobal.userDefaults[.isTutorialFinished] {
+        /*if displayMultipleTimes || !AppGlobal.userDefaults[.isTutorialFinished] {
             let alertView = AlertOnboarding(
                 arrayOfImage: AppGlobal.userDefaults[.tutorial].flatMap { $0["image"] as? String },
                 arrayOfTitle: AppGlobal.userDefaults[.tutorial].flatMap { $0["title"] as? String },
@@ -31,7 +30,7 @@ extension Tutorable where Self: UIViewController {
             alertView.colorButtonText = .whiteColor()
 
             alertView.show()
-        }
+        }*/
     }
     
     // Optional functions for delegate
@@ -39,11 +38,11 @@ extension Tutorable where Self: UIViewController {
         AppGlobal.userDefaults[.isTutorialFinished] = true
     }
     
-    func alertOnboardingNext(nextStep: Int) {
+    func alertOnboardingNext(_ nextStep: Int) {
     
     }
     
-    func alertOnboardingSkipped(currentStep: Int, maxStep: Int) {
+    func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int) {
         alertOnboardingCompleted()
     }
 }

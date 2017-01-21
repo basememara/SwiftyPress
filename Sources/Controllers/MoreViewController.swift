@@ -23,12 +23,12 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         super.viewDidLoad()
         
         if AppGlobal.userDefaults[.darkMode] {
-            tableView.backgroundColor = .blackColor()
-            tableView.separatorColor = .darkGrayColor()
+            tableView.backgroundColor = .black
+            tableView.separatorColor = .darkGray
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Update status bar background since transparent on scroll
@@ -37,38 +37,37 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         trackPage("More")
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Status bar no longer needed
         removeStatusBar()
     }
     
-    func socialTapped(sender: UIButton) {
-        guard let social = socialModels.first({
+    func socialTapped(_ sender: UIButton) {
+        guard let social = socialModels.first(where: {
             $0.title == sender.restorationIdentifier
         }) else { return }
         
         // Open social app or url
-        if let app = social.app
-            where UIApplication.sharedApplication().canOpenURL(NSURL(string: app)!) {
-                UIApplication.sharedApplication().openURL(NSURL(string: app)!)
+        if let app = social.app, UIApplication.shared.canOpenURL(URL(string: app)!) {
+                UIApplication.shared.open(URL(string: app)!)
         } else if let link = social.link {
-            UIApplication.sharedApplication().openURL(NSURL(string: link)!)
+            UIApplication.shared.open(URL(string: link)!)
         }
         
         // Google Analytics
         trackEvent("Social", action: sender.restorationIdentifier ?? "")
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return AppGlobal.userDefaults[.darkMode] ? .LightContent : .Default
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return AppGlobal.userDefaults[.darkMode] ? .lightContent : .default
     }
 }
 
 extension MoreViewController {
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
             case 0: return AppGlobal.userDefaults[.appName]
             case 1: return "SOCIAL".localized
@@ -77,11 +76,11 @@ extension MoreViewController {
         }
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case 0: return mainModels.count
             case 1: return 1
@@ -90,7 +89,7 @@ extension MoreViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         var title: String? = nil
         var icon: String? = nil
@@ -111,12 +110,12 @@ extension MoreViewController {
                 socialModels.forEach { item in
                     if let icon = item.icon,
                         let image = UIImage(named: icon, inBundle: AppConstants.bundle) {
-                            let button = UIButton(type: .Custom)
-                            button.setBackgroundImage(image, forState: .Normal)
+                            let button = UIButton(type: .custom)
+                            button.setBackgroundImage(image, for: .normal)
                             button.restorationIdentifier = item.title
-                            button.addTarget(self, action: #selector(socialTapped(_:)), forControlEvents: .TouchUpInside)
-                            button.widthAnchor.constraintEqualToConstant(32).active = true
-                            button.heightAnchor.constraintEqualToConstant(32).active = true
+                            button.addTarget(self, action: #selector(socialTapped(_:)), for: .touchUpInside)
+                            button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+                            button.heightAnchor.constraint(equalToConstant: 32).isActive = true
                             socialStackView.addArrangedSubview(button)
                     }
                 }
@@ -124,8 +123,8 @@ extension MoreViewController {
                 // Position icons in cell
                 socialStackView.translatesAutoresizingMaskIntoConstraints = false
                 cell.addSubview(socialStackView)
-                socialStackView.leftAnchor.constraintEqualToAnchor(cell.leftAnchor, constant: 12).active = true
-                socialStackView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor).active = true
+                socialStackView.leftAnchor.constraint(equalTo: cell.leftAnchor, constant: 12).isActive = true
+                socialStackView.centerYAnchor.constraint(equalTo: cell.centerYAnchor).isActive = true
             case 2:
                 let model = otherModels[indexPath.row]
                 title = model.title
@@ -139,18 +138,18 @@ extension MoreViewController {
             
             if let icon = icon {
                 cell.imageView?.image = UIImage(named: icon, inBundle: AppConstants.bundle)?
-                    .imageWithRenderingMode(.AlwaysTemplate)
+                    .withRenderingMode(.alwaysTemplate)
             }
         }
         
         // Set cell style
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var link: String? = nil
         
         switch indexPath.section {
@@ -179,7 +178,7 @@ extension MoreViewController {
                 case "{{feedback}}":
                     let mailComposeViewController = configuredMailComposeViewController()
                     if MFMailComposeViewController.canSendMail() {
-                        presentViewController(mailComposeViewController, animated: true, completion: nil)
+                        present(mailComposeViewController, animated: true, completion: nil)
                         
                         // Google Analytics
                         trackEvent("Feedback", action: "Email")
@@ -187,8 +186,8 @@ extension MoreViewController {
                         showSendMailErrorAlert()
                     }
                 case "{{rate}}":
-                    UIApplication.sharedApplication().openURL(
-                        NSURL(string: "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])")!)
+                    UIApplication.shared.open(
+                        URL(string: "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])")!)
                         
                     // Google Analytics
                     trackEvent("Rate", action: "App")
@@ -218,11 +217,11 @@ extension MoreViewController {
     }
     
     func showSendMailErrorAlert() {
-        alert("Could Not Send Email",
+        presentAlert("Could Not Send Email",
             message: "Your device could not send e-mail. Please check e-mail configuration and try again.")
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

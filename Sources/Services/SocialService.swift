@@ -17,7 +17,7 @@ public struct SocialService {
      */
     public static var storedItems: [(title: String?, link: String?, icon: String?, app: String?)] = {
         AppGlobal.userDefaults[.social].flatMap {
-            guard let link = $0["link"] as? String where !link.isEmpty else { return nil }
+            guard let link = $0["link"] as? String, !link.isEmpty else { return nil }
             return ($0["title"] as? String, link, $0["icon"] as? String, $0["app"] as? String)
         }
     }()

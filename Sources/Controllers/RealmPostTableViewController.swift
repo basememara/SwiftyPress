@@ -17,14 +17,15 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = "PostTableViewCell"
+    let refreshLimit = TimedLimiter(limit: 10800)
     
-    var indexPathForSelectedItem: NSIndexPath? {
+    var indexPathForSelectedItem: IndexPath? {
         return tableView.indexPathForSelectedRow
     }
     
     var categoryID: Int = 0 {
         didSet { 
-            applyFilterAndSort(filter: categoryID > 0
+            applyFilterAndSort(categoryID > 0
                 ? "ANY categories.id == \(categoryID)" : nil)
             didCategorySelect()
         }
@@ -35,20 +36,20 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         didDataControllableLoad()
         
         if AppGlobal.userDefaults[.darkMode] {
-            tableView.separatorColor = .darkGrayColor()
+            tableView.separatorColor = .darkGray
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Retrieve latest posts not more than every X hours
-        RateLimit.execute(name: "UpdatePostsFromRemote", limit: 10800) {
+        refreshLimit.execute {
             service.updateFromRemote()
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         prepareForSegue(segue)
     }
     
@@ -59,21 +60,21 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
 
 extension RealmPostTableViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath] as! PostTableViewCell
         guard let model = models?[indexPath.row] else { return cell }
         return cell.bind(model)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: PostDetailViewController.segueIdentifier, sender: nil)
     }
 }

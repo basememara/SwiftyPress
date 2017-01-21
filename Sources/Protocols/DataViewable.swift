@@ -12,14 +12,14 @@ protocol DataViewable {
     var contentInset: UIEdgeInsets { get set }
     
     func reloadData()
-    func registerNib(nibName: String, cellIdentifier: String, bundleIdentifier: String?)
-    func setContentOffset(contentOffset: CGPoint, animated: Bool)
+    func registerNib(_ nibName: String, cellIdentifier: String, bundleIdentifier: String?)
+    func setContentOffset(_ contentOffset: CGPoint, animated: Bool)
 }
 
 extension DataViewable {
     
-    func scrollToTop(animated: Bool = true) {
-        setContentOffset(CGPointMake(0, -(contentInset.top)), animated: animated)
+    func scrollToTop(_ animated: Bool = true) {
+        setContentOffset(CGPoint(x: 0, y: -(contentInset.top)), animated: animated)
     }
 }
 

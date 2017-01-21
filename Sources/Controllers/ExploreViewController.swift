@@ -29,7 +29,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
         showTutorial(false)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         willRestorableAppear()
         trackPage("Home - Posts")
@@ -48,7 +48,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
             ? CategoryService.storedItems
                 .first { $0.id == categoryID }?.title
                     ?? AppGlobal.userDefaults[.appName]
-            : AppGlobal.userDefaults[.appName]).uppercaseString
+            : AppGlobal.userDefaults[.appName]).uppercased()
         
         // Handle header logo if applicable
         if !AppGlobal.userDefaults[.headerImage].isEmpty && categoryID == 0 {
@@ -60,6 +60,6 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     }
     
     func catagoryTapped() {
-        performSegueWithIdentifier(CategoriesViewController.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: CategoriesViewController.segueIdentifier, sender: nil)
     }
 }

@@ -20,7 +20,7 @@ public protocol Userable: class {
     var content: String { get set }
     var url: String { get set }
     var slug: String { get set }
-    var registered: NSDate? { get set }
+    var registered: Date? { get set }
     var avatar: String { get set }
     var isAdmin: Bool { get set }
 }
@@ -34,7 +34,7 @@ public class User: Object, Userable {
     public dynamic var content = ""
     public dynamic var url = ""
     public dynamic var slug = ""
-    public dynamic var registered: NSDate?
+    public dynamic var registered: Date?
     public dynamic var avatar = ""
     public dynamic var isAdmin = false
     

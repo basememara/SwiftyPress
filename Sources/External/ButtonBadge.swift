@@ -15,7 +15,7 @@
 import UIKit
 
 extension UILabel {
-    convenience init(badgeText: String, color: UIColor = .red, fontSize: CGFloat = .smallSystemFontSize) {
+    convenience init(badgeText: String, color: UIColor = .red, fontSize: CGFloat = UIFont.smallSystemFontSize) {
         self.init()
         text = " \(badgeText) "
         textColor = .white

@@ -29,25 +29,25 @@ public extension DefaultsKeys {
     public static let collectionCellCornerRadius = DefaultsKey<Int>("collectionCellCornerRadius")
     public static let collectionCellShadowRadius = DefaultsKey<Int>("collectionCellShadowRadius")
     
-    public static let categories = DefaultsKey<[[String: AnyObject]]>("categories")
-    public static let moreMenu = DefaultsKey<[[String: AnyObject]]>("moreMenu")
-    public static let otherMenu = DefaultsKey<[[String: AnyObject]]>("otherMenu")
-    public static let social = DefaultsKey<[[String: AnyObject]]>("social")
-    public static let tutorial = DefaultsKey<[[String: AnyObject]]>("tutorial")
+    public static let categories = DefaultsKey<[[String: Any]]>("categories")
+    public static let moreMenu = DefaultsKey<[[String: Any]]>("moreMenu")
+    public static let otherMenu = DefaultsKey<[[String: Any]]>("otherMenu")
+    public static let social = DefaultsKey<[[String: Any]]>("social")
+    public static let tutorial = DefaultsKey<[[String: Any]]>("tutorial")
     public static let searchHistory = DefaultsKey<[String]>("searchHistory")
     
     public static let isTutorialFinished = DefaultsKey<Bool>("isTutorialFinished")
     public static let favorites = DefaultsKey<[Int]>("favorites")
 }
 
-public extension NSUserDefaults {
+public extension UserDefaults {
     /**
      Register a site by retrieving all settings for the specified path
 
      - parameter baseDirectory: The base directory used to grab settins, templates, and other resources.
      - parameter plistName: Property list where defaults are declared. Settings.plist is the default.
      */
-    public func registerSite(baseDirectory: String = "Site") {
+    public func registerSite(_ baseDirectory: String = "Site") {
         self[.baseDirectory] = baseDirectory
         self.registerDefaults("Settings.plist", inDirectory: baseDirectory)
     }
@@ -55,11 +55,9 @@ public extension NSUserDefaults {
 
 // MARK: - Add array of dictionary support
 // https://github.com/radex/SwiftyUserDefaults/pull/88
-public extension NSUserDefaults {
-    public subscript(key: DefaultsKey<[[String: AnyObject]]>) -> [[String: AnyObject]] {
-        get {
-            return arrayForKey(key._key) as? [[String: AnyObject]] ?? [[:]]
-        }
+public extension UserDefaults {
+    public subscript(key: DefaultsKey<[[String: Any]]>) -> [[String: Any]] {
+        get { return array(forKey: key._key) as? [[String: Any]] ?? [[:]] }
         set { set(key, newValue) }
     }
 }

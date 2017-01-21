@@ -17,18 +17,19 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = "PostCollectionViewCell"
+    let refreshLimit = TimedLimiter(limit: 10800)
     
     lazy var cellWidth: Int = {
-        return Int(UIScreen.mainScreen().bounds.width / 2.0)
+        return Int(UIScreen.main.bounds.width / 2.0)
     }()
     
-    var indexPathForSelectedItem: NSIndexPath? {
-        return collectionView?.indexPathsForSelectedItems()?.first
+    var indexPathForSelectedItem: IndexPath? {
+        return collectionView?.indexPathsForSelectedItems?.first
     }
     
     var categoryID: Int = 0 {
         didSet { 
-            applyFilterAndSort(filter: categoryID > 0
+            applyFilterAndSort(categoryID > 0
                 ? "ANY categories.id == \(categoryID)" : nil)
             didCategorySelect()
         }
@@ -40,16 +41,16 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         setupCollectionView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Retrieve latest posts not more than every X hours
-        RateLimit.execute(name: "UpdatePostsFromRemote", limit: 10800) {
+        refreshLimit.execute {
             service.updateFromRemote()
         }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         prepareForSegue(segue)
     }
     
@@ -66,30 +67,30 @@ extension RealmPostCollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         // Collection view attributes
-        collectionView?.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
+        collectionView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         collectionView?.alwaysBounceVertical = true
         
         // Add the waterfall layout to your collection view
         collectionView?.collectionViewLayout = layout
     }
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView[indexPath] as! PostCollectionViewCell
         guard let model = models?[indexPath.row] else { return cell }
         return cell.bind(model)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         // Determine dynamic size
-        if let model = models?[indexPath.row] where !model.imageURL.isEmpty && model.imageWidth > 0 && model.imageHeight > 0 {
+        if let model = models?[indexPath.row], !model.imageURL.isEmpty && model.imageWidth > 0 && model.imageHeight > 0 {
             let height = Int((Float(model.imageHeight) * Float(cellWidth) / Float(model.imageWidth)) + 48)
             return CGSize(width: cellWidth, height: height)
         }
@@ -98,7 +99,7 @@ extension RealmPostCollectionViewController {
         return CGSize(width: cellWidth, height: 189)
     }
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: PostDetailViewController.segueIdentifier, sender: nil)
     }
 }

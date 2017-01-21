@@ -17,10 +17,10 @@ protocol PostControllable: RealmControllable {
 
 extension PostControllable where Self: UIViewController {
 
-    func prepareForSegue(segue: UIStoryboardSegue) {
+    func prepareForSegue(_ segue: UIStoryboardSegue) {
         guard let segueIdentifier = segue.identifier else { return }
         
-        switch (segueIdentifier, segue.destinationViewController) {
+        switch (segueIdentifier, segue.destination) {
             case (PostDetailViewController.segueIdentifier, let controller as PostDetailViewController):
                 // Set post detail
                 guard let row = indexPathForSelectedItem?.row,
