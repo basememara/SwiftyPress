@@ -21,7 +21,7 @@ public struct PostService {
         case commentCount(Int)
         case commentsCount
         
-        static let baseURLString = AppGlobal.userDefaults[.baseREST]
+        static let baseURLString = AppGlobal.userDefaults[.baseURL]
 
         var method: HTTPMethod {
             switch self {
@@ -46,7 +46,9 @@ public struct PostService {
         }
         func asURLRequest() throws -> URLRequest {
             let url = try Router.baseURLString.asURL()
-            var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+            var urlRequest = URLRequest(url: url
+                .appendingPathComponent(AppGlobal.userDefaults[.baseREST])
+                .appendingPathComponent(path))
             urlRequest.httpMethod = method.rawValue
 
             switch self {
@@ -57,7 +59,7 @@ public struct PostService {
                     "order": ascending ? "asc" : "desc",
                     "page": page
                 ]])
-            case .commentsCount:
+            case .commentsCount, .commentCount(_):
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: [
                     "cache": Date().timeIntervalSince1970 as Any
                 ])
