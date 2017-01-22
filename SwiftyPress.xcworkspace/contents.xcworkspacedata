@@ -4,7 +4,4 @@
    <FileRef
       location = "container:SwiftyPress.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:SwiftyPress.playground">
-   </FileRef>
 </Workspace>
