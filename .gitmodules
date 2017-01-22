@@ -1,31 +1,4 @@
 [submodule "Carthage/Checkouts/Alamofire"]
 	url = https://github.com/Alamofire/Alamofire.git
-[submodule "Carthage/Checkouts/SwiftyTimer"]
-	path = Carthage/Checkouts/SwiftyTimer
-	url = https://github.com/radex/SwiftyTimer.git
-[submodule "Carthage/Checkouts/SwiftyUserDefaults"]
-	path = Carthage/Checkouts/SwiftyUserDefaults
-	url = https://github.com/radex/SwiftyUserDefaults.git
-[submodule "Carthage/Checkouts/Timepiece"]
-	path = Carthage/Checkouts/Timepiece
-	url = https://github.com/naoty/Timepiece.git
-[submodule "Carthage/Checkouts/ZamzamKit"]
-	path = Carthage/Checkouts/ZamzamKit
-	url = https://github.com/ZamzamInc/ZamzamKit.git
-[submodule "Carthage/Checkouts/Kingfisher"]
-	path = Carthage/Checkouts/Kingfisher
-	url = https://github.com/onevcat/Kingfisher.git
 [submodule "Carthage/Checkouts/CHTCollectionViewWaterfallLayout"]
 	url = https://github.com/ZamzamInc/CHTCollectionViewWaterfallLayout.git
-[submodule "Carthage/Checkouts/Stencil"]
-	path = Carthage/Checkouts/Stencil
-	url = https://github.com/kylef/Stencil.git
-[submodule "Carthage/Checkouts/JASON"]
-	path = Carthage/Checkouts/JASON
-	url = https://github.com/delba/JASON.git
-[submodule "Carthage/Checkouts/Async"]
-	path = Carthage/Checkouts/Async
-	url = https://github.com/duemunk/Async.git
-[submodule "Carthage/Checkouts/RateLimit"]
-	path = Carthage/Checkouts/RateLimit
-	url = https://github.com/soffes/RateLimit.git
