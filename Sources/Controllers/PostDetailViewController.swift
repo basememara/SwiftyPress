@@ -214,7 +214,7 @@ extension PostDetailViewController {
                 }
             } else if let url = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(url.path)
+                presentSafariController(url.absoluteString)
                 return decisionHandler(.cancel)
             }
             
@@ -247,7 +247,7 @@ extension PostDetailViewController {
                 webView.load(navigationAction.request)
             } else if let url = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(url.path)
+                presentSafariController(url.absoluteString)
                 return nil
             }
             

@@ -113,12 +113,12 @@ extension Routable {
             return true
         } else {
             // Failed so open in Safari as fallback
-            let mobileembed = urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")
-            let urlString = !mobileembed.isEmpty ? mobileembed : AppGlobal.userDefaults[.baseURL]
+            guard let destination = URL(string: urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1"))
+                else { return false }
             
             // Display browser if post not found
             getRootNavigationByTab(2)?.pushViewController(
-                SFSafariViewController(url: URL(string: urlString)!), animated: false)
+                SFSafariViewController(url: destination), animated: false)
             
             return true
         }
