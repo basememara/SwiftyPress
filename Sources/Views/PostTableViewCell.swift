@@ -14,7 +14,7 @@ public class PostTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemTitle: UILabel!
     @IBOutlet public weak var itemContent: UILabel!
 
-    public func bind(model: Postable) -> Self {
+    public func bind(_ model: Postable) -> Self {
         configure()
     
         itemImage.setURL(model.imageURL)
@@ -26,12 +26,12 @@ public class PostTableViewCell: UITableViewCell {
     func configure() {
         // Optimize
         layer.shouldRasterize = true
-        layer.rasterizationScale = UIScreen.mainScreen().scale
+        layer.rasterizationScale = UIScreen.main.scale
         
         // Style
         itemImage.layer.shadowColor = AppGlobal.userDefaults[.darkMode]
-            ? UIColor.whiteColor().CGColor : UIColor.grayColor().CGColor
-        itemImage.layer.shadowOffset = CGSizeZero
+            ? UIColor.white.cgColor : UIColor.gray.cgColor
+        itemImage.layer.shadowOffset = .zero
         itemImage.layer.shadowRadius = 1
         itemImage.layer.shadowOpacity = 1
         itemImage.layer.masksToBounds = false

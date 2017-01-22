@@ -9,7 +9,7 @@
 protocol Serviceable {
     associatedtype DataType
     
-    func get(handler: [DataType] -> Void)
+    func get(complete: @escaping ([DataType]) -> Void)
     func seedFromDisk()
     func updateFromRemote()
 }

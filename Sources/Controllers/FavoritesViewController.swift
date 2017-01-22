@@ -10,49 +10,49 @@ import UIKit
 
 class FavoritesViewController: RealmPostTableViewController, Trackable {
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         applyFavoriteFilter()
         trackPage("Favorites")
     }
     
-    func applyFavoriteFilter(reload: Bool = true) {
+    func applyFavoriteFilter(_ reload: Bool = true) {
         let favorites = AppGlobal.userDefaults[.favorites]
             .map(String.init)
-            .joinWithSeparator(",")
+            .joined(separator: ",")
         
-        applyFilterAndSort(filter: "id IN {\(favorites)}", reload: reload)
+        applyFilterAndSort("id IN {\(favorites)}", reload: reload)
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return AppGlobal.userDefaults[.favorites].count
     }
         
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if let model = models?[indexPath.row] where editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if let model = models?[indexPath.row], editingStyle == .delete {
             service.removeFavorite(model.id)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             applyFavoriteFilter(false)
         }
     }
     
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return models?.count ?? 0 == 0 ? "No favorites to show." : nil
     }
     
-    @IBAction func shareTapped(sender: UIBarButtonItem) {
-        guard let models = models where models.count > 0 else {
-            return alert("No favorites yet")
+    @IBAction func shareTapped(_ sender: UIBarButtonItem) {
+        guard let models = models, models.count > 0 else {
+            return presentAlert("No favorites yet")
         }
         
         var message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out my favorite posts!\n\n"
         
-        models.prefix(30).forEach { item in
+        models.prefix(through: 30).forEach { item in
             message += item.link + "\n"
         }
         

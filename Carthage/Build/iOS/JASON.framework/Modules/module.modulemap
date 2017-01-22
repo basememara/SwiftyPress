@@ -1,0 +1,10 @@
+framework module JASON {
+  umbrella header "JASON.h"
+
+  export *
+  module * { export * }
+}
+
+module JASON.Swift {
+    header "JASON-Swift.h"
+}

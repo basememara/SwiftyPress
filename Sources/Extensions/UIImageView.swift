@@ -17,9 +17,14 @@ public extension UIImageView {
      - parameter URL:         The URL of the image.
      - parameter placeholder: The palceholder image when retrieving the image at the URL.
      */
-    public func setURL(URL: String, placeholder: String? = "placeholder") {
-        self.kf_setImageWithURL(NSURL(string: URL)!,
-            placeholderImage: placeholder != nil ? UIImage(named: placeholder!) : nil)
+    public func setURL(_ url: String, placeholder: String? = "placeholder") {
+        guard let url = URL(string: url) else {
+            self.image = UIImage(named: placeholder!)
+            return
+        }
+        
+        self.kf.setImage(with: url, placeholder:
+            placeholder != nil ? UIImage(named: placeholder!) : nil)
     }
     
 }

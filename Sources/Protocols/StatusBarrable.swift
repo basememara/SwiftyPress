@@ -15,17 +15,17 @@ protocol StatusBarrable: class {
 
 extension StatusBarrable where Self: UIViewController {
 
-    private func showStatusBar(target: UIViewController? = nil) {
+    private func showStatusBar(_ target: UIViewController? = nil) {
         if statusBar == nil {
             statusBar = (target ?? self).addStatusBar(
                 darkMode: AppGlobal.userDefaults[.darkMode])
         } else {
-            statusBar?.hidden = false
+            statusBar?.isHidden = false
         }
     }
 
     private func hideStatusBar() {
-        statusBar?.hidden = true
+        statusBar?.isHidden = true
     }
 
     /**
@@ -35,7 +35,7 @@ extension StatusBarrable where Self: UIViewController {
      - parameter darkMode: Light or dark mode color of status bar.
      - parameter target: View controller to add status bar.
      */
-    func toggleStatusBar(enable: Bool? = nil, target: UIViewController? = nil) {
+    func toggleStatusBar(_ enable: Bool? = nil, target: UIViewController? = nil) {
         // Create status bar first time if applicable
         guard let statusBar = statusBar else {
             return enable ?? true
@@ -45,7 +45,7 @@ extension StatusBarrable where Self: UIViewController {
         
         // Auto toggle based on current status bar state
         guard let enable = enable else {
-            return statusBar.hidden
+            return statusBar.isHidden
                 ? showStatusBar(target)
                 : hideStatusBar()
         }

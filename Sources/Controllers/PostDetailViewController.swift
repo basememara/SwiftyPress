@@ -34,7 +34,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     lazy var commentBarButton: UIBarButtonItem = {
         return UIBarButtonItem(badge: nil,
             image: UIImage(named: "comments", inBundle: AppConstants.bundle)!
-                .imageWithRenderingMode(.AlwaysTemplate),
+                .withRenderingMode(.alwaysTemplate),
             target: self,
             action: #selector(commentsTapped),
             color: UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor]))
@@ -52,7 +52,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         
         let webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         webView.navigationDelegate = self
-        webView.UIDelegate = self
+        webView.uiDelegate = self
         
         self.view.addSubview(webView)
         
@@ -62,7 +62,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     /// Template used to bind data
     lazy var template: Template? = {
         // Retrieve text from template
-        guard let templateString = NSBundle.stringOfFile(
+        guard let templateString = Bundle.stringOfFile(
             PostDetailViewController.detailTemplateFile,
             inDirectory: AppGlobal.userDefaults[.baseDirectory])
                 else { return nil }
@@ -77,26 +77,26 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         loadToolbar()
         
         if AppGlobal.userDefaults[.darkMode] {
-            navigationController?.toolbar.barStyle = .Black
+            navigationController?.toolbar.barStyle = .black
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         loadData()
         
         // Display and update toolbar
-        navigationController?.toolbarHidden = false
+        navigationController?.isToolbarHidden = false
         navigationController?.hidesBarsOnSwipe = true
         
         // Status bar background transparent by default so fill in
         toggleStatusBar(true)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.toolbarHidden = true
+        navigationController?.isToolbarHidden = true
         navigationController?.hidesBarsOnSwipe = false
         removeStatusBar()
     }
@@ -105,7 +105,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
 // MARK: - Post functions
 extension PostDetailViewController {
 
-    func loadData(model: Post? = nil) {
+    func loadData(_ model: Post? = nil) {
         // Store model if applicable
         if model != nil {
             self.model = model
@@ -118,7 +118,7 @@ extension PostDetailViewController {
         
         // Render template to web view
         webView.loadHTMLString(loadTemplate(), baseURL:
-            NSURL(string: AppGlobal.userDefaults[.baseURL]))
+            URL(string: AppGlobal.userDefaults[.baseURL]))
         
         trackPage("Post detail - \(self.model.title.decodeHTML())")
     }
@@ -128,37 +128,37 @@ extension PostDetailViewController {
         
         let style = SCNetworkReachability.isOnline
             ? "<link rel='stylesheet' href='\(AppGlobal.userDefaults[.styleSheet])' type='text/css' media='all' />"
-            : "<style>" + (NSBundle.stringOfFile("style.css",
+            : "<style>" + (Bundle.stringOfFile("style.css",
                 inDirectory: AppGlobal.userDefaults[.baseDirectory]) ?? "") + "</style>"
         
         do {
             // Bind data to template
-            return try template.render(Context(dictionary: [
+            return try template.render([
                 "title": model.title,
                 "content": model.content,
-                "date": model.date?.stringFromFormat("MMMM dd, yyyy"),
+                "date": model.date?.dateString(in: .medium) ?? "",
                 "categories": model.categories.flatMap({ item in
                     "<a href='\(AppGlobal.userDefaults[.baseURL])/category/\(item.slug)'>\(item.name)</a>"
-                }).joinWithSeparator(", "),
-                "tags": model.tags.flatMap({ item in item.name }).joinWithSeparator(", "),
+                }).joined(separator: ", "),
+                "tags": model.tags.flatMap({ item in item.name }).joined(separator: ", "),
                 "isAffiliate": true,
                 "style": style
-            ]))
+            ])
         } catch {
             // Error returns raw unformatted content
             return model.content
         }
     }
     
-    func routeToTerm(id: Int) -> Bool {
+    func routeToTerm(_ id: Int) -> Bool {
         // Get root tab controller
-        guard let tabBarController = UIApplication.sharedApplication()
+        guard let tabBarController = UIApplication.shared
             .keyWindow?.rootViewController as? UITabBarController
                 else { return false }
         
         // Remove current post detail view from stack and select another view
         if tabBarController.selectedIndex == 2 {
-            navigationController?.popViewControllerAnimated(true)
+            _ = navigationController?.popViewController(animated: true)
             navigationController?.setNavigationBarHidden(false, animated: true)
         } else {
             navigationController?.setNavigationBarHidden(false, animated: false)
@@ -171,7 +171,7 @@ extension PostDetailViewController {
                 else { return false }
         
         // Pop all views of navigation controller
-        selectedNavController.popToRootViewControllerAnimated(false)
+        selectedNavController.popToRootViewController(animated: false)
         
         // Handle explore view and select category
         if let controller = selectedNavController.topViewController as? ExploreViewController {
@@ -188,66 +188,67 @@ extension PostDetailViewController {
 // MARK: - Web view functions
 extension PostDetailViewController {
     
-    func webView(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         // Start the network activity indicator when the web view is loading
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
   
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // Stop the network activity indicator when the loading finishes
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         // Handle links
-        if navigationAction.navigationType == .LinkActivated && navigationAction.targetFrame?.mainFrame == true {
+        if navigationAction.navigationType == .linkActivated && navigationAction.targetFrame?.isMainFrame == true {
             // Open same domain links within app
-            if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+            if navigationAction.request.url?.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
-                    return decisionHandler(.Cancel)
-                } else if let post = service.get(navigationAction.request.URL) {
+                if let term = TermService().get(navigationAction.request.url), routeToTerm(term.id) {
+                    return decisionHandler(.cancel)
+                } else if let post = service.get(navigationAction.request.url) {
                     // Save history and bind retrieved post to current view
                     history.append(model)
                     loadData(post)
-                    return decisionHandler(.Cancel)
+                    return decisionHandler(.cancel)
                 }
-            } else {
+            } else if let url = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(navigationAction.request.URLString)
-                return decisionHandler(.Cancel)
+                presentSafariController(url.absoluteString)
+                return decisionHandler(.cancel)
             }
             
             // Navigating away from post so keep in history
             history.append(model)
         }
         
-        decisionHandler(.Allow)
+        decisionHandler(.allow)
     }
   
-    func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
-        decisionHandler(.Allow)
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        decisionHandler(.allow)
     }
     
-    func webView(webView: WKWebView, createWebViewWithConfiguration configuration: WKWebViewConfiguration, forNavigationAction navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         // Open "target=_blank" in the same view
         if navigationAction.targetFrame == nil {
             // Open same domain links within app
-            if navigationAction.request.URL?.host == NSURL(string: AppGlobal.userDefaults[.baseURL])?.host {
+            if navigationAction.request.url?.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.URL) where routeToTerm(term.id) {
+                if let term = TermService().get(navigationAction.request.url), routeToTerm(term.id) {
                     return nil
-                } else if let post = service.get(navigationAction.request.URL) {
+                } else if let post = service.get(navigationAction.request.url) {
                     // Save history and bind retrieved post to current view
                     history.append(model)
                     loadData(post)
                     return nil
                 }
                 
-                webView.loadRequest(navigationAction.request)
-            } else {
+                webView.load(navigationAction.request)
+            } else if let url = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(navigationAction.request.URLString)
+                presentSafariController(url.absoluteString)
+                return nil
             }
             
             // Navigating away from post so keep in history
@@ -265,14 +266,14 @@ extension PostDetailViewController {
         // Add toolbar buttons
         toolbarItems = [
             UIBarButtonItem(imageName: "back", target: self, action: #selector(backTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             UIBarButtonItem(imageName: "related", target: self, action: #selector(relatedTapped), bundleIdentifier: AppConstants.bundleIdentifier),
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             commentBarButton,
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             favoriteBarButton,
-            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(shareTapped(_:)))
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped(_:)))
         ]
     }
 
@@ -306,17 +307,17 @@ extension PostDetailViewController {
         }
     }
     
-    func shareTapped(sender: UIBarButtonItem) {
-        guard let link = NSURL(string: model.link) else { return }
+    func shareTapped(_ sender: UIBarButtonItem) {
+        guard let link = URL(string: model.link) else { return }
         
         let safariActivity = UIActivity.create("Open in Safari",
             imageName: "safari-share",
             imageBundle: ZamzamConstants.bundle) {
                 if !SCNetworkReachability.isOnline {
-                    return self.alert("Device must be online to view within the browser.")
+                    return self.presentAlert("Device must be online to view within the browser.")
                 }
                 
-                UIApplication.sharedApplication().openURL(link)
+                UIApplication.shared.open(link)
     
                 // Google Analytics
                 self.trackEvent("Browser", action: "Post",
@@ -342,7 +343,7 @@ extension PostDetailViewController {
     
     func commentsTapped() {
         if !SCNetworkReachability.isOnline {
-            return alert("Device must be online to view comments.")
+            return presentAlert("Device must be online to view comments.")
         }
         
         presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
@@ -354,7 +355,7 @@ extension PostDetailViewController {
     
     func relatedTapped() {
         if !SCNetworkReachability.isOnline {
-            return alert("Device must be online to view related posts.")
+            return presentAlert("Device must be online to view related posts.")
         }
         
         var url = "\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)"
@@ -372,7 +373,7 @@ extension PostDetailViewController {
     
     func backTapped() {
         if history.isEmpty {
-            return alert("No previous post in history")
+            return presentAlert("No previous post in history")
         }
         
         loadData(history.popLast())
@@ -382,8 +383,8 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return AppGlobal.userDefaults[.darkMode] ? .LightContent : .Default
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return AppGlobal.userDefaults[.darkMode] ? .lightContent : .default
     }
 
 }

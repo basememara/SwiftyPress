@@ -13,7 +13,7 @@ protocol DataControllable: class {
     var cellNibName: String? { get }
     var cellReuseIdentifier: String { get }
     var cellBundleIdentifier: String { get }
-    var indexPathForSelectedItem: NSIndexPath? { get }
+    var indexPathForSelectedItem: IndexPath? { get }
     
     func setupDataSource()
 }

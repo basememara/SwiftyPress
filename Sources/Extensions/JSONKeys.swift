@@ -22,8 +22,8 @@ extension JSONKeys {
     static let excerpt = JSONKey<String>("excerpt")
     static let status = JSONKey<String>("status")
     static let type = JSONKey<String>("type")
-    static let date = JSONKey<NSDate?>("date")
-    static let modified = JSONKey<NSDate?>("modified")
+    static let date = JSONKey<Date?>("date")
+    static let modified = JSONKey<Date?>("modified")
     
     static let viewCount = JSONKey<Int>("view_count")
     static let commentCount = JSONKey<Int>(path: "comment_count", "all")
@@ -33,7 +33,7 @@ extension JSONKeys {
     static let name = JSONKey<String>("name")
     static let url = JSONKey<String>("url")
     static let avatar = JSONKey<String>("avatar")
-    static let registered = JSONKey<NSDate?>("registered")
+    static let registered = JSONKey<Date?>("registered")
     static let isAdmin = JSONKey<Bool>("isAdmin")
     
     static let taxonomy = JSONKey<String>("taxonomy")

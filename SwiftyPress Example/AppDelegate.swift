@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
         AppGlobal.userDefaults.registerSite()
     }
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         return didFinishLaunchingSite(application, launchOptions: launchOptions)
     }
     
-    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
-        return continueUserActivity(application, continueUserActivity: userActivity, restorationHandler: restorationHandler)
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        return continueUserActivity(application, userActivity: userActivity, restorationHandler: restorationHandler)
     }
 }

@@ -21,7 +21,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         return tableView
     }
     
-    var indexPathForSelectedItem: NSIndexPath? {
+    var indexPathForSelectedItem: IndexPath? {
         return tableView.indexPathForSelectedRow
     }
     
@@ -35,11 +35,11 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         $0.dimsBackgroundDuringPresentation = false
         
         $0.searchBar.delegate = self
-        $0.searchBar.searchBarStyle = .Minimal
+        $0.searchBar.searchBarStyle = .minimal
         $0.searchBar.placeholder = "Search".localized
         $0.searchBar.showsBookmarkButton = true
         
-        if let searchTextField = $0.searchBar.valueForKey("searchField") as? UITextField {
+        if let searchTextField = $0.searchBar.value(forKey: "searchField") as? UITextField {
             searchTextField.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         }
 
@@ -74,8 +74,8 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
                 }
             }
             
-            applyFilterAndSort(filter: !predicates.isEmpty
-                ? predicates.joinWithSeparator(" OR ") : nil)
+            applyFilterAndSort(!predicates.isEmpty
+                ? predicates.joined(separator: " OR ") : nil)
             
             // Google Analytics
             trackEvent("Search", action: "Post", label: filterString)
@@ -89,11 +89,11 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
         navigationItem.titleView = searchController.searchBar
         
         if AppGlobal.userDefaults[.darkMode] {
-            tableView.separatorColor = .darkGrayColor()
+            tableView.separatorColor = .darkGray
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         trackPage("Search")
     }
@@ -101,28 +101,28 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
 
 extension SearchViewController {
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        guard searchController.active else { return }
+    func updateSearchResults(for searchController: UISearchController) {
+        guard searchController.isActive else { return }
         filterString = searchController.searchBar.text
     }
 
     // MARK: UISearchBarDelegate
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         filterString = nil
     }
 
-    func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         if AppGlobal.userDefaults[.searchHistory].isEmpty {
-            return alert("No search history yet")
+            return presentAlert("No search history yet")
         }
         
-        performSegueWithIdentifier(HistoryViewController.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: HistoryViewController.segueIdentifier, sender: nil)
     }
     
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         // Append search to history if new query
-        if let text = searchBar.text where !text.isEmpty
+        if let text = searchBar.text, !text.isEmpty
             && !AppGlobal.userDefaults[.searchHistory].contains(text) {
                 AppGlobal.userDefaults[.searchHistory].append(text)
         }
@@ -130,13 +130,13 @@ extension SearchViewController {
         return true
     }
     
-    func applySearch(text: String) {
+    func applySearch(_ text: String) {
         filterString = text
-        searchController.active = true
+        searchController.isActive = true
         searchController.searchBar.text = text
     }
     
-    @IBAction func scopeSegmentedControlChanged(sender: UISegmentedControl) {
+    @IBAction func scopeSegmentedControlChanged(_ sender: UISegmentedControl) {
         // Kick didSet
         let temp = filterString
         filterString = temp
@@ -148,10 +148,10 @@ extension SearchViewController {
 
 extension SearchViewController {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let segueIdentifier = segue.identifier else { return }
         
-        switch (segueIdentifier, segue.destinationViewController) {
+        switch (segueIdentifier, segue.destination) {
             case (PostDetailViewController.segueIdentifier, let controller as PostDetailViewController):
                 // Set post detail
                 guard let row = indexPathForSelectedItem?.row,
@@ -173,29 +173,29 @@ extension SearchViewController {
 /// MARK: UITableViewControllerDelegate
 extension SearchViewController {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         guard let model = models?[indexPath.row] else { return cell }
         
         cell.textLabel?.text = model.title.decodeHTML()
         cell.detailTextLabel?.text = model.categories
             .map { $0.name.decodeHTML() }
-            .joinWithSeparator(", ")
+            .joined(separator: ", ")
         
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(PostDetailViewController.segueIdentifier, sender: nil)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: PostDetailViewController.segueIdentifier, sender: nil)
     }
 }
