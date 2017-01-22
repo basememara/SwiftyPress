@@ -120,6 +120,7 @@
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BC42B851E34812500937B06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC42B841E34812500937B06 /* SystemConfiguration.framework */; };
+		8BC42BD11E34913D00937B06 /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B16BA331E33EB2300CF166D /* Spectre.framework */; };
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
 		8BD08EB21CE27D2E0051080A /* Site in Resources */ = {isa = PBXBuildFile; fileRef = 8BD08EB11CE27D2E0051080A /* Site */; };
 		8BE9DEEA1CE67E610045A2F3 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9DEE91CE67E610045A2F3 /* Routable.swift */; };
@@ -355,6 +356,7 @@
 				8B16BA531E33EB8400CF166D /* Kingfisher.framework in Frameworks */,
 				8B16BA541E33EB8400CF166D /* PathKit.framework in Frameworks */,
 				8B16BA551E33EB8400CF166D /* RateLimit.framework in Frameworks */,
+				8BC42BD11E34913D00937B06 /* Spectre.framework in Frameworks */,
 				8B16BA571E33EB8400CF166D /* Stencil.framework in Frameworks */,
 				8B16BA581E33EB8400CF166D /* SwiftyTimer.framework in Frameworks */,
 				8B16BA591E33EB8400CF166D /* SwiftyUserDefaults.framework in Frameworks */,
@@ -728,9 +730,9 @@
 			buildConfigurationList = 8B3360201CA884F30033B2AE /* Build configuration list for PBXNativeTarget "SwiftyPress Example" */;
 			buildPhases = (
 				8B33600B1CA884F30033B2AE /* Sources */,
-				8B16BA491E33EB4E00CF166D /* Embed Frameworks */,
 				8B33600C1CA884F30033B2AE /* Frameworks */,
 				8B33600D1CA884F30033B2AE /* Resources */,
+				8B16BA491E33EB4E00CF166D /* Embed Frameworks */,
 				8B33604F1CA885180033B2AE /* Embed Watch Content */,
 				8B59661D1CD5EC4F00738A12 /* Run Carthage Script */,
 				8B411F091CD811EB00623CAD /* Run Realm Script */,
@@ -923,6 +925,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyUserDefaults.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Timepiece.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZamzamKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Spectre.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
