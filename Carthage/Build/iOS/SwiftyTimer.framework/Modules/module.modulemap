@@ -1,0 +1,10 @@
+framework module SwiftyTimer {
+  umbrella header "SwiftyTimer.h"
+
+  export *
+  module * { export * }
+}
+
+module SwiftyTimer.Swift {
+    header "SwiftyTimer-Swift.h"
+}
