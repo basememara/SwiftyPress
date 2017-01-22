@@ -1,3 +1,0 @@
-framework module PathKit {
-    header "PathKit-Swift.h"
-}

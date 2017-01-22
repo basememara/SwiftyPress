@@ -1,3 +1,0 @@
-framework module Stencil {
-    header "Stencil-Swift.h"
-}
