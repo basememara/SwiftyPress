@@ -1,4 +1,0 @@
-[submodule "Carthage/Checkouts/Alamofire"]
-	url = https://github.com/Alamofire/Alamofire.git
-[submodule "Carthage/Checkouts/CHTCollectionViewWaterfallLayout"]
-	url = https://github.com/ZamzamInc/CHTCollectionViewWaterfallLayout.git
