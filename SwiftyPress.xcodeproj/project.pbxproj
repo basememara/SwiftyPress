@@ -728,10 +728,10 @@
 				8B33600B1CA884F30033B2AE /* Sources */,
 				8B33600C1CA884F30033B2AE /* Frameworks */,
 				8B33600D1CA884F30033B2AE /* Resources */,
+				8B16BA491E33EB4E00CF166D /* Embed Frameworks */,
 				8B33604F1CA885180033B2AE /* Embed Watch Content */,
 				8B59661D1CD5EC4F00738A12 /* Run Carthage Script */,
 				8B411F091CD811EB00623CAD /* Run Realm Script */,
-				8B16BA491E33EB4E00CF166D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
