@@ -9,8 +9,6 @@
 import Foundation
 
 protocol PostControllable: RealmControllable {
-    associatedtype DataType: Post
-    
     var categoryID: Int { get set }
     func didCategorySelect() -> Void
 }
@@ -25,7 +23,7 @@ extension PostControllable where Self: UIViewController {
                 // Set post detail
                 guard let row = indexPathForSelectedItem?.row,
                     let model = models?[row] else { break }
-                controller.model = model
+                controller.model = model as? Post
             case (CategoriesViewController.segueIdentifier, let navController as UINavigationController):
                 guard let controller = navController.topViewController as? CategoriesViewController else { break }
                     
