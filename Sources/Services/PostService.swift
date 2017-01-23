@@ -11,7 +11,6 @@ import Alamofire
 import JASON
 import RealmSwift
 import ZamzamKit
-import Async
 
 public struct PostService: Serviceable {
 
