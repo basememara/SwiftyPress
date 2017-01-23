@@ -45,11 +45,7 @@ extension RealmControllable {
             }
         }
         
-        if models?.count ?? 0 == 0 {
-            service.seedFromDisk()
-        } else {
-            dataView.reloadData()
-        }
+        dataView.reloadData()
     }
     
     func applyFilterAndSort(_ filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {

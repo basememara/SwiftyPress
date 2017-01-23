@@ -46,15 +46,13 @@ class FavoritesViewController: RealmPostTableViewController, Trackable {
     }
     
     @IBAction func shareTapped(_ sender: UIBarButtonItem) {
-        guard let models = models, models.count > 0 else {
+        guard let models = models, !models.isEmpty else {
             return presentAlert("No favorites yet")
         }
         
-        var message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out my favorite posts!\n\n"
-        
-        models.prefix(through: 30).forEach { item in
-            message += item.link + "\n"
-        }
+        let posts = models.prefix(30)
+        let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out my favorite posts!\n\n"
+            + posts.map { $0.link }.joined(separator: "\n\n")
         
         presentActivityViewController([message], barButtonItem: sender)
         

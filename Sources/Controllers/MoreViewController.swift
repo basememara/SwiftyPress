@@ -51,7 +51,7 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         
         // Open social app or url
         if let app = social.app, UIApplication.shared.canOpenURL(URL(string: app)!) {
-                UIApplication.shared.open(URL(string: app)!)
+            UIApplication.shared.open(URL(string: app)!)
         } else if let link = social.link {
             UIApplication.shared.open(URL(string: link)!)
         }
@@ -108,16 +108,16 @@ extension MoreViewController {
                 
                 // Add button for each social link
                 socialModels.forEach { item in
-                    if let icon = item.icon,
-                        let image = UIImage(named: icon, inBundle: AppConstants.bundle) {
-                            let button = UIButton(type: .custom)
-                            button.setBackgroundImage(image, for: .normal)
-                            button.restorationIdentifier = item.title
-                            button.addTarget(self, action: #selector(socialTapped(_:)), for: .touchUpInside)
-                            button.widthAnchor.constraint(equalToConstant: 32).isActive = true
-                            button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-                            socialStackView.addArrangedSubview(button)
-                    }
+                    guard let icon = item.icon, let image = UIImage(named: icon, inBundle: AppConstants.bundle) else { return }
+                    
+                    socialStackView.addArrangedSubview({
+                        $0.setBackgroundImage(image, for: .normal)
+                        $0.restorationIdentifier = item.title
+                        $0.addTarget(self, action: #selector(socialTapped(_:)), for: .touchUpInside)
+                        $0.widthAnchor.constraint(equalToConstant: 32).isActive = true
+                        $0.heightAnchor.constraint(equalToConstant: 32).isActive = true
+                        return $0
+                    }(UIButton(type: .custom)))
                 }
                 
                 // Position icons in cell

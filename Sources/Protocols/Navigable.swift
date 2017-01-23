@@ -9,12 +9,12 @@
 import Foundation
 import SafariServices
 
-public protocol Routable {
+public protocol Navigable {
 
     var window: UIWindow? { get set }
 }
 
-extension Routable {
+extension Navigable {
 
     /**
      Navigates to the home tab
@@ -35,9 +35,9 @@ extension Routable {
             else { return false }
         
         // Run on main UI thread in case too soon
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.async {
             controller.applySearch(query)
-        })
+        }
         
         return true
     }
@@ -54,9 +54,9 @@ extension Routable {
             else { return false }
         
         // Run on main UI thread in case too soon
-        DispatchQueue.main.async(execute: {
+        DispatchQueue.main.async {
             controller.categoryID = id
-        })
+        }
         
         return true
     }
@@ -125,7 +125,7 @@ extension Routable {
     }
 }
 
-extension Routable {
+extension Navigable {
 
     /**
      Get the navigation controller responsible for the tab.

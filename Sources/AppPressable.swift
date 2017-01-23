@@ -9,8 +9,9 @@
 import Foundation
 import SafariServices
 import ZamzamKit
+import JASON
 
-public protocol AppPressable: Routable {
+public protocol AppPressable: Navigable {
 
     var window: UIWindow? { get set }
 }
@@ -31,6 +32,10 @@ public extension AppPressable {
             GAI.sharedInstance().tracker(
                 withTrackingId: AppGlobal.userDefaults[.googleAnalyticsID])
         }
+        
+        
+        // Declare data format from remote REST API
+        JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2

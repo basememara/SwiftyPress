@@ -10,6 +10,5 @@ protocol Serviceable {
     associatedtype DataType
     
     func get(complete: @escaping ([DataType]) -> Void)
-    func seedFromDisk()
     func updateFromRemote()
 }

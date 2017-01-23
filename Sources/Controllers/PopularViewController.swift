@@ -48,11 +48,13 @@ class PopularViewController: RealmPostTableViewController, Trackable {
     }
     
     @IBAction func shareTapped(_ sender: UIBarButtonItem) {
-        var message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the popular posts!\n\n"
-        
-        models?.prefix(through: 30).forEach { item in
-            message += item.link + "\n"
+        guard let models = models, !models.isEmpty else {
+            return presentAlert("No popular posts yet")
         }
+        
+        let posts = models.prefix(30)
+        let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the popular posts!\n\n"
+            + posts.map { $0.link }.joined(separator: "\n\n")
         
         presentActivityViewController([message], barButtonItem: sender)
         

@@ -126,6 +126,7 @@ extension PostDetailViewController {
     func loadTemplate() -> String {
         guard let template = template else { return model.content }
         
+        // Use local stylesheet if offline
         let style = SCNetworkReachability.isOnline
             ? "<link rel='stylesheet' href='\(AppGlobal.userDefaults[.styleSheet])' type='text/css' media='all' />"
             : "<style>" + (Bundle.stringOfFile("style.css",

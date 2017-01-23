@@ -13,91 +13,14 @@ import RealmSwift
 import ZamzamKit
 import Async
 
-public struct PostService {
+public struct PostService: Serviceable {
 
-    fileprivate enum Router: URLRequestConvertible {
-        case readPost(Int)
-        case readPosts(Int, Int, String, Bool)
-        case commentCount(Int)
-        case commentsCount
-        
-        static let baseURLString = AppGlobal.userDefaults[.baseURL]
-
-        var method: HTTPMethod {
-            switch self {
-            case .readPost: return .get
-            case .readPosts: return .get
-            case .commentCount: return .get
-            case .commentsCount: return .get
-            }
-        }
-
-        var path: String {
-            switch self {
-            case .readPost(let id):
-                return "/posts/\(id)"
-            case .readPosts(_, _, _, _):
-                return "/posts"
-            case .commentCount(let id):
-                return ("/comments/\(id)/count")
-            case .commentsCount:
-                return "/comments/count"
-            }
-        }
-        func asURLRequest() throws -> URLRequest {
-            let url = try Router.baseURLString.asURL()
-            var urlRequest = URLRequest(url: url
-                .appendingPathComponent(AppGlobal.userDefaults[.baseREST])
-                .appendingPathComponent(path))
-            urlRequest.httpMethod = method.rawValue
-
-            switch self {
-            case .readPosts(let page, let perPage, let orderBy, let ascending):
-                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["filter": [
-                    "posts_per_page": perPage,
-                    "orderby": orderBy,
-                    "order": ascending ? "asc" : "desc",
-                    "page": page
-                ]])
-            case .commentsCount, .commentCount(_):
-                urlRequest = try URLEncoding.default.encode(urlRequest, with: [
-                    "cache": Date().timeIntervalSince1970 as Any
-                ])
-            default: break
-            }
-
-            return urlRequest
-        }
-    }
-
-    public init() {
-        JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-    }
 }
 
-extension PostService: Serviceable {
+extension PostService {
 
     public func get(complete: @escaping ([Postable]) -> Void) {
-        // Get database context
-        guard let realm = AppGlobal.realm else { return complete([]) }
-        
-        let posts = realm.objects(Post.self)
-        
-        // Initial data seed if applicable
-        if posts.isEmpty {
-            // Start seeding from UI background thread
-            Async.main {
-                self.seedFromDisk {
-                    // Refetch data from within current thread
-                    let realm = try? Realm()
-                    complete(realm?.objects(Post.self).map { $0 } ?? [])
-                }
-            }
-            
-            return
-        }
-        
-        complete(posts.map { $0 })
+        complete(AppGlobal.realm?.objects(Post.self).map { $0 } ?? [])
     }
     
     /**
@@ -116,49 +39,46 @@ extension PostService: Serviceable {
             
         return AppGlobal.realm?.objects(Post.self).filter("slug == '\(slug)'").first
     }
+}
 
-    public func getRemote(_ page: Int = 1, perPage: Int = 50, orderBy: String = "date", ascending: Bool = false, handler: @escaping ([Postable]) -> Void) {
-        Alamofire.request(Router.readPosts(page, perPage, orderBy, ascending))
-            .responseJASON { response in
-                guard let json = response.result.value, response.result.isSuccess
-                    else { return }
-                
-                handler(json.flatMap(Post.init).flatMap { $0 as Postable })
-        }
-    }
-
-    public func getRemoteCommentCount(_ id: Int, handler: @escaping (Int) -> Void) {
-        Alamofire.request(Router.commentCount(id)).responseString { response in
-            guard let value = response.result.value, response.result.isSuccess else {
-                return handler(0)
-            }
-            
-            handler(Int(value) ?? 0)
-        }
-    }
+extension PostService {
     
     public func addFavorite(_ id: Int) {
-        if !AppGlobal.userDefaults[.favorites].contains(id) {
-            AppGlobal.userDefaults[.favorites].append(id)
-        }
+        guard !AppGlobal.userDefaults[.favorites].contains(id) else { return }
+        AppGlobal.userDefaults[.favorites].append(id)
     }
     
     public func removeFavorite(_ id: Int) {
-        if let index = AppGlobal.userDefaults[.favorites].index(of: id) {
-            AppGlobal.userDefaults[.favorites].remove(at: index)
-        }
+        guard let index = AppGlobal.userDefaults[.favorites].index(of: id) else { return }
+        AppGlobal.userDefaults[.favorites].remove(at: index)
     }
     
     public func toggleFavorite(_ id: Int) {
-        if AppGlobal.userDefaults[.favorites].contains(id) {
-            removeFavorite(id)
-        } else {
-            addFavorite(id)
-        }
+        guard AppGlobal.userDefaults[.favorites].contains(id) else { return addFavorite(id) }
+        removeFavorite(id)
     }
     
+}
+
+extension PostService {
+
+    public func getRemote(_ page: Int = 1, perPage: Int = 50, orderBy: String = "date", ascending: Bool = false, complete: @escaping ([Postable]) -> Void) {
+        Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, ascending))
+            .responseJASON { response in
+                guard let json = response.result.value, response.result.isSuccess else { return }
+                complete(json.flatMap(Post.init).flatMap { $0 as Postable })
+        }
+    }
+
+    public func getRemoteCommentCount(_ id: Int, complete: @escaping (Int) -> Void) {
+        Alamofire.request(PostRouter.commentCount(id)).responseString { response in
+            guard let value = response.result.value, response.result.isSuccess else { return complete(0) }
+            complete(Int(value) ?? 0)
+        }
+    }
+
     public func updateFromRemote() {
-        Alamofire.request(Router.readPosts(1, 50, "modified", false))
+        Alamofire.request(PostRouter.readPosts(1, 50, "modified", false))
             .responseJASON { response in
                 guard let realm = try? Realm(),
                     let json = response.result.value, response.result.isSuccess
@@ -167,9 +87,9 @@ extension PostService: Serviceable {
                 realm.beginWrite()
         
                 // Parse JSON
-                json.flatMap(Post.init).forEach { item in
+                json.flatMap(Post.init).forEach {
                     // Persist object to database
-                    realm.add(item, update: true)
+                    realm.add($0, update: true)
                 }
                     
                 do {
@@ -177,14 +97,17 @@ extension PostService: Serviceable {
                 } catch {
                     // Log error and do something
                 }
-        }
+            }
     }
+}
+
+extension PostService {
     
-    public func seedFromDisk() {
+    func seedFromDisk() {
         seedFromDisk(complete: nil)
     }
     
-    public func seedFromDisk(complete: (() -> Void)?) {
+    func seedFromDisk(complete: (() -> Void)?) {
         seedFromDisk(1, complete: complete)
     }
     
@@ -198,16 +121,16 @@ extension PostService: Serviceable {
         realm.beginWrite()
         
         // Parse JSON
-        JSON(data).flatMap(Post.init).forEach { item in
+        JSON(data).flatMap(Post.init).forEach {
             // Persist object to database
-            realm.add(item, update: true)
+            realm.add($0, update: true)
         }
             
         do {
             try realm.commitWrite()
             
             // Recursively collect all files
-            seedFromDisk(page + 1, complete: complete)
+            self.seedFromDisk(page + 1, complete: complete)
         } catch {
             // Log error and do something
             complete?()

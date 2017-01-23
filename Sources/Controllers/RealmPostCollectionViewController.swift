@@ -90,13 +90,13 @@ extension RealmPostCollectionViewController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         // Determine dynamic size
-        if let model = models?[indexPath.row], !model.imageURL.isEmpty && model.imageWidth > 0 && model.imageHeight > 0 {
-            let height = Int((Float(model.imageHeight) * Float(cellWidth) / Float(model.imageWidth)) + 48)
-            return CGSize(width: cellWidth, height: height)
+        guard let model = models?[indexPath.row], !model.imageURL.isEmpty && model.imageWidth > 0 && model.imageHeight > 0 else {
+            // Placeholder image size if no image found
+            return CGSize(width: cellWidth, height: 189)
         }
         
-        // Placeholder image size if no image found
-        return CGSize(width: cellWidth, height: 189)
+        let height = Int((Float(model.imageHeight) * Float(cellWidth) / Float(model.imageWidth)) + 48)
+        return CGSize(width: cellWidth, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

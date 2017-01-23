@@ -12,7 +12,6 @@ import RealmSwift
 
 public struct AppGlobal {
     
-    public static let pressManager = PressManager()
     public static let userDefaults = UserDefaults.standard
     
     public static var realm: Realm? = {
