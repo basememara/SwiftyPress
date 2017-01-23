@@ -9,6 +9,7 @@
 import Foundation
 import SafariServices
 import ZamzamKit
+import RealmSwift
 import JASON
 
 public protocol AppPressable: Navigable {
@@ -33,6 +34,15 @@ public extension AppPressable {
                 withTrackingId: AppGlobal.userDefaults[.googleAnalyticsID])
         }
         
+        // Copy seed database if applicable
+        if let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL,
+            !FileManager.default.fileExists(atPath: realmFileURL.path),
+            let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm",
+                subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
+            FileManager.default.fileExists(atPath: seedFileURL.path) {
+                do { try FileManager.default.copyItem(at: seedFileURL, to: realmFileURL) }
+                catch { /*TODO: Log error*/ }
+        }
         
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
