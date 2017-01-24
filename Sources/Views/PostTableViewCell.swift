@@ -19,10 +19,7 @@ public class PostTableViewCell: UITableViewCell {
     
         itemTitle.text = model.title.decodeHTML()
         itemContent.text = model.excerpt.decodeHTML().stripHTML()
-        
-        if let media = model.media, !media.link.isEmpty {
-            itemImage.setURL(media.link)
-        }
+        itemImage.setURL(model.media?.link)
         
         return self
     }

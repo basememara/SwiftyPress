@@ -18,10 +18,7 @@ public class PostCollectionViewCell: UICollectionViewCell {
         configure()
         
         itemTitle.text = model.title.decodeHTML()
-        
-        if let media = model.media, !media.link.isEmpty {
-            itemImage.setURL(media.link)
-        }
+        itemImage.setURL(model.media?.link)
         
         return self
     }
