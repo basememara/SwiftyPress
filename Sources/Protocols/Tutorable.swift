@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Tutorable: class /*, AlertOnboardingDelegate*/ {
+protocol Tutorable: class, AlertOnboardingDelegate {
     
 }
 
@@ -16,7 +16,7 @@ extension Tutorable where Self: UIViewController {
     
     func showTutorial(_ displayMultipleTimes: Bool = true) {
         // Start tutorial if applicable
-        /*if displayMultipleTimes || !AppGlobal.userDefaults[.isTutorialFinished] {
+        if displayMultipleTimes || !AppGlobal.userDefaults[.isTutorialFinished] {
             let alertView = AlertOnboarding(
                 arrayOfImage: AppGlobal.userDefaults[.tutorial].flatMap { $0["image"] as? String },
                 arrayOfTitle: AppGlobal.userDefaults[.tutorial].flatMap { $0["title"] as? String },
@@ -27,10 +27,10 @@ extension Tutorable where Self: UIViewController {
             alertView.percentageRatioHeight = 0.9
             alertView.percentageRatioWidth = 0.9
             alertView.colorButtonBottomBackground = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
-            alertView.colorButtonText = .whiteColor()
+            alertView.colorButtonText = .white
 
             alertView.show()
-        }*/
+        }
     }
     
     // Optional functions for delegate
