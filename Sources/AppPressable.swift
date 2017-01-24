@@ -37,8 +37,9 @@ public extension AppPressable {
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
+        // Perform any migration if needed
         UpdateKit().appUpdate { _ in
-            // Database schema changed too much so allow to recreate later
+            // Remove previous database to allow fresh data and schema to be recreated
             do {
                 let fileManager = FileManager.default
                 
@@ -46,6 +47,7 @@ public extension AppPressable {
                     fileManager.fileExists(atPath: realmFileURL.path)
                         else { return }
                 
+                // Handle database auxiliary files
                 let folderPath = realmFileURL.deletingLastPathComponent().path
                 try? fileManager.contentsOfDirectory(atPath: folderPath)
                     .filter { $0.hasPrefix(realmFileURL.lastPathComponent) }
