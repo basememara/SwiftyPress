@@ -38,6 +38,7 @@ enum PostRouter: URLRequestConvertible {
             return "/comments/count"
         }
     }
+    
     func asURLRequest() throws -> URLRequest {
         let url = try PostRouter.baseURLString.asURL()
         var urlRequest = URLRequest(url: url
@@ -47,12 +48,12 @@ enum PostRouter: URLRequestConvertible {
 
         switch self {
         case .readPosts(let page, let perPage, let orderBy, let ascending):
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: ["filter": [
-                "posts_per_page": perPage,
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: [
+                "page": page,
+                "per_page": perPage,
                 "orderby": orderBy,
-                "order": ascending ? "asc" : "desc",
-                "page": page
-            ]])
+                "order": ascending ? "asc" : "desc"
+            ])
         case .commentsCount, .commentCount(_):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: [
                 "cache": Date().timeIntervalSince1970 as Any

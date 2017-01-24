@@ -61,78 +61,56 @@ extension PostService {
 
 extension PostService {
 
-    public func getRemote(_ page: Int = 1, perPage: Int = 50, orderBy: String = "date", ascending: Bool = false, complete: @escaping ([Postable]) -> Void) {
-        Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, ascending))
+    public func getFromRemote(id: Int, complete: @escaping (Postable) -> Void) {
+        Alamofire.request(PostRouter.readPost(id))
             .responseJASON { response in
                 guard let json = response.result.value, response.result.isSuccess else { return }
-                complete(json.flatMap(Post.init).flatMap { $0 as Postable })
+                complete(Post(json: json))
         }
     }
-
-    public func getRemoteCommentCount(_ id: Int, complete: @escaping (Int) -> Void) {
-        Alamofire.request(PostRouter.commentCount(id)).responseString { response in
-            guard let value = response.result.value, response.result.isSuccess else { return complete(0) }
-            complete(Int(value) ?? 0)
-        }
-    }
-
-    public func updateFromRemote() {
-        Alamofire.request(PostRouter.readPosts(1, 50, "modified", false))
+    
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((Result<Void>) -> Void)? = nil) {
+        Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
-                guard let realm = try? Realm(),
-                    let json = response.result.value, response.result.isSuccess
-                        else { return }
+                guard response.result.isSuccess,
+                    let realm = try? Realm(),
+                    let json = response.result.value,
+                    !json.arrayValue.isEmpty else {
+                        complete?(.failure(response.result.error ?? PressError.emptyPosts))
+                        return
+                    }
                 
-                realm.beginWrite()
-        
-                // Parse JSON
-                json.flatMap(Post.init).forEach {
-                    // Persist object to database
-                    realm.add($0, update: true)
+                // Parse JSON to array
+                let list: [Post] = json.map(Post.init).filter {
+                    // Skip if latest changes already persisted
+                    if let persisted = AppGlobal.realm?.object(ofType: Post.self, forPrimaryKey: $0.id),
+                        let localDate = persisted.modified,
+                        let remoteDate = $0.modified,
+                        localDate >= remoteDate {
+                            return false
+                    }
+                
+                    return true
                 }
-                    
-                do {
-                    try realm.commitWrite()
-                } catch {
-                    // Log error and do something
+                
+                if !list.isEmpty {
+                    do {
+                        try realm.write {
+                            realm.add(List(list), update: true)
+                        }
+                    } catch {
+                        // TODO: Log error
+                    }
                 }
+                
+                complete?(.success())
             }
     }
-}
-
-extension PostService {
     
-    func seedFromDisk() {
-        seedFromDisk(complete: nil)
-    }
-    
-    func seedFromDisk(complete: (() -> Void)?) {
-        seedFromDisk(1, complete: complete)
-    }
-    
-    func seedFromDisk(_ page: Int, complete: (() -> Void)? = nil) {
-        guard let realm = AppGlobal.realm,
-            let path = Bundle.main.url(forResource: "posts\(page)", withExtension: "json",
-                subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
-            let data = try? Data(contentsOf: path)
-                else { complete?(); return }
-        
-        realm.beginWrite()
-        
-        // Parse JSON
-        JSON(data).flatMap(Post.init).forEach {
-            // Persist object to database
-            realm.add($0, update: true)
-        }
-            
-        do {
-            try realm.commitWrite()
-            
-            // Recursively collect all files
-            self.seedFromDisk(page + 1, complete: complete)
-        } catch {
-            // Log error and do something
-            complete?()
+    func seedFromRemote(for page: Int = 0, complete: (() -> Void)? = nil) {
+        updateFromRemote(page: page, orderBy: "post_date") {
+            guard $0.isSuccess else { complete?(); return }
+            self.seedFromRemote(for: page + 1, complete: complete)
         }
     }
     

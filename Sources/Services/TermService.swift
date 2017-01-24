@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import RealmSwift
 
 public struct TermService {
     
@@ -18,9 +20,7 @@ public struct TermService {
      - returns: Term matching the extracted slug from the URL.
      */
     public func get(_ url: URL?) -> Term? {
-        guard let url = url, let slug = url.pathComponents.get(2), url.pathComponents.get(1) == "category"
-                 else { return nil }
-            
+        guard let url = url, let slug = url.pathComponents.get(2), url.pathComponents.get(1) == "category" else { return nil }
         return AppGlobal.realm?.objects(Term.self).filter("slug == '\(slug)'").first
     }
 }

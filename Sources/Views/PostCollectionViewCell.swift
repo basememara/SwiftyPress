@@ -17,8 +17,11 @@ public class PostCollectionViewCell: UICollectionViewCell {
     public func bind(_ model: Postable) -> Self {
         configure()
         
-        itemImage.setURL(model.imageURL)
         itemTitle.text = model.title.decodeHTML()
+        
+        if let media = model.media, !media.link.isEmpty {
+            itemImage.setURL(media.link)
+        }
         
         return self
     }

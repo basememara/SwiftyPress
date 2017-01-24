@@ -27,25 +27,18 @@ public extension AppPressable {
 
      - returns: False if the app cannot handle the URL resource or continue a user activity, otherwise return true. The return value is ignored if the app is launched as a result of a remote notification.
      */
-    public func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Initialize Google Analytics
         if !AppGlobal.userDefaults[.googleAnalyticsID].isEmpty {
             GAI.sharedInstance().tracker(
                 withTrackingId: AppGlobal.userDefaults[.googleAnalyticsID])
         }
         
-        // Copy seed database if applicable
-        if let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL,
-            !FileManager.default.fileExists(atPath: realmFileURL.path),
-            let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm",
-                subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
-            FileManager.default.fileExists(atPath: seedFileURL.path) {
-                do { try FileManager.default.copyItem(at: seedFileURL, to: realmFileURL) }
-                catch { /*TODO: Log error*/ }
-        }
-        
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        // Seed database if applicable
+        setupDatabase()
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
@@ -64,7 +57,7 @@ public extension AppPressable {
 
      - returns: True to indicate that your app handled the activity or false to let iOS know that your app did not handle the activity.
      */
-    public func continueUserActivity(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+    func continueUserActivity(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             return navigateByURL(userActivity.webpageURL)
         }
@@ -74,6 +67,23 @@ public extension AppPressable {
 }
 
 private extension AppPressable {
+
+    func setupDatabase() {
+        // Validate if already seeded
+        guard let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL, !FileManager.default.fileExists(atPath: realmFileURL.path) else { return }
+        
+        // Determine source of seed data
+        guard let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm", subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
+            FileManager.default.fileExists(atPath: seedFileURL.path) else {
+                // Construct from a series of REST requests
+                PostService().seedFromRemote()
+                return
+            }
+        
+        // Use pre-created seed database
+        do { try FileManager.default.copyItem(at: seedFileURL, to: realmFileURL) }
+        catch { /*TODO: Log error*/ }
+    }
 
     func applyTheme() {
         window?.tintColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])

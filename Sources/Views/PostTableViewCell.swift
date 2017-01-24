@@ -17,9 +17,13 @@ public class PostTableViewCell: UITableViewCell {
     public func bind(_ model: Postable) -> Self {
         configure()
     
-        itemImage.setURL(model.imageURL)
         itemTitle.text = model.title.decodeHTML()
         itemContent.text = model.excerpt.decodeHTML().stripHTML()
+        
+        if let media = model.media, !media.link.isEmpty {
+            itemImage.setURL(media.link)
+        }
+        
         return self
     }
     

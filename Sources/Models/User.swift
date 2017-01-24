@@ -11,32 +11,14 @@ import Foundation
 import RealmSwift
 import JASON
 
-public protocol Userable: class {
-
-    var id: Int { get set }
-    var username: String { get set }
-    var name: String { get set }
-    var email: String { get set }
-    var content: String { get set }
-    var url: String { get set }
-    var slug: String { get set }
-    var registered: Date? { get set }
-    var avatar: String { get set }
-    var isAdmin: Bool { get set }
-}
-
-public class User: Object, Userable {
+public class User: Object {
     
     public dynamic var id = 0
     public dynamic var username = ""
     public dynamic var name = ""
     public dynamic var email = ""
+    public dynamic var link = ""
     public dynamic var content = ""
-    public dynamic var url = ""
-    public dynamic var slug = ""
-    public dynamic var registered: Date?
-    public dynamic var avatar = ""
-    public dynamic var isAdmin = false
     
     public override static func primaryKey() -> String? {
         return "id"
@@ -45,8 +27,7 @@ public class User: Object, Userable {
     public override static func indexedProperties() -> [String] {
         return [
             "username",
-            "email",
-            "slug"
+            "email"
         ]
     }
     
@@ -57,12 +38,8 @@ public class User: Object, Userable {
         username = json[.username]
         name = json[.name]
         email = json[.email]
+        link = json[.link]
         content = json[.description]
-        url = json[.url]
-        slug = json[.slug]
-        registered = json[.registered]
-        avatar = json[.avatar]
-        isAdmin = json[.isAdmin]
     }
     
 }

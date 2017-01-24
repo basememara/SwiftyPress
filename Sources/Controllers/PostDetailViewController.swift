@@ -289,18 +289,16 @@ extension PostDetailViewController {
         commentBarButton.badgeString = model.commentCount > 0
             ? "\(model.commentCount)" : nil
         
-        service.getRemoteCommentCount(model.id) { count in
+        service.getFromRemote(id: model.id) { response in
             // Validate if not changed
-            if self.model.commentCount == count {
-                return
-            }
+            guard self.model.commentCount != response.commentCount else { return }
             
-            self.commentBarButton.badgeString = "\(count)"
+            self.commentBarButton.badgeString = "\(response.commentCount)"
             
             do {
                 // Persist latest comment count
                 try AppGlobal.realm?.write {
-                    self.model.commentCount = count
+                    self.model.commentCount = response.commentCount
                 }
             } catch {
                 // TODO: Log error

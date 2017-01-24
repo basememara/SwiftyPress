@@ -11,7 +11,7 @@
 	<key>baseURL</key>
 	<string>http://basememara.com</string>
 	<key>baseREST</key>
-	<string>wp-json</string>
+	<string>wp-json/swiftypress/v2</string>
 	<key>email</key>
 	<string>contact@basememara.com</string>
 	<key>darkMode</key>
