@@ -120,6 +120,7 @@
 		8BE9DEEA1CE67E610045A2F3 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9DEE91CE67E610045A2F3 /* Navigable.swift */; };
 		8BF312B11E37062D00CE27B7 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B01E37062D00CE27B7 /* Media.swift */; };
 		8BF312B61E37C99000CE27B7 /* PressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B51E37C99000CE27B7 /* PressError.swift */; };
+		8BF312B81E37F31000CE27B7 /* UpdateKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B71E37F31000CE27B7 /* UpdateKit.swift */; };
 		8BF762031E36617D00AB0F42 /* PostRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF762021E36617D00AB0F42 /* PostRouter.swift */; };
 /* End PBXBuildFile section */
 
@@ -304,6 +305,7 @@
 		8BE9DEE91CE67E610045A2F3 /* Navigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
 		8BF312B01E37062D00CE27B7 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BF312B51E37C99000CE27B7 /* PressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressError.swift; sourceTree = "<group>"; };
+		8BF312B71E37F31000CE27B7 /* UpdateKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateKit.swift; sourceTree = "<group>"; };
 		8BF762021E36617D00AB0F42 /* PostRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -638,6 +640,7 @@
 				8B411F291CD845A900623CAD /* Alamofire+JASON.swift */,
 				8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */,
 				8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */,
+				8BF312B71E37F31000CE27B7 /* UpdateKit.swift */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				8B5EDAF31CDC5A3E00F1C81C /* AppPressable.swift in Sources */,
 				8B8E68821CDCD97900171E14 /* SearchViewController.swift in Sources */,
 				8BF312B11E37062D00CE27B7 /* Media.swift in Sources */,
+				8BF312B81E37F31000CE27B7 /* UpdateKit.swift in Sources */,
 				8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */,
 				8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */,
 				8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */,
