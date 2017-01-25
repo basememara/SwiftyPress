@@ -42,10 +42,10 @@ public extension AppPressable {
             setupDatabase()
         }
         
-        applyTheme()
-        
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
+        
+        applyTheme()
     
         return true
     }
