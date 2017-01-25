@@ -37,8 +37,8 @@ public extension AppPressable {
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
-        // Perform any migration if needed
-        UpdateKit().appUpdate { _ in
+        // Perform any one-time setup if needed
+        UpdateKit().firstLaunch {
             setupDatabase()
         }
         
