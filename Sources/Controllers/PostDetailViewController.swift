@@ -14,7 +14,7 @@ import Stencil
 import RealmSwift
 import SystemConfiguration
 
-class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, StatusBarrable, Trackable {
+class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate, StatusBarrable, Trackable {
     
     static var segueIdentifier = "PostDetailSegue"
     static var detailTemplateFile = "post.html"
@@ -53,6 +53,7 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
         let webView = WKWebView(frame: self.view.bounds, configuration: configuration)
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.scrollView.delegate = self
         
         self.view.addSubview(webView)
         
@@ -257,6 +258,13 @@ extension PostDetailViewController {
         }
         
         return nil
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Display navigation/toolbar when scrolled to the bottom
+        guard scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) else { return }
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setToolbarHidden(false, animated: true)
     }
 }
 
