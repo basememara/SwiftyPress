@@ -39,29 +39,13 @@ public extension AppPressable {
         
         // Perform any migration if needed
         UpdateKit().appUpdate { _ in
-            // Remove previous database to allow fresh data and schema to be recreated
-            do {
-                let fileManager = FileManager.default
-                
-                guard let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL,
-                    fileManager.fileExists(atPath: realmFileURL.path)
-                        else { return }
-                
-                // Handle database auxiliary files
-                let folderPath = realmFileURL.deletingLastPathComponent().path
-                try? fileManager.contentsOfDirectory(atPath: folderPath)
-                    .filter { $0.hasPrefix(realmFileURL.lastPathComponent) }
-                    .forEach { try? fileManager.removeItem(atPath: "\(folderPath)/\($0)") }
-            }
+            setupDatabase()
         }
         
-        // Seed database if applicable
-        setupDatabase()
+        applyTheme()
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
-        
-        applyTheme()
     
         return true
     }
@@ -87,20 +71,32 @@ public extension AppPressable {
 private extension AppPressable {
 
     func setupDatabase() {
-        // Validate if already seeded
-        guard let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL, !FileManager.default.fileExists(atPath: realmFileURL.path) else { return }
+        guard let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL else { return }
+        let fileManager = FileManager.default
         
-        // Determine source of seed data
-        guard let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm", subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
-            FileManager.default.fileExists(atPath: seedFileURL.path) else {
-                // Construct from a series of REST requests
-                PostService().seedFromRemote()
-                return
+        // Remove previous database to allow fresh data and schema to be recreated
+        if fileManager.fileExists(atPath: realmFileURL.path) {
+            // Handle database auxiliary files
+            let folderPath = realmFileURL.deletingLastPathComponent().path
+            do {
+                try fileManager.contentsOfDirectory(atPath: folderPath)
+                    .filter { $0.hasPrefix(realmFileURL.lastPathComponent) }
+                    .forEach { try fileManager.removeItem(atPath: "\(folderPath)/\($0)") }
+            } catch {
+                // TODO: Log error
             }
+        }
         
-        // Use pre-created seed database
-        do { try FileManager.default.copyItem(at: seedFileURL, to: realmFileURL) }
-        catch { /*TODO: Log error*/ }
+        // Seed data to fresh database
+        if let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm", subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
+            fileManager.fileExists(atPath: seedFileURL.path) {
+                // Use pre-created seed database
+                do { try fileManager.copyItem(at: seedFileURL, to: realmFileURL) }
+                catch { /*TODO: Log error*/ }
+        } else {
+            // Construct from a series of REST requests
+            PostService().seedFromRemote()
+        }
     }
 
     func applyTheme() {
