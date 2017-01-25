@@ -371,7 +371,8 @@ extension PostDetailViewController {
             url += "&theme=light"
         }
         
-        presentSafariController(url)
+        history.append(model)
+        webView.load(URLRequest(url: URL(string: url)!))
             
         // Google Analytics
         trackEvent("Related", action: "Post",
