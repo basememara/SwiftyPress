@@ -94,13 +94,8 @@ extension PostService {
                 }
                 
                 if !list.isEmpty {
-                    do {
-                        try realm.write {
-                            realm.add(List(list), update: true)
-                        }
-                    } catch {
-                        // TODO: Log error
-                    }
+                    do { try realm.write { realm.add(List(list), update: true) } }
+                    catch { /*TODO: Log error*/ }
                 }
                 
                 complete?(.success())
