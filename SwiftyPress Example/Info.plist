@@ -44,6 +44,23 @@
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<dict>
+		<key>twitter</key>
+		<string></string>
+		<key>gplus</key>
+		<string></string>
+		<key>linkedin</key>
+		<string></string>
+		<key>fb</key>
+		<string></string>
+		<key>pinterest</key>
+		<string></string>
+		<key>instagram</key>
+		<string></string>
+		<key>youtube</key>
+		<string></string>
+	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
