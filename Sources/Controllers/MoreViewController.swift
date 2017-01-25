@@ -50,7 +50,7 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         }) else { return }
         
         // Open social app or url
-        if let app = social.app, UIApplication.shared.canOpenURL(URL(string: app)!) {
+        if let app = social.app, !app.isEmpty, UIApplication.shared.canOpenURL(URL(string: app)!) {
             UIApplication.shared.open(URL(string: app)!)
         } else if let link = social.link {
             UIApplication.shared.open(URL(string: link)!)
