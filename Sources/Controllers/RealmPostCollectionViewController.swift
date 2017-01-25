@@ -17,7 +17,6 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = "PostCollectionViewCell"
-    let refreshLimit = TimedLimiter(limit: 10800)
     
     lazy var cellWidth: Int = {
         return Int(UIScreen.main.bounds.width / 2.0)
@@ -45,7 +44,7 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         super.viewWillAppear(animated)
         
         // Retrieve latest posts not more than every X hours
-        refreshLimit.execute {
+        AppGlobal.postRefreshLimit.execute {
             service.updateFromRemote()
         }
     }

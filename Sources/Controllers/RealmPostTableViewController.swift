@@ -17,7 +17,6 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = "PostTableViewCell"
-    let refreshLimit = TimedLimiter(limit: 10800)
     
     var indexPathForSelectedItem: IndexPath? {
         return tableView.indexPathForSelectedRow
@@ -44,7 +43,7 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         super.viewWillAppear(animated)
         
         // Retrieve latest posts not more than every X hours
-        refreshLimit.execute {
+        AppGlobal.postRefreshLimit.execute {
             service.updateFromRemote()
         }
     }
