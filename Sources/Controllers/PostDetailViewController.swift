@@ -134,8 +134,8 @@ extension PostDetailViewController {
                 inDirectory: AppGlobal.userDefaults[.baseDirectory]) ?? "") + "</style>"
         
         do {
-            // Bind data to template
-            return try template.render([
+            // Construct model for template
+            var params = [
                 "title": model.title,
                 "content": model.content,
                 "date": model.date?.dateString(in: .medium) ?? "",
@@ -145,7 +145,14 @@ extension PostDetailViewController {
                 "tags": model.tags.flatMap({ item in item.name }).joined(separator: ", "),
                 "isAffiliate": true,
                 "style": style
-            ])
+            ] as [String : Any]
+            
+            if let author = model.author, !author.content.isEmpty {
+                params["author"] = author
+            }
+            
+            // Bind data to template
+            return try template.render(params)
         } catch {
             // Error returns raw unformatted content
             return model.content

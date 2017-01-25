@@ -26,6 +26,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>gravatar.com</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 			<key>basememara.com</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

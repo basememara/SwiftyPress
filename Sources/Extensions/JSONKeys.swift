@@ -29,6 +29,7 @@ extension JSONKeys {
     static let username = JSONKey<String>("username")
     static let name = JSONKey<String>("name")
     static let url = JSONKey<String>("url")
+    static let avatar = JSONKey<String>("avatar")
     
     static let taxonomy = JSONKey<String>("taxonomy")
 

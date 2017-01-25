@@ -230,6 +230,41 @@
     .site-container {
         margin: 0 auto !important;
     }
+
+    .author-bio {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f5f5f5;
+        border: 1px solid #e3e3e3;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    }
+
+    .author-bio .page-header {
+        margin-top: 5px;
+    }
+
+    .author-bio .page-header h3 {
+        margin-top: 0;
+    }
+
+    .author-bio p {
+        font-style: italic;
+    }
+
+    .author-bio .profile-pic {
+        float: left;
+        margin: 0 10px 3px 0;
+        border-radius: 50%;
+        border: none;
+        width: 80px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .wrapper p:first-child a:first-child img {
+        display: none;
+    }
     </style>
 </head>
 <body class="single single-post single-format-standard logged-in admin-bar no-customize-support custom-background content-sidebar metro-pro-blue">
@@ -249,9 +284,18 @@
                     <div class="entry-content" itemprop="text">
                         {{ content }}
                     </div>
-                    <footer class="entry-footer"><p class="entry-meta">
-                        <span class="entry-categories">Filed Under: {{ categories }}</span>
-                        <span class="entry-tags">Tagged With: {{ tags }}</span></p></footer>
+                    <footer class="entry-footer">
+                        <p class="entry-meta">
+                            <span class="entry-categories">Filed Under: {{ categories }}</span>
+                            <span class="entry-tags">Tagged With: {{ tags }}</span>
+                        </p>
+                        {% if author %}
+                            <div class="author-bio well well-sm">
+                                <div class="page-header"><h3>About {{ author.name }}</h3></div>
+                                <p><img src="{{ author.avatar }}" class="profile-pic" />{{ author.content }}</p>
+                            </div>
+                        {% endif %}
+                    </footer>
                 </article>
                 <!-- #respond -->
             </main>

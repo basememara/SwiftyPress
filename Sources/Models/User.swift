@@ -18,6 +18,7 @@ public class User: Object {
     public dynamic var name = ""
     public dynamic var email = ""
     public dynamic var link = ""
+    public dynamic var avatar = ""
     public dynamic var content = ""
     
     public override static func primaryKey() -> String? {
@@ -39,6 +40,7 @@ public class User: Object {
         name = json[.name]
         email = json[.email]
         link = json[.link]
+        avatar = json[.avatar]
         content = json[.description]
     }
     
