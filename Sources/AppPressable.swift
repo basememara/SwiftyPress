@@ -88,15 +88,15 @@ private extension AppPressable {
         }
         
         // Seed data to fresh database
-        if let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm", subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
-            fileManager.fileExists(atPath: seedFileURL.path) {
-                // Use pre-created seed database
-                do { try fileManager.copyItem(at: seedFileURL, to: realmFileURL) }
-                catch { /*TODO: Log error*/ }
-        } else {
-            // Construct from a series of REST requests
-            PostService().seedFromRemote()
-        }
+        guard let seedFileURL = Bundle.main.url(forResource: "seed", withExtension: "realm", subdirectory: "\(AppGlobal.userDefaults[.baseDirectory])/data"),
+            fileManager.fileExists(atPath: seedFileURL.path) else {
+                // Construct from a series of REST requests
+                return PostService().seedFromRemote()
+            }
+        
+        // Use pre-created seed database
+        do { try fileManager.copyItem(at: seedFileURL, to: realmFileURL) }
+        catch { /*TODO: Log error*/ }
     }
 
     func applyTheme() {
