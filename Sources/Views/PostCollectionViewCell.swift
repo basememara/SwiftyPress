@@ -17,7 +17,7 @@ public class PostCollectionViewCell: UICollectionViewCell {
     public func bind(_ model: Postable) -> Self {
         configure()
         
-        itemTitle.text = model.title.decodeHTML()
+        itemTitle.text = model.title.decodedHTML
         itemImage.setURL(model.media?.link)
         
         return self

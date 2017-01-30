@@ -121,7 +121,7 @@ extension PostDetailViewController {
         webView.loadHTMLString(loadTemplate(), baseURL:
             URL(string: AppGlobal.userDefaults[.baseURL]))
         
-        trackPage("Post detail - \(self.model.title.decodeHTML())")
+        trackPage("Post detail - \(self.model.title.decodedHTML)")
     }
     
     func loadTemplate() -> String {
@@ -338,7 +338,7 @@ extension PostDetailViewController {
                     label: self.model.title, value: Int(self.model.id))
             }
         
-        presentActivityViewController([model.title.decodeHTML(), link], barButtonItem: sender,
+        presentActivityViewController([model.title.decodedHTML, link], barButtonItem: sender,
             applicationActivities: [safariActivity])
         
         // Google Analytics

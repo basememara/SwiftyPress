@@ -35,7 +35,7 @@ public extension AppPressable {
         }
         
         // Declare data format from remote REST API
-        JSON.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        JSON.dateFormatter.dateFormat = ZamzamConstants.DateTime.JSON_FORMAT
         
         // Perform any one-time setup if needed
         UpdateKit().firstLaunch {

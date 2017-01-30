@@ -1,4 +1,4 @@
-github "ZamzamInc/ZamzamKit"
+github "ZamzamInc/ZamzamKit" "master"
 github "naoty/Timepiece"
 github "radex/SwiftyTimer"
 github "radex/SwiftyUserDefaults"
