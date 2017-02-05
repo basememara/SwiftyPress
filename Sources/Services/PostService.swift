@@ -33,7 +33,7 @@ extension PostService {
         guard let url = url else { return nil }
         
         let slug = url.path.lowercased()
-            .replaceRegEx("\\d{4}/\\d{2}/\\d{2}/", replaceValue: "") // Handle legacy permalinks
+            .replace(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
             .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
             
         return AppGlobal.realm?.objects(Post.self).filter("slug == '\(slug)'").first

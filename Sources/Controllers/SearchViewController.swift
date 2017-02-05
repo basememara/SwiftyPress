@@ -185,9 +185,9 @@ extension SearchViewController {
         let cell = tableView[indexPath]
         guard let model = models?[indexPath.row] else { return cell }
         
-        cell.textLabel?.text = model.title.decodedHTML
+        cell.textLabel?.text = model.title.htmlDecoded
         cell.detailTextLabel?.text = model.categories
-            .map { $0.name.decodedHTML }
+            .map { $0.name.htmlDecoded }
             .joined(separator: ", ")
         
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])

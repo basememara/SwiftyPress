@@ -37,7 +37,7 @@ extension Trackable {
         let tracker = GAI.sharedInstance().defaultTracker
         
         guard let event = GAIDictionaryBuilder.createEvent(
-            withCategory: category, action: action, label: label?.decodedHTML, value: value as NSNumber!)
+            withCategory: category, action: action, label: label?.htmlDecoded, value: value as NSNumber!)
                 else { return }
         
         tracker?.send(event.build() as [NSObject : AnyObject])
