@@ -17,7 +17,7 @@ public protocol AppPressable: Navigable {
     var window: UIWindow? { get set }
 }
 
-public extension AppPressable {
+public extension AppPressable where Self: UIApplicationDelegate {
 
     /**
      Configures application for currently launched site.
@@ -38,9 +38,7 @@ public extension AppPressable {
         JSON.dateFormatter.dateFormat = ZamzamConstants.DateTime.JSON_FORMAT
         
         // Perform any one-time setup if needed
-        UpdateKit().firstLaunch {
-            setupDatabase()
-        }
+        UpdateKit().firstLaunch { setupDatabase() }
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
@@ -60,11 +58,8 @@ public extension AppPressable {
      - returns: True to indicate that your app handled the activity or false to let iOS know that your app did not handle the activity.
      */
     func continueUserActivity(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-            return navigateByURL(userActivity.webpageURL)
-        }
-        
-        return true
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else { return true }
+        return navigateByURL(userActivity.webpageURL)
     }
 }
 
