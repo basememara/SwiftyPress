@@ -26,4 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         return continueUserActivity(application, userActivity: userActivity, restorationHandler: restorationHandler)
     }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        performFetch(application, completionHandler: completionHandler)
+    }
 }
