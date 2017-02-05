@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import ZamzamKit
 import JASON
+import Timepiece
 
 public protocol Postable: class {
     
@@ -83,5 +84,23 @@ public class Post: Object, Postable {
         if !image.link.isEmpty {
             media = image
         }
+    }
+}
+
+extension Post: Comparable {
+
+    /// Determines if the first post is older.
+    public static func < (lhs: Post, rhs: Post) -> Bool {
+        return lhs.date ?? Date.distantPast < rhs.date ?? Date.distantPast
+    }
+
+    /// Determines if the first post is newer.
+    public static func > (lhs: Post, rhs: Post) -> Bool {
+        return lhs.date ?? Date.distantPast > rhs.date ?? Date.distantPast
+    }
+
+    /// Determine if both the posts have the same identifier.
+    public static func == (lhs: Post, rhs: Post) -> Bool {
+        return lhs.id == rhs.id
     }
 }

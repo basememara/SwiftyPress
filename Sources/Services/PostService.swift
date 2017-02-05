@@ -69,7 +69,7 @@ extension PostService {
         }
     }
     
-    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((Result<Void>) -> Void)? = nil) {
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((Result<[Postable]>) -> Void)? = nil) {
         Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
@@ -81,24 +81,28 @@ extension PostService {
                     }
                 
                 // Parse JSON to array
-                let list: [Post] = json.map(Post.init).filter {
-                    // Skip if latest changes already persisted
-                    if let persisted = AppGlobal.realm?.object(ofType: Post.self, forPrimaryKey: $0.id),
-                        let localDate = persisted.modified,
-                        let remoteDate = $0.modified,
-                        localDate >= remoteDate {
-                            return false
+                let list: [Post] = json.map(Post.init)
+                    // Ignore persisted posts with no changes
+                    .filter {
+                        if let persisted = realm.object(ofType: Post.self, forPrimaryKey: $0.id),
+                            let localDate = persisted.modified,
+                            let remoteDate = $0.modified,
+                            localDate >= remoteDate {
+                                return false
+                        }
+                    
+                        return true
                     }
+                    // Order by newest post first
+                    .sorted(by: >)
                 
-                    return true
-                }
-                
+                // Persist to local storage if applicable
                 if !list.isEmpty {
                     do { try realm.write { realm.add(List(list), update: true) } }
                     catch { /*TODO: Log error*/ }
                 }
                 
-                complete?(.success())
+                complete?(.success(list))
             }
     }
     
