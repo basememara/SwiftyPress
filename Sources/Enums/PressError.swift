@@ -9,5 +9,7 @@
 import Foundation
 
 enum PressError: Error {
-    case emptyPosts
+    case general
+    case databaseFail
+    case parseFail
 }
