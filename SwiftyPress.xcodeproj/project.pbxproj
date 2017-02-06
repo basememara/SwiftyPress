@@ -277,6 +277,8 @@
 		8B5EDAEE1CDC495800F1C81C /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		8B5EDAF01CDC4A0800F1C81C /* PostDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostDetail.storyboard; sourceTree = "<group>"; };
 		8B5EDAF21CDC5A3E00F1C81C /* AppPressable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPressable.swift; sourceTree = "<group>"; };
+		8B6A95751E485F41003F333D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
+		8B6A95771E485F41003F333D /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = Library/Frameworks/UserNotificationsUI.framework; sourceTree = DEVELOPER_DIR; };
 		8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataControllable.swift; sourceTree = "<group>"; };
 		8B6D0C301CAFBC8700B471CC /* DataViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewable.swift; sourceTree = "<group>"; };
 		8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBadge.swift; sourceTree = "<group>"; };
@@ -573,6 +575,8 @@
 				8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */,
 				8B16BA371E33EB2300CF166D /* Timepiece.framework */,
 				8B16BA381E33EB2300CF166D /* ZamzamKit.framework */,
+				8B6A95751E485F41003F333D /* UserNotifications.framework */,
+				8B6A95771E485F41003F333D /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -790,7 +794,7 @@
 		8B335FA71CA880840033B2AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				TargetAttributes = {
 					8B335FB11CA880A20033B2AE = {
