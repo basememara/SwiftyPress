@@ -47,8 +47,8 @@ public extension AppPressable where Self: UIApplicationDelegate {
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = ZamzamConstants.DateTime.JSON_FORMAT
         
-        // Perform any one-time setup if needed
-        UpdateKit().firstLaunch { setupDatabase() }
+        // Perform any database configuration
+        setupDatabase()
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
@@ -82,23 +82,48 @@ public extension AppPressable where Self: UIApplicationDelegate {
     }
 }
 
+
+// MARK: - Internal functions
 private extension AppPressable {
 
     func setupDatabase() {
-        guard let realmFileURL = Realm.Configuration.defaultConfiguration.fileURL else { return }
         let fileManager = FileManager.default
         
         // Remove previous database to allow fresh data and schema to be recreated
-        if fileManager.fileExists(atPath: realmFileURL.path) {
+        if let defaultURL = Realm.Configuration.defaultConfiguration.fileURL, fileManager.fileExists(atPath: defaultURL.path) {
             // Handle database auxiliary files
-            let folderPath = realmFileURL.deletingLastPathComponent().path
+            let folderPath = defaultURL.deletingLastPathComponent().path
             do {
                 try fileManager.contentsOfDirectory(atPath: folderPath)
-                    .filter { $0.hasPrefix(realmFileURL.lastPathComponent) }
+                    .filter { $0.hasPrefix(defaultURL.lastPathComponent) }
                     .forEach { try fileManager.removeItem(atPath: "\(folderPath)/\($0)") }
             } catch {
                 // TODO: Log error
             }
+        }
+        
+        // Create default location of Realm
+        guard let folderURL = fileManager
+            .urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
+            .appendingPathComponent("Realm")
+                else { return }
+        
+        // Set the configuration used for the default Realm
+        let realmFileURL = folderURL.appendingPathComponent("default.realm")
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(fileURL: realmFileURL)
+        
+        // Create default location and set permissions
+        guard !fileManager.fileExists(atPath: folderURL.path) else { return }
+        do {
+            // Create directory if does not exist yet
+            try fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
+            
+            // Decrease file protection after first open for the parent directory
+            try fileManager.setAttributes([
+                FileAttributeKey.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
+            ], ofItemAtPath: folderURL.path)
+        } catch {
+            // TODO: Log error
         }
         
         // Seed data to fresh database
