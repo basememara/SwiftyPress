@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyPress
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
@@ -29,5 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         performFetch(application, completionHandler: completionHandler)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        didReceiveUserNotification(response: response, withCompletionHandler: completionHandler)
     }
 }

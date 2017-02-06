@@ -13,8 +13,7 @@ import RealmSwift
 import JASON
 import UserNotifications
 
-public protocol AppPressable: Navigable {
-
+public protocol AppPressable: Navigable, UNUserNotificationCenterDelegate {
     var window: UIWindow? { get set }
 }
 
@@ -140,54 +139,66 @@ private extension AppPressable {
             UITableViewCell.appearance().backgroundColor = .clear
         }
     }
+}
+
+// MARK: - User Notification Delegate
+extension AppPressable {
+
+    public func didReceiveUserNotification(response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        guard let id = response.notification.request.content.userInfo["id"] as? Int,
+            let link = response.notification.request.content.userInfo["link"] as? String,
+            let url = try? link.asURL()
+                else { return }
+        
+        switch response.actionIdentifier {
+        case UNNotificationDefaultActionIdentifier: _ = navigateByURL(url)
+        case "favorite": PostService().addFavorite(id)
+        case "share": _ = navigateByURL(url)
+        default: break
+        }
+        
+        completionHandler()
+    }
     
-    func scheduleUserNotifications(completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    fileprivate func scheduleUserNotifications(completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // Get latest posts from server
         PostService().updateFromRemote {
             guard case .success(let posts) = $0 else { return completionHandler(.failed) }
             guard let post = posts.first else { return completionHandler(.noData) }
             
-            var title = "New post".localized
+            var title = "New Blog Post".localized
             var attachments = [UNNotificationAttachment]()
-            
-            // Append author name if applicable
-            if let author = post.author?.name, !author.isEmpty {
-                title += " \("by".localized) \(author)"
-            }
             
             // Completion process on exit
             func deferred() {
                 // Launch notification
                 UNUserNotificationCenter.current().add(
                     timeInterval: 5,
-                    body: post.title,
-                    title: title,
+                    body: !post.excerpt.isEmpty ? post.excerpt : post.content.htmlStripped.htmlDecoded.truncated(300),
+                    title: post.title,
                     attachments: attachments,
-                    userInfo: ["link": post.link]
+                    userInfo: [
+                        "id": post.id,
+                        "link": post.link
+                    ]
                 )
                 
                 completionHandler(.newData)
             }
             
             // Get remote media to attach to notification
-            guard let link = post.media?.thumbnailLink, let file = URL(string: link) else { return deferred() }
+            guard let link = post.media?.thumbnailLink else { return deferred() }
             let thread = Thread.current
             
-            URLSession.shared.downloadTask(with: file) {
+            FileManager.default.download(from: link) {
                 defer { thread.async { deferred() } }
-                guard let location = $0.0 else { return }
                 
-                // Construct file destination
-                let temp = FileManager.default.temporaryDirectory.appendingPathComponent(file.lastPathComponent)
-                _ = try? FileManager.default.removeItem(at: temp)
-                
-                // Store remote file locally
-                guard let _ = try? FileManager.default.moveItem(at: location, to: temp),
-                    let attachment = try? UNNotificationAttachment(identifier: link, url: temp)
+                guard $0.2 == nil, let url = $0.0,
+                    let attachment = try? UNNotificationAttachment(identifier: link, url: url)
                         else { return }
-                
+                        
                 attachments.append(attachment)
-            }.resume()
+            }
         }
     }
 }
