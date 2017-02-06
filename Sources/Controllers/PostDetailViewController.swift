@@ -211,19 +211,19 @@ extension PostDetailViewController {
         // Handle links
         if navigationAction.navigationType == .linkActivated && navigationAction.targetFrame?.isMainFrame == true {
             // Open same domain links within app
-            if navigationAction.request.url?.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
+            if let requestURL = navigationAction.request.url, requestURL.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.url), routeToTerm(term.id) {
+                if let term = TermService().get(requestURL), routeToTerm(term.id) {
                     return decisionHandler(.cancel)
-                } else if let post = service.get(navigationAction.request.url) {
+                } else if let post = service.get(requestURL) {
                     // Save history and bind retrieved post to current view
                     history.append(model)
                     loadData(post)
                     return decisionHandler(.cancel)
                 }
-            } else if let url = navigationAction.request.url {
+            } else if let requestURL = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(url.absoluteString)
+                presentSafariController(requestURL.absoluteString)
                 return decisionHandler(.cancel)
             }
             
@@ -242,11 +242,11 @@ extension PostDetailViewController {
         // Open "target=_blank" in the same view
         if navigationAction.targetFrame == nil {
             // Open same domain links within app
-            if navigationAction.request.url?.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
+            if let requestURL = navigationAction.request.url, requestURL.host == URL(string: AppGlobal.userDefaults[.baseURL])?.host {
                 // Deep link to category
-                if let term = TermService().get(navigationAction.request.url), routeToTerm(term.id) {
+                if let term = TermService().get(requestURL), routeToTerm(term.id) {
                     return nil
-                } else if let post = service.get(navigationAction.request.url) {
+                } else if let post = service.get(requestURL) {
                     // Save history and bind retrieved post to current view
                     history.append(model)
                     loadData(post)
@@ -254,9 +254,9 @@ extension PostDetailViewController {
                 }
                 
                 webView.load(navigationAction.request)
-            } else if let url = navigationAction.request.url {
+            } else if let requestURL = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(url.absoluteString)
+                presentSafariController(requestURL.absoluteString)
                 return nil
             }
             
