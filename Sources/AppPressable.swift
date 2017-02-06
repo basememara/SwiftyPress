@@ -28,9 +28,15 @@ public extension AppPressable where Self: UIApplicationDelegate {
      - returns: False if the app cannot handle the URL resource or continue a user activity, otherwise return true. The return value is ignored if the app is launched as a result of a remote notification.
      */
     func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Configure application
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
-        UNUserNotificationCenter.current().register()
+        
+        UNUserNotificationCenter.current().register(
+            delegate: self,
+            actions: [
+                UNNotificationAction(identifier: "favorite", title: "Favorite".localized),
+                UNNotificationAction(identifier: "share", title: "Share".localized)
+            ]
+        )
         
         // Initialize Google Analytics
         if !AppGlobal.userDefaults[.googleAnalyticsID].isEmpty {
