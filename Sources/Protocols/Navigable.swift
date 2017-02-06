@@ -31,8 +31,7 @@ extension Navigable {
      - returns: True if the navigation was successful, otherwise false.
      */
     func toSearch(_ query: String) -> Bool {
-        guard let controller = getRootViewByTab(3) as? SearchViewController
-            else { return false }
+        guard let controller = getRootViewByTab(3) as? SearchViewController else { return false }
         
         // Run on main UI thread in case too soon
         DispatchQueue.main.async {
@@ -50,8 +49,7 @@ extension Navigable {
      - returns: True if the navigation was successful, otherwise false.
      */
     func toTerm(_ id: Int) -> Bool {
-        guard let controller = getRootViewByTab(2) as? ExploreViewController
-            else { return false }
+        guard let controller = getRootViewByTab(2) as? ExploreViewController else { return false }
         
         // Run on main UI thread in case too soon
         DispatchQueue.main.async {
@@ -93,11 +91,9 @@ extension Navigable {
 
      - returns: True if the navigation was successful, otherwise false.
      */
-    func navigateByURL(_ url: URL?) -> Bool {
+    func navigateByURL(_ url: URL) -> Bool {
         // Get root container and extract path from URL if applicable
-        guard let url = url,
-            let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-                else { return false }
+        guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
         
         // Handle url if applicable
         if url.path.isEmpty || url.path == "/" {
@@ -113,8 +109,7 @@ extension Navigable {
             return true
         } else {
             // Failed so open in Safari as fallback
-            guard let destination = URL(string: urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1"))
-                else { return false }
+            guard let destination = URL(string: urlComponents.addOrUpdateQueryStringParameter("mobileembed", value: "1")) else { return false }
             
             // Display browser if post not found
             getRootNavigationByTab(2)?.pushViewController(
@@ -136,8 +131,7 @@ extension Navigable {
      */
     func getRootNavigationByTab(_ index: Int) -> UINavigationController? {
         // Get root tab bar controller
-        guard let tabBarController = window?.rootViewController as? UITabBarController
-            else { return nil }
+        guard let tabBarController = window?.rootViewController as? UITabBarController else { return nil }
         
         tabBarController.dismiss(animated: false, completion: nil)
         
