@@ -19,7 +19,8 @@ public struct PostService: Serviceable {
 extension PostService {
 
     public func get(complete: @escaping ([Postable]) -> Void) {
-        complete(AppGlobal.realm?.objects(Post.self).map { $0 } ?? [])
+        guard let realm = try? Realm() else { return complete([]) }
+        complete(realm.objects(Post.self).map { $0 })
     }
     
     /**
@@ -29,14 +30,14 @@ extension PostService {
 
      - returns: Post matching the extracted slug from the URL.
      */
-    public func get(_ url: URL?) -> Post? {
-        guard let url = url else { return nil }
+    public func get(_ url: URL) -> Post? {
+        guard let realm = try? Realm() else { return nil }
         
         let slug = url.path.lowercased()
             .replace(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
             .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
             
-        return AppGlobal.realm?.objects(Post.self).filter("slug == '\(slug)'").first
+        return realm.objects(Post.self).filter("slug == '\(slug)'").first
     }
 }
 
@@ -73,7 +74,7 @@ extension PostService {
         Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
-                    let realm = AppGlobal.realm,
+                    let realm = try? Realm(),
                     let json = response.result.value else {
                         Log(debug: "Could not retrieve posts from remote server: \(response.debugDescription)")
                         complete?(.failure(response.result.error ?? PressError.general))

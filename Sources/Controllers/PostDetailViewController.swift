@@ -310,9 +310,10 @@ extension PostDetailViewController {
             
             self.commentBarButton.badgeString = "\(response.commentCount)"
             
+            guard let realm = try? Realm() else { return }
             do {
                 // Persist latest comment count
-                try AppGlobal.realm?.write {
+                try realm.write {
                     self.model.commentCount = response.commentCount
                 }
             } catch {

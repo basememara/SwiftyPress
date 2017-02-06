@@ -30,7 +30,9 @@ extension RealmControllable {
     }
     
     func setupDataSource() {
-        models = AppGlobal.realm?.objects(DataType.self).sorted(
+        guard let realm = try? Realm() else { return }
+        
+        models = realm.objects(DataType.self).sorted(
             byKeyPath: sortProperty, ascending: sortAscending)
         
         // Set results notification block
@@ -49,7 +51,7 @@ extension RealmControllable {
     }
     
     func applyFilterAndSort(_ filter: String? = nil, sort: String? = nil, ascending: Bool? = nil, reload: Bool = true) {
-        guard let realm = AppGlobal.realm else { return }
+        guard let realm = try? Realm() else { return }
         
         var temp = realm.objects(DataType.self)
             .sorted(byKeyPath: sortProperty, ascending: ascending ?? sortAscending)
