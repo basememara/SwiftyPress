@@ -529,7 +529,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSDictionary<N
 /**
   The logged-in user. \code
   nil
-  \endcode if none exists.
+  \endcode if none exists. Only use this property if your application expects
+  no more than one logged-in user at any given time.
   warning:
   Throws an Objective-C exception if more than one logged-in user exists.
 */
