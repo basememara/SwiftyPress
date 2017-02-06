@@ -69,7 +69,7 @@ extension PostService {
         }
     }
     
-    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((Result<[Postable]>) -> Void)? = nil) {
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<[Postable]>) -> Void)? = nil) {
         Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
