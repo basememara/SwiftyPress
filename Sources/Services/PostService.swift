@@ -12,6 +12,8 @@ import JASON
 import RealmSwift
 import ZamzamKit
 
+public typealias RemotePostResults = (updated: [Postable], created: [Int])
+
 public struct PostService: Serviceable {
 
 }
@@ -70,7 +72,7 @@ extension PostService {
         }
     }
     
-    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<[Postable]>) -> Void)? = nil) {
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<RemotePostResults>) -> Void)? = nil) {
         Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
@@ -81,29 +83,34 @@ extension PostService {
                         return
                     }
                 
-                guard !json.arrayValue.isEmpty else { complete?(.success([])); return }
+                var results: RemotePostResults = ([], [])
+                guard !json.arrayValue.isEmpty else { complete?(.success(results)); return }
                 
                 // Parse JSON to array
-                let list: [Post] = json.map(Post.init)
-                    // Ignore persisted posts with no changes
-                    .filter {
-                        if let persisted = realm.object(ofType: Post.self, forPrimaryKey: $0.id),
-                            let localDate = persisted.modified,
-                            let remoteDate = $0.modified,
-                            localDate >= remoteDate {
-                                return false
-                        }
-                    
-                        return true
-                    }
+                results.updated = json.map(Post.init)
                     // Order by newest post first
                     .sorted(by: >)
+                    // Ignore persisted posts with no changes
+                    .filter {
+                        guard let persisted = realm.object(ofType: Post.self, forPrimaryKey: $0.id) else {
+                            results.created.append($0.id)
+                            return true
+                        }
+                    
+                        guard let localDate = persisted.modified,
+                            let remoteDate = $0.modified,
+                            localDate >= remoteDate
+                                else { return true }
+                    
+                        return false
+                    }
                 
                 // Persist to local storage if applicable
-                if !list.isEmpty {
+                if !results.updated.isEmpty {
                     do {
-                        try realm.write { realm.add(List(list), update: true) }
-                        Log(debug: "Posts updated from remote server: \(list.count) items.")
+                        guard let posts = results.updated as? [Post] else { throw PressError.parseFail }
+                        try realm.write { realm.add(List(posts), update: true) }
+                        Log(debug: "Posts updated from remote server: \(results.updated.count) updated items, \(results.created.count) new items.")
                     } catch {
                         Log(error: "Could not persist the posts: \(error).")
                         complete?(.failure(PressError.databaseFail))
@@ -111,7 +118,7 @@ extension PostService {
                     }
                 }
                 
-                complete?(.success(list))
+                complete?(.success(results))
             }
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import ZamzamKit
 import JASON
 import UserNotifications
+import RealmSwift
 
 public protocol AppPressable: Navigable, UNUserNotificationCenterDelegate {
     var window: UIWindow? { get set }
@@ -146,8 +147,12 @@ extension AppPressable {
     fileprivate func scheduleUserNotifications(completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // Get latest posts from server
         PostService().updateFromRemote {
-            guard case .success(let posts) = $0 else { return completionHandler(.failed) }
-            guard let post = posts.first else { return completionHandler(.noData) }
+            guard case .success(let results) = $0 else { return completionHandler(.failed) }
+            
+            guard let id = results.created.first,
+                let post = (try? Realm())?.object(ofType: Post.self, forPrimaryKey: id)
+                    else { return completionHandler(.noData) }
+            
             var attachments = [UNNotificationAttachment]()
             
             // Completion process on exit
