@@ -14,9 +14,9 @@ import RateLimit
 public struct AppGlobal {
     
     public static let userDefaults = UserDefaults.standard
-    public static let postRefreshLimit = TimedLimiter(limit: 10800)
+    static let postRefreshLimit = TimedLimiter(limit: 10800)
     
-    public static var realm: Realm? = {
+    static var realm: Realm? = {
         do {
             return try Realm()
         } catch {

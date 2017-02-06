@@ -11,28 +11,32 @@ import SwiftyBeaver
 
 private let log = SwiftyBeaver.self
 
-func setupLogger() {
-    log.addDestination(ConsoleDestination())
-    
-    // File output configurations
+struct AppLogger {
+
     var logFileURL: URL?
-    log.addDestination({
-        $0.logFileURL = $0.logFileURL?
-            .deletingLastPathComponent()
-            .appendingPathComponent("swiftypress.log")
-        logFileURL = $0.logFileURL
-        return $0
-    }(FileDestination()))
     
-    // Handle file protection for logging to occur in various app states
-    if let url = logFileURL {
-        _ = try? FileManager.default.setAttributes([
-            FileAttributeKey.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
-        ], ofItemAtPath: url.absoluteString)
+    init() {
+        log.addDestination(ConsoleDestination())
+        
+        // File output configurations
+        log.addDestination({
+            $0.logFileURL = $0.logFileURL?
+                .deletingLastPathComponent()
+                .appendingPathComponent("swiftypress.log")
+            self.logFileURL = $0.logFileURL
+            return $0
+        }(FileDestination()))
+        
+        // Handle file protection for logging to occur in various app states
+        if let url = logFileURL {
+            _ = try? FileManager.default.setAttributes([
+                FileAttributeKey.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
+            ], ofItemAtPath: url.absoluteString)
+        }
+        
+        // Touch log file for setting attributes later
+        Log(info: "Logger initialized")
     }
-    
-    // Touch log file for setting attributes later
-    Log(info: "Logger initialized")
 }
 
 /**

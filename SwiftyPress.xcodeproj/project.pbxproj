@@ -121,6 +121,7 @@
 		8BF210761E48D59E0026B802 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */; };
 		8BF210791E48D7A30026B802 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF210781E48D7A30026B802 /* AppLogger.swift */; };
 		8BF2107A1E48D7FA0026B802 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */; };
+		8BF2107C1E48EAE10026B802 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2107B1E48EAE10026B802 /* AppData.swift */; };
 		8BF312B11E37062D00CE27B7 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B01E37062D00CE27B7 /* Media.swift */; };
 		8BF312B61E37C99000CE27B7 /* PressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B51E37C99000CE27B7 /* PressError.swift */; };
 		8BF312B81E37F31000CE27B7 /* UpdateKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B71E37F31000CE27B7 /* UpdateKit.swift */; };
@@ -312,6 +313,7 @@
 		8BE9DEE91CE67E610045A2F3 /* Navigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
 		8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		8BF210781E48D7A30026B802 /* AppLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
+		8BF2107B1E48EAE10026B802 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		8BF312B01E37062D00CE27B7 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BF312B51E37C99000CE27B7 /* PressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressError.swift; sourceTree = "<group>"; };
 		8BF312B71E37F31000CE27B7 /* UpdateKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateKit.swift; sourceTree = "<group>"; };
@@ -427,8 +429,9 @@
 				8B3360531CA885690033B2AE /* Services */,
 				8B3FAD691CAC4473006E90B6 /* Views */,
 				8B1E51871CD9D98700BB30CB /* AppConstants.swift */,
-				8BF210781E48D7A30026B802 /* AppLogger.swift */,
+				8BF2107B1E48EAE10026B802 /* AppData.swift */,
 				8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */,
+				8BF210781E48D7A30026B802 /* AppLogger.swift */,
 				8B5EDAF21CDC5A3E00F1C81C /* AppPressable.swift */,
 				8B335FB51CA880A20033B2AE /* SwiftyPress.h */,
 				8B20B21A1CAE471400CA693B /* Media.xcassets */,
@@ -1006,6 +1009,7 @@
 				8B5EDAE61CDC48B000F1C81C /* PopularViewController.swift in Sources */,
 				8B20B21F1CAE4A5A00CA693B /* UIImageView.swift in Sources */,
 				8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */,
+				8BF2107C1E48EAE10026B802 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
