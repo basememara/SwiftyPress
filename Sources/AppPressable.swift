@@ -47,13 +47,16 @@ public extension AppPressable where Self: UIApplicationDelegate {
         // Declare data format from remote REST API
         JSON.dateFormatter.dateFormat = ZamzamConstants.DateTime.JSON_FORMAT
         
-        // Perform any database configuration
+        // Perform any component configuration
+        setupLogger()
         setupDatabase()
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
         
         applyTheme()
+        
+        Log(info: "SwiftyPress finish launching.")
     
         return true
     }

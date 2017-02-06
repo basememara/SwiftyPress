@@ -118,6 +118,9 @@
 		8BCB81C91CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */; };
 		8BD08EB21CE27D2E0051080A /* Site in Resources */ = {isa = PBXBuildFile; fileRef = 8BD08EB11CE27D2E0051080A /* Site */; };
 		8BE9DEEA1CE67E610045A2F3 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE9DEE91CE67E610045A2F3 /* Navigable.swift */; };
+		8BF210761E48D59E0026B802 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */; };
+		8BF210791E48D7A30026B802 /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF210781E48D7A30026B802 /* AppLogger.swift */; };
+		8BF2107A1E48D7FA0026B802 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */; };
 		8BF312B11E37062D00CE27B7 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B01E37062D00CE27B7 /* Media.swift */; };
 		8BF312B61E37C99000CE27B7 /* PressError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B51E37C99000CE27B7 /* PressError.swift */; };
 		8BF312B81E37F31000CE27B7 /* UpdateKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF312B71E37F31000CE27B7 /* UpdateKit.swift */; };
@@ -307,6 +310,8 @@
 		8BCB81C81CD2F63C00C5CB6D /* CHTCollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTCollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		8BD08EB11CE27D2E0051080A /* Site */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Site; sourceTree = "<group>"; };
 		8BE9DEE91CE67E610045A2F3 /* Navigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
+		8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		8BF210781E48D7A30026B802 /* AppLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
 		8BF312B01E37062D00CE27B7 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		8BF312B51E37C99000CE27B7 /* PressError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressError.swift; sourceTree = "<group>"; };
 		8BF312B71E37F31000CE27B7 /* UpdateKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateKit.swift; sourceTree = "<group>"; };
@@ -338,6 +343,7 @@
 				8B16BA421E33EB2300CF166D /* SwiftyUserDefaults.framework in Frameworks */,
 				8B16BA431E33EB2300CF166D /* Timepiece.framework in Frameworks */,
 				8B16BA441E33EB2300CF166D /* ZamzamKit.framework in Frameworks */,
+				8BF210761E48D59E0026B802 /* SwiftyBeaver.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +372,7 @@
 				8B16BA5B1E33EB8400CF166D /* ZamzamKit.framework in Frameworks */,
 				8B16BA4C1E33EB6500CF166D /* Realm.framework in Frameworks */,
 				8B16BA451E33EB4E00CF166D /* SwiftyPress.framework in Frameworks */,
+				8BF2107A1E48D7FA0026B802 /* SwiftyBeaver.framework in Frameworks */,
 				8B16BA4E1E33EB6500CF166D /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +427,7 @@
 				8B3360531CA885690033B2AE /* Services */,
 				8B3FAD691CAC4473006E90B6 /* Views */,
 				8B1E51871CD9D98700BB30CB /* AppConstants.swift */,
+				8BF210781E48D7A30026B802 /* AppLogger.swift */,
 				8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */,
 				8B5EDAF21CDC5A3E00F1C81C /* AppPressable.swift */,
 				8B335FB51CA880A20033B2AE /* SwiftyPress.h */,
@@ -575,6 +583,7 @@
 				8B16BA361E33EB2300CF166D /* SwiftyUserDefaults.framework */,
 				8B16BA371E33EB2300CF166D /* Timepiece.framework */,
 				8B16BA381E33EB2300CF166D /* ZamzamKit.framework */,
+				8BF210751E48D59E0026B802 /* SwiftyBeaver.framework */,
 				8B6A95751E485F41003F333D /* UserNotifications.framework */,
 				8B6A95771E485F41003F333D /* UserNotificationsUI.framework */,
 			);
@@ -937,6 +946,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Timepiece.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZamzamKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Spectre.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
@@ -983,6 +993,7 @@
 				8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */,
 				8BF312B61E37C99000CE27B7 /* PressError.swift in Sources */,
 				8B162A761CDECABC00871275 /* RealmPostCollectionViewController.swift in Sources */,
+				8BF210791E48D7A30026B802 /* AppLogger.swift in Sources */,
 				8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */,
 				8B3360921CA8903D0033B2AE /* Term.swift in Sources */,
 				8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */,
