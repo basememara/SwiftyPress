@@ -145,8 +145,6 @@ extension AppPressable {
         PostService().updateFromRemote {
             guard case .success(let posts) = $0 else { return completionHandler(.failed) }
             guard let post = posts.first else { return completionHandler(.noData) }
-            
-            var title = "New Blog Post".localized
             var attachments = [UNNotificationAttachment]()
             
             // Completion process on exit
