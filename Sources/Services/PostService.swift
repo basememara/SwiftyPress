@@ -73,12 +73,14 @@ extension PostService {
         Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
-                    let realm = try? Realm(),
-                    let json = response.result.value,
-                    !json.arrayValue.isEmpty else {
-                        complete?(.failure(response.result.error ?? PressError.emptyPosts))
+                    let realm = AppGlobal.realm,
+                    let json = response.result.value else {
+                        Log(debug: "Could not retrieve posts from remote server: \(response.debugDescription)")
+                        complete?(.failure(response.result.error ?? PressError.general))
                         return
                     }
+                
+                guard !json.arrayValue.isEmpty else { complete?(.success([])); return }
                 
                 // Parse JSON to array
                 let list: [Post] = json.map(Post.init)
@@ -98,8 +100,14 @@ extension PostService {
                 
                 // Persist to local storage if applicable
                 if !list.isEmpty {
-                    do { try realm.write { realm.add(List(list), update: true) } }
-                    catch { /*TODO: Log error*/ }
+                    do {
+                        try realm.write { realm.add(List(list), update: true) }
+                        Log(debug: "Posts updated from remote server: \(list.count) items.")
+                    } catch {
+                        Log(error: "Could not persist the posts: \(error).")
+                        complete?(.failure(PressError.databaseFail))
+                        return
+                    }
                 }
                 
                 complete?(.success(list))

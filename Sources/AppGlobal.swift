@@ -20,7 +20,7 @@ public struct AppGlobal {
         do {
             return try Realm()
         } catch {
-            // TODO: Log error
+            Log(error: "Could not get a Realm instance: \(error).")
             return nil
         }
     }()

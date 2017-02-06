@@ -23,7 +23,7 @@ struct AppData {
                     .filter { $0.hasPrefix(defaultURL.lastPathComponent) }
                     .forEach { try fileManager.removeItem(atPath: "\(folderPath)/\($0)") }
             } catch {
-                // TODO: Log error
+                Log(error: "Could not remove Realm auxiliary files: \(error).")
             }
         }
         
@@ -48,7 +48,7 @@ struct AppData {
                 FileAttributeKey.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication
             ], ofItemAtPath: folderURL.path)
         } catch {
-            // TODO: Log error
+            Log(error: "Could not set permissions to Realm folder: \(error).")
         }
         
         // Seed data to fresh database
@@ -56,11 +56,12 @@ struct AppData {
             fileManager.fileExists(atPath: seedFileURL.path) else {
                 // Construct from a series of REST requests
                 PostService().seedFromRemote()
+                Log(warn: "Could not find seed database file.")
                 return
             }
         
         // Use pre-created seed database
         do { try fileManager.copyItem(at: seedFileURL, to: realmFileURL) }
-        catch { /*TODO: Log error*/ }
+        catch { Log(error: "Could not seed database from file: \(error).") }
     }
 }

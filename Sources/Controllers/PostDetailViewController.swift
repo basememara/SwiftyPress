@@ -316,7 +316,7 @@ extension PostDetailViewController {
                     self.model.commentCount = response.commentCount
                 }
             } catch {
-                // TODO: Log error
+                Log(error: "Could not update post comment count: \(error).")
             }
         }
     }

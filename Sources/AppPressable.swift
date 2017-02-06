@@ -26,6 +26,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
      - returns: False if the app cannot handle the URL resource or continue a user activity, otherwise return true. The return value is ignored if the app is launched as a result of a remote notification.
      */
     func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Log(info: "AppPressable.didFinishLaunchingSite started.")
         UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         UNUserNotificationCenter.current().register(
@@ -69,8 +70,9 @@ public extension AppPressable where Self: UIApplicationDelegate {
      - returns: True to indicate that your app handled the activity or false to let iOS know that your app did not handle the activity.
      */
     func continueUserActivity(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb else { return true }
-        return navigateByURL(userActivity.webpageURL)
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb, let webpageURL = userActivity.webpageURL else { return false }
+        Log(info: "AppPressable.continueUserActivity for URL: \(webpageURL.absoluteString).")
+        return navigateByURL(webpageURL)
     }
     
     /// Tells the app that it can begin a fetch operation if it has data to download.
@@ -79,6 +81,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
     ///   - application: Your shared app object.
     ///   - completionHandler: The block to execute when the download operation is complete.
     func performFetch(_ application: UIApplication, completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        Log(info: "AppPressable.performFetch started.")
         scheduleUserNotifications(completionHandler: completionHandler)
     }
 }
@@ -158,7 +161,11 @@ extension AppPressable {
                     userInfo: [
                         "id": post.id,
                         "link": post.link
-                    ]
+                    ],
+                    completion: {
+                        guard $0 != nil else { return }
+                        Log(error: "Could not schedule the notification for the post: \($0.debugDescription).")
+                    }
                 )
                 
                 completionHandler(.newData)
@@ -169,6 +176,11 @@ extension AppPressable {
             let thread = Thread.current
             
             FileManager.default.download(from: link) {
+                guard $0.2 == nil else {
+                    Log(error: "Could not download the post thumbnail (\(link)): \($0.2.debugDescription).")
+                    return completionHandler(.failed)
+                }
+                
                 defer { thread.async { deferred() } }
                 
                 guard $0.2 == nil, let url = $0.0,
