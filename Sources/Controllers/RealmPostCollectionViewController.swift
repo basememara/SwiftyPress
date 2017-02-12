@@ -38,6 +38,10 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         super.viewDidLoad()
         didDataControllableLoad()
         setupCollectionView()
+        
+        if let collectionView = collectionView, traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: collectionView)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,5 +104,33 @@ extension RealmPostCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: PostDetailViewController.segueIdentifier, sender: nil)
+    }
+}
+
+// MARK: - Add 3D Peek and Pop for posts
+extension RealmPostCollectionViewController: UIViewControllerPreviewingDelegate {
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = collectionView?.indexPathForItem(at: location),
+            let cell = collectionView?.cellForItem(at: indexPath),
+            let model = models?[indexPath.row],
+            let controller: PostPreviewViewController = UIStoryboard(name: "PostPreview", bundle: AppConstants.bundle).instantiateViewController()
+                else { return nil }
+        
+        previewingContext.sourceRect = cell.frame
+        
+        controller.model = model
+        controller.delegate = self
+        
+        return controller
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let sourceController = viewControllerToCommit as? PostPreviewViewController,
+            let destinationController: PostDetailViewController = UIStoryboard(name: "PostDetail", bundle: AppConstants.bundle).instantiateViewController()
+                else { return }
+        
+        destinationController.model = sourceController.model
+        show(destinationController, sender: self)
     }
 }

@@ -60,6 +60,10 @@ extension PostService {
         removeFavorite(id)
     }
     
+    public func isFavorite(_ id: Int) -> Bool {
+        return AppGlobal.userDefaults[.favorites].contains(id)
+    }
+    
 }
 
 extension PostService {

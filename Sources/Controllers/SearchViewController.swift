@@ -91,6 +91,10 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
         if AppGlobal.userDefaults[.darkMode] {
             tableView.separatorColor = .darkGray
         }
+        
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,4 +202,33 @@ extension SearchViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: PostDetailViewController.segueIdentifier, sender: nil)
     }
+}
+
+// MARK: - Add 3D Peek and Pop for posts
+extension SearchViewController: UIViewControllerPreviewingDelegate {
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = tableView?.indexPathForRow(at: location),
+            let cell = tableView?.cellForRow(at: indexPath),
+            let model = models?[indexPath.row],
+            let controller: PostPreviewViewController = UIStoryboard(name: "PostPreview", bundle: AppConstants.bundle).instantiateViewController()
+                else { return nil }
+        
+        previewingContext.sourceRect = cell.frame
+        
+        controller.model = model
+        controller.delegate = self
+        
+        return controller
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        guard let sourceController = viewControllerToCommit as? PostPreviewViewController,
+            let destinationController: PostDetailViewController = UIStoryboard(name: "PostDetail", bundle: AppConstants.bundle).instantiateViewController()
+                else { return }
+        
+        destinationController.model = sourceController.model
+        show(destinationController, sender: self)
+    }
+
 }
