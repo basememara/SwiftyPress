@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ZamzamKit
 
-class SearchViewController: UITableViewController, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating, RealmControllable, Trackable {
+class SearchViewController: UITableViewController, RealmControllable, Trackable {
     
     var notificationToken: NotificationToken?
     var models: Results<Post>?
@@ -99,7 +99,7 @@ class SearchViewController: UITableViewController, UISearchControllerDelegate, U
     }
 }
 
-extension SearchViewController {
+extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard searchController.isActive else { return }

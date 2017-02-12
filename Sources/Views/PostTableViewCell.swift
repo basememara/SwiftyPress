@@ -18,7 +18,7 @@ public class PostTableViewCell: UITableViewCell {
         configure()
     
         itemTitle.text = model.title.htmlDecoded
-        itemContent.text = model.excerpt.htmlDecoded.htmlStripped
+        itemContent.text = model.previewContent
         itemImage.setURL(model.media?.link)
         
         return self

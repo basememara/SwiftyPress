@@ -24,6 +24,7 @@ public protocol Postable: class {
     var date: Date? { get set }
     var modified: Date? { get set }
     var commentCount: Int { get set }
+    var previewContent: String { get }
     
     var media: Media? { get set }
     var author: User? { get set }
@@ -48,6 +49,11 @@ public class Post: Object, Postable {
     public dynamic var author: User?
     public var categories = List<Term>()
     public var tags = List<Term>()
+    
+    public var previewContent: String {
+        return (!excerpt.isEmpty ? excerpt : content)
+            .htmlStripped.htmlDecoded.truncated(300)
+    }
     
     public override static func primaryKey() -> String? {
         return "id"

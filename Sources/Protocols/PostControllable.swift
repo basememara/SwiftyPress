@@ -15,7 +15,7 @@ protocol PostControllable: RealmControllable {
 
 extension PostControllable where Self: UIViewController {
 
-    func prepareForSegue(_ segue: UIStoryboardSegue) {
+    func prepare(for segue: UIStoryboardSegue) {
         guard let segueIdentifier = segue.identifier else { return }
         
         switch (segueIdentifier, segue.destination) {

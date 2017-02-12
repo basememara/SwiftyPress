@@ -43,13 +43,13 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         super.viewWillAppear(animated)
         
         // Retrieve latest posts not more than every X hours
-        AppGlobal.postRefreshLimit.execute {
+        _ = AppGlobal.postRefreshLimit.execute {
             service.updateFromRemote()
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        prepareForSegue(segue)
+        prepare(for: segue)
     }
     
     func didCategorySelect() {
