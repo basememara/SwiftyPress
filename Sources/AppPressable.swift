@@ -34,10 +34,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
         
         UNUserNotificationCenter.current().register(
             delegate: self,
-            actions: [
-                UNNotificationAction(identifier: "favorite", title: "Favorite".localized),
-                UNNotificationAction(identifier: "share", title: "Share".localized)
-            ]
+            actions: [UNNotificationAction(identifier: "favorite", title: "Favorite".localized)]
         )
         
         // Initialize Google Analytics
@@ -183,17 +180,17 @@ extension AppPressable {
             func deferred() {
                 // Launch notification
                 UNUserNotificationCenter.current().add(
-                    timeInterval: 5,
-                    body: !post.excerpt.isEmpty ? post.excerpt : post.content.htmlStripped.htmlDecoded.truncated(300),
+                    body: post.previewContent,
                     title: post.title,
                     attachments: attachments,
+                    timeInterval: 5,
                     userInfo: [
                         "id": post.id,
                         "link": post.link
                     ],
                     completion: {
-                        guard $0 != nil else { return }
-                        Log(error: "Could not schedule the notification for the post: \($0.debugDescription).")
+                        guard $0 == nil else { return Log(error: "Could not schedule the notification for the post: \($0.debugDescription).") }
+                        Log(debug: "Scheduled notification for post during background fetch.")
                     }
                 )
                 
@@ -204,18 +201,14 @@ extension AppPressable {
             guard let link = post.media?.thumbnailLink else { return deferred() }
             let thread = Thread.current
             
-            FileManager.default.download(from: link) {
-                guard $0.2 == nil else {
-                    Log(error: "Could not download the post thumbnail (\(link)): \($0.2.debugDescription).")
-                    return completionHandler(.failed)
-                }
-                
+            UNNotificationAttachment.download(from: link) {
                 defer { thread.async { deferred() } }
                 
-                guard $0.2 == nil, let url = $0.0,
-                    let attachment = try? UNNotificationAttachment(identifier: link, url: url)
-                        else { return }
-                        
+                guard $0.isSuccess, let attachment = $0.value else {
+                    return Log(error: "Could not download the post thumbnail (\(link)): \($0.error.debugDescription).")
+                }
+                
+                // Store attachment to schedule notification later
                 attachments.append(attachment)
             }
         }
