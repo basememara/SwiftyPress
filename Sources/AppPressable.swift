@@ -59,6 +59,12 @@ public extension AppPressable where Self: UIApplicationDelegate {
         applyTheme()
         
         Log(info: "SwiftyPress finish launching.")
+        
+        // Handle shortcut launch
+        if let shortcutItem = launchOptions?[.shortcutItem] as? UIApplicationShortcutItem {
+            performActionForShortcutItem(application, shortcutItem: shortcutItem)
+            return false
+        }
     
         return true
     }
@@ -86,6 +92,21 @@ public extension AppPressable where Self: UIApplicationDelegate {
     func performFetch(_ application: UIApplication, completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         Log(info: "AppPressable.performFetch started.")
         scheduleUserNotifications(completionHandler: completionHandler)
+    }
+    
+    func performActionForShortcutItem(_ application: UIApplication, shortcutItem: UIApplicationShortcutItem, completionHandler: ((Bool) -> Void)? = nil) {
+        window?.rootViewController?.dismiss(animated: false, completion: nil)
+        guard let tabController = window?.rootViewController as? UITabBarController else { completionHandler?(false); return }
+        
+        switch shortcutItem.type {
+        case "favorites":
+            tabController.selectedIndex = 0
+            completionHandler?(true)
+        case "contact":
+            guard let url = URL(string: "mailto:\(AppGlobal.userDefaults[.email])") else { break }
+            UIApplication.shared.open(url)
+        default: break
+        }
     }
 }
 

@@ -37,4 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         didReceiveUserNotification(response: response, withCompletionHandler: completionHandler)
     }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        performActionForShortcutItem(application, shortcutItem: shortcutItem, completionHandler: completionHandler)
+    }
 }
