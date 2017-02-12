@@ -9,11 +9,13 @@
 import UIKit
 import SwiftyPress
 import UserNotifications
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, AppPressable {
 
     var window: UIWindow?
+    var urlSessionManager: SessionManager?
 
     override init() {
         super.init()

@@ -11,9 +11,11 @@ import ZamzamKit
 import JASON
 import UserNotifications
 import RealmSwift
+import Alamofire
 
 public protocol AppPressable: Navigable, UNUserNotificationCenterDelegate {
     var window: UIWindow? { get set }
+    var urlSessionManager: SessionManager? { get set }
 }
 
 public extension AppPressable where Self: UIApplicationDelegate {
@@ -28,7 +30,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
      */
     func didFinishLaunchingSite(_ application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Log(info: "AppPressable.didFinishLaunchingSite started.")
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        application.setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
         
         UNUserNotificationCenter.current().register(
             delegate: self,
@@ -146,7 +148,8 @@ extension AppPressable {
     
     fileprivate func scheduleUserNotifications(completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // Get latest posts from server
-        PostService().updateFromRemote {
+        // Persist network manager instance to ensure lifespan is not interrupted
+        urlSessionManager = PostService().updateFromRemote {
             guard case .success(let results) = $0 else { return completionHandler(.failed) }
             
             guard let id = results.created.first,

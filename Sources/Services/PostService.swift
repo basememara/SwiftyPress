@@ -72,15 +72,17 @@ extension PostService {
         }
     }
     
-    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<RemotePostResults>) -> Void)? = nil) {
-        Alamofire.request(PostRouter.readPosts(page, perPage, orderBy, false))
+    @discardableResult
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<RemotePostResults>) -> Void)? = nil) -> SessionManager {
+        let manager = Alamofire.SessionManager.default
+        
+        manager.request(PostRouter.readPosts(page, perPage, orderBy, false))
             .responseJASON { response in
                 guard response.result.isSuccess,
                     let realm = try? Realm(),
                     let json = response.result.value else {
-                        Log(debug: "Could not retrieve posts from remote server: \(response.debugDescription)")
                         complete?(.failure(response.result.error ?? PressError.general))
-                        return
+                        return Log(debug: "Could not retrieve posts from remote server: \(response.debugDescription)")
                     }
                 
                 var results: RemotePostResults = ([], [])
@@ -112,14 +114,15 @@ extension PostService {
                         try realm.write { realm.add(List(posts), update: true) }
                         Log(debug: "Posts updated from remote server: \(results.updated.count) updated items, \(results.created.count) new items.")
                     } catch {
-                        Log(error: "Could not persist the posts: \(error).")
                         complete?(.failure(PressError.databaseFail))
-                        return
+                        return Log(error: "Could not persist the posts: \(error).")
                     }
                 }
                 
                 complete?(.success(results))
             }
+        
+        return manager
     }
     
     func seedFromRemote(for page: Int = 0, complete: (() -> Void)? = nil) {
