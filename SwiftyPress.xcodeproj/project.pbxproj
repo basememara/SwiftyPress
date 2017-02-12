@@ -111,6 +111,8 @@
 		8B8EEB341CE43003003A89B5 /* GAITracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB2A1CE43003003A89B5 /* GAITracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEB411CE43961003A89B5 /* Trackable.swift */; };
 		8B93F9441CE63EBF006E7003 /* TermService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93F9431CE63EBF006E7003 /* TermService.swift */; };
+		8BB5E0401E4F799E00EF8F29 /* PostPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5E03F1E4F799E00EF8F29 /* PostPreview.storyboard */; };
+		8BB5E0421E4F79C300EF8F29 /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5E0411E4F79C300EF8F29 /* PostPreviewViewController.swift */; };
 		8BBBDE9A1CD5B4AB007C706A /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */; };
 		8BBBDE9E1CD5B4BE007C706A /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */; };
 		8BC42B851E34812500937B06 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BC42B841E34812500937B06 /* SystemConfiguration.framework */; };
@@ -305,6 +307,8 @@
 		8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Frameworks/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		8B8EEB411CE43961003A89B5 /* Trackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackable.swift; sourceTree = "<group>"; };
 		8B93F9431CE63EBF006E7003 /* TermService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermService.swift; sourceTree = "<group>"; };
+		8BB5E03F1E4F799E00EF8F29 /* PostPreview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostPreview.storyboard; sourceTree = "<group>"; };
+		8BB5E0411E4F79C300EF8F29 /* PostPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
 		8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		8BC42B841E34812500937B06 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -604,6 +608,7 @@
 				8B3FAD6A1CAC4473006E90B6 /* PostCollectionViewCell.swift */,
 				8B3FAD6B1CAC4473006E90B6 /* PostCollectionViewCell.xib */,
 				8B5EDAF01CDC4A0800F1C81C /* PostDetail.storyboard */,
+				8BB5E03F1E4F799E00EF8F29 /* PostPreview.storyboard */,
 				8B3FAD6C1CAC4473006E90B6 /* PostTableViewCell.swift */,
 				8B3FAD6D1CAC4473006E90B6 /* PostTableViewCell.xib */,
 				8B5EDAEC1CDC493D00F1C81C /* Search.storyboard */,
@@ -637,6 +642,7 @@
 				8B5EDAE11CDC48B000F1C81C /* PopularViewController.swift */,
 				8B5EDAE01CDC48B000F1C81C /* FavoritesViewController.swift */,
 				8B5EDAE21CDC48B000F1C81C /* PostDetailViewController.swift */,
+				8BB5E0411E4F79C300EF8F29 /* PostPreviewViewController.swift */,
 				8B5EDADF1CDC48B000F1C81C /* MoreViewController.swift */,
 				8B5EDAD61CDC18C100F1C81C /* CategoriesViewController.swift */,
 				8B8E68811CDCD97900171E14 /* SearchViewController.swift */,
@@ -871,6 +877,7 @@
 				8B3FAD6F1CAC4473006E90B6 /* PostCollectionViewCell.xib in Resources */,
 				8B20B21B1CAE471400CA693B /* Media.xcassets in Resources */,
 				8B5EDADB1CDC442200F1C81C /* Explore.storyboard in Resources */,
+				8BB5E0401E4F799E00EF8F29 /* PostPreview.storyboard in Resources */,
 				8B5EDAEB1CDC492F00F1C81C /* Favorites.storyboard in Resources */,
 				8B3FAD711CAC4473006E90B6 /* PostTableViewCell.xib in Resources */,
 				8B5EDAED1CDC493D00F1C81C /* Search.storyboard in Resources */,
@@ -984,6 +991,7 @@
 				8BF312B81E37F31000CE27B7 /* UpdateKit.swift in Sources */,
 				8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */,
 				8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */,
+				8BB5E0421E4F79C300EF8F29 /* PostPreviewViewController.swift in Sources */,
 				8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */,
 				8B3360A21CA8904F0033B2AE /* PostService.swift in Sources */,
 				8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */,
