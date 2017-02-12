@@ -198,6 +198,13 @@ extension MoreViewController {
                     
                     // Google Analytics
                     trackEvent("Share", action: "App")
+                case "{{settings}}":
+                    if let settings = URL(string: UIApplicationOpenSettingsURLString) {
+                        UIApplication.shared.open(settings)
+                    }
+                    
+                    // Google Analytics
+                    trackEvent("Settings", action: "App")
                 default:
                     presentSafariController(link)
             }
