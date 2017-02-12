@@ -14,7 +14,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     var restorationHandlers: [() -> Void] = []
     
     lazy var categoryButton: UIBarButtonItem = {
-        return UIBarButtonItem(imageName: "list",
+        return UIBarButtonItem(imageName: "filter",
             target: self,
             action: #selector(catagoryTapped),
             bundleIdentifier: AppConstants.bundleIdentifier)
