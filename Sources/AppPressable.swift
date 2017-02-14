@@ -98,12 +98,15 @@ public extension AppPressable where Self: UIApplicationDelegate {
         switch shortcutItem.type {
         case "favorites":
             tabController.selectedIndex = 0
-            completionHandler?(true)
+        case "search":
+            tabController.selectedIndex = 3
         case "contact":
             guard let url = URL(string: "mailto:\(AppGlobal.userDefaults[.email])") else { break }
             UIApplication.shared.open(url)
         default: break
         }
+        
+        completionHandler?(true)
     }
 }
 
