@@ -53,7 +53,7 @@ extension Navigable {
         
         // Run on main UI thread in case too soon
         DispatchQueue.main.async {
-            controller.categoryID = id
+            controller.termIDs = [id]
         }
         
         return true

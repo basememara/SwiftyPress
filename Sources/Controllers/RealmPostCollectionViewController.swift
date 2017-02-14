@@ -26,11 +26,10 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         return collectionView?.indexPathsForSelectedItems?.first
     }
     
-    var categoryID: Int = 0 {
-        didSet { 
-            applyFilterAndSort(categoryID > 0
-                ? "ANY categories.id == \(categoryID)" : nil)
-            didCategorySelect()
+    var termIDs: [Int] = [] {
+        didSet {
+            applyTerms(for: termIDs)
+            didTermsSelect()
         }
     }
 
@@ -57,7 +56,7 @@ class RealmPostCollectionViewController: UICollectionViewController, CHTCollecti
         prepare(for: segue)
     }
     
-    func didCategorySelect() {
+    func didTermsSelect() {
     
     }
 }

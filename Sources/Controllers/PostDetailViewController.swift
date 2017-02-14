@@ -185,7 +185,7 @@ extension PostDetailViewController {
         // Handle explore view and select category
         if let controller = selectedNavController.topViewController as? ExploreViewController {
             controller.performRestoration({
-                controller.categoryID = id
+                controller.termIDs = [id]
             })
             return true
         }

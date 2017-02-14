@@ -25,6 +25,7 @@ extension JSONKeys {
     static let modified = JSONKey<Date?>("modified")
     
     static let commentCount = JSONKey<Int>("comment_count")
+    static let count = JSONKey<Int>("count")
         
     static let username = JSONKey<String>("username")
     static let name = JSONKey<String>("name")

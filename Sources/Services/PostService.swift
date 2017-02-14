@@ -18,9 +18,9 @@ public struct PostService: Serviceable {
 
 }
 
-extension PostService {
+public extension PostService {
 
-    public func get(complete: @escaping ([Postable]) -> Void) {
+    func get(complete: @escaping ([Postable]) -> Void) {
         guard let realm = try? Realm() else { return complete([]) }
         complete(realm.objects(Post.self).map { $0 })
     }
@@ -32,7 +32,7 @@ extension PostService {
 
      - returns: Post matching the extracted slug from the URL.
      */
-    public func get(_ url: URL) -> Post? {
+    func get(_ url: URL) -> Post? {
         guard let realm = try? Realm() else { return nil }
         
         let slug = url.path.lowercased()
@@ -43,24 +43,24 @@ extension PostService {
     }
 }
 
-extension PostService {
+public extension PostService {
     
-    public func addFavorite(_ id: Int) {
+    func addFavorite(_ id: Int) {
         guard !AppGlobal.userDefaults[.favorites].contains(id) else { return }
         AppGlobal.userDefaults[.favorites].append(id)
     }
     
-    public func removeFavorite(_ id: Int) {
+    func removeFavorite(_ id: Int) {
         guard let index = AppGlobal.userDefaults[.favorites].index(of: id) else { return }
         AppGlobal.userDefaults[.favorites].remove(at: index)
     }
     
-    public func toggleFavorite(_ id: Int) {
+    func toggleFavorite(_ id: Int) {
         guard AppGlobal.userDefaults[.favorites].contains(id) else { return addFavorite(id) }
         removeFavorite(id)
     }
     
-    public func isFavorite(_ id: Int) -> Bool {
+    func isFavorite(_ id: Int) -> Bool {
         return AppGlobal.userDefaults[.favorites].contains(id)
     }
     

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol PostControllable: RealmControllable {
-    var categoryID: Int { get set }
-    func didCategorySelect() -> Void
+    var termIDs: [Int] { get set }
+    func didTermsSelect() -> Void
 }
 
 extension PostControllable where Self: UIViewController {
@@ -24,15 +24,22 @@ extension PostControllable where Self: UIViewController {
                 guard let row = indexPathForSelectedItem?.row,
                     let model = models?[row] else { break }
                 controller.model = model as? Post
-            case (CategoriesViewController.segueIdentifier, let navController as UINavigationController):
-                guard let controller = navController.topViewController as? CategoriesViewController else { break }
+            case (TermsViewController.segueIdentifier, let navController as UINavigationController):
+                guard let controller = navController.topViewController as? TermsViewController else { break }
                     
                 // Set category and prepare to retrieve category
-                controller.selectedID = categoryID
-                controller.prepareForUnwind = { id in
-                    self.categoryID = id
+                controller.selectedIDs = termIDs
+                controller.prepareForUnwind = {
+                    self.termIDs = $0
                 }
             default: break
         }
+    }
+    
+    func applyTerms(for ids: [Int]) {
+        guard !ids.isEmpty else { return applyFilterAndSort(nil) }
+        let filter = "ANY categories.id IN %@ || ANY tags.id IN %@"
+        
+        applyFilterAndSort(predicate: NSPredicate(format: filter, ids, ids))
     }
 }

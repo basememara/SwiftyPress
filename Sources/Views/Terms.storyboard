@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="QBZ-RH-iRH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Terms View Controller-->
+        <scene sceneID="MpV-8f-UaI">
+            <objects>
+                <tableViewController id="6tn-QR-OJK" customClass="TermsViewController" customModule="SwiftyPress" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EZa-KY-SsO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Hfu-P0-kvZ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hfu-P0-kvZ" id="OPd-8K-Hjy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6tn-QR-OJK" id="blv-jT-8KY"/>
+                            <outlet property="delegate" destination="6tn-QR-OJK" id="V3r-UN-1lv"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="prd-XF-6WG">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="clear-filter" id="oce-xq-BK5">
+                            <connections>
+                                <action selector="clearFilterTapped:" destination="6tn-QR-OJK" id="3Ax-6Z-1VY"/>
+                            </connections>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="wMz-Dw-FdV">
+                            <rect key="frame" x="107" y="7" width="161" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Categories"/>
+                                <segment title="Tags"/>
+                            </segments>
+                            <connections>
+                                <action selector="termTypeChanged:" destination="6tn-QR-OJK" eventType="valueChanged" id="Jqz-mY-dya"/>
+                            </connections>
+                        </segmentedControl>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="6kO-Ec-Yq0">
+                            <connections>
+                                <action selector="doneTapped:" destination="6tn-QR-OJK" id="HmT-On-M0Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="termTypeSegmentedControl" destination="wMz-Dw-FdV" id="6du-AA-zuy"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OVq-MK-jDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1186" y="450"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZSC-rm-49E">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QBZ-RH-iRH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KhG-7w-Oi8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6tn-QR-OJK" kind="relationship" relationship="rootViewController" id="2sR-TT-6rY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lL5-UD-zYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="374" y="450"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="clear-filter" width="24" height="24"/>
+    </resources>
+</document>

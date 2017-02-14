@@ -12,10 +12,14 @@
 	<string>http://basememara.com</string>
 	<key>baseREST</key>
 	<string>wp-json/swiftypress/v2</string>
+	<key>wpREST</key>
+	<string>wp-json/wp/v2</string>
 	<key>email</key>
 	<string>contact@basememara.com</string>
 	<key>darkMode</key>
 	<false/>
+	<key>defaultTagFilter</key>
+	<true/>
 	<key>tintColor</key>
 	<string>49,169,234</string>
 	<key>titleColor</key>
@@ -36,49 +40,6 @@
 	<string>UA-60131988-2</string>
 	<key>featuredCategoryID</key>
 	<integer>64</integer>
-	<key>categories</key>
-	<array>
-		<dict>
-			<key>id</key>
-			<string>55</string>
-			<key>title</key>
-			<string>Swift</string>
-			<key>icon</key>
-			<string>plugin</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>3</string>
-			<key>title</key>
-			<string>JavaScript</string>
-			<key>icon</key>
-			<string>source-code</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2</string>
-			<key>title</key>
-			<string>.NET</string>
-			<key>icon</key>
-			<string>stack</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>4</string>
-			<key>title</key>
-			<string>Mobile</string>
-			<key>icon</key>
-			<string>smartphone-tablet</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>7</string>
-			<key>title</key>
-			<string>Web</string>
-			<key>icon</key>
-			<string>online</string>
-		</dict>
-	</array>
 	<key>social</key>
 	<array>
 		<dict>

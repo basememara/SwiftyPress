@@ -22,11 +22,10 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         return tableView.indexPathForSelectedRow
     }
     
-    var categoryID: Int = 0 {
-        didSet { 
-            applyFilterAndSort(categoryID > 0
-                ? "ANY categories.id == \(categoryID)" : nil)
-            didCategorySelect()
+    var termIDs: [Int] = [] {
+        didSet {
+            applyTerms(for: termIDs)
+            didTermsSelect()
         }
     }
 
@@ -52,7 +51,7 @@ class RealmPostTableViewController: UITableViewController, PostControllable {
         prepare(for: segue)
     }
     
-    func didCategorySelect() {
+    func didTermsSelect() {
     
     }
 }

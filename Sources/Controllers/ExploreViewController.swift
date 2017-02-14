@@ -11,6 +11,7 @@ import ZamzamKit
 
 class ExploreViewController: RealmPostCollectionViewController, Tutorable, Restorable, Trackable {
     
+    let termService = TermService()
     var restorationHandlers: [() -> Void] = []
     
     lazy var categoryButton: UIBarButtonItem = {
@@ -35,8 +36,8 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
         trackPage("Home - Posts")
     }
     
-    override func didCategorySelect() {
-        categoryButton.tintColor = categoryID > 0
+    override func didTermsSelect() {
+        categoryButton.tintColor = !termIDs.isEmpty
             ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
             : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
         
@@ -44,22 +45,25 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     }
     
     func updateTitle() {
-        navigationItem.title = (categoryID > 0
-            ? CategoryService.storedItems
-                .first { $0.id == categoryID }?.title
-                    ?? AppGlobal.userDefaults[.appName]
-            : AppGlobal.userDefaults[.appName]).uppercased()
+        let title: String = {
+            guard let id = termIDs.first, let name = termService.name(for: id), !name.isEmpty
+                else { return AppGlobal.userDefaults[.appName] }
+            return termIDs.count > 1 ? name + "..." : name
+        }()
+        
+        navigationItem.title = title.uppercased()
         
         // Handle header logo if applicable
-        if !AppGlobal.userDefaults[.headerImage].isEmpty && categoryID == 0 {
-            navigationItem.titleView = UIImageView(image: UIImage(named:
-                AppGlobal.userDefaults[.headerImage]))
+        if !AppGlobal.userDefaults[.headerImage].isEmpty && termIDs.isEmpty {
+            navigationItem.titleView = UIImageView(image:
+                UIImage(named: AppGlobal.userDefaults[.headerImage]))
         } else {
             navigationItem.titleView = nil
         }
     }
     
     func catagoryTapped() {
-        performSegue(withIdentifier: CategoriesViewController.segueIdentifier, sender: nil)
+        performSegue(withIdentifier: TermsViewController.segueIdentifier, sender: nil)
     }
 }
+

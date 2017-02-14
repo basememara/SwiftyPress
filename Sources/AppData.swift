@@ -35,7 +35,18 @@ struct AppData {
         
         // Set the configuration used for the default Realm
         let realmFileURL = folderURL.appendingPathComponent("default.realm")
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(fileURL: realmFileURL)
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            fileURL: realmFileURL,
+            schemaVersion: 1,
+            migrationBlock: { migration, oldSchemaVersion in
+                // We haven’t migrated anything yet, so oldSchemaVersion == 0
+                if oldSchemaVersion < 1 {
+                    // Nothing to do!
+                    // Realm will automatically detect new properties and removed properties
+                    // And will update the schema on disk automatically
+                }
+            }
+        )
         
         // Create default location and set permissions
         guard !fileManager.fileExists(atPath: folderURL.path) else { return }
