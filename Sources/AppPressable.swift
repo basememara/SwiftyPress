@@ -53,7 +53,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
         
-        applyTheme()
+        setupTheme()
         
         Log(info: "SwiftyPress finish launching.")
         
@@ -114,7 +114,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
 // MARK: - Internal functions
 private extension AppPressable {
 
-    func applyTheme() {
+    func setupTheme() {
         window?.tintColor = UIColor(rgb: AppGlobal.userDefaults[.tintColor])
         
         if !AppGlobal.userDefaults[.titleColor].isEmpty {
