@@ -75,7 +75,7 @@ extension TermsViewController {
         var temp = "taxonomy = '\(termType.rawValue)'"
         
         switch termType {
-        case .category: temp += " && slug != 'uncategorized' && id != \(AppGlobal.userDefaults[.featuredCategoryID])"
+        case .category: temp += " && parent = 0 && slug != 'uncategorized' && id != \(AppGlobal.userDefaults[.featuredCategoryID])"
         case .tag: temp += " && count > 0"
         }
         
