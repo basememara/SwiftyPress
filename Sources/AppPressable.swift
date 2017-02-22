@@ -49,11 +49,10 @@ public extension AppPressable where Self: UIApplicationDelegate {
         // Initialize components
         _ = AppLogger()
         _ = AppData()
+        setupTheme()
         
         // Select home tab
         (window?.rootViewController as? UITabBarController)?.selectedIndex = 2
-        
-        setupTheme()
         
         Log(info: "SwiftyPress finish launching.")
         
