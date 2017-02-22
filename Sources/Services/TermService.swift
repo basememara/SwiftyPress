@@ -72,10 +72,10 @@ extension TermService {
     }
     
     @discardableResult
-    public func updateFromRemote(for taxonomy: TaxonomyType, orderBy: String = "count", ascending: Bool = false, number: Int = 0, complete: ((ZamzamKit.Result<[Termable]>) -> Void)? = nil) -> SessionManager {
+    public func updateFromRemote(for taxonomy: TaxonomyType, perPage: Int = 100, orderBy: String = "count", ascending: Bool = false, complete: ((ZamzamKit.Result<[Termable]>) -> Void)? = nil) -> SessionManager {
         let manager = Alamofire.SessionManager.default
         
-        manager.request(TermRouter.readTerms(taxonomy, orderBy, ascending, number))
+        manager.request(TermRouter.readTerms(taxonomy, perPage, orderBy, ascending))
             .responseJASON { response in
                 guard response.result.isSuccess,
                     let realm = try? Realm(),
