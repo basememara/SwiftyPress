@@ -16,6 +16,7 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
     var models: Results<Post>?
     let service = PostService()
     let cellNibName: String? = nil
+    var previewingContext: UIViewControllerPreviewing?
     
     var dataView: DataViewable {
         return tableView
@@ -53,7 +54,7 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
         didSet {
             var predicates: [String] = []
             
-            if !(filterString ?? "").isEmpty {
+            if filterString?.isEmpty == false {
                 // By title
                 if scopeSegmentedControl.selectedSegmentIndex == 0
                     || scopeSegmentedControl.selectedSegmentIndex == 1 {
@@ -93,7 +94,7 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
         }
         
         if traitCollection.forceTouchCapability == .available {
-            registerForPreviewing(with: self, sourceView: tableView)
+            previewingContext = registerForPreviewing(with: self, sourceView: tableView)
         }
     }
     
@@ -106,8 +107,23 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
 extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard searchController.isActive else { return }
+        guard searchController.isActive else {
+            // Enable peek and pop on search results
+            if let context = previewingContext {
+                searchController.unregisterForPreviewing(withContext: context)
+                previewingContext = registerForPreviewing(with: self, sourceView: tableView)
+            }
+            
+            return
+        }
+        
         filterString = searchController.searchBar.text
+        
+        // Enable peek and pop on default results
+        if let context = previewingContext {
+            unregisterForPreviewing(withContext: context)
+            previewingContext = searchController.registerForPreviewing(with: self, sourceView: tableView)
+        }
     }
 
     // MARK: UISearchBarDelegate
@@ -208,8 +224,9 @@ extension SearchViewController {
 extension SearchViewController: UIViewControllerPreviewingDelegate {
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        guard let indexPath = tableView?.indexPathForRow(at: location),
-            let cell = tableView?.cellForRow(at: indexPath),
+        guard let tableView = previewingContext.sourceView as? UITableView,
+            let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath),
             let model = models?[indexPath.row],
             let controller: PostPreviewViewController = UIStoryboard(for: .PostPreview, with: AppConstants.bundle).instantiateViewController()
                 else { return nil }
