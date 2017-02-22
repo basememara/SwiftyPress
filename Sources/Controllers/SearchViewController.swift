@@ -211,7 +211,7 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
         guard let indexPath = tableView?.indexPathForRow(at: location),
             let cell = tableView?.cellForRow(at: indexPath),
             let model = models?[indexPath.row],
-            let controller: PostPreviewViewController = UIStoryboard(name: "PostPreview", bundle: AppConstants.bundle).instantiateViewController()
+            let controller: PostPreviewViewController = UIStoryboard(for: .PostPreview, with: AppConstants.bundle).instantiateViewController()
                 else { return nil }
         
         previewingContext.sourceRect = cell.frame
@@ -224,7 +224,7 @@ extension SearchViewController: UIViewControllerPreviewingDelegate {
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         guard let sourceController = viewControllerToCommit as? PostPreviewViewController,
-            let destinationController: PostDetailViewController = UIStoryboard(name: "PostDetail", bundle: AppConstants.bundle).instantiateViewController()
+            let destinationController: PostDetailViewController = UIStoryboard(for: .PostDetail, with: AppConstants.bundle).instantiateViewController()
                 else { return }
         
         destinationController.model = sourceController.model

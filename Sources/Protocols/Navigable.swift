@@ -72,7 +72,7 @@ extension Navigable {
                 else { return false }
             
         // Push post detail view
-        let storyboard = UIStoryboard(name: "PostDetail", bundle: Bundle(for: PostDetailViewController.self))
+        let storyboard = UIStoryboard(for: .PostDetail, with: Bundle(for: PostDetailViewController.self))
         guard let detailController = storyboard
             .instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController
                 else { return false }

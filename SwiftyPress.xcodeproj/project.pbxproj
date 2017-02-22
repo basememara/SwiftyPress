@@ -95,6 +95,7 @@
 		8B5EDAF31CDC5A3E00F1C81C /* AppPressable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5EDAF21CDC5A3E00F1C81C /* AppPressable.swift */; };
 		8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */; };
 		8B6D0C311CAFBC8700B471CC /* DataViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6D0C301CAFBC8700B471CC /* DataViewable.swift */; };
+		8B756EA41E5BD1AD00DE4B02 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B756EA31E5BD1AD00DE4B02 /* UIStoryboard.swift */; };
 		8B7C82881CE04A5300A6DF30 /* ButtonBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */; };
 		8B8E687A1CDCAEA200171E14 /* PostControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E68791CDCAEA200171E14 /* PostControllable.swift */; };
 		8B8E687E1CDCB52B00171E14 /* MenuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8E687D1CDCB52B00171E14 /* MenuService.swift */; };
@@ -292,6 +293,7 @@
 		8B6A95771E485F41003F333D /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = Library/Frameworks/UserNotificationsUI.framework; sourceTree = DEVELOPER_DIR; };
 		8B6D0C2E1CAFBC4C00B471CC /* DataControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataControllable.swift; sourceTree = "<group>"; };
 		8B6D0C301CAFBC8700B471CC /* DataViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewable.swift; sourceTree = "<group>"; };
+		8B756EA31E5BD1AD00DE4B02 /* UIStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		8B7C82871CE04A5300A6DF30 /* ButtonBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonBadge.swift; sourceTree = "<group>"; };
 		8B8E68791CDCAEA200171E14 /* PostControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostControllable.swift; sourceTree = "<group>"; };
 		8B8E687D1CDCB52B00171E14 /* MenuService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuService.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				8B4B9D6E1E5266E300BCA640 /* Realm.swift */,
 				8B20B21E1CAE4A5A00CA693B /* UIImageView.swift */,
 				8BBBDE991CD5B4AB007C706A /* UserDefaults.swift */,
+				8B756EA31E5BD1AD00DE4B02 /* UIStoryboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -998,6 +1001,7 @@
 				8B162A791CDF8D7F00871275 /* RealmControllable.swift in Sources */,
 				8B6D0C2F1CAFBC4C00B471CC /* DataControllable.swift in Sources */,
 				8BB5E0421E4F79C300EF8F29 /* PostPreviewViewController.swift in Sources */,
+				8B756EA41E5BD1AD00DE4B02 /* UIStoryboard.swift in Sources */,
 				8B8E68841CDCFCB400171E14 /* HistoryViewController.swift in Sources */,
 				8B3360A21CA8904F0033B2AE /* PostService.swift in Sources */,
 				8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */,
