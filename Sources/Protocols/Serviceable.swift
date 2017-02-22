@@ -9,5 +9,5 @@
 protocol Serviceable {
     associatedtype DataType
     
-    func get(complete: @escaping ([DataType]) -> Void)
+    func get(completion: @escaping ([DataType]) -> Void)
 }

@@ -17,14 +17,14 @@ public struct TermService: Serviceable {
 
 extension TermService {
 
-    public func get(complete: @escaping ([Termable]) -> Void) {
-        guard let realm = try? Realm() else { return complete([]) }
-        complete(realm.objects(Term.self).map { $0 })
+    public func get(completion: @escaping ([Termable]) -> Void) {
+        guard let realm = try? Realm() else { return completion([]) }
+        completion(realm.objects(Term.self).map { $0 })
     }
 
-    public func get(from taxonomy: TaxonomyType, complete: @escaping ([Termable]) -> Void) {
-        guard let realm = try? Realm() else { return complete([]) }
-        complete(realm.objects(Term.self)
+    public func get(from taxonomy: TaxonomyType, completion: @escaping ([Termable]) -> Void) {
+        guard let realm = try? Realm() else { return completion([]) }
+        completion(realm.objects(Term.self)
             .filter("taxonomy = %@ && count > 0", taxonomy.rawValue)
             .sorted(byKeyPath: "count", ascending: false)
             .map { $0 }
@@ -63,16 +63,16 @@ extension TermService {
 
 extension TermService {
 
-    public func getFromRemote(for taxonomy: TaxonomyType, id: Int, complete: @escaping (Termable) -> Void) {
+    public func getFromRemote(for taxonomy: TaxonomyType, id: Int, completion: @escaping (Termable) -> Void) {
         Alamofire.request(TermRouter.readTerm(taxonomy, id))
             .responseJASON { response in
-                guard let json = response.result.value, response.result.isSuccess else { return }
-                complete(Term(json: json))
+                guard response.result.isSuccess, let json = response.result.value else { return }
+                completion(Term(json: json))
         }
     }
     
     @discardableResult
-    public func updateFromRemote(for taxonomy: TaxonomyType, perPage: Int = 100, orderBy: String = "count", ascending: Bool = false, complete: ((ZamzamKit.Result<[Termable]>) -> Void)? = nil) -> SessionManager {
+    public func updateFromRemote(for taxonomy: TaxonomyType, perPage: Int = 100, orderBy: String = "count", ascending: Bool = false, completion: ((ZamzamKit.Result<[Termable]>) -> Void)? = nil) -> SessionManager {
         let manager = Alamofire.SessionManager.default
         
         manager.request(TermRouter.readTerms(taxonomy, perPage, orderBy, ascending))
@@ -80,11 +80,11 @@ extension TermService {
                 guard response.result.isSuccess,
                     let realm = try? Realm(),
                     let json = response.result.value else {
-                        complete?(.failure(response.result.error ?? PressError.general))
+                        completion?(.failure(response.result.error ?? PressError.general))
                         return Log(debug: "Could not retrieve terms from remote server: \(response.debugDescription)")
                     }
                 
-                guard !json.arrayValue.isEmpty else { complete?(.success([])); return }
+                guard !json.arrayValue.isEmpty else { completion?(.success([])); return }
                 
                 // Parse JSON to array
                 let results = json.map(Term.init)
@@ -95,12 +95,12 @@ extension TermService {
                         try realm.write { realm.add(List(results), update: true) }
                         Log(debug: "Terms updated from remote server: \(results.count) items.")
                     } catch {
-                        complete?(.failure(PressError.databaseFail))
+                        completion?(.failure(PressError.databaseFail))
                         return Log(error: "Could not persist the terms: \(error).")
                     }
                 }
                 
-                complete?(.success(results))
+                completion?(.success(results))
             }
         
         return manager

@@ -20,9 +20,9 @@ public struct PostService: Serviceable {
 
 public extension PostService {
 
-    func get(complete: @escaping ([Postable]) -> Void) {
-        guard let realm = try? Realm() else { return complete([]) }
-        complete(realm.objects(Post.self).map { $0 })
+    func get(completion: @escaping ([Postable]) -> Void) {
+        guard let realm = try? Realm() else { return completion([]) }
+        completion(realm.objects(Post.self).map { $0 })
     }
     
     /**
@@ -68,16 +68,16 @@ public extension PostService {
 
 extension PostService {
 
-    public func getFromRemote(id: Int, complete: @escaping (Postable) -> Void) {
+    public func getFromRemote(id: Int, completion: @escaping (Postable) -> Void) {
         Alamofire.request(PostRouter.readPost(id))
             .responseJASON { response in
-                guard let json = response.result.value, response.result.isSuccess else { return }
-                complete(Post(json: json))
+                guard response.result.isSuccess, let json = response.result.value else { return }
+                completion(Post(json: json))
         }
     }
     
     @discardableResult
-    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, complete: ((ZamzamKit.Result<RemotePostResults>) -> Void)? = nil) -> SessionManager {
+    public func updateFromRemote(page: Int = 0, perPage: Int = 50, orderBy: String = "post_modified", ascending: Bool = false, completion: ((ZamzamKit.Result<RemotePostResults>) -> Void)? = nil) -> SessionManager {
         let manager = Alamofire.SessionManager.default
         
         manager.request(PostRouter.readPosts(page, perPage, orderBy, false))
@@ -85,12 +85,12 @@ extension PostService {
                 guard response.result.isSuccess,
                     let realm = try? Realm(),
                     let json = response.result.value else {
-                        complete?(.failure(response.result.error ?? PressError.general))
+                        completion?(.failure(response.result.error ?? PressError.general))
                         return Log(debug: "Could not retrieve posts from remote server: \(response.debugDescription)")
                     }
                 
                 var results: RemotePostResults = ([], [])
-                guard !json.arrayValue.isEmpty else { complete?(.success(results)); return }
+                guard !json.arrayValue.isEmpty else { completion?(.success(results)); return }
                 
                 // Parse JSON to array
                 results.updated = json.map(Post.init)
@@ -118,21 +118,21 @@ extension PostService {
                         try realm.write { realm.add(List(posts), update: true) }
                         Log(debug: "Posts updated from remote server: \(results.updated.count) updated items, \(results.created.count) new items.")
                     } catch {
-                        complete?(.failure(PressError.databaseFail))
+                        completion?(.failure(PressError.databaseFail))
                         return Log(error: "Could not persist the posts: \(error).")
                     }
                 }
                 
-                complete?(.success(results))
+                completion?(.success(results))
             }
         
         return manager
     }
     
-    func seedFromRemote(for page: Int = 0, complete: (() -> Void)? = nil) {
+    func seedFromRemote(for page: Int = 0, completion: (() -> Void)? = nil) {
         updateFromRemote(page: page, orderBy: "post_date") {
-            guard $0.isSuccess else { complete?(); return }
-            self.seedFromRemote(for: page + 1, complete: complete)
+            guard $0.isSuccess else { completion?(); return }
+            self.seedFromRemote(for: page + 1, completion: completion)
         }
     }
     
