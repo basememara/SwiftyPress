@@ -139,10 +139,8 @@ extension TermsViewController {
             cell.imageView?.image = nil
         }
         
-        // Select first or previously selected item
-        if selectedIDs.contains(model.id) {
-            cell.accessoryType = .checkmark
-        }
+        // Select selected items
+        cell.accessoryType = selectedIDs.contains(model.id) ? .checkmark : .none
         
         cell.selectionStyle = .none
         cell.textLabel?.textColor = UIColor(rgb: AppGlobal.userDefaults[.titleColor])
