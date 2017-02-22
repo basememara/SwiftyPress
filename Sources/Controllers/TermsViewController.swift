@@ -135,6 +135,8 @@ extension TermsViewController {
         // Set image by convention if exists
         if let image = UIImage(named: model.slug) {
             cell.imageView?.image = image.withRenderingMode(.alwaysTemplate)
+        } else {
+            cell.imageView?.image = nil
         }
         
         // Select first or previously selected item
