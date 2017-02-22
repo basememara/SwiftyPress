@@ -32,8 +32,6 @@ class TermsViewController: UITableViewController, RealmControllable, Trackable {
             ? (service.taxonomy(for: selectedIDs[0]) == .tag ? 1 : 0)
             : (AppGlobal.userDefaults[.defaultTagFilter] ? 1 : 0)
         
-        tableView.allowsMultipleSelection = termType == .tag
-        
         didDataControllableLoad()
         
         if AppGlobal.userDefaults[.darkMode] {
@@ -55,17 +53,15 @@ class TermsViewController: UITableViewController, RealmControllable, Trackable {
     
     @IBAction func termTypeChanged(_ sender: UISegmentedControl) {
         clearSelection()
-        tableView.allowsMultipleSelection = termType == .tag
         applyFilterAndSort()
     }
     
-    @IBAction func clearFilterTapped(_ sender: AnyObject) {
-        clearSelection()
+    @IBAction func doneTapped(_ sender: Any) {
         dismissViewController()
     }
     
-    @IBAction func doneTapped(_ sender: AnyObject) {
-        dismissViewController()
+    @IBAction func clearTapped(_ sender: Any) {
+        clearSelection()
     }
 }
 
@@ -93,10 +89,22 @@ extension TermsViewController {
     var trackName: String {
         return termType == .category ? "Categories" : "Tags"
     }
+}
+
+private extension TermsViewController {
     
     func dismissViewController() {
         prepareForUnwind?(selectedIDs)
         dismiss(animated: true, completion: nil)
+    }
+    
+    func clearSelection() {
+        selectedIDs.removeAll()
+        
+        tableView.visibleCells.forEach { 
+            $0.accessoryType = .none
+            $0.isSelected = false
+        }
     }
 }
 
@@ -132,7 +140,6 @@ extension TermsViewController {
         // Select first or previously selected item
         if selectedIDs.contains(model.id) {
             cell.accessoryType = .checkmark
-            cell.isSelected = true
         }
         
         cell.selectionStyle = .none
@@ -147,18 +154,8 @@ extension TermsViewController {
                 else { return }
         
         // Uncheck all rows if applicable
-        if !tableView.allowsMultipleSelection {
+        if termType == .category {
             clearSelection()
-        }
-        
-        // Toggle selection
-        guard cell.accessoryType == .none else {
-            if let index = selectedIDs.index(where: { $0 == model.id }) {
-                selectedIDs.remove(at: index)
-            }
-            cell.accessoryType = .none
-            cell.isSelected = false
-            return
         }
         
         selectedIDs.append(model.id)
@@ -170,15 +167,14 @@ extension TermsViewController {
             value: model.id)
     }
     
-    func clearSelection() {
-        selectedIDs.removeAll()
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard termType == .tag,
+            let model = models?[indexPath.row],
+            let cell = tableView.cellForRow(at: indexPath),
+            let index = selectedIDs.index(where: { $0 == model.id })
+                else { return }
         
-        tableView.indexPathsForSelectedRows?.forEach {
-            tableView.deselectRow(at: $0, animated: true)
-        }
-        
-        tableView.visibleCells.forEach { 
-            $0.accessoryType = .none
-        }
+        selectedIDs.remove(at: index)
+        cell.accessoryType = .none
     }
 }

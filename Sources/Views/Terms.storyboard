@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hfu-P0-kvZ" id="OPd-8K-Hjy">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -34,9 +34,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="prd-XF-6WG">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="clear-filter" id="oce-xq-BK5">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="MQe-b7-9lU">
                             <connections>
-                                <action selector="clearFilterTapped:" destination="6tn-QR-OJK" id="3Ax-6Z-1VY"/>
+                                <action selector="clearTapped:" destination="6tn-QR-OJK" id="TSY-JW-Leg"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="wMz-Dw-FdV">
@@ -83,7 +83,4 @@
             <point key="canvasLocation" x="374" y="450"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="clear-filter" width="24" height="24"/>
-    </resources>
 </document>

@@ -14,19 +14,9 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     let termService = TermService()
     var restorationHandlers: [() -> Void] = []
     
-    lazy var categoryButton: UIBarButtonItem = {
-        return UIBarButtonItem(imageName: "filter",
-            target: self,
-            action: #selector(catagoryTapped),
-            bundleIdentifier: AppConstants.bundleIdentifier)
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.rightBarButtonItem = categoryButton
-        
-        updateTitle()
+        didTermsSelect()
         showTutorial(false)
     }
     
@@ -37,11 +27,8 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
     }
     
     override func didTermsSelect() {
-        categoryButton.tintColor = !termIDs.isEmpty
-            ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
-            : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
-        
         updateTitle()
+        updateTerms()
     }
     
     func updateTitle() {
@@ -54,7 +41,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
         navigationItem.title = title.uppercased()
         
         // Handle header logo if applicable
-        if !AppGlobal.userDefaults[.headerImage].isEmpty && termIDs.isEmpty {
+        if !AppGlobal.userDefaults[.headerImage].isEmpty, termIDs.isEmpty {
             navigationItem.titleView = UIImageView(image:
                 UIImage(named: AppGlobal.userDefaults[.headerImage]))
         } else {
@@ -62,8 +49,20 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
         }
     }
     
+    func updateTerms() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            imageName: termIDs.isEmpty ? "filter" : "clear-filter",
+            target: self,
+            action: #selector(catagoryTapped),
+            bundleIdentifier: AppConstants.bundleIdentifier
+        )
+        
+        navigationItem.rightBarButtonItem?.tintColor = !termIDs.isEmpty
+            ? UIColor(rgb: AppGlobal.userDefaults[.secondaryTintColor])
+            : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
+    }
+    
     func catagoryTapped() {
         performSegue(withIdentifier: TermsViewController.segueIdentifier, sender: nil)
     }
 }
-
