@@ -10,8 +10,19 @@ To run the project, clone the repo, and run the example app.
 ## Requirements
 
 ## Installation
+* `carthage update --platform iOS --no-build`
+* `(cd Carthage/Checkouts/Stencil && swift package generate-xcodeproj)`
+* Open Stencil.proj and add iOS 10
+* `carthage build --platform iOS`
+* add carthage frameworks dependencies to project settings
+* embed Realm/ReamSwift frameworks
+* add ATS exception to plist
+* add LSApplicationQueriesSchemes to plist
+* for App Store submissions:
+    - add carthage script in build phases for each dependency
+    - add bundle version in -> Carthage/Build/iOS/{Pathkit, Spectre, and Stencil}.framwork/Info.plist
 
-####Carthage
+#### Carthage
 You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyPress` by adding it to your `Cartfile`:
 ```
 github "ZamzamInc/SwiftyPress"
