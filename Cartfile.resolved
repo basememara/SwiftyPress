@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "4.4.0"
 github "SwiftyBeaver/SwiftyBeaver" "1.2.0"
-github "ZamzamInc/ZamzamKit" "fc777f84b9075a314649bf510dea8e70e8b12f18"
+github "ZamzamInc/ZamzamKit" "714d37d833034d54fdfd3b6f67bd548e04e90584"
 github "delba/JASON" "v3.1"
 github "kylef/Stencil" "65a461d0a103896c8ff7e3f17f7be1a5badadeb0"
 github "naoty/Timepiece" "1.1.0"
