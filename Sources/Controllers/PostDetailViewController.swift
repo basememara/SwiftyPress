@@ -223,7 +223,7 @@ extension PostDetailViewController {
                 }
             } else if let requestURL = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(requestURL.absoluteString)
+                present(safari: requestURL.absoluteString)
                 return decisionHandler(.cancel)
             }
             
@@ -256,7 +256,7 @@ extension PostDetailViewController {
                 webView.load(navigationAction.request)
             } else if let requestURL = navigationAction.request.url {
                 // Open external links in browser
-                presentSafariController(requestURL.absoluteString)
+                present(safari: requestURL.absoluteString)
                 return nil
             }
             
@@ -329,7 +329,7 @@ extension PostDetailViewController {
             imageName: "safari-share",
             imageBundle: ZamzamConstants.bundle) {
                 if !SCNetworkReachability.isOnline {
-                    return self.presentAlert("Device must be online to view within the browser.")
+                    return self.present(alert: "Device must be online to view within the browser.")
                 }
                 
                 UIApplication.shared.open(link)
@@ -339,8 +339,11 @@ extension PostDetailViewController {
                     label: self.model.title, value: Int(self.model.id))
             }
         
-        presentActivityViewController([model.title.htmlDecoded, link], barButtonItem: sender,
-            applicationActivities: [safariActivity])
+        present(
+            activities: [model.title.htmlDecoded, link],
+            barButtonItem: sender,
+            applicationActivities: [safariActivity]
+        )
         
         // Google Analytics
         trackEvent("Share", action: "Post",
@@ -358,10 +361,10 @@ extension PostDetailViewController {
     
     func commentsTapped() {
         if !SCNetworkReachability.isOnline {
-            return presentAlert("Device must be online to view comments.")
+            return present(alert: "Device must be online to view comments.")
         }
         
-        presentSafariController("\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
+        present(safari: "\(AppGlobal.userDefaults[.baseURL])/mobile-comments/?postid=\(model.id)")
             
         // Google Analytics
         trackEvent("Comment", action: "Post",
@@ -370,7 +373,7 @@ extension PostDetailViewController {
     
     func relatedTapped() {
         if !SCNetworkReachability.isOnline {
-            return presentAlert("Device must be online to view related posts.")
+            return present(alert: "Device must be online to view related posts.")
         }
         
         var url = "\(AppGlobal.userDefaults[.baseURL])/mobile-related/?postid=\(model.id)"
@@ -389,7 +392,7 @@ extension PostDetailViewController {
     
     func backTapped() {
         if history.isEmpty {
-            return presentAlert("No previous post in history")
+            return present(alert: "No previous post in history")
         }
         
         loadData(history.popLast())

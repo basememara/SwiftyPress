@@ -49,14 +49,14 @@ class PopularViewController: RealmPostTableViewController, Trackable {
     
     @IBAction func shareTapped(_ sender: UIBarButtonItem) {
         guard let models = models, !models.isEmpty else {
-            return presentAlert("No popular posts yet")
+            return present(alert: "No popular posts yet")
         }
         
         let posts = models.prefix(30)
         let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the popular posts!\n\n"
             + posts.map { $0.link }.joined(separator: "\n\n")
         
-        presentActivityViewController([message], barButtonItem: sender)
+        present(activities: [message], barButtonItem: sender)
         
         // Google Analytics
         trackEvent("Share", action: "Popular")

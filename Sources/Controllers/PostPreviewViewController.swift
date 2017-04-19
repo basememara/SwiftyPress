@@ -54,8 +54,8 @@ class PostPreviewViewController: UIViewController {
                     let delegateView = self?.delegate?.view
                         else { return }
                 
-                self?.delegate?.presentActivityViewController(
-                    [model.title.htmlDecoded, link],
+                self?.delegate?.present(
+                    activities: [model.title.htmlDecoded, link],
                     sourceView: delegateView
                 )
             }

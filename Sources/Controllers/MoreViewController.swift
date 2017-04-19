@@ -194,7 +194,7 @@ extension MoreViewController {
                 case "{{share}}":
                     let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the app!"
                     let share = [message, "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])"]
-                    presentActivityViewController(share, sourceView: tableView[indexPath])
+                    present(activities: share, sourceView: tableView[indexPath])
                     
                     // Google Analytics
                     trackEvent("Share", action: "App")
@@ -206,7 +206,7 @@ extension MoreViewController {
                     // Google Analytics
                     trackEvent("Settings", action: "App")
                 default:
-                    presentSafariController(link)
+                    present(safari: link)
             }
         }
     }
@@ -224,8 +224,10 @@ extension MoreViewController {
     }
     
     func showSendMailErrorAlert() {
-        presentAlert("Could Not Send Email",
-            message: "Your device could not send e-mail. Please check e-mail configuration and try again.")
+        present(
+            alert: "Could Not Send Email",
+            message: "Your device could not send e-mail. Please check e-mail configuration and try again."
+        )
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

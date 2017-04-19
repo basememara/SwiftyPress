@@ -134,7 +134,7 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate,
 
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         if AppGlobal.userDefaults[.searchHistory].isEmpty {
-            return presentAlert("No search history yet")
+            return present(alert: "No search history yet")
         }
         
         performSegue(withIdentifier: HistoryViewController.segueIdentifier, sender: nil)
