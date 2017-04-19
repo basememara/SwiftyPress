@@ -1,3 +1,184 @@
+2.6.1 Release notes (2017-04-18)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* None.
+
+### Bugfixes
+
+* Fix an issue where calling `Realm.asyncOpen(...)` with a synchronized Realm
+  configuration would crash in error cases rather than report the error.
+  This is a small source breaking change if you were relying on the error
+  being reported to be a `Realm.Error`.
+
+2.6.0 Release notes (2017-04-18)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* Add a `{RLM}SyncUser.isAdmin` property indicating whether a user is a Realm
+  Object Server administrator.
+* Add an API to asynchronously open a Realm and deliver it to a block on a
+  given queue. This performs all work needed to get the Realm to
+  a usable state (such as running potentially time-consuming migrations) on a
+  background thread before dispatching to the given queue. In addition,
+  synchronized Realms wait for all remote content available at the time the
+  operation began to be downloaded and available locally.
+* Add `shouldCompactOnLaunch` block property when configuring a Realm to
+  determine if it should be compacted before being returned.
+* Speed up case-insensitive queries on indexed string properties.
+* Add RLMResults's collection aggregate methods to RLMArray.
+* Add support for calling the aggregate methods on unmanaged Lists.
+
+### Bugfixes
+
+* Fix a deadlock when multiple processes open a Realm at the same time.
+* Fix `value(forKey:)`/`value(forKeyPath:)` returning incorrect values for `List` properties.
+
+2.5.1 Release notes (2017-04-05)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* None.
+
+### Bugfixes
+
+* Fix CocoaPods installation with static libraries and multiple platforms.
+* Fix uncaught "Bad version number" exceptions on the notification worker thread
+  followed by deadlocks when Realms refresh.
+
+2.5.0 Release notes (2017-03-28)
+=============================================================
+
+Files written by Realm this version cannot be read by earlier versions of Realm.
+Old files can still be opened and files open in read-only mode will not be
+modified.
+
+If using synchronized Realms, the Realm Object Server must be running version
+1.3.0 or later.
+
+Swift binaries are now produced for Swift 3.0, 3.0.1, 3.0.2 and 3.1.
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* Add support for multi-level object equality comparisons against `NULL`.
+* Add support for the `[d]` modifier on string comparison operators to perform
+  diacritic-insensitive comparisons.
+* Explicitly mark `[[RLMRealm alloc] init]` as unavailable.
+* Include the name of the problematic class in the error message when an
+  invalid property type is marked as the primary key.
+
+### Bugfixes
+
+* Fix incorrect column type assertions which could occur after schemas were
+  merged by sync.
+* Eliminate an empty write transaction when opening a synced Realm.
+* Support encrypting synchronized Realms by respecting the `encryptionKey` value
+  of the Realm's configuration.
+* Fix crash when setting an `{NS}Data` property close to 16MB.
+* Fix for reading `{NS}Data` properties incorrectly returning `nil`.
+* Reduce file size growth in cases where Realm versions were pinned while
+  starting write transactions.
+* Fix an assertion failure when writing to large `RLMArray`/`List` properties.
+* Fix uncaught `BadTransactLog` exceptions when pulling invalid changesets from
+  synchronized Realms.
+* Fix an assertion failure when an observed `RLMArray`/`List` is deleted after
+  being modified.
+
+2.4.4 Release notes (2017-03-13)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* Add `(RLM)SyncPermission` class to allow reviewing access permissions for
+  Realms. Requires any edition of the Realm Object Server 1.1.0 or later.
+* Further reduce the number of files opened per thread-specific Realm on macOS,
+  iOS and watchOS.
+
+### Bugfixes
+
+* Fix a crash that could occur if new Realm instances were created while the
+  application was exiting.
+* Fix a bug that could lead to bad version number errors when delivering
+  change notifications.
+* Fix a potential use-after-free bug when checking validity of results.
+* Fix an issue where a sync session might not close properly if it receives
+  an error while being torn down.
+* Fix some issues where a sync session might not reconnect to the server properly
+  or get into an inconsistent state if revived after invalidation.
+* Fix an issue where notifications might not fire when the children of an
+  observed object are changed.
+* Fix an issue where progress notifications on sync sessions might incorrectly
+  report out-of-date values.
+* Fix an issue where multiple threads accessing encrypted data could result in
+  corrupted data or crashes.
+* Fix an issue where certain `LIKE` queries could hang.
+* Fix an issue where `-[RLMRealm writeCopyToURL:encryptionKey:error]` could create
+  a corrupt Realm file.
+* Fix an issue where incrementing a synced Realm's schema version without actually
+  changing the schema could cause a crash.
+
+2.4.3 Release notes (2017-02-20)
+=============================================================
+
+### API Breaking Changes
+
+* None.
+
+### Enhancements
+
+* Avoid copying copy-on-write data structures, which can grow the file, when the
+  write does not actually change existing values.
+* Improve performance of deleting all objects in an RLMResults.
+* Reduce the number of files opened per thread-specific Realm on macOS.
+* Improve startup performance with large numbers of `RLMObject`/`Object`
+  subclasses.
+
+### Bugfixes
+
+* Fix synchronized Realms not downloading remote changes when an access token
+  expires and there are no local changes to upload.
+* Fix an issue where values set on a Realm object using `setValue(value:, forKey:)`
+  that were not themselves Realm objects were not properly converted into Realm
+  objects or checked for validity.
+* Fix an issue where `-[RLMSyncUser sessionForURL:]` could erroneously return a
+  non-nil value when passed in an invalid URL.
+* `SyncSession.Progress.fractionTransferred` now returns 1 if there are no
+  transferrable bytes.
+* Fix sync progress notifications registered on background threads by always
+  dispatching on a dedicated background queue.
+* Fix compilation issues with Xcode 8.3 beta 2.
+* Fix incorrect sync progress notification values for Realms originally created
+  using a version of Realm prior to 2.3.0.
+* Fix LLDB integration to be able to display summaries of `RLMResults` once more.
+* Reject Swift properties with names which cause them to fall in to ARC method
+  families rather than crashing when they are accessed.
+* Fix sorting by key path when the declared property order doesn't match the order
+  of properties in the Realm file, which can happen when properties are added in
+  different schema versions.
+
 2.4.2 Release notes (2017-01-30)
 =============================================================
 

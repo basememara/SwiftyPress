@@ -45,6 +45,18 @@ struct AppData {
                     // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically
                 }
+            },
+            shouldCompactOnLaunch: { totalBytes, usedBytes in
+                // Compact if the file is over X MB in size and less than 50% 'used'
+                // https://realm.io/docs/swift/latest/#compacting-realms
+                let maxSize = 100 * 1024 * 1024 //100MB
+                let shouldCompact = (totalBytes > maxSize) && (Double(usedBytes) / Double(totalBytes)) < 0.5
+
+                if shouldCompact {
+                    Log(info: "Compact Realm database in progress.")
+                }
+
+                return shouldCompact
             }
         )
         
