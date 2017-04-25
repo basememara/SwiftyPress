@@ -50,7 +50,7 @@ public extension UserDefaults {
      */
     func registerSite(_ baseDirectory: String = "Site") {
         self[.baseDirectory] = baseDirectory
-        self.registerDefaults("Settings.plist", inDirectory: baseDirectory)
+        self.register(plist: "Settings.plist", inDirectory: baseDirectory)
     }
 }
 

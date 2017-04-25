@@ -63,8 +63,8 @@ class PostDetailViewController: UIViewController, WKNavigationDelegate, WKUIDele
     /// Template used to bind data
     lazy var template: Template? = {
         // Retrieve text from template
-        guard let templateString = Bundle.stringOfFile(
-            PostDetailViewController.detailTemplateFile,
+        guard let templateString = Bundle.string(
+            file: PostDetailViewController.detailTemplateFile,
             inDirectory: AppGlobal.userDefaults[.baseDirectory])
                 else { return nil }
         
@@ -130,7 +130,8 @@ extension PostDetailViewController {
         // Use local stylesheet if offline
         let style = SCNetworkReachability.isOnline
             ? "<link rel='stylesheet' href='\(AppGlobal.userDefaults[.styleSheet])' type='text/css' media='all' />"
-            : "<style>" + (Bundle.stringOfFile("style.css",
+            : "<style>" + (Bundle.string(
+                file: "style.css",
                 inDirectory: AppGlobal.userDefaults[.baseDirectory]) ?? "") + "</style>"
         
         do {
