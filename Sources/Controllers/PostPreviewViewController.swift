@@ -56,7 +56,7 @@ class PostPreviewViewController: UIViewController {
                 
                 self?.delegate?.present(
                     activities: [model.title.htmlDecoded, link],
-                    sourceView: delegateView
+                    popoverFrom: delegateView
                 )
             }
         ]

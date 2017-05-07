@@ -194,7 +194,7 @@ extension MoreViewController {
                 case "{{share}}":
                     let message = "\(AppGlobal.userDefaults[.appName]) is awesome! Check out the app!"
                     let share = [message, "https://itunes.apple.com/app/id\(AppGlobal.userDefaults[.itunesID])"]
-                    present(activities: share, sourceView: tableView[indexPath])
+                    present(activities: share, popoverFrom: tableView[indexPath])
                     
                     // Google Analytics
                     trackEvent("Share", action: "App")
