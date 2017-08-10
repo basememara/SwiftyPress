@@ -16,6 +16,7 @@ public extension DefaultsKeys {
     static let baseURL = DefaultsKey<String>("baseURL")
     static let baseREST = DefaultsKey<String>("baseREST")
     static let wpREST = DefaultsKey<String>("wpREST")
+    static let postRESTPrefix = DefaultsKey<String>("postRESTPrefix")
     static let baseDirectory = DefaultsKey<String>("baseDirectory")
     static let email = DefaultsKey<String>("email")
     static let darkMode = DefaultsKey<Bool>("darkMode")

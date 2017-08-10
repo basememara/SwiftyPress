@@ -16,7 +16,9 @@ enum PostRouter: URLRequestConvertible {
     case commentsCount
     
     static let baseURLString = AppGlobal.userDefaults[.baseURL]
-
+    static let postRESTPrefix = !AppGlobal.userDefaults[.postRESTPrefix].isEmpty
+        ? AppGlobal.userDefaults[.postRESTPrefix] : "posts"
+    
     var method: HTTPMethod {
         switch self {
         case .readPost: return .get
@@ -29,9 +31,9 @@ enum PostRouter: URLRequestConvertible {
     var path: String {
         switch self {
         case .readPost(let id):
-            return "/posts/\(id)"
+            return "/\(PostRouter.postRESTPrefix)/\(id)"
         case .readPosts(_, _, _, _):
-            return "/posts"
+            return "/\(PostRouter.postRESTPrefix)"
         case .commentCount(let id):
             return ("/comments/\(id)/count")
         case .commentsCount:
