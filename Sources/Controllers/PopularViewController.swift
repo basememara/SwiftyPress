@@ -27,7 +27,7 @@ class PopularViewController: RealmPostTableViewController, Trackable {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let favorite = UITableViewRowAction(style: .normal, title: "Favorite".localized) { action, index in
+        let favorite = UITableViewRowAction(style: .normal, title: .localized(.favorite)) { action, index in
             guard let model = self.models?[indexPath.row] else { return }
             
             self.service.addFavorite(model.id)

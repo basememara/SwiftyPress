@@ -70,8 +70,8 @@ extension MoreViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
             case 0: return AppGlobal.userDefaults[.appName]
-            case 1: return "SOCIAL".localized
-            case 2: return "OTHER".localized
+            case 1: return .localized(.social)
+            case 2: return .localized(.other)
             default: return ""
         }
     }

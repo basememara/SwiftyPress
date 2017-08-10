@@ -34,7 +34,7 @@ public extension AppPressable where Self: UIApplicationDelegate {
         
         UNUserNotificationCenter.current().register(
             delegate: self,
-            actions: [UNNotificationAction(identifier: "favorite", title: "Favorite".localized)]
+            actions: [UNNotificationAction(identifier: "favorite", title: .localized(.favorite))]
         )
         
         // Initialize Google Analytics

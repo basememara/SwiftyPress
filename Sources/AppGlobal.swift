@@ -20,3 +20,13 @@ public struct AppGlobal {
     // Prevent others from initializing singleton
     fileprivate init() { }
 }
+
+/// Check if app is running in debug mode.
+var isInDebuggingMode: Bool {
+    // http://stackoverflow.com/questions/9063100/xcode-ios-how-to-determine-whether-code-is-running-in-debug-release-build
+    #if DEBUG
+        return true
+    #else
+        return false
+    #endif
+}

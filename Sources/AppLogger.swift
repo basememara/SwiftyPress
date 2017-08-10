@@ -24,7 +24,7 @@ struct AppLogger: ZamzamKitable {
             $0.logFileURL = $0.logFileURL?
                 .deletingLastPathComponent()
                 .appendingPathComponent("swiftypress.log")
-            $0.minLevel = self.isInDebuggingMode ? .verbose : .info
+            $0.minLevel = isInDebuggingMode ? .verbose : .info
             self.logFileURL = $0.logFileURL
             return $0
         }(FileDestination()))

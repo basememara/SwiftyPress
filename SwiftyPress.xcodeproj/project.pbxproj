@@ -113,6 +113,7 @@
 		8B8EEB331CE43003003A89B5 /* GAITrackedViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB291CE43003003A89B5 /* GAITrackedViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8EEB341CE43003003A89B5 /* GAITracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8EEB2A1CE43003003A89B5 /* GAITracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8EEB421CE43961003A89B5 /* Trackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8EEB411CE43961003A89B5 /* Trackable.swift */; };
+		8B8F128F1F3C991B00D77C6D /* AppLocalizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8F128E1F3C991B00D77C6D /* AppLocalizable.swift */; };
 		8B93F9441CE63EBF006E7003 /* TermService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93F9431CE63EBF006E7003 /* TermService.swift */; };
 		8BB5E0401E4F799E00EF8F29 /* PostPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5E03F1E4F799E00EF8F29 /* PostPreview.storyboard */; };
 		8BB5E0421E4F79C300EF8F29 /* PostPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5E0411E4F79C300EF8F29 /* PostPreviewViewController.swift */; };
@@ -312,6 +313,7 @@
 		8B8EEB2A1CE43003003A89B5 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Frameworks/GoogleAnalyticsServicesiOS/GoogleAnalytics/Library/GAITracker.h; sourceTree = "<group>"; };
 		8B8EEB351CE43036003A89B5 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Frameworks/GoogleAnalyticsServicesiOS/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		8B8EEB411CE43961003A89B5 /* Trackable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trackable.swift; sourceTree = "<group>"; };
+		8B8F128E1F3C991B00D77C6D /* AppLocalizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocalizable.swift; sourceTree = "<group>"; };
 		8B93F9431CE63EBF006E7003 /* TermService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermService.swift; sourceTree = "<group>"; };
 		8BB5E03F1E4F799E00EF8F29 /* PostPreview.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostPreview.storyboard; sourceTree = "<group>"; };
 		8BB5E0411E4F79C300EF8F29 /* PostPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPreviewViewController.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				8B1E51871CD9D98700BB30CB /* AppConstants.swift */,
 				8BF2107B1E48EAE10026B802 /* AppData.swift */,
 				8BBBDE9D1CD5B4BE007C706A /* AppGlobal.swift */,
+				8B8F128E1F3C991B00D77C6D /* AppLocalizable.swift */,
 				8BF210781E48D7A30026B802 /* AppLogger.swift */,
 				8B5EDAF21CDC5A3E00F1C81C /* AppPressable.swift */,
 				8B335FB51CA880A20033B2AE /* SwiftyPress.h */,
@@ -1007,6 +1010,7 @@
 				8B162A7B1CDF90F800871275 /* RealmPostTableViewController.swift in Sources */,
 				8B4B9D6F1E5266E300BCA640 /* Realm.swift in Sources */,
 				8B411F2A1CD845A900623CAD /* Alamofire+JASON.swift in Sources */,
+				8B8F128F1F3C991B00D77C6D /* AppLocalizable.swift in Sources */,
 				8B3FAD701CAC4473006E90B6 /* PostTableViewCell.swift in Sources */,
 				8B93F9441CE63EBF006E7003 /* TermService.swift in Sources */,
 				8B411F2C1CD845E500623CAD /* JSONKeys.swift in Sources */,

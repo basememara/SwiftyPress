@@ -37,7 +37,7 @@ class SearchViewController: UITableViewController, RealmControllable, Trackable 
         
         $0.searchBar.delegate = self
         $0.searchBar.searchBarStyle = .minimal
-        $0.searchBar.placeholder = "Search".localized
+        $0.searchBar.placeholder = .localized(.search)
         $0.searchBar.showsBookmarkButton = true
         
         if let searchTextField = $0.searchBar.value(forKey: "searchField") as? UITextField {
