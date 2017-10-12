@@ -62,7 +62,7 @@ class ExploreViewController: RealmPostCollectionViewController, Tutorable, Resto
             : UIColor(rgb: AppGlobal.userDefaults[.tintColor])
     }
     
-    func catagoryTapped() {
+    @objc func catagoryTapped() {
         performSegue(withIdentifier: TermsViewController.segueIdentifier, sender: nil)
     }
 }

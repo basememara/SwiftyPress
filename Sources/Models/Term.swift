@@ -23,12 +23,12 @@ public protocol Termable: class {
 
 public class Term: Object, Termable {
     
-    public dynamic var id = 0
-    public dynamic var name = ""
-    public dynamic var slug = ""
-    public dynamic var taxonomy = ""
-    public dynamic var parent = 0
-    public dynamic var count = 0
+    @objc public dynamic var id = 0
+    @objc public dynamic var name = ""
+    @objc public dynamic var slug = ""
+    @objc public dynamic var taxonomy = ""
+    @objc public dynamic var parent = 0
+    @objc public dynamic var count = 0
     
     public override static func primaryKey() -> String? {
         return "id"

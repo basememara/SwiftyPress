@@ -323,7 +323,7 @@ extension PostDetailViewController {
         }
     }
     
-    func shareTapped(_ sender: UIBarButtonItem) {
+    @objc func shareTapped(_ sender: UIBarButtonItem) {
         guard let link = URL(string: model.link) else { return }
         
         let safariActivity = UIActivity.create("Open in Safari",
@@ -351,7 +351,7 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    func favoriteTapped() {
+    @objc func favoriteTapped() {
         service.toggleFavorite(model.id)
         refreshFavoriteIcon()
     
@@ -360,7 +360,7 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    func commentsTapped() {
+    @objc func commentsTapped() {
         if !SCNetworkReachability.isOnline {
             return present(alert: "Device must be online to view comments.")
         }
@@ -372,7 +372,7 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    func relatedTapped() {
+    @objc func relatedTapped() {
         if !SCNetworkReachability.isOnline {
             return present(alert: "Device must be online to view related posts.")
         }
@@ -391,7 +391,7 @@ extension PostDetailViewController {
             label: model.title, value: Int(model.id))
     }
     
-    func backTapped() {
+    @objc func backTapped() {
         if history.isEmpty {
             return present(alert: "No previous post in history")
         }

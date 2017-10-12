@@ -119,7 +119,7 @@ private extension AppPressable {
         
         if !AppGlobal.userDefaults[.titleColor].isEmpty {
             UINavigationBar.appearance().titleTextAttributes = [
-                NSForegroundColorAttributeName: UIColor(rgb: AppGlobal.userDefaults[.titleColor])
+                NSAttributedStringKey.foregroundColor: UIColor(rgb: AppGlobal.userDefaults[.titleColor])
             ]
         }
         
@@ -132,7 +132,7 @@ private extension AppPressable {
             
             if !AppGlobal.userDefaults[.tabTitleColor].isEmpty {
                 UITabBarItem.appearance().setTitleTextAttributes([
-                    NSForegroundColorAttributeName: UIColor(rgb: AppGlobal.userDefaults[.tabTitleColor])
+                    NSAttributedStringKey.foregroundColor: UIColor(rgb: AppGlobal.userDefaults[.tabTitleColor])
                 ], for: .selected)
            }
         }

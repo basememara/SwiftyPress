@@ -46,10 +46,10 @@ class PostPreviewViewController: UIViewController {
         let style: UIPreviewActionStyle = isFavorite ? .destructive : .default
         
         return [
-            UIPreviewAction(title: title, style: style) { _ in
+            UIPreviewAction(title: title, style: style) { _, _ in
                 self.service.toggleFavorite(self.model.id)
             },
-            UIPreviewAction(title: .localized(.share), style: .default) { [weak self] _ in
+            UIPreviewAction(title: .localized(.share), style: .default) { [weak self] _, _ in
                 guard let model = self?.model, let link = URL(string: model.link),
                     let delegateView = self?.delegate?.view
                         else { return }

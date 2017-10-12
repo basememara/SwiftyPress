@@ -13,13 +13,13 @@ import JASON
 
 public class User: Object {
     
-    public dynamic var id = 0
-    public dynamic var username = ""
-    public dynamic var name = ""
-    public dynamic var email = ""
-    public dynamic var link = ""
-    public dynamic var avatar = ""
-    public dynamic var content = ""
+    @objc public dynamic var id = 0
+    @objc public dynamic var username = ""
+    @objc public dynamic var name = ""
+    @objc public dynamic var email = ""
+    @objc public dynamic var link = ""
+    @objc public dynamic var avatar = ""
+    @objc public dynamic var content = ""
     
     public override static func primaryKey() -> String? {
         return "id"

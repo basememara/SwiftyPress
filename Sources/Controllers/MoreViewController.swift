@@ -44,7 +44,7 @@ class MoreViewController: UITableViewController, MFMailComposeViewControllerDele
         removeStatusBar()
     }
     
-    func socialTapped(_ sender: UIButton) {
+    @objc func socialTapped(_ sender: UIButton) {
         guard let social = socialModels.first(where: {
             $0.title == sender.restorationIdentifier
         }) else { return }

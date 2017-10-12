@@ -9,7 +9,7 @@
 	<key>itunesID</key>
 	<string>1021806851</string>
 	<key>baseURL</key>
-	<string>http://basememara.com</string>
+	<string>https://basememara.com</string>
 	<key>baseREST</key>
 	<string>wp-json/swiftypress/v2</string>
 	<key>wpREST</key>
@@ -35,7 +35,7 @@
 	<key>headerImage</key>
 	<string></string>
 	<key>styleSheet</key>
-	<string>http://basememara.com/wp-content/themes/metro-pro/style.css</string>
+	<string>https://basememara.com/wp-content/themes/metro-pro/style.css</string>
 	<key>googleAnalyticsID</key>
 	<string>UA-60131988-2</string>
 	<key>featuredCategoryID</key>

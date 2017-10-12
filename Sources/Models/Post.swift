@@ -34,19 +34,19 @@ public protocol Postable: class {
 
 public class Post: Object, Postable {
     
-    public dynamic var id = 0
-    public dynamic var title = ""
-    public dynamic var content = ""
-    public dynamic var excerpt = ""
-    public dynamic var slug = ""
-    public dynamic var type = ""
-    public dynamic var link = ""
-    public dynamic var date: Date?
-    public dynamic var modified: Date?
-    public dynamic var commentCount = 0
+    @objc public dynamic var id = 0
+    @objc public dynamic var title = ""
+    @objc public dynamic var content = ""
+    @objc public dynamic var excerpt = ""
+    @objc public dynamic var slug = ""
+    @objc public dynamic var type = ""
+    @objc public dynamic var link = ""
+    @objc public dynamic var date: Date?
+    @objc public dynamic var modified: Date?
+    @objc public dynamic var commentCount = 0
     
-    public dynamic var media: Media?
-    public dynamic var author: User?
+    @objc public dynamic var media: Media?
+    @objc public dynamic var author: User?
     public var categories = List<Term>()
     public var tags = List<Term>()
     

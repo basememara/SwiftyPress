@@ -12,12 +12,12 @@ import JASON
 
 public class Media: Object {
     
-    public dynamic var link = ""
-    public dynamic var width = 0
-    public dynamic var height = 0
-    public dynamic var thumbnailLink = ""
-    public dynamic var thumbnailWidth = 0
-    public dynamic var thumbnailHeight = 0
+    @objc public dynamic var link = ""
+    @objc public dynamic var width = 0
+    @objc public dynamic var height = 0
+    @objc public dynamic var thumbnailLink = ""
+    @objc public dynamic var thumbnailWidth = 0
+    @objc public dynamic var thumbnailHeight = 0
     
     public override static func primaryKey() -> String? {
         return "link"
