@@ -2,15 +2,10 @@
 //  SwiftyPress.h
 //  SwiftyPress
 //
-//  Created by Basem Emara on 3/27/16.
-//
+//  Created by Basem Emara on 2018-05-21.
 //
 
 #import <UIKit/UIKit.h>
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
-#import "GAIFields.h"
-#import "GAILogger.h"
 
 //! Project version number for SwiftyPress.
 FOUNDATION_EXPORT double SwiftyPressVersionNumber;

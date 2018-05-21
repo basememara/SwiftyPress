@@ -19,11 +19,14 @@ xcuserdata/
 
 ## Other
 *.moved-aside
-*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
 
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+*.dSYM.zip
+*.dSYM
 
 ## Playgrounds
 timeline.xctimeline
@@ -33,6 +36,8 @@ playground.xcworkspace
 #
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
+# Package.pins
+# Package.resolved
 .build/
 
 # CocoaPods
@@ -46,9 +51,6 @@ playground.xcworkspace
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
-Carthage/Build/**/*.*
-Carthage/Build
-Carthage/Checkouts/**/*.*
+#
 Carthage/Checkouts
-
-*.xcscmblueprint
+Carthage/Build

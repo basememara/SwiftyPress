@@ -1,37 +1,30 @@
-# SwiftyPress
+# MyModule
 
-[![CI Status](http://img.shields.io/travis/ZamzamInc/SwiftyPress.svg?style=flat)](https://travis-ci.org/ZamzamInc/SwiftyPress)
-[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://api.travis-ci.org/ZamzamInc/ZamzamKit.svg?branch=master)](https://travis-ci.org/ZamzamInc/ZamzamKit)
+[![Platform](https://img.shields.io/cocoapods/p/ZamzamKit.svg?style=flat)](https://github.com/ZamzamInc/ZamzamKit)
+[![Swift](https://img.shields.io/badge/Swift-4.1-orange.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-9.3-blue.svg)](https://developer.apple.com/xcode)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Version](https://img.shields.io/cocoapods/v/ZamzamKit.svg?style=flat)](http://cocoapods.org/pods/ZamzamKit)
+[![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
-## Usage
-
-To run the project, clone the repo, and run the example app.
-
-## Requirements
+MyModule a Swift framework for rapid development.
 
 ## Installation
-* `carthage update --platform iOS --no-build`
-* `(cd Carthage/Checkouts/Stencil && swift package generate-xcodeproj)`
-* Open Stencil.proj and add iOS 10
-* `carthage build --platform iOS`
-* add carthage frameworks dependencies to project settings
-* embed Realm/ReamSwift frameworks
-* add ATS exception to plist
-* add LSApplicationQueriesSchemes to plist
-* for App Store submissions:
-    - add carthage script in build phases for each dependency
-    - add bundle version in -> Carthage/Build/iOS/{Pathkit, Spectre, and Stencil}.framwork/Info.plist
 
 #### Carthage
-You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyPress` by adding it to your `Cartfile`:
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `MyModule` by adding it to your `Cartfile`:
 ```
-github "ZamzamInc/SwiftyPress"
+github "iOSMentor/MyModule"
 ```
+
+#### CocoaPods
+Add `pod "MyModule"` to your `Podfile`.
 
 ## Author
 
-Zamzam Inc., contact@zamzam.io
+https://iosmentor.io
 
 ## License
 
-SwiftyPress is available under the MIT license. See the LICENSE file for more info.
+iOS Mentor is available under the MIT license. See the LICENSE file for more info.
