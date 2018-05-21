@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8B00E3AB20B2DA0C00B20B2C"
-               BuildableName = "SwiftyPress_iOS.framework"
+               BuildableName = "SwiftyPress.framework"
                BlueprintName = "SwiftyPress iOS"
                ReferencedContainer = "container:SwiftPress.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B00E3AB20B2DA0C00B20B2C"
-            BuildableName = "SwiftyPress_iOS.framework"
+            BuildableName = "SwiftyPress.framework"
             BlueprintName = "SwiftyPress iOS"
             ReferencedContainer = "container:SwiftPress.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8B00E3AB20B2DA0C00B20B2C"
-            BuildableName = "SwiftyPress_iOS.framework"
+            BuildableName = "SwiftyPress.framework"
             BlueprintName = "SwiftyPress iOS"
             ReferencedContainer = "container:SwiftPress.xcodeproj">
          </BuildableReference>

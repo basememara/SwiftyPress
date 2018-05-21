@@ -13,9 +13,6 @@
 		8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00E3D420B2EA1800B20B2C /* Constants.swift */; };
 		8B00E3D620B2EA1800B20B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00E3D420B2EA1800B20B2C /* Constants.swift */; };
 		8B00E3D720B2EA1800B20B2C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00E3D420B2EA1800B20B2C /* Constants.swift */; };
-		8B00E3D920B2EA2800B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E3D820B2EA2800B20B2C /* Media.xcassets */; };
-		8B00E3DA20B2EA2800B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E3D820B2EA2800B20B2C /* Media.xcassets */; };
-		8B00E3DB20B2EA2800B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E3D820B2EA2800B20B2C /* Media.xcassets */; };
 		8B00E3EA20B305A000B20B2C /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E320B305A000B20B2C /* SwiftyBeaver.framework */; };
 		8B00E3EB20B305A000B20B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E420B305A000B20B2C /* Alamofire.framework */; };
 		8B00E3EC20B305A000B20B2C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E520B305A000B20B2C /* Realm.framework */; };
@@ -37,6 +34,9 @@
 		8B00E40A20B305C800B20B2C /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40320B305C800B20B2C /* ZamzamKit.framework */; };
 		8B00E40B20B305C800B20B2C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40420B305C800B20B2C /* RealmSwift.framework */; };
 		8B00E40C20B305C800B20B2C /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40520B305C800B20B2C /* SwiftyBeaver.framework */; };
+		8B00E40E20B30D4D00B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E40D20B30D4D00B20B2C /* Media.xcassets */; };
+		8B00E40F20B30D4D00B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E40D20B30D4D00B20B2C /* Media.xcassets */; };
+		8B00E41020B30D4D00B20B2C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B00E40D20B30D4D00B20B2C /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,9 +46,6 @@
 		8B00E3BA20B2DA7A00B20B2C /* SwiftyPress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B00E3C720B2DAE100B20B2C /* SwiftyPress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyPress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B00E3D420B2EA1800B20B2C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		8B00E3D820B2EA2800B20B2C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		8B00E3E020B2F5CA00B20B2C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		8B00E3E120B2F5CA00B20B2C /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		8B00E3E320B305A000B20B2C /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
 		8B00E3E420B305A000B20B2C /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8B00E3E520B305A000B20B2C /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -70,6 +67,9 @@
 		8B00E40320B305C800B20B2C /* ZamzamKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZamzamKit.framework; path = Carthage/Build/tvOS/ZamzamKit.framework; sourceTree = "<group>"; };
 		8B00E40420B305C800B20B2C /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/tvOS/RealmSwift.framework; sourceTree = "<group>"; };
 		8B00E40520B305C800B20B2C /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/tvOS/SwiftyBeaver.framework; sourceTree = "<group>"; };
+		8B00E40D20B30D4D00B20B2C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		8B00E41220B30D9D00B20B2C /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		8B00E41320B30D9D00B20B2C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +78,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E3EA20B305A000B20B2C /* SwiftyBeaver.framework in Frameworks */,
+				8B00E3EF20B305A000B20B2C /* Arcane.framework in Frameworks */,
+				8B00E3ED20B305A000B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E3EB20B305A000B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E3EC20B305A000B20B2C /* Realm.framework in Frameworks */,
-				8B00E3ED20B305A000B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E3EE20B305A000B20B2C /* RealmSwift.framework in Frameworks */,
-				8B00E3EF20B305A000B20B2C /* Arcane.framework in Frameworks */,
 				8B00E3F020B305A000B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,13 +91,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00E3F820B305B700B20B2C /* ZamzamKit.framework in Frameworks */,
-				8B00E3F920B305B700B20B2C /* Arcane.framework in Frameworks */,
-				8B00E3FA20B305B700B20B2C /* Alamofire.framework in Frameworks */,
-				8B00E3FB20B305B700B20B2C /* KeychainSwift.framework in Frameworks */,
-				8B00E3FC20B305B700B20B2C /* Realm.framework in Frameworks */,
 				8B00E3FD20B305B700B20B2C /* SwiftyBeaver.framework in Frameworks */,
+				8B00E3F920B305B700B20B2C /* Arcane.framework in Frameworks */,
+				8B00E3FB20B305B700B20B2C /* KeychainSwift.framework in Frameworks */,
+				8B00E3FA20B305B700B20B2C /* Alamofire.framework in Frameworks */,
+				8B00E3FC20B305B700B20B2C /* Realm.framework in Frameworks */,
 				8B00E3FE20B305B700B20B2C /* RealmSwift.framework in Frameworks */,
+				8B00E3F820B305B700B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,13 +105,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00E40620B305C800B20B2C /* Realm.framework in Frameworks */,
+				8B00E40C20B305C800B20B2C /* SwiftyBeaver.framework in Frameworks */,
+				8B00E40920B305C800B20B2C /* Arcane.framework in Frameworks */,
 				8B00E40720B305C800B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E40820B305C800B20B2C /* Alamofire.framework in Frameworks */,
-				8B00E40920B305C800B20B2C /* Arcane.framework in Frameworks */,
-				8B00E40A20B305C800B20B2C /* ZamzamKit.framework in Frameworks */,
+				8B00E40620B305C800B20B2C /* Realm.framework in Frameworks */,
 				8B00E40B20B305C800B20B2C /* RealmSwift.framework in Frameworks */,
-				8B00E40C20B305C800B20B2C /* SwiftyBeaver.framework in Frameworks */,
+				8B00E40A20B305C800B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,9 +121,10 @@
 		8B00E3A020B2D97500B20B2C = {
 			isa = PBXGroup;
 			children = (
+				8B00E41120B30D7800B20B2C /* Meta */,
 				8B00E3CF20B2DB3200B20B2C /* Sources */,
-				8B00E3AD20B2DA0C00B20B2C /* Products */,
 				8B00E3E220B3059F00B20B2C /* Frameworks */,
+				8B00E3AD20B2DA0C00B20B2C /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,9 +141,8 @@
 		8B00E3CF20B2DB3200B20B2C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8B00E3D320B2E9C800B20B2C /* Meta */,
 				8B00E3D420B2EA1800B20B2C /* Constants.swift */,
-				8B00E3D820B2EA2800B20B2C /* Media.xcassets */,
+				8B00E40D20B30D4D00B20B2C /* Media.xcassets */,
 				8B00E3D220B2E9B200B20B2C /* Supporting Files */,
 			);
 			path = Sources;
@@ -155,15 +155,6 @@
 				8B00E3B020B2DA0C00B20B2C /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8B00E3D320B2E9C800B20B2C /* Meta */ = {
-			isa = PBXGroup;
-			children = (
-				8B00E3E120B2F5CA00B20B2C /* Cartfile */,
-				8B00E3E020B2F5CA00B20B2C /* README.md */,
-			);
-			name = Meta;
 			sourceTree = "<group>";
 		};
 		8B00E3E220B3059F00B20B2C /* Frameworks */ = {
@@ -192,6 +183,15 @@
 				8B00E3E920B305A000B20B2C /* ZamzamKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B00E41120B30D7800B20B2C /* Meta */ = {
+			isa = PBXGroup;
+			children = (
+				8B00E41220B30D9D00B20B2C /* Cartfile */,
+				8B00E41320B30D9D00B20B2C /* README.md */,
+			);
+			name = Meta;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,7 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00E3D920B2EA2800B20B2C /* Media.xcassets in Resources */,
+				8B00E40E20B30D4D00B20B2C /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00E3DA20B2EA2800B20B2C /* Media.xcassets in Resources */,
+				8B00E40F20B30D4D00B20B2C /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00E3DB20B2EA2800B20B2C /* Media.xcassets in Resources */,
+				8B00E41020B30D4D00B20B2C /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
