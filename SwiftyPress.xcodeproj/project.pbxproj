@@ -101,6 +101,9 @@
 		8B0D64BD20BEB8320046056F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40420B305C800B20B2C /* RealmSwift.framework */; };
 		8B0D64BE20BEB8320046056F /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40520B305C800B20B2C /* SwiftyBeaver.framework */; };
 		8B0D64BF20BEB8320046056F /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40320B305C800B20B2C /* ZamzamKit.framework */; };
+		8B0D64C420BEC9830046056F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64C320BEC9830046056F /* Post.swift */; };
+		8B0D64C520BEC9830046056F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64C320BEC9830046056F /* Post.swift */; };
+		8B0D64C620BEC9830046056F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64C320BEC9830046056F /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -232,6 +235,7 @@
 		8B0D649B20BEB7220046056F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B0D649D20BEB7240046056F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B0D649F20BEB7240046056F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B0D64C320BEC9830046056F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -488,6 +492,7 @@
 			children = (
 				8B0D644520BEA9010046056F /* PostsModels.swift */,
 				8B0D641320B99B180046056F /* PostType.swift */,
+				8B0D64C320BEC9830046056F /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -879,6 +884,7 @@
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D643A20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
 				8B0D641820B99B240046056F /* TermType.swift in Sources */,
 				8B0D644620BEA9010046056F /* PostsModels.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -898,6 +904,7 @@
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D643B20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642120B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B0D64C520BEC9830046056F /* Post.swift in Sources */,
 				8B0D641920B99B240046056F /* TermType.swift in Sources */,
 				8B0D644720BEA9010046056F /* PostsModels.swift in Sources */,
 				8B00E3D620B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -917,6 +924,7 @@
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D643C20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642220B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B0D64C620BEC9830046056F /* Post.swift in Sources */,
 				8B0D641A20B99B240046056F /* TermType.swift in Sources */,
 				8B0D644820BEA9010046056F /* PostsModels.swift in Sources */,
 				8B00E3D720B2EA1800B20B2C /* Constants.swift in Sources */,

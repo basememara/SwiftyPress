@@ -6,15 +6,15 @@
 //
 
 public protocol PostType: Identifiable, Dateable {
-    var slug: String { get set }
-    var type: String { get set }
-    var title: String { get set }
-    var content: String { get set }
-    var excerpt: String { get set }
-    var link: String { get set }
-    var commentCount: Int { get set }
-    var authorID: Int { get set }
-    var mediaID: Int? { get set }
+    var slug: String { get }
+    var type: String { get }
+    var title: String { get }
+    var content: String { get }
+    var excerpt: String { get }
+    var link: String { get }
+    var commentCount: Int { get }
+    var authorID: Int { get }
+    var mediaID: Int? { get }
     var categories: [Int] { get }
     var tags: [Int] { get }
 }
