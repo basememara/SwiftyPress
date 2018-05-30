@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8B00E3C620B2DAE100B20B2C"
+               BlueprintIdentifier = "8B00E3B920B2DA7A00B20B2C"
                BuildableName = "SwiftyPress.framework"
-               BlueprintName = "SwiftyPress tvOS"
-               ReferencedContainer = "container:SwiftPress.xcodeproj">
+               BlueprintName = "SwiftyPress watchOS"
+               ReferencedContainer = "container:SwiftyPress.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B00E3C620B2DAE100B20B2C"
+            BlueprintIdentifier = "8B00E3B920B2DA7A00B20B2C"
             BuildableName = "SwiftyPress.framework"
-            BlueprintName = "SwiftyPress tvOS"
-            ReferencedContainer = "container:SwiftPress.xcodeproj">
+            BlueprintName = "SwiftyPress watchOS"
+            ReferencedContainer = "container:SwiftyPress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8B00E3C620B2DAE100B20B2C"
+            BlueprintIdentifier = "8B00E3B920B2DA7A00B20B2C"
             BuildableName = "SwiftyPress.framework"
-            BlueprintName = "SwiftyPress tvOS"
-            ReferencedContainer = "container:SwiftPress.xcodeproj">
+            BlueprintName = "SwiftyPress watchOS"
+            ReferencedContainer = "container:SwiftyPress.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
