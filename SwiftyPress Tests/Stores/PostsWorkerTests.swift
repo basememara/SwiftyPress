@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import ZamzamKit
 @testable import SwiftyPress
 
 class PostsWorkerTests: XCTestCase {
@@ -26,8 +27,13 @@ class PostsWorkerTests: XCTestCase {
         let promise = expectation(description: "Posts fetch all promise")
         
         postsWorker.fetch {
-            XCTAssertTrue(!$0.isEmpty)
-            promise.fulfill()
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch all error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(!value.isEmpty)
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -38,8 +44,30 @@ class PostsWorkerTests: XCTestCase {
         let id = 1
         
         postsWorker.fetch(id: id) {
-            XCTAssertTrue($0.id == id)
-            promise.fulfill()
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by ID error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == id)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByIDError() {
+        let promise = expectation(description: "Posts fetch by ID error promise")
+        let id = 999
+        
+        postsWorker.fetch(id: id) {
+            defer { promise.fulfill() }
+            
+            guard case .nonExistent? = $0.error else {
+                return XCTFail("Posts fetch by ID error should have failed.")
+            }
+            
+            XCTAssertTrue(true)
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -52,8 +80,8 @@ struct PostsWorker: PostsWorkerType {
 
 extension PostsWorker {
     
-    func fetch(completion: @escaping ([PostType]) -> Void) {
-        completion([
+    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        completion(.success([
             Post(
                 id: 1,
                 slug: "test-post-1",
@@ -102,42 +130,39 @@ extension PostsWorker {
                 createdAt: Date(),
                 modifiedAt: Date()
             )
-        ])
+        ]))
     }
     
-    func fetch(id: Int, completion: @escaping (PostType) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void) {
         fetch {
-            // TODO: Get rid of optional
-            completion($0.first { $0.id == id }!)
+            guard let value = $0.value?.first(where: { $0.id == id }), $0.isSuccess else {
+                return completion(.failure(.nonExistent))
+            }
+            
+            completion(.success(value))
         }
     }
 }
 
 extension PostsWorker {
     
-    func fetch(byCategoryIDs: [Int], completion: @escaping ([PostType]) -> Void) {
+    func fetch(byCategoryIDs: [Int], completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
     }
     
-    func fetch(byTagIDs: [Int], completion: @escaping ([PostType]) -> Void) {
-        fatalError("Not implemented")
-    }
-}
-
-extension PostsWorker {
-    
-    func fetchPopular(completion: @escaping ([PostType]) -> Void) {
+    func fetch(byTagIDs: [Int], completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
     }
     
-    func fetchFavorites(completion: @escaping ([PostType]) -> Void) {
+    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
     }
-}
-
-extension PostsWorker {
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping ([PostType]) -> Void) {
+    func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fatalError("Not implemented")
+    }
+    
+    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
     }
 }
