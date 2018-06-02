@@ -90,7 +90,11 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by categories error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.contains { [1, 3].contains($0.id) })
+            let expression = value.reduce(true) { result, next in
+                result && next.categories.contains(where: ids.contains)
+            }
+            
+            XCTAssertTrue(expression)
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -107,7 +111,11 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by tags error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.contains { [2, 3].contains($0.id) })
+            let expression = value.reduce(true) { result, next in
+                result && next.tags.contains(where: ids.contains)
+            }
+            
+            XCTAssertTrue(expression)
         }
         
         waitForExpectations(timeout: 5, handler: nil)
