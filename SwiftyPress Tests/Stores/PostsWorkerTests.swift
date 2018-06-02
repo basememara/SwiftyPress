@@ -38,6 +38,9 @@ class PostsWorkerTests: XCTestCase {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
+}
+
+extension PostsWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Posts fetch by ID promise")
@@ -68,6 +71,43 @@ class PostsWorkerTests: XCTestCase {
             }
             
             XCTAssertTrue(true)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension PostsWorkerTests {
+    
+    func testFetchByCategories() {
+        let promise = expectation(description: "Posts fetch by categories promise")
+        let ids: Set = [1, 9]
+        
+        postsWorker.fetch(byCategoryIDs: ids) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by categories error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.contains { [1, 3].contains($0.id) })
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByTags() {
+        let promise = expectation(description: "Posts fetch by tags promise")
+        let ids: Set = [11]
+        
+        postsWorker.fetch(byTagIDs: ids) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by tags error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.contains { [2, 3].contains($0.id) })
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -146,13 +186,32 @@ extension PostsWorker {
 
 extension PostsWorker {
     
-    func fetch(byCategoryIDs: [Int], completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fatalError("Not implemented")
+    func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let results = value.filter {
+                $0.categories.contains(where: ids.contains)
+            }
+            
+            completion(.success(results))
+        }
     }
     
-    func fetch(byTagIDs: [Int], completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fatalError("Not implemented")
+    func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let results = value.filter {
+                $0.tags.contains(where: ids.contains)
+            }
+            
+            completion(.success(results))
+        }
     }
+}
+
+extension PostsWorker {
     
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
