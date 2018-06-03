@@ -6,10 +6,10 @@
 //
 
 public protocol MediaType: Identifiable {
-    var link: String { get set }
-    var width: Int { get set }
-    var height: Int { get set }
-    var thumbnailLink: String { get set }
-    var thumbnailWidth: Int { get set }
-    var thumbnailHeight: Int { get set }
+    var link: String { get }
+    var width: Int { get }
+    var height: Int { get }
+    var thumbnailLink: String { get }
+    var thumbnailWidth: Int { get }
+    var thumbnailHeight: Int { get }
 }

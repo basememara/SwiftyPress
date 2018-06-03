@@ -6,9 +6,9 @@
 //
 
 public protocol TermType: Identifiable, Dateable {
-    var parentID: Int { get set }
-    var slug: String { get set }
-    var name: String { get set }
-    var taxonomy: String { get set }
-    var count: Int { get set }
+    var parentID: Int { get }
+    var slug: String { get }
+    var name: String { get }
+    var taxonomy: Taxonomy { get }
+    var count: Int { get }
 }

@@ -6,8 +6,8 @@
 //
 
 public protocol AuthorType: Identifiable, Dateable {
-    var name: String { get set }
-    var link: String { get set }
-    var avatar: String { get set }
-    var content: String { get set }
+    var name: String { get }
+    var link: String { get }
+    var avatar: String { get }
+    var content: String { get }
 }
