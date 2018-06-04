@@ -9,11 +9,9 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class TaxonomyWorkerTests: XCTestCase {
+class TaxonomyWorkerTests: XCTestCase, HasDependencies {
     
-    private let taxonomyWorker: TaxonomyWorkerType = TaxonomyWorker(
-        store: TaxonomyMemoryStore()
-    )
+    private lazy var taxonomyWorker: TaxonomyWorkerType = dependencies.resolveWorker()
     
     override func setUp() {
         super.setUp()

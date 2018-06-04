@@ -9,11 +9,9 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class AuthorsWorkerTests: XCTestCase {
+class AuthorsWorkerTests: XCTestCase, HasDependencies {
     
-    private let authorsWorker: AuthorsWorkerType = AuthorsWorker(
-        store: AuthorsMemoryStore()
-    )
+    private lazy var authorsWorker: AuthorsWorkerType = dependencies.resolveWorker()
     
     override func setUp() {
         super.setUp()

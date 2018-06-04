@@ -9,11 +9,9 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class PostsWorkerTests: XCTestCase {
+class PostsWorkerTests: XCTestCase, HasDependencies {
     
-    private let postsWorker: PostsWorkerType = PostsWorker(
-        store: PostsMemoryStore()
-    )
+    private lazy var postsWorker: PostsWorkerType = dependencies.resolveWorker()
     
     override func setUp() {
         super.setUp()

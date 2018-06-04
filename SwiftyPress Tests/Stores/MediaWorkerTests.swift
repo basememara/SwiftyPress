@@ -9,11 +9,9 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class MediaWorkerTests: XCTestCase {
+class MediaWorkerTests: XCTestCase, HasDependencies {
     
-    private let mediaWorker: MediaWorkerType = MediaWorker(
-        store: MediaMemoryStore()
-    )
+    private lazy var mediaWorker: MediaWorkerType = dependencies.resolveWorker()
     
     override func setUp() {
         super.setUp()
