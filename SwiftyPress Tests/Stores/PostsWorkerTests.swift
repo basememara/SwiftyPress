@@ -11,7 +11,9 @@ import ZamzamKit
 
 class PostsWorkerTests: XCTestCase {
     
-    private let postsWorker: PostsWorkerType = PostsWorker()
+    private let postsWorker: PostsWorkerType = PostsWorker(
+        store: PostsMemoryStore()
+    )
     
     override func setUp() {
         super.setUp()

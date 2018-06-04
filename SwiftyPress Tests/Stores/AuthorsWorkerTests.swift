@@ -11,7 +11,9 @@ import ZamzamKit
 
 class AuthorsWorkerTests: XCTestCase {
     
-    private let authorsWorker: AuthorsWorkerType = AuthorsWorker()
+    private let authorsWorker: AuthorsWorkerType = AuthorsWorker(
+        store: AuthorsMemoryStore()
+    )
     
     override func setUp() {
         super.setUp()

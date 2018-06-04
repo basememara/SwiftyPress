@@ -11,7 +11,9 @@ import ZamzamKit
 
 class MediaWorkerTests: XCTestCase {
     
-    private let mediaWorker: AuthorsWorkerType = AuthorsWorker()
+    private let mediaWorker: MediaWorkerType = MediaWorker(
+        store: MediaMemoryStore()
+    )
     
     override func setUp() {
         super.setUp()

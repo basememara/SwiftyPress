@@ -11,7 +11,9 @@ import ZamzamKit
 
 class TaxonomyWorkerTests: XCTestCase {
     
-    private let taxonomyWorker: TaxonomyWorkerType = TaxonomyWorker()
+    private let taxonomyWorker: TaxonomyWorkerType = TaxonomyWorker(
+        store: TaxonomyMemoryStore()
+    )
     
     override func setUp() {
         super.setUp()
