@@ -9,7 +9,7 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class TaxonomyWorkerTests: XCTestCase, HasDependencies {
+class TaxonomyWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var taxonomyWorker: TaxonomyWorkerType = dependencies.resolveWorker()
     

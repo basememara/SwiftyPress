@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-04.
 //
 
+@testable import SwiftyPress
 import ZamzamKit
 
 public struct TaxonomyMemoryStore: TaxonomyStore {
@@ -21,9 +22,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-1",
                 name: "Category 1",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 2,
@@ -31,9 +30,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-2",
                 name: "Category 2",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 3,
@@ -41,9 +38,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-3",
                 name: "Category 3",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 4,
@@ -51,9 +46,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-4",
                 name: "Category 4",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 5,
@@ -61,9 +54,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-5",
                 name: "Category 5",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 6,
@@ -71,9 +62,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-6",
                 name: "Category 6",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 7,
@@ -81,9 +70,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-7",
                 name: "Category 7",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 8,
@@ -91,9 +78,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-8",
                 name: "Category 8",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 9,
@@ -101,9 +86,7 @@ public extension TaxonomyMemoryStore {
                 slug: "category-9",
                 name: "Category 9",
                 taxonomy: .category,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 10,
@@ -111,9 +94,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-10",
                 name: "Tag 10",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 11,
@@ -121,9 +102,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-11",
                 name: "Tag 11",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 12,
@@ -131,9 +110,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-12",
                 name: "Tag 12",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 20,
@@ -141,9 +118,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-20",
                 name: "Tag 20",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 21,
@@ -151,9 +126,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-21",
                 name: "Tag 21",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 22,
@@ -161,9 +134,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-22",
                 name: "Tag 22",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 30,
@@ -171,9 +142,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-30",
                 name: "Tag 30",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 31,
@@ -181,9 +150,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-31",
                 name: "Tag 31",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             ),
             Term(
                 id: 32,
@@ -191,9 +158,7 @@ public extension TaxonomyMemoryStore {
                 slug: "tag-32",
                 name: "Tag 32",
                 taxonomy: .tag,
-                count: 1,
-                createdAt: Date(),
-                modifiedAt: Date()
+                count: 1
             )
         ]))
     }

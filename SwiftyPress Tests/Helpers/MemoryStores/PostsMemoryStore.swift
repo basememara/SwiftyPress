@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-03.
 //
 
+@testable import SwiftyPress
 import ZamzamKit
 
 public struct PostsMemoryStore: PostsStore {

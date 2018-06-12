@@ -26,21 +26,29 @@ open class Dependency: Dependable {
         return MediaWorker(store: resolveStore())
     }
     
+    open func resolveWorker() -> SeedWorkerType {
+        return SeedWorker(store: resolveStore())
+    }
+    
     // MARK: - Store
     
     open func resolveStore() -> PostsStore {
-        return PostsMemoryStore()
+        return PostsFileStore(store: resolveStore())
     }
     
     open func resolveStore() -> TaxonomyStore {
-        return TaxonomyMemoryStore()
+        return TaxonomyFileStore(store: resolveStore())
     }
     
     open func resolveStore() -> AuthorsStore {
-        return AuthorsMemoryStore()
+        return AuthorsFileStore(store: resolveStore())
     }
     
     open func resolveStore() -> MediaStore {
-        return MediaMemoryStore()
+        return MediaFileStore(store: resolveStore())
+    }
+    
+    open func resolveStore() -> SeedStore {
+        return SeedFileStore()
     }
 }

@@ -9,7 +9,7 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class AuthorsWorkerTests: XCTestCase, HasDependencies {
+class AuthorsWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var authorsWorker: AuthorsWorkerType = dependencies.resolveWorker()
     

@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-04.
 //
 
+@testable import SwiftyPress
 import ZamzamKit
 
 public struct MediaMemoryStore: MediaStore {

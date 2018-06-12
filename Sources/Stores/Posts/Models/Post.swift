@@ -5,7 +5,7 @@
 //  Created by Basem Emara on 2018-05-30.
 //
 
-public struct Post: PostType {
+public struct Post: PostType, Decodable {
     public let id: Int
     public let slug: String
     public let type: String
@@ -20,4 +20,26 @@ public struct Post: PostType {
     public let tags: [Int]
     public let createdAt: Date
     public let modifiedAt: Date
+}
+
+// MARK: - For JSON decoding
+
+private extension Post {
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case slug
+        case type
+        case title
+        case content
+        case excerpt
+        case link
+        case commentCount = "comment_count"
+        case authorID = "author"
+        case mediaID = "featured_media"
+        case categories
+        case tags
+        case createdAt = "created"
+        case modifiedAt = "modified"
+    }
 }

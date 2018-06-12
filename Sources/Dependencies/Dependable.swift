@@ -10,9 +10,11 @@ public protocol Dependable {
     func resolveWorker() -> TaxonomyWorkerType
     func resolveWorker() -> AuthorsWorkerType
     func resolveWorker() -> MediaWorkerType
+    func resolveWorker() -> SeedWorkerType
     
     func resolveStore() -> PostsStore
     func resolveStore() -> TaxonomyStore
     func resolveStore() -> AuthorsStore
     func resolveStore() -> MediaStore
+    func resolveStore() -> SeedStore
 }

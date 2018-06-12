@@ -5,7 +5,7 @@
 //  Created by Basem Emara on 2018-05-26.
 //
 
-public protocol TermType: Identifiable, Dateable {
+public protocol TermType: Identifiable {
     var parentID: Int { get }
     var slug: String { get }
     var name: String { get }

@@ -9,7 +9,7 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class MediaWorkerTests: XCTestCase, HasDependencies {
+class MediaWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var mediaWorker: MediaWorkerType = dependencies.resolveWorker()
     
