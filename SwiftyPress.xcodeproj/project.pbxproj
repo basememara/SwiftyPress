@@ -199,6 +199,27 @@
 		8B52512220CFF62000E77F70 /* PostsMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52511A20CFF62000E77F70 /* PostsMemoryStore.swift */; };
 		8B52512420CFF8A700E77F70 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52512320CFF8A700E77F70 /* BaseTestCase.swift */; };
 		8B52512520CFF8A700E77F70 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52512320CFF8A700E77F70 /* BaseTestCase.swift */; };
+		8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
+		8B6A2BBB20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
+		8B6A2BBC20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
+		8B6A2BBE20D66A8D00D070FB /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BBD20D66A8D00D070FB /* Loggable.swift */; };
+		8B6A2BBF20D66A8D00D070FB /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BBD20D66A8D00D070FB /* Loggable.swift */; };
+		8B6A2BC020D66A8D00D070FB /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BBD20D66A8D00D070FB /* Loggable.swift */; };
+		8B6A2BC220D66B9C00D070FB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC120D66B9C00D070FB /* Environment.swift */; };
+		8B6A2BC320D66B9C00D070FB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC120D66B9C00D070FB /* Environment.swift */; };
+		8B6A2BC420D66B9C00D070FB /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC120D66B9C00D070FB /* Environment.swift */; };
+		8B6A2BC720D6747D00D070FB /* LogDNADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC620D6747D00D070FB /* LogDNADestination.swift */; };
+		8B6A2BC820D6747D00D070FB /* LogDNADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC620D6747D00D070FB /* LogDNADestination.swift */; };
+		8B6A2BC920D6747D00D070FB /* LogDNADestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BC620D6747D00D070FB /* LogDNADestination.swift */; };
+		8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCB20D676F900D070FB /* HTTPService.swift */; };
+		8B6A2BCD20D676F900D070FB /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCB20D676F900D070FB /* HTTPService.swift */; };
+		8B6A2BCE20D676F900D070FB /* HTTPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCB20D676F900D070FB /* HTTPService.swift */; };
+		8B6A2BD020D6775000D070FB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCF20D6775000D070FB /* NetworkError.swift */; };
+		8B6A2BD120D6775000D070FB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCF20D6775000D070FB /* NetworkError.swift */; };
+		8B6A2BD220D6775000D070FB /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BCF20D6775000D070FB /* NetworkError.swift */; };
+		8B6A2BD420D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
+		8B6A2BD520D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
+		8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6E2CF720CD627200CB110C /* modified_payload.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B6E2CF620CD627200CB110C /* modified_payload.json */; };
 /* End PBXBuildFile section */
 
@@ -367,6 +388,13 @@
 		8B52511920CFF62000E77F70 /* MediaMemoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMemoryStore.swift; sourceTree = "<group>"; };
 		8B52511A20CFF62000E77F70 /* PostsMemoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMemoryStore.swift; sourceTree = "<group>"; };
 		8B52512320CFF8A700E77F70 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		8B6A2BB920D66A8000D070FB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		8B6A2BBD20D66A8D00D070FB /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
+		8B6A2BC120D66B9C00D070FB /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		8B6A2BC620D6747D00D070FB /* LogDNADestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDNADestination.swift; sourceTree = "<group>"; };
+		8B6A2BCB20D676F900D070FB /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
+		8B6A2BCF20D6775000D070FB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		8B6A2BD320D677C700D070FB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		8B6E2CF620CD627200CB110C /* modified_payload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modified_payload.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,7 +524,9 @@
 				8B0D64CC20C347CC0046056F /* Enums */,
 				8B0D64C720C15D480046056F /* Errors */,
 				8B5250FB20CFE7A400E77F70 /* Extensions */,
+				8B6A2BB820D66A6900D070FB /* Logging */,
 				8B0D641220B977FC0046056F /* Models */,
+				8B6A2BCA20D676E300D070FB /* Network */,
 				8B0D642B20BD76000046056F /* Stores */,
 				8B00E3D420B2EA1800B20B2C /* Constants.swift */,
 				8B00E40D20B30D4D00B20B2C /* Media.xcassets */,
@@ -705,6 +735,7 @@
 			isa = PBXGroup;
 			children = (
 				8B0D64C820C15E8B0046056F /* DataError.swift */,
+				8B6A2BCF20D6775000D070FB /* NetworkError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -712,6 +743,7 @@
 		8B0D64CC20C347CC0046056F /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				8B6A2BC120D66B9C00D070FB /* Environment.swift */,
 				8B0D64CD20C347E00046056F /* Taxonomy.swift */,
 			);
 			path = Enums;
@@ -741,6 +773,7 @@
 			children = (
 				8B52510420CFE89000E77F70 /* Bundle.swift */,
 				8B52510020CFE7DB00E77F70 /* DateFormatter.swift */,
+				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
 			);
 			path = Extensions;
@@ -765,6 +798,32 @@
 				8B52511720CFF62000E77F70 /* TaxonomyMemoryStore.swift */,
 			);
 			path = MemoryStores;
+			sourceTree = "<group>";
+		};
+		8B6A2BB820D66A6900D070FB /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				8B6A2BC520D6746C00D070FB /* Destination */,
+				8B6A2BB920D66A8000D070FB /* Logger.swift */,
+				8B6A2BBD20D66A8D00D070FB /* Loggable.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		8B6A2BC520D6746C00D070FB /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				8B6A2BC620D6747D00D070FB /* LogDNADestination.swift */,
+			);
+			path = Destination;
+			sourceTree = "<group>";
+		};
+		8B6A2BCA20D676E300D070FB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8B6A2BCB20D676F900D070FB /* HTTPService.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		8B6E2CF420CD503900CB110C /* Seed */ = {
@@ -1130,12 +1189,14 @@
 				8B5250DC20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */,
 				8B0D64CE20C347E00046056F /* Taxonomy.swift in Sources */,
 				8B52510F20CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
+				8B6A2BD020D6775000D070FB /* NetworkError.swift in Sources */,
 				8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650D20C548270046056F /* AuthorsFileStore.swift in Sources */,
 				8B52510120CFE7DB00E77F70 /* DateFormatter.swift in Sources */,
 				8B0D643A20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B6A2BC720D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
@@ -1143,6 +1204,7 @@
 				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
 				8B0D641820B99B240046056F /* TermType.swift in Sources */,
 				8B0D644620BEA9010046056F /* PostsModels.swift in Sources */,
+				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B0D651220C557E20046056F /* Dependable.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -1152,12 +1214,16 @@
 				8B5250F420CFE64E00E77F70 /* SeedWorker.swift in Sources */,
 				8B0D642820BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644220BD779E0046056F /* TaxonomyWorker.swift in Sources */,
+				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641420B99B180046056F /* PostType.swift in Sources */,
 				8B5250E420CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64F920C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
+				8B6A2BC220D66B9C00D070FB /* Environment.swift in Sources */,
 				8B5250F820CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
+				8B6A2BD420D677C700D070FB /* Dictionary.swift in Sources */,
 				8B0D643E20BD778F0046056F /* PostsWorker.swift in Sources */,
+				8B6A2BBE20D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F120C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,12 +1241,14 @@
 				8B5250DD20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */,
 				8B0D64CF20C347E00046056F /* Taxonomy.swift in Sources */,
 				8B52511020CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
+				8B6A2BD120D6775000D070FB /* NetworkError.swift in Sources */,
 				8B0D64D320C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650E20C548270046056F /* AuthorsFileStore.swift in Sources */,
 				8B52510220CFE7DB00E77F70 /* DateFormatter.swift in Sources */,
 				8B0D643B20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642120B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B6A2BC820D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B5250FE20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B0D64CA20C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651B20C559700046056F /* HasDependencies.swift in Sources */,
@@ -1188,6 +1256,7 @@
 				8B0D64C520BEC9830046056F /* Post.swift in Sources */,
 				8B0D641920B99B240046056F /* TermType.swift in Sources */,
 				8B0D644720BEA9010046056F /* PostsModels.swift in Sources */,
+				8B6A2BBB20D66A8000D070FB /* Logger.swift in Sources */,
 				8B0D64FE20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B0D651320C557E20046056F /* Dependable.swift in Sources */,
 				8B00E3D620B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -1197,12 +1266,16 @@
 				8B5250F520CFE64E00E77F70 /* SeedWorker.swift in Sources */,
 				8B0D642920BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644320BD779E0046056F /* TaxonomyWorker.swift in Sources */,
+				8B6A2BCD20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643620BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641520B99B180046056F /* PostType.swift in Sources */,
 				8B5250E520CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64FA20C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
+				8B6A2BC320D66B9C00D070FB /* Environment.swift in Sources */,
 				8B5250F920CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
+				8B6A2BD520D677C700D070FB /* Dictionary.swift in Sources */,
 				8B0D643F20BD778F0046056F /* PostsWorker.swift in Sources */,
+				8B6A2BBF20D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F220C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1220,12 +1293,14 @@
 				8B5250DE20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */,
 				8B0D64D020C347E00046056F /* Taxonomy.swift in Sources */,
 				8B52511120CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
+				8B6A2BD220D6775000D070FB /* NetworkError.swift in Sources */,
 				8B0D64D420C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650F20C548270046056F /* AuthorsFileStore.swift in Sources */,
 				8B52510320CFE7DB00E77F70 /* DateFormatter.swift in Sources */,
 				8B0D643C20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642220B99B6D0046056F /* AuthorType.swift in Sources */,
+				8B6A2BC920D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B5250FF20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B0D64CB20C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651C20C559700046056F /* HasDependencies.swift in Sources */,
@@ -1233,6 +1308,7 @@
 				8B0D64C620BEC9830046056F /* Post.swift in Sources */,
 				8B0D641A20B99B240046056F /* TermType.swift in Sources */,
 				8B0D644820BEA9010046056F /* PostsModels.swift in Sources */,
+				8B6A2BBC20D66A8000D070FB /* Logger.swift in Sources */,
 				8B0D64FF20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B0D651420C557E20046056F /* Dependable.swift in Sources */,
 				8B00E3D720B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -1242,12 +1318,16 @@
 				8B5250F620CFE64E00E77F70 /* SeedWorker.swift in Sources */,
 				8B0D642A20BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644420BD779E0046056F /* TaxonomyWorker.swift in Sources */,
+				8B6A2BCE20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643720BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641620B99B180046056F /* PostType.swift in Sources */,
 				8B5250E620CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64FB20C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
+				8B6A2BC420D66B9C00D070FB /* Environment.swift in Sources */,
 				8B5250FA20CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
+				8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */,
 				8B0D644020BD778F0046056F /* PostsWorker.swift in Sources */,
+				8B6A2BC020D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F320C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

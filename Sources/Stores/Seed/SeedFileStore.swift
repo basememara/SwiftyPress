@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public struct SeedFileStore: SeedStore {
+public struct SeedFileStore: SeedStore, Loggable {
     
 }
 
@@ -24,8 +24,8 @@ public extension SeedFileStore {
                     inBundle: .swiftyPress
                 )
             } catch {
+                Log(error: "An error occured while parsing the offline modified payload: \(String(describing: error)).")
                 completion(.failure(.databaseFailure(error)))
-                // TODO: Log(error: "An error occured while parsing the offline modified payload: \(String(describing: error)).")
                 return
             }
         }

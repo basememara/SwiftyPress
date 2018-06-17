@@ -8,6 +8,10 @@
 open class Dependency: Dependable {
     public init() { }
     
+    open func resolve() -> ConstantsType {
+        return Constants()
+    }
+    
     // MARK: - Workers
 
     open func resolveWorker() -> PostsWorkerType {
@@ -50,5 +54,11 @@ open class Dependency: Dependable {
     
     open func resolveStore() -> SeedStore {
         return SeedFileStore()
+    }
+    
+    // MARK: - Service
+    
+    open func resolveService() -> HTTPServiceType {
+        return HTTPService()
     }
 }
