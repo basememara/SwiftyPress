@@ -135,6 +135,7 @@ public extension Loggable {
     func Log(verbose message: String, path: String = #file, function: String = #function, line: Int = #line) {
         DispatchQueue.main.async {
             Logger.shared.log.verbose(message, path, function, line: line, context: Logger.shared.metaLog)
+            Logger.injectedShared?.Log(verbose: message, path: path, function: function, line: line)
         }
     }
     
@@ -150,6 +151,7 @@ public extension Loggable {
     func Log(debug message: String, path: String = #file, function: String = #function, line: Int = #line) {
         DispatchQueue.main.async {
             Logger.shared.log.debug(message, path, function, line: line, context: Logger.shared.metaLog)
+            Logger.injectedShared?.Log(debug: message, path: path, function: function, line: line)
         }
     }
     
@@ -165,6 +167,7 @@ public extension Loggable {
     func Log(info message: String, path: String = #file, function: String = #function, line: Int = #line) {
         DispatchQueue.main.async {
             Logger.shared.log.info(message, path, function, line: line, context: Logger.shared.metaLog)
+            Logger.injectedShared?.Log(info: message, path: path, function: function, line: line)
         }
     }
     
@@ -180,6 +183,7 @@ public extension Loggable {
     func Log(warn message: String, path: String = #file, function: String = #function, line: Int = #line) {
         DispatchQueue.main.async {
             Logger.shared.log.warning(message, path, function, line: line, context: Logger.shared.metaLog)
+            Logger.injectedShared?.Log(warn: message, path: path, function: function, line: line)
         }
     }
     
@@ -195,7 +199,22 @@ public extension Loggable {
     func Log(error message: String, path: String = #file, function: String = #function, line: Int = #line) {
         DispatchQueue.main.async {
             Logger.shared.log.error(message, path, function, line: line, context: Logger.shared.metaLog)
+            Logger.injectedShared?.Log(error: message, path: path, function: function, line: line)
         }
+    }
+}
+
+// MARK: - Expose injectable logger
+
+extension Logger {
+    fileprivate static var injectedShared: Loggable?
+}
+
+public extension Loggable {
+    
+    /// Set up injected logger for consumers to plugin
+    func inject(logger: Loggable) {
+        Logger.injectedShared = logger
     }
 }
 
