@@ -103,6 +103,20 @@ extension Logger {
             "environment": environment.rawValue
         ]
         
+        #if os(iOS)
+        if let application = Logger.application {
+            output["application_state"] = {
+                switch application.applicationState {
+                case .active: return "active"
+                case .background: return "background"
+                case .inactive: return "inactive"
+                }
+            }()
+            
+            output["protected_data_available"] = application.isProtectedDataAvailable
+        }
+        #endif
+        
         return output
     }
 }
@@ -184,5 +198,29 @@ public extension Loggable {
         }
     }
 }
+
+// MARK: - Allow application state to be logged
+
+#if os(iOS)
+import UIKit
+
+extension Logger {
+    fileprivate static var application: UIApplication?
+}
+
+public extension Loggable where Self: UIApplicationDelegate {
+    
+    /// Set up logger with application so state can be logged
+    func setupLogger(for application: UIApplication, inject logger: Loggable? = nil) {
+        Logger.application = application
+        
+        if let logger = logger {
+            self.inject(logger: logger)
+        }
+    }
+}
+#endif
+
+// MARK: - Helpers
 
 extension BaseDestination: With {}
