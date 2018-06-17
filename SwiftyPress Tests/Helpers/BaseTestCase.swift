@@ -12,11 +12,11 @@ class BaseTestCase: XCTestCase, DependencyConfigurator {
     
     override func setUp() {
         super.setUp()
-        configure(with: TestDependency())
+        register(dependencies: TestDependency())
     }
     
     override func tearDown() {
         super.tearDown()
-        configure(with: TestDependency())
+        register(dependencies: TestDependency())
     }
 }

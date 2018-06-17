@@ -28,7 +28,7 @@ public protocol DependencyConfigurator { }
 public extension DependencyConfigurator {
     
     /// Declare dependency container to use
-    func configure(with dependencies: Dependable) {
+    func register(dependencies: Dependable) {
         DependencyInjector.dependencies = dependencies
     }
 }
