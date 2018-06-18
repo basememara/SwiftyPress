@@ -227,7 +227,7 @@ extension Logger {
     fileprivate static var application: UIApplication?
 }
 
-public extension Loggable where Self: UIApplicationDelegate {
+public extension Loggable where Self: ApplicationService {
     
     /// Set up logger with application so state can be logged
     func setupLogger(for application: UIApplication, inject logger: Loggable? = nil) {
