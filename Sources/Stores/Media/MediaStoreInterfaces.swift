@@ -9,6 +9,7 @@ import ZamzamKit
 
 public protocol MediaStore {
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void)
 }
 
 public protocol MediaWorkerType: MediaStore {

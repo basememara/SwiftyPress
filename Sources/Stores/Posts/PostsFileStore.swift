@@ -19,7 +19,7 @@ public extension PostsFileStore {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch {
-            guard let value = $0.value?.posts else {
+            guard let value = $0.value?.posts.sorted(by: { $0.createdAt > $1.createdAt }) else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
@@ -29,6 +29,12 @@ public extension PostsFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void) {
         fetch {
+            // Handle errors
+            guard $0.isSuccess else {
+                return completion(.failure($0.error ?? .unknownReason(nil)))
+            }
+            
+            // Find match
             guard let value = $0.value?.first(where: { $0.id == id }), $0.isSuccess else {
                 return completion(.failure(.nonExistent))
             }
@@ -68,7 +74,19 @@ public extension PostsFileStore {
 public extension PostsFileStore {
     
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fatalError("Not implemented")
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let results = value
+                .filter { $0.commentCount > 1 }
+                .sorted { $0.commentCount > $1.commentCount }
+            
+            completion(.success(results))
+        }
+    }
+    
+    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch(byCategoryIDs: [64], completion: completion)
     }
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {

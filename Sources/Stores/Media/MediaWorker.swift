@@ -21,3 +21,10 @@ public extension MediaWorker {
         store.fetch(id: id, completion: completion)
     }
 }
+
+public extension MediaWorker {
+    
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
+        store.fetch(ids: ids, completion: completion)
+    }
+}

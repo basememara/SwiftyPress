@@ -43,6 +43,10 @@ extension PostsWorker {
         store.fetchPopular(completion: completion)
     }
     
+    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetchTopPicks(completion: completion)
+    }
+    
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetchFavorites(completion: completion)
     }

@@ -32,7 +32,13 @@ public extension TaxonomyFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
         fetch {
-            guard let value = $0.value?.first(where: { $0.id == id }), $0.isSuccess else {
+            // Handle errors
+            guard $0.isSuccess else {
+                return completion(.failure($0.error ?? .unknownReason(nil)))
+            }
+            
+            // Find match
+            guard let value = $0.value?.first(where: { $0.id == id }) else {
                 return completion(.failure(.nonExistent))
             }
             
