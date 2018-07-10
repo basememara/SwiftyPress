@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "4.7.2"
 github "SwiftyBeaver/SwiftyBeaver" "1.6.0"
-github "ZamzamInc/ZamzamKit" "d1ce9ac0f1d3662bdfb04817f71b0fbe43f6e3bc"
+github "ZamzamInc/ZamzamKit" "de74f6465046b171944211ab1fdf192633510afa"
 github "evgenyneu/keychain-swift" "11.0.0"
 github "onmyway133/Arcane" "1.2.1"
-github "realm/realm-cocoa" "v3.7.1"
+github "realm/realm-cocoa" "v3.7.4"
