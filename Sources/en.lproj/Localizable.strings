@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  SwiftyPress
+
+  Created by Basem Emara on 2018-09-07.
+  
+*/
+
+"bad.network.request.error.message" = "The server did not recognize your request.";
+"cache.failure.error.message" = "An unexpected error has occurred with the local database, but may have succeeded in the cloud.";
+"database.failure.error.message" = "An unexpected database error has occurred.";
+"duplicate.failure.error.message" = "The data you submitted already exists.";
+"network.failure.error.message" = "An unexpected network error has occurred.";
+"no.internet.error.message" = "No internet connection is available.";
+"non.existent.error.message" = "No data was found for your request.";
+"parse.failure.error.message" = "The response from the server could not be read.";
+"server.timeout.error.message" = "The server could not be reached. Please try again shortly.";
+"unauthorized.error.message" = "You must log in to view this content.  Please log in or sign up.";
+"unknown.reason.error.message" = "There was an error with your request.";
+"generic.incomplete.form.error.message" = "The form is incomplete. Please fill out the form and try again.";

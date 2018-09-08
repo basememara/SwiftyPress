@@ -199,6 +199,12 @@
 		8B52512220CFF62000E77F70 /* PostsMemoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52511A20CFF62000E77F70 /* PostsMemoryStore.swift */; };
 		8B52512420CFF8A700E77F70 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52512320CFF8A700E77F70 /* BaseTestCase.swift */; };
 		8B52512520CFF8A700E77F70 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52512320CFF8A700E77F70 /* BaseTestCase.swift */; };
+		8B5AA8002143641300EA4E2F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5AA7FF2143641300EA4E2F /* Localizable.swift */; };
+		8B5AA8012143641300EA4E2F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5AA7FF2143641300EA4E2F /* Localizable.swift */; };
+		8B5AA8022143641300EA4E2F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5AA7FF2143641300EA4E2F /* Localizable.swift */; };
+		8B5AA8142143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
+		8B5AA8152143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
+		8B5AA8162143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
 		8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBB20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBC20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
@@ -388,6 +394,8 @@
 		8B52511920CFF62000E77F70 /* MediaMemoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMemoryStore.swift; sourceTree = "<group>"; };
 		8B52511A20CFF62000E77F70 /* PostsMemoryStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMemoryStore.swift; sourceTree = "<group>"; };
 		8B52512320CFF8A700E77F70 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		8B5AA7FF2143641300EA4E2F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		8B5AA8172143670800EA4E2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8B6A2BB920D66A8000D070FB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8B6A2BBD20D66A8D00D070FB /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		8B6A2BC120D66B9C00D070FB /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -540,6 +548,7 @@
 			children = (
 				8B00E3AF20B2DA0C00B20B2C /* SwiftyPress.h */,
 				8B00E3B020B2DA0C00B20B2C /* Info.plist */,
+				8B5AA8182143670800EA4E2F /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -775,6 +784,7 @@
 				8B52510020CFE7DB00E77F70 /* DateFormatter.swift */,
 				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
+				8B5AA7FF2143641300EA4E2F /* Localizable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1075,6 +1085,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6E2CF720CD627200CB110C /* modified_payload.json in Resources */,
+				8B5AA8142143670800EA4E2F /* Localizable.strings in Resources */,
 				8B00E40E20B30D4D00B20B2C /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1084,6 +1095,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E40F20B30D4D00B20B2C /* Media.xcassets in Resources */,
+				8B5AA8152143670800EA4E2F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E41020B30D4D00B20B2C /* Media.xcassets in Resources */,
+				8B5AA8162143670800EA4E2F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,6 +1195,7 @@
 			files = (
 				8B0D64E420C436000046056F /* Media.swift in Sources */,
 				8B0D641C20B99B600046056F /* MediaType.swift in Sources */,
+				8B5AA8002143641300EA4E2F /* Localizable.swift in Sources */,
 				8B0D650520C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510520CFE89000E77F70 /* Bundle.swift in Sources */,
 				8B0D651620C558670046056F /* Dependency.swift in Sources */,
@@ -1234,6 +1248,7 @@
 			files = (
 				8B0D64E520C436000046056F /* Media.swift in Sources */,
 				8B0D641D20B99B600046056F /* MediaType.swift in Sources */,
+				8B5AA8012143641300EA4E2F /* Localizable.swift in Sources */,
 				8B0D650620C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510620CFE89000E77F70 /* Bundle.swift in Sources */,
 				8B0D651720C558670046056F /* Dependency.swift in Sources */,
@@ -1286,6 +1301,7 @@
 			files = (
 				8B0D64E620C436000046056F /* Media.swift in Sources */,
 				8B0D641E20B99B600046056F /* MediaType.swift in Sources */,
+				8B5AA8022143641300EA4E2F /* Localizable.swift in Sources */,
 				8B0D650720C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510720CFE89000E77F70 /* Bundle.swift in Sources */,
 				8B0D651820C558670046056F /* Dependency.swift in Sources */,
@@ -1444,6 +1460,14 @@
 				8B0D649B20BEB7220046056F /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8B5AA8182143670800EA4E2F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8B5AA8172143670800EA4E2F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
