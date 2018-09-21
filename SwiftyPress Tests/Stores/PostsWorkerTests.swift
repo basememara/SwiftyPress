@@ -91,7 +91,7 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by categories error: \(String(describing: $0.error))")
             }
             
-            let expression = value.all {
+            let expression = value.allSatisfy {
                 $0.categories.contains(where: ids.contains)
             }
             
@@ -112,7 +112,7 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by tags error: \(String(describing: $0.error))")
             }
             
-            let expression = value.all {
+            let expression = value.allSatisfy {
                 $0.tags.contains(where: ids.contains)
             }
             

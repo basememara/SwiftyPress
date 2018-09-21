@@ -54,8 +54,8 @@ extension SeedWorkerTests {
                 return XCTFail("Seed fetch modified error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.posts.all { $0.modifiedAt > modifiedDate})
-            XCTAssertTrue(value.authors.all { $0.modifiedAt > modifiedDate})
+            XCTAssertTrue(value.posts.allSatisfy { $0.modifiedAt > modifiedDate})
+            XCTAssertTrue(value.authors.allSatisfy { $0.modifiedAt > modifiedDate})
         }
         
         waitForExpectations(timeout: 5, handler: nil)

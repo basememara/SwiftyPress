@@ -73,7 +73,7 @@ extension TaxonomyWorkerTests {
                 return XCTFail("Terms fetch by category error should have failed.")
             }
             
-            XCTAssertTrue(value.all { $0.taxonomy == .category })
+            XCTAssertTrue(value.allSatisfy { $0.taxonomy == .category })
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -89,7 +89,7 @@ extension TaxonomyWorkerTests {
                 return XCTFail("Terms fetch by tag error should have failed.")
             }
             
-            XCTAssertTrue(value.all { $0.taxonomy == .tag })
+            XCTAssertTrue(value.allSatisfy { $0.taxonomy == .tag })
         }
         
         waitForExpectations(timeout: 5, handler: nil)
@@ -113,7 +113,7 @@ extension TaxonomyWorkerTests {
                 return XCTFail("Terms search error: \(String(describing: $0.error))")
             }
             
-            let expression = value.all {
+            let expression = value.allSatisfy {
                 $0.name.contains(request.query)
             }
             
@@ -138,7 +138,7 @@ extension TaxonomyWorkerTests {
                 return XCTFail("Terms search by category error: \(String(describing: $0.error))")
             }
             
-            let expression = value.all {
+            let expression = value.allSatisfy {
                 $0.name.range(of: request.query, options: .caseInsensitive) != nil
                     && $0.taxonomy == request.scope
             }
@@ -164,7 +164,7 @@ extension TaxonomyWorkerTests {
                 return XCTFail("Terms search by tag error: \(String(describing: $0.error))")
             }
             
-            let expression = value.all {
+            let expression = value.allSatisfy {
                 $0.name.range(of: request.query, options: .caseInsensitive) != nil
                     && $0.taxonomy == request.scope
             }
