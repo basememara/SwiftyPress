@@ -26,7 +26,7 @@ class LogDNADestination: BaseDestination, HasDependencies {
     }
     
     private lazy var deviceIdentifier: String = {
-        #if canImport(UIKit)
+        #if os(iOS)
         return UIDevice.current.identifierForVendor?.uuidString ?? ""
         #else
         return ""

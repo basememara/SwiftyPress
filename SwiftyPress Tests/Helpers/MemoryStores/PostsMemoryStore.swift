@@ -111,6 +111,10 @@ public extension PostsMemoryStore {
         fatalError("Not implemented")
     }
     
+    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fatalError("Not implemented")
+    }
+    
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
     }

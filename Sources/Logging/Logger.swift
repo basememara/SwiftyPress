@@ -15,7 +15,14 @@ fileprivate final class Logger: ZamzamKitable, HasDependencies {
     private lazy var constants: ConstantsType = dependencies.resolve()
     
     let environment = Environment.mode
-    let systemVersion: String = "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+    
+    let systemVersion: String = {
+        #if os(iOS)
+        return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
+        #else
+        return ""
+        #endif
+    }()
     
     lazy var version: String = "\(appVersion ?? "-") (\(appBuild ?? "-"))"
     
