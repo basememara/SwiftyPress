@@ -61,4 +61,20 @@ open class Dependency: Dependable {
     open func resolveService() -> HTTPServiceType {
         return HTTPService()
     }
+    
+    // MARK: - UI
+    
+    #if canImport(UIKit)
+    
+    open func resolveWorker() -> ThemeWorkerType {
+        return  ThemeWorker(
+            store: resolveStore()
+        )
+    }
+    
+    open func resolveStore() -> ThemeStore {
+        fatalError("Override dependency in subclass")
+    }
+    
+    #endif
 }

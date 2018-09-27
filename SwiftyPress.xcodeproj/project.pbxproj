@@ -158,6 +158,8 @@
 		8B0D651A20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
 		8B0D651B20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
 		8B0D651C20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
+		8B1180E22157B46A0071315B /* ThemeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1180E12157B46A0071315B /* ThemeWorker.swift */; };
+		8B1180E42157B4B00071315B /* ThemeInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1180E32157B4B00071315B /* ThemeInterfaces.swift */; };
 		8B5250DC20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
 		8B5250DD20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
 		8B5250DE20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
@@ -378,6 +380,8 @@
 		8B0D651120C557E20046056F /* Dependable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependable.swift; sourceTree = "<group>"; };
 		8B0D651520C558670046056F /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		8B0D651920C559700046056F /* HasDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDependencies.swift; sourceTree = "<group>"; };
+		8B1180E12157B46A0071315B /* ThemeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeWorker.swift; sourceTree = "<group>"; };
+		8B1180E32157B4B00071315B /* ThemeInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInterfaces.swift; sourceTree = "<group>"; };
 		8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayloadType.swift; sourceTree = "<group>"; };
 		8B5250E320CFE3EC00E77F70 /* ModifiedPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayload.swift; sourceTree = "<group>"; };
 		8B5250EF20CFE5B500E77F70 /* SeedStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedStoreInterfaces.swift; sourceTree = "<group>"; };
@@ -536,6 +540,7 @@
 				8B0D641220B977FC0046056F /* Models */,
 				8B6A2BCA20D676E300D070FB /* Network */,
 				8B0D642B20BD76000046056F /* Stores */,
+				8B1180E02157B4300071315B /* Styles */,
 				8B00E3D420B2EA1800B20B2C /* Constants.swift */,
 				8B00E40D20B30D4D00B20B2C /* Media.xcassets */,
 				8B00E3D220B2E9B200B20B2C /* Supporting Files */,
@@ -766,6 +771,15 @@
 				8B0D651920C559700046056F /* HasDependencies.swift */,
 			);
 			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		8B1180E02157B4300071315B /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				8B1180E32157B4B00071315B /* ThemeInterfaces.swift */,
+				8B1180E12157B46A0071315B /* ThemeWorker.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		8B5250DA20CFD9E700E77F70 /* Models */ = {
@@ -1225,6 +1239,7 @@
 				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B0D651220C557E20046056F /* Dependable.swift in Sources */,
+				8B1180E22157B46A0071315B /* ThemeWorker.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B0D650920C548110046056F /* MediaFileStore.swift in Sources */,
 				8B0D650120C547E80046056F /* AuthorsStoreInterfaces.swift in Sources */,
@@ -1235,6 +1250,7 @@
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641420B99B180046056F /* PostType.swift in Sources */,
+				8B1180E42157B4B00071315B /* ThemeInterfaces.swift in Sources */,
 				8B5250E420CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64F920C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
 				8B6A2BC220D66B9C00D070FB /* Environment.swift in Sources */,
