@@ -23,3 +23,8 @@ public extension Localizable {
     static let databaseFailureErrorMessage = Localizable(NSLocalizedString("database.failure.error.message", bundle: .swiftyPress, comment: "General database error"))
     static let cacheFailureErrorMessage = Localizable(NSLocalizedString("cache.failure.error.message", bundle: .swiftyPress, comment: "Cache storage failure even though remote succeeded"))
 }
+
+public extension Localizable {
+    static let categorySection = Localizable(NSLocalizedString("category.section", bundle: .swiftyPress, comment: "Table section header for categories"))
+    static let tagSection = Localizable(NSLocalizedString("tag.section", bundle: .swiftyPress, comment: "Table section header for tags"))
+}

@@ -18,3 +18,6 @@
 "unauthorized.error.message" = "You must log in to view this content.  Please log in or sign up.";
 "unknown.reason.error.message" = "There was an error with your request.";
 "generic.incomplete.form.error.message" = "The form is incomplete. Please fill out the form and try again.";
+
+"category.section" = "Categories";
+"tag.section" = "Tags";
