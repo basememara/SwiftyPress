@@ -21,9 +21,4 @@ public protocol Dependable {
     func resolveStore() -> SeedStore
     
     func resolveService() -> HTTPServiceType
-    
-    #if canImport(UIKit)
-    func resolveWorker() -> ThemeWorkerType
-    func resolveStore() -> ThemeStore
-    #endif
 }
