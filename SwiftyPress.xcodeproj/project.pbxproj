@@ -205,6 +205,11 @@
 		8B5AA8142143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
 		8B5AA8152143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
 		8B5AA8162143670800EA4E2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B5AA8182143670800EA4E2F /* Localizable.strings */; };
+		8B63A1FA2162907C003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1F92162907C003868F7 /* Stencil.framework */; };
+		8B63A1FC21629093003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1FB21629093003868F7 /* Stencil.framework */; };
+		8B63A1FE216290A7003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1FD216290A7003868F7 /* Stencil.framework */; };
+		8B63A1FF216290C1003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1F92162907C003868F7 /* Stencil.framework */; };
+		8B63A200216290DB003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1FD216290A7003868F7 /* Stencil.framework */; };
 		8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBB20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBC20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
@@ -396,6 +401,9 @@
 		8B52512320CFF8A700E77F70 /* BaseTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		8B5AA7FF2143641300EA4E2F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		8B5AA8172143670800EA4E2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8B63A1F92162907C003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/iOS/Stencil.framework; sourceTree = "<group>"; };
+		8B63A1FB21629093003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/watchOS/Stencil.framework; sourceTree = "<group>"; };
+		8B63A1FD216290A7003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/tvOS/Stencil.framework; sourceTree = "<group>"; };
 		8B6A2BB920D66A8000D070FB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8B6A2BBD20D66A8D00D070FB /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		8B6A2BC120D66B9C00D070FB /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -417,6 +425,7 @@
 				8B00E3EB20B305A000B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E3EC20B305A000B20B2C /* Realm.framework in Frameworks */,
 				8B00E3EE20B305A000B20B2C /* RealmSwift.framework in Frameworks */,
+				8B63A1FA2162907C003868F7 /* Stencil.framework in Frameworks */,
 				8B00E3F020B305A000B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +440,7 @@
 				8B00E3FA20B305B700B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E3FC20B305B700B20B2C /* Realm.framework in Frameworks */,
 				8B00E3FE20B305B700B20B2C /* RealmSwift.framework in Frameworks */,
+				8B63A1FC21629093003868F7 /* Stencil.framework in Frameworks */,
 				8B00E3F820B305B700B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +455,7 @@
 				8B00E40820B305C800B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E40620B305C800B20B2C /* Realm.framework in Frameworks */,
 				8B00E40B20B305C800B20B2C /* RealmSwift.framework in Frameworks */,
+				8B63A1FE216290A7003868F7 /* Stencil.framework in Frameworks */,
 				8B00E40A20B305C800B20B2C /* ZamzamKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +486,7 @@
 				8B0D64B020BEB7EC0046056F /* Realm.framework in Frameworks */,
 				8B0D64B120BEB7EC0046056F /* RealmSwift.framework in Frameworks */,
 				8B0D64B220BEB7EC0046056F /* SwiftyBeaver.framework in Frameworks */,
+				8B63A1FF216290C1003868F7 /* Stencil.framework in Frameworks */,
 				8B0D64B320BEB7EC0046056F /* ZamzamKit.framework in Frameworks */,
 				8B0D64A820BEB7B70046056F /* SwiftyPress.framework in Frameworks */,
 			);
@@ -490,6 +502,7 @@
 				8B0D64BC20BEB8320046056F /* Realm.framework in Frameworks */,
 				8B0D64BD20BEB8320046056F /* RealmSwift.framework in Frameworks */,
 				8B0D64BE20BEB8320046056F /* SwiftyBeaver.framework in Frameworks */,
+				8B63A200216290DB003868F7 /* Stencil.framework in Frameworks */,
 				8B0D64BF20BEB8320046056F /* ZamzamKit.framework in Frameworks */,
 				8B0D64B420BEB81F0046056F /* SwiftyPress.framework in Frameworks */,
 			);
@@ -556,6 +569,9 @@
 		8B00E3E220B3059F00B20B2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B63A1F92162907C003868F7 /* Stencil.framework */,
+				8B63A1FB21629093003868F7 /* Stencil.framework */,
+				8B63A1FD216290A7003868F7 /* Stencil.framework */,
 				8B00E40120B305C800B20B2C /* Alamofire.framework */,
 				8B00E40220B305C800B20B2C /* Arcane.framework */,
 				8B00E40020B305C800B20B2C /* KeychainSwift.framework */,
@@ -1161,13 +1177,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ZamzamKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Stencil.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		8B0D64C120BEB8BA0046056F /* Run Carthage Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1182,13 +1199,14 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/ZamzamKit.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/Stencil.framework",
 			);
 			name = "Run Carthage Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
