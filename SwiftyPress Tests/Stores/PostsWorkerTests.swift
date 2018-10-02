@@ -121,4 +121,25 @@ extension PostsWorkerTests {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
+    
+    func testFetchByTerms() {
+        let promise = expectation(description: "Posts fetch by terms promise")
+        let ids: Set = [2, 8, 11]
+        
+        postsWorker.fetch(byTermIDs: ids) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by terms error: \(String(describing: $0.error))")
+            }
+            
+            let expression = value.allSatisfy {
+                ($0.categories + $0.tags).contains(where: ids.contains)
+            }
+            
+            XCTAssertTrue(expression)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }

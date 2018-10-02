@@ -69,6 +69,18 @@ public extension PostsFileStore {
             completion(.success(results))
         }
     }
+    
+    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let results = value.filter {
+                ($0.categories + $0.tags).contains(where: ids.contains)
+            }
+            
+            completion(.success(results))
+        }
+    }
 }
 
 public extension PostsFileStore {

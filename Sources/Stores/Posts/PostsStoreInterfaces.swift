@@ -12,6 +12,7 @@ public protocol PostsStore {
     func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void)
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void)

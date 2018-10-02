@@ -35,6 +35,10 @@ extension PostsWorker {
     func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(byTagIDs: ids, completion: completion)
     }
+    
+    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetch(byTermIDs: ids, completion: completion)
+    }
 }
 
 extension PostsWorker {
