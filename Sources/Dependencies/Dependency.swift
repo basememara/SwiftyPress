@@ -8,10 +8,6 @@
 open class Dependency: Dependable {
     public init() { }
     
-    open func resolve() -> ConstantsType {
-        return Constants()
-    }
-    
     // MARK: - Workers
 
     open func resolveWorker() -> PostsWorkerType {
@@ -60,5 +56,15 @@ open class Dependency: Dependable {
     
     open func resolveService() -> HTTPServiceType {
         return HTTPService()
+    }
+    
+    // MARK: - Preferences
+    
+    open func resolveWorker() -> ConstantsType {
+        return Constants(store: resolveStore())
+    }
+    
+    open func resolveStore() -> ConstantsStore {
+        fatalError("Override dependency in subclass")
     }
 }

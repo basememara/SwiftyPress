@@ -6,8 +6,6 @@
 //
 
 public protocol Dependable {
-    func resolve() -> ConstantsType
-    
     func resolveWorker() -> PostsWorkerType
     func resolveWorker() -> TaxonomyWorkerType
     func resolveWorker() -> AuthorsWorkerType
@@ -21,4 +19,7 @@ public protocol Dependable {
     func resolveStore() -> SeedStore
     
     func resolveService() -> HTTPServiceType
+    
+    func resolveWorker() -> ConstantsType
+    func resolveStore() -> ConstantsStore
 }
