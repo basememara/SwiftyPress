@@ -80,6 +80,97 @@ extension PostsWorkerTests {
 
 extension PostsWorkerTests {
     
+    func testFetchBySlug() {
+        let promise = expectation(description: "Posts fetch by slug promise")
+        let slug = "test-post-2"
+        
+        postsWorker.fetch(slug: slug) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by slug error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.slug == slug)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension PostsWorkerTests {
+    
+    func testFetchByURL() {
+        let promise = expectation(description: "Posts fetch by url promise")
+        let url = "http://example.com/test-post-1"
+        
+        postsWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by url error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 1)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL2() {
+        let promise = expectation(description: "Posts fetch by url 2 promise")
+        let url = "http://example.com/test-post-2/?abc=123#test"
+        
+        postsWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by url 2 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 2)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL3() {
+        let promise = expectation(description: "Posts fetch by url 3 promise")
+        let url = "/test-poSt-3/?abc=123#test"
+        
+        postsWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by url 3 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 3)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL4() {
+        let promise = expectation(description: "Posts fetch by url 4 promise")
+        let url = "teSt-post-2"
+        
+        postsWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by url 4 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 2)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension PostsWorkerTests {
+    
     func testFetchByCategories() {
         let promise = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [1, 9]

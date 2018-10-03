@@ -25,6 +25,14 @@ public extension TaxonomyWorker {
         store.fetch(id: id, completion: completion)
     }
     
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        store.fetch(ids: ids, completion: completion)
+    }
+    
+    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+        store.fetch(slug: slug, completion: completion)
+    }
+    
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         store.fetch(by: taxonomy, completion: completion)
     }

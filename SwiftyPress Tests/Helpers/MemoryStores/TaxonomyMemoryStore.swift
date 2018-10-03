@@ -176,6 +176,23 @@ public extension TaxonomyMemoryStore {
         }
     }
     
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            completion(.success(value.filter { ids.contains($0.id) }))
+        }
+    }
+    
+    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value?.first(where: { $0.slug == slug }), $0.isSuccess else {
+                return completion(.failure(.nonExistent))
+            }
+            
+            completion(.success(value))
+        }
+    }
+    
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         fetch {
             guard let value = $0.value, $0.isSuccess else { return completion($0) }

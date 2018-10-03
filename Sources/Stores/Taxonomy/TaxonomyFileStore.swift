@@ -46,6 +46,35 @@ public extension TaxonomyFileStore {
         }
     }
     
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            completion(.success(value.filter { ids.contains($0.id) }))
+        }
+    }
+}
+
+public extension TaxonomyFileStore {
+    
+    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+        fetch {
+            // Handle errors
+            guard $0.isSuccess else {
+                return completion(.failure($0.error ?? .unknownReason(nil)))
+            }
+            
+            // Find match
+            guard let value = $0.value?.first(where: { $0.slug == slug }) else {
+                return completion(.failure(.nonExistent))
+            }
+            
+            completion(.success(value))
+        }
+    }
+}
+
+public extension TaxonomyFileStore {
+    
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         fetch {
             guard let value = $0.value, $0.isSuccess else { return completion($0) }

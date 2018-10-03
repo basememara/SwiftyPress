@@ -59,6 +59,116 @@ extension TaxonomyWorkerTests {
         
         waitForExpectations(timeout: 5, handler: nil)
     }
+    
+    func testFetchByIDs() {
+        let promise = expectation(description: "Terms fetch by IDs promise")
+        let ids: Set = [1, 5, 20]
+        
+        taxonomyWorker.fetch(ids: ids) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by IDs error: \(String(describing: $0.error))")
+            }
+            
+            let expression = value.map { $0.id }.sorted() == Array(ids).sorted()
+            
+            XCTAssertTrue(expression)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension TaxonomyWorkerTests {
+    
+    func testFetchBySlug() {
+        let promise = expectation(description: "Terms fetch by slug promise")
+        let slug = "category-8"
+        
+        taxonomyWorker.fetch(slug: slug) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by slug error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.slug == slug)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension TaxonomyWorkerTests {
+    
+    func testFetchByURL() {
+        let promise = expectation(description: "Terms fetch by url promise")
+        let url = "http://example.com/category/category-2"
+        
+        taxonomyWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by url error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 2)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL2() {
+        let promise = expectation(description: "Terms fetch by url 2 promise")
+        let url = "http://example.com/category/category-9/?abc=123#test"
+        
+        taxonomyWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by url 2 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 9)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL3() {
+        let promise = expectation(description: "Terms fetch by url 3 promise")
+        let url = "/tag/tag-11/?abc=123#test"
+        
+        taxonomyWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by url 3 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 11)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFetchByURL4() {
+        let promise = expectation(description: "Terms fetch by url 4 promise")
+        let url = "taG/tAg-22"
+        
+        taxonomyWorker.fetch(url: url) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Terms fetch by url 4 error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.id == 22)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
 }
 
 extension TaxonomyWorkerTests {

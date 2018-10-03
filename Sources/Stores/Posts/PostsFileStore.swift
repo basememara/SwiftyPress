@@ -46,6 +46,25 @@ public extension PostsFileStore {
 
 public extension PostsFileStore {
     
+    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+        fetch {
+            // Handle errors
+            guard $0.isSuccess else {
+                return completion(.failure($0.error ?? .unknownReason(nil)))
+            }
+            
+            // Find match
+            guard let value = $0.value?.first(where: { $0.slug == slug }), $0.isSuccess else {
+                return completion(.failure(.nonExistent))
+            }
+            
+            completion(.success(value))
+        }
+    }
+}
+
+public extension PostsFileStore {
+    
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch {
             guard let value = $0.value, $0.isSuccess else { return completion($0) }

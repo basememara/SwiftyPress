@@ -76,6 +76,16 @@ public extension PostsMemoryStore {
             completion(.success(value))
         }
     }
+    
+    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value?.first(where: { $0.slug == slug }), $0.isSuccess else {
+                return completion(.failure(.nonExistent))
+            }
+            
+            completion(.success(value))
+        }
+    }
 }
 
 public extension PostsMemoryStore {
