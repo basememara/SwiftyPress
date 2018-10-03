@@ -5,7 +5,7 @@
 //  Created by Basem Emara on 2018-06-17.
 //
 
-fileprivate extension Dictionary {
+private extension Dictionary {
     
     /// Keys to scrub
     static var scrubKeys: [String] {
