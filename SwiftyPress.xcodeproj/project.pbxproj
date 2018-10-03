@@ -210,6 +210,9 @@
 		8B63A1FE216290A7003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1FD216290A7003868F7 /* Stencil.framework */; };
 		8B63A1FF216290C1003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1F92162907C003868F7 /* Stencil.framework */; };
 		8B63A200216290DB003868F7 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B63A1FD216290A7003868F7 /* Stencil.framework */; };
+		8B63A2D72164F826003868F7 /* ScrollableFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */; };
+		8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */; };
+		8B63A2DC2164F875003868F7 /* MultiRowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */; };
 		8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBB20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
 		8B6A2BBC20D66A8000D070FB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BB920D66A8000D070FB /* Logger.swift */; };
@@ -404,6 +407,9 @@
 		8B63A1F92162907C003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/iOS/Stencil.framework; sourceTree = "<group>"; };
 		8B63A1FB21629093003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/watchOS/Stencil.framework; sourceTree = "<group>"; };
 		8B63A1FD216290A7003868F7 /* Stencil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stencil.framework; path = Carthage/Build/tvOS/Stencil.framework; sourceTree = "<group>"; };
+		8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableFlowLayout.swift; sourceTree = "<group>"; };
+		8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapPagingLayout.swift; sourceTree = "<group>"; };
+		8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiRowLayout.swift; sourceTree = "<group>"; };
 		8B6A2BB920D66A8000D070FB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		8B6A2BBD20D66A8D00D070FB /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		8B6A2BC120D66B9C00D070FB /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -541,6 +547,7 @@
 		8B00E3CF20B2DB3200B20B2C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8B63A2D52164F812003868F7 /* Controls */,
 				8B0D651020C557BF0046056F /* Dependencies */,
 				8B0D64CC20C347CC0046056F /* Enums */,
 				8B0D64C720C15D480046056F /* Errors */,
@@ -824,6 +831,24 @@
 				8B52511720CFF62000E77F70 /* TaxonomyMemoryStore.swift */,
 			);
 			path = MemoryStores;
+			sourceTree = "<group>";
+		};
+		8B63A2D52164F812003868F7 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				8B63A2DA2164F851003868F7 /* iOS */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		8B63A2DA2164F851003868F7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */,
+				8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */,
+				8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		8B6A2BB820D66A6900D070FB /* Logging */ = {
@@ -1234,6 +1259,7 @@
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC720D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
+				8B63A2DC2164F875003868F7 /* MultiRowLayout.swift in Sources */,
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DC20C434C40046056F /* Term.swift in Sources */,
@@ -1241,6 +1267,7 @@
 				8B0D641820B99B240046056F /* TermType.swift in Sources */,
 				8B0D644620BEA9010046056F /* PostsModels.swift in Sources */,
 				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
+				8B63A2D72164F826003868F7 /* ScrollableFlowLayout.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B0D651220C557E20046056F /* Dependable.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
@@ -1251,6 +1278,7 @@
 				8B0D642820BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644220BD779E0046056F /* TaxonomyWorker.swift in Sources */,
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
+				8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641420B99B180046056F /* PostType.swift in Sources */,
 				8B5250E420CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
