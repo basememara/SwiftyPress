@@ -9,9 +9,11 @@ import ZamzamKit
 
 public struct PostsFileStore: PostsStore {
     private let store: SeedStore
+    private let preferences: PreferencesType
     
-    public init(store: SeedStore) {
+    public init(store: SeedStore, preferences: PreferencesType) {
         self.store = store
+        self.preferences = preferences
     }
 }
 
@@ -132,11 +134,43 @@ public extension PostsFileStore {
         fetch(byCategoryIDs: [64], completion: completion)
     }
     
-    func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fatalError("Not implemented")
-    }
-    
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fatalError("Not implemented")
+    }
+}
+
+public extension PostsFileStore {
+    
+    func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        guard let ids = preferences.get(.favorites), !ids.isEmpty else {
+            return completion(.success([]))
+        }
+        
+        fetch(ids: Set(ids), completion: completion)
+    }
+    
+    func addFavorite(id: Int) {
+        guard !hasFavorite(id: id) else { return }
+        
+        preferences.set(
+            (preferences.get(.favorites) ?? []) + [id],
+            forKey: .favorites
+        )
+    }
+    
+    func removeFavorite(id: Int) {
+        preferences.set(
+            preferences.get(.favorites)?.filter { $0 != id },
+            forKey: .favorites
+        )
+    }
+    
+    func toggleFavorite(id: Int) {
+        guard hasFavorite(id: id) else { return addFavorite(id: id) }
+        removeFavorite(id: id)
+    }
+    
+    func hasFavorite(id: Int) -> Bool {
+        return preferences.get(.favorites)?.contains(id) == true
     }
 }

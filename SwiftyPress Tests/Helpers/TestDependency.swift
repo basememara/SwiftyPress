@@ -10,7 +10,7 @@ import SwiftyPress
 class TestDependency: Dependency {
     
     override func resolveStore() -> PostsStore {
-        return PostsMemoryStore()
+        return PostsMemoryStore(preferences: resolve())
     }
     
     override func resolveStore() -> TaxonomyStore {

@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-struct PostsWorker: PostsWorkerType {
+public struct PostsWorker: PostsWorkerType {
     private let store: PostsStore
     
     public init(store: PostsStore) {
@@ -15,7 +15,7 @@ struct PostsWorker: PostsWorkerType {
     }
 }
 
-extension PostsWorker {
+public extension PostsWorker {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(completion: completion)
@@ -52,7 +52,7 @@ public extension PostsWorker {
     }
 }
 
-extension PostsWorker {
+public extension PostsWorker {
     
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetchPopular(completion: completion)
@@ -62,11 +62,30 @@ extension PostsWorker {
         store.fetchTopPicks(completion: completion)
     }
     
+    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.search(with: request, completion: completion)
+    }
+}
+
+public extension PostsWorker {
+    
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetchFavorites(completion: completion)
     }
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.search(with: request, completion: completion)
+    func addFavorite(id: Int) {
+        store.addFavorite(id: id)
+    }
+    
+    func removeFavorite(id: Int) {
+        store.removeFavorite(id: id)
+    }
+    
+    func toggleFavorite(id: Int) {
+        store.toggleFavorite(id: id)
+    }
+    
+    func hasFavorite(id: Int) -> Bool {
+        return store.hasFavorite(id: id)
     }
 }

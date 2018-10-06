@@ -35,7 +35,10 @@ open class Dependency: Dependable {
     // MARK: - Store
     
     open func resolveStore() -> PostsStore {
-        return PostsFileStore(store: resolveStore())
+        return PostsFileStore(
+            store: resolveStore(),
+            preferences: resolve()
+        )
     }
     
     open func resolveStore() -> TaxonomyStore {

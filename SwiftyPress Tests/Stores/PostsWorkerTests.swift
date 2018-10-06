@@ -15,6 +15,9 @@ class PostsWorkerTests: BaseTestCase, HasDependencies {
     
     override func setUp() {
         super.setUp()
+        
+        // Clear defaults before testing
+        UserDefaults(suiteName: TestUtils.shared.bundleIdentifier)!.removeAll()
     }
     
     override func tearDown() {
@@ -249,6 +252,29 @@ extension PostsWorkerTests {
             }
             
             XCTAssertTrue(expression)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension PostsWorkerTests {
+    
+    func testFavorites() {
+        let promise = expectation(description: "Posts fetch favorites promise")
+        let ids = [2, 3]
+        
+        postsWorker.addFavorite(id: 2)
+        postsWorker.addFavorite(id: 3)
+        
+        postsWorker.fetchFavorites {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch favorites error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.map { $0.id }.sorted() == ids)
         }
         
         waitForExpectations(timeout: 5, handler: nil)
