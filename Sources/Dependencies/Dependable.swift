@@ -22,8 +22,8 @@ public protocol Dependable {
     
     func resolveService() -> HTTPServiceType
     
-    func resolveWorker() -> ConstantsType
     func resolve() -> NotificationCenter
+    func resolve() -> ConstantsType
     func resolve() -> PreferencesType
     func resolveStore() -> ConstantsStore
     func resolveStore() -> PreferencesStore

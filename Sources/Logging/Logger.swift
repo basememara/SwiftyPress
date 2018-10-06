@@ -12,7 +12,7 @@ import ZamzamKit
 fileprivate final class Logger: ZamzamKitable, HasDependencies {
     static var shared = Logger()
     
-    private lazy var constants: ConstantsType = dependencies.resolveWorker()
+    private lazy var constants: ConstantsType = dependencies.resolve()
     
     let environment = Environment.mode
     

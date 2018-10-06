@@ -62,11 +62,11 @@ open class Dependency: Dependable {
     
     // MARK: - Preferences
     
-    open func resolveWorker() -> ConstantsType {
     open func resolve() -> NotificationCenter {
         return .default
     }
     
+    open func resolve() -> ConstantsType {
         return Constants(store: resolveStore())
     }
     
