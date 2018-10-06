@@ -77,6 +77,10 @@ open class Dependency: Dependable {
         return Preferences(store: resolveStore())
     }
     
+    open func resolve() -> Theme {
+        fatalError("Override dependency in subclass")
+    }
+    
     open func resolveStore() -> ConstantsStore {
         fatalError("Override dependency in subclass")
     }

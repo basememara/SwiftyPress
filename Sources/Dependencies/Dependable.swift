@@ -25,6 +25,7 @@ public protocol Dependable {
     func resolve() -> NotificationCenter
     func resolve() -> ConstantsType
     func resolve() -> PreferencesType
+    func resolve() -> Theme
     func resolveStore() -> ConstantsStore
     func resolveStore() -> PreferencesStore
 }

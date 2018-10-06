@@ -174,6 +174,9 @@
 		8B33C4D92169161E00658700 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4D42169154800658700 /* TestUtils.swift */; };
 		8B33C4DB21691FCF00658700 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4DA21691FCF00658700 /* PreferencesTests.swift */; };
 		8B33C4DC21691FCF00658700 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4DA21691FCF00658700 /* PreferencesTests.swift */; };
+		8B33C4EA2169653900658700 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4E92169653900658700 /* Theme.swift */; };
+		8B33C4EB2169653900658700 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4E92169653900658700 /* Theme.swift */; };
+		8B33C4EC2169653900658700 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4E92169653900658700 /* Theme.swift */; };
 		8B5250DC20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
 		8B5250DD20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
 		8B5250DE20CFD9FF00E77F70 /* ModifiedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */; };
@@ -414,6 +417,7 @@
 		8B33C4D02168EFE200658700 /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		8B33C4D42169154800658700 /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		8B33C4DA21691FCF00658700 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		8B33C4E92169653900658700 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		8B5250DB20CFD9FF00E77F70 /* ModifiedPayloadType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayloadType.swift; sourceTree = "<group>"; };
 		8B5250E320CFE3EC00E77F70 /* ModifiedPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayload.swift; sourceTree = "<group>"; };
 		8B5250EF20CFE5B500E77F70 /* SeedStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedStoreInterfaces.swift; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 		8B00E3CF20B2DB3200B20B2C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8B33C4E82169652700658700 /* Styles */,
 				8B63A2D52164F812003868F7 /* Controls */,
 				8B0D651020C557BF0046056F /* Dependencies */,
 				8B0D64CC20C347CC0046056F /* Enums */,
@@ -828,6 +833,14 @@
 				8B33C4D02168EFE200658700 /* DefaultsKeys.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		8B33C4E82169652700658700 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				8B33C4E92169653900658700 /* Theme.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		8B5250DA20CFD9E700E77F70 /* Models */ = {
@@ -1335,6 +1348,7 @@
 				8B5250F420CFE64E00E77F70 /* SeedWorker.swift in Sources */,
 				8B0D642820BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644220BD779E0046056F /* TaxonomyWorker.swift in Sources */,
+				8B33C4EA2169653900658700 /* Theme.swift in Sources */,
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorsWorker.swift in Sources */,
@@ -1400,6 +1414,7 @@
 				8B6A2BCD20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643620BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641520B99B180046056F /* PostType.swift in Sources */,
+				8B33C4EB2169653900658700 /* Theme.swift in Sources */,
 				8B5250E520CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64FA20C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
 				8B6A2BC320D66B9C00D070FB /* Environment.swift in Sources */,
@@ -1459,6 +1474,7 @@
 				8B6A2BCE20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B0D643720BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641620B99B180046056F /* PostType.swift in Sources */,
+				8B33C4EC2169653900658700 /* Theme.swift in Sources */,
 				8B5250E620CFE3EC00E77F70 /* ModifiedPayload.swift in Sources */,
 				8B0D64FB20C547C20046056F /* TaxonomyStoreInterfaces.swift in Sources */,
 				8B6A2BC420D66B9C00D070FB /* Environment.swift in Sources */,
