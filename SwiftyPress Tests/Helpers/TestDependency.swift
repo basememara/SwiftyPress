@@ -25,6 +25,22 @@ class TestDependency: Dependency {
         return MediaMemoryStore()
     }
     
+    override func resolveStore() -> ConstantsStore {
+        return ConstantsMemoryStore(
+            itunesName: "basememara",
+            itunesID: "0",
+            baseURL: URL(string: "http://basememara.com")!,
+            baseREST: "wp-json/swiftypress/v2",
+            wpREST: "wp-json/wp/v2",
+            email: "contact@basememara.com",
+            styleSheet: "http://basememara.com/wp-content/themes/metro-pro/style.css",
+            googleAnalyticsID: nil,
+            featuredCategoryID: 64,
+            logFileName: "test",
+            logDNAKey: nil
+        )
+    }
+    
     override func resolveStore() -> PreferencesStore {
         return PreferencesDefaultsStore(
             defaults: UserDefaults(
