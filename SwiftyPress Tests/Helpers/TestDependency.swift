@@ -24,4 +24,12 @@ class TestDependency: Dependency {
     override func resolveStore() -> MediaStore {
         return MediaMemoryStore()
     }
+    
+    override func resolveStore() -> PreferencesStore {
+        return PreferencesDefaultsStore(
+            defaults: UserDefaults(
+                suiteName: TestUtils.shared.bundleIdentifier
+            )!
+        )
+    }
 }
