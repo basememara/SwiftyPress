@@ -15,7 +15,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let wpREST: String
     public let email: String
     public let styleSheet: String
-    public let googleAnalyticsID: String
+    public let googleAnalyticsID: String?
     public let featuredCategoryID: Int
     public let logFileName: String
     public let logDNAKey: String?
@@ -28,7 +28,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         wpREST: String,
         email: String,
         styleSheet: String,
-        googleAnalyticsID: String,
+        googleAnalyticsID: String?,
         featuredCategoryID: Int,
         logFileName: String,
         logDNAKey: String?)

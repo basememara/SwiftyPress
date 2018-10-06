@@ -15,7 +15,7 @@ public protocol ConstantsStore {
     var wpREST: String { get }
     var email: String { get }
     var styleSheet: String { get }
-    var googleAnalyticsID: String { get }
+    var googleAnalyticsID: String? { get }
     var featuredCategoryID: Int { get }
     var logFileName: String { get }
     var logDNAKey: String? { get }

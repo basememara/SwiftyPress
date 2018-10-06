@@ -51,7 +51,7 @@ public extension Constants {
         return store.styleSheet
     }
     
-    var googleAnalyticsID: String {
+    var googleAnalyticsID: String? {
         return store.googleAnalyticsID
     }
     
