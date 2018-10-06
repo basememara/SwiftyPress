@@ -5,6 +5,8 @@
 //  Created by Basem Emara on 2018-06-04.
 //
 
+import Foundation
+
 public protocol Dependable {
     func resolveWorker() -> PostsWorkerType
     func resolveWorker() -> TaxonomyWorkerType
@@ -21,6 +23,7 @@ public protocol Dependable {
     func resolveService() -> HTTPServiceType
     
     func resolveWorker() -> ConstantsType
+    func resolve() -> NotificationCenter
     func resolve() -> PreferencesType
     func resolveStore() -> ConstantsStore
     func resolveStore() -> PreferencesStore

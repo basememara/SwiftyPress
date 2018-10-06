@@ -5,6 +5,8 @@
 //  Created by Basem Emara on 2018-06-04.
 //
 
+import Foundation
+
 open class Dependency: Dependable {
     public init() { }
     
@@ -61,6 +63,10 @@ open class Dependency: Dependable {
     // MARK: - Preferences
     
     open func resolveWorker() -> ConstantsType {
+    open func resolve() -> NotificationCenter {
+        return .default
+    }
+    
         return Constants(store: resolveStore())
     }
     
