@@ -10,6 +10,7 @@ import ZamzamKit
 public protocol PostsStore {
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void)
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)

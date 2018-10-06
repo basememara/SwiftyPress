@@ -80,6 +80,26 @@ extension PostsWorkerTests {
 
 extension PostsWorkerTests {
     
+    func testFetchByIDs() {
+        let promise = expectation(description: "Posts fetch by IDs promise")
+        let ids = [2, 3]
+        
+        postsWorker.fetch(ids: Set(ids)) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Posts fetch by IDs error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.map { $0.id }.sorted() == ids)
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
+
+extension PostsWorkerTests {
+    
     func testFetchBySlug() {
         let promise = expectation(description: "Posts fetch by slug promise")
         let slug = "test-post-2"

@@ -77,6 +77,18 @@ public extension PostsMemoryStore {
         }
     }
     
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let results = value.filter {
+                ids.contains($0.id)
+            }
+            
+            completion(.success(results))
+        }
+    }
+    
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         fetch {
             guard let value = $0.value?.first(where: { $0.slug == slug }), $0.isSuccess else {

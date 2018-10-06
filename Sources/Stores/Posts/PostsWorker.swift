@@ -25,12 +25,19 @@ extension PostsWorker {
         store.fetch(id: id, completion: completion)
     }
     
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetch(ids: ids, completion: completion)
+    }
+}
+
+public extension PostsWorker {
+    
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         store.fetch(slug: slug, completion: completion)
     }
 }
 
-extension PostsWorker {
+public extension PostsWorker {
     
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(byCategoryIDs: ids, completion: completion)
