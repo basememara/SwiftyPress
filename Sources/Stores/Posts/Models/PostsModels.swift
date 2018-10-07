@@ -15,7 +15,12 @@ public enum PostsModels {
     }
     
     public struct SearchRequest {
-        public let query: String
-        public let scope: SearchScope
+        let query: String
+        let scope: SearchScope
+        
+        public init(query: String, scope: SearchScope) {
+            self.query = query
+            self.scope = scope
+        }
     }
 }
