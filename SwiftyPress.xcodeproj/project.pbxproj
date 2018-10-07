@@ -581,7 +581,6 @@
 		8B00E3CF20B2DB3200B20B2C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8B33C4E82169652700658700 /* Styles */,
 				8B63A2D52164F812003868F7 /* Controls */,
 				8B0D651020C557BF0046056F /* Dependencies */,
 				8B0D64CC20C347CC0046056F /* Enums */,
@@ -592,6 +591,7 @@
 				8B6A2BCA20D676E300D070FB /* Network */,
 				8B63A2DD2164FDB7003868F7 /* Preferences */,
 				8B0D642B20BD76000046056F /* Stores */,
+				8B33C4E82169652700658700 /* Styles */,
 				8B00E40D20B30D4D00B20B2C /* Media.xcassets */,
 				8B00E3D220B2E9B200B20B2C /* Supporting Files */,
 			);
