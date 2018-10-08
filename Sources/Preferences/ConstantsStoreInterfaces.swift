@@ -14,6 +14,8 @@ public protocol ConstantsStore {
     var baseREST: String { get }
     var wpREST: String { get }
     var email: String { get }
+    var privacyURL: String { get }
+    var disclaimerURL: String? { get }
     var styleSheet: String { get }
     var googleAnalyticsID: String? { get }
     var featuredCategoryID: Int { get }

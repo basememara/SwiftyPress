@@ -47,6 +47,14 @@ public extension Constants {
         return store.email
     }
     
+    var privacyURL: String {
+        return store.privacyURL
+    }
+    
+    var disclaimerURL: String? {
+        return store.disclaimerURL
+    }
+    
     var styleSheet: String {
         return store.styleSheet
     }

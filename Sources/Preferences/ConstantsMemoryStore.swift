@@ -14,6 +14,8 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let baseREST: String
     public let wpREST: String
     public let email: String
+    public let privacyURL: String
+    public let disclaimerURL: String?
     public let styleSheet: String
     public let googleAnalyticsID: String?
     public let featuredCategoryID: Int
@@ -27,6 +29,8 @@ public struct ConstantsMemoryStore: ConstantsStore {
         baseREST: String,
         wpREST: String,
         email: String,
+        privacyURL: String,
+        disclaimerURL: String?,
         styleSheet: String,
         googleAnalyticsID: String?,
         featuredCategoryID: Int,
@@ -39,6 +43,8 @@ public struct ConstantsMemoryStore: ConstantsStore {
         self.baseREST = baseREST
         self.wpREST = wpREST
         self.email = email
+        self.privacyURL = privacyURL
+        self.disclaimerURL = disclaimerURL
         self.styleSheet = styleSheet
         self.googleAnalyticsID = googleAnalyticsID
         self.featuredCategoryID = featuredCategoryID

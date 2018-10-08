@@ -33,6 +33,8 @@ class TestDependency: Dependency {
             baseREST: "wp-json/swiftypress/v2",
             wpREST: "wp-json/wp/v2",
             email: "contact@basememara.com",
+            privacyURL: "https://basememara.com/privacy",
+            disclaimerURL: nil,
             styleSheet: "http://basememara.com/wp-content/themes/metro-pro/style.css",
             googleAnalyticsID: nil,
             featuredCategoryID: 64,
