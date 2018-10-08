@@ -260,6 +260,7 @@
 		8B6A2BD520D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6E2CF720CD627200CB110C /* modified_payload.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B6E2CF620CD627200CB110C /* modified_payload.json */; };
+		8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81D5216BF2D800158DDE /* UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -452,6 +453,7 @@
 		8B6A2BCF20D6775000D070FB /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		8B6A2BD320D677C700D070FB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		8B6E2CF620CD627200CB110C /* modified_payload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modified_payload.json; sourceTree = "<group>"; };
+		8BBF81D5216BF2D800158DDE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -900,6 +902,7 @@
 				8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */,
 				8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */,
 				8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */,
+				8BBF81D5216BF2D800158DDE /* UIViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -1348,6 +1351,7 @@
 				8B5250F420CFE64E00E77F70 /* SeedWorker.swift in Sources */,
 				8B0D642820BD700B0046056F /* Dateable.swift in Sources */,
 				8B0D644220BD779E0046056F /* TaxonomyWorker.swift in Sources */,
+				8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */,
 				8B33C4EA2169653900658700 /* Theme.swift in Sources */,
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
 				8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */,
