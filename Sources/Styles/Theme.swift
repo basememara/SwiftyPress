@@ -23,6 +23,8 @@ public protocol Theme {
     
     #if os(iOS)
     var barStyle: UIBarStyle { get }
+    var keyboardAppearance: UIKeyboardAppearance { get }
+    
     func apply(for application: UIApplication)
     #else
     func apply()
