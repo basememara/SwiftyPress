@@ -1,6 +1,6 @@
 //___FILEHEADER___
 
-struct ___VARIABLE_productName:identifier___Interactor {
+struct ___VARIABLE_productName:identifier___Interactor: ___VARIABLE_productName:identifier___BusinessLogic {
     private let presenter: ___VARIABLE_productName:identifier___Presentable
     
     init(presenter: ___VARIABLE_productName:identifier___Presentable) {
@@ -8,7 +8,7 @@ struct ___VARIABLE_productName:identifier___Interactor {
     }
 }
 
-extension ___VARIABLE_productName:identifier___Interactor: ___VARIABLE_productName:identifier___BusinessLogic {
+extension ___VARIABLE_productName:identifier___Interactor {
 
     func fetch(with request: ___VARIABLE_productName:identifier___Models.Request) {
         
