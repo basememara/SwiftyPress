@@ -135,7 +135,25 @@ public extension PostsFileStore {
     }
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fatalError("Not implemented")
+        fetch {
+            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            
+            let query = request.query.lowercased()
+            let isIncluded: (PostType) -> Bool
+            
+            switch request.scope {
+            case .title: isIncluded = { $0.title.lowercased().contains(query) }
+            case .content: isIncluded = { $0.content.lowercased().contains(query) }
+            default: isIncluded = { $0.title.lowercased().contains(query)
+                || $0.content.lowercased().contains(query) }
+            }
+            
+            let results = value
+                .filter(isIncluded)
+                .sorted { $0.commentCount > $1.commentCount }
+            
+            completion(.success(results))
+        }
     }
 }
 
