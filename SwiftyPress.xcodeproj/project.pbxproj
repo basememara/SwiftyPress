@@ -261,6 +261,9 @@
 		8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6E2CF720CD627200CB110C /* modified_payload.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B6E2CF620CD627200CB110C /* modified_payload.json */; };
 		8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81D5216BF2D800158DDE /* UIViewController.swift */; };
+		8BBF81E7216C292B00158DDE /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81E6216C292B00158DDE /* Social.swift */; };
+		8BBF81E8216C292B00158DDE /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81E6216C292B00158DDE /* Social.swift */; };
+		8BBF81E9216C292B00158DDE /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81E6216C292B00158DDE /* Social.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -454,6 +457,7 @@
 		8B6A2BD320D677C700D070FB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		8B6E2CF620CD627200CB110C /* modified_payload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = modified_payload.json; sourceTree = "<group>"; };
 		8BBF81D5216BF2D800158DDE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		8BBF81E6216C292B00158DDE /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -814,6 +818,7 @@
 			isa = PBXGroup;
 			children = (
 				8B6A2BC120D66B9C00D070FB /* Environment.swift */,
+				8BBF81E6216C292B00158DDE /* Social.swift */,
 				8B0D64CD20C347E00046056F /* Taxonomy.swift */,
 			);
 			path = Enums;
@@ -1354,6 +1359,7 @@
 				8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */,
 				8B33C4EA2169653900658700 /* Theme.swift in Sources */,
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
+				8BBF81E7216C292B00158DDE /* Social.swift in Sources */,
 				8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorsWorker.swift in Sources */,
 				8B0D641420B99B180046056F /* PostType.swift in Sources */,
@@ -1400,6 +1406,7 @@
 				8B0D651B20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DD20C434C40046056F /* Term.swift in Sources */,
 				8B33C4C12168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */,
+				8BBF81E8216C292B00158DDE /* Social.swift in Sources */,
 				8B0D64C520BEC9830046056F /* Post.swift in Sources */,
 				8B0D641920B99B240046056F /* TermType.swift in Sources */,
 				8B0D644720BEA9010046056F /* PostsModels.swift in Sources */,
@@ -1460,6 +1467,7 @@
 				8B0D651C20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DE20C434C40046056F /* Term.swift in Sources */,
 				8B33C4C22168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */,
+				8BBF81E9216C292B00158DDE /* Social.swift in Sources */,
 				8B0D64C620BEC9830046056F /* Post.swift in Sources */,
 				8B0D641A20B99B240046056F /* TermType.swift in Sources */,
 				8B0D644820BEA9010046056F /* PostsModels.swift in Sources */,
