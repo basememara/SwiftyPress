@@ -5,9 +5,9 @@
 //  Created by Basem Emara on 2018-10-03.
 //
 
-import Foundation
+import ZamzamKit
 
-public protocol ConstantsStore {
+public protocol ConstantsStore: ZamzamKitable {
     var itunesName: String { get }
     var itunesID: String { get }
     var baseURL: URL { get }
@@ -25,4 +25,11 @@ public protocol ConstantsStore {
 
 public protocol ConstantsType: ConstantsStore {
     
+}
+
+public extension ConstantsType {
+    
+    var itunesURL: String {
+        return "https://itunes.apple.com/app/id\(itunesID)"
+    }
 }
