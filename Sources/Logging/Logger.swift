@@ -211,6 +211,79 @@ public extension Loggable {
     }
 }
 
+// MARK: - Network logging helpers
+
+public extension Loggable {
+    
+    /**
+     Log URL request which help during debugging (low priority; not written to file)
+     
+     - parameter message: Description of the log.
+     - parameter includeMeta: If true, will append the meta data to the log.
+     - parameter path: Path of the caller.
+     - parameter function: Function of the caller.
+     - parameter line: Line of the caller.
+     */
+    func Log(request: URLRequest?, path: String = #file, function: String = #function, line: Int = #line) {
+        Log(
+            debug: {
+                var message = "Request: {\n"
+                guard let request = request else { return "Request: empty" }
+                
+                if let value = request.url?.absoluteString {
+                    message += "\turl: \(value),\n"
+                }
+                
+                if let value = request.httpMethod {
+                    message += "\tmethod: \(value),\n"
+                }
+                
+                if let value = request.allHTTPHeaderFields?.scrubbed {
+                    message += "\theaders: \(value)\n"
+                }
+                
+                message += "}"
+                return message
+            }(),
+            path: path,
+            function: function,
+            line: line
+        )
+    }
+    
+    /**
+     Log HTTP response which help during debugging (low priority; not written to file)
+     
+     - parameter message: Description of the log.
+     - parameter includeMeta: If true, will append the meta data to the log.
+     - parameter path: Path of the caller.
+     - parameter function: Function of the caller.
+     - parameter line: Line of the caller.
+     */
+    func Log(response: ServerResponse?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
+        Log(
+            debug: {
+                var message = "Response: {\n"
+                
+                if let value = url {
+                    message += "\turl: \(value),\n"
+                }
+                
+                if let response = response {
+                    message += "\tstatus: \(response.statusCode),\n"
+                    message += "\theaders: \(response.headers.scrubbed)\n"
+                }
+                
+                message += "}"
+                return message
+            }(),
+            path: path,
+            function: function,
+            line: line
+        )
+    }
+}
+
 // MARK: - Expose injectable logger
 
 extension Logger {

@@ -66,6 +66,10 @@ open class Dependency: Dependable {
         return HTTPService()
     }
     
+    open func resolveService() -> APISessionType {
+        return APISession(constants: resolve())
+    }
+    
     // MARK: - Preferences
     
     open func resolve() -> NotificationCenter {

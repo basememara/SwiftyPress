@@ -21,6 +21,32 @@ public enum DataError: Error {
 
 public extension DataError {
     
+    init(from error: NetworkError?) {
+        // Handle no internet
+        if let internalError = error?.internalError as? URLError,
+            internalError.code  == .notConnectedToInternet {
+            self = .noInternet
+            return
+        }
+        
+        // Handle timeout
+        if let internalError = error?.internalError as? URLError,
+            internalError.code  == .timedOut {
+            self = .timeout
+            return
+        }
+        
+        // Handle by status code
+        switch error?.statusCode {
+        case 400?: self = .serverFailure(error)
+        case 401?, 403?: self = .unauthorized
+        default: self = .serverFailure(error)
+        }
+    }
+}
+
+public extension DataError {
+    
     /// Get the localized description for this error
     var localizedDescription: String {
         switch self {

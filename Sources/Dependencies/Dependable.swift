@@ -21,11 +21,13 @@ public protocol Dependable {
     func resolveStore() -> SeedStore
     
     func resolveService() -> HTTPServiceType
+    func resolveService() -> APISessionType
     
     func resolve() -> NotificationCenter
     func resolve() -> ConstantsType
     func resolve() -> PreferencesType
     func resolve() -> Theme
+    
     func resolveStore() -> ConstantsStore
     func resolveStore() -> PreferencesStore
 }
