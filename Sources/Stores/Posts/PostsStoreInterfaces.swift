@@ -17,18 +17,15 @@ public protocol PostsStore {
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    
+    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+}
+
+public protocol PostsWorkerType: PostsStore {
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func addFavorite(id: Int)
     func removeFavorite(id: Int)
     func toggleFavorite(id: Int)
     func hasFavorite(id: Int) -> Bool
-    
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-}
-
-public protocol PostsWorkerType: PostsStore {
-    
 }
 
 public extension PostsWorkerType {

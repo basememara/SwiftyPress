@@ -9,9 +9,11 @@ import ZamzamKit
 
 public struct PostsWorker: PostsWorkerType {
     private let store: PostsStore
+    private let preferences: PreferencesType
     
-    public init(store: PostsStore) {
+    public init(store: PostsStore, preferences: PreferencesType) {
         self.store = store
+        self.preferences = preferences
     }
 }
 
@@ -70,22 +72,35 @@ public extension PostsWorker {
 public extension PostsWorker {
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetchFavorites(completion: completion)
+        guard let ids = preferences.get(.favorites), !ids.isEmpty else {
+            return completion(.success([]))
+        }
+        
+        fetch(ids: Set(ids), completion: completion)
     }
     
     func addFavorite(id: Int) {
-        store.addFavorite(id: id)
+        guard !hasFavorite(id: id) else { return }
+        
+        preferences.set(
+            (preferences.get(.favorites) ?? []) + [id],
+            forKey: .favorites
+        )
     }
     
     func removeFavorite(id: Int) {
-        store.removeFavorite(id: id)
+        preferences.set(
+            preferences.get(.favorites)?.filter { $0 != id },
+            forKey: .favorites
+        )
     }
     
     func toggleFavorite(id: Int) {
-        store.toggleFavorite(id: id)
+        guard hasFavorite(id: id) else { return addFavorite(id: id) }
+        removeFavorite(id: id)
     }
     
     func hasFavorite(id: Int) -> Bool {
-        return store.hasFavorite(id: id)
+        return preferences.get(.favorites)?.contains(id) == true
     }
 }

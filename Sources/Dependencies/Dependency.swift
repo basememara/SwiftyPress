@@ -13,7 +13,10 @@ open class Dependency: Dependable {
     // MARK: - Workers
 
     open func resolveWorker() -> PostsWorkerType {
-        return PostsWorker(store: resolveStore())
+        return PostsWorker(
+            store: resolveStore(),
+            preferences: resolve()
+        )
     }
     
     open func resolveWorker() -> TaxonomyWorkerType {
