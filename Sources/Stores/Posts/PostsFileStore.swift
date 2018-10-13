@@ -8,19 +8,13 @@
 import ZamzamKit
 
 public struct PostsFileStore: PostsStore {
-    private let store: SeedStore
-    private let preferences: PreferencesType
-    
-    public init(store: SeedStore, preferences: PreferencesType) {
-        self.store = store
-        self.preferences = preferences
-    }
+    private let seedStore = SeedFileStore()
 }
 
 public extension PostsFileStore {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetch {
+        seedStore.fetch {
             guard let value = $0.value?.posts.sorted(by: { $0.createdAt > $1.createdAt }) else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
