@@ -43,3 +43,12 @@ private extension Post {
         case modifiedAt = "modified"
     }
 }
+
+/// Post type used for decoding the server payload
+public struct ExpandedPost: Decodable {
+    public let post: Post
+    public let categories: [Term]
+    public let tags: [Term]
+    public let author: Author?
+    public let media: Media?
+}

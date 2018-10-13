@@ -38,9 +38,9 @@ open class Dependency: Dependable {
     // MARK: - Store
     
     open func resolveStore() -> PostsStore {
-        return PostsFileStore(
-            store: resolveStore(),
-            preferences: resolve()
+        return PostsNetworkStore(
+            apiSession: resolveService(),
+            seedWorker: resolveWorker()
         )
     }
     

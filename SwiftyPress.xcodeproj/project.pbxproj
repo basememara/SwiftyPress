@@ -281,6 +281,9 @@
 		8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 		8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 		8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
+		8BC4FE4B216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkStore.swift */; };
+		8BC4FE4C216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkStore.swift */; };
+		8BC4FE4D216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -481,6 +484,7 @@
 		8BC4FE2D216D027D00BB7870 /* ModifiedPayloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayloadTests.swift; sourceTree = "<group>"; };
 		8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNetworkStore.swift; sourceTree = "<group>"; };
 		8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		8BC4FE4A216E1B6000BB7870 /* PostsNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsNetworkStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +708,7 @@
 				8B0D643220BD76DB0046056F /* Models */,
 				8B0D64F020C48BFD0046056F /* PostsStoreInterfaces.swift */,
 				8B52510E20CFF23C00E77F70 /* PostsFileStore.swift */,
+				8BC4FE4A216E1B6000BB7870 /* PostsNetworkStore.swift */,
 				8B0D643D20BD778F0046056F /* PostsWorker.swift */,
 			);
 			path = Posts;
@@ -1354,6 +1359,7 @@
 			files = (
 				8B0D64E420C436000046056F /* Media.swift in Sources */,
 				8B0D641C20B99B600046056F /* MediaType.swift in Sources */,
+				8BC4FE4B216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */,
 				8B5AA8002143641300EA4E2F /* Localizable.swift in Sources */,
 				8B0D650520C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510520CFE89000E77F70 /* Bundle.swift in Sources */,
@@ -1464,6 +1470,7 @@
 				8B33C4D22168EFE200658700 /* DefaultsKeys.swift in Sources */,
 				8B0D650A20C548110046056F /* MediaFileStore.swift in Sources */,
 				8B0D650220C547E80046056F /* AuthorsStoreInterfaces.swift in Sources */,
+				8BC4FE4C216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */,
 				8B0D64E120C435AD0046056F /* Author.swift in Sources */,
 				8B33C4C92168ED2A00658700 /* Preferences.swift in Sources */,
 				8B5250F520CFE64E00E77F70 /* SeedWorker.swift in Sources */,
@@ -1530,6 +1537,7 @@
 				8B33C4D32168EFE200658700 /* DefaultsKeys.swift in Sources */,
 				8B0D650B20C548110046056F /* MediaFileStore.swift in Sources */,
 				8B0D650320C547E80046056F /* AuthorsStoreInterfaces.swift in Sources */,
+				8BC4FE4D216E1B6000BB7870 /* PostsNetworkStore.swift in Sources */,
 				8B0D64E220C435AD0046056F /* Author.swift in Sources */,
 				8B33C4CA2168ED2A00658700 /* Preferences.swift in Sources */,
 				8B5250F620CFE64E00E77F70 /* SeedWorker.swift in Sources */,

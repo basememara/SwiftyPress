@@ -9,6 +9,7 @@ import Alamofire
 
 public enum APIRouter: APIRoutable {
     case modifiedPayload(after: Date?)
+    case readPost(id: Int)
 }
 
 private extension APIRouter {
@@ -16,12 +17,14 @@ private extension APIRouter {
     var method: HTTPMethod {
         switch self {
         case .modifiedPayload: return .get
+        case .readPost: return .get
         }
     }
     
     var path: String {
         switch self {
         case .modifiedPayload: return "payloads/modified"
+        case .readPost(let id): return "posts/\(id)"
         }
     }
     
@@ -30,6 +33,8 @@ private extension APIRouter {
         case .modifiedPayload(let after):
             guard let timestamp = after?.timeIntervalSince1970 else { return [:] }
             return ["after": Int(timestamp)]
+        case .readPost:
+            return [:]
         }
     }
 }
@@ -50,6 +55,7 @@ public extension APIRouter {
             // Increase connection timeout since some payloads can be large
             switch self {
             case .modifiedPayload: return 30
+            default: return 10
             }
         }()
         
@@ -57,6 +63,8 @@ public extension APIRouter {
         case .modifiedPayload:
             guard !parameters.isEmpty else { break }
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        case .readPost:
+            break
         }
         
         return urlRequest
