@@ -9,30 +9,30 @@
 public struct NetworkError: Error {
     let urlRequest: URLRequest?
     let headerValues: [String: String]
+    let serverData: Data?
     public let statusCode: Int
     public let internalError: Error?
     
-    /// The initializer for the NetworkError type.
+    /// The initializer for the network error type.
     ///
     /// - Parameters:
-    ///   - statusCode: Status code of the network response.
-    ///   - serverResponse: The array of field errors from the server.
-    ///   - internalError: The internal error type from the network request.
-    public init(urlRequest: URLRequest?, statusCode: Int, headerValues: [String: String] = [String: String](), internalError: Error? = nil) {
+    ///   - urlRequest: The URL that was requested.
+    ///   - statusCode: The HTTP status code response from the network server.
+    ///   - headerValues: The HTTP headers response from the network server.
+    ///   - serverData: The HTTP body response from the network server.
+    ///   - internalError: The internal error from the network request.
+    public init(
+        urlRequest: URLRequest? = nil,
+        statusCode: Int,
+        headerValues: [String: String] = [String: String](),
+        serverData: Data? = nil,
+        internalError: Error? = nil)
+    {
         self.urlRequest = urlRequest
         self.statusCode = statusCode
         self.headerValues = headerValues
+        self.serverData = serverData
         self.internalError = internalError
-    }
-    
-    /// The initializer for the NetworkError type.
-    ///
-    /// - Parameters:
-    ///   - statusCode: Status code of the network response.
-    ///   - serverData: The data from the server that contains the error and corresponding fields.
-    ///   - internalError: The internal error type from the network request.
-    public init(urlRequest: URLRequest?, statusCode: Int, headerValues: [String: String], serverData: Data?, internalError: Error?) {
-        self.init(urlRequest: urlRequest, statusCode: statusCode, headerValues: headerValues, internalError: internalError)
     }
 }
 

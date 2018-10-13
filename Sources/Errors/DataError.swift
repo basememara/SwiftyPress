@@ -15,7 +15,8 @@ public enum DataError: Error {
     case parseFailure(Error?)
     case databaseFailure(Error?)
     case cacheFailure(Error?)
-    case networkFailure(Error?)
+    case serverFailure(Error?)
+    case requestFailure(Error?)
     case unknownReason(Error?)
 }
 
@@ -38,7 +39,7 @@ public extension DataError {
         
         // Handle by status code
         switch error?.statusCode {
-        case 400?: self = .serverFailure(error)
+        case 400?: self = .requestFailure(error)
         case 401?, 403?: self = .unauthorized
         default: self = .serverFailure(error)
         }
@@ -59,7 +60,8 @@ public extension DataError {
         case .parseFailure: return .localized(.parseFailureErrorMessage)
         case .databaseFailure: return .localized(.databaseFailureErrorMessage)
         case .cacheFailure: return .localized(.cacheFailureErrorMessage)
-        case .networkFailure: return .localized(.networkFailureErrorMessage)
+        case .serverFailure: return .localized(.serverFailureErrorMessage)
+        case .requestFailure: return .localized(.badRequestErrorMessage)
         case .unknownReason: return .localized(.unknownReasonErrorMessage)
         }
     }
