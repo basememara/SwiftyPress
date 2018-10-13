@@ -5,11 +5,10 @@
 //  Created by Basem Emara on 2018-06-17.
 //
 
-
 import SwiftyBeaver
 import ZamzamKit
 
-fileprivate final class Logger: ZamzamKitable, HasDependencies {
+fileprivate final class Logger: AppInfo, HasDependencies {
     static var shared = Logger()
     
     private lazy var constants: ConstantsType = dependencies.resolve()

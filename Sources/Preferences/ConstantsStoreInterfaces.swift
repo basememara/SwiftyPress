@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public protocol ConstantsStore: ZamzamKitable {
+public protocol ConstantsStore: AppInfo {
     var itunesName: String { get }
     var itunesID: String { get }
     var baseURL: URL { get }
