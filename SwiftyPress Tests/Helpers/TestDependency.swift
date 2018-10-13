@@ -29,8 +29,8 @@ class TestDependency: Dependency {
         return ConstantsMemoryStore(
             itunesName: "basememara",
             itunesID: "0",
-            baseURL: URL(string: "http://basememara.com")!,
-            baseREST: "wp-json/swiftypress/v2",
+            baseURL: URL(string: "https://basememara.com")!,
+            baseREST: "wp-json/swiftypress/v3",
             wpREST: "wp-json/wp/v2",
             email: "contact@basememara.com",
             privacyURL: "https://basememara.com/privacy",
