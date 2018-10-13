@@ -28,10 +28,7 @@ private extension APIRouter {
     var parameters: [String: Any] {
         switch self {
         case .modifiedPayload(let after):
-            guard let timestamp = after?.timeIntervalSince1970 else {
-                return [:]
-            }
-            
+            guard let timestamp = after?.timeIntervalSince1970 else { return [:] }
             return ["after": Int(timestamp)]
         }
     }

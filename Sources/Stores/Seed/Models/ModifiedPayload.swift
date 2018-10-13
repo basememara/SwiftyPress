@@ -13,6 +13,20 @@ public struct ModifiedPayload: ModifiedPayloadType, Decodable {
     public let tags: [Term]
     public let authors: [Author]
     public let media: [Media]
+    
+    init(
+        posts: [Post] = [],
+        categories: [Term] = [],
+        tags: [Term] = [],
+        authors: [Author] = [],
+        media: [Media] = [])
+    {
+        self.posts = []
+        self.categories = []
+        self.tags = []
+        self.authors = []
+        self.media = []
+    }
 }
 
 public extension ModifiedPayload {

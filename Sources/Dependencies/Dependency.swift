@@ -57,7 +57,9 @@ open class Dependency: Dependable {
     }
     
     open func resolveStore() -> SeedStore {
-        return SeedFileStore()
+        return SeedNetworkStore(
+            apiSession: resolveService()
+        )
     }
     
     // MARK: - Service

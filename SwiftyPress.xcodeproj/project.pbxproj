@@ -273,6 +273,11 @@
 		8BC4FE29216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2A216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2B216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
+		8BC4FE2E216D027D00BB7870 /* ModifiedPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE2D216D027D00BB7870 /* ModifiedPayloadTests.swift */; };
+		8BC4FE2F216D027D00BB7870 /* ModifiedPayloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE2D216D027D00BB7870 /* ModifiedPayloadTests.swift */; };
+		8BC4FE43216D546800BB7870 /* SeedNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */; };
+		8BC4FE44216D546800BB7870 /* SeedNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */; };
+		8BC4FE45216D546800BB7870 /* SeedNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */; };
 		8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 		8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 		8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
@@ -473,6 +478,8 @@
 		8BC4FE20216CFE4B00BB7870 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		8BC4FE24216CFE7B00BB7870 /* APIRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutable.swift; sourceTree = "<group>"; };
 		8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		8BC4FE2D216D027D00BB7870 /* ModifiedPayloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifiedPayloadTests.swift; sourceTree = "<group>"; };
+		8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedNetworkStore.swift; sourceTree = "<group>"; };
 		8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -777,6 +784,7 @@
 			isa = PBXGroup;
 			children = (
 				8B52511220CFF51800E77F70 /* Helpers */,
+				8BC4FE2C216D025500BB7870 /* Network */,
 				8B0D64C220BEBCE70046056F /* Stores */,
 				8B33C4DA21691FCF00658700 /* PreferencesTests.swift */,
 				8B0D646020BEB26B0046056F /* Info.plist */,
@@ -979,6 +987,7 @@
 				8B5250DA20CFD9E700E77F70 /* Models */,
 				8B5250EF20CFE5B500E77F70 /* SeedStoreInterfaces.swift */,
 				8B5250F720CFE6A100E77F70 /* SeedFileStore.swift */,
+				8BC4FE42216D546800BB7870 /* SeedNetworkStore.swift */,
 				8B5250F320CFE64E00E77F70 /* SeedWorker.swift */,
 			);
 			path = Seed;
@@ -990,6 +999,14 @@
 				8B6E2CF620CD627200CB110C /* modified_payload.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		8BC4FE2C216D025500BB7870 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8BC4FE2D216D027D00BB7870 /* ModifiedPayloadTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1348,6 +1365,7 @@
 				8B33C4D12168EFE200658700 /* DefaultsKeys.swift in Sources */,
 				8B52510F20CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8B6A2BD020D6775000D070FB /* NetworkError.swift in Sources */,
+				8BC4FE43216D546800BB7870 /* SeedNetworkStore.swift in Sources */,
 				8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650D20C548270046056F /* AuthorsFileStore.swift in Sources */,
@@ -1419,6 +1437,7 @@
 				8B52511020CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8BC4FE26216CFE7B00BB7870 /* APIRoutable.swift in Sources */,
 				8B6A2BD120D6775000D070FB /* NetworkError.swift in Sources */,
+				8BC4FE44216D546800BB7870 /* SeedNetworkStore.swift in Sources */,
 				8B0D64D320C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650E20C548270046056F /* AuthorsFileStore.swift in Sources */,
@@ -1484,6 +1503,7 @@
 				8B52511120CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8BC4FE27216CFE7B00BB7870 /* APIRoutable.swift in Sources */,
 				8B6A2BD220D6775000D070FB /* NetworkError.swift in Sources */,
+				8BC4FE45216D546800BB7870 /* SeedNetworkStore.swift in Sources */,
 				8B0D64D420C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650F20C548270046056F /* AuthorsFileStore.swift in Sources */,
@@ -1537,6 +1557,7 @@
 				8B52512120CFF62000E77F70 /* PostsMemoryStore.swift in Sources */,
 				8B52511420CFF53500E77F70 /* TestDependency.swift in Sources */,
 				8B0D64D920C34CCB0046056F /* TaxonomyWorkerTests.swift in Sources */,
+				8BC4FE2E216D027D00BB7870 /* ModifiedPayloadTests.swift in Sources */,
 				8B52511B20CFF62000E77F70 /* TaxonomyMemoryStore.swift in Sources */,
 				8B0D645F20BEB26B0046056F /* PostsWorkerTests.swift in Sources */,
 				8B0D64EE20C443860046056F /* MediaWorkerTests.swift in Sources */,
@@ -1557,6 +1578,7 @@
 				8B52512220CFF62000E77F70 /* PostsMemoryStore.swift in Sources */,
 				8B52511520CFF53500E77F70 /* TestDependency.swift in Sources */,
 				8B0D64DA20C34CCB0046056F /* TaxonomyWorkerTests.swift in Sources */,
+				8BC4FE2F216D027D00BB7870 /* ModifiedPayloadTests.swift in Sources */,
 				8B52511C20CFF62000E77F70 /* TaxonomyMemoryStore.swift in Sources */,
 				8B0D647820BEB3E00046056F /* PostsWorkerTests.swift in Sources */,
 				8B0D64EF20C443860046056F /* MediaWorkerTests.swift in Sources */,

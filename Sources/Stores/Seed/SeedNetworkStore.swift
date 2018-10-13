@@ -1,0 +1,44 @@
+//
+//  SeedNetworkStore.swift
+//  SwiftyPress
+//
+//  Created by Basem Emara on 2018-10-09.
+//
+
+import ZamzamKit
+
+public struct SeedNetworkStore: SeedStore, Loggable {
+    private let apiSession: APISessionType
+    
+    public init(apiSession: APISessionType) {
+        self.apiSession = apiSession
+    }
+}
+
+public extension SeedNetworkStore {
+    
+    func fetchModified(after date: Date?, completion: @escaping (Result<ModifiedPayload, DataError>) -> Void) {
+        apiSession.request(APIRouter.modifiedPayload(after: date)) {
+            guard let value = $0.value, $0.isSuccess else {
+                // Handle no modified data and return success
+                guard $0.error?.statusCode != 304 else {
+                    return completion(.success(ModifiedPayload()))
+                }
+                
+                self.Log(error: "An error occured while fetching the modified payload: \(String(describing: $0.error)).")
+                return completion(.failure(DataError(from: $0.error)))
+            }
+            
+            DispatchQueue.transform.async {
+                do {
+                    // Parse response data
+                    let payload = try JSONDecoder.default.decode(ModifiedPayload.self, from: value.data)
+                    DispatchQueue.main.async { completion(.success(payload)) }
+                } catch {
+                    self.Log(error: "An error occured while parsing the modified payload: \(error).")
+                    return DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
+                }
+            }
+        }
+    }
+}
