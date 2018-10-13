@@ -273,6 +273,9 @@
 		8BC4FE29216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2A216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2B216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
+		8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
+		8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
+		8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -470,6 +473,7 @@
 		8BC4FE20216CFE4B00BB7870 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		8BC4FE24216CFE7B00BB7870 /* APIRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutable.swift; sourceTree = "<group>"; };
 		8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -877,6 +881,7 @@
 				8B52510420CFE89000E77F70 /* Bundle.swift */,
 				8B52510020CFE7DB00E77F70 /* DateFormatter.swift */,
 				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
+				8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
 				8B5AA7FF2143641300EA4E2F /* Localizable.swift */,
 			);
@@ -1355,6 +1360,7 @@
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DC20C434C40046056F /* Term.swift in Sources */,
+				8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B63A2DF2164FDFA003868F7 /* ConstantsStoreInterfaces.swift in Sources */,
 				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
 				8B0D641820B99B240046056F /* TermType.swift in Sources */,
@@ -1427,6 +1433,7 @@
 				8B0D64DD20C434C40046056F /* Term.swift in Sources */,
 				8B33C4C12168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */,
 				8BBF81E8216C292B00158DDE /* Social.swift in Sources */,
+				8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B0D64C520BEC9830046056F /* Post.swift in Sources */,
 				8B0D641920B99B240046056F /* TermType.swift in Sources */,
 				8B0D644720BEA9010046056F /* PostsModels.swift in Sources */,
@@ -1491,6 +1498,7 @@
 				8B0D64DE20C434C40046056F /* Term.swift in Sources */,
 				8B33C4C22168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */,
 				8BBF81E9216C292B00158DDE /* Social.swift in Sources */,
+				8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B0D64C620BEC9830046056F /* Post.swift in Sources */,
 				8B0D641A20B99B240046056F /* TermType.swift in Sources */,
 				8B0D644820BEA9010046056F /* PostsModels.swift in Sources */,
