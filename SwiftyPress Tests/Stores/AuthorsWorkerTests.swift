@@ -12,21 +12,14 @@ import ZamzamKit
 class AuthorsWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var authorsWorker: AuthorsWorkerType = dependencies.resolveWorker()
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
+
 }
 
 extension AuthorsWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Authors fetch by ID promise")
-        let id = 1
+        let id = 2
         
         authorsWorker.fetch(id: id) {
             defer { promise.fulfill() }
@@ -38,7 +31,7 @@ extension AuthorsWorkerTests {
             XCTAssertTrue(value.id == id)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByIDError() {
@@ -55,6 +48,6 @@ extension AuthorsWorkerTests {
             XCTAssertTrue(true)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }

@@ -10,12 +10,32 @@ import Foundation
 open class Dependency: Dependable {
     public init() { }
     
+    // MARK: - Preferences
+    
+    open func resolve() -> ConstantsType {
+        return Constants(store: resolveStore())
+    }
+    
+    open func resolve() -> PreferencesType {
+        return Preferences(store: resolveStore())
+    }
+    
+    open func resolve() -> NotificationCenter {
+        return .default
+    }
+    
+    open func resolve() -> Theme {
+        fatalError("Override dependency in subclass")
+    }
+    
     // MARK: - Workers
 
     open func resolveWorker() -> PostsWorkerType {
         return PostsWorker(
             store: resolveStore(),
-            preferences: resolve()
+            remote: nil,
+            preferences: resolve(),
+            constants: resolve()
         )
     }
     
@@ -37,29 +57,38 @@ open class Dependency: Dependable {
     
     // MARK: - Store
     
+    open func resolveStore() -> ConstantsStore {
+        fatalError("Override dependency in subclass")
+    }
+    
+    open func resolveStore() -> PreferencesStore {
+        fatalError("Override dependency in subclass")
+    }
+    
     open func resolveStore() -> PostsStore {
-        return PostsNetworkStore(
-            apiSession: resolveService(),
-            seedWorker: resolveWorker()
-        )
+        return PostsFileStore(seedStore: resolveStore())
     }
     
     open func resolveStore() -> TaxonomyStore {
-        return TaxonomyFileStore(store: resolveStore())
+        return TaxonomyFileStore(seedStore: resolveStore())
     }
     
     open func resolveStore() -> AuthorsStore {
-        return AuthorsFileStore(store: resolveStore())
+        return AuthorsFileStore(seedStore: resolveStore())
     }
     
     open func resolveStore() -> MediaStore {
-        return MediaFileStore(store: resolveStore())
+        return MediaFileStore(seedStore: resolveStore())
     }
     
     open func resolveStore() -> SeedStore {
-        return SeedNetworkStore(
-            apiSession: resolveService()
-        )
+        fatalError("Override dependency in subclass")
+    }
+
+    // MARK: - Remote
+
+    open func resolveRemote() -> PostsRemote {
+        return PostsNetworkRemote(apiSession: resolveService())
     }
     
     // MARK: - Service
@@ -70,31 +99,5 @@ open class Dependency: Dependable {
     
     open func resolveService() -> APISessionType {
         return APISession(constants: resolve())
-    }
-    
-    // MARK: - Preferences
-    
-    open func resolve() -> NotificationCenter {
-        return .default
-    }
-    
-    open func resolve() -> ConstantsType {
-        return Constants(store: resolveStore())
-    }
-    
-    open func resolve() -> PreferencesType {
-        return Preferences(store: resolveStore())
-    }
-    
-    open func resolve() -> Theme {
-        fatalError("Override dependency in subclass")
-    }
-    
-    open func resolveStore() -> ConstantsStore {
-        fatalError("Override dependency in subclass")
-    }
-    
-    open func resolveStore() -> PreferencesStore {
-        fatalError("Override dependency in subclass")
     }
 }

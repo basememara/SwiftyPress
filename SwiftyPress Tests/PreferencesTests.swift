@@ -10,14 +10,9 @@ import ZamzamKit
 import SwiftyPress
 
 class PreferencesTests: BaseTestCase, HasDependencies {
-    lazy var preferences: PreferencesType = dependencies.resolve()
     
-    override func setUp() {
-        super.setUp()
-        
-        // Clear defaults before testing
-        UserDefaults(suiteName: TestUtils.shared.bundleIdentifier)!.removeAll()
-    }
+    private lazy var preferences: PreferencesType = dependencies.resolve()
+    
 }
 
 extension PreferencesTests {

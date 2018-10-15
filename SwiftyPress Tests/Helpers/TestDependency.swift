@@ -9,33 +9,17 @@ import SwiftyPress
 
 class TestDependency: Dependency {
     
-    override func resolveStore() -> PostsStore {
-        return PostsMemoryStore(preferences: resolve())
-    }
-    
-    override func resolveStore() -> TaxonomyStore {
-        return TaxonomyMemoryStore()
-    }
-    
-    override func resolveStore() -> AuthorsStore {
-        return AuthorsMemoryStore()
-    }
-    
-    override func resolveStore() -> MediaStore {
-        return MediaMemoryStore()
-    }
-    
     override func resolveStore() -> ConstantsStore {
         return ConstantsMemoryStore(
-            itunesName: "basememara",
+            itunesName: "",
             itunesID: "0",
             baseURL: URL(string: "https://basememara.com")!,
             baseREST: "wp-json/swiftypress/v3",
             wpREST: "wp-json/wp/v2",
-            email: "contact@basememara.com",
-            privacyURL: "https://basememara.com/privacy",
+            email: "",
+            privacyURL: "",
             disclaimerURL: nil,
-            styleSheet: "http://basememara.com/wp-content/themes/metro-pro/style.css",
+            styleSheet: "",
             googleAnalyticsID: nil,
             featuredCategoryID: 64,
             logFileName: "test",
@@ -45,9 +29,14 @@ class TestDependency: Dependency {
     
     override func resolveStore() -> PreferencesStore {
         return PreferencesDefaultsStore(
-            defaults: UserDefaults(
-                suiteName: TestUtils.shared.bundleIdentifier
-            )!
+            defaults: TestUtils.shared.defaults
+        )
+    }
+    
+    override func resolveStore() -> SeedStore {
+        return SeedFileStore(
+            forResource: "seed1.json",
+            inBundle: TestUtils.shared.bundle
         )
     }
 }

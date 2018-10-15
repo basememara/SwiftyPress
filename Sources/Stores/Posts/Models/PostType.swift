@@ -18,3 +18,34 @@ public protocol PostType: Identifiable, Dateable {
     var categories: [Int] { get }
     var tags: [Int] { get }
 }
+
+/// Post type used for grouping multiple protocols
+public struct ExpandedPostType {
+    public let post: PostType
+    public let categories: [TermType]
+    public let tags: [TermType]
+    public let author: AuthorType?
+    public let media: MediaType?
+    
+    init(
+        post: PostType,
+        categories: [TermType],
+        tags: [TermType],
+        author: AuthorType?,
+        media: MediaType?)
+    {
+        self.post = post
+        self.categories = categories
+        self.tags = tags
+        self.author = author
+        self.media = media
+    }
+    
+    init(from object: ExpandedPost) {
+        self.post = object.post
+        self.categories = object.categories
+        self.tags = object.tags
+        self.author = object.author
+        self.media = object.media
+    }
+}

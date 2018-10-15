@@ -10,13 +10,13 @@ import SwiftyPress
 
 class BaseTestCase: XCTestCase, DependencyConfigurator {
     
-    override func setUp() {
-        super.setUp()
-        register(dependencies: TestDependency())
+    var resolveContainer: Dependable {
+        return TestDependency()
     }
     
-    override func tearDown() {
-        super.tearDown()
-        register(dependencies: TestDependency())
+    override func setUp() {
+        super.setUp()
+        register(dependencies: resolveContainer)
+        TestUtils.shared.defaults.removeAll()
     }
 }

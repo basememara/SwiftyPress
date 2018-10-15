@@ -8,19 +8,41 @@
 import ZamzamKit
 
 public protocol PostsStore {
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void)
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
+    
+    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
+    func createOrUpdate(_ request: ExpandedPostType, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
 }
 
-public protocol PostsWorkerType: PostsStore {
+public protocol PostsRemote {
+    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+}
+
+public protocol PostsWorkerType {
+    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
+    
+    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
+    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func addFavorite(id: Int)
     func removeFavorite(id: Int)

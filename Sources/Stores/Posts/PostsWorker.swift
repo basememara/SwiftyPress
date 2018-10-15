@@ -9,11 +9,31 @@ import ZamzamKit
 
 public struct PostsWorker: PostsWorkerType {
     private let store: PostsStore
+    private let remote: PostsRemote?
     private let preferences: PreferencesType
+    private let constants: ConstantsType
     
-    public init(store: PostsStore, preferences: PreferencesType) {
+    public init(
+        store: PostsStore,
+        remote: PostsRemote?,
+        preferences: PreferencesType,
+        constants: ConstantsType)
+    {
         self.store = store
+        self.remote = remote
         self.preferences = preferences
+        self.constants = constants
+    }
+}
+
+public extension PostsWorker {
+    
+    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+        store.fetch(id: id, completion: completion)
+    }
+    
+    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+        store.fetch(slug: slug, completion: completion)
     }
 }
 
@@ -23,23 +43,20 @@ public extension PostsWorker {
         store.fetch(completion: completion)
     }
     
-    func fetch(id: Int, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        store.fetch(id: id, completion: completion)
+    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetchPopular(completion: completion)
     }
+    
+    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch(byCategoryIDs: [constants.featuredCategoryID], completion: completion)
+    }
+}
+
+public extension PostsWorker {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(ids: ids, completion: completion)
     }
-}
-
-public extension PostsWorker {
-    
-    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        store.fetch(slug: slug, completion: completion)
-    }
-}
-
-public extension PostsWorker {
     
     func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(byCategoryIDs: ids, completion: completion)
@@ -55,14 +72,6 @@ public extension PostsWorker {
 }
 
 public extension PostsWorker {
-    
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetchPopular(completion: completion)
-    }
-    
-    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetchTopPicks(completion: completion)
-    }
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.search(with: request, completion: completion)

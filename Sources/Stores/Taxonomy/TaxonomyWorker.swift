@@ -17,20 +17,20 @@ public struct TaxonomyWorker: TaxonomyWorkerType {
 
 public extension TaxonomyWorker {
     
-    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
-        store.fetch(completion: completion)
-    }
-    
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
         store.fetch(id: id, completion: completion)
     }
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
-        store.fetch(ids: ids, completion: completion)
-    }
-    
     func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
         store.fetch(slug: slug, completion: completion)
+    }
+    
+    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        store.fetch(completion: completion)
+    }
+    
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        store.fetch(ids: ids, completion: completion)
     }
     
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {

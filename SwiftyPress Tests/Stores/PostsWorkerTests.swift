@@ -12,17 +12,7 @@ import ZamzamKit
 class PostsWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var postsWorker: PostsWorkerType = dependencies.resolveWorker()
-    
-    override func setUp() {
-        super.setUp()
-        
-        // Clear defaults before testing
-        UserDefaults(suiteName: TestUtils.shared.bundleIdentifier)!.removeAll()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
+
 }
 
 extension PostsWorkerTests {
@@ -40,7 +30,7 @@ extension PostsWorkerTests {
             XCTAssertTrue(!value.isEmpty)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -48,7 +38,7 @@ extension PostsWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Posts fetch by ID promise")
-        let id = 1
+        let id = 5568
         
         postsWorker.fetch(id: id) {
             defer { promise.fulfill() }
@@ -57,15 +47,15 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by ID error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.id == id)
+            XCTAssertTrue(value.post.id == id)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByIDError() {
         let promise = expectation(description: "Posts fetch by ID error promise")
-        let id = 999
+        let id = 99999
         
         postsWorker.fetch(id: id) {
             defer { promise.fulfill() }
@@ -77,7 +67,7 @@ extension PostsWorkerTests {
             XCTAssertTrue(true)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -85,7 +75,7 @@ extension PostsWorkerTests {
     
     func testFetchByIDs() {
         let promise = expectation(description: "Posts fetch by IDs promise")
-        let ids = [2, 3]
+        let ids = [791, 26200]
         
         postsWorker.fetch(ids: Set(ids)) {
             defer { promise.fulfill() }
@@ -97,7 +87,7 @@ extension PostsWorkerTests {
             XCTAssertTrue(value.map { $0.id }.sorted() == ids)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -105,7 +95,7 @@ extension PostsWorkerTests {
     
     func testFetchBySlug() {
         let promise = expectation(description: "Posts fetch by slug promise")
-        let slug = "test-post-2"
+        let slug = "protocol-oriented-router-in-swift"
         
         postsWorker.fetch(slug: slug) {
             defer { promise.fulfill() }
@@ -117,7 +107,7 @@ extension PostsWorkerTests {
             XCTAssertTrue(value.slug == slug)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -125,7 +115,7 @@ extension PostsWorkerTests {
     
     func testFetchByURL() {
         let promise = expectation(description: "Posts fetch by url promise")
-        let url = "http://example.com/test-post-1"
+        let url = "http://example.com/swift-delegates-closure-pattern"
         
         postsWorker.fetch(url: url) {
             defer { promise.fulfill() }
@@ -134,15 +124,15 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by url error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.id == 1)
+            XCTAssertTrue(value.id == 5568)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL2() {
         let promise = expectation(description: "Posts fetch by url 2 promise")
-        let url = "http://example.com/test-post-2/?abc=123#test"
+        let url = "http://example.com/whats-new-ios-BEYond/?abc=123#test"
         
         postsWorker.fetch(url: url) {
             defer { promise.fulfill() }
@@ -151,15 +141,15 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by url 2 error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.id == 2)
+            XCTAssertTrue(value.id == 791)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL3() {
         let promise = expectation(description: "Posts fetch by url 3 promise")
-        let url = "/test-poSt-3/?abc=123#test"
+        let url = "/protocol-oriented-THEmes-for-ios-apps/?abc=123#test"
         
         postsWorker.fetch(url: url) {
             defer { promise.fulfill() }
@@ -168,15 +158,15 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by url 3 error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.id == 3)
+            XCTAssertTrue(value.id == 41373)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL4() {
         let promise = expectation(description: "Posts fetch by url 4 promise")
-        let url = "teSt-post-2"
+        let url = "memory-leaKS-resource-management-swift-ios"
         
         postsWorker.fetch(url: url) {
             defer { promise.fulfill() }
@@ -185,10 +175,10 @@ extension PostsWorkerTests {
                 return XCTFail("Posts fetch by url 4 error: \(String(describing: $0.error))")
             }
             
-            XCTAssertTrue(value.id == 2)
+            XCTAssertTrue(value.id == 771)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -196,7 +186,7 @@ extension PostsWorkerTests {
     
     func testFetchByCategories() {
         let promise = expectation(description: "Posts fetch by categories promise")
-        let ids: Set = [1, 9]
+        let ids: Set = [4, 64]
         
         postsWorker.fetch(byCategoryIDs: ids) {
             defer { promise.fulfill() }
@@ -212,12 +202,12 @@ extension PostsWorkerTests {
             XCTAssertTrue(expression)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByTags() {
         let promise = expectation(description: "Posts fetch by tags promise")
-        let ids: Set = [11]
+        let ids: Set = [52]
         
         postsWorker.fetch(byTagIDs: ids) {
             defer { promise.fulfill() }
@@ -233,12 +223,12 @@ extension PostsWorkerTests {
             XCTAssertTrue(expression)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByTerms() {
         let promise = expectation(description: "Posts fetch by terms promise")
-        let ids: Set = [2, 8, 11]
+        let ids: Set = [56, 58, 77]
         
         postsWorker.fetch(byTermIDs: ids) {
             defer { promise.fulfill() }
@@ -254,7 +244,7 @@ extension PostsWorkerTests {
             XCTAssertTrue(expression)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -262,10 +252,10 @@ extension PostsWorkerTests {
     
     func testFavorites() {
         let promise = expectation(description: "Posts fetch favorites promise")
-        let ids = [2, 3]
+        let ids = [5568, 26200]
         
-        postsWorker.addFavorite(id: 2)
-        postsWorker.addFavorite(id: 3)
+        postsWorker.addFavorite(id: ids[0])
+        postsWorker.addFavorite(id: ids[1])
         
         postsWorker.fetchFavorites {
             defer { promise.fulfill() }
@@ -277,6 +267,6 @@ extension PostsWorkerTests {
             XCTAssertTrue(value.map { $0.id }.sorted() == ids)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }

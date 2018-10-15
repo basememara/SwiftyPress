@@ -8,11 +8,13 @@
 import ZamzamKit
 
 public protocol TaxonomyStore {
-    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void)
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void)
+    
+    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void)
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void)
+    
     func search(with request: TaxonomyModels.SearchRequest, completion: @escaping (Result<[TermType], DataError>) -> Void)
 }
 

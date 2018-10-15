@@ -8,24 +8,23 @@
 import ZamzamKit
 
 public struct AuthorsFileStore: AuthorsStore {
-    private let store: SeedStore
+    private let seedStore: SeedStore
     
-    public init(store: SeedStore) {
-        self.store = store
+    init(seedStore: SeedStore) {
+        self.seedStore = seedStore
     }
 }
 
 public extension AuthorsFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
-        store.fetch {
-            // Handle errors
-            guard $0.isSuccess else {
+        seedStore.fetch {
+            guard let data = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = $0.value?.authors.first(where: { $0.id == id }) else {
+            guard let value = data.authors.first(where: { $0.id == id }) else {
                 return completion(.failure(.nonExistent))
             }
             

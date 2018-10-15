@@ -8,24 +8,23 @@
 import ZamzamKit
 
 public struct MediaFileStore: MediaStore {
-    private let store: SeedStore
+    private let seedStore: SeedStore
     
-    public init(store: SeedStore) {
-        self.store = store
+    init(seedStore: SeedStore) {
+        self.seedStore = seedStore
     }
 }
 
 public extension MediaFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
-        store.fetch {
-            // Handle errors
-            guard $0.isSuccess else {
+        seedStore.fetch {
+            guard let data = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = $0.value?.media.first(where: { $0.id == id }) else {
+            guard let value = data.media.first(where: { $0.id == id }) else {
                 return completion(.failure(.nonExistent))
             }
             
@@ -37,13 +36,15 @@ public extension MediaFileStore {
 public extension MediaFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
-        store.fetch {
-            // Handle errors
-            guard $0.isSuccess else {
+        seedStore.fetch {
+            guard let data = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
-            let value = $0.value?.media.filter { ids.contains($0.id) } ?? []
+            let value = ids.reduce(into: [MediaType]()) { result, next in
+                guard let element = data.media.first(where: { $0.id == next }) else { return }
+                result.append(element)
+            }
             
             completion(.success(value))
         }

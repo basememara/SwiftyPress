@@ -13,20 +13,13 @@ class MediaWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var mediaWorker: MediaWorkerType = dependencies.resolveWorker()
     
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
 }
 
 extension MediaWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Media fetch by ID promise")
-        let id = 1
+        let id = 41287
         
         mediaWorker.fetch(id: id) {
             defer { promise.fulfill() }
@@ -38,12 +31,12 @@ extension MediaWorkerTests {
             XCTAssertTrue(value.id == id)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByIDError() {
         let promise = expectation(description: "Media fetch by ID error promise")
-        let id = 999
+        let id = 999999
         
         mediaWorker.fetch(id: id) {
             defer { promise.fulfill() }
@@ -55,6 +48,6 @@ extension MediaWorkerTests {
             XCTAssertTrue(true)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }

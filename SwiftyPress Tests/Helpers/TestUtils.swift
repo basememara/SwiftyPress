@@ -10,11 +10,10 @@ import Foundation
 class TestUtils {
     static let shared: TestUtils = TestUtils()
     
-    lazy var bundle: Bundle = {
-        Bundle(for: type(of: self))
-    }()
+    lazy var bundle = Bundle(for: type(of: self))
+    lazy var bundleIdentifier = bundle.bundleIdentifier!
     
-    lazy var bundleIdentifier: String = {
-        bundle.bundleIdentifier!
-    }()
+    lazy var defaults: UserDefaults = UserDefaults(
+        suiteName: bundleIdentifier
+    )!
 }

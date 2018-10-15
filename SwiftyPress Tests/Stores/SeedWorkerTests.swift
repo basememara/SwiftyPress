@@ -13,13 +13,6 @@ class SeedWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var seedWorker: SeedWorkerType = dependencies.resolveWorker()
     
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
 }
 
 extension SeedWorkerTests {
@@ -37,7 +30,7 @@ extension SeedWorkerTests {
             XCTAssertTrue(!value.isEmpty)
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
 
@@ -58,6 +51,26 @@ extension SeedWorkerTests {
             XCTAssertTrue(value.authors.allSatisfy { $0.modifiedAt > modifiedDate})
         }
         
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
     }
 }
+
+extension SeedWorkerTests {
+    
+    func testFetchNoModified() {
+        let promise = expectation(description: "Seed fetch no modified promise")
+        
+        seedWorker.fetchModified(after: Date()) {
+            defer { promise.fulfill() }
+            
+            guard let value = $0.value, $0.isSuccess else {
+                return XCTFail("Seed fetch no modified error: \(String(describing: $0.error))")
+            }
+            
+            XCTAssertTrue(value.isEmpty)
+        }
+        
+        waitForExpectations(timeout: 30, handler: nil)
+    }
+}
+
