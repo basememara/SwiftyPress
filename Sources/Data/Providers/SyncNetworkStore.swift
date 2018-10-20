@@ -17,8 +17,8 @@ public struct SyncNetworkStore: SyncStore, Loggable {
 
 public extension SyncNetworkStore {
     
-    func setup() {
-        // No setup needed
+    func configure() {
+        // No configure needed
     }
     
     func fetchModified(after date: Date, completion: @escaping (Result<SeedPayload, DataError>) -> Void) {

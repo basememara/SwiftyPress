@@ -309,7 +309,7 @@ extension Logger {
 public extension Loggable where Self: ApplicationModule {
     
     /// Set up logger with application so state can be logged
-    func setupLogger(for application: UIApplication, inject logger: Loggable? = nil) {
+    func configureLogger(for application: UIApplication, inject logger: Loggable? = nil) {
         Logger.application = application
         
         if let logger = logger {

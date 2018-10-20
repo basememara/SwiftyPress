@@ -929,6 +929,16 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		8B1CC520217BD32500F00A70 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */,
+				8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */,
+				8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
 		8B33C4CF2168EFD700658700 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -983,9 +993,7 @@
 		8B63A2D52164F812003868F7 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */,
-				8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */,
-				8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */,
+				8B1CC520217BD32500F00A70 /* Layouts */,
 				8BBF81D5216BF2D800158DDE /* UIViewController.swift */,
 			);
 			path = Controls;

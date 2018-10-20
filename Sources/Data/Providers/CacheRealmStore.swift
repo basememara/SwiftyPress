@@ -44,7 +44,7 @@ private extension CacheRealmStore {
 
 public extension CacheRealmStore {
     
-    func setup() {
+    func configure() {
         // Validate before initializing database
         guard let fileURL = fileURL, let folderURL = folderURL,
             // Skip if already set up before

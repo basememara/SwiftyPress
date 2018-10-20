@@ -21,7 +21,7 @@ public struct SeedFileStore: SeedStore, Loggable {
 
 public extension SeedFileStore {
     
-    func setup() {
+    func configure() {
         guard SeedFileStore.data == nil else { return }
         
         SeedFileStore.data = try! JSONDecoder.default.decode(

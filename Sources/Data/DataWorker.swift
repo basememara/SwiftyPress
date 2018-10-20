@@ -21,10 +21,10 @@ public struct DataWorker: DataWorkerType, Loggable {
 
 public extension DataWorker {
     
-    func setup() {
-        seedStore.setup()
-        syncStore.setup()
-        cacheStore.setup()
+    func configure() {
+        seedStore.configure()
+        syncStore.configure()
+        cacheStore.configure()
     }
 }
 
