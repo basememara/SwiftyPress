@@ -106,33 +106,3 @@ extension Array where Element: PostType {
         }
     }
 }
-
-extension ExpandedPostType {
-    
-    /// Expand post with linked objects
-    init(from post: PostType, with realm: Realm) {
-        self.post = post
-        
-        self.categories = realm.objects(TermRealmObject.self)
-            .filter("id IN %@", post.categories)
-            .map { Term(from: $0) }
-        
-        self.tags = realm.objects(TermRealmObject.self)
-            .filter("id IN %@", post.tags)
-            .map { Term(from: $0) }
-        
-        self.author = Author(
-            from: realm.object(
-                ofType: AuthorRealmObject.self,
-                forPrimaryKey: post.authorID
-            )
-        )
-        
-        self.media = Media(
-            from: realm.object(
-                ofType: MediaRealmObject.self,
-                forPrimaryKey: post.mediaID
-            )
-        )
-    }
-}

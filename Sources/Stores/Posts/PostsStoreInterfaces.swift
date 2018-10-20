@@ -8,7 +8,7 @@
 import ZamzamKit
 
 public protocol PostsStore {
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
@@ -21,15 +21,15 @@ public protocol PostsStore {
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
-    func createOrUpdate(_ request: ExpandedPostType, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+    func createOrUpdate(_ request: PostPayloadType, completion: @escaping (Result<PostPayloadType, DataError>) -> Void)
 }
 
 public protocol PostsRemote {
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void)
 }
 
 public protocol PostsWorkerType {
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)

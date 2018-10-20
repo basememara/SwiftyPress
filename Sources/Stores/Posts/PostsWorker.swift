@@ -31,7 +31,7 @@ public struct PostsWorker: PostsWorkerType, Loggable {
 
 public extension PostsWorker {
     
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
         store.fetch(id: id) {
             guard let remote = self.remote else { return completion($0) }
             

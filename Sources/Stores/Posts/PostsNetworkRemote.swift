@@ -17,7 +17,7 @@ public struct PostsNetworkRemote: PostsRemote, Loggable {
 
 public extension PostsNetworkRemote {
     
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
         apiSession.request(APIRouter.readPost(id: id)) {
             // Handle errors
             guard $0.isSuccess else {
@@ -33,8 +33,8 @@ public extension PostsNetworkRemote {
             DispatchQueue.transform.async {
                 do {
                     // Parse response data
-                    let payload = try JSONDecoder.default.decode(ExpandedPost.self, from: value.data)
-                    DispatchQueue.main.async { completion(.success(ExpandedPostType(from: payload))) }
+                    let payload = try JSONDecoder.default.decode(PostPayload.self, from: value.data)
+                    DispatchQueue.main.async { completion(.success(PostPayloadType(from: payload))) }
                 } catch {
                     self.Log(error: "An error occured while parsing the post: \(error).")
                     return DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }

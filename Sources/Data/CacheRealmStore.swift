@@ -106,10 +106,10 @@ public extension CacheRealmStore {
 public extension CacheRealmStore {
     
     var lastSyncedAt: Date? {
-        return getSyncActivity(for: ModifiedPayload.self)?.lastPulledAt
+        return getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
-    func createOrUpdate(_ request: ModifiedPayload, lastSyncedAt: Date, completion: @escaping (Result<ModifiedPayload, DataError>) -> Void) {
+    func createOrUpdate(_ request: SeedPayload, lastSyncedAt: Date, completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
         // Ensure there is data before proceeding
         guard !request.isEmpty else {
             self.Log(debug: "Cache creation for modified payload has no changes.")
@@ -141,7 +141,7 @@ public extension CacheRealmStore {
                 
                 // Persist sync date for next use if applicable
                 self.updateSyncActivity(
-                    for: ModifiedPayload.self,
+                    for: SeedPayload.self,
                     lastPulledAt: lastSyncedAt,
                     with: realm
                 )

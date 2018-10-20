@@ -7,7 +7,7 @@
 
 import SwiftyPress
 
-class TestDependency: Dependency {
+class TestDependency: DependencyFactory {
     
     override func resolveStore() -> ConstantsStore {
         return ConstantsMemoryStore(

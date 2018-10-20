@@ -1,5 +1,5 @@
 //
-//  Dependency.swift
+//  DependencyFactory.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-04.
@@ -7,7 +7,38 @@
 
 import Foundation
 
-open class Dependency: Dependable {
+public protocol DependencyFactoryType {
+    func resolve() -> ConstantsType
+    func resolve() -> PreferencesType
+    func resolve() -> NotificationCenter
+    
+    func resolveWorker() -> DataWorkerType
+    func resolveWorker() -> PostsWorkerType
+    func resolveWorker() -> TaxonomyWorkerType
+    func resolveWorker() -> AuthorsWorkerType
+    func resolveWorker() -> MediaWorkerType
+    
+    func resolveStore() -> ConstantsStore
+    func resolveStore() -> PreferencesStore
+    
+    func resolveStore() -> SeedStore
+    func resolveStore() -> SyncStore
+    func resolveStore() -> CacheStore
+    
+    func resolveStore() -> PostsStore
+    func resolveStore() -> TaxonomyStore
+    func resolveStore() -> AuthorsStore
+    func resolveStore() -> MediaStore
+    
+    func resolveRemote() -> PostsRemote
+    
+    func resolveService() -> HTTPServiceType
+    func resolveService() -> APISessionType
+    
+    func resolve() -> Theme
+}
+
+open class DependencyFactory: DependencyFactoryType {
     public init() { }
     
     // MARK: - Preferences
@@ -22,10 +53,6 @@ open class Dependency: Dependable {
     
     open func resolve() -> NotificationCenter {
         return .default
-    }
-    
-    open func resolve() -> Theme {
-        fatalError("Override dependency in subclass")
     }
     
     // MARK: - Workers
@@ -112,5 +139,11 @@ open class Dependency: Dependable {
     
     open func resolveService() -> APISessionType {
         return APISession(constants: resolve())
+    }
+    
+    // MARK: - Misc
+    
+    open func resolve() -> Theme {
+        fatalError("Override dependency in subclass")
     }
 }

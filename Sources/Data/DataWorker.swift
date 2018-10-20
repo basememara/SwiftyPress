@@ -31,10 +31,10 @@ public extension DataWorker {
 public extension DataWorker {
     // Handle simultanuous pull requests in a queue
     private static let queue = DispatchQueue(label: "\(Bundle.swiftyPress.bundleIdentifier!).DataWorker.sync")
-    private static var tasks = [((Result<ModifiedPayload, DataError>) -> Void)]()
+    private static var tasks = [((Result<SeedPayload, DataError>) -> Void)]()
     private static var isSyncing = false
     
-    func sync(completion: @escaping (Result<ModifiedPayload, DataError>) -> Void) {
+    func sync(completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
         Log(info: "Cache sync requested.")
         
         DataWorker.queue.async {
@@ -44,7 +44,7 @@ public extension DataWorker {
             DataWorker.isSyncing = true
             
             // Handler will be called later by multiple code paths
-            func deferredTask(_ result: Result<ModifiedPayload, DataError>) {
+            func deferredTask(_ result: Result<SeedPayload, DataError>) {
                 DataWorker.queue.async {
                     let tasks = DataWorker.tasks
                     DataWorker.tasks.removeAll()

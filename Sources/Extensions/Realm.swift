@@ -10,6 +10,22 @@ import RealmSwift
 
 extension Realm {
     
+    /// Adds or updates an optional object into the Realm.
+    ///
+    /// - Parameters:
+    ///   - object: The object to be added to this Realm.
+    ///   - update: If `true`, the Realm will try to find
+    ///     an existing copy of the object (with the same
+    ///     primary key), and update it. Otherwise, the
+    ///     object will be added.
+    func add(_ object: Object?, update: Bool = false) {
+        guard let object = object else { return }
+        add(object, update: update)
+    }
+}
+
+extension Realm {
+    
     /// Retrieves the instances of a given object type with the given primary keys from the Realm.
     ///
     /// - Parameters:

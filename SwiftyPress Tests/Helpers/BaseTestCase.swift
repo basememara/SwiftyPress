@@ -10,7 +10,7 @@ import SwiftyPress
 
 class BaseTestCase: XCTestCase, DependencyConfigurator {
     
-    var resolveContainer: Dependable {
+    var resolveContainer: DependencyFactoryType {
         return TestDependency()
     }
     

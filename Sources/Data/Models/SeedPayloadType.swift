@@ -1,11 +1,11 @@
 //
-//  ModifiedPayloadType.swift
+//  SeedPayloadType.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
 //
 
-public protocol ModifiedPayloadType {
+public protocol SeedPayloadType {
     associatedtype P: PostType
     associatedtype T: TermType
     associatedtype A: AuthorType

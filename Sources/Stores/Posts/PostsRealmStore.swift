@@ -14,7 +14,7 @@ public struct PostsRealmStore: PostsStore, Loggable {
 
 public extension PostsRealmStore {
     
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -25,7 +25,7 @@ public extension PostsRealmStore {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
             }
             
-            let item = ExpandedPostType(from: Post(from: object), with: realm)
+            let item = PostPayloadType(from: Post(from: object), with: realm)
             
             DispatchQueue.main.async {
                 completion(.success(item))
@@ -176,8 +176,67 @@ public extension PostsRealmStore {
 
 public extension PostsRealmStore {
     
+    func createOrUpdate(_ request: PostPayloadType, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+        DispatchQueue.database.async {
+            let realm: Realm
+            
+            do { realm = try Realm() }
+            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            
+            do {
+                try realm.write {
+                    realm.add(PostRealmObject(from: request.post), update: true)
+                    realm.add(MediaRealmObject(from: request.media), update: true)
+                    realm.add(AuthorRealmObject(from: request.author), update: true)
+                    
+                    realm.add(
+                        (request.categories + request.tags)
+                            // Unnecessary conversion since Swift cannot infer
+                            .map { $0 as? Term ?? Term(from: $0) }
+                            .toList(),
+                        update: true
+                    )
+                }
+            } catch {
+                return DispatchQueue.main.async {
+                    completion(.failure(.databaseFailure(error)))
+                }
+            }
+            
+            // Get refreshed object to return
+            self.fetch(id: request.post.id, completion: completion)
+        }
+    }
+}
+
+// MARK: - Helpers
+
+fileprivate extension PostPayloadType {
     
-    func createOrUpdate(_ request: ExpandedPostType, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    /// Expand post with linked objects
+    init(from post: PostType, with realm: Realm) {
+        self.post = post
         
+        self.author = Author(
+            from: realm.object(
+                ofType: AuthorRealmObject.self,
+                forPrimaryKey: post.authorID
+            )
+        )
+        
+        self.media = Media(
+            from: realm.object(
+                ofType: MediaRealmObject.self,
+                forPrimaryKey: post.mediaID
+            )
+        )
+        
+        self.categories = realm.objects(TermRealmObject.self)
+            .filter("id IN %@", post.categories)
+            .map { Term(from: $0) }
+        
+        self.tags = realm.objects(TermRealmObject.self)
+            .filter("id IN %@", post.tags)
+            .map { Term(from: $0) }
     }
 }

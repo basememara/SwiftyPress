@@ -17,7 +17,7 @@ public struct PostsFileStore: PostsStore {
 
 public extension PostsFileStore {
     
-    func fetch(id: Int, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
         seedStore.fetch {
             guard let value = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -28,8 +28,10 @@ public extension PostsFileStore {
                 return completion(.failure(.nonExistent))
             }
             
-            let model = ExpandedPostType(
+            let model = PostPayloadType(
                 post: post,
+                author: value.authors.first { $0.id == post.authorID },
+                media: value.media.first { $0.id == post.mediaID },
                 categories: post.categories.reduce(into: [TermType]()) { result, next in
                     guard let element = value.categories.first(where: { $0.id == next }) else { return }
                     result.append(element)
@@ -37,9 +39,7 @@ public extension PostsFileStore {
                 tags: post.tags.reduce(into: [TermType]()) { result, next in
                     guard let element = value.tags.first(where: { $0.id == next }) else { return }
                     result.append(element)
-                },
-                author: value.authors.first { $0.id == post.authorID },
-                media: value.media.first { $0.id == post.mediaID }
+                }
             )
             
             completion(.success(model))
@@ -196,13 +196,13 @@ public extension PostsFileStore {
 
 public extension PostsFileStore {
     
-    func createOrUpdate(_ request: ExpandedPostType, completion: @escaping (Result<ExpandedPostType, DataError>) -> Void) {
+    func createOrUpdate(_ request: PostPayloadType, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
         seedStore.fetch {
             guard let value = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
             }
             
-            let model = ModifiedPayload(
+            let model = SeedPayload(
                 posts: value.posts + {
                     guard let post = request.post as? Post,
                         !value.posts.contains(where: { $0.id == post.id }) else {
@@ -211,14 +211,6 @@ public extension PostsFileStore {
                     
                     return [post]
                 }(),
-                categories: value.categories + request.categories.compactMap { term in
-                    guard !value.categories.contains(where: { $0.id == term.id }) else { return nil }
-                    return term as? Term
-                },
-                tags: value.tags + request.tags.compactMap { term in
-                    guard !value.tags.contains(where: { $0.id == term.id }) else { return nil }
-                    return term as? Term
-                },
                 authors: value.authors + {
                     guard let author = request.author as? Author,
                         !value.authors.contains(where: { $0.id == author.id }) else {
@@ -234,7 +226,15 @@ public extension PostsFileStore {
                     }
                     
                     return [media]
-                }()
+                }(),
+                categories: value.categories + request.categories.compactMap { term in
+                    guard !value.categories.contains(where: { $0.id == term.id }) else { return nil }
+                    return term as? Term
+                },
+                tags: value.tags + request.tags.compactMap { term in
+                    guard !value.tags.contains(where: { $0.id == term.id }) else { return nil }
+                    return term as? Term
+                }
             )
             
             guard let seedFileStore = self.seedStore as? SeedFileStore else {
