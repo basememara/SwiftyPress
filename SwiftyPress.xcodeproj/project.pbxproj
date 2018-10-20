@@ -894,6 +894,16 @@
 			name = Localization;
 			sourceTree = "<group>";
 		};
+		8B1CC506217B92E600F00A70 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				8B5250F720CFE6A100E77F70 /* SeedFileStore.swift */,
+				8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */,
+				8BA83A482176386C0055292D /* CacheRealmStore.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		8B33C4CF2168EFD700658700 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -947,20 +957,12 @@
 		8B63A2D52164F812003868F7 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				8B63A2DA2164F851003868F7 /* iOS */,
-			);
-			path = Controls;
-			sourceTree = "<group>";
-		};
-		8B63A2DA2164F851003868F7 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
 				8B63A2DB2164F875003868F7 /* MultiRowLayout.swift */,
 				8B63A2D82164F84D003868F7 /* SnapPagingLayout.swift */,
 				8B63A2D62164F826003868F7 /* ScrollableFlowLayout.swift */,
 				8BBF81D5216BF2D800158DDE /* UIViewController.swift */,
 			);
-			path = iOS;
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		8B63A2DD2164FDB7003868F7 /* Preferences */ = {
@@ -1010,10 +1012,8 @@
 			isa = PBXGroup;
 			children = (
 				8B5250DA20CFD9E700E77F70 /* Models */,
+				8B1CC506217B92E600F00A70 /* Providers */,
 				8B5250EF20CFE5B500E77F70 /* DataStoreInterfaces.swift */,
-				8B5250F720CFE6A100E77F70 /* SeedFileStore.swift */,
-				8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */,
-				8BA83A482176386C0055292D /* CacheRealmStore.swift */,
 				8B8802882174B49D0035543D /* DataWorker.swift */,
 			);
 			path = Data;
