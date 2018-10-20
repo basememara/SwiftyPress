@@ -158,6 +158,12 @@
 		8B1CC503217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
 		8B1CC504217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
 		8B1CC505217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
+		8B1CC50E217B951B00F00A70 /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC508217B951B00F00A70 /* ThemedLabel.swift */; };
+		8B1CC511217B951B00F00A70 /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC509217B951B00F00A70 /* ThemedView.swift */; };
+		8B1CC514217B951B00F00A70 /* ThemedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50A217B951B00F00A70 /* ThemedImage.swift */; };
+		8B1CC517217B951B00F00A70 /* ThemedSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50B217B951B00F00A70 /* ThemedSwitch.swift */; };
+		8B1CC51A217B951B00F00A70 /* ThemedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50C217B951B00F00A70 /* ThemedSegmentedControl.swift */; };
+		8B1CC51D217B951B00F00A70 /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50D217B951B00F00A70 /* ThemedButton.swift */; };
 		8B33C4C02168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
 		8B33C4C12168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
 		8B33C4C22168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
@@ -450,6 +456,12 @@
 		8B0D651520C558670046056F /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
 		8B0D651920C559700046056F /* HasDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDependencies.swift; sourceTree = "<group>"; };
 		8B1CC502217B7C2F00F00A70 /* PostPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPayload.swift; sourceTree = "<group>"; };
+		8B1CC508217B951B00F00A70 /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		8B1CC509217B951B00F00A70 /* ThemedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
+		8B1CC50A217B951B00F00A70 /* ThemedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedImage.swift; sourceTree = "<group>"; };
+		8B1CC50B217B951B00F00A70 /* ThemedSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSwitch.swift; sourceTree = "<group>"; };
+		8B1CC50C217B951B00F00A70 /* ThemedSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSegmentedControl.swift; sourceTree = "<group>"; };
+		8B1CC50D217B951B00F00A70 /* ThemedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
 		8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStoreInterfaces.swift; sourceTree = "<group>"; };
 		8B33C4C32168ED1B00658700 /* PreferencesDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDefaultsStore.swift; sourceTree = "<group>"; };
 		8B33C4C72168ED2A00658700 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -904,6 +916,19 @@
 			path = Providers;
 			sourceTree = "<group>";
 		};
+		8B1CC507217B951B00F00A70 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				8B1CC508217B951B00F00A70 /* ThemedLabel.swift */,
+				8B1CC509217B951B00F00A70 /* ThemedView.swift */,
+				8B1CC50A217B951B00F00A70 /* ThemedImage.swift */,
+				8B1CC50B217B951B00F00A70 /* ThemedSwitch.swift */,
+				8B1CC50C217B951B00F00A70 /* ThemedSegmentedControl.swift */,
+				8B1CC50D217B951B00F00A70 /* ThemedButton.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		8B33C4CF2168EFD700658700 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +940,7 @@
 		8B33C4E82169652700658700 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				8B1CC507217B951B00F00A70 /* Controls */,
 				8B33C4E92169653900658700 /* Theme.swift */,
 			);
 			path = Styles;
@@ -1385,14 +1411,18 @@
 				8B0D650D20C548270046056F /* AuthorsFileStore.swift in Sources */,
 				8BA83A492176386C0055292D /* CacheRealmStore.swift in Sources */,
 				8BC2FA1A2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
+				8B1CC51D217B951B00F00A70 /* ThemedButton.swift in Sources */,
 				8B52510120CFE7DB00E77F70 /* DateFormatter.swift in Sources */,
+				8B1CC511217B951B00F00A70 /* ThemedView.swift in Sources */,
 				8B0D643A20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC720D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
+				8B1CC514217B951B00F00A70 /* ThemedImage.swift in Sources */,
 				8B63A2DC2164F875003868F7 /* MultiRowLayout.swift in Sources */,
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
+				8B1CC51A217B951B00F00A70 /* ThemedSegmentedControl.swift in Sources */,
 				8B0D64DC20C434C40046056F /* Term.swift in Sources */,
 				8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B63A2DF2164FDFA003868F7 /* ConstantsStoreInterfaces.swift in Sources */,
@@ -1435,6 +1465,8 @@
 				8B6A2BBE20D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F120C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,
 				8BC2FA26217819230014D7B5 /* Realm.swift in Sources */,
+				8B1CC517217B951B00F00A70 /* ThemedSwitch.swift in Sources */,
+				8B1CC50E217B951B00F00A70 /* ThemedLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
