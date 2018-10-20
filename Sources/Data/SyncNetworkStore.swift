@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public struct SeedNetworkStore: SeedStore, Loggable {
+public struct SyncNetworkStore: SyncStore, Loggable {
     private let apiSession: APISessionType
     
     public init(apiSession: APISessionType) {
@@ -15,9 +15,13 @@ public struct SeedNetworkStore: SeedStore, Loggable {
     }
 }
 
-public extension SeedNetworkStore {
+public extension SyncNetworkStore {
     
-    func fetchModified(after date: Date?, completion: @escaping (Result<ModifiedPayload, DataError>) -> Void) {
+    func setup() {
+        // No setup needed
+    }
+    
+    func fetchModified(after date: Date, completion: @escaping (Result<ModifiedPayload, DataError>) -> Void) {
         apiSession.request(APIRouter.modifiedPayload(after: date)) {
             guard let value = $0.value, $0.isSuccess else {
                 // Handle no modified data and return success

@@ -27,3 +27,28 @@ private extension Term {
         case count
     }
 }
+
+extension Term {
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of term type.
+    init(from object: TermType) {
+        self.init(
+            id: object.id,
+            parentID: object.parentID,
+            slug: object.slug,
+            name: object.name,
+            taxonomy: object.taxonomy,
+            count: object.count
+        )
+    }
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of term type.
+    init?(from object: TermType?) {
+        guard let object = object else { return nil }
+        self.init(from: object)
+    }
+}

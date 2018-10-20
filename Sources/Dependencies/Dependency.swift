@@ -29,13 +29,22 @@ open class Dependency: Dependable {
     }
     
     // MARK: - Workers
+    
+    open func resolveWorker() -> DataWorkerType {
+        return DataWorker(
+            seedStore: resolveStore(),
+            syncStore: resolveStore(),
+            cacheStore: resolveStore()
+        )
+    }
 
     open func resolveWorker() -> PostsWorkerType {
         return PostsWorker(
             store: resolveStore(),
-            remote: nil,
+            remote: resolveRemote(),
             preferences: resolve(),
-            constants: resolve()
+            constants: resolve(),
+            dataWorker: resolveWorker()
         )
     }
     
@@ -51,10 +60,6 @@ open class Dependency: Dependable {
         return MediaWorker(store: resolveStore())
     }
     
-    open func resolveWorker() -> SeedWorkerType {
-        return SeedWorker(store: resolveStore())
-    }
-    
     // MARK: - Store
     
     open func resolveStore() -> ConstantsStore {
@@ -65,8 +70,20 @@ open class Dependency: Dependable {
         fatalError("Override dependency in subclass")
     }
     
+    open func resolveStore() -> SeedStore {
+        fatalError("Override dependency in subclass")
+    }
+    
+    open func resolveStore() -> SyncStore {
+        return SyncNetworkStore(apiSession: resolveService())
+    }
+    
+    open func resolveStore() -> CacheStore {
+        return CacheRealmStore(preferences: resolve())
+    }
+    
     open func resolveStore() -> PostsStore {
-        return PostsFileStore(seedStore: resolveStore())
+        return PostsRealmStore()
     }
     
     open func resolveStore() -> TaxonomyStore {
@@ -79,10 +96,6 @@ open class Dependency: Dependable {
     
     open func resolveStore() -> MediaStore {
         return MediaFileStore(seedStore: resolveStore())
-    }
-    
-    open func resolveStore() -> SeedStore {
-        fatalError("Override dependency in subclass")
     }
 
     // MARK: - Remote

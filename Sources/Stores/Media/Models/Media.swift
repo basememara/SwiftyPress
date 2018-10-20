@@ -29,3 +29,29 @@ private extension Media {
         case thumbnailHeight = "thumbnail_height"
     }
 }
+
+extension Media {
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of media type.
+    init(from object: MediaType) {
+        self.init(
+            id: object.id,
+            link: object.link,
+            width: object.width,
+            height: object.height,
+            thumbnailLink: object.thumbnailLink,
+            thumbnailWidth: object.thumbnailWidth,
+            thumbnailHeight: object.thumbnailHeight
+        )
+    }
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of media type.
+    init?(from object: MediaType?) {
+        guard let object = object else { return nil }
+        self.init(from: object)
+    }
+}

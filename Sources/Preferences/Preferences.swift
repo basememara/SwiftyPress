@@ -43,6 +43,7 @@ public extension Preferences {
     
     /// Removes all the user defaults items.
     func clear() {
+        remove(.userID)
         remove(.favorites)
     }
 }

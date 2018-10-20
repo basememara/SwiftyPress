@@ -5,6 +5,8 @@
 //  Created by Basem Emara on 2018-05-30.
 //
 
+import Foundation
+
 public struct Post: PostType, Decodable {
     public let id: Int
     public let slug: String
@@ -41,6 +43,39 @@ private extension Post {
         case tags
         case createdAt = "created"
         case modifiedAt = "modified"
+    }
+}
+
+extension Post {
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of post type.
+    init(from object: PostType) {
+        self.init(
+            id: object.id,
+            slug: object.slug,
+            type: object.type,
+            title: object.title,
+            content: object.content,
+            excerpt: object.excerpt,
+            link: object.link,
+            commentCount: object.commentCount,
+            authorID: object.authorID,
+            mediaID: object.mediaID,
+            categories: object.categories,
+            tags: object.tags,
+            createdAt: object.createdAt,
+            modifiedAt: object.modifiedAt
+        )
+    }
+    
+    /// For converting to one type to another.
+    ///
+    /// - Parameter object: An instance of post type.
+    init?(from object: PostType?) {
+        guard let object = object else { return nil }
+        self.init(from: object)
     }
 }
 

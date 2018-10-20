@@ -8,5 +8,6 @@
 import ZamzamKit
 
 public extension DefaultsKeys {
+    static let userID = DefaultsKey<Int?>("userID")
     static let favorites = DefaultsKey<[Int]?>("favorites")
 }
