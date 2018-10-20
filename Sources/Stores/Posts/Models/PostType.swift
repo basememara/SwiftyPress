@@ -5,6 +5,8 @@
 //  Created by Basem Emara on 2018-05-26.
 //
 
+import Foundation
+
 public protocol PostType: Identifiable, Dateable {
     var slug: String { get }
     var type: String { get }

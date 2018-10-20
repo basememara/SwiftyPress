@@ -5,6 +5,8 @@
 //  Created by Basem Emara on 2018-06-12.
 //
 
+import Foundation
+
 public extension Bundle {
     private class TempClassForBundle {}
     
