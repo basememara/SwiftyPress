@@ -31,7 +31,7 @@ public struct PostsWorker: PostsWorkerType, Loggable {
 
 public extension PostsWorker {
     
-    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         store.fetch(id: id) {
             guard let remote = self.remote else { return completion($0) }
             
@@ -109,7 +109,7 @@ public extension PostsWorker {
     }
     
     func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch(byCategoryIDs: [constants.featuredCategoryID], completion: completion)
+        fetch(byTermIDs: [constants.featuredCategoryID], completion: completion)
     }
 }
 
@@ -125,40 +125,12 @@ public extension PostsWorker {
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
+                guard $0.value?.posts.contains(where: { ids.contains($0.id) }) == true,
+                    $0.isSuccess else {
+                        return
+                }
+                
                 self.store.fetch(ids: ids, completion: completion)
-            }
-        }
-    }
-    
-    func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetch(byCategoryIDs: ids) {
-            // Immediately return local response
-            completion($0)
-            
-            guard $0.isSuccess else { return }
-            
-            // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
-                // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
-                self.store.fetch(byCategoryIDs: ids, completion: completion)
-            }
-        }
-    }
-    
-    func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetch(byTagIDs: ids) {
-            // Immediately return local response
-            completion($0)
-            
-            guard $0.isSuccess else { return }
-            
-            // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
-                // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
-                self.store.fetch(byTagIDs: ids, completion: completion)
             }
         }
     }
@@ -173,7 +145,8 @@ public extension PostsWorker {
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
+                let modifiedIDs = Set($0.value?.posts.flatMap { $0.categories + $0.tags } ?? [])
+                guard ids.contains(where: modifiedIDs.contains), $0.isSuccess else { return }
                 self.store.fetch(byTermIDs: ids, completion: completion)
             }
         }

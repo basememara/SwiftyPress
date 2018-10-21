@@ -20,3 +20,12 @@ public protocol PostType: Identifiable, Dateable {
     var categories: [Int] { get }
     var tags: [Int] { get }
 }
+
+/// Post type used for grouping multiple protocols
+public struct ExtendedPostType {
+    public let post: PostType
+    public let author: AuthorType?
+    public let media: MediaType?
+    public let categories: [TermType]
+    public let tags: [TermType]
+}

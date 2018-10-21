@@ -126,10 +126,10 @@ public extension CacheRealmStore {
             catch { return DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) } }
             
             // Transform data
-            let post = request.posts.toList()
-            let media = request.media.toList()
-            let authors = request.authors.toList()
-            let terms = (request.categories + request.tags).toList()
+            let post = request.posts.map { PostRealmObject(from: $0) }
+            let media = request.media.map { MediaRealmObject(from: $0) }
+            let authors = request.authors.map { AuthorRealmObject(from: $0) }
+            let terms = (request.categories + request.tags).map { TermRealmObject(from: $0) }
             
             do {
                 try realm.write {

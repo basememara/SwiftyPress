@@ -47,15 +47,3 @@ extension AuthorRealmObject {
         self.init(from: object)
     }
 }
-
-extension Array where Element: AuthorType {
-    
-    /// Generates a Realm list of objects.
-    func toList() -> List<AuthorRealmObject> {
-        return List<AuthorRealmObject>().with {
-            $0.append(objectsIn: map {
-                AuthorRealmObject(from: $0)
-            })
-        }
-    }
-}

@@ -17,7 +17,7 @@ public struct PostsFileStore: PostsStore {
 
 public extension PostsFileStore {
     
-    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
             guard let value = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -28,7 +28,7 @@ public extension PostsFileStore {
                 return completion(.failure(.nonExistent))
             }
             
-            let model = PostPayloadType(
+            let model = ExtendedPostType(
                 post: post,
                 author: value.authors.first { $0.id == post.authorID },
                 media: value.media.first { $0.id == post.mediaID },
@@ -97,30 +97,6 @@ public extension PostsFileStore {
             let value = ids.reduce(into: [PostType]()) { result, next in
                 guard let element = data.first(where: { $0.id == next }) else { return }
                 result.append(element)
-            }
-            
-            completion(.success(value))
-        }
-    }
-    
-    func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch {
-            guard let data = $0.value, $0.isSuccess else { return completion($0) }
-            
-            let value = data.filter {
-                $0.categories.contains(where: ids.contains)
-            }
-            
-            completion(.success(value))
-        }
-    }
-    
-    func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch {
-            guard let data = $0.value, $0.isSuccess else { return completion($0) }
-            
-            let value = data.filter {
-                $0.tags.contains(where: ids.contains)
             }
             
             completion(.success(value))
@@ -196,7 +172,7 @@ public extension PostsFileStore {
 
 public extension PostsFileStore {
     
-    func createOrUpdate(_ request: PostPayloadType, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+    func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
             guard let value = $0.value, $0.isSuccess else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))

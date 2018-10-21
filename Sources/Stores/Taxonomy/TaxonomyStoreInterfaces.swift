@@ -14,8 +14,6 @@ public protocol TaxonomyStore {
     func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void)
-    
-    func search(with request: TaxonomyModels.SearchRequest, completion: @escaping (Result<[TermType], DataError>) -> Void)
 }
 
 public protocol TaxonomyWorkerType: TaxonomyStore {

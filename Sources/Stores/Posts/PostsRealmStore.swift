@@ -14,7 +14,7 @@ public struct PostsRealmStore: PostsStore, Loggable {
 
 public extension PostsRealmStore {
     
-    func fetch(id: Int, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -25,7 +25,7 @@ public extension PostsRealmStore {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
             }
             
-            let item = PostPayloadType(from: Post(from: object), with: realm)
+            let item = self.extend(post: object, with: realm)
             
             DispatchQueue.main.async {
                 completion(.success(item))
@@ -111,42 +111,6 @@ public extension PostsRealmStore {
         }
     }
     
-    func fetch(byCategoryIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        DispatchQueue.database.async {
-            let realm: Realm
-            
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
-            
-            let items: [PostType] = realm.objects(PostRealmObject.self)
-                //.filter("ANY categoriesRaw IN %@", ids)
-                .sorted(byKeyPath: "createdAt", ascending: false)
-                .map { Post(from: $0) }
-            
-            DispatchQueue.main.async {
-                completion(.success(items))
-            }
-        }
-    }
-    
-    func fetch(byTagIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        DispatchQueue.database.async {
-            let realm: Realm
-            
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
-            
-            let items: [PostType] = realm.objects(PostRealmObject.self)
-                //.filter("ANY tagsRaw IN %@", ids)
-                .sorted(byKeyPath: "createdAt", ascending: false)
-                .map { Post(from: $0) }
-            
-            DispatchQueue.main.async {
-                completion(.success(items))
-            }
-        }
-    }
-    
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
@@ -155,7 +119,7 @@ public extension PostsRealmStore {
             catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
-                //.filter("ANY categoriesRaw IN %@ OR ANY tagsRaw IN %@", ids, ids)
+                .filter("ANY categoriesRaw.id IN %@ OR ANY tagsRaw.id IN %@", ids, ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .map { Post(from: $0) }
             
@@ -170,13 +134,55 @@ public extension PostsRealmStore {
     
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        guard !request.query.isEmpty else { return completion(.success([])) }
         
+        DispatchQueue.database.async {
+            let realm: Realm
+            
+            do { realm = try Realm() }
+            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            
+            // Construct predicate builder
+            var predicates = [NSPredicate]()
+            
+            // By title
+            if request.scope.within([.title, .all]) {
+                predicates.append(NSPredicate(format: "title CONTAINS[c] %@", request.query))
+            }
+            
+            // By content
+            if request.scope.within([.content, .all]) {
+                predicates.append(NSPredicate(format: "content CONTAINS[c] %@", request.query))
+            }
+            
+            // By keywords
+            if request.scope.within([.terms, .all]) {
+                let termIDs = Array(
+                    realm.objects(TermRealmObject.self)
+                        .filter("name CONTAINS[c] %@", request.query)
+                        .map { $0.id }
+                )
+                
+                if !termIDs.isEmpty {
+                    predicates.append(NSPredicate(format: "ANY categoriesRaw.id IN %@ OR ANY tagsRaw.id IN %@", termIDs, termIDs))
+                }
+            }
+            
+            let items: [PostType] = realm.objects(PostRealmObject.self)
+                .filter(NSCompoundPredicate(orPredicateWithSubpredicates: predicates))
+                .sorted(byKeyPath: "createdAt", ascending: false)
+                .map { Post(from: $0) }
+            
+            DispatchQueue.main.async {
+                completion(.success(items))
+            }
+        }
     }
 }
 
 public extension PostsRealmStore {
     
-    func createOrUpdate(_ request: PostPayloadType, completion: @escaping (Result<PostPayloadType, DataError>) -> Void) {
+    func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -188,12 +194,8 @@ public extension PostsRealmStore {
                     realm.add(PostRealmObject(from: request.post), update: true)
                     realm.add(MediaRealmObject(from: request.media), update: true)
                     realm.add(AuthorRealmObject(from: request.author), update: true)
-                    
                     realm.add(
-                        (request.categories + request.tags)
-                            // Unnecessary conversion since Swift cannot infer
-                            .map { $0 as? Term ?? Term(from: $0) }
-                            .toList(),
+                        (request.categories + request.tags).map { TermRealmObject(from: $0) },
                         update: true
                     )
                 }
@@ -204,39 +206,48 @@ public extension PostsRealmStore {
             }
             
             // Get refreshed object to return
-            self.fetch(id: request.post.id, completion: completion)
+            guard let object = realm.object(ofType: PostRealmObject.self, forPrimaryKey: request.post.id) else {
+                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+            }
+            
+            let item = self.extend(post: object, with: realm)
+            
+            DispatchQueue.main.async {
+                completion(.success(item))
+            }
         }
     }
 }
 
 // MARK: - Helpers
 
-fileprivate extension PostPayloadType {
+private extension PostsRealmStore {
     
-    /// Expand post with linked objects
-    init(from post: PostType, with realm: Realm) {
-        self.post = post
-        
-        self.author = Author(
-            from: realm.object(
-                ofType: AuthorRealmObject.self,
-                forPrimaryKey: post.authorID
-            )
+    /// Extend post with linked objects
+    func extend(post: PostType, with realm: Realm) -> ExtendedPostType {
+        return ExtendedPostType(
+            post: Post(from: post),
+            author: Author(
+                from: realm.object(
+                    ofType: AuthorRealmObject.self,
+                    forPrimaryKey: post.authorID
+                )
+            ),
+            media: {
+                guard let id = post.mediaID else { return nil }
+                return Media(
+                    from: realm.object(
+                        ofType: MediaRealmObject.self,
+                        forPrimaryKey: id
+                    )
+                )
+            }(),
+            categories: realm.objects(TermRealmObject.self)
+                .filter("id IN %@", post.categories)
+                .map { Term(from: $0) },
+            tags: realm.objects(TermRealmObject.self)
+                .filter("id IN %@", post.tags)
+                .map { Term(from: $0) }
         )
-        
-        self.media = Media(
-            from: realm.object(
-                ofType: MediaRealmObject.self,
-                forPrimaryKey: post.mediaID
-            )
-        )
-        
-        self.categories = realm.objects(TermRealmObject.self)
-            .filter("id IN %@", post.categories)
-            .map { Term(from: $0) }
-        
-        self.tags = realm.objects(TermRealmObject.self)
-            .filter("id IN %@", post.tags)
-            .map { Term(from: $0) }
     }
 }

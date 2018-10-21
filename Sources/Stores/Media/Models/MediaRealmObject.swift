@@ -47,15 +47,3 @@ extension MediaRealmObject {
         self.init(from: object)
     }
 }
-
-extension Array where Element: MediaType {
-    
-    /// Generates a Realm list of objects.
-    func toList() -> List<MediaRealmObject> {
-        return List<MediaRealmObject>().with {
-            $0.append(objectsIn: map {
-                MediaRealmObject(from: $0)
-            })
-        }
-    }
-}

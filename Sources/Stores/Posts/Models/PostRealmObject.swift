@@ -18,11 +18,12 @@ class PostRealmObject: Object, PostType {
     dynamic var link: String = ""
     dynamic var commentCount: Int = 0
     dynamic var authorID: Int = 0
-    dynamic let mediaIDRaw = RealmOptional<Int>()
-    dynamic var categoriesRaw = List<Int>()
-    dynamic var tagsRaw = List<Int>()
     dynamic var createdAt: Date = .distantPast
     dynamic var modifiedAt: Date = .distantPast
+    
+    let mediaIDRaw = RealmOptional<Int>()
+    let categoriesRaw = List<TermIDRealmObject>()
+    let tagsRaw = List<TermIDRealmObject>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -45,23 +46,35 @@ extension PostRealmObject {
     }
     
     var categories: [Int] {
-        get { return Array(categoriesRaw) }
+        get { return categoriesRaw.map { $0.id } }
         set {
-            categoriesRaw = List<Int>().with {
-                $0.append(objectsIn: newValue)
-            }
+            categoriesRaw.removeAll()
+            categoriesRaw.append(objectsIn: newValue.map { id in
+                TermIDRealmObject().with { $0.id = id }
+            })
         }
     }
     
     var tags: [Int] {
-        get { return Array(tagsRaw) }
+        get { return tagsRaw.map { $0.id } }
         set {
-            tagsRaw = List<Int>().with {
-                $0.append(objectsIn: newValue)
-            }
+            tagsRaw.removeAll()
+            tagsRaw.append(objectsIn: newValue.map { id in
+                TermIDRealmObject().with { $0.id = id }
+            })
         }
     }
 }
+
+/// Dummy type since no support for queries of array of primitives
+@objcMembers
+class TermIDRealmObject: Object {
+    // https://github.com/realm/realm-object-store/issues/513
+    dynamic var id: Int = 0
+    override static func primaryKey() -> String? { return "id" }
+}
+
+// MARK: - Helpers
 
 extension PostRealmObject {
     
@@ -92,17 +105,5 @@ extension PostRealmObject {
     convenience init?(from object: PostType?) {
         guard let object = object else { return nil }
         self.init(from: object)
-    }
-}
-
-extension Array where Element: PostType {
-    
-    /// Generates a Realm list of objects.
-    func toList() -> List<PostRealmObject> {
-        return List<PostRealmObject>().with {
-            $0.append(objectsIn: map {
-                PostRealmObject(from: $0)
-            })
-        }
     }
 }

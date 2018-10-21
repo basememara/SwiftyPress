@@ -62,15 +62,3 @@ extension TermRealmObject {
         self.init(from: object)
     }
 }
-
-extension Array where Element: TermType {
-    
-    /// Generates a Realm list of objects.
-    func toList() -> List<TermRealmObject> {
-        return List<TermRealmObject>().with {
-            $0.append(objectsIn: map {
-                TermRealmObject(from: $0)
-            })
-        }
-    }
-}

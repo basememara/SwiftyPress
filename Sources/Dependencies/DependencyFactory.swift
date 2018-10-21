@@ -14,9 +14,9 @@ public protocol DependencyFactoryType {
     
     func resolveWorker() -> DataWorkerType
     func resolveWorker() -> PostsWorkerType
-    func resolveWorker() -> TaxonomyWorkerType
     func resolveWorker() -> AuthorsWorkerType
     func resolveWorker() -> MediaWorkerType
+    func resolveWorker() -> TaxonomyWorkerType
     
     func resolveStore() -> ConstantsStore
     func resolveStore() -> PreferencesStore
@@ -26,14 +26,14 @@ public protocol DependencyFactoryType {
     func resolveStore() -> CacheStore
     
     func resolveStore() -> PostsStore
-    func resolveStore() -> TaxonomyStore
     func resolveStore() -> AuthorsStore
     func resolveStore() -> MediaStore
+    func resolveStore() -> TaxonomyStore
     
     func resolveRemote() -> PostsRemote
     
-    func resolveService() -> HTTPServiceType
     func resolveService() -> APISessionType
+    func resolveService() -> HTTPServiceType
     
     func resolve() -> Theme
 }
@@ -75,16 +75,19 @@ open class DependencyFactory: DependencyFactoryType {
         )
     }
     
-    open func resolveWorker() -> TaxonomyWorkerType {
-        return TaxonomyWorker(store: resolveStore())
-    }
-    
     open func resolveWorker() -> AuthorsWorkerType {
         return AuthorsWorker(store: resolveStore())
     }
     
     open func resolveWorker() -> MediaWorkerType {
         return MediaWorker(store: resolveStore())
+    }
+    
+    open func resolveWorker() -> TaxonomyWorkerType {
+        return TaxonomyWorker(
+            store: resolveStore(),
+            dataWorker: resolveWorker()
+        )
     }
     
     // MARK: - Store
@@ -113,16 +116,16 @@ open class DependencyFactory: DependencyFactoryType {
         return PostsRealmStore()
     }
     
-    open func resolveStore() -> TaxonomyStore {
-        return TaxonomyFileStore(seedStore: resolveStore())
-    }
-    
     open func resolveStore() -> AuthorsStore {
-        return AuthorsFileStore(seedStore: resolveStore())
+        return AuthorsRealmStore()
     }
     
     open func resolveStore() -> MediaStore {
-        return MediaFileStore(seedStore: resolveStore())
+        return MediaRealmStore()
+    }
+    
+    open func resolveStore() -> TaxonomyStore {
+        return TaxonomyRealmStore()
     }
 
     // MARK: - Remote
@@ -133,12 +136,12 @@ open class DependencyFactory: DependencyFactoryType {
     
     // MARK: - Service
     
-    open func resolveService() -> HTTPServiceType {
-        return HTTPService()
-    }
-    
     open func resolveService() -> APISessionType {
         return APISession(constants: resolve())
+    }
+    
+    open func resolveService() -> HTTPServiceType {
+        return HTTPService()
     }
     
     // MARK: - Misc

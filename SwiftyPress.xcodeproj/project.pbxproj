@@ -155,15 +155,21 @@
 		8B0D651A20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
 		8B0D651B20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
 		8B0D651C20C559700046056F /* HasDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D651920C559700046056F /* HasDependencies.swift */; };
-		8B1CC503217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
-		8B1CC504217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
-		8B1CC505217B7C2F00F00A70 /* PostPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC502217B7C2F00F00A70 /* PostPayload.swift */; };
 		8B1CC50E217B951B00F00A70 /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC508217B951B00F00A70 /* ThemedLabel.swift */; };
 		8B1CC511217B951B00F00A70 /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC509217B951B00F00A70 /* ThemedView.swift */; };
 		8B1CC514217B951B00F00A70 /* ThemedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50A217B951B00F00A70 /* ThemedImage.swift */; };
 		8B1CC517217B951B00F00A70 /* ThemedSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50B217B951B00F00A70 /* ThemedSwitch.swift */; };
 		8B1CC51A217B951B00F00A70 /* ThemedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50C217B951B00F00A70 /* ThemedSegmentedControl.swift */; };
 		8B1CC51D217B951B00F00A70 /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC50D217B951B00F00A70 /* ThemedButton.swift */; };
+		8B1CC526217BE54700F00A70 /* MediaRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC525217BE54700F00A70 /* MediaRealmStore.swift */; };
+		8B1CC527217BE54700F00A70 /* MediaRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC525217BE54700F00A70 /* MediaRealmStore.swift */; };
+		8B1CC528217BE54700F00A70 /* MediaRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC525217BE54700F00A70 /* MediaRealmStore.swift */; };
+		8B1CC52A217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC529217BE67900F00A70 /* AuthorsRealmStore.swift */; };
+		8B1CC52B217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC529217BE67900F00A70 /* AuthorsRealmStore.swift */; };
+		8B1CC52C217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC529217BE67900F00A70 /* AuthorsRealmStore.swift */; };
+		8B1CC52E217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC52D217BE71D00F00A70 /* TaxonomyRealmStore.swift */; };
+		8B1CC52F217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC52D217BE71D00F00A70 /* TaxonomyRealmStore.swift */; };
+		8B1CC530217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CC52D217BE71D00F00A70 /* TaxonomyRealmStore.swift */; };
 		8B33C4C02168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
 		8B33C4C12168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
 		8B33C4C22168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */; };
@@ -455,13 +461,15 @@
 		8B0D650C20C548270046056F /* AuthorsFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsFileStore.swift; sourceTree = "<group>"; };
 		8B0D651520C558670046056F /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
 		8B0D651920C559700046056F /* HasDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDependencies.swift; sourceTree = "<group>"; };
-		8B1CC502217B7C2F00F00A70 /* PostPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPayload.swift; sourceTree = "<group>"; };
 		8B1CC508217B951B00F00A70 /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
 		8B1CC509217B951B00F00A70 /* ThemedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
 		8B1CC50A217B951B00F00A70 /* ThemedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedImage.swift; sourceTree = "<group>"; };
 		8B1CC50B217B951B00F00A70 /* ThemedSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSwitch.swift; sourceTree = "<group>"; };
 		8B1CC50C217B951B00F00A70 /* ThemedSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSegmentedControl.swift; sourceTree = "<group>"; };
 		8B1CC50D217B951B00F00A70 /* ThemedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
+		8B1CC525217BE54700F00A70 /* MediaRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRealmStore.swift; sourceTree = "<group>"; };
+		8B1CC529217BE67900F00A70 /* AuthorsRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsRealmStore.swift; sourceTree = "<group>"; };
+		8B1CC52D217BE71D00F00A70 /* TaxonomyRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyRealmStore.swift; sourceTree = "<group>"; };
 		8B33C4BF2168ED0F00658700 /* PreferencesStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesStoreInterfaces.swift; sourceTree = "<group>"; };
 		8B33C4C32168ED1B00658700 /* PreferencesDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesDefaultsStore.swift; sourceTree = "<group>"; };
 		8B33C4C72168ED2A00658700 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -751,6 +759,7 @@
 				8B0D643320BD76DE0046056F /* Models */,
 				8B0D64F820C547C20046056F /* TaxonomyStoreInterfaces.swift */,
 				8B0D650420C548020046056F /* TaxonomyFileStore.swift */,
+				8B1CC52D217BE71D00F00A70 /* TaxonomyRealmStore.swift */,
 				8B0D644120BD779E0046056F /* TaxonomyWorker.swift */,
 			);
 			path = Taxonomy;
@@ -762,6 +771,7 @@
 				8B0D643120BD76D80046056F /* Models */,
 				8B0D64FC20C547D30046056F /* MediaStoreInterfaces.swift */,
 				8B0D650820C548110046056F /* MediaFileStore.swift */,
+				8B1CC525217BE54700F00A70 /* MediaRealmStore.swift */,
 				8B0D643920BD77780046056F /* MediaWorker.swift */,
 			);
 			path = Media;
@@ -773,6 +783,7 @@
 				8B0D643020BD76D10046056F /* Models */,
 				8B0D650020C547E70046056F /* AuthorsStoreInterfaces.swift */,
 				8B0D650C20C548270046056F /* AuthorsFileStore.swift */,
+				8B1CC529217BE67900F00A70 /* AuthorsRealmStore.swift */,
 				8B0D643420BD77620046056F /* AuthorsWorker.swift */,
 			);
 			path = Authors;
@@ -802,7 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				8B0D644520BEA9010046056F /* PostsModels.swift */,
-				8B1CC502217B7C2F00F00A70 /* PostPayload.swift */,
 				8B0D641320B99B180046056F /* PostType.swift */,
 				8BC2FA1121779D890014D7B5 /* PostRealmObject.swift */,
 				8B0D64C320BEC9830046056F /* Post.swift */,
@@ -1409,7 +1419,7 @@
 				8B5250DC20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */,
 				8B0D64CE20C347E00046056F /* Taxonomy.swift in Sources */,
 				8B63A2E32164FFEA003868F7 /* ConstantsMemoryStore.swift in Sources */,
-				8B1CC503217B7C2F00F00A70 /* PostPayload.swift in Sources */,
+				8B1CC52E217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */,
 				8B33C4D12168EFE200658700 /* DefaultsKeys.swift in Sources */,
 				8B52510F20CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8B6A2BD020D6775000D070FB /* NetworkError.swift in Sources */,
@@ -1444,6 +1454,7 @@
 				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
 				8B63A2D72164F826003868F7 /* ScrollableFlowLayout.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
+				8B1CC526217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
 				8B33C4C42168ED1B00658700 /* PreferencesDefaultsStore.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B0D650920C548110046056F /* MediaFileStore.swift in Sources */,
@@ -1466,6 +1477,7 @@
 				8B5250F820CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
 				8BC2FA1621779E530014D7B5 /* TermRealmObject.swift in Sources */,
 				8B33C4C82168ED2A00658700 /* Preferences.swift in Sources */,
+				8B1CC52A217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */,
 				8B6A2BD420D677C700D070FB /* Dictionary.swift in Sources */,
 				8B33C4C02168ED0F00658700 /* PreferencesStoreInterfaces.swift in Sources */,
 				8B8802892174B49D0035543D /* DataWorker.swift in Sources */,
@@ -1488,6 +1500,7 @@
 				8B0D641D20B99B600046056F /* MediaType.swift in Sources */,
 				8B5AA8012143641300EA4E2F /* Localizable.swift in Sources */,
 				8BC4FE2A216CFF9A00BB7870 /* APIRouter.swift in Sources */,
+				8B1CC52F217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */,
 				8B0D650620C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510620CFE89000E77F70 /* Bundle.swift in Sources */,
 				8BC2FA1321779D890014D7B5 /* PostRealmObject.swift in Sources */,
@@ -1495,6 +1508,7 @@
 				8B5250F120CFE5B500E77F70 /* DataStoreInterfaces.swift in Sources */,
 				8B5250DD20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */,
 				8B63A2E42164FFEA003868F7 /* ConstantsMemoryStore.swift in Sources */,
+				8B1CC527217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
 				8B0D64CF20C347E00046056F /* Taxonomy.swift in Sources */,
 				8B52511020CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8BC4FE26216CFE7B00BB7870 /* APIRoutable.swift in Sources */,
@@ -1511,6 +1525,7 @@
 				8B33C4C52168ED1B00658700 /* PreferencesDefaultsStore.swift in Sources */,
 				8B0D642120B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC820D6747D00D070FB /* LogDNADestination.swift in Sources */,
+				8B1CC52B217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */,
 				8B5250FE20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B0D64CA20C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651B20C559700046056F /* HasDependencies.swift in Sources */,
@@ -1546,7 +1561,6 @@
 				8B6A2BC320D66B9C00D070FB /* Environment.swift in Sources */,
 				8B5250F920CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
 				8B6A2BD520D677C700D070FB /* Dictionary.swift in Sources */,
-				8B1CC504217B7C2F00F00A70 /* PostPayload.swift in Sources */,
 				8B0D643F20BD778F0046056F /* PostsWorker.swift in Sources */,
 				8B6A2BBF20D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F220C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,
@@ -1563,6 +1577,7 @@
 				8B0D641E20B99B600046056F /* MediaType.swift in Sources */,
 				8B5AA8022143641300EA4E2F /* Localizable.swift in Sources */,
 				8BC4FE2B216CFF9A00BB7870 /* APIRouter.swift in Sources */,
+				8B1CC530217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */,
 				8B0D650720C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8B52510720CFE89000E77F70 /* Bundle.swift in Sources */,
 				8BC2FA1421779D890014D7B5 /* PostRealmObject.swift in Sources */,
@@ -1570,6 +1585,7 @@
 				8B5250F220CFE5B500E77F70 /* DataStoreInterfaces.swift in Sources */,
 				8B5250DE20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */,
 				8B63A2E52164FFEA003868F7 /* ConstantsMemoryStore.swift in Sources */,
+				8B1CC528217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
 				8B0D64D020C347E00046056F /* Taxonomy.swift in Sources */,
 				8B52511120CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8BC4FE27216CFE7B00BB7870 /* APIRoutable.swift in Sources */,
@@ -1586,6 +1602,7 @@
 				8B33C4C62168ED1B00658700 /* PreferencesDefaultsStore.swift in Sources */,
 				8B0D642220B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC920D6747D00D070FB /* LogDNADestination.swift in Sources */,
+				8B1CC52C217BE67900F00A70 /* AuthorsRealmStore.swift in Sources */,
 				8B5250FF20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B0D64CB20C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651C20C559700046056F /* HasDependencies.swift in Sources */,
@@ -1621,7 +1638,6 @@
 				8B6A2BC420D66B9C00D070FB /* Environment.swift in Sources */,
 				8B5250FA20CFE6A100E77F70 /* SeedFileStore.swift in Sources */,
 				8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */,
-				8B1CC505217B7C2F00F00A70 /* PostPayload.swift in Sources */,
 				8B0D644020BD778F0046056F /* PostsWorker.swift in Sources */,
 				8B6A2BC020D66A8D00D070FB /* Loggable.swift in Sources */,
 				8B0D64F320C48BFD0046056F /* PostsStoreInterfaces.swift in Sources */,

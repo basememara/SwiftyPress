@@ -61,6 +61,9 @@ public extension TaxonomyFileStore {
             completion(.success(data.categories + data.tags))
         }
     }
+}
+
+public extension TaxonomyFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         fetch {
@@ -79,27 +82,6 @@ public extension TaxonomyFileStore {
         fetch {
             guard let value = $0.value, $0.isSuccess else { return completion($0) }
             completion(.success(value.filter { $0.taxonomy == taxonomy }))
-        }
-    }
-}
-
-public extension TaxonomyFileStore {
-    
-    func search(with request: TaxonomyModels.SearchRequest, completion: @escaping (Result<[TermType], DataError>) -> Void) {
-        fetch {
-            guard let value = $0.value, $0.isSuccess else { return completion($0) }
-            
-            let query = request.query.lowercased()
-            
-            var result = value.filter {
-                $0.name.lowercased().contains(query)
-            }
-            
-            if let taxonomy = request.scope {
-                result = result.filter { $0.taxonomy == taxonomy }
-            }
-            
-            completion(.success(result))
         }
     }
 }
