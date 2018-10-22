@@ -11,6 +11,8 @@ public enum Social {
     case twitter
     case linkedIn
     case github
+    case pinterest
+    case instagram
 }
 
 public extension Social {
@@ -27,6 +29,10 @@ public extension Social {
             return "https://www.linkedin.com/in/\(username)"
         case .github:
             return "https://github.com/\(username)"
+        case .pinterest:
+            return "http://pinterest.com/\(username)"
+        case .instagram:
+            return "http://instagram.com/\(username)"
         }
     }
 }
@@ -45,6 +51,10 @@ public extension Social {
             return URL(string: "linkedin://profile/\(username)")
         case .github:
             return nil
+        case .pinterest:
+            return URL(string: "pinterest://user/\(username)")
+        case .instagram:
+            return URL(string: "instagram://user?username=\(username)")
         }
     }
 }
