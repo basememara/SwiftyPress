@@ -311,6 +311,12 @@
 		8BC4FE4B216E1B6000BB7870 /* PostsNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkRemote.swift */; };
 		8BC4FE4C216E1B6000BB7870 /* PostsNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkRemote.swift */; };
 		8BC4FE4D216E1B6000BB7870 /* PostsNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostsNetworkRemote.swift */; };
+		8BC96D6D217E31CD0037D747 /* PostsDataViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D66217E31CD0037D747 /* PostsDataViewAdapter.swift */; };
+		8BC96D6E217E31CD0037D747 /* PostsDataViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D67217E31CD0037D747 /* PostsDataViewDelegate.swift */; };
+		8BC96D6F217E31CD0037D747 /* PostsDataViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D68217E31CD0037D747 /* PostsDataViewModels.swift */; };
+		8BC96D70217E31CD0037D747 /* TermsDataViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D6A217E31CD0037D747 /* TermsDataViewModels.swift */; };
+		8BC96D71217E31CD0037D747 /* TermsDataViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D6B217E31CD0037D747 /* TermsDataViewAdapter.swift */; };
+		8BC96D72217E31CD0037D747 /* TermsDataViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC96D6C217E31CD0037D747 /* TermsDataViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -523,6 +529,12 @@
 		8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncNetworkStore.swift; sourceTree = "<group>"; };
 		8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		8BC4FE4A216E1B6000BB7870 /* PostsNetworkRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsNetworkRemote.swift; sourceTree = "<group>"; };
+		8BC96D66217E31CD0037D747 /* PostsDataViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewAdapter.swift; sourceTree = "<group>"; };
+		8BC96D67217E31CD0037D747 /* PostsDataViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewDelegate.swift; sourceTree = "<group>"; };
+		8BC96D68217E31CD0037D747 /* PostsDataViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewModels.swift; sourceTree = "<group>"; };
+		8BC96D6A217E31CD0037D747 /* TermsDataViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDataViewModels.swift; sourceTree = "<group>"; };
+		8BC96D6B217E31CD0037D747 /* TermsDataViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDataViewAdapter.swift; sourceTree = "<group>"; };
+		8BC96D6C217E31CD0037D747 /* TermsDataViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsDataViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1003,6 +1015,7 @@
 		8B63A2D52164F812003868F7 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				8BC96D64217E31CD0037D747 /* DataViews */,
 				8B1CC520217BD32500F00A70 /* Layouts */,
 				8BBF81D5216BF2D800158DDE /* UIViewController.swift */,
 			);
@@ -1061,6 +1074,35 @@
 				8B8802882174B49D0035543D /* DataWorker.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		8BC96D64217E31CD0037D747 /* DataViews */ = {
+			isa = PBXGroup;
+			children = (
+				8BC96D65217E31CD0037D747 /* PostsDataView */,
+				8BC96D69217E31CD0037D747 /* TermsDataView */,
+			);
+			path = DataViews;
+			sourceTree = "<group>";
+		};
+		8BC96D65217E31CD0037D747 /* PostsDataView */ = {
+			isa = PBXGroup;
+			children = (
+				8BC96D66217E31CD0037D747 /* PostsDataViewAdapter.swift */,
+				8BC96D67217E31CD0037D747 /* PostsDataViewDelegate.swift */,
+				8BC96D68217E31CD0037D747 /* PostsDataViewModels.swift */,
+			);
+			path = PostsDataView;
+			sourceTree = "<group>";
+		};
+		8BC96D69217E31CD0037D747 /* TermsDataView */ = {
+			isa = PBXGroup;
+			children = (
+				8BC96D6B217E31CD0037D747 /* TermsDataViewAdapter.swift */,
+				8BC96D6C217E31CD0037D747 /* TermsDataViewDelegate.swift */,
+				8BC96D6A217E31CD0037D747 /* TermsDataViewModels.swift */,
+			);
+			path = TermsDataView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1424,6 +1466,7 @@
 				8B52510F20CFF23C00E77F70 /* PostsFileStore.swift in Sources */,
 				8B6A2BD020D6775000D070FB /* NetworkError.swift in Sources */,
 				8BC4FE43216D546800BB7870 /* SyncNetworkStore.swift in Sources */,
+				8BC96D6D217E31CD0037D747 /* PostsDataViewAdapter.swift in Sources */,
 				8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650D20C548270046056F /* AuthorsFileStore.swift in Sources */,
@@ -1438,6 +1481,7 @@
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
 				8B1CC514217B951B00F00A70 /* ThemedImage.swift in Sources */,
 				8B63A2DC2164F875003868F7 /* MultiRowLayout.swift in Sources */,
+				8BC96D71217E31CD0037D747 /* TermsDataViewAdapter.swift in Sources */,
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
 				8B1CC51A217B951B00F00A70 /* ThemedSegmentedControl.swift in Sources */,
@@ -1446,7 +1490,9 @@
 				8B63A2DF2164FDFA003868F7 /* ConstantsStoreInterfaces.swift in Sources */,
 				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
 				8B4290FB2172E6EF00BCB422 /* PostsRealmStore.swift in Sources */,
+				8BC96D70217E31CD0037D747 /* TermsDataViewModels.swift in Sources */,
 				8B0D641820B99B240046056F /* TermType.swift in Sources */,
+				8BC96D6F217E31CD0037D747 /* PostsDataViewModels.swift in Sources */,
 				8BC2FA1221779D890014D7B5 /* PostRealmObject.swift in Sources */,
 				8BC4FE25216CFE7B00BB7870 /* APIRoutable.swift in Sources */,
 				8BC4FE21216CFE4B00BB7870 /* APISession.swift in Sources */,
@@ -1456,6 +1502,7 @@
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B1CC526217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
 				8B33C4C42168ED1B00658700 /* PreferencesDefaultsStore.swift in Sources */,
+				8BC96D72217E31CD0037D747 /* TermsDataViewDelegate.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B0D650920C548110046056F /* MediaFileStore.swift in Sources */,
 				8B0D650120C547E80046056F /* AuthorsStoreInterfaces.swift in Sources */,
@@ -1463,6 +1510,7 @@
 				8B0D64E020C435AD0046056F /* Author.swift in Sources */,
 				8BC2FA222177A2FF0014D7B5 /* SyncActivity.swift in Sources */,
 				8B0D642820BD700B0046056F /* Dateable.swift in Sources */,
+				8BC96D6E217E31CD0037D747 /* PostsDataViewDelegate.swift in Sources */,
 				8B0D644220BD779E0046056F /* TaxonomyWorker.swift in Sources */,
 				8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */,
 				8B33C4EA2169653900658700 /* Theme.swift in Sources */,
