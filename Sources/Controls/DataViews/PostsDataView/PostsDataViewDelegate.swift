@@ -11,6 +11,7 @@ import ZamzamKit
 
 public protocol PostsDataViewDelegate: class {
     func postsDataView(didSelect model: PostsDataViewModel, at indexPath: IndexPath, from dataView: DataViewable)
+    func postsDataView(toggleFavorite model: PostsDataViewModel)
     func postsDataViewNumberOfSections(in dataView: DataViewable) -> Int
     func postsDataViewDidReloadData()
     
@@ -26,6 +27,7 @@ public protocol PostsDataViewDelegate: class {
 
 // Optional conformance
 public extension PostsDataViewDelegate {
+    func postsDataView(toggleFavorite model: PostsDataViewModel) {}
     func postsDataViewNumberOfSections(in dataView: DataViewable) -> Int { return 1 }
     func postsDataViewDidReloadData() {}
     

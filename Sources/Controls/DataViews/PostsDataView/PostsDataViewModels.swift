@@ -34,4 +34,12 @@ public extension PostsDataViewModel {
 
 public protocol PostsDataViewCell {
     func bind(_ model: PostsDataViewModel)
+    func bind(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?)
+}
+
+public extension PostsDataViewCell {
+    
+    func bind(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?) {
+        bind(model)
+    }
 }

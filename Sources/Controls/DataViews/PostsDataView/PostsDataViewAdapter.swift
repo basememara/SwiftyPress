@@ -77,7 +77,7 @@ extension PostsDataViewAdapter: UITableViewDataSource {
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
-        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row])
+        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row], delegate: delegate)
         return cell
     }
 }
@@ -109,7 +109,7 @@ extension PostsDataViewAdapter: UICollectionViewDataSource {
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView[indexPath]
-        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row])
+        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row], delegate: delegate)
         return cell
     }
 }
