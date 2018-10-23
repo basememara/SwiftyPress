@@ -9,9 +9,6 @@ import SwiftyBeaver
 #if canImport(UIKit)
 import UIKit
 #endif
-#if canImport(AdSupport)
-import AdSupport
-#endif
 
 class LogDNADestination: BaseDestination, HasDependencies {
     private static var payload = [[String: Any]]()
@@ -30,14 +27,6 @@ class LogDNADestination: BaseDestination, HasDependencies {
         return UIDevice.current.identifierForVendor?.uuidString ?? ""
         #else
         return ""
-        #endif
-    }()
-    
-    private lazy var advertisingIdentifier: String = {
-        #if canImport(AdSupport)
-        return ASIdentifierManager.shared().advertisingIdentifier.uuidString
-        #else
-        return UUID().uuidString
         #endif
     }()
     
@@ -73,7 +62,6 @@ class LogDNADestination: BaseDestination, HasDependencies {
             "meta": {
                 var codeMeta: [String: Any] = [
                     "device_id": deviceIdentifier,
-                    "advertising_id": advertisingIdentifier,
                     "code": [
                         "fileName": file.components(separatedBy: "/").last ?? "",
                         "function": function,
