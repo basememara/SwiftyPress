@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" id="0lE-oU-ac4" customClass="SimplePostTableViewCell" customModule="Basem_Emara" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0lE-oU-ac4" id="M6a-eV-GLh">
+                <rect key="frame" x="0.0" y="0.0" width="460" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyA-cv-AoR" customClass="ThemedView" customModule="SwiftyPress">
+                        <rect key="frame" x="0.0" y="0.0" width="460" height="99.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cDw-7u-cPP">
+                                <rect key="frame" x="16" y="12" width="436" height="75.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY4-7W-qrP" customClass="ThemedHeadline" customModule="SwiftyPress">
+                                        <rect key="frame" x="0.0" y="0.0" width="436" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nb-dD-Upd" customClass="ThemedFootnote" customModule="SwiftyPress">
+                                        <rect key="frame" x="0.0" y="26.5" width="436" height="49"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cDw-7u-cPP" firstAttribute="top" secondItem="hyA-cv-AoR" secondAttribute="top" constant="12" id="2zh-6D-b2I"/>
+                            <constraint firstItem="cDw-7u-cPP" firstAttribute="leading" secondItem="hyA-cv-AoR" secondAttribute="leading" constant="16" id="KfB-gr-dOJ"/>
+                            <constraint firstAttribute="trailing" secondItem="cDw-7u-cPP" secondAttribute="trailing" constant="8" id="M8b-aK-5KW"/>
+                            <constraint firstAttribute="bottom" secondItem="cDw-7u-cPP" secondAttribute="bottom" constant="12" id="ry7-aK-57y"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hyA-cv-AoR" firstAttribute="leading" secondItem="M6a-eV-GLh" secondAttribute="leading" id="FiY-SD-egf"/>
+                    <constraint firstAttribute="bottom" secondItem="hyA-cv-AoR" secondAttribute="bottom" id="NoU-6k-Kf0"/>
+                    <constraint firstItem="hyA-cv-AoR" firstAttribute="top" secondItem="M6a-eV-GLh" secondAttribute="top" id="VRu-7Y-bu2"/>
+                    <constraint firstAttribute="trailing" secondItem="hyA-cv-AoR" secondAttribute="trailing" id="hNr-rI-C1O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailLabel" destination="2nb-dD-Upd" id="535-6i-M8w"/>
+                <outlet property="titleLabel" destination="cY4-7W-qrP" id="qTS-Gh-dEp"/>
+            </connections>
+            <point key="canvasLocation" x="257.60000000000002" y="-245.57721139430288"/>
+        </tableViewCell>
+    </objects>
+</document>
