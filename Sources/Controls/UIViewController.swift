@@ -16,8 +16,13 @@ public extension UIViewController {
      - parameter url: URL to display in the browser.
      - parameter theme: The style of the Safari view controller.
      */
-    func present(safari url: String, modalPresentationStyle: UIModalPresentationStyle = .overFullScreen,
-                 theme: Theme, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func present(
+        safari url: String,
+        modalPresentationStyle: UIModalPresentationStyle? = nil,
+        theme: Theme,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil)
+    {
         present(
             safari: url,
             modalPresentationStyle: modalPresentationStyle,
