@@ -50,7 +50,7 @@ public extension PostsWorkerType {
     
     func fetch(url: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         guard let slug = URL(string: url)?.relativePath.lowercased()
-            .replace(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
+            .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
             .trimmingCharacters(in: CharacterSet(charactersIn: "/")) else {
                 return completion(.failure(.nonExistent))
         }
