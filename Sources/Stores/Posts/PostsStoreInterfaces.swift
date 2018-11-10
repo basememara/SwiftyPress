@@ -18,6 +18,7 @@ public protocol PostsStore {
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func getID(bySlug slug: String) -> Int?
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
@@ -38,6 +39,8 @@ public protocol PostsWorkerType {
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func getID(bySlug slug: String) -> Int?
+    func getID(byURL url: String) -> Int?
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void)
     func addFavorite(id: Int)
@@ -49,12 +52,21 @@ public protocol PostsWorkerType {
 public extension PostsWorkerType {
     
     func fetch(url: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        guard let slug = URL(string: url)?.relativePath.lowercased()
-            .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
-            .trimmingCharacters(in: CharacterSet(charactersIn: "/")) else {
-                return completion(.failure(.nonExistent))
-        }
-        
+        guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
         fetch(slug: slug, completion: completion)
+    }
+    
+    func getID(byURL url: String) -> Int? {
+        guard let slug = slug(from: url) else { return nil }
+        return getID(bySlug: slug)
+    }
+}
+
+private extension PostsWorkerType {
+    
+    func slug(from url: String) -> String? {
+        return URL(string: url)?.relativePath.lowercased()
+            .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
 }

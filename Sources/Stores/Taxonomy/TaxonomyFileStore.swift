@@ -85,3 +85,10 @@ public extension TaxonomyFileStore {
         }
     }
 }
+
+public extension TaxonomyFileStore {
+    
+    func getID(bySlug slug: String) -> Int? {
+        fatalError("Not implemented")
+    }
+}

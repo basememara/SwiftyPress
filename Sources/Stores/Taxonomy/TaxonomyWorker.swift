@@ -72,3 +72,10 @@ public extension TaxonomyWorker {
         }
     }
 }
+
+public extension TaxonomyWorker {
+    
+    func getID(bySlug slug: String) -> Int? {
+        return store.getID(bySlug: slug)
+    }
+}

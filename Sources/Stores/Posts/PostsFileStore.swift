@@ -172,6 +172,13 @@ public extension PostsFileStore {
 
 public extension PostsFileStore {
     
+    func getID(bySlug slug: String) -> Int? {
+        fatalError("Not implemented")
+    }
+}
+
+public extension PostsFileStore {
+    
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
             guard let value = $0.value, $0.isSuccess else {

@@ -162,6 +162,13 @@ public extension PostsWorker {
 
 public extension PostsWorker {
     
+    func getID(bySlug slug: String) -> Int? {
+        return store.getID(bySlug: slug)
+    }
+}
+
+public extension PostsWorker {
+    
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard let ids = preferences.get(.favorites), !ids.isEmpty else {
             return completion(.success([]))

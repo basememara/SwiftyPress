@@ -14,18 +14,31 @@ public protocol TaxonomyStore {
     func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void)
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void)
+    
+    func getID(bySlug slug: String) -> Int?
 }
 
 public protocol TaxonomyWorkerType: TaxonomyStore {
-    
+    func getID(byURL url: String) -> Int?
 }
 
 public extension TaxonomyWorkerType {
     
     func fetch(url: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
-        guard let url = URL(string: url) else {
-            return completion(.failure(.nonExistent))
-        }
+        guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
+        fetch(slug: slug, completion: completion)
+    }
+    
+    func getID(byURL url: String) -> Int? {
+        guard let slug = slug(from: url) else { return nil }
+        return getID(bySlug: slug)
+    }
+}
+
+private extension TaxonomyWorkerType {
+    
+    func slug(from url: String) -> String? {
+        guard let url = URL(string: url) else { return nil }
         
         let slug = url.lastPathComponent.lowercased()
         let relativePath = url.relativePath
@@ -33,9 +46,9 @@ public extension TaxonomyWorkerType {
             .lowercased()
         
         guard relativePath.hasPrefix("category/") || relativePath .hasPrefix("tag/") else {
-            return completion(.failure(.nonExistent))
+            return nil
         }
         
-        fetch(slug: slug, completion: completion)
+        return slug
     }
 }

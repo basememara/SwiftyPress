@@ -111,3 +111,18 @@ public extension TaxonomyRealmStore {
         }
     }
 }
+
+public extension TaxonomyRealmStore {
+    
+    func getID(bySlug slug: String) -> Int? {
+        let realm: Realm
+        
+        do { realm = try Realm() }
+        catch { return nil }
+        
+        return realm.objects(TermRealmObject.self)
+            .filter("slug == %@", slug)
+            .first?
+            .id
+    }
+}

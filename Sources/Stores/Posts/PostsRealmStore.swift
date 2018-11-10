@@ -182,6 +182,21 @@ public extension PostsRealmStore {
 
 public extension PostsRealmStore {
     
+    func getID(bySlug slug: String) -> Int? {
+        let realm: Realm
+        
+        do { realm = try Realm() }
+        catch { return nil }
+        
+        return realm.objects(PostRealmObject.self)
+            .filter("slug == %@", slug)
+            .first?
+            .id
+    }
+}
+
+public extension PostsRealmStore {
+    
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
