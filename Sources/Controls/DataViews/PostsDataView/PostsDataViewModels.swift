@@ -19,7 +19,7 @@ public struct PostsDataViewModel {
 
 public extension PostsDataViewModel {
     
-    init(from object: PostType, media: MediaType?, favorite: Bool? = nil, dateFormatter: DateFormatter) {
+    init(from object: PostType, mediaURL: String?, favorite: Bool? = nil, dateFormatter: DateFormatter) {
         self.id = object.id
         self.title = object.title
         self.summary = !object.excerpt.isEmpty ? object.excerpt
@@ -27,7 +27,7 @@ public extension PostsDataViewModel {
         self.content = object.content
         self.link = object.link
         self.date = dateFormatter.string(from: object.createdAt)
-        self.imageURL = media?.link
+        self.imageURL = mediaURL
         self.favorite = favorite
     }
 }
