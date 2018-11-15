@@ -12,7 +12,7 @@ It promotes [Clean Architecture](http://basememara.com/swift-clean-architecture/
 
 ## Usage
 
-The best way to experience using this framework is to see a [full working example](https://github.com/basememara/BasemEmaraBlogIOS) consuming `SwiftyPress`.
+The best way to experience this framework is examining a [full working example](https://github.com/basememara/BasemEmaraBlogIOS) consuming `SwiftyPress`.
 
 ## Installation
 
