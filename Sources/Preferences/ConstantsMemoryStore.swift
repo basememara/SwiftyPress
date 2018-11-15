@@ -8,6 +8,7 @@
 import Foundation
 
 public struct ConstantsMemoryStore: ConstantsStore {
+    public let environment: Environment
     public let itunesName: String
     public let itunesID: String
     public let baseURL: URL
@@ -23,6 +24,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let logDNAKey: String?
     
     public init(
+        environment: Environment,
         itunesName: String,
         itunesID: String,
         baseURL: URL,
@@ -37,6 +39,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         logFileName: String,
         logDNAKey: String?)
     {
+        self.environment = environment
         self.itunesName = itunesName
         self.itunesID = itunesID
         self.baseURL = baseURL

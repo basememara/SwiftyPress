@@ -13,8 +13,6 @@ fileprivate final class Logger: AppInfo, HasDependencies {
     
     private lazy var constants: ConstantsType = dependencies.resolve()
     
-    let environment = Environment.mode
-    
     let systemVersion: String = {
         #if os(iOS)
         return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
@@ -38,6 +36,13 @@ fileprivate final class Logger: AppInfo, HasDependencies {
     let log = SwiftyBeaver.self
     
     private init() {
+        // Setup up console logging
+        log.addDestination(
+            ConsoleDestination().with {
+                $0.format = "$DHH:mm:ss$d $C$L$c $N.$F:$l - $M"
+            }
+        )
+        
         setupLocal()
         setupCloud()
     }
@@ -48,13 +53,6 @@ private extension Logger {
     func setupLocal() {
         var logFileURL: URL?
         
-        // Setup up Swifty Beaver
-        log.addDestination(
-            ConsoleDestination().with {
-                $0.format = "$DHH:mm:ss$d $C$L$c $N.$F:$l - $M"
-            }
-        )
-        
         // File output configurations
         log.addDestination(FileDestination().with {
             $0.logFileURL = $0.logFileURL?
@@ -62,7 +60,7 @@ private extension Logger {
                 .appendingPathComponent("\(constants.logFileName).dev")
             
             $0.format = "$Dyyyy-MM-dd HH:mm:ssZ$d $C$L$c $N.$F:$l - $M\nMeta: $X"
-            $0.minLevel = Environment.mode == .production ? .info : .verbose
+            $0.minLevel = constants.environment == .production ? .info : .verbose
             
             // Save log file location for later use
             logFileURL = $0.logFileURL
@@ -90,7 +88,7 @@ private extension Logger {
                 ingestionKey: logDNAKey,
                 hostName: "iOS",
                 appName: appDisplayName ?? "",
-                environment: isInTestFlight ? "TestFlight" : Environment.mode.rawValue.capitalized
+                environment: isInTestFlight ? "TestFlight" : constants.environment.rawValue.capitalized
             ).with {
                 $0.minLevel = .info
             }
@@ -106,7 +104,7 @@ extension Logger {
             "app_version": version,
             "system_version": systemVersion,
             "device_model": deviceModel,
-            "environment": environment.rawValue
+            "environment": constants.environment.rawValue
         ]
         
         #if os(iOS)

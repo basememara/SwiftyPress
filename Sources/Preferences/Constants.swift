@@ -17,6 +17,13 @@ public struct Constants: ConstantsType {
 
 public extension Constants {
     
+    var environment: Environment {
+        return store.environment
+    }
+}
+
+public extension Constants {
+    
     var itunesName: String {
         return store.itunesName
     }

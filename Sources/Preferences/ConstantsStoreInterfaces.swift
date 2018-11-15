@@ -8,6 +8,7 @@
 import ZamzamKit
 
 public protocol ConstantsStore: AppInfo {
+    var environment: Environment { get }
     var itunesName: String { get }
     var itunesID: String { get }
     var baseURL: URL { get }
