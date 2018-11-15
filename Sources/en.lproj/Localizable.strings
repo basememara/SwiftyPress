@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  SwiftyPress
+
+  Created by Basem Emara on 2018-09-07.
+  
+*/
+
+"duplicate.failure.error.message" = "The data you submitted already exists.";
+"non.existent.error.message" = "No data was found for your request.";
+"unauthorized.error.message" = "You must log in to view this content.  Please log in or sign up.";
+"no.internet.error.message" = "No internet connection is available.";
+"server.timeout.error.message" = "The server could not be reached. Please try again shortly.";
+
+"parse.failure.error.message" = "The response from the server could not be read.";
+"database.failure.error.message" = "An unexpected database error has occurred.";
+"cache.failure.error.message" = "An unexpected error has occurred with the local database, but may have succeeded in the cloud.";
+"server.failure.error.message" = "An unexpected server error has occurred.";
+"bad.request.error.message" = "The server did not recognize your request.";
+"unknown.reason.error.message" = "There was an error with your request.";
+
+"generic.incomplete.form.error.message" = "The form is incomplete. Please fill out the form and try again.";
+
+"category.section" = "Categories";
+"tag.section" = "Tags";

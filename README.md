@@ -1,26 +1,20 @@
 # SwiftyPress
 
-[![CI Status](http://img.shields.io/travis/ZamzamInc/SwiftyPress.svg?style=flat)](https://travis-ci.org/ZamzamInc/SwiftyPress)
-[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/ZamzamKit.svg?style=flat)](https://github.com/ZamzamInc/SwiftyPress)
+[![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)](https://swift.org)
+[![Xcode](https://img.shields.io/badge/Xcode-10.0-blue.svg)](https://developer.apple.com/xcode)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-Compatible-brightgreen.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
+SwiftyPress is a Swift framework for integrating WordPress 4.7+ to native iOS apps using REST API's. 
+
+It promotes [Clean Architecture](http://basememara.com/swift-clean-architecture/) and a brief overview can be [read here](http://basememara.com/full-stack-ios-and-wordpress-in-swift/).
 
 ## Usage
 
-To run the project, clone the repo, and run the example app.
-
-## Requirements
+The best way to experience this framework is examining a [full working example](https://github.com/basememara/BasemEmaraBlogIOS) consuming `SwiftyPress`.
 
 ## Installation
-* `carthage update --platform iOS --no-build`
-* `(cd Carthage/Checkouts/Stencil && swift package generate-xcodeproj)`
-* Open Stencil.proj and add iOS 10
-* `carthage build --platform iOS`
-* add carthage frameworks dependencies to project settings
-* embed Realm/ReamSwift frameworks
-* add ATS exception to plist
-* add LSApplicationQueriesSchemes to plist
-* for App Store submissions:
-    - add carthage script in build phases for each dependency
-    - add bundle version in -> Carthage/Build/iOS/{Pathkit, Spectre, and Stencil}.framwork/Info.plist
 
 #### Carthage
 You can use [Carthage](https://github.com/Carthage/Carthage) to install `SwiftyPress` by adding it to your `Cartfile`:
@@ -30,7 +24,7 @@ github "ZamzamInc/SwiftyPress"
 
 ## Author
 
-Zamzam Inc., contact@zamzam.io
+Zamzam Inc., http://zamzam.io
 
 ## License
 
