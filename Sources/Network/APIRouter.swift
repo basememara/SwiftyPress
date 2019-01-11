@@ -7,6 +7,10 @@
 
 import Alamofire
 
+public protocol APIRoutable {
+    func asURLRequest(constants: ConstantsType) throws -> URLRequest
+}
+
 public enum APIRouter: APIRoutable {
     case modifiedPayload(after: Date?)
     case readPost(id: Int)

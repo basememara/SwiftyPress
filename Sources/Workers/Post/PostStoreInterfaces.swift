@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public protocol PostsStore {
+public protocol PostStore {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
@@ -23,11 +23,11 @@ public protocol PostsStore {
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
-public protocol PostsRemote {
+public protocol PostRemote {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
-public protocol PostsWorkerType {
+public protocol PostWorkerType {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
@@ -49,7 +49,7 @@ public protocol PostsWorkerType {
     func hasFavorite(id: Int) -> Bool
 }
 
-public extension PostsWorkerType {
+public extension PostWorkerType {
     
     func fetch(url: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
@@ -62,7 +62,7 @@ public extension PostsWorkerType {
     }
 }
 
-private extension PostsWorkerType {
+private extension PostWorkerType {
     
     func slug(from url: String) -> String? {
         return URL(string: url)?.relativePath.lowercased()

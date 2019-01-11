@@ -7,10 +7,10 @@
 
 import ZamzamKit
 
-public protocol AuthorsStore {
+public protocol AuthorStore {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
 }
 
-public protocol AuthorsWorkerType: AuthorsStore {
+public protocol AuthorWorkerType: AuthorStore {
 
 }

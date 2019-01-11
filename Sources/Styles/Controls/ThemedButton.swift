@@ -8,10 +8,18 @@
 
 import UIKit
 
-public class ThemedButton: UIButton {
+open class ThemedButton: UIButton {
     
 }
 
-public class ThemedImageButton: UIButton {
+open class ThemedPrimaryButton: UIButton {
+    
+}
+
+open class ThemedSecondaryButton: UIButton {
+    
+}
+
+open class ThemedImageButton: UIButton {
     
 }

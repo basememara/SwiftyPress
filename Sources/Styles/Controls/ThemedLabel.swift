@@ -8,18 +8,26 @@
 
 import UIKit
 
-public class ThemedLabel: UILabel {
+open class ThemedLabel: UILabel {
     
 }
 
-public class ThemedHeadline: UILabel {
+open class ThemedHeadline: UILabel {
     
 }
 
-public class ThemedSubhead: UILabel {
+open class ThemedSubhead: UILabel {
     
 }
 
-public class ThemedFootnote: UILabel {
+open class ThemedFootnote: UILabel {
+    
+}
+
+open class ThemedLightLabel: UILabel {
+    
+}
+
+open class ThemedDangerLabel: UILabel {
     
 }

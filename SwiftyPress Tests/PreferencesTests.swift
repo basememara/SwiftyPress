@@ -40,14 +40,14 @@ extension PreferencesTests {
     }
 }
 
-private extension DefaultsKeys {
-    static let testString1 = DefaultsKey<String?>("testString1")
-    static let testString2 = DefaultsKey<String?>("testString2")
-    static let testBool1 = DefaultsKey<Bool?>("testBool1")
-    static let testBool2 = DefaultsKey<Bool?>("testBool2")
-    static let testInt1 = DefaultsKey<Int?>("testInt1")
-    static let testInt2 = DefaultsKey<Int?>("testInt2")
-    static let testFloat1 = DefaultsKey<Float?>("testFloat1")
-    static let testFloat2 = DefaultsKey<Float?>("testFloat2")
-    static let testArray = DefaultsKey<[Int]?>("testArray")
+private extension UserDefaults.Keys {
+    static let testString1 = UserDefaults.Key<String?>("testString1")
+    static let testString2 = UserDefaults.Key<String?>("testString2")
+    static let testBool1 = UserDefaults.Key<Bool?>("testBool1")
+    static let testBool2 = UserDefaults.Key<Bool?>("testBool2")
+    static let testInt1 = UserDefaults.Key<Int?>("testInt1")
+    static let testInt2 = UserDefaults.Key<Int?>("testInt2")
+    static let testFloat1 = UserDefaults.Key<Float?>("testFloat1")
+    static let testFloat2 = UserDefaults.Key<Float?>("testFloat2")
+    static let testArray = UserDefaults.Key<[Int]?>("testArray")
 }

@@ -7,15 +7,15 @@
 
 import ZamzamKit
 
-public struct AuthorsWorker: AuthorsWorkerType {
-    private let store: AuthorsStore
+public struct AuthorWorker: AuthorWorkerType {
+    private let store: AuthorStore
     
-    public init(store: AuthorsStore) {
+    public init(store: AuthorStore) {
         self.store = store
     }
 }
 
-public extension AuthorsWorker {
+public extension AuthorWorker {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
         store.fetch(id: id, completion: completion)

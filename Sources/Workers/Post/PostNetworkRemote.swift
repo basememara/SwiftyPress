@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public struct PostsNetworkRemote: PostsRemote, Loggable {
+public struct PostNetworkRemote: PostRemote, Loggable {
     private let apiSession: APISessionType
     
     public init(apiSession: APISessionType) {
@@ -15,7 +15,7 @@ public struct PostsNetworkRemote: PostsRemote, Loggable {
     }
 }
 
-public extension PostsNetworkRemote {
+public extension PostNetworkRemote {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         apiSession.request(APIRouter.readPost(id: id)) {

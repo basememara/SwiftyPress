@@ -1,5 +1,5 @@
 //
-//  PostsFileStore.swift
+//  PostFileStore.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public struct PostsFileStore: PostsStore {
+public struct PostFileStore: PostStore {
     private let seedStore: SeedStore
     
     init(seedStore: SeedStore) {
@@ -15,7 +15,7 @@ public struct PostsFileStore: PostsStore {
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
@@ -62,7 +62,7 @@ public extension PostsFileStore {
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
@@ -88,7 +88,7 @@ public extension PostsFileStore {
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch {
@@ -116,7 +116,7 @@ public extension PostsFileStore {
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
@@ -170,14 +170,14 @@ public extension PostsFileStore {
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func getID(bySlug slug: String) -> Int? {
         fatalError("Not implemented")
     }
 }
 
-public extension PostsFileStore {
+public extension PostFileStore {
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {

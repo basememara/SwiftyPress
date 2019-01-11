@@ -8,10 +8,14 @@
 
 import UIKit
 
-public class ThemedView: UIView {
+open class ThemedView: UIView {
     
 }
 
-public class ThemedSeparator: UIView {
+open class ThemedHeaderView: UIView {
+    
+}
+
+open class ThemedSeparator: UIView {
     
 }

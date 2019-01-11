@@ -20,7 +20,7 @@ public extension PreferencesDefaultsStore {
     /// Retrieves the value from user defaults that corresponds to the given key.
     ///
     /// - Parameter key: The key that is used to read the user defaults item.
-    func get<T>(_ key: DefaultsKey<T?>) -> T? {
+    func get<T>(_ key: UserDefaults.Key<T?>) -> T? {
         return defaults[key]
     }
     
@@ -29,7 +29,7 @@ public extension PreferencesDefaultsStore {
     /// - Parameters:
     ///   - value: Value to be written to the user defaults.
     ///   - key: Key under which the value is stored in the user defaults.
-    func set<T>(_ value: T?, forKey key: DefaultsKey<T?>) {
+    func set<T>(_ value: T?, forKey key: UserDefaults.Key<T?>) {
         defaults[key] = value
     }
     
@@ -37,7 +37,7 @@ public extension PreferencesDefaultsStore {
     ///
     /// - Parameter key: The key that is used to delete the keychain item.
     /// - Returns: True if the item was successfully deleted.
-    func remove<T>(_ key: DefaultsKey<T?>) {
+    func remove<T>(_ key: UserDefaults.Key<T?>) {
         defaults.remove(key)
     }
 }

@@ -14,12 +14,16 @@ public protocol Theme {
     var backgroundColor: UIColor { get }
     var separatorColor: UIColor { get }
     var selectionColor: UIColor { get }
+    var headerColor: UIColor { get }
     
     var labelColor: UIColor { get }
     var secondaryLabelColor: UIColor { get }
     var subtleLabelColor: UIColor { get }
     
-    var imageBorderWidthInCell: CGFloat { get }
+    var buttonCornerRadius: CGFloat { get }
+    
+    var positiveColor: UIColor { get }
+    var negativeColor: UIColor { get }
     
     #if os(iOS)
     var barStyle: UIBarStyle { get }

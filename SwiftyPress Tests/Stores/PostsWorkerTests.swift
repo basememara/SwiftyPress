@@ -11,7 +11,7 @@ import ZamzamKit
 
 class PostsWorkerTests: BaseTestCase, HasDependencies {
     
-    private lazy var postsWorker: PostsWorkerType = dependencies.resolveWorker()
+    private lazy var postWorker: PostWorkerType = dependencies.resolveWorker()
 
 }
 
@@ -20,7 +20,7 @@ extension PostsWorkerTests {
     func testFetch() {
         let promise = expectation(description: "Posts fetch all promise")
         
-        postsWorker.fetch {
+        postWorker.fetch {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -40,7 +40,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by ID promise")
         let id = 5568
         
-        postsWorker.fetch(id: id) {
+        postWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -57,7 +57,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by ID error promise")
         let id = 99999
         
-        postsWorker.fetch(id: id) {
+        postWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
             guard case .nonExistent? = $0.error else {
@@ -77,7 +77,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by IDs promise")
         let ids = [791, 26200]
         
-        postsWorker.fetch(ids: Set(ids)) {
+        postWorker.fetch(ids: Set(ids)) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -97,7 +97,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by slug promise")
         let slug = "protocol-oriented-router-in-swift"
         
-        postsWorker.fetch(slug: slug) {
+        postWorker.fetch(slug: slug) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -117,7 +117,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by url promise")
         let url = "http://example.com/swift-delegates-closure-pattern"
         
-        postsWorker.fetch(url: url) {
+        postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -134,7 +134,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by url 2 promise")
         let url = "http://example.com/whats-new-ios-BEYond/?abc=123#test"
         
-        postsWorker.fetch(url: url) {
+        postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -151,7 +151,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by url 3 promise")
         let url = "/protocol-oriented-THEmes-for-ios-apps/?abc=123#test"
         
-        postsWorker.fetch(url: url) {
+        postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -168,7 +168,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by url 4 promise")
         let url = "memory-leaKS-resource-management-swift-ios"
         
-        postsWorker.fetch(url: url) {
+        postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -188,7 +188,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
         
-        postsWorker.fetch(byCategoryIDs: ids) {
+        postWorker.fetch(byCategoryIDs: ids) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -209,7 +209,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
         
-        postsWorker.fetch(byTagIDs: ids) {
+        postWorker.fetch(byTagIDs: ids) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -230,7 +230,7 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch by terms promise")
         let ids: Set = [56, 58, 77]
         
-        postsWorker.fetch(byTermIDs: ids) {
+        postWorker.fetch(byTermIDs: ids) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -254,10 +254,10 @@ extension PostsWorkerTests {
         let promise = expectation(description: "Posts fetch favorites promise")
         let ids = [5568, 26200]
         
-        postsWorker.addFavorite(id: ids[0])
-        postsWorker.addFavorite(id: ids[1])
+        postWorker.addFavorite(id: ids[0])
+        postWorker.addFavorite(id: ids[1])
         
-        postsWorker.fetchFavorites {
+        postWorker.fetchFavorites {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {

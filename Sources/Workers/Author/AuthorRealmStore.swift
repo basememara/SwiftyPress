@@ -8,11 +8,11 @@
 import ZamzamKit
 import RealmSwift
 
-public struct AuthorsRealmStore: AuthorsStore, Loggable {
+public struct AuthorRealmStore: AuthorStore, Loggable {
     
 }
 
-public extension AuthorsRealmStore {
+public extension AuthorRealmStore {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
         DispatchQueue.database.async {

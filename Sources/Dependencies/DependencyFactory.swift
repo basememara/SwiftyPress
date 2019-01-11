@@ -13,8 +13,8 @@ public protocol DependencyFactoryType {
     func resolve() -> NotificationCenter
     
     func resolveWorker() -> DataWorkerType
-    func resolveWorker() -> PostsWorkerType
-    func resolveWorker() -> AuthorsWorkerType
+    func resolveWorker() -> PostWorkerType
+    func resolveWorker() -> AuthorWorkerType
     func resolveWorker() -> MediaWorkerType
     func resolveWorker() -> TaxonomyWorkerType
     
@@ -25,12 +25,12 @@ public protocol DependencyFactoryType {
     func resolveStore() -> SyncStore
     func resolveStore() -> CacheStore
     
-    func resolveStore() -> PostsStore
-    func resolveStore() -> AuthorsStore
+    func resolveStore() -> PostStore
+    func resolveStore() -> AuthorStore
     func resolveStore() -> MediaStore
     func resolveStore() -> TaxonomyStore
     
-    func resolveRemote() -> PostsRemote
+    func resolveRemote() -> PostRemote
     
     func resolveService() -> APISessionType
     func resolveService() -> HTTPServiceType
@@ -65,8 +65,8 @@ open class DependencyFactory: DependencyFactoryType {
         )
     }
 
-    open func resolveWorker() -> PostsWorkerType {
-        return PostsWorker(
+    open func resolveWorker() -> PostWorkerType {
+        return PostWorker(
             store: resolveStore(),
             remote: resolveRemote(),
             preferences: resolve(),
@@ -75,8 +75,8 @@ open class DependencyFactory: DependencyFactoryType {
         )
     }
     
-    open func resolveWorker() -> AuthorsWorkerType {
-        return AuthorsWorker(store: resolveStore())
+    open func resolveWorker() -> AuthorWorkerType {
+        return AuthorWorker(store: resolveStore())
     }
     
     open func resolveWorker() -> MediaWorkerType {
@@ -112,12 +112,12 @@ open class DependencyFactory: DependencyFactoryType {
         return CacheRealmStore(preferences: resolve())
     }
     
-    open func resolveStore() -> PostsStore {
-        return PostsRealmStore()
+    open func resolveStore() -> PostStore {
+        return PostRealmStore()
     }
     
-    open func resolveStore() -> AuthorsStore {
-        return AuthorsRealmStore()
+    open func resolveStore() -> AuthorStore {
+        return AuthorRealmStore()
     }
     
     open func resolveStore() -> MediaStore {
@@ -130,8 +130,8 @@ open class DependencyFactory: DependencyFactoryType {
 
     // MARK: - Remote
 
-    open func resolveRemote() -> PostsRemote {
-        return PostsNetworkRemote(apiSession: resolveService())
+    open func resolveRemote() -> PostRemote {
+        return PostNetworkRemote(apiSession: resolveService())
     }
     
     // MARK: - Service

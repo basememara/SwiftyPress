@@ -7,16 +7,16 @@
 
 import ZamzamKit
 
-public struct PostsWorker: PostsWorkerType, Loggable {
-    private let store: PostsStore
-    private let remote: PostsRemote?
+public struct PostWorker: PostWorkerType, Loggable {
+    private let store: PostStore
+    private let remote: PostRemote?
     private let preferences: PreferencesType
     private let constants: ConstantsType
     private let dataWorker: DataWorkerType
     
     public init(
-        store: PostsStore,
-        remote: PostsRemote?,
+        store: PostStore,
+        remote: PostRemote?,
         preferences: PreferencesType,
         constants: ConstantsType,
         dataWorker: DataWorkerType)
@@ -29,7 +29,7 @@ public struct PostsWorker: PostsWorkerType, Loggable {
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         store.fetch(id: id) {
@@ -74,7 +74,7 @@ public extension PostsWorker {
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch {
@@ -113,7 +113,7 @@ public extension PostsWorker {
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(ids: ids) {
@@ -153,21 +153,21 @@ public extension PostsWorker {
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.search(with: request, completion: completion)
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func getID(bySlug slug: String) -> Int? {
         return store.getID(bySlug: slug)
     }
 }
 
-public extension PostsWorker {
+public extension PostWorker {
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard let ids = preferences.get(.favorites), !ids.isEmpty else {

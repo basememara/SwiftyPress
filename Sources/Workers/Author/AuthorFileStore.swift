@@ -7,7 +7,7 @@
 
 import ZamzamKit
 
-public struct AuthorsFileStore: AuthorsStore {
+public struct AuthorFileStore: AuthorStore {
     private let seedStore: SeedStore
     
     init(seedStore: SeedStore) {
@@ -15,7 +15,7 @@ public struct AuthorsFileStore: AuthorsStore {
     }
 }
 
-public extension AuthorsFileStore {
+public extension AuthorFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
         seedStore.fetch {

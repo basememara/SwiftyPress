@@ -8,6 +8,6 @@
 
 import UIKit
 
-public class ThemedSwitch: UISwitch {
+open class ThemedSwitch: UISwitch {
     
 }

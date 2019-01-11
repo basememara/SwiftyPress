@@ -1,5 +1,5 @@
 //
-//  PostsRealmStore.swift
+//  PostRealmStore.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-13.
@@ -8,11 +8,11 @@
 import ZamzamKit
 import RealmSwift
 
-public struct PostsRealmStore: PostsStore, Loggable {
+public struct PostRealmStore: PostStore, Loggable {
     
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         DispatchQueue.database.async {
@@ -53,7 +53,7 @@ public extension PostsRealmStore {
     }
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
@@ -92,7 +92,7 @@ public extension PostsRealmStore {
     }
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
@@ -130,7 +130,7 @@ public extension PostsRealmStore {
     }
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
@@ -180,7 +180,7 @@ public extension PostsRealmStore {
     }
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     func getID(bySlug slug: String) -> Int? {
         let realm: Realm
@@ -195,7 +195,7 @@ public extension PostsRealmStore {
     }
 }
 
-public extension PostsRealmStore {
+public extension PostRealmStore {
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         DispatchQueue.database.async {
@@ -236,7 +236,7 @@ public extension PostsRealmStore {
 
 // MARK: - Helpers
 
-private extension PostsRealmStore {
+private extension PostRealmStore {
     
     /// Extend post with linked objects
     func extend(post: PostType, with realm: Realm) -> ExtendedPostType {

@@ -11,7 +11,7 @@ import ZamzamKit
 
 class AuthorsWorkerTests: BaseTestCase, HasDependencies {
     
-    private lazy var authorsWorker: AuthorsWorkerType = dependencies.resolveWorker()
+    private lazy var authorWorker: AuthorWorkerType = dependencies.resolveWorker()
 
 }
 
@@ -21,7 +21,7 @@ extension AuthorsWorkerTests {
         let promise = expectation(description: "Authors fetch by ID promise")
         let id = 2
         
-        authorsWorker.fetch(id: id) {
+        authorWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
             guard let value = $0.value, $0.isSuccess else {
@@ -38,7 +38,7 @@ extension AuthorsWorkerTests {
         let promise = expectation(description: "Authors fetch by ID error promise")
         let id = 999
         
-        authorsWorker.fetch(id: id) {
+        authorWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
             guard case .nonExistent? = $0.error else {
