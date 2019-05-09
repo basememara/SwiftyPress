@@ -20,32 +20,34 @@ public extension TaxonomyFileStore {
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
         fetch {
             // Handle errors
-            guard $0.isSuccess else {
+            guard case .success = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = $0.value?.first(where: { $0.id == id }) else {
-                return completion(.failure(.nonExistent))
+            guard case .success(let value) = $0,
+                let model = value.first(where: { $0.id == id }) else {
+                    return completion(.failure(.nonExistent))
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
     
     func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
         fetch {
             // Handle errors
-            guard $0.isSuccess else {
+            guard case .success = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = $0.value?.first(where: { $0.slug == slug }) else {
-                return completion(.failure(.nonExistent))
+            guard case .success(let value) = $0,
+                let model = value.first(where: { $0.slug == slug }) else {
+                    return completion(.failure(.nonExistent))
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }
@@ -54,11 +56,11 @@ public extension TaxonomyFileStore {
     
     func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
         seedStore.fetch {
-            guard let data = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
-            completion(.success(data.categories + data.tags))
+            completion(.success(value.categories + value.tags))
         }
     }
 }
@@ -67,20 +69,20 @@ public extension TaxonomyFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         fetch {
-            guard let terms = $0.value, $0.isSuccess else { return completion($0) }
+            guard case .success(let value) = $0 else { return completion($0) }
             
-            let value = ids.reduce(into: [TermType]()) { result, next in
-                guard let element = terms.first(where: { $0.id == next }) else { return }
+            let model = ids.reduce(into: [TermType]()) { result, next in
+                guard let element = value.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
     
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
         fetch {
-            guard let value = $0.value, $0.isSuccess else { return completion($0) }
+            guard case .success(let value) = $0 else { return completion($0) }
             completion(.success(value.filter { $0.taxonomy == taxonomy }))
         }
     }

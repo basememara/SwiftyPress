@@ -24,7 +24,7 @@ extension MediaWorkerTests {
         mediaWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Media fetch by ID error: \(String(describing: $0.error))")
             }
             

@@ -9,7 +9,7 @@ import Alamofire
 import ZamzamKit
 
 public protocol APISessionType {
-    func request(_ route: APIRoutable, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void)
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void)
 }
 
 public struct APISession: APISessionType, Loggable {
@@ -32,7 +32,7 @@ public extension APISession {
     /// - Parameters:
     ///   - router: The router request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ route: APIRoutable, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void) {
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void) {
         let urlRequest: URLRequest
         
         // Construct request
@@ -42,7 +42,7 @@ public extension APISession {
         Log(request: urlRequest)
         
         sessionManager.request(urlRequest) {
-            self.Log(response: $0.value, url: urlRequest.url?.absoluteString)
+            self.Log(response: try? $0.get(), url: urlRequest.url?.absoluteString)
             completion($0)
         }
     }

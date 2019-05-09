@@ -30,7 +30,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch all error: \(String(describing: $0.error))")
             }
             
@@ -50,7 +50,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by ID error: \(String(describing: $0.error))")
             }
             
@@ -67,7 +67,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(ids: ids) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by IDs error: \(String(describing: $0.error))")
             }
             
@@ -89,7 +89,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(slug: slug) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by slug error: \(String(describing: $0.error))")
             }
             
@@ -109,7 +109,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by url error: \(String(describing: $0.error))")
             }
             
@@ -126,7 +126,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by url 2 error: \(String(describing: $0.error))")
             }
             
@@ -143,7 +143,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by url 3 error: \(String(describing: $0.error))")
             }
             
@@ -160,7 +160,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by url 4 error: \(String(describing: $0.error))")
             }
             
@@ -179,7 +179,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(by: .category) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by category error should have failed.")
             }
             
@@ -195,7 +195,7 @@ extension TaxonomyWorkerTests {
         taxonomyWorker.fetch(by: .tag) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Terms fetch by tag error should have failed.")
             }
             

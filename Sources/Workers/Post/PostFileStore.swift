@@ -19,7 +19,7 @@ public extension PostFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
             }
         
@@ -48,16 +48,16 @@ public extension PostFileStore {
     
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         fetch {
-            guard let data = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = data.first(where: { $0.slug == slug }) else {
+            guard let model = value.first(where: { $0.slug == slug }) else {
                 return completion(.failure(.nonExistent))
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }
@@ -66,7 +66,7 @@ public extension PostFileStore {
     
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
             }
             
@@ -77,13 +77,13 @@ public extension PostFileStore {
     
     func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch {
-            guard let data = $0.value, $0.isSuccess else { return completion($0) }
+            guard case .success(let value) = $0 else { return completion($0) }
             
-            let value = data
+            let model = value
                 .filter { $0.commentCount > 1 }
                 .sorted { $0.commentCount > $1.commentCount }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }
@@ -92,26 +92,26 @@ public extension PostFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch {
-            guard let data = $0.value, $0.isSuccess else { return completion($0) }
+            guard case .success(let value) = $0 else { return completion($0) }
             
-            let value = ids.reduce(into: [PostType]()) { result, next in
-                guard let element = data.first(where: { $0.id == next }) else { return }
+            let model = ids.reduce(into: [PostType]()) { result, next in
+                guard let element = value.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
     
     func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch {
-            guard let data = $0.value, $0.isSuccess else { return completion($0) }
+            guard case .success(let value) = $0 else { return completion($0) }
             
-            let value = data.filter {
+            let model = value.filter {
                 ($0.categories + $0.tags).contains(where: ids.contains)
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }
@@ -120,7 +120,7 @@ public extension PostFileStore {
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
             }
             
@@ -181,7 +181,7 @@ public extension PostFileStore {
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         seedStore.fetch {
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .databaseFailure(nil)))
             }
             

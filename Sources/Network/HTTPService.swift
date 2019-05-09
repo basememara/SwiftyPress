@@ -11,7 +11,7 @@ import ZamzamKit
 public typealias ServerResponse = (data: Data, headers: [String: String], statusCode: Int)
 
 public protocol HTTPServiceType {
-    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void)
+    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void)
 }
 
 public struct HTTPService: HTTPServiceType {
@@ -25,7 +25,7 @@ public struct HTTPService: HTTPServiceType {
 
 public extension HTTPService {
     
-    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void) {
+    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void) {
         var urlRequest = URLRequest(url: URL(string: url)!)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         
@@ -54,7 +54,7 @@ public extension SessionManager {
     /// - Parameters:
     ///   - urlRequest: The URL request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ urlRequest: URLRequest, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void) {
+    func request(_ urlRequest: URLRequest, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void) {
         request(urlRequest)
             .validate()
             .responseData {

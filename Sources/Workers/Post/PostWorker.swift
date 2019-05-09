@@ -38,7 +38,7 @@ public extension PostWorker {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
                 return remote.fetch(id: id) {
-                    guard let value = $0.value, $0.isSuccess else { return completion($0) }
+                    guard case .success(let value) = $0 else { return completion($0) }
                     self.store.createOrUpdate(value, completion: completion)
                 }
             }
@@ -46,19 +46,19 @@ public extension PostWorker {
             // Immediately return local response
             completion($0)
             
-            guard let cacheElement = $0.value, $0.isSuccess else { return }
+            guard case .success(let cacheElement) = $0 else { return }
             
             // Sync remote updates to cache if applicable
             remote.fetch(id: id) {
                 // Validate if any updates occurred and return
-                guard let element = $0.value, $0.isSuccess,
+                guard case .success(let element) = $0,
                     element.post.modifiedAt > cacheElement.post.modifiedAt else {
                         return
                 }
                 
                 // Update local storage with updated data
                 self.store.createOrUpdate(element) {
-                    guard $0.isSuccess else {
+                    guard case .success = $0 else {
                         return self.Log(error: "Could not save updated post locally from remote storage: \(String(describing: $0.error))")
                     }
                     
@@ -81,12 +81,12 @@ public extension PostWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
+                guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetch(completion: completion)
             }
         }
@@ -97,12 +97,12 @@ public extension PostWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard $0.value?.posts.isEmpty == false, $0.isSuccess else { return }
+                guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetchPopular(completion: completion)
             }
         }
@@ -120,13 +120,13 @@ public extension PostWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard $0.value?.posts.contains(where: { ids.contains($0.id) }) == true,
-                    $0.isSuccess else {
+                guard case .success(let value) = $0,
+                    value.posts.contains(where: { ids.contains($0.id) }) else {
                         return
                 }
                 
@@ -140,13 +140,15 @@ public extension PostWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
+                guard case .success(let value) = $0 else { return }
+                
                 // Validate if any updates that needs to be stored
-                let modifiedIDs = Set($0.value?.posts.flatMap { $0.categories + $0.tags } ?? [])
-                guard ids.contains(where: modifiedIDs.contains), $0.isSuccess else { return }
+                let modifiedIDs = Set(value.posts.flatMap { $0.categories + $0.tags })
+                guard ids.contains(where: modifiedIDs.contains) else { return }
                 self.store.fetch(byTermIDs: ids, completion: completion)
             }
         }

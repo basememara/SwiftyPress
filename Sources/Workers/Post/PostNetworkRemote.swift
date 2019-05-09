@@ -20,13 +20,13 @@ public extension PostNetworkRemote {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         apiSession.request(APIRouter.readPost(id: id)) {
             // Handle errors
-            guard $0.isSuccess else {
+            guard case .success = $0 else {
                 self.Log(error: "An error occured while fetching the post: \(String(describing: $0.error)).")
                 return completion(.failure(DataError(from: $0.error)))
             }
             
             // Ensure available
-            guard let value = $0.value else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure(.nonExistent))
             }
             

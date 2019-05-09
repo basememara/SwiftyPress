@@ -63,7 +63,7 @@ public extension DataWorker {
                 self.Log(info: "Seeding cache storage begins...")
                 
                 return self.seedStore.fetch {
-                    guard let value = $0.value, $0.isSuccess else { return deferredTask($0) }
+                    guard case .success(let value) = $0 else { return deferredTask($0) }
                     let date = value.posts.map { $0.modifiedAt }.max() ?? Date()
                     
                     self.Log(debug: "Found \(value.posts.count) posts to seed into cache storage.")
@@ -72,7 +72,7 @@ public extension DataWorker {
                         deferredTask($0)
                         
                         // Cache seeded now re-sync
-                        guard $0.isSuccess else { return }
+                        guard case .success = $0 else { return }
                         self.Log(debug: "Seeding cache storage complete, now syncing with remote storage.")
                         self.sync(completion: completion)
                     }
@@ -84,7 +84,7 @@ public extension DataWorker {
             self.Log(info: "Sync cache storage begins, last synced at \(lastSyncedAt)...")
             
             self.syncStore.fetchModified(after: lastSyncedAt) {
-                guard let value = $0.value, $0.isSuccess else { return deferredTask($0) }
+                guard case .success(let value) = $0 else { return deferredTask($0) }
                 self.Log(debug: "Found \(value.posts.count) posts to sync with cache storage.")
                 self.cacheStore.createOrUpdate(value, lastSyncedAt: date, completion: deferredTask)
             }

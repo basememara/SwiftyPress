@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ZamzamKit
 
 public protocol DependencyFactoryType {
     func resolve() -> ConstantsType

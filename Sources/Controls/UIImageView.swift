@@ -65,7 +65,7 @@ public extension UIImageView {
         }
         
         kf.setImage(with: urlResource, placeholder: placeholder, options: options) {
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             guard let tintColor = tintColor else { return }
             self.tintColor = tintColor
             self.image = self.image?.withRenderingMode(.alwaysTemplate)

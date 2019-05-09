@@ -39,12 +39,16 @@ public extension TaxonomyWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard ($0.value?.categories.isEmpty == false || $0.value?.tags.isEmpty == false), $0.isSuccess else { return }
+                guard case .success(let value) = $0,
+                    !value.categories.isEmpty || !value.tags.isEmpty else {
+                        return
+                }
+                
                 self.store.fetch(completion: completion)
             }
         }
@@ -55,15 +59,13 @@ public extension TaxonomyWorker {
             // Immediately return local response
             completion($0)
             
-            guard $0.isSuccess else { return }
+            guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.dataWorker.sync {
                 // Validate if any updates that needs to be stored
-                guard taxonomy == .category
-                    ? $0.value?.categories.isEmpty == false
-                    : $0.value?.tags.isEmpty == false,
-                    $0.isSuccess else {
+                guard case .success(let value) = $0,
+                    taxonomy == .category ? !value.categories.isEmpty : !value.tags.isEmpty else {
                         return
                 }
                 

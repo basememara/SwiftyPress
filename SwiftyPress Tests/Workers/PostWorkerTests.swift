@@ -23,7 +23,7 @@ extension PostWorkerTests {
         postWorker.fetch {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch all error: \(String(describing: $0.error))")
             }
             
@@ -43,7 +43,7 @@ extension PostWorkerTests {
         postWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by ID error: \(String(describing: $0.error))")
             }
             
@@ -80,7 +80,7 @@ extension PostWorkerTests {
         postWorker.fetch(ids: Set(ids)) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by IDs error: \(String(describing: $0.error))")
             }
             
@@ -100,7 +100,7 @@ extension PostWorkerTests {
         postWorker.fetch(slug: slug) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by slug error: \(String(describing: $0.error))")
             }
             
@@ -120,7 +120,7 @@ extension PostWorkerTests {
         postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by url error: \(String(describing: $0.error))")
             }
             
@@ -137,7 +137,7 @@ extension PostWorkerTests {
         postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by url 2 error: \(String(describing: $0.error))")
             }
             
@@ -154,7 +154,7 @@ extension PostWorkerTests {
         postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by url 3 error: \(String(describing: $0.error))")
             }
             
@@ -171,7 +171,7 @@ extension PostWorkerTests {
         postWorker.fetch(url: url) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by url 4 error: \(String(describing: $0.error))")
             }
             
@@ -191,7 +191,7 @@ extension PostWorkerTests {
         postWorker.fetch(byCategoryIDs: ids) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by categories error: \(String(describing: $0.error))")
             }
             
@@ -212,7 +212,7 @@ extension PostWorkerTests {
         postWorker.fetch(byTagIDs: ids) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by tags error: \(String(describing: $0.error))")
             }
             
@@ -233,7 +233,7 @@ extension PostWorkerTests {
         postWorker.fetch(byTermIDs: ids) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch by terms error: \(String(describing: $0.error))")
             }
             
@@ -260,7 +260,7 @@ extension PostWorkerTests {
         postWorker.fetchFavorites {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Posts fetch favorites error: \(String(describing: $0.error))")
             }
             

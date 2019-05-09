@@ -23,7 +23,7 @@ public extension SyncNetworkStore {
     
     func fetchModified(after date: Date, completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
         apiSession.request(APIRouter.modifiedPayload(after: date)) {
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 // Handle no modified data and return success
                 guard $0.error?.statusCode != 304 else {
                     return completion(.success(SeedPayload()))

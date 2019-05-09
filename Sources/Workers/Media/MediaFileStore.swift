@@ -19,16 +19,16 @@ public extension MediaFileStore {
     
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
         seedStore.fetch {
-            guard let data = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
             // Find match
-            guard let value = data.media.first(where: { $0.id == id }) else {
+            guard let model = value.media.first(where: { $0.id == id }) else {
                 return completion(.failure(.nonExistent))
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }
@@ -37,16 +37,16 @@ public extension MediaFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
         seedStore.fetch {
-            guard let data = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return completion(.failure($0.error ?? .unknownReason(nil)))
             }
             
-            let value = ids.reduce(into: [MediaType]()) { result, next in
-                guard let element = data.media.first(where: { $0.id == next }) else { return }
+            let model = ids.reduce(into: [MediaType]()) { result, next in
+                guard let element = value.media.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
-            completion(.success(value))
+            completion(.success(model))
         }
     }
 }

@@ -23,7 +23,7 @@ extension SeedWorkerTests {
         seedWorker.fetch {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Seed fetch all error: \(String(describing: $0.error))")
             }
             
@@ -43,7 +43,7 @@ extension SeedWorkerTests {
         seedWorker.fetchModified(after: modifiedDate) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Seed fetch modified error: \(String(describing: $0.error))")
             }
             
@@ -63,7 +63,7 @@ extension SeedWorkerTests {
         seedWorker.fetchModified(after: Date()) {
             defer { promise.fulfill() }
             
-            guard let value = $0.value, $0.isSuccess else {
+            guard case .success(let value) = $0 else {
                 return XCTFail("Seed fetch no modified error: \(String(describing: $0.error))")
             }
             

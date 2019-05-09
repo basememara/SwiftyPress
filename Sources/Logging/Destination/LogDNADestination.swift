@@ -102,7 +102,7 @@ class LogDNADestination: BaseDestination, HasDependencies {
         
         // Send remotely
         httpService.post(url: ingestURL, parameters: parameters, headers: headers) {
-            guard $0.isFailure else { return }
+            guard case .failure = $0 else { return }
             LogDNADestination.payload += payload //Failed so try next time
         }
     }
