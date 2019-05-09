@@ -113,9 +113,14 @@ extension Logger {
         if let application = Logger.application {
             output["application_state"] = {
                 switch application.applicationState {
-                case .active: return "active"
-                case .background: return "background"
-                case .inactive: return "inactive"
+                case .active:
+                    return "active"
+                case .background:
+                    return "background"
+                case .inactive:
+                    return "inactive"
+                @unknown default:
+                    return "unknown"
                 }
             }()
             
