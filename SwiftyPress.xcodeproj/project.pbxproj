@@ -347,17 +347,6 @@
 		8B0D645C20BEB26B0046056F /* SwiftyPress iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftyPress iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0D646020BEB26B0046056F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B0D646C20BEB27B0046056F /* SwiftyPress tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SwiftyPress tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B0D647F20BEB7100046056F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B0D648120BEB7100046056F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8B0D648420BEB7100046056F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B0D648620BEB7110046056F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8B0D648920BEB7110046056F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8B0D648B20BEB7110046056F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B0D649620BEB7220046056F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B0D649820BEB7220046056F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8B0D649B20BEB7220046056F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B0D649D20BEB7240046056F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8B0D649F20BEB7240046056F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B0D64C320BEC9830046056F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8B0D64C820C15E8B0046056F /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		8B0D64CD20C347E00046056F /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
@@ -524,8 +513,6 @@
 				8B00E41120B30D7800B20B2C /* Meta */,
 				8B00E3CF20B2DB3200B20B2C /* Sources */,
 				8B0D645D20BEB26B0046056F /* SwiftyPress Tests */,
-				8B0D647E20BEB7100046056F /* SwiftyPress Example iOS */,
-				8B0D649520BEB7220046056F /* SwiftyPress Example TV */,
 				8B00E3E220B3059F00B20B2C /* Frameworks */,
 				8B00E3AD20B2DA0C00B20B2C /* Products */,
 			);
@@ -738,31 +725,6 @@
 				8B0D646020BEB26B0046056F /* Info.plist */,
 			);
 			path = "SwiftyPress Tests";
-			sourceTree = "<group>";
-		};
-		8B0D647E20BEB7100046056F /* SwiftyPress Example iOS */ = {
-			isa = PBXGroup;
-			children = (
-				8B0D647F20BEB7100046056F /* AppDelegate.swift */,
-				8B0D648120BEB7100046056F /* ViewController.swift */,
-				8B0D648320BEB7100046056F /* Main.storyboard */,
-				8B0D648620BEB7110046056F /* Assets.xcassets */,
-				8B0D648820BEB7110046056F /* LaunchScreen.storyboard */,
-				8B0D648B20BEB7110046056F /* Info.plist */,
-			);
-			path = "SwiftyPress Example iOS";
-			sourceTree = "<group>";
-		};
-		8B0D649520BEB7220046056F /* SwiftyPress Example TV */ = {
-			isa = PBXGroup;
-			children = (
-				8B0D649620BEB7220046056F /* AppDelegate.swift */,
-				8B0D649820BEB7220046056F /* ViewController.swift */,
-				8B0D649A20BEB7220046056F /* Main.storyboard */,
-				8B0D649D20BEB7240046056F /* Assets.xcassets */,
-				8B0D649F20BEB7240046056F /* Info.plist */,
-			);
-			path = "SwiftyPress Example TV";
 			sourceTree = "<group>";
 		};
 		8B0D64C720C15D480046056F /* Errors */ = {
@@ -1524,30 +1486,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8B0D648320BEB7100046056F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B0D648420BEB7100046056F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8B0D648820BEB7110046056F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B0D648920BEB7110046056F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		8B0D649A20BEB7220046056F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B0D649B20BEB7220046056F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8B5AA8182143670800EA4E2F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
