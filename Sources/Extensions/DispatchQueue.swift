@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension DispatchQueue {
+extension DispatchQueue {
     
     /// A configure queue for executing database related work items.
     static let database = DispatchQueue(label: "SwiftyPress.DispatchQueue.database", qos: .utility)

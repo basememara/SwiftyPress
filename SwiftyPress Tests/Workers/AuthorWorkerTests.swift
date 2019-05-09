@@ -9,13 +9,13 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class AuthorsWorkerTests: BaseTestCase, HasDependencies {
+class AuthorWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var authorWorker: AuthorWorkerType = dependencies.resolveWorker()
 
 }
 
-extension AuthorsWorkerTests {
+extension AuthorWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Authors fetch by ID promise")

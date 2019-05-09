@@ -54,17 +54,19 @@ private extension Logger {
         var logFileURL: URL?
         
         // File output configurations
-        log.addDestination(FileDestination().with {
-            $0.logFileURL = $0.logFileURL?
-                .deletingLastPathComponent()
-                .appendingPathComponent("\(constants.logFileName).dev")
-            
-            $0.format = "$Dyyyy-MM-dd HH:mm:ssZ$d $C$L$c $N.$F:$l - $M\nMeta: $X"
-            $0.minLevel = constants.environment == .production ? .info : .verbose
-            
-            // Save log file location for later use
-            logFileURL = $0.logFileURL
-        })
+        log.addDestination(
+            FileDestination().with {
+                $0.logFileURL = $0.logFileURL?
+                    .deletingLastPathComponent()
+                    .appendingPathComponent("\(constants.logFileName).dev")
+                
+                $0.format = "$Dyyyy-MM-dd HH:mm:ssZ$d $C$L$c $N.$F:$l - $M\nMeta: $X"
+                $0.minLevel = constants.environment == .production ? .info : .verbose
+                
+                // Save log file location for later use
+                logFileURL = $0.logFileURL
+            }
+        )
         
         // Handle file protection so logging can occur in the locked background state
         if let url = logFileURL {
@@ -306,8 +308,8 @@ extension Logger {
 
 public extension Loggable where Self: ApplicationModule {
     
-    /// Set up logger with application so state can be logged
-    func configureLogger(for application: UIApplication, inject logger: Loggable? = nil) {
+    /// Configure logger with current application for state logging
+    func setupLogger(for application: UIApplication, inject logger: Loggable? = nil) {
         Logger.application = application
         
         if let logger = logger {

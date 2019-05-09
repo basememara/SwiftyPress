@@ -86,7 +86,7 @@ public extension CacheRealmStore {
         // Create default location, set permissions, and seed if applicable
         let fileManager = FileManager.default
         guard !fileManager.fileExists(atPath: folderURL.path) else { return }
-        
+
         // Set permissions for database for background tasks
         do {
             // Create directory if does not exist yet

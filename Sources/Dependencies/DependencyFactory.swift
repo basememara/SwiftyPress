@@ -41,7 +41,7 @@ public protocol DependencyFactoryType {
 open class DependencyFactory: DependencyFactoryType {
     public init() { }
     
-    // MARK: - Preferences
+    // MARK: - Misc
     
     open func resolve() -> ConstantsType {
         return Constants(store: resolveStore())
@@ -53,6 +53,10 @@ open class DependencyFactory: DependencyFactoryType {
     
     open func resolve() -> NotificationCenter {
         return .default
+    }
+    
+    open func resolve() -> Theme {
+        fatalError("Override dependency in subclass")
     }
     
     // MARK: - Workers
@@ -142,11 +146,5 @@ open class DependencyFactory: DependencyFactoryType {
     
     open func resolveService() -> HTTPServiceType {
         return HTTPService()
-    }
-    
-    // MARK: - Misc
-    
-    open func resolve() -> Theme {
-        fatalError("Override dependency in subclass")
     }
 }

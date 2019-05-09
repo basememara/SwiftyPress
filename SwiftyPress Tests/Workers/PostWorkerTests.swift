@@ -9,13 +9,13 @@ import XCTest
 import ZamzamKit
 @testable import SwiftyPress
 
-class PostsWorkerTests: BaseTestCase, HasDependencies {
+class PostWorkerTests: BaseTestCase, HasDependencies {
     
     private lazy var postWorker: PostWorkerType = dependencies.resolveWorker()
 
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetch() {
         let promise = expectation(description: "Posts fetch all promise")
@@ -34,7 +34,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetchByID() {
         let promise = expectation(description: "Posts fetch by ID promise")
@@ -71,7 +71,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetchByIDs() {
         let promise = expectation(description: "Posts fetch by IDs promise")
@@ -91,7 +91,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetchBySlug() {
         let promise = expectation(description: "Posts fetch by slug promise")
@@ -111,7 +111,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetchByURL() {
         let promise = expectation(description: "Posts fetch by url promise")
@@ -182,7 +182,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFetchByCategories() {
         let promise = expectation(description: "Posts fetch by categories promise")
@@ -248,7 +248,7 @@ extension PostsWorkerTests {
     }
 }
 
-extension PostsWorkerTests {
+extension PostWorkerTests {
     
     func testFavorites() {
         let promise = expectation(description: "Posts fetch favorites promise")

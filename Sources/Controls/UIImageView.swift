@@ -64,16 +64,12 @@ public extension UIImageView {
             options.append(.processor(processor))
         }
         
-        kf.setImage(
-            with: urlResource,
-            placeholder: placeholder,
-            options: options,
-            completionHandler: { (image, error, cacheType, imageUrl) in
-                guard let tintColor = tintColor else { return }
-                self.tintColor = tintColor
-                self.image = self.image?.withRenderingMode(.alwaysTemplate)
-            }
-        )
+        kf.setImage(with: urlResource, placeholder: placeholder, options: options) {
+            guard $0.isSuccess else { return }
+            guard let tintColor = tintColor else { return }
+            self.tintColor = tintColor
+            self.image = self.image?.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     /// Specify how a size adjusts itself to fit a target size.

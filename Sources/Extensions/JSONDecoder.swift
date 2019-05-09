@@ -12,7 +12,7 @@ import ZamzamKit
 extension JSONDecoder: With {
     public static let `default`: JSONDecoder = {
         JSONDecoder().with {
-            $0.dateDecodingStrategy = .formatted(DateFormatter.iso8601)
+            $0.dateDecodingStrategy = .formatted(.iso8601)
         }
     }()
 }

@@ -11,6 +11,7 @@ import ZamzamKit
 public extension Localizable {
     static let duplicateFailureErrorMessage = Localizable(NSLocalizedString("duplicate.failure.error.message", bundle: .swiftyPress, comment: "General error for duplicate data"))
     static let nonExistentErrorMessage = Localizable(NSLocalizedString("non.existent.error.message", bundle: .swiftyPress, comment: "General error for non-existent data"))
+    static let unauthorizedErrorTitle = Localizable(NSLocalizedString("unauthorized.error.title", bundle: .swiftyPress, comment: "Unauthorized alert error title"))
     static let unauthorizedErrorMessage = Localizable(NSLocalizedString("unauthorized.error.message", bundle: .swiftyPress, comment: "Unauthorized alert error message"))
     static let noInternetErrorMessage = Localizable(NSLocalizedString("no.internet.error.message", bundle: .swiftyPress, comment: "General error for no internet availability"))
     static let serverTimeoutErrorMessage = Localizable(NSLocalizedString("server.timeout.error.message", bundle: .swiftyPress, comment: "General error for server availability"))

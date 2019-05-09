@@ -10,6 +10,7 @@ public struct Term: TermType, Decodable {
     public let parentID: Int
     public let slug: String
     public let name: String
+    public let content: String?
     public let taxonomy: Taxonomy
     public let count: Int
 }
@@ -23,6 +24,7 @@ private extension Term {
         case parentID = "parent"
         case slug
         case name
+        case content
         case taxonomy
         case count
     }
@@ -39,6 +41,7 @@ extension Term {
             parentID: object.parentID,
             slug: object.slug,
             name: object.name,
+            content: object.content,
             taxonomy: object.taxonomy,
             count: object.count
         )

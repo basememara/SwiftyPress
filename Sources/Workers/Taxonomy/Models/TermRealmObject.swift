@@ -14,6 +14,7 @@ class TermRealmObject: Object, TermType {
     dynamic var parentID: Int = 0
     dynamic var slug: String = ""
     dynamic var name: String = ""
+    dynamic var content: String?
     dynamic var taxonomyRaw: String = Taxonomy.category.rawValue
     dynamic var count: Int = 0
     
@@ -50,6 +51,7 @@ extension TermRealmObject {
         self.parentID = object.parentID
         self.slug = object.slug
         self.name = object.name
+        self.content = object.content
         self.taxonomy = object.taxonomy
         self.count = object.count
     }
