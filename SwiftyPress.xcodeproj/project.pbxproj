@@ -16,21 +16,15 @@
 		8B00E3EA20B305A000B20B2C /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E320B305A000B20B2C /* SwiftyBeaver.framework */; };
 		8B00E3EB20B305A000B20B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E420B305A000B20B2C /* Alamofire.framework */; };
 		8B00E3EC20B305A000B20B2C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E520B305A000B20B2C /* Realm.framework */; };
-		8B00E3ED20B305A000B20B2C /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E620B305A000B20B2C /* KeychainSwift.framework */; };
 		8B00E3EE20B305A000B20B2C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E720B305A000B20B2C /* RealmSwift.framework */; };
-		8B00E3EF20B305A000B20B2C /* Arcane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E820B305A000B20B2C /* Arcane.framework */; };
 		8B00E3F020B305A000B20B2C /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3E920B305A000B20B2C /* ZamzamKit.framework */; };
 		8B00E3F820B305B700B20B2C /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F120B305B700B20B2C /* ZamzamKit.framework */; };
-		8B00E3F920B305B700B20B2C /* Arcane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F220B305B700B20B2C /* Arcane.framework */; };
 		8B00E3FA20B305B700B20B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F320B305B700B20B2C /* Alamofire.framework */; };
-		8B00E3FB20B305B700B20B2C /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F420B305B700B20B2C /* KeychainSwift.framework */; };
 		8B00E3FC20B305B700B20B2C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F520B305B700B20B2C /* Realm.framework */; };
 		8B00E3FD20B305B700B20B2C /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F620B305B700B20B2C /* SwiftyBeaver.framework */; };
 		8B00E3FE20B305B700B20B2C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3F720B305B700B20B2C /* RealmSwift.framework */; };
 		8B00E40620B305C800B20B2C /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E3FF20B305C800B20B2C /* Realm.framework */; };
-		8B00E40720B305C800B20B2C /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40020B305C800B20B2C /* KeychainSwift.framework */; };
 		8B00E40820B305C800B20B2C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40120B305C800B20B2C /* Alamofire.framework */; };
-		8B00E40920B305C800B20B2C /* Arcane.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40220B305C800B20B2C /* Arcane.framework */; };
 		8B00E40A20B305C800B20B2C /* ZamzamKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40320B305C800B20B2C /* ZamzamKit.framework */; };
 		8B00E40B20B305C800B20B2C /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40420B305C800B20B2C /* RealmSwift.framework */; };
 		8B00E40C20B305C800B20B2C /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B00E40520B305C800B20B2C /* SwiftyBeaver.framework */; };
@@ -468,8 +462,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E3EA20B305A000B20B2C /* SwiftyBeaver.framework in Frameworks */,
-				8B00E3EF20B305A000B20B2C /* Arcane.framework in Frameworks */,
-				8B00E3ED20B305A000B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E3EB20B305A000B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E3EC20B305A000B20B2C /* Realm.framework in Frameworks */,
 				8B00E3EE20B305A000B20B2C /* RealmSwift.framework in Frameworks */,
@@ -484,8 +476,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E3FD20B305B700B20B2C /* SwiftyBeaver.framework in Frameworks */,
-				8B00E3F920B305B700B20B2C /* Arcane.framework in Frameworks */,
-				8B00E3FB20B305B700B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E3FA20B305B700B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E3FC20B305B700B20B2C /* Realm.framework in Frameworks */,
 				8B00E3FE20B305B700B20B2C /* RealmSwift.framework in Frameworks */,
@@ -500,8 +490,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B00E40C20B305C800B20B2C /* SwiftyBeaver.framework in Frameworks */,
-				8B00E40920B305C800B20B2C /* Arcane.framework in Frameworks */,
-				8B00E40720B305C800B20B2C /* KeychainSwift.framework in Frameworks */,
 				8B00E40820B305C800B20B2C /* Alamofire.framework in Frameworks */,
 				8B00E40620B305C800B20B2C /* Realm.framework in Frameworks */,
 				8B00E40B20B305C800B20B2C /* RealmSwift.framework in Frameworks */,
