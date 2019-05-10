@@ -36,8 +36,11 @@ public extension APISession {
         let urlRequest: URLRequest
         
         // Construct request
-        do { urlRequest = try route.asURLRequest(constants: constants) }
-        catch { return completion(.failure(NetworkError(urlRequest: nil, statusCode: 400))) }
+        do {
+            urlRequest = try route.asURLRequest(constants: constants)
+        } catch {
+            return completion(.failure(NetworkError(urlRequest: nil, statusCode: 400)))
+        }
         
         Log(request: urlRequest)
         

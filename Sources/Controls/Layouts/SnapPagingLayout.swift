@@ -122,7 +122,7 @@ extension SnapPagingLayout: ScrollableFlowLayout {
         
         if centerPosition {
             // Back up a bit to center
-            toValue = toValue - peekWidth + sectionInset.left
+            toValue = (toValue - peekWidth + sectionInset.left)
         }
         
         // Damping equal 1 => no oscillations => decay animation

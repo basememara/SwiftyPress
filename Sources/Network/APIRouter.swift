@@ -20,15 +20,19 @@ private extension APIRouter {
     
     var method: HTTPMethod {
         switch self {
-        case .modifiedPayload: return .get
-        case .readPost: return .get
+        case .modifiedPayload:
+            return .get
+        case .readPost:
+            return .get
         }
     }
     
     var path: String {
         switch self {
-        case .modifiedPayload: return "payloads/modified"
-        case .readPost(let id): return "posts/\(id)"
+        case .modifiedPayload:
+            return "payloads/modified"
+        case .readPost(let id):
+            return "posts/\(id)"
         }
     }
     
@@ -58,8 +62,10 @@ public extension APIRouter {
         urlRequest.timeoutInterval = {
             // Increase connection timeout since some payloads can be large
             switch self {
-            case .modifiedPayload: return 30
-            default: return 10
+            case .modifiedPayload:
+                return 30
+            default:
+                return 10
             }
         }()
         

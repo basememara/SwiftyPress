@@ -25,4 +25,3 @@ public extension PreferencesType {
         remove(.favorites)
     }
 }
-

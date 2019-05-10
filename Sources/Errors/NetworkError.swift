@@ -26,8 +26,8 @@ public struct NetworkError: Error {
         statusCode: Int,
         headerValues: [String: String] = [String: String](),
         serverData: Data? = nil,
-        internalError: Error? = nil)
-    {
+        internalError: Error? = nil
+    ) {
         self.urlRequest = urlRequest
         self.statusCode = statusCode
         self.headerValues = headerValues

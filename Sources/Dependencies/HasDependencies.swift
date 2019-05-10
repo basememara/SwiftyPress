@@ -27,6 +27,6 @@ public extension DependencyConfigurator {
 }
 
 // Statically store dependency factory in memory.
-fileprivate struct DependencyInjector {
+private struct DependencyInjector {
     static var dependencies: DependencyFactoryType = DependencyFactory()
 }

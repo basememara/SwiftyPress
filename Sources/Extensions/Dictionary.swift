@@ -24,7 +24,7 @@ private extension Dictionary {
     }
     
     static func scrub(value: [AnyHashable: Any]) -> [String: String] {
-        return Dictionary<String, String>(uniqueKeysWithValues: value.map {
+        return [String: String](uniqueKeysWithValues: value.map {
             let key = "\($0)"
             let value = !key.within(scrubKeys) || ($1 as? String)?.isEmpty == true ? "\($1)" : "*****"
             return (key, value)

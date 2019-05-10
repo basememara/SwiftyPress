@@ -24,7 +24,7 @@ public extension SeedFileStore {
     func configure() {
         guard SeedFileStore.data == nil else { return }
         
-        SeedFileStore.data = try! JSONDecoder.default.decode(
+        SeedFileStore.data = try? JSONDecoder.default.decode(
             SeedPayload.self,
             forResource: name,
             inBundle: bundle

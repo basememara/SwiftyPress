@@ -30,7 +30,7 @@ public extension DataWorker {
 
 public extension DataWorker {
     // Handle simultanuous pull requests in a queue
-    private static let queue = DispatchQueue(label: "\(Bundle.swiftyPress.bundleIdentifier!).DataWorker.sync")
+    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataWorker.sync")
     private static var tasks = [((Result<SeedPayload, DataError>) -> Void)]()
     private static var isSyncing = false
     

@@ -18,8 +18,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             guard let object = realm.object(ofType: PostRealmObject.self, forPrimaryKey: id) else {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
@@ -37,8 +40,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             guard let object = realm.objects(PostRealmObject.self).filter("slug == %@", slug).first else {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
@@ -55,13 +61,15 @@ public extension PostRealmStore {
 
 public extension PostRealmStore {
     
-    
     func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .sorted(byKeyPath: "createdAt", ascending: false)
@@ -77,8 +85,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .filter("commentCount > 1")
@@ -98,8 +109,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [PostType] = realm.objects(PostRealmObject.self, forPrimaryKeys: ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
@@ -115,8 +129,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .filter("ANY categoriesRaw.id IN %@ OR ANY tagsRaw.id IN %@", ids, ids)
@@ -132,15 +149,17 @@ public extension PostRealmStore {
 
 public extension PostRealmStore {
     
-    
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard !request.query.isEmpty else { return completion(.success([])) }
         
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             // Construct predicate builder
             var predicates = [NSPredicate]()
@@ -185,8 +204,11 @@ public extension PostRealmStore {
     func getID(bySlug slug: String) -> Int? {
         let realm: Realm
         
-        do { realm = try Realm() }
-        catch { return nil }
+        do {
+            realm = try Realm()
+        } catch {
+            return nil
+        }
         
         return realm.objects(PostRealmObject.self)
             .filter("slug == %@", slug)
@@ -201,8 +223,11 @@ public extension PostRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             do {
                 try realm.write {

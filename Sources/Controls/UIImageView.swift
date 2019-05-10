@@ -20,9 +20,9 @@ public extension UIImageView {
         placeholder: String? = "placeholder",
         referenceSize: CGSize? = nil,
         tintColor: UIColor? = nil,
-        contentMode: ResizingContentMode? = nil)
-    {
-        let placeholder = placeholder != nil ? UIImage(named: placeholder!) : nil
+        contentMode: ResizingContentMode? = nil
+    ) {
+        let placeholder = placeholder != nil ? UIImage(named: placeholder ?? "") : nil
         setImage(from: url, placeholder: placeholder, referenceSize: referenceSize, tintColor: tintColor, contentMode: contentMode)
     }
     
@@ -36,8 +36,8 @@ public extension UIImageView {
         placeholder: UIImage?,
         referenceSize: CGSize? = nil,
         tintColor: UIColor? = nil,
-        contentMode: ResizingContentMode? = nil)
-    {
+        contentMode: ResizingContentMode? = nil
+    ) {
         guard let url = url, !url.isEmpty, let urlResource = URL(string: url) else {
             image = placeholder
             return
@@ -45,16 +45,19 @@ public extension UIImageView {
         
         // Build options if applicable
         var options: KingfisherOptionsInfo = [.transition(.fade(0.2))]
-        var processor: ImageProcessor? = nil
+        var processor: ImageProcessor?
         
         if let referenceSize = referenceSize {
             let resizeProcessor = ResizingImageProcessor(referenceSize: referenceSize, mode: {
                 // Convert from Kingfisher enum to prevent leaking dependency through function signature
                 guard let contentMode = contentMode else { return .none }
                 switch contentMode {
-                case .none: return .none
-                case .aspectFit: return .aspectFit
-                case .aspectFill: return .aspectFill
+                case .none:
+                    return .none
+                case .aspectFit:
+                    return .aspectFit
+                case .aspectFill:
+                    return .aspectFill
                 }
             }())
             processor = processor?.append(another: resizeProcessor) ?? resizeProcessor

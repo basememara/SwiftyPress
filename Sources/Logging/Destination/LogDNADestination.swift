@@ -50,10 +50,14 @@ class LogDNADestination: BaseDestination, HasDependencies {
             "line": msg,
             "level": {
                 switch level {
-                case .debug, .verbose: return "DEBUG"
-                case .info: return "INFO"
-                case .warning: return "WARN"
-                case .error: return "ERROR"
+                case .debug, .verbose:
+                    return "DEBUG"
+                case .info:
+                    return "INFO"
+                case .warning:
+                    return "WARN"
+                case .error:
+                    return "ERROR"
                 }
             }(),
             "timestamp": Date().timeIntervalSince1970,
@@ -70,7 +74,7 @@ class LogDNADestination: BaseDestination, HasDependencies {
                 ]
                 
                 if let context = context as? [String: Any] {
-                    codeMeta.merge(context) { old, new in old }
+                    codeMeta.merge(context) { old, _ in old }
                 }
                 
                 return codeMeta

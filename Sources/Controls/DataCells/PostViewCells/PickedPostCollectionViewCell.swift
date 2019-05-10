@@ -40,7 +40,7 @@ extension PickedPostCollectionViewCell {
 private extension PickedPostCollectionViewCell {
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
+        sender.isSelected.toggle()
         guard let model = model else { return }
         delegate?.postsDataView(toggleFavorite: model)
     }

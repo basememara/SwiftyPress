@@ -26,15 +26,19 @@ public struct HTTPService: HTTPServiceType {
 public extension HTTPService {
     
     func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void) {
-        var urlRequest = URLRequest(url: URL(string: url)!)
+        guard let url = URL(string: url) else {
+            return completion(.failure(.init(statusCode: 0)))
+        }
+        
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         
         do {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         } catch {
-            return completion(.failure(
-                NetworkError(urlRequest: urlRequest, statusCode: 0, internalError: error)
-            ))
+            return completion(
+                .failure(.init(urlRequest: urlRequest, statusCode: 0, internalError: error))
+            )
         }
         
         headers?.forEach {

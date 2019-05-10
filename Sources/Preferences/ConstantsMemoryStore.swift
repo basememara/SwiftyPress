@@ -37,8 +37,8 @@ public struct ConstantsMemoryStore: ConstantsStore {
         googleAnalyticsID: String?,
         featuredCategoryID: Int,
         logFileName: String,
-        logDNAKey: String?)
-    {
+        logDNAKey: String?
+    ) {
         self.environment = environment
         self.itunesName = itunesName
         self.itunesID = itunesID

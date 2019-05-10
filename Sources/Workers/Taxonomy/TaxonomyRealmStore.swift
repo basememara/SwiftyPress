@@ -18,8 +18,11 @@ public extension TaxonomyRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             guard let object = realm.object(ofType: TermRealmObject.self, forPrimaryKey: id) else {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
@@ -37,8 +40,11 @@ public extension TaxonomyRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             guard let object = realm.objects(TermRealmObject.self).filter("slug == %@", slug).first else {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
@@ -59,8 +65,11 @@ public extension TaxonomyRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [TermType] = realm.objects(TermRealmObject.self)
                 .filter("count > 0")
@@ -80,8 +89,11 @@ public extension TaxonomyRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [TermType] = realm.objects(TermRealmObject.self, forPrimaryKeys: ids)
                 .sorted(byKeyPath: "count", ascending: false)
@@ -97,8 +109,11 @@ public extension TaxonomyRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             let items: [TermType] = realm.objects(TermRealmObject.self)
                 .filter("taxonomyRaw == %@ && count > 0", taxonomy.rawValue)
@@ -117,8 +132,11 @@ public extension TaxonomyRealmStore {
     func getID(bySlug slug: String) -> Int? {
         let realm: Realm
         
-        do { realm = try Realm() }
-        catch { return nil }
+        do {
+            realm = try Realm()
+        } catch {
+            return nil
+        }
         
         return realm.objects(TermRealmObject.self)
             .filter("slug == %@", slug)

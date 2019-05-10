@@ -122,8 +122,11 @@ public extension CacheRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
+            }
             
             // Transform data
             let post = request.posts.map { PostRealmObject(from: $0) }
@@ -189,8 +192,12 @@ private extension CacheRealmStore {
         let realm: Realm
         let typeName = String(describing: type)
         
-        do { realm = try Realm() }
-        catch { Log(error: "Could not initialize database: \(error)"); return nil }
+        do {
+            realm = try Realm()
+        } catch {
+            Log(error: "Could not initialize database: \(error)")
+            return nil
+        }
         
         return realm.object(ofType: SyncActivity.self, forPrimaryKey: typeName)
     }

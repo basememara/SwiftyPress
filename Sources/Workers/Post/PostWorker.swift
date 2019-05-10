@@ -19,8 +19,8 @@ public struct PostWorker: PostWorkerType, Loggable {
         remote: PostRemote?,
         preferences: PreferencesType,
         constants: ConstantsType,
-        dataWorker: DataWorkerType)
-    {
+        dataWorker: DataWorkerType
+    ) {
         self.store = store
         self.remote = remote
         self.preferences = preferences

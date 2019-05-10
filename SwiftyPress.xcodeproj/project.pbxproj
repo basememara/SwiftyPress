@@ -234,6 +234,9 @@
 		8B87FC68228495C6004AC246 /* seed1.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B87FC55228495C6004AC246 /* seed1.json */; };
 		8B87FC69228495C6004AC246 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC56228495C6004AC246 /* TestUtils.swift */; };
 		8B87FC6A228495C6004AC246 /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC56228495C6004AC246 /* TestUtils.swift */; };
+		8B87FC7022859559004AC246 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC6F22859559004AC246 /* DispatchQueue.swift */; };
+		8B87FC7122859559004AC246 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC6F22859559004AC246 /* DispatchQueue.swift */; };
+		8B87FC7222859559004AC246 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC6F22859559004AC246 /* DispatchQueue.swift */; };
 		8B8802892174B49D0035543D /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8802882174B49D0035543D /* DataWorker.swift */; };
 		8B88028A2174B49D0035543D /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8802882174B49D0035543D /* DataWorker.swift */; };
 		8B88028B2174B49D0035543D /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8802882174B49D0035543D /* DataWorker.swift */; };
@@ -271,9 +274,6 @@
 		8BC4FE43216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
 		8BC4FE44216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
 		8BC4FE45216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
-		8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
-		8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
-		8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */; };
 		8BC4FE4B216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
 		8BC4FE4C216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
 		8BC4FE4D216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
@@ -422,6 +422,8 @@
 		8B87FC54228495C6004AC246 /* TestDependency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDependency.swift; sourceTree = "<group>"; };
 		8B87FC55228495C6004AC246 /* seed1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = seed1.json; sourceTree = "<group>"; };
 		8B87FC56228495C6004AC246 /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		8B87FC6C2285907A004AC246 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		8B87FC6F22859559004AC246 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		8B8802882174B49D0035543D /* DataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWorker.swift; sourceTree = "<group>"; };
 		8BA83A482176386C0055292D /* CacheRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheRealmStore.swift; sourceTree = "<group>"; };
 		8BBF81D5216BF2D800158DDE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -435,7 +437,6 @@
 		8BC4FE20216CFE4B00BB7870 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncNetworkStore.swift; sourceTree = "<group>"; };
-		8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworkRemote.swift; sourceTree = "<group>"; };
 		8BC96D66217E31CD0037D747 /* PostsDataViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewAdapter.swift; sourceTree = "<group>"; };
 		8BC96D67217E31CD0037D747 /* PostsDataViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewDelegate.swift; sourceTree = "<group>"; };
@@ -598,6 +599,7 @@
 		8B00E41120B30D7800B20B2C /* Meta */ = {
 			isa = PBXGroup;
 			children = (
+				8B87FC6C2285907A004AC246 /* .swiftlint.yml */,
 				8B00E41220B30D9D00B20B2C /* Cartfile */,
 				8B00E41320B30D9D00B20B2C /* README.md */,
 				8B6B0CBD219D35210018F2E0 /* LICENSE */,
@@ -817,9 +819,9 @@
 				8B52510420CFE89000E77F70 /* Bundle.swift */,
 				8B52510020CFE7DB00E77F70 /* DateFormatter.swift */,
 				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
-				8BC4FE46216D54D300BB7870 /* DispatchQueue.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
 				8BC2FA25217819230014D7B5 /* Realm.swift */,
+				8B87FC6F22859559004AC246 /* DispatchQueue.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1011,6 +1013,7 @@
 				8B00E3A820B2DA0C00B20B2C /* Frameworks */,
 				8B00E3A920B2DA0C00B20B2C /* Headers */,
 				8B00E3AA20B2DA0C00B20B2C /* Resources */,
+				8B87FC6E228590BA004AC246 /* Run Lint Script */,
 			);
 			buildRules = (
 			);
@@ -1198,6 +1201,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B87FC6E228590BA004AC246 /* Run Lint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Lint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8B00E3A720B2DA0C00B20B2C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1237,7 +1261,6 @@
 				8B0D64C920C15E8B0046056F /* DataError.swift in Sources */,
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DC20C434C40046056F /* Term.swift in Sources */,
-				8BC4FE47216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B66738D217EAC870057E0F6 /* SimplePostTableViewCell.swift in Sources */,
 				8B63A2DF2164FDFA003868F7 /* ConstantsStoreInterfaces.swift in Sources */,
 				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
@@ -1251,6 +1274,7 @@
 				8B667389217EAC870057E0F6 /* TermTableViewCell.swift in Sources */,
 				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
 				8B63A2D72164F826003868F7 /* ScrollableFlowLayout.swift in Sources */,
+				8B87FC7022859559004AC246 /* DispatchQueue.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B1CC526217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
 				8BC96D72217E31CD0037D747 /* TermsDataViewDelegate.swift in Sources */,
@@ -1321,6 +1345,7 @@
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650E20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643B20BD77780046056F /* MediaWorker.swift in Sources */,
+				8B87FC7122859559004AC246 /* DispatchQueue.swift in Sources */,
 				8B0D642120B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC820D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B1CC52B217BE67900F00A70 /* AuthorRealmStore.swift in Sources */,
@@ -1330,7 +1355,6 @@
 				8B0D64DD20C434C40046056F /* Term.swift in Sources */,
 				8B88028A2174B49D0035543D /* DataWorker.swift in Sources */,
 				8BBF81E8216C292B00158DDE /* Social.swift in Sources */,
-				8BC4FE48216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B0D64C520BEC9830046056F /* Post.swift in Sources */,
 				8B0D641920B99B240046056F /* TermType.swift in Sources */,
 				8B0D644720BEA9010046056F /* PostsModels.swift in Sources */,
@@ -1395,6 +1419,7 @@
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650F20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643C20BD77780046056F /* MediaWorker.swift in Sources */,
+				8B87FC7222859559004AC246 /* DispatchQueue.swift in Sources */,
 				8B0D642220B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B6A2BC920D6747D00D070FB /* LogDNADestination.swift in Sources */,
 				8B1CC52C217BE67900F00A70 /* AuthorRealmStore.swift in Sources */,
@@ -1404,7 +1429,6 @@
 				8B0D64DE20C434C40046056F /* Term.swift in Sources */,
 				8B88028B2174B49D0035543D /* DataWorker.swift in Sources */,
 				8BBF81E9216C292B00158DDE /* Social.swift in Sources */,
-				8BC4FE49216D54D300BB7870 /* DispatchQueue.swift in Sources */,
 				8B0D64C620BEC9830046056F /* Post.swift in Sources */,
 				8B0D641A20B99B240046056F /* TermType.swift in Sources */,
 				8B0D644820BEA9010046056F /* PostsModels.swift in Sources */,

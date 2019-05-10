@@ -6,14 +6,14 @@
 //
 
 public protocol SeedPayloadType {
-    associatedtype P: PostType
-    associatedtype T: TermType
-    associatedtype A: AuthorType
-    associatedtype M: MediaType
+    associatedtype PostModel: PostType
+    associatedtype TermModel: TermType
+    associatedtype AuthorModel: AuthorType
+    associatedtype MediaModel: MediaType
     
-    var posts: [P] { get }
-    var categories: [T] { get }
-    var tags: [T] { get }
-    var authors: [A] { get }
-    var media: [M] { get }
+    var posts: [PostModel] { get }
+    var categories: [TermModel] { get }
+    var tags: [TermModel] { get }
+    var authors: [AuthorModel] { get }
+    var media: [MediaModel] { get }
 }

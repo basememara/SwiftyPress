@@ -19,8 +19,8 @@ public struct SeedPayload: SeedPayloadType, Decodable {
         authors: [Author] = [],
         media: [Media] = [],
         categories: [Term] = [],
-        tags: [Term] = [])
-    {
+        tags: [Term] = []
+    ) {
         self.posts = []
         self.authors = []
         self.media = []

@@ -18,8 +18,11 @@ public extension AuthorRealmStore {
         DispatchQueue.database.async {
             let realm: Realm
             
-            do { realm = try Realm() }
-            catch { return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) } }
+            do {
+                realm = try Realm()
+            } catch {
+                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+            }
             
             guard let object = realm.object(ofType: AuthorRealmObject.self, forPrimaryKey: id) else {
                 return DispatchQueue.main.async { completion(.failure(.nonExistent)) }

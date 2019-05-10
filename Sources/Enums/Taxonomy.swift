@@ -14,8 +14,10 @@ public extension Taxonomy {
     
     var localized: String {
         switch self {
-        case .category: return .localized(.categorySection)
-        case .tag: return .localized(.tagSection)
+        case .category:
+            return .localized(.categorySection)
+        case .tag:
+            return .localized(.tagSection)
         }
     }
 }

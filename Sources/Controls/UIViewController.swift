@@ -20,8 +20,8 @@ public extension UIViewController {
         safari url: String,
         theme: Theme,
         animated: Bool = true,
-        completion: (() -> Void)? = nil)
-    {
+        completion: (() -> Void)? = nil
+    ) {
         present(
             safari: url,
             barTintColor: theme.backgroundColor,
@@ -41,8 +41,8 @@ public extension UIViewController {
         safari url: String,
         theme: Theme,
         animated: Bool = true,
-        completion: (() -> Void)? = nil)
-    {
+        completion: (() -> Void)? = nil
+    ) {
         show(
             safari: url,
             barTintColor: theme.backgroundColor,

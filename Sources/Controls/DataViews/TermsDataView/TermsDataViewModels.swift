@@ -23,4 +23,3 @@ public struct TermsDataViewModel {
 public protocol TermsDataViewCell {
     func bind(_ model: TermsDataViewModel)
 }
-
