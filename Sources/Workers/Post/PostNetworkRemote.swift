@@ -34,28 +34,11 @@ public extension PostNetworkRemote {
             
             DispatchQueue.transform.async {
                 do {
-                    // Type used for decoding the server payload
-                    struct PayloadType: Decodable {
-                        let post: Post
-                        let author: Author?
-                        let media: Media?
-                        let categories: [Term]
-                        let tags: [Term]
-                    }
-                    
                     // Parse response data
-                    let payload = try JSONDecoder.default.decode(PayloadType.self, from: value.data)
-                    
-                    let model = ExtendedPostType(
-                        post: payload.post,
-                        author: payload.author,
-                        media: payload.media,
-                        categories: payload.categories,
-                        tags: payload.tags
-                    )
+                    let payload = try JSONDecoder.default.decode(ExtendedPost.self, from: value.data)
                     
                     DispatchQueue.main.async {
-                        completion(.success(model))
+                        completion(.success(payload))
                     }
                 } catch {
                     self.Log(error: "An error occured while parsing the post: \(error).")

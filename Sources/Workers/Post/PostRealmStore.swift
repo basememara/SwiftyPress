@@ -275,7 +275,7 @@ private extension PostRealmStore {
     
     /// Extend post with linked objects
     func extend(post: PostType, with realm: Realm) -> ExtendedPostType {
-        return ExtendedPostType(
+        return ExtendedPost(
             post: Post(from: post),
             author: Author(
                 from: realm.object(

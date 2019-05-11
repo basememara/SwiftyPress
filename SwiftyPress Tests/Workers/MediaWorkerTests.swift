@@ -6,13 +6,10 @@
 //
 
 import XCTest
-import ZamzamKit
-@testable import SwiftyPress
+import SwiftyPress
 
 class MediaWorkerTests: BaseTestCase, HasDependencies {
-    
-    private lazy var mediaWorker: MediaWorkerType = dependencies.resolveWorker()
-    
+    private lazy var mediaWorker: MediaWorkerType = dependencies.resolve()
 }
 
 extension MediaWorkerTests {

@@ -29,7 +29,7 @@ public extension PostFileStore {
                 return
             }
             
-            let model = ExtendedPostType(
+            let model = ExtendedPost(
                 post: post,
                 author: value.authors.first { $0.id == post.authorID },
                 media: value.media.first { $0.id == post.mediaID },

@@ -1,16 +1,35 @@
 //
-//  TestDependency.swift
+//  TestConfigurator.swift
 //  SwiftyPress
 //
-//  Created by Basem Emara on 2018-06-12.
+//  Created by Basem Emara on 2019-05-11.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import SwiftyPress
+import ZamzamKit
 
-class TestDependency: DependencyFactory {
+class TestConfigurator: CoreConfigurator {
+    private let environment: Environment
+    
+    override init() {
+        // Declare environment mode
+        self.environment = {
+            #if DEBUG
+            return .development
+            #elseif STAGING
+            return .staging
+            #else
+            return .production
+            #endif
+        }()
+        
+        super.init()
+    }
     
     override func resolveStore() -> ConstantsStore {
         return ConstantsMemoryStore(
+            environment: environment,
             itunesName: "",
             itunesID: "0",
             baseURL: URL(string: "https://basememara.com")!,
@@ -22,8 +41,7 @@ class TestDependency: DependencyFactory {
             styleSheet: "",
             googleAnalyticsID: nil,
             featuredCategoryID: 64,
-            logFileName: "test",
-            logDNAKey: nil
+            logFileName: "test"
         )
     }
     

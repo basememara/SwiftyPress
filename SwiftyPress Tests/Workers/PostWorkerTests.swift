@@ -6,13 +6,10 @@
 //
 
 import XCTest
-import ZamzamKit
-@testable import SwiftyPress
+import SwiftyPress
 
 class PostWorkerTests: BaseTestCase, HasDependencies {
-    
-    private lazy var postWorker: PostWorkerType = dependencies.resolveWorker()
-
+    private lazy var postWorker: PostWorkerType = dependencies.resolve()
 }
 
 extension PostWorkerTests {
@@ -188,7 +185,7 @@ extension PostWorkerTests {
         let promise = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
         
-        postWorker.fetch(byCategoryIDs: ids) {
+        postWorker.fetch(byTermIDs: ids) {
             defer { promise.fulfill() }
             
             guard case .success(let value) = $0 else {
@@ -209,7 +206,7 @@ extension PostWorkerTests {
         let promise = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
         
-        postWorker.fetch(byTagIDs: ids) {
+        postWorker.fetch(byTermIDs: ids) {
             defer { promise.fulfill() }
             
             guard case .success(let value) = $0 else {

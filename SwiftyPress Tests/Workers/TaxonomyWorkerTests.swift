@@ -6,20 +6,10 @@
 //
 
 import XCTest
-import ZamzamKit
-@testable import SwiftyPress
+import SwiftyPress
 
 class TaxonomyWorkerTests: BaseTestCase, HasDependencies {
-    
-    private lazy var taxonomyWorker: TaxonomyWorkerType = dependencies.resolveWorker()
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
+    private lazy var taxonomyWorker: TaxonomyWorkerType = dependencies.resolve()
 }
 
 extension TaxonomyWorkerTests {

@@ -6,13 +6,10 @@
 //
 
 import XCTest
-import ZamzamKit
-@testable import SwiftyPress
+import SwiftyPress
 
 class AuthorWorkerTests: BaseTestCase, HasDependencies {
-    
-    private lazy var authorWorker: AuthorWorkerType = dependencies.resolveWorker()
-
+    private lazy var authorWorker: AuthorWorkerType = dependencies.resolve()
 }
 
 extension AuthorWorkerTests {

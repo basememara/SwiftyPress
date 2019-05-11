@@ -6,13 +6,11 @@
 //
 
 import XCTest
-import ZamzamKit
 @testable import SwiftyPress
 
 class SeedWorkerTests: BaseTestCase, HasDependencies {
-    
-    private lazy var seedWorker: SeedWorkerType = dependencies.resolveWorker()
-    
+    private lazy var dataWorker: DataWorkerType = dependencies.resolve()
+    private lazy var syncStore: SyncStore = dependencies.resolveStore()
 }
 
 extension SeedWorkerTests {
@@ -20,7 +18,7 @@ extension SeedWorkerTests {
     func testFetch() {
         let promise = expectation(description: "Seed fetch all promise")
         
-        seedWorker.fetch {
+        dataWorker.sync {
             defer { promise.fulfill() }
             
             guard case .success(let value) = $0 else {
@@ -40,7 +38,7 @@ extension SeedWorkerTests {
         let promise = expectation(description: "Seed fetch modified all promise")
         let modifiedDate = Date(timeIntervalSince1970: 1525910400)
         
-        seedWorker.fetchModified(after: modifiedDate) {
+        syncStore.fetchModified(after: modifiedDate) {
             defer { promise.fulfill() }
             
             guard case .success(let value) = $0 else {
@@ -60,7 +58,7 @@ extension SeedWorkerTests {
     func testFetchNoModified() {
         let promise = expectation(description: "Seed fetch no modified promise")
         
-        seedWorker.fetchModified(after: Date()) {
+        syncStore.fetchModified(after: Date()) {
             defer { promise.fulfill() }
             
             guard case .success(let value) = $0 else {
