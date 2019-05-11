@@ -109,4 +109,15 @@ open class CoreConfigurator: CoreDependable {
     open func resolve() -> Theme {
         fatalError("Override dependency in app")
     }
+    
+    #if os(iOS)
+    open func resolve(delegate: MailComposerDelegate?) -> MailComposerType {
+        let theme: Theme = resolve()
+        
+        return MailComposer(
+            delegate: delegate,
+            tintColor: theme.tint
+        )
+    }
+    #endif
 }

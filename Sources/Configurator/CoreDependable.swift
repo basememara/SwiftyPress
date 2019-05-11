@@ -37,4 +37,8 @@ public protocol CoreDependable {
     func resolve() -> APISessionType
     func resolve() -> HTTPServiceType
     func resolve() -> Theme
+    
+    #if os(iOS)
+    func resolve(delegate: MailComposerDelegate?) -> MailComposerType
+    #endif
 }
