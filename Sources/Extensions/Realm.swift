@@ -5,7 +5,6 @@
 //  Created by Basem Emara on 2018-10-17.
 //
 
-import Foundation
 import RealmSwift
 
 extension Realm {

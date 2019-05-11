@@ -7,14 +7,11 @@
 
 import ZamzamKit
 
-// MARK: - Handle date parsing strategy
-
-extension JSONDecoder: With {
-    public static let `default`: JSONDecoder = {
-        JSONDecoder().with {
-            $0.dateDecodingStrategy = .formatted(.iso8601)
-        }
-    }()
+public extension JSONDecoder {
+    
+    static let `default` = JSONDecoder().with {
+        $0.dateDecodingStrategy = .formatted(.iso8601)
+    }
 }
 
 extension JSONDecoder {
@@ -31,3 +28,5 @@ extension JSONDecoder {
         }
     }
 }
+
+extension JSONDecoder: With {}
