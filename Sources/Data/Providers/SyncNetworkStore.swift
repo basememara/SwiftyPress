@@ -21,16 +21,18 @@ public extension SyncNetworkStore {
         // No configure needed
     }
     
-    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
+    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         apiSession.request(APIRouter.modifiedPayload(after: date)) {
             guard case .success(let value) = $0 else {
                 // Handle no modified data and return success
                 guard $0.error?.statusCode != 304 else {
-                    return completion(.success(SeedPayload()))
+                    completion(.success(SeedPayload()))
+                    return
                 }
                 
                 self.Log(error: "An error occured while fetching the modified payload: \(String(describing: $0.error)).")
-                return completion(.failure(DataError(from: $0.error)))
+                completion(.failure(DataError(from: $0.error)))
+                return
             }
             
             DispatchQueue.transform.async {
@@ -40,7 +42,8 @@ public extension SyncNetworkStore {
                     DispatchQueue.main.async { completion(.success(payload)) }
                 } catch {
                     self.Log(error: "An error occured while parsing the modified payload: \(error).")
-                    return DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
+                    DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
+                    return
                 }
             }
         }

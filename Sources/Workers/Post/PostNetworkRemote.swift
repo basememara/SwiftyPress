@@ -22,12 +22,14 @@ public extension PostNetworkRemote {
             // Handle errors
             guard case .success = $0 else {
                 self.Log(error: "An error occured while fetching the post: \(String(describing: $0.error)).")
-                return completion(.failure(DataError(from: $0.error)))
+                completion(.failure(DataError(from: $0.error)))
+                return
             }
             
             // Ensure available
             guard case .success(let value) = $0 else {
-                return completion(.failure(.nonExistent))
+                completion(.failure(.nonExistent))
+                return
             }
             
             DispatchQueue.transform.async {
@@ -57,7 +59,8 @@ public extension PostNetworkRemote {
                     }
                 } catch {
                     self.Log(error: "An error occured while parsing the post: \(error).")
-                    return DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
+                    DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
+                    return
                 }
             }
         }

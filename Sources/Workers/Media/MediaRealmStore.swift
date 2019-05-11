@@ -21,11 +21,13 @@ public extension MediaRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             guard let object = realm.object(ofType: MediaRealmObject.self, forPrimaryKey: id) else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = Media(from: object)
@@ -46,7 +48,8 @@ public extension MediaRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [MediaType] = realm.objects(MediaRealmObject.self, forPrimaryKeys: ids)

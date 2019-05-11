@@ -109,13 +109,12 @@ public extension CacheRealmStore {
         return getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
-    func createOrUpdate(_ request: SeedPayload, lastSyncedAt: Date, completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
+    func createOrUpdate(_ request: SeedPayloadType, lastSyncedAt: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         // Ensure there is data before proceeding
         guard !request.isEmpty else {
             self.Log(debug: "Cache creation for modified payload has no changes.")
-            return DispatchQueue.main.async {
-                completion(.success((request)))
-            }
+            DispatchQueue.main.async { completion(.success((request))) }
+            return
         }
         
         // Write source data to local storage
@@ -125,7 +124,8 @@ public extension CacheRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
+                return
             }
             
             // Transform data
@@ -151,7 +151,8 @@ public extension CacheRealmStore {
                 self.Log(debug: "Cache creation for modified payload complete.")
             } catch {
                 self.Log(error: "Could not write modified payload to Realm from the source: \(error)")
-                return DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
+                return
             }
             
             DispatchQueue.main.async {

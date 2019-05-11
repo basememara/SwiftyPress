@@ -82,19 +82,7 @@ private extension Logger {
     }
     
     func setupCloud() {
-        guard let logDNAKey = constants.logDNAKey else { return }
-        
-        // Setup LogDNA if applicable
-        log.addDestination(
-            LogDNADestination(
-                ingestionKey: logDNAKey,
-                hostName: "iOS",
-                appName: appDisplayName ?? "",
-                environment: isInTestFlight ? "TestFlight" : constants.environment.rawValue.capitalized
-            ).with {
-                $0.minLevel = .info
-            }
-        )
+        // TODO: Log injection, Bugfender, LogDNA, Crashlytics, etc
     }
 }
 

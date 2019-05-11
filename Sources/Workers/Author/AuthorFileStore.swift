@@ -20,12 +20,14 @@ public extension AuthorFileStore {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
         seedStore.fetch {
             guard case .success(let value) = $0 else {
-                return completion(.failure($0.error ?? .unknownReason(nil)))
+                completion(.failure($0.error ?? .unknownReason(nil)))
+                return
             }
             
             // Find match
             guard let model = value.authors.first(where: { $0.id == id }) else {
-                return completion(.failure(.nonExistent))
+                completion(.failure(.nonExistent))
+                return
             }
             
             completion(.success(model))

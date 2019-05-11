@@ -31,10 +31,10 @@ public extension DataWorker {
 public extension DataWorker {
     // Handle simultanuous pull requests in a queue
     private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataWorker.sync")
-    private static var tasks = [((Result<SeedPayload, DataError>) -> Void)]()
+    private static var tasks = [((Result<SeedPayloadType, DataError>) -> Void)]()
     private static var isSyncing = false
     
-    func sync(completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
+    func sync(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         Log(info: "Cache sync requested.")
         
         DataWorker.queue.async {
@@ -44,7 +44,7 @@ public extension DataWorker {
             DataWorker.isSyncing = true
             
             // Handler will be called later by multiple code paths
-            func deferredTask(_ result: Result<SeedPayload, DataError>) {
+            func deferredTask(_ result: Result<SeedPayloadType, DataError>) {
                 DataWorker.queue.async {
                     let tasks = DataWorker.tasks
                     DataWorker.tasks.removeAll()
@@ -62,8 +62,12 @@ public extension DataWorker {
             guard let lastSyncedAt = self.cacheStore.lastSyncedAt else {
                 self.Log(info: "Seeding cache storage begins...")
                 
-                return self.seedStore.fetch {
-                    guard case .success(let value) = $0 else { return deferredTask($0) }
+                self.seedStore.fetch {
+                    guard case .success(let value) = $0 else {
+                        deferredTask($0)
+                        return
+                    }
+                    
                     let date = value.posts.map { $0.modifiedAt }.max() ?? Date()
                     
                     self.Log(debug: "Found \(value.posts.count) posts to seed into cache storage.")
@@ -77,6 +81,8 @@ public extension DataWorker {
                         self.sync(completion: completion)
                     }
                 }
+                
+                return
             }
             
             let date = Date()
@@ -84,7 +90,11 @@ public extension DataWorker {
             self.Log(info: "Sync cache storage begins, last synced at \(lastSyncedAt)...")
             
             self.syncStore.fetchModified(after: lastSyncedAt) {
-                guard case .success(let value) = $0 else { return deferredTask($0) }
+                guard case .success(let value) = $0 else {
+                    deferredTask($0)
+                    return
+                }
+                
                 self.Log(debug: "Found \(value.posts.count) posts to sync with cache storage.")
                 self.cacheStore.createOrUpdate(value, lastSyncedAt: date, completion: deferredTask)
             }

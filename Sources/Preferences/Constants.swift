@@ -80,8 +80,4 @@ public extension Constants {
     var logFileName: String {
         return store.logFileName
     }
-    
-    var logDNAKey: String? {
-        return store.logDNAKey
-    }
 }

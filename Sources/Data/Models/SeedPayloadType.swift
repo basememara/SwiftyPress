@@ -6,14 +6,21 @@
 //
 
 public protocol SeedPayloadType {
-    associatedtype PostModel: PostType
-    associatedtype TermModel: TermType
-    associatedtype AuthorModel: AuthorType
-    associatedtype MediaModel: MediaType
+    var posts: [PostType] { get }
+    var categories: [TermType] { get }
+    var tags: [TermType] { get }
+    var authors: [AuthorType] { get }
+    var media: [MediaType] { get }
+}
+
+public extension SeedPayloadType {
     
-    var posts: [PostModel] { get }
-    var categories: [TermModel] { get }
-    var tags: [TermModel] { get }
-    var authors: [AuthorModel] { get }
-    var media: [MediaModel] { get }
+    /// A Boolean value indicating whether the instance is empty.
+    var isEmpty: Bool {
+        return posts.isEmpty
+            && authors.isEmpty
+            && media.isEmpty
+            && categories.isEmpty
+            && tags.isEmpty
+    }
 }

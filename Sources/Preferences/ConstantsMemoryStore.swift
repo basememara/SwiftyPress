@@ -21,7 +21,6 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let googleAnalyticsID: String?
     public let featuredCategoryID: Int
     public let logFileName: String
-    public let logDNAKey: String?
     
     public init(
         environment: Environment,
@@ -36,8 +35,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         styleSheet: String,
         googleAnalyticsID: String?,
         featuredCategoryID: Int,
-        logFileName: String,
-        logDNAKey: String?
+        logFileName: String
     ) {
         self.environment = environment
         self.itunesName = itunesName
@@ -52,6 +50,5 @@ public struct ConstantsMemoryStore: ConstantsStore {
         self.googleAnalyticsID = googleAnalyticsID
         self.featuredCategoryID = featuredCategoryID
         self.logFileName = logFileName
-        self.logDNAKey = logDNAKey
     }
 }

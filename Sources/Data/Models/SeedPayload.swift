@@ -8,36 +8,24 @@
 import ZamzamKit
 
 public struct SeedPayload: SeedPayloadType, Decodable {
-    public let posts: [Post]
-    public let authors: [Author]
-    public let media: [Media]
-    public let categories: [Term]
-    public let tags: [Term]
+    public let posts: [PostType]
+    public let authors: [AuthorType]
+    public let media: [MediaType]
+    public let categories: [TermType]
+    public let tags: [TermType]
     
     init(
-        posts: [Post] = [],
-        authors: [Author] = [],
-        media: [Media] = [],
-        categories: [Term] = [],
-        tags: [Term] = []
+        posts: [PostType] = [],
+        authors: [AuthorType] = [],
+        media: [MediaType] = [],
+        categories: [TermType] = [],
+        tags: [TermType] = []
     ) {
         self.posts = []
         self.authors = []
         self.media = []
         self.categories = []
         self.tags = []
-    }
-}
-
-public extension SeedPayload {
-    
-    /// A Boolean value indicating whether the instance is empty.
-    var isEmpty: Bool {
-        return posts.isEmpty
-            && authors.isEmpty
-            && media.isEmpty
-            && categories.isEmpty
-            && tags.isEmpty
     }
 }
 

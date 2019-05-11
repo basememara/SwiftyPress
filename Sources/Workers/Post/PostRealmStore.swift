@@ -21,11 +21,13 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             guard let object = realm.object(ofType: PostRealmObject.self, forPrimaryKey: id) else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = self.extend(post: object, with: realm)
@@ -43,11 +45,13 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             guard let object = realm.objects(PostRealmObject.self).filter("slug == %@", slug).first else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = Post(from: object)
@@ -68,7 +72,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
@@ -88,7 +93,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
@@ -112,7 +118,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [PostType] = realm.objects(PostRealmObject.self, forPrimaryKeys: ids)
@@ -132,7 +139,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
@@ -158,7 +166,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             // Construct predicate builder
@@ -226,7 +235,8 @@ public extension PostRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             do {
@@ -240,14 +250,14 @@ public extension PostRealmStore {
                     )
                 }
             } catch {
-                return DispatchQueue.main.async {
-                    completion(.failure(.databaseFailure(error)))
-                }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             // Get refreshed object to return
             guard let object = realm.object(ofType: PostRealmObject.self, forPrimaryKey: request.post.id) else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = self.extend(post: object, with: realm)

@@ -33,12 +33,19 @@ public extension PostWorker {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         store.fetch(id: id) {
-            guard let remote = self.remote else { return completion($0) }
+            guard let remote = self.remote else {
+                completion($0)
+                return
+            }
             
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
                 return remote.fetch(id: id) {
-                    guard case .success(let value) = $0 else { return completion($0) }
+                    guard case .success(let value) = $0 else {
+                        completion($0)
+                        return
+                    }
+                    
                     self.store.createOrUpdate(value, completion: completion)
                 }
             }
@@ -59,7 +66,8 @@ public extension PostWorker {
                 // Update local storage with updated data
                 self.store.createOrUpdate(element) {
                     guard case .success = $0 else {
-                        return self.Log(error: "Could not save updated post locally from remote storage: \(String(describing: $0.error))")
+                        self.Log(error: "Could not save updated post locally from remote storage: \(String(describing: $0.error))")
+                        return
                     }
                     
                     // Callback handler again if updated
@@ -173,7 +181,8 @@ public extension PostWorker {
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard let ids = preferences.get(.favorites), !ids.isEmpty else {
-            return completion(.success([]))
+            completion(.success([]))
+            return
         }
         
         fetch(ids: Set(ids), completion: completion)
@@ -196,8 +205,7 @@ public extension PostWorker {
     }
     
     func toggleFavorite(id: Int) {
-        guard hasFavorite(id: id) else { return addFavorite(id: id) }
-        removeFavorite(id: id)
+        hasFavorite(id: id) ? removeFavorite(id: id) : addFavorite(id: id)
     }
     
     func hasFavorite(id: Int) -> Bool {

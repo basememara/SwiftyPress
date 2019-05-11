@@ -21,7 +21,6 @@ public protocol ConstantsStore: AppInfo {
     var googleAnalyticsID: String? { get }
     var featuredCategoryID: Int { get }
     var logFileName: String { get }
-    var logDNAKey: String? { get }
 }
 
 public protocol ConstantsType: ConstantsStore {

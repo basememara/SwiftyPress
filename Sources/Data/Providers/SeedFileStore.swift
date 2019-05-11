@@ -8,7 +8,7 @@
 import ZamzamKit
 
 public struct SeedFileStore: SeedStore, Loggable {
-    private static var data: SeedPayload?
+    private static var data: SeedPayloadType?
     
     private let name: String
     private let bundle: Bundle
@@ -34,14 +34,14 @@ public extension SeedFileStore {
 
 public extension SeedFileStore {
     
-    func fetch(completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         completion(.success(SeedFileStore.data ?? SeedPayload()))
     }
 }
 
 public extension SeedFileStore {
     
-    func set(data: SeedPayload) {
+    func set(data: SeedPayloadType) {
         SeedFileStore.data = data
     }
 }

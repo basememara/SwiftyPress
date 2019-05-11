@@ -21,11 +21,13 @@ public extension TaxonomyRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             guard let object = realm.object(ofType: TermRealmObject.self, forPrimaryKey: id) else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = Term(from: object)
@@ -43,11 +45,13 @@ public extension TaxonomyRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             guard let object = realm.objects(TermRealmObject.self).filter("slug == %@", slug).first else {
-                return DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
             }
             
             let item = Term(from: object)
@@ -68,7 +72,8 @@ public extension TaxonomyRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [TermType] = realm.objects(TermRealmObject.self)
@@ -92,7 +97,8 @@ public extension TaxonomyRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [TermType] = realm.objects(TermRealmObject.self, forPrimaryKeys: ids)
@@ -112,7 +118,8 @@ public extension TaxonomyRealmStore {
             do {
                 realm = try Realm()
             } catch {
-                return DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
             }
             
             let items: [TermType] = realm.objects(TermRealmObject.self)
