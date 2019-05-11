@@ -1,5 +1,5 @@
 //
-//  SeedWorkerTests.swift
+//  DataWorkerTests.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
@@ -8,12 +8,12 @@
 import XCTest
 @testable import SwiftyPress
 
-class SeedWorkerTests: BaseTestCase, HasDependencies {
+class DataWorkerTests: BaseTestCase, HasDependencies {
     private lazy var dataWorker: DataWorkerType = dependencies.resolve()
     private lazy var syncStore: SyncStore = dependencies.resolveStore()
 }
 
-extension SeedWorkerTests {
+extension DataWorkerTests {
     
     func testFetch() {
         let promise = expectation(description: "Seed fetch all promise")
@@ -32,7 +32,7 @@ extension SeedWorkerTests {
     }
 }
 
-extension SeedWorkerTests {
+extension DataWorkerTests {
     
     func testFetchModified() {
         let promise = expectation(description: "Seed fetch modified all promise")
@@ -53,7 +53,7 @@ extension SeedWorkerTests {
     }
 }
 
-extension SeedWorkerTests {
+extension DataWorkerTests {
     
     func testFetchNoModified() {
         let promise = expectation(description: "Seed fetch no modified promise")

@@ -24,6 +24,6 @@ class BaseTestCase: XCTestCase, CoreInjection {
     override func tearDown() {
         super.tearDown()
         inject(dependencies: TestConfigurator())
-        TestUtils.shared.defaults.removeAll()
+        UserDefaults.test.removeAll()
     }
 }

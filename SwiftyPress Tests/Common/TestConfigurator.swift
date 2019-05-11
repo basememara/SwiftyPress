@@ -47,14 +47,14 @@ class TestConfigurator: CoreConfigurator {
     
     override func resolveStore() -> PreferencesStore {
         return PreferencesDefaultsStore(
-            defaults: TestUtils.shared.defaults
+            defaults: .test
         )
     }
     
     override func resolveStore() -> SeedStore {
         return SeedFileStore(
             forResource: "seed1.json",
-            inBundle: TestUtils.shared.bundle
+            inBundle: .test
         )
     }
 }
