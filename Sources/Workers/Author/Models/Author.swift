@@ -3,9 +3,8 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-03.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import Foundation
 
 public struct Author: AuthorType, Decodable {
     public let id: Int

@@ -3,9 +3,8 @@
 //  SwiftPress
 //
 //  Created by Basem Emara on 2018-05-26.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import Foundation
 
 public protocol PostType: Identifiable, Dateable {
     var slug: String { get }

@@ -3,6 +3,7 @@
 //  SwiftPress
 //
 //  Created by Basem Emara on 2018-05-21.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import Foundation

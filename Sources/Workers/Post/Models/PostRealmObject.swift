@@ -3,8 +3,9 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-17.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-import Foundation
+
 import RealmSwift
 
 @objcMembers

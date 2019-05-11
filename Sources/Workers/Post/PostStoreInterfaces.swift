@@ -3,9 +3,8 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-03.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import ZamzamKit
 
 public protocol PostStore {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)

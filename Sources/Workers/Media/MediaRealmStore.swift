@@ -3,9 +3,9 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-20.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import ZamzamKit
 import RealmSwift
 
 public struct MediaRealmStore: MediaStore, Loggable {

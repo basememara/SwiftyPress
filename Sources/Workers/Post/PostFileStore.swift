@@ -3,9 +3,8 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import ZamzamKit
 
 public struct PostFileStore: PostStore {
     private let seedStore: SeedStore

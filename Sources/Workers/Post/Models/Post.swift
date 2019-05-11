@@ -3,9 +3,8 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-05-30.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import Foundation
 
 public struct Post: PostType, Decodable {
     public let id: Int

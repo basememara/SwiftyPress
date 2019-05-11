@@ -3,9 +3,8 @@
 //  SwiftPress
 //
 //  Created by Basem Emara on 2018-05-29.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
-
-import ZamzamKit
 
 public struct AuthorWorker: AuthorWorkerType {
     private let store: AuthorStore

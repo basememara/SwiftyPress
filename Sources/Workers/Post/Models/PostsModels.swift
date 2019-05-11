@@ -3,6 +3,7 @@
 //  SwiftPress
 //
 //  Created by Basem Emara on 2018-05-30.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 public enum PostsModels {

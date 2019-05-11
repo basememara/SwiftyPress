@@ -3,6 +3,7 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-17.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 /// The NetworkError type represents an error object returned from the API server.
