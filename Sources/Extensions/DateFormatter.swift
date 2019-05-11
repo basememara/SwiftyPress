@@ -12,7 +12,7 @@ extension DateFormatter {
         $0.calendar = Calendar(identifier: .iso8601)
         $0.locale = .posix
         $0.timeZone = .posix
-        $0.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        $0.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
         // TODO: One day hopefully use this
         // https://bugs.swift.org/browse/SR-5823
