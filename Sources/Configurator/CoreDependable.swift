@@ -42,3 +42,12 @@ public protocol CoreDependable {
     func resolve(delegate: MailComposerDelegate?) -> MailComposerType
     #endif
 }
+
+public extension CoreDependable {
+    
+    #if os(iOS)
+    func resolve() -> MailComposerType {
+        return resolve(delegate: nil)
+    }
+    #endif
+}
