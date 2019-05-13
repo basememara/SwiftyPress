@@ -41,7 +41,7 @@ public extension PostWorker {
             
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
-                return remote.fetch(id: id) {
+                remote.fetch(id: id) {
                     guard case .success(let value) = $0 else {
                         completion($0)
                         return
@@ -49,6 +49,8 @@ public extension PostWorker {
                     
                     self.store.createOrUpdate(value, completion: completion)
                 }
+                
+                return 
             }
             
             // Immediately return local response

@@ -9,6 +9,8 @@
 import ZamzamKit
 
 public struct DataWorker: DataWorkerType, Loggable {
+    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataWorker.sync")
+    
     private let seedStore: SeedStore
     private let syncStore: SyncStore
     private let cacheStore: CacheStore
@@ -21,17 +23,25 @@ public struct DataWorker: DataWorkerType, Loggable {
 }
 
 public extension DataWorker {
+    // Ensure one configuration request at a time
+    private static var isConfiguring = false
     
     func configure() {
-        seedStore.configure()
-        syncStore.configure()
-        cacheStore.configure()
+        DataWorker.queue.sync {
+            guard !DataWorker.isConfiguring else { return }
+            DataWorker.isConfiguring = true
+            
+            self.seedStore.configure()
+            self.syncStore.configure()
+            self.cacheStore.configure()
+            
+            DataWorker.isConfiguring = false
+        }
     }
 }
 
 public extension DataWorker {
     // Handle simultanuous pull requests in a queue
-    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataWorker.sync")
     private static var tasks = [((Result<SeedPayloadType, DataError>) -> Void)]()
     private static var isSyncing = false
     
@@ -69,9 +79,8 @@ public extension DataWorker {
                         return
                     }
                     
-                    let date = value.posts.map { $0.modifiedAt }.max() ?? Date()
-                    
                     self.Log(debug: "Found \(value.posts.count) posts to seed into cache storage.")
+                    let date = value.posts.map { $0.modifiedAt }.max() ?? Date()
                     
                     self.cacheStore.createOrUpdate(value, lastSyncedAt: date) {
                         deferredTask($0)
@@ -86,9 +95,8 @@ public extension DataWorker {
                 return
             }
             
-            let date = Date()
-            
             self.Log(info: "Sync cache storage begins, last synced at \(lastSyncedAt)...")
+            let date = Date()
             
             self.syncStore.fetchModified(after: lastSyncedAt) {
                 guard case .success(let value) = $0 else {
