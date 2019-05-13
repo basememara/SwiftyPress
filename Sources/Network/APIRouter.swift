@@ -31,9 +31,9 @@ private extension APIRouter {
     var path: String {
         switch self {
         case .modifiedPayload:
-            return "payloads/modified"
+            return "modified"
         case .readPost(let id):
-            return "posts/\(id)"
+            return "post/\(id)"
         }
     }
     

@@ -21,6 +21,12 @@ public extension PostNetworkRemote {
         apiSession.request(APIRouter.readPost(id: id)) {
             // Handle errors
             guard case .success = $0 else {
+                // Handle no modified data and return success
+                guard $0.error?.statusCode != 404 else {
+                    completion(.failure(.nonExistent))
+                    return
+                }
+                
                 self.Log(error: "An error occured while fetching the post: \(String(describing: $0.error)).")
                 completion(.failure(DataError(from: $0.error)))
                 return

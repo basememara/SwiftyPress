@@ -33,7 +33,7 @@ class TestConfigurator: CoreConfigurator {
             itunesName: "",
             itunesID: "0",
             baseURL: URL(string: "https://basememara.com")!,
-            baseREST: "wp-json/swiftypress/v3",
+            baseREST: "wp-json/swiftypress/v4",
             wpREST: "wp-json/wp/v2",
             email: "",
             privacyURL: "",
