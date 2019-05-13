@@ -29,5 +29,3 @@ extension JSONDecoder {
         }
     }
 }
-
-extension JSONDecoder: With {}

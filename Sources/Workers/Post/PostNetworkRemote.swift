@@ -21,8 +21,8 @@ public extension PostNetworkRemote {
         apiSession.request(APIRouter.readPost(id: id)) {
             // Handle errors
             guard case .success = $0 else {
-                // Handle no modified data and return success
-                guard $0.error?.statusCode != 404 else {
+                // Handle no existing data
+                if $0.error?.statusCode == 404 {
                     completion(.failure(.nonExistent))
                     return
                 }

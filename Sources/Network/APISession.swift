@@ -10,7 +10,7 @@ import Alamofire
 import ZamzamKit
 
 public protocol APISessionType {
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void)
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
 }
 
 public struct APISession: APISessionType, Loggable {
@@ -18,10 +18,8 @@ public struct APISession: APISessionType, Loggable {
     private let constants: ConstantsType
     
     public init(constants: ConstantsType) {
-        // Construct URL session manager
-        let configuration = URLSessionConfiguration.default
-        self.sessionManager = Alamofire.SessionManager(configuration: configuration)
-        
+        self.sessionManager = .init(configuration: .default)
+        self.sessionManager.adapter = APIAdapter(constants: constants)
         self.constants = constants
     }
 }
@@ -33,14 +31,14 @@ public extension APISession {
     /// - Parameters:
     ///   - router: The router request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<ServerResponse, NetworkError>) -> Void) {
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
         let urlRequest: URLRequest
         
         // Construct request
         do {
             urlRequest = try route.asURLRequest(constants: constants)
         } catch {
-            return completion(.failure(NetworkError(urlRequest: nil, statusCode: 400)))
+            return completion(.failure(NetworkModels.Error(urlRequest: nil, statusCode: 400)))
         }
         
         Log(request: urlRequest)
@@ -51,3 +49,20 @@ public extension APISession {
         }
     }
 }
+
+/// Adapter for wrapping every request
+fileprivate class APIAdapter: RequestAdapter {
+    private let constants: ConstantsType
+    
+    init(constants: ConstantsType) {
+        self.constants = constants
+    }
+    
+    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        // var urlRequest = urlRequest
+        // Modify every URL request here if needed,
+        // such as including token every time
+        return urlRequest
+    }
+}
+

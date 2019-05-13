@@ -253,7 +253,7 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(response: ServerResponse?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(response: NetworkModels.Response?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
         Log(
             debug: {
                 var message = "Response: {\n"
