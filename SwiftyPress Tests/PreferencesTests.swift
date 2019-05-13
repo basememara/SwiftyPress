@@ -9,7 +9,7 @@ import XCTest
 import ZamzamKit
 import SwiftyPress
 
-class PreferencesTests: BaseTestCase, HasDependencies {
+class PreferencesTests: BaseTestCase {
     private lazy var preferences: PreferencesType = dependencies.resolve()
 }
 

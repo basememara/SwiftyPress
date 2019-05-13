@@ -8,7 +8,7 @@
 import XCTest
 @testable import SwiftyPress
 
-class DataWorkerTests: BaseTestCase, HasDependencies {
+class DataWorkerTests: BaseTestCase {
     private lazy var dataWorker: DataWorkerType = dependencies.resolve()
     private lazy var syncStore: SyncStore = dependencies.resolveStore()
 }

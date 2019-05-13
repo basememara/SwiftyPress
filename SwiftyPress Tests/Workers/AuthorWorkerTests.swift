@@ -8,7 +8,7 @@
 import XCTest
 import SwiftyPress
 
-class AuthorWorkerTests: BaseTestCase, HasDependencies {
+class AuthorWorkerTests: BaseTestCase {
     private lazy var authorWorker: AuthorWorkerType = dependencies.resolve()
 }
 

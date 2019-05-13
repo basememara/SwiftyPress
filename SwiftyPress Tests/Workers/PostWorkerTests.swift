@@ -8,7 +8,7 @@
 import XCTest
 import SwiftyPress
 
-class PostWorkerTests: BaseTestCase, HasDependencies {
+class PostWorkerTests: BaseTestCase {
     private lazy var postWorker: PostWorkerType = dependencies.resolve()
 }
 

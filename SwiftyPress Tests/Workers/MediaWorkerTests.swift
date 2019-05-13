@@ -8,7 +8,7 @@
 import XCTest
 import SwiftyPress
 
-class MediaWorkerTests: BaseTestCase, HasDependencies {
+class MediaWorkerTests: BaseTestCase {
     private lazy var mediaWorker: MediaWorkerType = dependencies.resolve()
 }
 

@@ -9,7 +9,15 @@ import XCTest
 import SwiftyPress
 
 /// Super class for automatically registering dependency configuration container
-class BaseTestCase: XCTestCase, CoreInjection {
+class BaseTestCase: XCTestCase, CoreInjection, HasDependencies {
+    private lazy var dataWorker: DataWorkerType = dependencies.resolve()
+    
+    override class func setUp() {
+        super.setUp()
+        
+        inject(dependencies: TestConfigurator())
+        UserDefaults.test.removeAll()
+    }
     
     override func setUp() {
         super.setUp()
@@ -18,12 +26,11 @@ class BaseTestCase: XCTestCase, CoreInjection {
         // https://bugs.swift.org/browse/SR-906
         continueAfterFailure = false
         
-        inject(dependencies: TestConfigurator())
+        dataWorker.configure()
     }
     
-    override func tearDown() {
+    override class func tearDown() {
         super.tearDown()
-        inject(dependencies: TestConfigurator())
         UserDefaults.test.removeAll()
     }
 }
