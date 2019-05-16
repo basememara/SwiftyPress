@@ -11,7 +11,15 @@ import ZamzamKit
 public extension JSONDecoder {
     
     static let `default` = JSONDecoder().with {
-        $0.dateDecodingStrategy = .formatted(.iso8601)
+        $0.dateDecodingStrategy = .formatted(
+            DateFormatter(iso8601Format: "yyyy-MM-dd'T'HH:mm:ss")
+        )
+        
+        // TODO: One day hopefully use this
+        // https://bugs.swift.org/browse/SR-5823
+        /*ISO8601DateFormatter().with {
+            $0.formatOptions = [.withInternetDateTime]
+         }*/
     }
 }
 
