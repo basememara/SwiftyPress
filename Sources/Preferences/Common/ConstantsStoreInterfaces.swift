@@ -21,6 +21,7 @@ public protocol ConstantsStore: AppInfo {
     var styleSheet: String { get }
     var googleAnalyticsID: String? { get }
     var featuredCategoryID: Int { get }
+    var defaultFetchModifiedLimit: Int { get }
     var logFileName: String { get }
 }
 

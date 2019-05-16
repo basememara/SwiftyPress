@@ -11,20 +11,42 @@ public protocol SeedStore {
     func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
 }
 
-public protocol SyncStore {
+public protocol RemoteStore {
     func configure()
-    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func fetchModified(after date: Date?, limit: Int?, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
 }
 
 public protocol CacheStore {
-    var lastSyncedAt: Date? { get }
+    var lastPulledAt: Date? { get }
     
     func configure()
-    func createOrUpdate(_ request: SeedPayloadType, lastSyncedAt: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-    func delete(for userID: Int) throws
+    func createOrUpdate(_ request: SeedPayloadType, lastPulledAt: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func delete(for userID: Int)
 }
 
 public protocol DataWorkerType {
+    
+    /// Setup the underlying storage for use.
     func configure()
-    func sync(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    
+    /// Destroys the cache storage to start fresh.
+    func resetCache(for userID: Int)
+    
+    /// Retrieves the latest changes from the remote source.
+    ///
+    /// - Parameter completion: The completion block that returns the latest changes.
+    func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+}
+
+// MARK: - Extensions
+
+public extension RemoteStore {
+    
+    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+        fetchModified(after: date, limit: nil, completion: completion)
+    }
+    
+    func fetchModified(limit: Int, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+        fetchModified(after: nil, limit: limit, completion: completion)
+    }
 }

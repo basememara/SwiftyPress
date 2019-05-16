@@ -31,8 +31,9 @@ open class CoreConfigurator: CoreDependable {
     
     open func resolve() -> DataWorkerType {
         return DataWorker(
+            constants: resolve(),
             seedStore: resolveStore(),
-            syncStore: resolveStore(),
+            remoteStore: resolveStore(),
             cacheStore: resolveStore()
         )
     }
@@ -41,8 +42,8 @@ open class CoreConfigurator: CoreDependable {
         fatalError("Override dependency in app")
     }
     
-    open func resolveStore() -> SyncStore {
-        return SyncNetworkStore(apiSession: resolve())
+    open func resolveStore() -> RemoteStore {
+        return RemoteNetworkStore(apiSession: resolve())
     }
     
     open func resolveStore() -> CacheStore {

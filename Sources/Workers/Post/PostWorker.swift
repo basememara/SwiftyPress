@@ -95,7 +95,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
+            self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetch(completion: completion)
@@ -111,7 +111,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
+            self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetchPopular(completion: completion)
@@ -134,7 +134,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
+            self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
                     value.posts.contains(where: { ids.contains($0.id) }) else {
@@ -154,7 +154,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.sync {
+            self.dataWorker.pull {
                 guard case .success(let value) = $0 else { return }
                 
                 // Validate if any updates that needs to be stored

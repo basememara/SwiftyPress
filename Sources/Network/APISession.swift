@@ -51,7 +51,7 @@ public extension APISession {
 }
 
 /// Adapter for wrapping every request
-fileprivate class APIAdapter: RequestAdapter {
+private class APIAdapter: RequestAdapter {
     private let constants: ConstantsType
     
     init(constants: ConstantsType) {
@@ -65,4 +65,3 @@ fileprivate class APIAdapter: RequestAdapter {
         return urlRequest
     }
 }
-

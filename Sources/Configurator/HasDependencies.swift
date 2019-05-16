@@ -39,11 +39,6 @@ public protocol CoreInjection {}
 public extension CoreInjection {
     
     /// Declare core dependency container to use
-    static func inject(dependencies: CoreDependable) {
-        InjectionStorage.dependencies = dependencies
-    }
-    
-    /// Declare core dependency container to use
     func inject(dependencies: CoreDependable) {
         InjectionStorage.dependencies = dependencies
     }

@@ -17,7 +17,7 @@ public protocol CoreDependable {
     
     func resolve() -> DataWorkerType
     func resolveStore() -> SeedStore
-    func resolveStore() -> SyncStore
+    func resolveStore() -> RemoteStore
     func resolveStore() -> CacheStore
     
     func resolve() -> PostWorkerType

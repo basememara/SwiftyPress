@@ -74,6 +74,10 @@ public extension Constants {
     var featuredCategoryID: Int {
         return store.featuredCategoryID
     }
+    
+    var defaultFetchModifiedLimit: Int {
+        return store.defaultFetchModifiedLimit
+    }
 }
 
 public extension Constants {

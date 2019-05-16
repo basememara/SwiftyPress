@@ -135,8 +135,6 @@
 		8B4290FB2172E6EF00BCB422 /* PostRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4290FA2172E6EF00BCB422 /* PostRealmStore.swift */; };
 		8B4290FC2172E6EF00BCB422 /* PostRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4290FA2172E6EF00BCB422 /* PostRealmStore.swift */; };
 		8B4290FD2172E6EF00BCB422 /* PostRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4290FA2172E6EF00BCB422 /* PostRealmStore.swift */; };
-		8B4F144121A7280900F5154E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510020CFE7DB00E77F70 /* DateFormatter.swift */; };
-		8B4F144221A7280A00F5154E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510020CFE7DB00E77F70 /* DateFormatter.swift */; };
 		8B5250DC20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* SeedPayloadType.swift */; };
 		8B5250DD20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* SeedPayloadType.swift */; };
 		8B5250DE20CFD9FF00E77F70 /* SeedPayloadType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250DB20CFD9FF00E77F70 /* SeedPayloadType.swift */; };
@@ -152,7 +150,6 @@
 		8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */; };
 		8B5250FE20CFE7C100E77F70 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */; };
 		8B5250FF20CFE7C100E77F70 /* JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */; };
-		8B52510120CFE7DB00E77F70 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510020CFE7DB00E77F70 /* DateFormatter.swift */; };
 		8B52510520CFE89000E77F70 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510420CFE89000E77F70 /* Bundle.swift */; };
 		8B52510620CFE89000E77F70 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510420CFE89000E77F70 /* Bundle.swift */; };
 		8B52510720CFE89000E77F70 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B52510420CFE89000E77F70 /* Bundle.swift */; };
@@ -285,9 +282,9 @@
 		8BC4FE29216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2A216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
 		8BC4FE2B216CFF9A00BB7870 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */; };
-		8BC4FE43216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
-		8BC4FE44216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
-		8BC4FE45216D546800BB7870 /* SyncNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */; };
+		8BC4FE43216D546800BB7870 /* RemoteNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* RemoteNetworkStore.swift */; };
+		8BC4FE44216D546800BB7870 /* RemoteNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* RemoteNetworkStore.swift */; };
+		8BC4FE45216D546800BB7870 /* RemoteNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE42216D546800BB7870 /* RemoteNetworkStore.swift */; };
 		8BC4FE4B216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
 		8BC4FE4C216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
 		8BC4FE4D216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */; };
@@ -396,7 +393,6 @@
 		8B5250EF20CFE5B500E77F70 /* DataStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreInterfaces.swift; sourceTree = "<group>"; };
 		8B5250F720CFE6A100E77F70 /* SeedFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedFileStore.swift; sourceTree = "<group>"; };
 		8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoder.swift; sourceTree = "<group>"; };
-		8B52510020CFE7DB00E77F70 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		8B52510420CFE89000E77F70 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		8B52510E20CFF23C00E77F70 /* PostFileStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFileStore.swift; sourceTree = "<group>"; };
 		8B5AA7FF2143641300EA4E2F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Localizable.swift; path = Extensions/Localizable.swift; sourceTree = "<group>"; };
@@ -468,7 +464,7 @@
 		8BC2FA25217819230014D7B5 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		8BC4FE20216CFE4B00BB7870 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		8BC4FE28216CFF9A00BB7870 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncNetworkStore.swift; sourceTree = "<group>"; };
+		8BC4FE42216D546800BB7870 /* RemoteNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNetworkStore.swift; sourceTree = "<group>"; };
 		8BC4FE4A216E1B6000BB7870 /* PostNetworkRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostNetworkRemote.swift; sourceTree = "<group>"; };
 		8BC96D66217E31CD0037D747 /* PostsDataViewAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewAdapter.swift; sourceTree = "<group>"; };
 		8BC96D67217E31CD0037D747 /* PostsDataViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsDataViewDelegate.swift; sourceTree = "<group>"; };
@@ -806,7 +802,7 @@
 			isa = PBXGroup;
 			children = (
 				8B5250F720CFE6A100E77F70 /* SeedFileStore.swift */,
-				8BC4FE42216D546800BB7870 /* SyncNetworkStore.swift */,
+				8BC4FE42216D546800BB7870 /* RemoteNetworkStore.swift */,
 				8BA83A482176386C0055292D /* CacheRealmStore.swift */,
 			);
 			path = Providers;
@@ -853,7 +849,6 @@
 			isa = PBXGroup;
 			children = (
 				8B52510420CFE89000E77F70 /* Bundle.swift */,
-				8B52510020CFE7DB00E77F70 /* DateFormatter.swift */,
 				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
 				8BC2FA25217819230014D7B5 /* Realm.swift */,
@@ -1318,7 +1313,7 @@
 				8B1CC52E217BE71D00F00A70 /* TaxonomyRealmStore.swift in Sources */,
 				8B33C4D12168EFE200658700 /* PreferencesModels.swift in Sources */,
 				8B52510F20CFF23C00E77F70 /* PostFileStore.swift in Sources */,
-				8BC4FE43216D546800BB7870 /* SyncNetworkStore.swift in Sources */,
+				8BC4FE43216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8BC96D6D217E31CD0037D747 /* PostsDataViewAdapter.swift in Sources */,
 				8B66738C217EAC870057E0F6 /* PickedPostCollectionViewCell.swift in Sources */,
 				8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */,
@@ -1327,7 +1322,6 @@
 				8B87FCAC22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
 				8BA83A492176386C0055292D /* CacheRealmStore.swift in Sources */,
 				8BC2FA1A2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
-				8B52510120CFE7DB00E77F70 /* DateFormatter.swift in Sources */,
 				8B0D643A20BD77780046056F /* MediaWorker.swift in Sources */,
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
@@ -1418,10 +1412,9 @@
 				8BA83A4A2176386C0055292D /* CacheRealmStore.swift in Sources */,
 				8BC2FA1721779E530014D7B5 /* TermRealmObject.swift in Sources */,
 				8BC2FA1B2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
-				8BC4FE44216D546800BB7870 /* SyncNetworkStore.swift in Sources */,
+				8BC4FE44216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8B87FCAD22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
 				8B0D64D320C3484A0046056F /* TaxonomyModels.swift in Sources */,
-				8B4F144121A7280900F5154E /* DateFormatter.swift in Sources */,
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650E20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643B20BD77780046056F /* MediaWorker.swift in Sources */,
@@ -1494,10 +1487,9 @@
 				8BA83A4B2176386C0055292D /* CacheRealmStore.swift in Sources */,
 				8BC2FA1821779E530014D7B5 /* TermRealmObject.swift in Sources */,
 				8BC2FA1C2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
-				8BC4FE45216D546800BB7870 /* SyncNetworkStore.swift in Sources */,
+				8BC4FE45216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8B87FCAE22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
 				8B0D64D420C3484A0046056F /* TaxonomyModels.swift in Sources */,
-				8B4F144221A7280A00F5154E /* DateFormatter.swift in Sources */,
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650F20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643C20BD77780046056F /* MediaWorker.swift in Sources */,

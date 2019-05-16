@@ -24,15 +24,22 @@ public struct HTTPService: HTTPServiceType {
 public extension HTTPService {
     
     func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
-        var urlRequest = URLRequest(url: URL(string: url)!)
+        guard let url = URL(string: url) else {
+            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.get.rawValue
         
         do {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         } catch {
-            return completion(.failure(
+            completion(.failure(
                 NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
             ))
+            
+            return
         }
         
         headers?.forEach {
@@ -46,15 +53,22 @@ public extension HTTPService {
 public extension HTTPService {
     
     func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
-        var urlRequest = URLRequest(url: URL(string: url)!)
+        guard let url = URL(string: url) else {
+            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         
         do {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         } catch {
-            return completion(.failure(
+            completion(.failure(
                 NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
             ))
+            
+            return
         }
         
         headers?.forEach {
@@ -94,7 +108,8 @@ public extension SessionManager {
                         internalError: $0.error
                     )
                     
-                    return completion(.failure(error))
+                    completion(.failure(error))
+                    return
                 }
                 
                 completion(.success(

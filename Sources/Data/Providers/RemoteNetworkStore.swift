@@ -8,7 +8,7 @@
 
 import ZamzamKit
 
-public struct SyncNetworkStore: SyncStore, Loggable {
+public struct RemoteNetworkStore: RemoteStore, Loggable {
     private let apiSession: APISessionType
     
     public init(apiSession: APISessionType) {
@@ -16,14 +16,14 @@ public struct SyncNetworkStore: SyncStore, Loggable {
     }
 }
 
-public extension SyncNetworkStore {
+public extension RemoteNetworkStore {
     
     func configure() {
         // No configure needed
     }
     
-    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        apiSession.request(APIRouter.modified(after: date)) {
+    func fetchModified(after date: Date?, limit: Int?, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+        apiSession.request(APIRouter.modified(after: date, limit: limit)) {
             guard case .success(let value) = $0 else {
                 // Handle no modified data and return success
                 if $0.error?.statusCode == 304 {

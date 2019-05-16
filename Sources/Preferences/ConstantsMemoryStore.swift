@@ -21,6 +21,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let styleSheet: String
     public let googleAnalyticsID: String?
     public let featuredCategoryID: Int
+    public let defaultFetchModifiedLimit: Int
     public let logFileName: String
     
     public init(
@@ -36,6 +37,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         styleSheet: String,
         googleAnalyticsID: String?,
         featuredCategoryID: Int,
+        defaultFetchModifiedLimit: Int,
         logFileName: String
     ) {
         self.environment = environment
@@ -50,6 +52,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         self.styleSheet = styleSheet
         self.googleAnalyticsID = googleAnalyticsID
         self.featuredCategoryID = featuredCategoryID
+        self.defaultFetchModifiedLimit = defaultFetchModifiedLimit
         self.logFileName = logFileName
     }
 }

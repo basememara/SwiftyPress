@@ -13,7 +13,7 @@ public protocol APIRoutable {
 }
 
 public enum APIRouter: APIRoutable {
-    case modified(after: Date?)
+    case modified(after: Date?, limit: Int?)
     case readPost(id: Int)
 }
 
@@ -39,9 +39,18 @@ private extension APIRouter {
     
     var parameters: [String: Any] {
         switch self {
-        case .modified(let after):
-            guard let timestamp = after?.timeIntervalSince1970 else { return [:] }
-            return ["after": Int(timestamp)]
+        case .modified(let after, let limit):
+            var params = [String: Any]()
+            
+            if let timestamp = after?.timeIntervalSince1970 {
+                params["after"] = Int(timestamp)
+            }
+            
+            if let limit = limit {
+                params["limit"] = limit
+            }
+            
+            return params
         case .readPost:
             return [:]
         }
