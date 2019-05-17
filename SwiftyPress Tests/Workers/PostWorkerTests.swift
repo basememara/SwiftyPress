@@ -8,23 +8,26 @@
 import XCTest
 import SwiftyPress
 
-class PostWorkerTests: BaseTestCase {
+class PostWorkerTests: BaseTestCase, HasDependencies {
     private lazy var postWorker: PostWorkerType = dependencies.resolve()
 }
 
 extension PostWorkerTests {
     
     func testFetch() {
-        let promise = expectation(description: "Posts fetch all promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch all promise")
         
+        // When
         postWorker.fetch {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch all error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(!value.isEmpty)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssertFalse($0.value!.isEmpty, "response should have returned posts")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -34,34 +37,38 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFetchByID() {
-        let promise = expectation(description: "Posts fetch by ID promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by ID promise")
         let id = 5568
         
+        // When
         postWorker.fetch(id: id) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by ID error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.post.id == id)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.post.id == id, "response should have returned a matching post")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByIDError() {
+        // Given
         let promise = expectation(description: "Posts fetch by ID error promise")
         let id = 99999
         
+        // When
         postWorker.fetch(id: id) {
             defer { promise.fulfill() }
             
+            // Then
             guard case .nonExistent? = $0.error else {
-                return XCTFail("Posts fetch by ID error should have failed.")
+                return XCTFail("response should have failed")
             }
-            
-            XCTAssertTrue(true)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -71,17 +78,20 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFetchByIDs() {
-        let promise = expectation(description: "Posts fetch by IDs promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by IDs promise")
         let ids = [791, 26200]
         
+        // When
         postWorker.fetch(ids: Set(ids)) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by IDs error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.map { $0.id }.sorted() == ids)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.map { $0.id }.sorted() == ids, "response should have returned matching posts")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -91,17 +101,20 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFetchBySlug() {
-        let promise = expectation(description: "Posts fetch by slug promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by slug promise")
         let slug = "protocol-oriented-router-in-swift"
         
+        // When
         postWorker.fetch(slug: slug) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by slug error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.slug == slug)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.slug == slug, "response should have returned matching post slug")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -111,68 +124,80 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFetchByURL() {
-        let promise = expectation(description: "Posts fetch by url promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by url promise")
         let url = "http://example.com/swift-delegates-closure-pattern"
         
+        // When
         postWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by url error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 5568)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 5568)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL2() {
-        let promise = expectation(description: "Posts fetch by url 2 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by url 2 promise")
         let url = "http://example.com/whats-new-ios-BEYond/?abc=123#test"
         
+        // When
         postWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by url 2 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 791)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 791)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL3() {
-        let promise = expectation(description: "Posts fetch by url 3 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by url 3 promise")
         let url = "/protocol-oriented-THEmes-for-ios-apps/?abc=123#test"
         
+        // When
         postWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by url 3 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 41373)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 41373)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL4() {
-        let promise = expectation(description: "Posts fetch by url 4 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by url 4 promise")
         let url = "memory-leaKS-resource-management-swift-ios"
         
+        // When
         postWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by url 4 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 771)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 771)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -182,63 +207,66 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFetchByCategories() {
-        let promise = expectation(description: "Posts fetch by categories promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
         
+        // When
         postWorker.fetch(byTermIDs: ids) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by categories error: \(String(describing: $0.error))")
-            }
-            
-            let expression = value.allSatisfy {
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy {
                 $0.categories.contains(where: ids.contains)
-            }
-            
-            XCTAssertTrue(expression)
+            })
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByTags() {
-        let promise = expectation(description: "Posts fetch by tags promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
         
+        // When
         postWorker.fetch(byTermIDs: ids) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by tags error: \(String(describing: $0.error))")
-            }
-            
-            let expression = value.allSatisfy {
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy {
                 $0.tags.contains(where: ids.contains)
-            }
-            
-            XCTAssertTrue(expression)
+            })
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByTerms() {
-        let promise = expectation(description: "Posts fetch by terms promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms promise")
         let ids: Set = [56, 58, 77]
         
+        // When
         postWorker.fetch(byTermIDs: ids) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch by terms error: \(String(describing: $0.error))")
-            }
-            
-            let expression = value.allSatisfy {
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssertTrue($0.value!.allSatisfy {
                 ($0.categories + $0.tags).contains(where: ids.contains)
-            }
-            
-            XCTAssertTrue(expression)
+            })
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -248,20 +276,23 @@ extension PostWorkerTests {
 extension PostWorkerTests {
     
     func testFavorites() {
-        let promise = expectation(description: "Posts fetch favorites promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch favorites promise")
         let ids = [5568, 26200]
         
+        // When
         postWorker.addFavorite(id: ids[0])
         postWorker.addFavorite(id: ids[1])
         
         postWorker.fetchFavorites {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Posts fetch favorites error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.map { $0.id }.sorted() == ids)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.map { $0.id }.sorted() == ids)
         }
         
         waitForExpectations(timeout: 10, handler: nil)

@@ -41,6 +41,7 @@ class TestConfigurator: CoreConfigurator {
             styleSheet: "",
             googleAnalyticsID: nil,
             featuredCategoryID: 64,
+            defaultFetchModifiedLimit: 25,
             logFileName: "test"
         )
     }

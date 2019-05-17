@@ -7,15 +7,15 @@
 
 import XCTest
 import ZamzamKit
-import SwiftyPress
+@testable import SwiftyPress
 
-class PreferencesTests: BaseTestCase {
+class PreferencesTests: BaseTestCase, HasDependencies {
     private lazy var preferences: PreferencesType = dependencies.resolve()
 }
 
 extension PreferencesTests {
     
-    func testUserDefaults() {
+    func stestUserDefaults() {
         preferences.set("abc", forKey: .testString1)
         preferences.set("xyz", forKey: .testString2)
         preferences.set(true, forKey: .testBool1)

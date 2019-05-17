@@ -8,23 +8,26 @@
 import XCTest
 import SwiftyPress
 
-class TaxonomyWorkerTests: BaseTestCase {
+class TaxonomyWorkerTests: BaseTestCase, HasDependencies {
     private lazy var taxonomyWorker: TaxonomyWorkerType = dependencies.resolve()
 }
 
 extension TaxonomyWorkerTests {
     
     func testFetch() {
-        let promise = expectation(description: "Terms fetch all promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch all promise")
         
+        // When
         taxonomyWorker.fetch {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch all error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(!value.isEmpty)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert(!$0.value!.isEmpty)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -34,36 +37,40 @@ extension TaxonomyWorkerTests {
 extension TaxonomyWorkerTests {
     
     func testFetchByID() {
-        let promise = expectation(description: "Terms fetch by ID promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by ID promise")
         let id = 55
         
+        // When
         taxonomyWorker.fetch(id: id) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by ID error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == id)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == id)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByIDs() {
-        let promise = expectation(description: "Terms fetch by IDs promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by IDs promise")
         let ids: Set = [4, 55, 64]
         
+        // When
         taxonomyWorker.fetch(ids: ids) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by IDs error: \(String(describing: $0.error))")
-            }
-            
-            let expression = value.map { $0.id }.sorted() == Array(ids).sorted()
-            
-            XCTAssertTrue(expression)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssertEqual($0.value?.map { $0.id }.sorted(), Array(ids).sorted())
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -73,17 +80,20 @@ extension TaxonomyWorkerTests {
 extension TaxonomyWorkerTests {
     
     func testFetchBySlug() {
-        let promise = expectation(description: "Terms fetch by slug promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by slug promise")
         let slug = "swift"
         
+        // When
         taxonomyWorker.fetch(slug: slug) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by slug error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.slug == slug)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.slug == slug)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -93,68 +103,80 @@ extension TaxonomyWorkerTests {
 extension TaxonomyWorkerTests {
     
     func testFetchByURL() {
-        let promise = expectation(description: "Terms fetch by url promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by url promise")
         let url = "https://example.com/category/swift"
         
+        // When
         taxonomyWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by url error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 55)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 55)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL2() {
-        let promise = expectation(description: "Terms fetch by url 2 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by url 2 promise")
         let url = "https://example.com/category/swift/?abc=123#test"
         
+        // When
         taxonomyWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by url 2 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 55)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 55)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL3() {
-        let promise = expectation(description: "Terms fetch by url 3 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by url 3 promise")
         let url = "/tag/protocol-oriented-PROgramming/?abc=123#test"
         
+        // When
         taxonomyWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by url 3 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 62)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 62)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByURL4() {
-        let promise = expectation(description: "Terms fetch by url 4 promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by url 4 promise")
         let url = "taG/deleGAtes"
         
+        // When
         taxonomyWorker.fetch(url: url) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value != nil else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by url 4 error: \(String(describing: $0.error))")
-            }
-            
-            XCTAssertTrue(value.id == 74)
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value?.id == 74)
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -164,32 +186,38 @@ extension TaxonomyWorkerTests {
 extension TaxonomyWorkerTests {
     
     func testFetchByCategory() {
-        let promise = expectation(description: "Terms fetch by category error promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by category error promise")
         
+        // When
         taxonomyWorker.fetch(by: .category) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by category error should have failed.")
-            }
-            
-            XCTAssertTrue(value.allSatisfy { $0.taxonomy == .category })
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy { $0.taxonomy == .category })
         }
         
         waitForExpectations(timeout: 10, handler: nil)
     }
     
     func testFetchByTag() {
-        let promise = expectation(description: "Terms fetch by tag error promise")
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by tag error promise")
         
+        // When
         taxonomyWorker.fetch(by: .tag) {
-            defer { promise.fulfill() }
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
             
-            guard case .success(let value) = $0 else {
-                return XCTFail("Terms fetch by tag error should have failed.")
-            }
-            
-            XCTAssertTrue(value.allSatisfy { $0.taxonomy == .tag })
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy { $0.taxonomy == .tag })
         }
         
         waitForExpectations(timeout: 10, handler: nil)

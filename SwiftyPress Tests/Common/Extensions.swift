@@ -18,3 +18,15 @@ extension Bundle {
     /// A representation of the code and resources stored in bundle directory on disk.
     static let test = Bundle(for: TempClassForBundle.self)
 }
+
+extension Result {
+
+    var value: Success? {
+        switch self {
+        case .success(let value):
+            return value
+        case .failure:
+            return nil
+        }
+    }
+}
