@@ -69,19 +69,33 @@ open class CoreConfigurator: CoreDependable {
     }
     
     open func resolve() -> AuthorWorkerType {
-        return AuthorWorker(store: resolveStore())
+        return AuthorWorker(
+            store: resolveStore(),
+            remote: resolveRemote()
+        )
     }
     
     open func resolveStore() -> AuthorStore {
         return AuthorRealmStore()
     }
     
+    open func resolveRemote() -> AuthorRemote {
+        return AuthorNetworkRemote(apiSession: resolve())
+    }
+    
     open func resolve() -> MediaWorkerType {
-        return MediaWorker(store: resolveStore())
+        return MediaWorker(
+            store: resolveStore(),
+            remote: resolveRemote()
+        )
     }
     
     open func resolveStore() -> MediaStore {
         return MediaRealmStore()
+    }
+    
+    open func resolveRemote() -> MediaRemote {
+        return MediaNetworkRemote(apiSession: resolve())
     }
     
     open func resolve() -> TaxonomyWorkerType {

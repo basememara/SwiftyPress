@@ -33,3 +33,10 @@ public extension AuthorFileStore {
         }
     }
 }
+
+public extension AuthorFileStore {
+    
+    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+        // Nothing to do
+    }
+}

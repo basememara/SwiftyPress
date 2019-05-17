@@ -61,3 +61,41 @@ public extension MediaRealmStore {
         }
     }
 }
+
+public extension MediaRealmStore {
+    
+    func createOrUpdate(_ request: MediaType, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+        DispatchQueue.database.async {
+            let realm: Realm
+            
+            do {
+                realm = try Realm()
+            } catch {
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
+            }
+            
+            do {
+                try realm.write {
+                    realm.add(MediaRealmObject(from: request), update: true)
+                }
+            } catch {
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
+            }
+            
+            // Get refreshed object to return
+            guard let object = realm.object(ofType: MediaRealmObject.self, forPrimaryKey: request.id) else {
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
+            }
+            
+            let item = Media(from: object)
+            
+            DispatchQueue.main.async {
+                completion(.success(item))
+            }
+        }
+    }
+}
+

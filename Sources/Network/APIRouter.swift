@@ -15,6 +15,8 @@ public protocol APIRoutable {
 public enum APIRouter: APIRoutable {
     case modified(after: Date?, limit: Int?)
     case readPost(id: Int)
+    case readAuthor(id: Int)
+    case readMedia(id: Int)
 }
 
 private extension APIRouter {
@@ -25,6 +27,10 @@ private extension APIRouter {
             return .get
         case .readPost:
             return .get
+        case .readAuthor:
+            return .get
+        case .readMedia:
+            return .get
         }
     }
     
@@ -34,6 +40,10 @@ private extension APIRouter {
             return "modified"
         case .readPost(let id):
             return "post/\(id)"
+        case .readAuthor(let id):
+            return "author/\(id)"
+        case .readMedia(let id):
+            return "media/\(id)"
         }
     }
     
@@ -52,6 +62,10 @@ private extension APIRouter {
             
             return params
         case .readPost:
+            return [:]
+        case .readAuthor:
+            return [:]
+        case .readMedia:
             return [:]
         }
     }

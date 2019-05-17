@@ -8,8 +8,13 @@
 
 public protocol AuthorStore {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
+    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void)
 }
 
-public protocol AuthorWorkerType: AuthorStore {
+public protocol AuthorRemote {
+    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
+}
 
+public protocol AuthorWorkerType {
+    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
 }

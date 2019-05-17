@@ -38,3 +38,40 @@ public extension AuthorRealmStore {
         }
     }
 }
+
+public extension AuthorRealmStore {
+    
+    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+        DispatchQueue.database.async {
+            let realm: Realm
+            
+            do {
+                realm = try Realm()
+            } catch {
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
+            }
+            
+            do {
+                try realm.write {
+                    realm.add(AuthorRealmObject(from: request), update: true)
+                }
+            } catch {
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
+            }
+            
+            // Get refreshed object to return
+            guard let object = realm.object(ofType: AuthorRealmObject.self, forPrimaryKey: request.id) else {
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
+            }
+            
+            let item = Author(from: object)
+            
+            DispatchQueue.main.async {
+                completion(.success(item))
+            }
+        }
+    }
+}

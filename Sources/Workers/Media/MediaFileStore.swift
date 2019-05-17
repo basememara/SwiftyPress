@@ -52,3 +52,10 @@ public extension MediaFileStore {
         }
     }
 }
+
+public extension MediaFileStore {
+    
+    func createOrUpdate(_ request: MediaType, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+        // Nothing to do
+    }
+}
