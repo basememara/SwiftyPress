@@ -77,7 +77,7 @@ public extension CacheRealmStore {
                     _ = try Realm()
                 } catch {
                     Log(error: "Could not initialize Realm database: \(error). Deleting database and recreating...")
-                    delete(for: preferences.get(.userID) ?? 0)
+                    _delete(for: preferences.get(.userID) ?? 0)
                     _ = try? Realm()
                 }
                 
@@ -170,22 +170,27 @@ public extension CacheRealmStore {
     
     func delete(for userID: Int) {
         DispatchQueue.database.sync {
-            guard let directory = folderURL?.path else { return }
+            _delete(for: userID)
+        }
+    }
+    
+    /// Delete without thread.
+    private func _delete(for userID: Int) {
+        guard let directory = folderURL?.path else { return }
+        
+        do {
+            let filenames = try FileManager.default.contentsOfDirectory(atPath: directory)
+            let currentName = generateName(for: userID)
             
-            do {
-                let filenames = try FileManager.default.contentsOfDirectory(atPath: directory)
-                let currentName = generateName(for: userID)
-                
-                try filenames
-                    .filter { $0.hasPrefix("\(currentName).") }
-                    .forEach { filename in
-                        try FileManager.default.removeItem(atPath: "\(directory)/\(filename)")
-                    }
-                
-                Log(warn: "Deleted Realm database at: \(directory)/\(currentName).realm")
-            } catch {
-                Log(error: "Could not delete user's database: \(error)")
+            try filenames
+                .filter { $0.hasPrefix("\(currentName).") }
+                .forEach { filename in
+                    try FileManager.default.removeItem(atPath: "\(directory)/\(filename)")
             }
+            
+            Log(warn: "Deleted Realm database at: \(directory)/\(currentName).realm")
+        } catch {
+            Log(error: "Could not delete user's database: \(error)")
         }
     }
 }
