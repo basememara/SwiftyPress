@@ -25,7 +25,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="F04-6s-dst">
                                 <rect key="frame" x="0.0" y="10" width="550" height="174"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eVz-el-fGF" customClass="ThemedImage" customModule="ZamzamKit">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eVz-el-fGF" customClass="ThemedImageView" customModule="ZamzamKit">
                                         <rect key="frame" x="0.0" y="0.0" width="174" height="174"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="eVz-el-fGF" secondAttribute="height" multiplier="1:1" id="ajG-Zc-BIr"/>
