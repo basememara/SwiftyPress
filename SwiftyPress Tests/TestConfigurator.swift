@@ -32,8 +32,8 @@ class TestConfigurator: CoreConfigurator {
             environment: environment,
             itunesName: "",
             itunesID: "0",
-            baseURL: URL(string: "https://basememara.com")!,
-            baseREST: "wp-json/swiftypress/v4",
+            baseURL: URL(string: "https://staging1.basememara.com")!,
+            baseREST: "wp-json/swiftypress/v5",
             wpREST: "wp-json/wp/v2",
             email: "",
             privacyURL: "",
@@ -42,6 +42,8 @@ class TestConfigurator: CoreConfigurator {
             googleAnalyticsID: nil,
             featuredCategoryID: 64,
             defaultFetchModifiedLimit: 25,
+            taxonomies: ["category", "post_tag", "series"],
+            postMetaKeys: ["_edit_lock", "_series_part"],
             logFileName: "test"
         )
     }

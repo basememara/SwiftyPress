@@ -16,6 +16,6 @@ public protocol PostType: Identifiable, Dateable {
     var commentCount: Int { get }
     var authorID: Int { get }
     var mediaID: Int? { get }
-    var categories: [Int] { get }
-    var tags: [Int] { get }
+    var terms: [Int] { get }
+    var meta: [String: String] { get }
 }

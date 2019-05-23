@@ -11,6 +11,5 @@ public protocol ExtendedPostType {
     var post: PostType { get }
     var author: AuthorType? { get }
     var media: MediaType? { get }
-    var categories: [TermType] { get }
-    var tags: [TermType] { get }
+    var terms: [TermType] { get }
 }

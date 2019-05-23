@@ -15,8 +15,8 @@ public struct PostNetworkRemote: PostRemote, Loggable {
 
 public extension PostNetworkRemote {
     
-    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
-        apiSession.request(APIRouter.readPost(id: id)) {
+    func fetch(id: Int, with request: PostsModels.FetchRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+        apiSession.request(APIRouter.readPost(id: id, request)) {
             // Handle errors
             guard case .success = $0 else {
                 // Handle no existing data

@@ -30,4 +30,18 @@ public extension Localizable {
 public extension Localizable {
     static let categorySection = Localizable(NSLocalizedString("category.section", bundle: .swiftyPress, comment: "Table section header for categories"))
     static let tagSection = Localizable(NSLocalizedString("tag.section", bundle: .swiftyPress, comment: "Table section header for tags"))
+    
+    static func taxonomy(for name: String) -> Localizable {
+        let key = "taxonomy.section.\(name.lowercased())"
+        
+        // Determine if localization exists
+        guard let bundle: Bundle = (Bundle.main.localizedString(forKey: key, value: nil, table: nil) != key ? .main
+            : Bundle.swiftyPress.localizedString(forKey: key, value: nil, table: nil) != key ? .swiftyPress
+            : nil) else {
+                // Fallbacck to original name capitalized
+                return Localizable(name.capitalized)
+        }
+        
+        return Localizable(NSLocalizedString(key, bundle: bundle, comment: "Table section header for custom taxonomy"))
+    }
 }

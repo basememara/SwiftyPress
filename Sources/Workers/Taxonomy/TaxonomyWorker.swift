@@ -43,9 +43,8 @@ public extension TaxonomyWorker {
             // Sync remote updates to cache if applicable
             self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
-                guard case .success(let value) = $0,
-                    !value.categories.isEmpty || !value.tags.isEmpty else {
-                        return
+                guard case .success(let value) = $0, !value.terms.isEmpty else {
+                    return
                 }
                 
                 self.store.fetch(completion: completion)
@@ -64,7 +63,7 @@ public extension TaxonomyWorker {
             self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
-                    taxonomy == .category ? !value.categories.isEmpty : !value.tags.isEmpty else {
+                    value.terms.contains(where: { $0.taxonomy == taxonomy }) else {
                         return
                 }
                 

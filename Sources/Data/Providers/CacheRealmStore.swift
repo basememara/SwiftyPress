@@ -112,11 +112,11 @@ public extension CacheRealmStore {
         return getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
-    func createOrUpdate(_ request: SeedPayloadType, lastPulledAt: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+    func createOrUpdate(with request: DataStoreModels.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         // Ensure there is data before proceeding
-        guard !request.isEmpty else {
+        guard !request.payload.isEmpty else {
             Log(debug: "No modified data to cache.")
-            DispatchQueue.main.async { completion(.success(request)) }
+            DispatchQueue.main.async { completion(.success(request.payload)) }
             return
         }
         
@@ -132,10 +132,10 @@ public extension CacheRealmStore {
             }
             
             // Transform data
-            let post = request.posts.map { PostRealmObject(from: $0) }
-            let media = request.media.map { MediaRealmObject(from: $0) }
-            let authors = request.authors.map { AuthorRealmObject(from: $0) }
-            let terms = (request.categories + request.tags).map { TermRealmObject(from: $0) }
+            let post = request.payload.posts.map { PostRealmObject(from: $0) }
+            let media = request.payload.media.map { MediaRealmObject(from: $0) }
+            let authors = request.payload.authors.map { AuthorRealmObject(from: $0) }
+            let terms = request.payload.terms.map { TermRealmObject(from: $0) }
             
             do {
                 try realm.write {
@@ -148,14 +148,14 @@ public extension CacheRealmStore {
                 // Persist sync date for next use if applicable
                 try self.updateSyncActivity(
                     for: SeedPayload.self,
-                    lastPulledAt: lastPulledAt,
+                    lastPulledAt: request.lastPulledAt,
                     with: realm
                 )
                 
                 self.Log(debug: "Cache modified data complete for "
                     + "\(post.count) posts, \(media.count) media, \(authors.count) authors, and \(terms.count) terms.")
                 
-                DispatchQueue.main.async { completion(.success(request)) }
+                DispatchQueue.main.async { completion(.success(request.payload)) }
                 return
             } catch {
                 self.Log(error: "Could not write modified data to Realm from the source: \(error)")

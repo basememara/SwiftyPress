@@ -8,6 +8,11 @@
 
 public enum PostsModels {
     
+    public struct FetchRequest {
+        let taxonomies: [String]
+        let postMetaKeys: [String]
+    }
+    
     public enum SearchScope {
         case all
         case title

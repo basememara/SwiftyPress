@@ -19,13 +19,13 @@ class MediaModelTests: XCTestCase {
                 inBundle: .test
             )
             
-            XCTAssertEqual(model.id, 41382)
-            XCTAssertEqual(model.link, "https://basememara.com/wp-content/uploads/2018/09/UIKit-Xcode-Custom-Class.png")
-            XCTAssertEqual(model.width, 854)
-            XCTAssertEqual(model.height, 480)
-            XCTAssertEqual(model.thumbnailLink, "https://basememara.com/wp-content/uploads/2018/09/UIKit-Xcode-Custom-Class-500x281.png")
+            XCTAssertEqual(model.id, 41346)
+            XCTAssertEqual(model.link, "https://staging1.basememara.com/wp-content/uploads/2018/04/Clean-Architecture-Cycle-2.png")
+            XCTAssertEqual(model.width, 500)
+            XCTAssertEqual(model.height, 518)
+            XCTAssertEqual(model.thumbnailLink, "https://staging1.basememara.com/wp-content/uploads/2018/04/Clean-Architecture-Cycle-2-500x518.png")
             XCTAssertEqual(model.thumbnailWidth, 500)
-            XCTAssertEqual(model.thumbnailHeight, 281)
+            XCTAssertEqual(model.thumbnailHeight, 518)
         } catch {
             XCTFail("Could not parse JSON: \(error)")
         }

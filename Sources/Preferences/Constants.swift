@@ -70,6 +70,9 @@ public extension Constants {
     var googleAnalyticsID: String? {
         return store.googleAnalyticsID
     }
+}
+
+public extension Constants {
     
     var featuredCategoryID: Int {
         return store.featuredCategoryID
@@ -77,6 +80,14 @@ public extension Constants {
     
     var defaultFetchModifiedLimit: Int {
         return store.defaultFetchModifiedLimit
+    }
+    
+    var taxonomies: [String] {
+        return store.taxonomies
+    }
+    
+    var postMetaKeys: [String] {
+        return store.postMetaKeys
     }
 }
 

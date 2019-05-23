@@ -23,8 +23,8 @@ class PostRealmObject: Object, PostType {
     dynamic var modifiedAt: Date = .distantPast
     
     let mediaIDRaw = RealmOptional<Int>()
-    let categoriesRaw = List<TermIDRealmObject>()
-    let tagsRaw = List<TermIDRealmObject>()
+    let termsRaw = List<TermIDRealmObject>()
+    let metaRaw = List<MetaRealmObject>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -46,22 +46,28 @@ extension PostRealmObject {
         set { mediaIDRaw.value = newValue }
     }
     
-    var categories: [Int] {
-        get { return categoriesRaw.map { $0.id } }
+    var terms: [Int] {
+        get { return termsRaw.map { $0.id } }
         set {
-            categoriesRaw.removeAll()
-            categoriesRaw.append(objectsIn: newValue.map { id in
+            termsRaw.removeAll()
+            termsRaw.append(objectsIn: newValue.map { id in
                 TermIDRealmObject().with { $0.id = id }
             })
         }
     }
     
-    var tags: [Int] {
-        get { return tagsRaw.map { $0.id } }
+    var meta: [String: String] {
+        get {
+            return Dictionary(uniqueKeysWithValues: metaRaw.map { ($0.key, $0.value) })
+        }
+        
         set {
-            tagsRaw.removeAll()
-            tagsRaw.append(objectsIn: newValue.map { id in
-                TermIDRealmObject().with { $0.id = id }
+            metaRaw.removeAll()
+            metaRaw.append(objectsIn: newValue.map { item in
+                MetaRealmObject().with {
+                    $0.key = item.key
+                    $0.value = item.value
+                }
             })
         }
     }
@@ -73,6 +79,12 @@ class TermIDRealmObject: Object {
     // https://github.com/realm/realm-object-store/issues/513
     dynamic var id: Int = 0
     override static func primaryKey() -> String? { return "id" }
+}
+
+@objcMembers
+class MetaRealmObject: Object {
+    dynamic var key: String = ""
+    dynamic var value: String = ""
 }
 
 // MARK: - Helpers
@@ -94,8 +106,8 @@ extension PostRealmObject {
         self.commentCount = object.commentCount
         self.authorID = object.authorID
         self.mediaID = object.mediaID
-        self.categories = object.categories
-        self.tags = object.tags
+        self.terms = object.terms
+        self.meta = object.meta
         self.createdAt = object.createdAt
         self.modifiedAt = object.modifiedAt
     }

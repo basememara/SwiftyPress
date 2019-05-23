@@ -13,14 +13,14 @@ public protocol SeedStore {
 
 public protocol RemoteStore {
     func configure()
-    func fetchModified(after date: Date?, limit: Int?, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func fetchModified(after date: Date?, with request: DataStoreModels.ModifiedRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
 }
 
 public protocol CacheStore {
     var lastPulledAt: Date? { get }
     
     func configure()
-    func createOrUpdate(_ request: SeedPayloadType, lastPulledAt: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func createOrUpdate(with request: DataStoreModels.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
     func delete(for userID: Int)
 }
 
@@ -36,17 +36,4 @@ public protocol DataWorkerType {
     ///
     /// - Parameter completion: The completion block that returns the latest changes.
     func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-}
-
-// MARK: - Extensions
-
-public extension RemoteStore {
-    
-    func fetchModified(after date: Date, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        fetchModified(after: date, limit: nil, completion: completion)
-    }
-    
-    func fetchModified(limit: Int, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        fetchModified(after: nil, limit: limit, completion: completion)
-    }
 }

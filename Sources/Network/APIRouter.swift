@@ -13,8 +13,8 @@ public protocol APIRoutable {
 }
 
 public enum APIRouter: APIRoutable {
-    case modified(after: Date?, limit: Int?)
-    case readPost(id: Int)
+    case modified(after: Date?, DataStoreModels.ModifiedRequest)
+    case readPost(id: Int, PostsModels.FetchRequest)
     case readAuthor(id: Int)
     case readMedia(id: Int)
 }
@@ -38,7 +38,7 @@ private extension APIRouter {
         switch self {
         case .modified:
             return "modified"
-        case .readPost(let id):
+        case .readPost(let id, _):
             return "post/\(id)"
         case .readAuthor(let id):
             return "author/\(id)"
@@ -49,20 +49,42 @@ private extension APIRouter {
     
     var parameters: [String: Any] {
         switch self {
-        case .modified(let after, let limit):
+        case .modified(let after, let request):
             var params = [String: Any]()
             
             if let timestamp = after?.timeIntervalSince1970 {
                 params["after"] = Int(timestamp)
             }
             
-            if let limit = limit {
+            if !request.taxonomies.isEmpty {
+                params["taxonomies"] = request.taxonomies
+                    .joined(separator: ",")
+            }
+            
+            if !request.postMetaKeys.isEmpty {
+                params["meta_keys"] = request.postMetaKeys
+                    .joined(separator: ",")
+            }
+            
+            if let limit = request.limit {
                 params["limit"] = limit
             }
             
             return params
-        case .readPost:
-            return [:]
+        case .readPost(_, let request):
+            var params = [String: Any]()
+            
+            if !request.taxonomies.isEmpty {
+                params["taxonomies"] = request.taxonomies
+                    .joined(separator: ",")
+            }
+            
+            if !request.postMetaKeys.isEmpty {
+                params["meta_keys"] = request.postMetaKeys
+                    .joined(separator: ",")
+            }
+            
+            return params
         case .readAuthor:
             return [:]
         case .readMedia:

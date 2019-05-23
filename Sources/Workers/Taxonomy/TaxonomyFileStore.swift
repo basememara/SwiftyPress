@@ -64,7 +64,7 @@ public extension TaxonomyFileStore {
                 return
             }
             
-            completion(.success(value.categories + value.tags))
+            completion(.success(value.terms))
         }
     }
 }

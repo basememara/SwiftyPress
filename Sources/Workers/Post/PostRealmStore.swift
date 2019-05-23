@@ -144,7 +144,7 @@ public extension PostRealmStore {
             }
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
-                .filter("ANY categoriesRaw.id IN %@ OR ANY tagsRaw.id IN %@", ids, ids)
+                .filter("ANY termsRaw.id IN %@", ids, ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .map { Post(from: $0) }
             
@@ -192,7 +192,7 @@ public extension PostRealmStore {
                 )
                 
                 if !termIDs.isEmpty {
-                    predicates.append(NSPredicate(format: "ANY categoriesRaw.id IN %@ OR ANY tagsRaw.id IN %@", termIDs, termIDs))
+                    predicates.append(NSPredicate(format: "ANY termsRaw.id IN %@", termIDs, termIDs))
                 }
             }
             
@@ -245,7 +245,7 @@ public extension PostRealmStore {
                     realm.add(MediaRealmObject(from: request.media), update: true)
                     realm.add(AuthorRealmObject(from: request.author), update: true)
                     realm.add(
-                        (request.categories + request.tags).map { TermRealmObject(from: $0) },
+                        request.terms.map { TermRealmObject(from: $0) },
                         update: true
                     )
                 }
@@ -292,11 +292,8 @@ private extension PostRealmStore {
                     )
                 )
             }(),
-            categories: realm.objects(TermRealmObject.self)
-                .filter("id IN %@", post.categories)
-                .map { Term(from: $0) },
-            tags: realm.objects(TermRealmObject.self)
-                .filter("id IN %@", post.tags)
+            terms: realm.objects(TermRealmObject.self)
+                .filter("id IN %@", post.terms)
                 .map { Term(from: $0) }
         )
     }

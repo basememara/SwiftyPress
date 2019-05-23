@@ -39,9 +39,14 @@ public extension PostWorker {
                 return
             }
             
+            let request = PostsModels.FetchRequest(
+                taxonomies: self.constants.taxonomies,
+                postMetaKeys: self.constants.postMetaKeys
+            )
+            
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
-                remote.fetch(id: id) {
+                remote.fetch(id: id, with: request) {
                     guard case .success(let value) = $0 else {
                         completion($0)
                         return
@@ -59,7 +64,7 @@ public extension PostWorker {
             guard case .success(let cacheElement) = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            remote.fetch(id: id) {
+            remote.fetch(id: id, with: request) {
                 // Validate if any updates occurred and return
                 guard case .success(let element) = $0,
                     element.post.modifiedAt > cacheElement.post.modifiedAt else {
@@ -158,7 +163,7 @@ public extension PostWorker {
                 guard case .success(let value) = $0 else { return }
                 
                 // Validate if any updates that needs to be stored
-                let modifiedIDs = Set(value.posts.flatMap { $0.categories + $0.tags })
+                let modifiedIDs = Set(value.posts.flatMap { $0.terms })
                 guard ids.contains(where: modifiedIDs.contains) else { return }
                 self.store.fetch(byTermIDs: ids, completion: completion)
             }

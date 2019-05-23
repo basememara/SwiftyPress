@@ -22,8 +22,8 @@ public extension RemoteNetworkStore {
         // No configure needed
     }
     
-    func fetchModified(after date: Date?, limit: Int?, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        apiSession.request(APIRouter.modified(after: date, limit: limit)) {
+    func fetchModified(after date: Date?, with request: DataStoreModels.ModifiedRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+        apiSession.request(APIRouter.modified(after: date, request)) {
             guard case .success(let value) = $0 else {
                 // Handle no modified data and return success
                 if $0.error?.statusCode == 304 {

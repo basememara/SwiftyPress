@@ -12,21 +12,18 @@ public struct SeedPayload: SeedPayloadType, Decodable {
     public let posts: [PostType]
     public let authors: [AuthorType]
     public let media: [MediaType]
-    public let categories: [TermType]
-    public let tags: [TermType]
+    public let terms: [TermType]
     
     init(
         posts: [PostType] = [],
         authors: [AuthorType] = [],
         media: [MediaType] = [],
-        categories: [TermType] = [],
-        tags: [TermType] = []
+        terms: [TermType] = []
     ) {
         self.posts = []
         self.authors = []
         self.media = []
-        self.categories = []
-        self.tags = []
+        self.terms = []
     }
 }
 
@@ -38,17 +35,15 @@ extension SeedPayload {
         case posts
         case authors
         case media
-        case categories
-        case tags
+        case terms
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.posts = try container.decode(FailableCodableArray<Post>.self, forKey: .posts).elements
-        self.authors = try container.decode(FailableCodableArray<Author>.self, forKey: .authors).elements
-        self.media = try container.decode(FailableCodableArray<Media>.self, forKey: .media).elements
-        self.categories = try container.decode(FailableCodableArray<Term>.self, forKey: .categories).elements
-        self.tags = try container.decode(FailableCodableArray<Term>.self, forKey: .tags).elements
+        self.posts = try container.decode([Post].self, forKey: .posts)
+        self.authors = try container.decode([Author].self, forKey: .authors)
+        self.media = try container.decode([Media].self, forKey: .media)
+        self.terms = try container.decode([Term].self, forKey: .terms)
     }
 }

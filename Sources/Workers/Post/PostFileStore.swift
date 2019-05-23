@@ -33,12 +33,8 @@ public extension PostFileStore {
                 post: post,
                 author: value.authors.first { $0.id == post.authorID },
                 media: value.media.first { $0.id == post.mediaID },
-                categories: post.categories.reduce(into: [TermType]()) { result, next in
-                    guard let element = value.categories.first(where: { $0.id == next }) else { return }
-                    result.append(element)
-                },
-                tags: post.tags.reduce(into: [TermType]()) { result, next in
-                    guard let element = value.tags.first(where: { $0.id == next }) else { return }
+                terms: post.terms.reduce(into: [TermType]()) { result, next in
+                    guard let element = value.terms.first(where: { $0.id == next }) else { return }
                     result.append(element)
                 }
             )
@@ -121,7 +117,7 @@ public extension PostFileStore {
             }
             
             let model = value.filter {
-                ($0.categories + $0.tags).contains(where: ids.contains)
+                $0.terms.contains(where: ids.contains)
             }
             
             completion(.success(model))
@@ -151,13 +147,13 @@ public extension PostFileStore {
             
             // Only perform necesary filtering if applicable
             let termIDs: [Int] = request.scope.within([.all, .terms])
-                ? (value.categories + value.tags)
+                ? value.terms
                     .filter { $0.name.lowercased().contains(query) }
                     .map { $0.id }
                 : []
             
             let termsPredicate: (PostType) -> Bool = {
-                ($0.categories + $0.tags).contains(where: termIDs.contains)
+                $0.terms.contains(where: termIDs.contains)
             }
             
             switch request.scope {
@@ -225,12 +221,8 @@ public extension PostFileStore {
                     
                     return [media]
                 }(),
-                categories: value.categories + request.categories.compactMap { term in
-                    guard !value.categories.contains(where: { $0.id == term.id }) else { return nil }
-                    return term as? Term
-                },
-                tags: value.tags + request.tags.compactMap { term in
-                    guard !value.tags.contains(where: { $0.id == term.id }) else { return nil }
+                terms: value.terms.compactMap { term in
+                    guard !value.terms.contains(where: { $0.id == term.id }) else { return nil }
                     return term as? Term
                 }
             )

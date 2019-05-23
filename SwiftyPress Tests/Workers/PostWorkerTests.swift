@@ -221,7 +221,7 @@ extension PostWorkerTests {
             XCTAssertNil($0.error, $0.error.debugDescription)
             XCTAssertNotNil($0.value, "response should not have been nil")
             XCTAssert($0.value!.allSatisfy {
-                $0.categories.contains(where: ids.contains)
+                $0.terms.contains(where: ids.contains)
             })
         }
         
@@ -243,7 +243,7 @@ extension PostWorkerTests {
             XCTAssertNil($0.error, $0.error.debugDescription)
             XCTAssertNotNil($0.value, "response should not have been nil")
             XCTAssert($0.value!.allSatisfy {
-                $0.tags.contains(where: ids.contains)
+                $0.terms.contains(where: ids.contains)
             })
         }
         
@@ -265,7 +265,7 @@ extension PostWorkerTests {
             XCTAssertNil($0.error, $0.error.debugDescription)
             XCTAssertNotNil($0.value, "response should not have been nil")
             XCTAssertTrue($0.value!.allSatisfy {
-                ($0.categories + $0.tags).contains(where: ids.contains)
+                $0.terms.contains(where: ids.contains)
             })
         }
         

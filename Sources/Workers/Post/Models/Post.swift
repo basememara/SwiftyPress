@@ -17,17 +17,17 @@ public struct Post: PostType, Decodable {
     public let commentCount: Int
     public let authorID: Int
     public let mediaID: Int?
-    public let categories: [Int]
-    public let tags: [Int]
+    public let terms: [Int]
+    public let meta: [String: String]
     public let createdAt: Date
     public let modifiedAt: Date
 }
 
 // MARK: - For JSON decoding
 
-private extension Post {
+extension Post {
     
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case id
         case slug
         case type
@@ -38,10 +38,29 @@ private extension Post {
         case commentCount = "comment_count"
         case authorID = "author"
         case mediaID = "featured_media"
-        case categories
-        case tags
+        case terms
+        case meta
         case createdAt = "created"
         case modifiedAt = "modified"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.slug = try container.decode(String.self, forKey: .slug)
+        self.type = try container.decode(String.self, forKey: .type)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.content = try container.decode(String.self, forKey: .content)
+        self.excerpt = try container.decode(String.self, forKey: .excerpt)
+        self.link = try container.decode(String.self, forKey: .link)
+        self.commentCount = try container.decode(Int.self, forKey: .commentCount)
+        self.authorID = try container.decode(Int.self, forKey: .authorID)
+        self.mediaID = try container.decodeIfPresent(Int.self, forKey: .mediaID)
+        self.terms = try container.decode([Int].self, forKey: .terms)
+        self.meta = try container.decode([String: String].self, forKey: .meta)
+        self.createdAt = try container.decode(Date.self, forKey: .createdAt)
+        self.modifiedAt = try container.decode(Date.self, forKey: .modifiedAt)
     }
 }
 
@@ -62,8 +81,8 @@ extension Post {
             commentCount: object.commentCount,
             authorID: object.authorID,
             mediaID: object.mediaID,
-            categories: object.categories,
-            tags: object.tags,
+            terms: object.terms,
+            meta: object.meta,
             createdAt: object.createdAt,
             modifiedAt: object.modifiedAt
         )

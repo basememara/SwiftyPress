@@ -8,8 +8,7 @@
 
 public protocol SeedPayloadType {
     var posts: [PostType] { get }
-    var categories: [TermType] { get }
-    var tags: [TermType] { get }
+    var terms: [TermType] { get }
     var authors: [AuthorType] { get }
     var media: [MediaType] { get }
 }
@@ -21,7 +20,6 @@ public extension SeedPayloadType {
         return posts.isEmpty
             && authors.isEmpty
             && media.isEmpty
-            && categories.isEmpty
-            && tags.isEmpty
+            && terms.isEmpty
     }
 }

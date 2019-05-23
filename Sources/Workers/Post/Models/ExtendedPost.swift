@@ -13,8 +13,7 @@ struct ExtendedPost: ExtendedPostType, Decodable {
     let post: PostType
     let author: AuthorType?
     let media: MediaType?
-    let categories: [TermType]
-    let tags: [TermType]
+    let terms: [TermType]
 }
 
 // MARK: - For JSON decoding
@@ -25,8 +24,7 @@ extension ExtendedPost {
         case post
         case author
         case media
-        case categories
-        case tags
+        case terms
     }
     
     public init(from decoder: Decoder) throws {
@@ -35,7 +33,6 @@ extension ExtendedPost {
         self.post = try container.decode(Post.self, forKey: .post)
         self.author = try container.decode(Author.self, forKey: .author)
         self.media = try container.decode(Media.self, forKey: .media)
-        self.categories = try container.decode(FailableCodableArray<Term>.self, forKey: .categories).elements
-        self.tags = try container.decode(FailableCodableArray<Term>.self, forKey: .tags).elements
+        self.terms = try container.decode(FailableCodableArray<Term>.self, forKey: .terms).elements
     }
 }

@@ -75,9 +75,6 @@
 		8B0D64CE20C347E00046056F /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64CD20C347E00046056F /* Taxonomy.swift */; };
 		8B0D64CF20C347E00046056F /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64CD20C347E00046056F /* Taxonomy.swift */; };
 		8B0D64D020C347E00046056F /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64CD20C347E00046056F /* Taxonomy.swift */; };
-		8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64D120C3484A0046056F /* TaxonomyModels.swift */; };
-		8B0D64D320C3484A0046056F /* TaxonomyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64D120C3484A0046056F /* TaxonomyModels.swift */; };
-		8B0D64D420C3484A0046056F /* TaxonomyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64D120C3484A0046056F /* TaxonomyModels.swift */; };
 		8B0D64DC20C434C40046056F /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64DB20C434C40046056F /* Term.swift */; };
 		8B0D64DD20C434C40046056F /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64DB20C434C40046056F /* Term.swift */; };
 		8B0D64DE20C434C40046056F /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0D64DB20C434C40046056F /* Term.swift */; };
@@ -254,6 +251,9 @@
 		8BA83A492176386C0055292D /* CacheRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA83A482176386C0055292D /* CacheRealmStore.swift */; };
 		8BA83A4A2176386C0055292D /* CacheRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA83A482176386C0055292D /* CacheRealmStore.swift */; };
 		8BA83A4B2176386C0055292D /* CacheRealmStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA83A482176386C0055292D /* CacheRealmStore.swift */; };
+		8BABEE682296B8D30014F7B4 /* DataStoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABEE672296B8D30014F7B4 /* DataStoreModels.swift */; };
+		8BABEE692296B8D30014F7B4 /* DataStoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABEE672296B8D30014F7B4 /* DataStoreModels.swift */; };
+		8BABEE6A2296B8D30014F7B4 /* DataStoreModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BABEE672296B8D30014F7B4 /* DataStoreModels.swift */; };
 		8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81D5216BF2D800158DDE /* UIViewController.swift */; };
 		8BBF81E7216C292B00158DDE /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81E6216C292B00158DDE /* Social.swift */; };
 		8BBF81E8216C292B00158DDE /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF81E6216C292B00158DDE /* Social.swift */; };
@@ -380,7 +380,6 @@
 		8B0D64C320BEC9830046056F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8B0D64C820C15E8B0046056F /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		8B0D64CD20C347E00046056F /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
-		8B0D64D120C3484A0046056F /* TaxonomyModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyModels.swift; sourceTree = "<group>"; };
 		8B0D64DB20C434C40046056F /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		8B0D64DF20C435AD0046056F /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		8B0D64E320C436000046056F /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -466,6 +465,7 @@
 		8B87FCBA228978B0004AC246 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
 		8B8802882174B49D0035543D /* DataWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWorker.swift; sourceTree = "<group>"; };
 		8BA83A482176386C0055292D /* CacheRealmStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheRealmStore.swift; sourceTree = "<group>"; };
+		8BABEE672296B8D30014F7B4 /* DataStoreModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreModels.swift; sourceTree = "<group>"; };
 		8BBF81D5216BF2D800158DDE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		8BBF81E6216C292B00158DDE /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 		8BC2FA1121779D890014D7B5 /* PostRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRealmObject.swift; sourceTree = "<group>"; };
@@ -767,7 +767,6 @@
 				8B0D64DB20C434C40046056F /* Term.swift */,
 				8B0D641720B99B240046056F /* TermType.swift */,
 				8BC2FA1521779E530014D7B5 /* TermRealmObject.swift */,
-				8B0D64D120C3484A0046056F /* TaxonomyModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1002,12 +1001,21 @@
 		8B8802872174B4860035543D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8BABEE662296B8BF0014F7B4 /* Common */,
 				8B5250DA20CFD9E700E77F70 /* Models */,
 				8B1CC506217B92E600F00A70 /* Providers */,
-				8B5250EF20CFE5B500E77F70 /* DataStoreInterfaces.swift */,
 				8B8802882174B49D0035543D /* DataWorker.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		8BABEE662296B8BF0014F7B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8B5250EF20CFE5B500E77F70 /* DataStoreInterfaces.swift */,
+				8BABEE672296B8D30014F7B4 /* DataStoreModels.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		8BC96D64217E31CD0037D747 /* DataViews */ = {
@@ -1360,7 +1368,6 @@
 				8BC4FE43216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8BC96D6D217E31CD0037D747 /* PostsDataViewAdapter.swift in Sources */,
 				8B66738C217EAC870057E0F6 /* PickedPostCollectionViewCell.swift in Sources */,
-				8B0D64D220C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650D20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B87FCAC22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
@@ -1388,6 +1395,7 @@
 				8BC4FE21216CFE4B00BB7870 /* APISession.swift in Sources */,
 				8B0D644620BEA9010046056F /* PostsModels.swift in Sources */,
 				8B667389217EAC870057E0F6 /* TermTableViewCell.swift in Sources */,
+				8BABEE682296B8D30014F7B4 /* DataStoreModels.swift in Sources */,
 				8B6A2BBA20D66A8000D070FB /* Logger.swift in Sources */,
 				8B63A2D72164F826003868F7 /* ScrollableFlowLayout.swift in Sources */,
 				8B87FC7022859559004AC246 /* DispatchQueue.swift in Sources */,
@@ -1460,7 +1468,6 @@
 				8BC2FA1B2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
 				8BC4FE44216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8B87FCAD22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
-				8B0D64D320C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642520BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650E20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643B20BD77780046056F /* MediaWorker.swift in Sources */,
@@ -1482,6 +1489,7 @@
 				8B0D64FE20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B00E3D620B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B33C4D22168EFE200658700 /* PreferencesModels.swift in Sources */,
+				8BABEE692296B8D30014F7B4 /* DataStoreModels.swift in Sources */,
 				8B0D650A20C548110046056F /* MediaFileStore.swift in Sources */,
 				8B87FC7B2286DB3C004AC246 /* CoreConfigurator.swift in Sources */,
 				8B0D650220C547E80046056F /* AuthorStoreInterfaces.swift in Sources */,
@@ -1537,7 +1545,6 @@
 				8BC2FA1C2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
 				8BC4FE45216D546800BB7870 /* RemoteNetworkStore.swift in Sources */,
 				8B87FCAE22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
-				8B0D64D420C3484A0046056F /* TaxonomyModels.swift in Sources */,
 				8B0D642620BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650F20C548270046056F /* AuthorFileStore.swift in Sources */,
 				8B0D643C20BD77780046056F /* MediaWorker.swift in Sources */,
@@ -1559,6 +1566,7 @@
 				8B0D64FF20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B00E3D720B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B33C4D32168EFE200658700 /* PreferencesModels.swift in Sources */,
+				8BABEE6A2296B8D30014F7B4 /* DataStoreModels.swift in Sources */,
 				8B0D650B20C548110046056F /* MediaFileStore.swift in Sources */,
 				8B87FC7C2286DB3C004AC246 /* CoreConfigurator.swift in Sources */,
 				8B0D650320C547E80046056F /* AuthorStoreInterfaces.swift in Sources */,

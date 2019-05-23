@@ -23,7 +23,7 @@ public protocol PostStore {
 }
 
 public protocol PostRemote {
-    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
+    func fetch(id: Int, with request: PostsModels.FetchRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
 public protocol PostWorkerType {

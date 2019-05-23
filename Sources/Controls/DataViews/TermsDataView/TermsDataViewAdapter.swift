@@ -10,9 +10,18 @@ import UIKit
 import ZamzamKit
 
 open class TermsDataViewAdapter: NSObject {
-    private let dataView: DataViewable
     private weak var delegate: TermsDataViewDelegate?
-    public private(set) var viewModels = [TermsDataViewModel]()
+    
+    private let dataView: DataViewable
+    private var groupedViewModels = [Taxonomy: [TermsDataViewModel]]()
+    private var groupedSections = [Taxonomy]()
+    
+    public private(set) var viewModels = [TermsDataViewModel]() {
+        didSet {
+            groupedViewModels = Dictionary(grouping: viewModels, by: { $0.taxonomy })
+            groupedSections = Array(groupedViewModels.keys.sorted { $0.localized < $1.localized })
+        }
+    }
     
     public init(for dataView: DataViewable, delegate: TermsDataViewDelegate? = nil) {
         self.dataView = dataView
@@ -56,14 +65,14 @@ extension TermsDataViewAdapter: UITableViewDelegate {
     }
     
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return numberOfSections > 1 ? taxonomy(for: section).localized : nil
+        return groupedSections.count > 1 ? groupedSections[section].localized : nil
     }
 }
 
 extension TermsDataViewAdapter: UITableViewDataSource {
     
     open func numberOfSections(in tableView: UITableView) -> Int {
-        return numberOfSections
+        return groupedSections.count
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,7 +104,7 @@ extension TermsDataViewAdapter: UICollectionViewDelegate {
 extension TermsDataViewAdapter: UICollectionViewDataSource {
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return numberOfSections
+        return groupedSections.count
     }
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -113,16 +122,8 @@ extension TermsDataViewAdapter: UICollectionViewDataSource {
 
 private extension TermsDataViewAdapter {
     
-    var numberOfSections: Int {
-        return Set(viewModels.map { $0.taxonomy }).count
-    }
-    
-    func elements(for taxonomy: Taxonomy) -> [TermsDataViewModel] {
-        return viewModels.filter { $0.taxonomy == taxonomy }
-    }
-    
     func elements(in section: Int) -> [TermsDataViewModel] {
-        return elements(for: taxonomy(for: section))
+        return groupedViewModels[groupedSections[section]] ?? []
     }
     
     func element(in indexPath: IndexPath) -> TermsDataViewModel {
@@ -131,14 +132,5 @@ private extension TermsDataViewAdapter {
     
     func numberOfElements(in section: Int) -> Int {
         return elements(in: section).count
-    }
-    
-    func taxonomy(for section: Int) -> Taxonomy {
-        guard numberOfSections > 1 else {
-            return viewModels.first?.taxonomy ?? .category
-        }
-        
-        // Categories is considered section 0
-        return section == 0 ? .category : .tag
     }
 }
