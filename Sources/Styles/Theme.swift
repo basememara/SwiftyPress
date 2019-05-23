@@ -26,12 +26,29 @@ public protocol Theme {
     var positiveColor: UIColor { get }
     var negativeColor: UIColor { get }
     
-    #if os(iOS)
-    var barStyle: UIBarStyle { get }
-    var keyboardAppearance: UIKeyboardAppearance { get }
+    var isDarkStyle: Bool { get }
     
+    #if os(iOS)
     func apply(for application: UIApplication)
     #else
     func apply()
+    #endif
+}
+
+public extension Theme {
+    
+    #if os(iOS)
+    
+    var statusBarStyle: UIStatusBarStyle {
+        return isDarkStyle ? .lightContent : .default
+    }
+    
+    var barStyle: UIBarStyle {
+        return isDarkStyle ? .black : .default
+    }
+    
+    var keyboardAppearance: UIKeyboardAppearance {
+        return isDarkStyle ? .dark : .default
+    }
     #endif
 }
