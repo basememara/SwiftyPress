@@ -6,6 +6,8 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+import Foundation
+
 private extension Dictionary {
     
     /// Keys to scrub

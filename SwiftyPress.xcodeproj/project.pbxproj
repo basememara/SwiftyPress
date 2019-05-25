@@ -872,9 +872,9 @@
 			children = (
 				8B52510420CFE89000E77F70 /* Bundle.swift */,
 				8B6A2BD320D677C700D070FB /* Dictionary.swift */,
+				8B87FC6F22859559004AC246 /* DispatchQueue.swift */,
 				8B5250FC20CFE7C100E77F70 /* JSONDecoder.swift */,
 				8BC2FA25217819230014D7B5 /* Realm.swift */,
-				8B87FC6F22859559004AC246 /* DispatchQueue.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
