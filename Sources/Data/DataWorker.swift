@@ -87,7 +87,7 @@ public extension DataWorker {
     
     private func seedFromLocal() {
         seedStore.fetch {
-            guard case .success(let value) = $0, !value.isEmpty else {
+            guard case .success(let local) = $0, !local.isEmpty else {
                 self.Log(error: "Failed to retrieve seed data, falling back to remote server...")
                 
                 let request = DataStoreModels.ModifiedRequest(
@@ -111,13 +111,10 @@ public extension DataWorker {
                 return
             }
             
-            self.Log(debug: "Found \(value.posts.count) posts to seed into cache storage.")
+            self.Log(debug: "Found \(local.posts.count) posts to seed into cache storage.")
             
-            let lastSeedDate = value.posts.map { $0.modifiedAt }.max() ?? Date()
-            let request = DataStoreModels.CacheRequest(
-                payload: value,
-                lastPulledAt: lastSeedDate
-            )
+            let lastSeedDate = local.posts.map { $0.modifiedAt }.max() ?? Date()
+            let request = DataStoreModels.CacheRequest(payload: local, lastPulledAt: lastSeedDate)
             
             self.cacheStore.createOrUpdate(with: request) {
                 guard case .success = $0 else {
@@ -126,7 +123,42 @@ public extension DataWorker {
                 }
                 
                 self.Log(debug: "Seeding cache storage complete, now pulling from remote storage.")
-                self.seedFromRemote(after: lastSeedDate)
+                
+                // Fetch latest beyond seed
+                let request = DataStoreModels.ModifiedRequest(
+                    taxonomies: self.constants.taxonomies,
+                    postMetaKeys: self.constants.postMetaKeys,
+                    limit: nil
+                )
+                
+                self.remoteStore.fetchModified(after: lastSeedDate, with: request) {
+                    guard case .success(let remote) = $0 else {
+                        self.executeTasks(.success(local))
+                        return
+                    }
+                    
+                    self.Log(debug: "Found \(remote.posts.count) posts to remotely pull into cache storage.")
+                    let request = DataStoreModels.CacheRequest(payload: remote, lastPulledAt: Date())
+                    
+                    self.cacheStore.createOrUpdate(with: request) {
+                        guard case .success = $0 else {
+                            self.executeTasks(.success(local))
+                            return
+                        }
+                        
+                        let combinedSeed = SeedPayload(
+                            posts: local.posts + remote.posts,
+                            authors: local.authors + remote.authors,
+                            media: local.media + remote.media,
+                            terms: local.terms + remote.terms
+                        )
+                        
+                        self.Log(debug: "Seeded \(local.posts.count) posts from local "
+                            + "and \(remote.posts.count) posts from remote into cache storage.")
+                        
+                        self.executeTasks(.success(combinedSeed))
+                    }
+                }
             }
         }
     }

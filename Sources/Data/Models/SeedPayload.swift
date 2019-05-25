@@ -20,10 +20,10 @@ public struct SeedPayload: SeedPayloadType, Decodable {
         media: [MediaType] = [],
         terms: [TermType] = []
     ) {
-        self.posts = []
-        self.authors = []
-        self.media = []
-        self.terms = []
+        self.posts = posts
+        self.authors = authors
+        self.media = media
+        self.terms = terms
     }
 }
 
