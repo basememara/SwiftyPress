@@ -16,8 +16,14 @@ open class TermsDataViewAdapter: NSObject {
     private var groupedViewModels = [Taxonomy: [TermsDataViewModel]]()
     private var groupedSections = [Taxonomy]()
     
-    public private(set) var viewModels = [TermsDataViewModel]() {
+    public private(set) var viewModels: [TermsDataViewModel]? {
         didSet {
+            guard let viewModels = viewModels else {
+                groupedViewModels = [Taxonomy: [TermsDataViewModel]]()
+                groupedSections = [Taxonomy]()
+                return
+            }
+            
             groupedViewModels = Dictionary(grouping: viewModels, by: { $0.taxonomy })
             groupedSections = Array(groupedViewModels.keys.sorted { $0.localized < $1.localized })
         }
