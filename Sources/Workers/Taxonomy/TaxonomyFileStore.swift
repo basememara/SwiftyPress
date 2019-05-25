@@ -97,6 +97,17 @@ public extension TaxonomyFileStore {
             completion(.success(value.filter { $0.taxonomy == taxonomy }))
         }
     }
+    
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        fetch {
+            guard case .success(let value) = $0 else {
+                completion($0)
+                return
+            }
+            
+            completion(.success(value.filter { taxonomies.contains($0.taxonomy) }))
+        }
+    }
 }
 
 public extension TaxonomyFileStore {

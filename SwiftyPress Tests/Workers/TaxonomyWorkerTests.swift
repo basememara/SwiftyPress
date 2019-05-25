@@ -241,4 +241,24 @@ extension TaxonomyWorkerTests {
         
         waitForExpectations(timeout: 10, handler: nil)
     }
+    
+    func testFetchByMultiple() {
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Terms fetch by multiple taxonomies promise")
+        let taxonomies: [Taxonomy] = [.category, .tag]
+        
+        // When
+        taxonomyWorker.fetch(by: taxonomies) {
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
+            
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy { taxonomies.contains($0.taxonomy) })
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
 }

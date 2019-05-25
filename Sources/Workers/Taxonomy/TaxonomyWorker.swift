@@ -71,6 +71,26 @@ public extension TaxonomyWorker {
             }
         }
     }
+    
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        store.fetch(by: taxonomies) {
+            // Immediately return local response
+            completion($0)
+            
+            guard case .success = $0 else { return }
+            
+            // Sync remote updates to cache if applicable
+            self.dataWorker.pull {
+                // Validate if any updates that needs to be stored
+                guard case .success(let value) = $0,
+                    value.terms.contains(where: { taxonomies.contains($0.taxonomy) }) else {
+                        return
+                }
+                
+                self.store.fetch(by: taxonomies, completion: completion)
+            }
+        }
+    }
 }
 
 public extension TaxonomyWorker {

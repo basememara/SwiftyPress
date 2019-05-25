@@ -132,6 +132,28 @@ public extension TaxonomyRealmStore {
             }
         }
     }
+    
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+        DispatchQueue.database.async {
+            let realm: Realm
+            
+            do {
+                realm = try Realm()
+            } catch {
+                DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }
+                return
+            }
+            
+            let items: [TermType] = realm.objects(TermRealmObject.self)
+                .filter("taxonomyRaw IN %@ && count > 0", taxonomies.map { $0.rawValue })
+                .sorted(byKeyPath: "count", ascending: false)
+                .map { Term(from: $0) }
+            
+            DispatchQueue.main.async {
+                completion(.success(items))
+            }
+        }
+    }
 }
 
 public extension TaxonomyRealmStore {
