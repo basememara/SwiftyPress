@@ -131,7 +131,9 @@ open class CoreConfigurator: CoreDependable {
         
         return MailComposer(
             delegate: delegate,
-            tintColor: theme.tint
+            styleNavigationBar: {
+                $0.tintColor = theme.tint
+            }
         )
     }
     #endif
