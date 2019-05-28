@@ -9,6 +9,14 @@
 public enum PostsModels {
     
     public struct FetchRequest {
+        let maxLength: Int?
+        
+        public init(maxLength: Int? = nil) {
+            self.maxLength = maxLength
+        }
+    }
+    
+    public struct ItemRequest {
         let taxonomies: [String]
         let postMetaKeys: [String]
     }
@@ -23,10 +31,12 @@ public enum PostsModels {
     public struct SearchRequest {
         let query: String
         let scope: SearchScope
+        let maxLength: Int?
         
-        public init(query: String, scope: SearchScope) {
+        public init(query: String, scope: SearchScope, maxLength: Int? = nil) {
             self.query = query
             self.scope = scope
+            self.maxLength = maxLength
         }
     }
 }

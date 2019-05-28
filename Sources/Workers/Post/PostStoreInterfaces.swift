@@ -10,11 +10,11 @@ public protocol PostStore {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?
@@ -23,19 +23,19 @@ public protocol PostStore {
 }
 
 public protocol PostRemote {
-    func fetch(id: Int, with request: PostsModels.FetchRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
+    func fetch(id: Int, with request: PostsModels.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
 public protocol PostWorkerType {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchTopPicks(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?

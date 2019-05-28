@@ -44,7 +44,7 @@ public extension PostFileStore {
     }
     
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        fetch {
+        fetch(with: PostsModels.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
@@ -63,7 +63,7 @@ public extension PostFileStore {
 
 public extension PostFileStore {
     
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -75,8 +75,8 @@ public extension PostFileStore {
         }
     }
     
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch {
+    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return
@@ -94,7 +94,7 @@ public extension PostFileStore {
 public extension PostFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch {
+        fetch(with: PostsModels.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return
@@ -109,8 +109,8 @@ public extension PostFileStore {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return

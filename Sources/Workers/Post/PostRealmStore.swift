@@ -65,7 +65,7 @@ public extension PostRealmStore {
 
 public extension PostRealmStore {
     
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -78,7 +78,7 @@ public extension PostRealmStore {
             
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .sorted(byKeyPath: "createdAt", ascending: false)
-                .map { Post(from: $0) }
+                .prefixMap(request.maxLength) { Post(from: $0) }
             
             DispatchQueue.main.async {
                 completion(.success(items))
@@ -86,7 +86,7 @@ public extension PostRealmStore {
         }
     }
     
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -100,7 +100,7 @@ public extension PostRealmStore {
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .filter("commentCount > 1")
                 .sorted(byKeyPath: "commentCount", ascending: false)
-                .map { Post(from: $0) }
+                .prefixMap(request.maxLength) { Post(from: $0) }
             
             DispatchQueue.main.async {
                 completion(.success(items))
@@ -132,7 +132,7 @@ public extension PostRealmStore {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -146,7 +146,7 @@ public extension PostRealmStore {
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .filter("ANY termsRaw.id IN %@", ids, ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
-                .map { Post(from: $0) }
+                .prefixMap(request.maxLength) { Post(from: $0) }
             
             DispatchQueue.main.async {
                 completion(.success(items))
@@ -199,7 +199,7 @@ public extension PostRealmStore {
             let items: [PostType] = realm.objects(PostRealmObject.self)
                 .filter(NSCompoundPredicate(orPredicateWithSubpredicates: predicates))
                 .sorted(byKeyPath: "createdAt", ascending: false)
-                .map { Post(from: $0) }
+                .prefixMap(request.maxLength) { Post(from: $0) }
             
             DispatchQueue.main.async {
                 completion(.success(items))

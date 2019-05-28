@@ -41,3 +41,13 @@ extension Realm {
         return objects(ofType).filter("\(primaryKey) IN %@", forPrimaryKeys)
     }
 }
+
+extension Results {
+    
+    /// Returns a subsequence, up to the specified maximum length, containing the initial elements of the transformed collection.
+    func prefixMap<T>(_ maxLength: Int?, _ transform: (Element) -> T) -> [T] {
+        guard let maxLength = maxLength else { return map(transform) }
+        guard maxLength > 0 else { return [] }
+        return prefix(maxLength).map(transform)
+    }
+}

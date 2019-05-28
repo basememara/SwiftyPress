@@ -39,7 +39,7 @@ public extension PostWorker {
                 return
             }
             
-            let request = PostsModels.FetchRequest(
+            let request = PostsModels.ItemRequest(
                 taxonomies: self.constants.taxonomies,
                 postMetaKeys: self.constants.postMetaKeys
             )
@@ -92,8 +92,8 @@ public extension PostWorker {
 
 public extension PostWorker {
     
-    func fetch(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetch {
+    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetch(with: request) {
             // Immediately return local response
             completion($0)
             
@@ -103,13 +103,13 @@ public extension PostWorker {
             self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
-                self.store.fetch(completion: completion)
+                self.store.fetch(with: request, completion: completion)
             }
         }
     }
     
-    func fetchPopular(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetchPopular {
+    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetchPopular(with: request) {
             // Immediately return local response
             completion($0)
             
@@ -119,13 +119,13 @@ public extension PostWorker {
             self.dataWorker.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
-                self.store.fetchPopular(completion: completion)
+                self.store.fetchPopular(with: request, completion: completion)
             }
         }
     }
     
-    func fetchTopPicks(completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch(byTermIDs: [constants.featuredCategoryID], completion: completion)
+    func fetchTopPicks(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        fetch(byTermIDs: [constants.featuredCategoryID], with: request, completion: completion)
     }
 }
 
@@ -151,8 +151,8 @@ public extension PostWorker {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        store.fetch(byTermIDs: ids) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+        store.fetch(byTermIDs: ids, with: request) {
             // Immediately return local response
             completion($0)
             
@@ -165,7 +165,7 @@ public extension PostWorker {
                 // Validate if any updates that needs to be stored
                 let modifiedIDs = Set(value.posts.flatMap { $0.terms })
                 guard ids.contains(where: modifiedIDs.contains) else { return }
-                self.store.fetch(byTermIDs: ids, completion: completion)
+                self.store.fetch(byTermIDs: ids, with: request, completion: completion)
             }
         }
     }

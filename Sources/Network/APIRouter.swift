@@ -14,7 +14,7 @@ public protocol APIRoutable {
 
 public enum APIRouter: APIRoutable {
     case modified(after: Date?, DataStoreModels.ModifiedRequest)
-    case readPost(id: Int, PostsModels.FetchRequest)
+    case readPost(id: Int, PostsModels.ItemRequest)
     case readAuthor(id: Int)
     case readMedia(id: Int)
 }

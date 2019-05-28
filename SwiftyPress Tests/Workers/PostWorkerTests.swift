@@ -17,9 +17,10 @@ extension PostWorkerTests {
     func testFetch() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch all promise")
+        let request = PostsModels.FetchRequest()
         
         // When
-        postWorker.fetch {
+        postWorker.fetch(with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -28,6 +29,27 @@ extension PostWorkerTests {
             XCTAssertNil($0.error, $0.error.debugDescription)
             XCTAssertNotNil($0.value, "response should not have been nil")
             XCTAssertFalse($0.value!.isEmpty, "response should have returned posts")
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testFetchCount() {
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch max length promise")
+        let maxLength = 2
+        let request = PostsModels.FetchRequest(maxLength: maxLength)
+        
+        // When
+        postWorker.fetch(with: request) {
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
+            
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssertEqual($0.value!.count, maxLength, "response should have returned \(maxLength) post results")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
@@ -210,9 +232,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
+        let request = PostsModels.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids) {
+        postWorker.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -232,9 +255,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
+        let request = PostsModels.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids) {
+        postWorker.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -254,9 +278,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms promise")
         let ids: Set = [56, 58, 77]
+        let request = PostsModels.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids) {
+        postWorker.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -264,9 +289,34 @@ extension PostWorkerTests {
             // Then
             XCTAssertNil($0.error, $0.error.debugDescription)
             XCTAssertNotNil($0.value, "response should not have been nil")
-            XCTAssertTrue($0.value!.allSatisfy {
+            XCTAssert($0.value!.allSatisfy {
                 $0.terms.contains(where: ids.contains)
             })
+        }
+        
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    func testFetchByTermsCount() {
+        // Given
+        var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms max length promise")
+        let ids: Set = [56, 58, 77]
+        let maxLength = 1
+        let request = PostsModels.FetchRequest(maxLength: maxLength)
+        
+        // When
+        postWorker.fetch(byTermIDs: ids, with: request) {
+            // Handle double calls used for remote pulling
+            guard $0.value?.isEmpty == false else { return }
+            defer { promise?.fulfill(); promise = nil }
+            
+            // Then
+            XCTAssertNil($0.error, $0.error.debugDescription)
+            XCTAssertNotNil($0.value, "response should not have been nil")
+            XCTAssert($0.value!.allSatisfy {
+                $0.terms.contains(where: ids.contains)
+            })
+            XCTAssertEqual($0.value!.count, maxLength, "response should have returned \(maxLength) post results")
         }
         
         waitForExpectations(timeout: 10, handler: nil)
