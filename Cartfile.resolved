@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" "4.8.2"
 github "SwiftyBeaver/SwiftyBeaver" "1.7.0"
 github "ZamzamInc/Stencil" "9cefa47a45d572d4f5ab197f88943ca53fac66d5"
-github "ZamzamInc/ZamzamKit" "bd9c9632aecd81006c49dccd337f462aec715141"
+github "ZamzamInc/ZamzamKit" "3c902ec842d7cb01fe96fc7876b1d22931b074ab"
 github "onevcat/Kingfisher" "5.4.0"
 github "realm/realm-cocoa" "v3.15.0"
