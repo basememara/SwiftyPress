@@ -13,13 +13,17 @@ public protocol Theme {
     var secondaryTint: UIColor { get }
     
     var backgroundColor: UIColor { get }
+    var secondaryBackgroundColor: UIColor { get }
+    var tertiaryBackgroundColor: UIColor { get }
+    
     var separatorColor: UIColor { get }
-    var selectionColor: UIColor { get }
-    var headerColor: UIColor { get }
+    var opaqueColor: UIColor { get }
     
     var labelColor: UIColor { get }
     var secondaryLabelColor: UIColor { get }
-    var subtleLabelColor: UIColor { get }
+    var tertiaryLabelColor: UIColor { get }
+    var quaternaryLabelColor: UIColor { get }
+    var placeholderLabelColor: UIColor { get }
     
     var buttonCornerRadius: CGFloat { get }
     
