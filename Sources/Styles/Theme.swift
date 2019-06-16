@@ -15,6 +15,7 @@ public protocol Theme {
     var backgroundColor: UIColor { get }
     var secondaryBackgroundColor: UIColor { get }
     var tertiaryBackgroundColor: UIColor { get }
+    var quaternaryBackgroundColor: UIColor { get }
     
     var separatorColor: UIColor { get }
     var opaqueColor: UIColor { get }
