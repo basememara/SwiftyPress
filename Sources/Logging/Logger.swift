@@ -252,10 +252,12 @@ public extension Loggable {
             return output
         }()
         
-        Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
-        
-        Logger.injectedShared?.forEach {
-            $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        DispatchQueue.main.async {
+            self.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
     
@@ -285,10 +287,12 @@ public extension Loggable {
             return message
         }()
         
-        Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
-        
-        Logger.injectedShared?.forEach {
-            $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        DispatchQueue.main.async {
+            self.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
 }
