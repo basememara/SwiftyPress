@@ -19,13 +19,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="558" height="194"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-WW-HbU" customClass="ThemedView" customModule="ZamzamKit">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfV-WW-HbU" customClass="ThemedView" customModule="SwiftyPress" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="558" height="194"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="F04-6s-dst">
                                 <rect key="frame" x="0.0" y="10" width="550" height="174"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eVz-el-fGF" customClass="ThemedImageView" customModule="ZamzamKit">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eVz-el-fGF" customClass="ThemedImageView" customModule="SwiftyPress" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="174" height="174"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="eVz-el-fGF" secondAttribute="height" multiplier="1:1" id="ajG-Zc-BIr"/>
@@ -37,13 +37,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bwu-A9-c2t">
                                                 <rect key="frame" x="0.0" y="65.5" width="320" height="43.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xzi-cn-plh" customClass="ThemedHeadline" customModule="ZamzamKit">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xzi-cn-plh" customClass="ThemedHeadline" customModule="SwiftyPress" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="20.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c78-kS-k7Z" customClass="ThemedSubhead" customModule="ZamzamKit">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c78-kS-k7Z" customClass="ThemedSubhead" customModule="SwiftyPress" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="25.5" width="320" height="18"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                         <nil key="textColor"/>
@@ -62,7 +62,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2g-am-kAM">
                                         <rect key="frame" x="526" y="0.0" width="24" height="174"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-PL-Nv6" customClass="ThemedImageButton" customModule="ZamzamKit">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d5I-PL-Nv6" customClass="ThemedImageButton" customModule="SwiftyPress" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="75" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="XcK-oi-eYM"/>
@@ -86,7 +86,7 @@
                                     <constraint firstItem="bwu-A9-c2t" firstAttribute="height" relation="lessThanOrEqual" secondItem="eVz-el-fGF" secondAttribute="height" priority="250" id="KP6-zB-dH2"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voI-4n-X0d" userLabel="Separator View" customClass="ThemedSeparator" customModule="ZamzamKit">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voI-4n-X0d" userLabel="Separator View" customClass="ThemedSeparator" customModule="SwiftyPress" customModuleProvider="target">
                                 <rect key="frame" x="190" y="193" width="368" height="1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kZB-hf-WIO"/>

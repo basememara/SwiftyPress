@@ -202,6 +202,16 @@
 		8B6A2BD420D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6A2BD520D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
 		8B6A2BD620D677C700D070FB /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A2BD320D677C700D070FB /* Dictionary.swift */; };
+		8B801AA422EFC92700FD5EBB /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9A22EFC92600FD5EBB /* ThemedLabel.swift */; };
+		8B801AA522EFC92700FD5EBB /* ThemedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9B22EFC92600FD5EBB /* ThemedView.swift */; };
+		8B801AA622EFC92700FD5EBB /* ThemedPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9C22EFC92600FD5EBB /* ThemedPageControl.swift */; };
+		8B801AA722EFC92700FD5EBB /* ThemedSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9D22EFC92600FD5EBB /* ThemedSwitch.swift */; };
+		8B801AA822EFC92700FD5EBB /* ThemedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9E22EFC92600FD5EBB /* ThemedTextView.swift */; };
+		8B801AA922EFC92700FD5EBB /* ThemedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801A9F22EFC92600FD5EBB /* ThemedTextField.swift */; };
+		8B801AAA22EFC92700FD5EBB /* ThemedSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801AA022EFC92600FD5EBB /* ThemedSegmentedControl.swift */; };
+		8B801AAB22EFC92700FD5EBB /* ThemedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801AA122EFC92600FD5EBB /* ThemedImageView.swift */; };
+		8B801AAC22EFC92700FD5EBB /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801AA222EFC92600FD5EBB /* ThemedButton.swift */; };
+		8B801AAD22EFC92700FD5EBB /* ThemedProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B801AA322EFC92600FD5EBB /* ThemedProgressView.swift */; };
 		8B87FC57228495C6004AC246 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC4B228495C6004AC246 /* PreferencesTests.swift */; };
 		8B87FC58228495C6004AC246 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC4B228495C6004AC246 /* PreferencesTests.swift */; };
 		8B87FC59228495C6004AC246 /* MediaWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B87FC4D228495C6004AC246 /* MediaWorkerTests.swift */; };
@@ -438,6 +448,16 @@
 		8B6A2BCB20D676F900D070FB /* HTTPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPService.swift; sourceTree = "<group>"; };
 		8B6A2BD320D677C700D070FB /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		8B6B0CBD219D35210018F2E0 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		8B801A9A22EFC92600FD5EBB /* ThemedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		8B801A9B22EFC92600FD5EBB /* ThemedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedView.swift; sourceTree = "<group>"; };
+		8B801A9C22EFC92600FD5EBB /* ThemedPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedPageControl.swift; sourceTree = "<group>"; };
+		8B801A9D22EFC92600FD5EBB /* ThemedSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSwitch.swift; sourceTree = "<group>"; };
+		8B801A9E22EFC92600FD5EBB /* ThemedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTextView.swift; sourceTree = "<group>"; };
+		8B801A9F22EFC92600FD5EBB /* ThemedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedTextField.swift; sourceTree = "<group>"; };
+		8B801AA022EFC92600FD5EBB /* ThemedSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedSegmentedControl.swift; sourceTree = "<group>"; };
+		8B801AA122EFC92600FD5EBB /* ThemedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedImageView.swift; sourceTree = "<group>"; };
+		8B801AA222EFC92600FD5EBB /* ThemedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
+		8B801AA322EFC92600FD5EBB /* ThemedProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedProgressView.swift; sourceTree = "<group>"; };
 		8B87FC4B228495C6004AC246 /* PreferencesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
 		8B87FC4D228495C6004AC246 /* MediaWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaWorkerTests.swift; sourceTree = "<group>"; };
 		8B87FC4E228495C6004AC246 /* TaxonomyWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaxonomyWorkerTests.swift; sourceTree = "<group>"; };
@@ -852,6 +872,7 @@
 		8B33C4E82169652700658700 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
+				8B801A9922EFC92600FD5EBB /* Controls */,
 				8B33C4E92169653900658700 /* Theme.swift */,
 			);
 			path = Styles;
@@ -955,6 +976,23 @@
 				8B87FCBA228978B0004AC246 /* NetworkModels.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		8B801A9922EFC92600FD5EBB /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				8B801A9A22EFC92600FD5EBB /* ThemedLabel.swift */,
+				8B801A9B22EFC92600FD5EBB /* ThemedView.swift */,
+				8B801A9C22EFC92600FD5EBB /* ThemedPageControl.swift */,
+				8B801A9D22EFC92600FD5EBB /* ThemedSwitch.swift */,
+				8B801A9E22EFC92600FD5EBB /* ThemedTextView.swift */,
+				8B801A9F22EFC92600FD5EBB /* ThemedTextField.swift */,
+				8B801AA022EFC92600FD5EBB /* ThemedSegmentedControl.swift */,
+				8B801AA122EFC92600FD5EBB /* ThemedImageView.swift */,
+				8B801AA222EFC92600FD5EBB /* ThemedButton.swift */,
+				8B801AA322EFC92600FD5EBB /* ThemedProgressView.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 		8B87FC4C228495C6004AC246 /* Workers */ = {
@@ -1353,6 +1391,7 @@
 				8B0D64E420C436000046056F /* Media.swift in Sources */,
 				8B0D641C20B99B600046056F /* MediaType.swift in Sources */,
 				8BC4FE4B216E1B6000BB7870 /* PostNetworkRemote.swift in Sources */,
+				8B801AA622EFC92700FD5EBB /* ThemedPageControl.swift in Sources */,
 				8B5AA8002143641300EA4E2F /* Localizable.swift in Sources */,
 				8B0D650520C548020046056F /* TaxonomyFileStore.swift in Sources */,
 				8BC2FA1E2177A0680014D7B5 /* AuthorRealmObject.swift in Sources */,
@@ -1370,13 +1409,18 @@
 				8B66738C217EAC870057E0F6 /* PickedPostCollectionViewCell.swift in Sources */,
 				8B0D642420BD6FF70046056F /* Identifiable.swift in Sources */,
 				8B0D650D20C548270046056F /* AuthorFileStore.swift in Sources */,
+				8B801AA722EFC92700FD5EBB /* ThemedSwitch.swift in Sources */,
+				8B801AA922EFC92700FD5EBB /* ThemedTextField.swift in Sources */,
 				8B87FCAC22870D0F004AC246 /* ExtendedPostType.swift in Sources */,
 				8BA83A492176386C0055292D /* CacheRealmStore.swift in Sources */,
+				8B801AAA22EFC92700FD5EBB /* ThemedSegmentedControl.swift in Sources */,
 				8BC2FA1A2177A0560014D7B5 /* MediaRealmObject.swift in Sources */,
 				8B0D643A20BD77780046056F /* MediaWorker.swift in Sources */,
 				8BFED9A5228F165000CF9A0C /* MediaNetworkRemote.swift in Sources */,
 				8B0D642020B99B6D0046056F /* AuthorType.swift in Sources */,
 				8B5250FD20CFE7C100E77F70 /* JSONDecoder.swift in Sources */,
+				8B801AA422EFC92700FD5EBB /* ThemedLabel.swift in Sources */,
+				8B801AAD22EFC92700FD5EBB /* ThemedProgressView.swift in Sources */,
 				8B87FC7A2286DB3C004AC246 /* CoreConfigurator.swift in Sources */,
 				8B63A2DC2164F875003868F7 /* MultiRowLayout.swift in Sources */,
 				8BC96D71217E31CD0037D747 /* TermsDataViewAdapter.swift in Sources */,
@@ -1384,6 +1428,7 @@
 				8B0D651A20C559700046056F /* HasDependencies.swift in Sources */,
 				8B0D64DC20C434C40046056F /* Term.swift in Sources */,
 				8B66738D217EAC870057E0F6 /* SimplePostTableViewCell.swift in Sources */,
+				8B801AA522EFC92700FD5EBB /* ThemedView.swift in Sources */,
 				8B63A2DF2164FDFA003868F7 /* ConstantsStoreInterfaces.swift in Sources */,
 				8B0D64C420BEC9830046056F /* Post.swift in Sources */,
 				8B87FCB022870D2D004AC246 /* ExtendedPost.swift in Sources */,
@@ -1401,12 +1446,14 @@
 				8B87FC7022859559004AC246 /* DispatchQueue.swift in Sources */,
 				8B0D64FD20C547D30046056F /* MediaStoreInterfaces.swift in Sources */,
 				8B1CC526217BE54700F00A70 /* MediaRealmStore.swift in Sources */,
+				8B801AAB22EFC92700FD5EBB /* ThemedImageView.swift in Sources */,
 				8BC96D72217E31CD0037D747 /* TermsDataViewDelegate.swift in Sources */,
 				8B00E3D520B2EA1800B20B2C /* Constants.swift in Sources */,
 				8B0D650920C548110046056F /* MediaFileStore.swift in Sources */,
 				8BFED9A1228F164200CF9A0C /* AuthorNetworkRemote.swift in Sources */,
 				8B87FCBB228978B0004AC246 /* NetworkModels.swift in Sources */,
 				8B0D650120C547E80046056F /* AuthorStoreInterfaces.swift in Sources */,
+				8B801AAC22EFC92700FD5EBB /* ThemedButton.swift in Sources */,
 				8BC4FE29216CFF9A00BB7870 /* APIRouter.swift in Sources */,
 				8B0D64E020C435AD0046056F /* Author.swift in Sources */,
 				8BC2FA222177A2FF0014D7B5 /* SyncActivity.swift in Sources */,
@@ -1416,6 +1463,7 @@
 				8BBF81D6216BF2D800158DDE /* UIViewController.swift in Sources */,
 				8B33C4EA2169653900658700 /* Theme.swift in Sources */,
 				8B6A2BCC20D676F900D070FB /* HTTPService.swift in Sources */,
+				8B801AA822EFC92700FD5EBB /* ThemedTextView.swift in Sources */,
 				8BBF81E7216C292B00158DDE /* Social.swift in Sources */,
 				8B63A2D92164F84D003868F7 /* SnapPagingLayout.swift in Sources */,
 				8B0D643520BD77620046056F /* AuthorWorker.swift in Sources */,
