@@ -77,7 +77,7 @@ public extension MediaRealmStore {
             
             do {
                 try realm.write {
-                    realm.add(MediaRealmObject(from: request), update: true)
+                    realm.add(MediaRealmObject(from: request), update: .modified)
                 }
             } catch {
                 DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }

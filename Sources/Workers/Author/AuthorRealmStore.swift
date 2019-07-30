@@ -54,7 +54,7 @@ public extension AuthorRealmStore {
             
             do {
                 try realm.write {
-                    realm.add(AuthorRealmObject(from: request), update: true)
+                    realm.add(AuthorRealmObject(from: request), update: .modified)
                 }
             } catch {
                 DispatchQueue.main.async { completion(.failure(.databaseFailure(error))) }

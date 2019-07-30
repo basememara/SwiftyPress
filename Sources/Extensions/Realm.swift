@@ -18,9 +18,9 @@ extension Realm {
     ///     an existing copy of the object (with the same
     ///     primary key), and update it. Otherwise, the
     ///     object will be added.
-    func add(_ object: Object?, update: Bool = false) {
+    func add(_ object: Object?, update: Bool) {
         guard let object = object else { return }
-        add(object, update: update)
+        add(object, update: update ? .modified : .error)
     }
 }
 

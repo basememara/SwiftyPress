@@ -139,10 +139,10 @@ public extension CacheRealmStore {
             
             do {
                 try realm.write {
-                    realm.add(post, update: true)
-                    realm.add(media, update: true)
-                    realm.add(authors, update: true)
-                    realm.add(terms, update: true)
+                    realm.add(post, update: .modified)
+                    realm.add(media, update: .modified)
+                    realm.add(authors, update: .modified)
+                    realm.add(terms, update: .modified)
                 }
                 
                 // Persist sync date for next use if applicable
@@ -222,7 +222,7 @@ private extension CacheRealmStore {
             realm.create(SyncActivity.self, value: [
                 "type": typeName,
                 "lastPulledAt": lastPulledAt
-            ], update: true)
+            ], update: .modified)
         }
     }
 }
