@@ -6,6 +6,8 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+import Foundation
+
 public protocol SeedStore {
     func configure()
     func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)

@@ -7,6 +7,7 @@
 //
 
 import RealmSwift
+import ZamzamKit
 
 public struct PostRealmStore: PostStore, Loggable {
     

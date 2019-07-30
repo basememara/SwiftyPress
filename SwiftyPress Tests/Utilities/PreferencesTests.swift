@@ -38,14 +38,14 @@ extension PreferencesTests {
     }
 }
 
-private extension UserDefaults.Keys {
-    static let testString1 = UserDefaults.Key<String?>("testString1")
-    static let testString2 = UserDefaults.Key<String?>("testString2")
-    static let testBool1 = UserDefaults.Key<Bool?>("testBool1")
-    static let testBool2 = UserDefaults.Key<Bool?>("testBool2")
-    static let testInt1 = UserDefaults.Key<Int?>("testInt1")
-    static let testInt2 = UserDefaults.Key<Int?>("testInt2")
-    static let testFloat1 = UserDefaults.Key<Float?>("testFloat1")
-    static let testFloat2 = UserDefaults.Key<Float?>("testFloat2")
-    static let testArray = UserDefaults.Key<[Int]?>("testArray")
+private extension String.Keys {
+    static let testString1 = String.Key<String?>("testString1")
+    static let testString2 = String.Key<String?>("testString2")
+    static let testBool1 = String.Key<Bool?>("testBool1")
+    static let testBool2 = String.Key<Bool?>("testBool2")
+    static let testInt1 = String.Key<Int?>("testInt1")
+    static let testInt2 = String.Key<Int?>("testInt2")
+    static let testFloat1 = String.Key<Float?>("testFloat1")
+    static let testFloat2 = String.Key<Float?>("testFloat2")
+    static let testArray = String.Key<[Int]?>("testArray")
 }
