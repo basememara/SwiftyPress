@@ -13,6 +13,7 @@ fileprivate final class Logger: AppInfo, HasDependencies {
     static var shared = Logger()
     
     private lazy var constants: ConstantsType = dependencies.resolve()
+    fileprivate var logFileURL: URL?
     
     let systemVersion: String = {
         #if os(iOS)
@@ -52,8 +53,6 @@ fileprivate final class Logger: AppInfo, HasDependencies {
 private extension Logger {
     
     func setupLocal() {
-        var logFileURL: URL?
-        
         // File output configurations
         log.addDestination(
             FileDestination().with {
@@ -132,10 +131,13 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(verbose message: String, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(verbose message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
         DispatchQueue.main.async {
             Logger.shared.log.verbose(message, path, function, line: line, context: Logger.shared.metaLog)
-            Logger.injectedShared?.Log(verbose: message, path: path, function: function, line: line)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(verbose: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
     
@@ -148,10 +150,13 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(debug message: String, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(debug message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
         DispatchQueue.main.async {
             Logger.shared.log.debug(message, path, function, line: line, context: Logger.shared.metaLog)
-            Logger.injectedShared?.Log(debug: message, path: path, function: function, line: line)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
     
@@ -164,10 +169,13 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(info message: String, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(info message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
         DispatchQueue.main.async {
             Logger.shared.log.info(message, path, function, line: line, context: Logger.shared.metaLog)
-            Logger.injectedShared?.Log(info: message, path: path, function: function, line: line)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(info: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
     
@@ -180,10 +188,13 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(warn message: String, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(warn message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
         DispatchQueue.main.async {
             Logger.shared.log.warning(message, path, function, line: line, context: Logger.shared.metaLog)
-            Logger.injectedShared?.Log(warn: message, path: path, function: function, line: line)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(warn: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
     
@@ -196,10 +207,13 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(error message: String, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(error message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
         DispatchQueue.main.async {
             Logger.shared.log.error(message, path, function, line: line, context: Logger.shared.metaLog)
-            Logger.injectedShared?.Log(error: message, path: path, function: function, line: line)
+            
+            Logger.injectedShared?.forEach {
+                $0.Log(error: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+            }
         }
     }
 }
@@ -218,30 +232,31 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(request: URLRequest?, path: String = #file, function: String = #function, line: Int = #line) {
-        Log(
-            debug: {
-                var message = "Request: {\n"
-                guard let request = request else { return "Request: empty" }
-                
-                if let value = request.url?.absoluteString {
-                    message += "\turl: \(value),\n"
-                }
-                
-                if let value = request.httpMethod {
-                    message += "\tmethod: \(value),\n"
-                }
-                
-                if let value = request.allHTTPHeaderFields?.scrubbed {
-                    message += "\theaders: \(value)\n"
-                }
-                
-                message += "}"
-                return message
-            }(),
-            path: path,
-            function: function,
-            line: line
-        )
+        let message: String = {
+            var output = "Request: {\n"
+            guard let request = request else { return "Request: empty" }
+            
+            if let value = request.url?.absoluteString {
+                output += "\turl: \(value),\n"
+            }
+            
+            if let value = request.httpMethod {
+                output += "\tmethod: \(value),\n"
+            }
+            
+            if let value = request.allHTTPHeaderFields?.scrubbed {
+                output += "\theaders: \(value)\n"
+            }
+            
+            output += "}"
+            return output
+        }()
+        
+        Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        
+        Logger.injectedShared?.forEach {
+            $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        }
     }
     
     /**
@@ -254,40 +269,41 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(response: NetworkModels.Response?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
-        Log(
-            debug: {
-                var message = "Response: {\n"
-                
-                if let value = url {
-                    message += "\turl: \(value),\n"
-                }
-                
-                if let response = response {
-                    message += "\tstatus: \(response.statusCode),\n"
-                    message += "\theaders: \(response.headers.scrubbed)\n"
-                }
-                
-                message += "}"
-                return message
-            }(),
-            path: path,
-            function: function,
-            line: line
-        )
+        let message: String = {
+            var message = "Response: {\n"
+            
+            if let value = url {
+                message += "\turl: \(value),\n"
+            }
+            
+            if let response = response {
+                message += "\tstatus: \(response.statusCode),\n"
+                message += "\theaders: \(response.headers.scrubbed)\n"
+            }
+            
+            message += "}"
+            return message
+        }()
+        
+        Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        
+        Logger.injectedShared?.forEach {
+            $0.Log(debug: message, path: path, function: function, line: line, context: Logger.shared.metaLog)
+        }
     }
 }
 
 // MARK: - Expose injectable logger
 
 extension Logger {
-    fileprivate static var injectedShared: Loggable?
+    fileprivate static var injectedShared: [Loggable]?
 }
 
 public extension Loggable {
     
-    /// Set up injected logger for consumers to plugin
-    func inject(logger: Loggable) {
-        Logger.injectedShared = logger
+    /// Set up injected loggers for consumers to plugin
+    func inject(loggers: [Loggable]) {
+        Logger.injectedShared = loggers
     }
 }
 
@@ -303,11 +319,11 @@ extension Logger {
 public extension Loggable where Self: ApplicationModule {
     
     /// Configure logger with current application for state logging
-    func setupLogger(for application: UIApplication, inject logger: Loggable? = nil) {
+    func setupLogger(for application: UIApplication, inject loggers: [Loggable]? = nil) {
         Logger.application = application
         
-        if let logger = logger {
-            self.inject(logger: logger)
+        if let loggers = loggers {
+            self.inject(loggers: loggers)
         }
     }
 }
@@ -316,3 +332,10 @@ public extension Loggable where Self: ApplicationModule {
 // MARK: - Helpers
 
 extension BaseDestination: With {}
+
+public extension ConstantsType {
+    
+    var logFileURL: URL? {
+        return Logger.shared.logFileURL
+    }
+}

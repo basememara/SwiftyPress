@@ -7,9 +7,9 @@
 //
 
 public protocol Loggable {
-    func Log(verbose message: String, path: String, function: String, line: Int)
-    func Log(debug message: String, path: String, function: String, line: Int)
-    func Log(info message: String, path: String, function: String, line: Int)
-    func Log(warn message: String, path: String, function: String, line: Int)
-    func Log(error message: String, path: String, function: String, line: Int)
+    func Log(verbose message: String, path: String, function: String, line: Int, context: [String: Any]?)
+    func Log(debug message: String, path: String, function: String, line: Int, context: [String: Any]?)
+    func Log(info message: String, path: String, function: String, line: Int, context: [String: Any]?)
+    func Log(warn message: String, path: String, function: String, line: Int, context: [String: Any]?)
+    func Log(error message: String, path: String, function: String, line: Int, context: [String: Any]?)
 }
