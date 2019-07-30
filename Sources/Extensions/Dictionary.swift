@@ -3,7 +3,10 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-17.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
+
+import Foundation
 
 private extension Dictionary {
     
@@ -24,7 +27,7 @@ private extension Dictionary {
     }
     
     static func scrub(value: [AnyHashable: Any]) -> [String: String] {
-        return Dictionary<String, String>(uniqueKeysWithValues: value.map {
+        return [String: String](uniqueKeysWithValues: value.map {
             let key = "\($0)"
             let value = !key.within(scrubKeys) || ($1 as? String)?.isEmpty == true ? "\($1)" : "*****"
             return (key, value)

@@ -10,8 +10,8 @@ import UIKit
 
 open class TermTableViewCell: UITableViewCell, TermsDataViewCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
 }
 
 extension TermTableViewCell {

@@ -3,6 +3,7 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-03.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import Foundation
@@ -20,8 +21,10 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let styleSheet: String
     public let googleAnalyticsID: String?
     public let featuredCategoryID: Int
+    public let defaultFetchModifiedLimit: Int
+    public let taxonomies: [String]
+    public let postMetaKeys: [String]
     public let logFileName: String
-    public let logDNAKey: String?
     
     public init(
         environment: Environment,
@@ -36,9 +39,11 @@ public struct ConstantsMemoryStore: ConstantsStore {
         styleSheet: String,
         googleAnalyticsID: String?,
         featuredCategoryID: Int,
-        logFileName: String,
-        logDNAKey: String?)
-    {
+        defaultFetchModifiedLimit: Int,
+        taxonomies: [String],
+        postMetaKeys: [String],
+        logFileName: String
+    ) {
         self.environment = environment
         self.itunesName = itunesName
         self.itunesID = itunesID
@@ -51,7 +56,9 @@ public struct ConstantsMemoryStore: ConstantsStore {
         self.styleSheet = styleSheet
         self.googleAnalyticsID = googleAnalyticsID
         self.featuredCategoryID = featuredCategoryID
+        self.defaultFetchModifiedLimit = defaultFetchModifiedLimit
+        self.taxonomies = taxonomies
+        self.postMetaKeys = postMetaKeys
         self.logFileName = logFileName
-        self.logDNAKey = logDNAKey
     }
 }

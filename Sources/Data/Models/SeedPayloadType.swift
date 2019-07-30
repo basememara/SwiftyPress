@@ -3,17 +3,23 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 public protocol SeedPayloadType {
-    associatedtype P: PostType
-    associatedtype T: TermType
-    associatedtype A: AuthorType
-    associatedtype M: MediaType
+    var posts: [PostType] { get }
+    var terms: [TermType] { get }
+    var authors: [AuthorType] { get }
+    var media: [MediaType] { get }
+}
+
+public extension SeedPayloadType {
     
-    var posts: [P] { get }
-    var categories: [T] { get }
-    var tags: [T] { get }
-    var authors: [A] { get }
-    var media: [M] { get }
+    /// A Boolean value indicating whether the instance is empty.
+    var isEmpty: Bool {
+        return posts.isEmpty
+            && authors.isEmpty
+            && media.isEmpty
+            && terms.isEmpty
+    }
 }

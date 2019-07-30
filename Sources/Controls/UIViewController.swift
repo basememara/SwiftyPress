@@ -3,6 +3,7 @@
 //  SwiftyPress iOS
 //
 //  Created by Basem Emara on 2018-10-08.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit
@@ -20,8 +21,8 @@ public extension UIViewController {
         safari url: String,
         theme: Theme,
         animated: Bool = true,
-        completion: (() -> Void)? = nil)
-    {
+        completion: (() -> Void)? = nil
+    ) {
         present(
             safari: url,
             barTintColor: theme.backgroundColor,
@@ -41,8 +42,8 @@ public extension UIViewController {
         safari url: String,
         theme: Theme,
         animated: Bool = true,
-        completion: (() -> Void)? = nil)
-    {
+        completion: (() -> Void)? = nil
+    ) {
         show(
             safari: url,
             barTintColor: theme.backgroundColor,

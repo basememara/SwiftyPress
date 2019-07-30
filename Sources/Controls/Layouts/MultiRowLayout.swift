@@ -4,6 +4,7 @@
 //  https://stackoverflow.com/a/32167976/235334
 //
 //  Created by Basem Emara on 2018-10-03.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit

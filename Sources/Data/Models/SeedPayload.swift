@@ -3,41 +3,27 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import ZamzamKit
 
 public struct SeedPayload: SeedPayloadType, Decodable {
-    public let posts: [Post]
-    public let authors: [Author]
-    public let media: [Media]
-    public let categories: [Term]
-    public let tags: [Term]
+    public let posts: [PostType]
+    public let authors: [AuthorType]
+    public let media: [MediaType]
+    public let terms: [TermType]
     
     init(
-        posts: [Post] = [],
-        authors: [Author] = [],
-        media: [Media] = [],
-        categories: [Term] = [],
-        tags: [Term] = [])
-    {
-        self.posts = []
-        self.authors = []
-        self.media = []
-        self.categories = []
-        self.tags = []
-    }
-}
-
-public extension SeedPayload {
-    
-    /// A Boolean value indicating whether the instance is empty.
-    var isEmpty: Bool {
-        return posts.isEmpty
-            && authors.isEmpty
-            && media.isEmpty
-            && categories.isEmpty
-            && tags.isEmpty
+        posts: [PostType] = [],
+        authors: [AuthorType] = [],
+        media: [MediaType] = [],
+        terms: [TermType] = []
+    ) {
+        self.posts = posts
+        self.authors = authors
+        self.media = media
+        self.terms = terms
     }
 }
 
@@ -49,17 +35,15 @@ extension SeedPayload {
         case posts
         case authors
         case media
-        case categories
-        case tags
+        case terms
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.posts = try container.decode(FailableCodableArray<Post>.self, forKey: .posts).elements
-        self.authors = try container.decode(FailableCodableArray<Author>.self, forKey: .authors).elements
-        self.media = try container.decode(FailableCodableArray<Media>.self, forKey: .media).elements
-        self.categories = try container.decode(FailableCodableArray<Term>.self, forKey: .categories).elements
-        self.tags = try container.decode(FailableCodableArray<Term>.self, forKey: .tags).elements
+        self.posts = try container.decode([Post].self, forKey: .posts)
+        self.authors = try container.decode([Author].self, forKey: .authors)
+        self.media = try container.decode([Media].self, forKey: .media)
+        self.terms = try container.decode([Term].self, forKey: .terms)
     }
 }

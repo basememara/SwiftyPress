@@ -1,13 +1,13 @@
 //
 //  ThemedSwitch.swift
-//  Basem Emara
+//  ZamzamKit iOS
 //
-//  Created by Basem Emara on 2018-09-30.
-//  Copyright © 2018 Zamzam Inc. All rights reserved.
+//  Created by Basem Emara on 2019-05-08.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit
 
-public class ThemedSwitch: UISwitch {
+open class ThemedSwitch: UISwitch {
     
 }

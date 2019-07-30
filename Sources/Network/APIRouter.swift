@@ -3,37 +3,91 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-09.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import Alamofire
 
+public protocol APIRoutable {
+    func asURLRequest(constants: ConstantsType) throws -> URLRequest
+}
+
 public enum APIRouter: APIRoutable {
-    case modifiedPayload(after: Date?)
-    case readPost(id: Int)
+    case modified(after: Date?, DataStoreModels.ModifiedRequest)
+    case readPost(id: Int, PostsModels.ItemRequest)
+    case readAuthor(id: Int)
+    case readMedia(id: Int)
 }
 
 private extension APIRouter {
     
     var method: HTTPMethod {
         switch self {
-        case .modifiedPayload: return .get
-        case .readPost: return .get
+        case .modified:
+            return .get
+        case .readPost:
+            return .get
+        case .readAuthor:
+            return .get
+        case .readMedia:
+            return .get
         }
     }
     
     var path: String {
         switch self {
-        case .modifiedPayload: return "payloads/modified"
-        case .readPost(let id): return "posts/\(id)"
+        case .modified:
+            return "modified"
+        case .readPost(let id, _):
+            return "post/\(id)"
+        case .readAuthor(let id):
+            return "author/\(id)"
+        case .readMedia(let id):
+            return "media/\(id)"
         }
     }
     
     var parameters: [String: Any] {
         switch self {
-        case .modifiedPayload(let after):
-            guard let timestamp = after?.timeIntervalSince1970 else { return [:] }
-            return ["after": Int(timestamp)]
-        case .readPost:
+        case .modified(let after, let request):
+            var params = [String: Any]()
+            
+            if let timestamp = after?.timeIntervalSince1970 {
+                params["after"] = Int(timestamp)
+            }
+            
+            if !request.taxonomies.isEmpty {
+                params["taxonomies"] = request.taxonomies
+                    .joined(separator: ",")
+            }
+            
+            if !request.postMetaKeys.isEmpty {
+                params["meta_keys"] = request.postMetaKeys
+                    .joined(separator: ",")
+            }
+            
+            if let limit = request.limit {
+                params["limit"] = limit
+            }
+            
+            return params
+        case .readPost(_, let request):
+            var params = [String: Any]()
+            
+            if !request.taxonomies.isEmpty {
+                params["taxonomies"] = request.taxonomies
+                    .joined(separator: ",")
+            }
+            
+            if !request.postMetaKeys.isEmpty {
+                params["meta_keys"] = request.postMetaKeys
+                    .joined(separator: ",")
+            }
+            
+            return params
+        case .readAuthor:
+            return [:]
+        case .readMedia:
             return [:]
         }
     }
@@ -54,17 +108,19 @@ public extension APIRouter {
         urlRequest.timeoutInterval = {
             // Increase connection timeout since some payloads can be large
             switch self {
-            case .modifiedPayload: return 30
-            default: return 10
+            case .modified:
+                return 30
+            default:
+                return 10
             }
         }()
         
-        switch self {
-        case .modifiedPayload:
-            guard !parameters.isEmpty else { break }
+        // Encode parameters accordingly
+        switch method {
+        case .get:
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
-        case .readPost:
-            break
+        default:
+            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         }
         
         return urlRequest

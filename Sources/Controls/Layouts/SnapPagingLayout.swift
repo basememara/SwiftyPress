@@ -4,6 +4,7 @@
 //  https://medium.com/@shaibalassiano/tutorial-horizontal-uicollectionview-with-paging-9421b479ee94
 //
 //  Created by Basem Emara on 2018-10-03.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit
@@ -122,7 +123,7 @@ extension SnapPagingLayout: ScrollableFlowLayout {
         
         if centerPosition {
             // Back up a bit to center
-            toValue = toValue - peekWidth + sectionInset.left
+            toValue = (toValue - peekWidth + sectionInset.left)
         }
         
         // Damping equal 1 => no oscillations => decay animation

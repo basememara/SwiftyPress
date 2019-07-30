@@ -1,17 +1,29 @@
 //
 //  ThemedView.swift
-//  Basem Emara
+//  ZamzamKit iOS
 //
-//  Created by Basem Emara on 2018-09-23.
-//  Copyright © 2018 Zamzam Inc. All rights reserved.
+//  Created by Basem Emara on 2019-05-08.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit
 
-public class ThemedView: UIView {
+open class ThemedView: UIView {
     
 }
 
-public class ThemedSeparator: UIView {
+open class ThemedTintView: UIView {
+    
+}
+
+open class ThemedHeaderView: UIView {
+    
+}
+
+open class ThemedSeparator: UIView {
+    
+}
+
+open class ThemedErrorView: ThemedView {
     
 }

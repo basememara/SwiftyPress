@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8B0D646B20BEB27B0046056F"
+               BuildableName = "SwiftyPress tvOSTests.xctest"
+               BlueprintName = "SwiftyPress tvOSTests"
+               ReferencedContainer = "container:SwiftyPress.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8B00E3C620B2DAE100B20B2C"
+            BuildableName = "SwiftyPress.framework"
+            BlueprintName = "SwiftyPress tvOS"
+            ReferencedContainer = "container:SwiftyPress.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

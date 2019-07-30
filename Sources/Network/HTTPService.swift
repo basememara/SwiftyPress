@@ -3,38 +3,72 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-17.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import Alamofire
-import ZamzamKit
-
-public typealias ServerResponse = (data: Data, headers: [String: String], statusCode: Int)
 
 public protocol HTTPServiceType {
-    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void)
+    func get(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
+    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
 }
 
 public struct HTTPService: HTTPServiceType {
     private let sessionManager: SessionManager
     
     init() {
-        let configuration = URLSessionConfiguration.default
-        self.sessionManager = Alamofire.SessionManager(configuration: configuration)
+        self.sessionManager = .init(configuration: .default)
     }
 }
 
 public extension HTTPService {
     
-    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void) {
-        var urlRequest = URLRequest(url: URL(string: url)!)
+    func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+        guard let url = URL(string: url) else {
+            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = HTTPMethod.get.rawValue
+        
+        do {
+            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+        } catch {
+            completion(.failure(
+                NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
+            ))
+            
+            return
+        }
+        
+        headers?.forEach {
+            urlRequest.setValue($0.value, forHTTPHeaderField: $0.key)
+        }
+        
+        sessionManager.request(urlRequest, completion: completion)
+    }
+}
+
+public extension HTTPService {
+    
+    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+        guard let url = URL(string: url) else {
+            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            return
+        }
+        
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HTTPMethod.post.rawValue
         
         do {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         } catch {
-            return completion(.failure(
-                NetworkError(urlRequest: urlRequest, statusCode: 0, internalError: error)
+            completion(.failure(
+                NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
             ))
+            
+            return
         }
         
         headers?.forEach {
@@ -54,7 +88,7 @@ public extension SessionManager {
     /// - Parameters:
     ///   - urlRequest: The URL request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ urlRequest: URLRequest, completion: @escaping (ZamzamKit.Result<ServerResponse, NetworkError>) -> Void) {
+    func request(_ urlRequest: URLRequest, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
         request(urlRequest)
             .validate()
             .responseData {
@@ -65,8 +99,8 @@ public extension SessionManager {
                 }($0.response?.allHeaderFields)
                 
                 // Handle errors
-                guard let value = $0.result.value, $0.result.isSuccess else {
-                    let error = NetworkError(
+                guard case .success(let value) = $0.result else {
+                    let error = NetworkModels.Error(
                         urlRequest: $0.request,
                         statusCode: statusCode,
                         headerValues: headers,
@@ -74,10 +108,17 @@ public extension SessionManager {
                         internalError: $0.error
                     )
                     
-                    return completion(.failure(error))
+                    completion(.failure(error))
+                    return
                 }
                 
-                completion(.success((value, headers, statusCode)))
+                completion(.success(
+                    NetworkModels.Response(
+                        data: value,
+                        headers: headers,
+                        statusCode: statusCode)
+                    )
+                )
         }
     }
 }

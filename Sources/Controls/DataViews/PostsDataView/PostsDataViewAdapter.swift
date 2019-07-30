@@ -12,7 +12,7 @@ import ZamzamKit
 open class PostsDataViewAdapter: NSObject {
     private let dataView: DataViewable
     private weak var delegate: PostsDataViewDelegate?
-    public private(set) var viewModels = [PostsDataViewModel]()
+    public private(set) var viewModels: [PostsDataViewModel]?
     
     public init(for dataView: DataViewable, delegate: PostsDataViewDelegate? = nil) {
         self.dataView = dataView
@@ -47,8 +47,10 @@ extension PostsDataViewAdapter: UITableViewDelegate {
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true) //Handle cell highlight
         
+        guard let model = viewModels?[indexPath.row] else { return }
+        
         delegate?.postsDataView(
-            didSelect: viewModels[indexPath.row],
+            didSelect: model,
             at: indexPath,
             from: tableView
         )
@@ -56,12 +58,14 @@ extension PostsDataViewAdapter: UITableViewDelegate {
     
     @available(iOSApplicationExtension 11.0, *)
     open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return delegate?.postsDataView(leadingSwipeActionsForModel: viewModels[indexPath.row], at: indexPath, from: tableView)
+        guard let model = viewModels?[indexPath.row] else { return nil }
+        return delegate?.postsDataView(leadingSwipeActionsForModel: model, at: indexPath, from: tableView)
     }
     
     @available(iOSApplicationExtension 11.0, *)
     open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return delegate?.postsDataView(trailingSwipeActionsForModel: viewModels[indexPath.row], at: indexPath, from: tableView)
+        guard let model = viewModels?[indexPath.row] else { return nil }
+        return delegate?.postsDataView(trailingSwipeActionsForModel: model, at: indexPath, from: tableView)
     }
 }
 
@@ -72,12 +76,13 @@ extension PostsDataViewAdapter: UITableViewDataSource {
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels.count
+        return viewModels?.count ?? 0
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
-        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row], delegate: delegate)
+        guard let model = viewModels?[indexPath.row] else { return cell }
+        (cell as? PostsDataViewCell)?.bind(model, delegate: delegate)
         return cell
     }
 }
@@ -89,8 +94,10 @@ extension PostsDataViewAdapter: UICollectionViewDelegate {
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true) //Handle cell highlight
         
+        guard let model = viewModels?[indexPath.row] else { return }
+        
         delegate?.postsDataView(
-            didSelect: viewModels[indexPath.row],
+            didSelect: model,
             at: indexPath,
             from: collectionView
         )
@@ -104,12 +111,13 @@ extension PostsDataViewAdapter: UICollectionViewDataSource {
     }
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels.count
+        return viewModels?.count ?? 0
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView[indexPath]
-        (cell as? PostsDataViewCell)?.bind(viewModels[indexPath.row], delegate: delegate)
+        guard let model = viewModels?[indexPath.row] else { return cell }
+        (cell as? PostsDataViewCell)?.bind(model, delegate: delegate)
         return cell
     }
 }

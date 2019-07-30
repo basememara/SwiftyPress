@@ -3,12 +3,13 @@
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import ZamzamKit
 
 public struct SeedFileStore: SeedStore, Loggable {
-    private static var data: SeedPayload?
+    private static var data: SeedPayloadType?
     
     private let name: String
     private let bundle: Bundle
@@ -24,7 +25,7 @@ public extension SeedFileStore {
     func configure() {
         guard SeedFileStore.data == nil else { return }
         
-        SeedFileStore.data = try! JSONDecoder.default.decode(
+        SeedFileStore.data = try? JSONDecoder.default.decode(
             SeedPayload.self,
             forResource: name,
             inBundle: bundle
@@ -34,14 +35,14 @@ public extension SeedFileStore {
 
 public extension SeedFileStore {
     
-    func fetch(completion: @escaping (Result<SeedPayload, DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         completion(.success(SeedFileStore.data ?? SeedPayload()))
     }
 }
 
 public extension SeedFileStore {
     
-    func set(data: SeedPayload) {
+    func set(data: SeedPayloadType) {
         SeedFileStore.data = data
     }
 }

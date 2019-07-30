@@ -1,17 +1,25 @@
 //
 //  ThemedButton.swift
-//  Basem Emara
+//  ZamzamKit iOS
 //
-//  Created by Basem Emara on 2018-06-25.
-//  Copyright © 2018 Zamzam Inc. All rights reserved.
+//  Created by Basem Emara on 2019-05-08.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import UIKit
 
-public class ThemedButton: UIButton {
+open class ThemedButton: UIButton {
     
 }
 
-public class ThemedImageButton: UIButton {
+open class ThemedPrimaryButton: UIButton {
+    
+}
+
+open class ThemedSecondaryButton: UIButton {
+    
+}
+
+open class ThemedImageButton: UIButton {
     
 }

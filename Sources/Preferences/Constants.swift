@@ -3,6 +3,7 @@
 //  SwiftPress
 //
 //  Created by Basem Emara on 2018-05-21.
+//  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
 import Foundation
@@ -69,9 +70,24 @@ public extension Constants {
     var googleAnalyticsID: String? {
         return store.googleAnalyticsID
     }
+}
+
+public extension Constants {
     
     var featuredCategoryID: Int {
         return store.featuredCategoryID
+    }
+    
+    var defaultFetchModifiedLimit: Int {
+        return store.defaultFetchModifiedLimit
+    }
+    
+    var taxonomies: [String] {
+        return store.taxonomies
+    }
+    
+    var postMetaKeys: [String] {
+        return store.postMetaKeys
     }
 }
 
@@ -79,9 +95,5 @@ public extension Constants {
     
     var logFileName: String {
         return store.logFileName
-    }
-    
-    var logDNAKey: String? {
-        return store.logDNAKey
     }
 }
