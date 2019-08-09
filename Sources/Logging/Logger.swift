@@ -18,7 +18,7 @@ fileprivate final class Logger: AppInfo, HasDependencies {
     
     fileprivate var logFileURL: URL?
     
-    let systemVersion: String = {
+    private let systemVersion: String = {
         #if os(iOS)
         return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #else
@@ -26,9 +26,9 @@ fileprivate final class Logger: AppInfo, HasDependencies {
         #endif
     }()
     
-    lazy var version: String = "\(appVersion ?? "-") (\(appBuild ?? "-"))"
+    private lazy var version: String = "\(appVersion ?? "-") (\(appBuild ?? "-"))"
     
-    lazy var deviceModel: String = {
+    private lazy var deviceModel: String = {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -116,6 +116,23 @@ extension Logger {
             }()
             
             output["protected_data_available"] = application.isProtectedDataAvailable
+        }
+        #elseif os(watchOS)
+        if let application = Logger.application {
+            output["application_state"] = {
+                switch application.applicationState {
+                case .active:
+                    return "active"
+                case .background:
+                    return "background"
+                case .inactive:
+                    return "inactive"
+                @unknown default:
+                    return "unknown"
+                }
+            }()
+            
+            output["is_running_in_dock"] = application.isApplicationRunningInDock
         }
         #endif
         
@@ -341,6 +358,24 @@ public extension Loggable where Self: ApplicationModule {
     
     /// Configure logger with current application for state logging
     func setupLogger(for application: UIApplication, inject loggers: [Loggable]? = nil) {
+        Logger.application = application
+        
+        if let loggers = loggers {
+            self.inject(loggers: loggers)
+        }
+    }
+}
+#elseif os(watchOS)
+import WatchKit
+
+extension Logger {
+    fileprivate static var application: WKExtension?
+}
+
+public extension Loggable where Self: ApplicationModule {
+    
+    /// Configure logger with current application for state logging
+    func setupLogger(for application: WKExtension, inject loggers: [Loggable]? = nil) {
         Logger.application = application
         
         if let loggers = loggers {
