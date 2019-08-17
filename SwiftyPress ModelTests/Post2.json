@@ -1,0 +1,27 @@
+{
+    "id": 41294,
+    "title": "So Swift, So Clean Architecture for iOS",
+    "slug": "swift-clean-architecture",
+    "type": "post",
+    "excerpt": "The topic of iOS app architecture has evolved a long way from MVC. Unfortunately, the conversation becomes a frameworks and patterns war. The reality is: Rx is a framework; MVVM is a presentation pattern; and so on. Frameworks and patterns always come and go, but architectures are timeless. In this post, we will examine the Clean Architecture for building scalable apps in iOS.",
+    "content": "This is the content.",
+    "link": "https://staging1.basememara.com/swift-clean-architecture/",
+    "comment_count": 10,
+    "author": 2,
+    "featured_media": null,
+    "terms": [
+        80,
+        79,
+        53,
+        14,
+        62,
+        50,
+        55
+    ],
+    "meta": {
+        "_edit_lock": "1538307929:2",
+        "_series_part": "1"
+    },
+    "created": "2018-04-22T22:03:20",
+    "modified": "2018-09-30T11:47:51"
+}
