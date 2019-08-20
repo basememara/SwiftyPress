@@ -122,7 +122,7 @@ open class CoreConfigurator: CoreDependable {
     }
     
     open func resolve() -> Theme {
-        fatalError("Override dependency in app")
+        return SwiftyTheme()
     }
     
     #if os(iOS)
