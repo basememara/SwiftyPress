@@ -96,24 +96,9 @@ extension SnapPagingLayout: ScrollableFlowLayout {
             && (hasEnoughVelocityToSlideToTheNextCell || hasEnoughVelocityToSlideToThePreviousCell)
         
         guard didUseSwipeToSkipCell else {
-            let indexPath = IndexPath(row: indexOfMajorCell, section: 0)
-            
-            // Better way to scroll to a cell
-            guard centerPosition else {
-                guard let x = layoutAttributesForItem(at: indexPath)?.frame.origin.x else {
-                    // Does not consider inset
-                    return collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-                }
-                
-                return collectionView.setContentOffset(
-                    CGPoint(x: x - sectionInset.left, y: 0),
-                    animated: true
-                )
-            }
-            
             return collectionView.scrollToItem(
-                at: indexPath,
-                at: .centeredHorizontally,
+                at: IndexPath(row: indexOfMajorCell, section: 0),
+                at: centerPosition ? .centeredHorizontally : .left,
                 animated: true
             )
         }
