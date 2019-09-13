@@ -8,38 +8,41 @@
 
 import Foundation
 
+/// Post request namespace
+public enum PostsAPI {}
+
 public protocol PostStore {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
 public protocol PostRemote {
-    func fetch(id: Int, with request: PostsModels.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
+    func fetch(id: Int, with request: PostsAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
 public protocol PostWorkerType {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchTopPicks(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchTopPicks(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?
     func getID(byURL url: String) -> Int?
     
@@ -69,5 +72,42 @@ private extension PostWorkerType {
         return URL(string: url)?.relativePath.lowercased()
             .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
             .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }
+}
+
+// MARK: Requests/Responses
+
+public extension PostsAPI {
+    
+    struct FetchRequest {
+        let maxLength: Int?
+        
+        public init(maxLength: Int? = nil) {
+            self.maxLength = maxLength
+        }
+    }
+    
+    struct ItemRequest {
+        let taxonomies: [String]
+        let postMetaKeys: [String]
+    }
+    
+    enum SearchScope {
+        case all
+        case title
+        case content
+        case terms
+    }
+    
+    struct SearchRequest {
+        let query: String
+        let scope: SearchScope
+        let maxLength: Int?
+        
+        public init(query: String, scope: SearchScope, maxLength: Int? = nil) {
+            self.query = query
+            self.scope = scope
+            self.maxLength = maxLength
+        }
     }
 }

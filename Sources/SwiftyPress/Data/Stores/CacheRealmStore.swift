@@ -113,7 +113,7 @@ public extension CacheRealmStore {
         return getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
-    func createOrUpdate(with request: DataStoreModels.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         // Ensure there is data before proceeding
         guard !request.payload.isEmpty else {
             Log(debug: "No modified data to cache.")

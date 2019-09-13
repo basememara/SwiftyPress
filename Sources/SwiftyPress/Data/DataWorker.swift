@@ -67,7 +67,7 @@ public extension DataWorker {
     }
     
     private func seedFromRemote(after date: Date) {
-        let request = DataStoreModels.ModifiedRequest(
+        let request = DataAPI.ModifiedRequest(
             taxonomies: constants.taxonomies,
             postMetaKeys: constants.postMetaKeys,
             limit: nil
@@ -81,7 +81,7 @@ public extension DataWorker {
             
             self.Log(debug: "Found \(value.posts.count) posts to remotely pull into cache storage.")
             
-            let request = DataStoreModels.CacheRequest(payload: value, lastPulledAt: Date())
+            let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
             self.cacheStore.createOrUpdate(with: request, completion: self.executeTasks)
         }
     }
@@ -91,7 +91,7 @@ public extension DataWorker {
             guard case .success(let local) = $0, !local.isEmpty else {
                 self.Log(error: "Failed to retrieve seed data, falling back to remote server...")
                 
-                let request = DataStoreModels.ModifiedRequest(
+                let request = DataAPI.ModifiedRequest(
                     taxonomies: self.constants.taxonomies,
                     postMetaKeys: self.constants.postMetaKeys,
                     limit: self.constants.defaultFetchModifiedLimit
@@ -105,7 +105,7 @@ public extension DataWorker {
                     
                     self.Log(debug: "Found \(value.posts.count) posts to remotely pull into cache storage.")
                     
-                    let request = DataStoreModels.CacheRequest(payload: value, lastPulledAt: Date())
+                    let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
                     self.cacheStore.createOrUpdate(with: request, completion: self.executeTasks)
                 }
                 
@@ -115,7 +115,7 @@ public extension DataWorker {
             self.Log(debug: "Found \(local.posts.count) posts to seed into cache storage.")
             
             let lastSeedDate = local.posts.map { $0.modifiedAt }.max() ?? Date()
-            let request = DataStoreModels.CacheRequest(payload: local, lastPulledAt: lastSeedDate)
+            let request = DataAPI.CacheRequest(payload: local, lastPulledAt: lastSeedDate)
             
             self.cacheStore.createOrUpdate(with: request) {
                 guard case .success = $0 else {
@@ -126,7 +126,7 @@ public extension DataWorker {
                 self.Log(debug: "Seeding cache storage complete, now pulling from remote storage.")
                 
                 // Fetch latest beyond seed
-                let request = DataStoreModels.ModifiedRequest(
+                let request = DataAPI.ModifiedRequest(
                     taxonomies: self.constants.taxonomies,
                     postMetaKeys: self.constants.postMetaKeys,
                     limit: nil
@@ -139,7 +139,7 @@ public extension DataWorker {
                     }
                     
                     self.Log(debug: "Found \(remote.posts.count) posts to remotely pull into cache storage.")
-                    let request = DataStoreModels.CacheRequest(payload: remote, lastPulledAt: Date())
+                    let request = DataAPI.CacheRequest(payload: remote, lastPulledAt: Date())
                     
                     self.cacheStore.createOrUpdate(with: request) {
                         guard case .success = $0 else {

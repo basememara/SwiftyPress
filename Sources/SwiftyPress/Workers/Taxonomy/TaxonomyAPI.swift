@@ -8,6 +8,9 @@
 
 import Foundation
 
+/// Taxonomy request namespace
+public enum TaxonomyAPI {}
+
 public protocol TaxonomyStore {
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void)

@@ -6,6 +6,9 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+/// Author request namespace
+public enum AuthorAPI {}
+
 public protocol AuthorStore {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
     func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void)

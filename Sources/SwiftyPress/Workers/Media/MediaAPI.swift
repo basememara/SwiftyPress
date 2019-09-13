@@ -6,6 +6,9 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+/// Media request namespace
+public enum MediaAPI {}
+
 public protocol MediaStore {
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
     func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void)

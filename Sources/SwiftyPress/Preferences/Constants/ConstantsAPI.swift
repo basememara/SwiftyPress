@@ -9,6 +9,9 @@
 import Foundation
 import ZamzamCore
 
+/// Constants request namespace
+public enum ConstantsAPI {}
+
 public protocol ConstantsStore: AppInfo {
     var environment: Environment { get }
     var itunesName: String { get }

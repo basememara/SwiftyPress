@@ -17,7 +17,7 @@ extension PostWorkerTests {
     func testFetch() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch all promise")
-        let request = PostsModels.FetchRequest()
+        let request = PostsAPI.FetchRequest()
         
         // When
         postWorker.fetch(with: request) {
@@ -38,7 +38,7 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch max length promise")
         let maxLength = 2
-        let request = PostsModels.FetchRequest(maxLength: maxLength)
+        let request = PostsAPI.FetchRequest(maxLength: maxLength)
         
         // When
         postWorker.fetch(with: request) {
@@ -232,7 +232,7 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
-        let request = PostsModels.FetchRequest()
+        let request = PostsAPI.FetchRequest()
         
         // When
         postWorker.fetch(byTermIDs: ids, with: request) {
@@ -255,7 +255,7 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
-        let request = PostsModels.FetchRequest()
+        let request = PostsAPI.FetchRequest()
         
         // When
         postWorker.fetch(byTermIDs: ids, with: request) {
@@ -278,7 +278,7 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms promise")
         let ids: Set = [56, 58, 77]
-        let request = PostsModels.FetchRequest()
+        let request = PostsAPI.FetchRequest()
         
         // When
         postWorker.fetch(byTermIDs: ids, with: request) {
@@ -302,7 +302,7 @@ extension PostWorkerTests {
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms max length promise")
         let ids: Set = [56, 58, 77]
         let maxLength = 1
-        let request = PostsModels.FetchRequest(maxLength: maxLength)
+        let request = PostsAPI.FetchRequest(maxLength: maxLength)
         
         // When
         postWorker.fetch(byTermIDs: ids, with: request) {

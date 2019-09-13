@@ -44,7 +44,7 @@ public extension PostFileStore {
     }
     
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        fetch(with: PostsModels.FetchRequest()) {
+        fetch(with: PostsAPI.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
@@ -63,7 +63,7 @@ public extension PostFileStore {
 
 public extension PostFileStore {
     
-    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -75,7 +75,7 @@ public extension PostFileStore {
         }
     }
     
-    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
@@ -94,7 +94,7 @@ public extension PostFileStore {
 public extension PostFileStore {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
-        fetch(with: PostsModels.FetchRequest()) {
+        fetch(with: PostsAPI.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return
@@ -109,7 +109,7 @@ public extension PostFileStore {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
@@ -127,7 +127,7 @@ public extension PostFileStore {
 
 public extension PostFileStore {
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         seedStore.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))

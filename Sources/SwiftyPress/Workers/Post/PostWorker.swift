@@ -39,7 +39,7 @@ public extension PostWorker {
                 return
             }
             
-            let request = PostsModels.ItemRequest(
+            let request = PostsAPI.ItemRequest(
                 taxonomies: self.constants.taxonomies,
                 postMetaKeys: self.constants.postMetaKeys
             )
@@ -92,7 +92,7 @@ public extension PostWorker {
 
 public extension PostWorker {
     
-    func fetch(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(with: request) {
             // Immediately return local response
             completion($0)
@@ -108,7 +108,7 @@ public extension PostWorker {
         }
     }
     
-    func fetchPopular(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetchPopular(with: request) {
             // Immediately return local response
             completion($0)
@@ -124,7 +124,7 @@ public extension PostWorker {
         }
     }
     
-    func fetchTopPicks(with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchTopPicks(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch(byTermIDs: [constants.featuredCategoryID], with: request, completion: completion)
     }
 }
@@ -151,7 +151,7 @@ public extension PostWorker {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsModels.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(byTermIDs: ids, with: request) {
             // Immediately return local response
             completion($0)
@@ -173,7 +173,7 @@ public extension PostWorker {
 
 public extension PostWorker {
     
-    func search(with request: PostsModels.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.search(with: request, completion: completion)
     }
 }

@@ -8,6 +8,9 @@
 
 import ZamzamCore
 
+/// Preferences request namespace
+public enum PreferencesAPI {}
+
 extension String.Keys {
     static let userID = String.Key<Int?>("userID")
     static let favorites = String.Key<[Int]?>("favorites")
