@@ -9,7 +9,7 @@
 import Foundation
 import ZamzamCore
 
-public struct SeedFileStore: SeedStore, Loggable {
+public struct SeedFileStore: SeedStore {
     private static var data: SeedPayloadType?
     
     private let name: String
@@ -24,9 +24,9 @@ public struct SeedFileStore: SeedStore, Loggable {
 public extension SeedFileStore {
     
     func configure() {
-        guard SeedFileStore.data == nil else { return }
+        guard Self.data == nil else { return }
         
-        SeedFileStore.data = try? JSONDecoder.default.decode(
+        Self.data = try? JSONDecoder.default.decode(
             SeedPayload.self,
             forResource: name,
             inBundle: bundle
@@ -37,13 +37,13 @@ public extension SeedFileStore {
 public extension SeedFileStore {
     
     func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        completion(.success(SeedFileStore.data ?? SeedPayload()))
+        completion(.success(Self.data ?? SeedPayload()))
     }
 }
 
 public extension SeedFileStore {
     
     func set(data: SeedPayloadType) {
-        SeedFileStore.data = data
+        Self.data = data
     }
 }
