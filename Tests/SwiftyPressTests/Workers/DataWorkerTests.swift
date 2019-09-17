@@ -8,8 +8,8 @@
 import XCTest
 import SwiftyPress
 
-final class DataWorkerTests: BaseTestCase, HasDependencies {
-    private lazy var dataWorker: DataWorkerType = dependencies.resolve()
+final class DataWorkerTests: BaseTestCase {
+    @Inject private var dataWorker: DataWorkerType
     
     func testPull() {
         // Given

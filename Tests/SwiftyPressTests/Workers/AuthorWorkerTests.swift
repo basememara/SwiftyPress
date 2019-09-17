@@ -8,8 +8,8 @@
 import XCTest
 import SwiftyPress
 
-final class AuthorWorkerTests: BaseTestCase, HasDependencies {
-    private lazy var authorWorker: AuthorWorkerType = dependencies.resolve()
+final class AuthorWorkerTests: BaseTestCase {
+    @Inject private var authorWorker: AuthorWorkerType
 }
 
 extension AuthorWorkerTests {

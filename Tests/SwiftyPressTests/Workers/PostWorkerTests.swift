@@ -8,8 +8,8 @@
 import XCTest
 import SwiftyPress
 
-final class PostWorkerTests: BaseTestCase, HasDependencies {
-    private lazy var postWorker: PostWorkerType = dependencies.resolve()
+final class PostWorkerTests: BaseTestCase {
+    @Inject private var postWorker: PostWorkerType
 }
 
 extension PostWorkerTests {

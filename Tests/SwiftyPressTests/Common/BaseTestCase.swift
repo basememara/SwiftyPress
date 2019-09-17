@@ -6,8 +6,23 @@
 //
 
 import XCTest
+import SwiftyPress
+import ZamzamCore
 
 class BaseTestCase: XCTestCase {
+    private static let container = Container() // Dependency injection
+    
+    @Inject private var dataWorker: DataWorkerType
+    @Inject private var preferences: PreferencesType
+    
+    override class func setUp() {
+        super.setUp()
+        
+        container.import {
+            CoreModule.self
+            TestModule.self
+        }
+    }
     
     override func setUp() {
         super.setUp()
@@ -16,11 +31,12 @@ class BaseTestCase: XCTestCase {
         // https://bugs.swift.org/browse/SR-906
         continueAfterFailure = false
         
+        // Clear previous
+        dataWorker.resetCache(for: preferences.userID ?? 0)
+        preferences.removeAll()
         UserDefaults.test.removeAll()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        UserDefaults.test.removeAll()
+        
+        // Setup database
+        dataWorker.configure()
     }
 }
