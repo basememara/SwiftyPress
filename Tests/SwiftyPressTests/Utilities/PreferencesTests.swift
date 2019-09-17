@@ -15,7 +15,7 @@ final class PreferencesTests: BaseTestCase {
 
 extension PreferencesTests {
     
-    func stestUserDefaults() {
+    func testUserDefaults() {
         preferences.set("abc", forKey: .testString1)
         preferences.set("xyz", forKey: .testString2)
         preferences.set(true, forKey: .testBool1)
