@@ -106,6 +106,11 @@ public extension TaxonomyRealmStore {
                 .sorted(byKeyPath: "count", ascending: false)
                 .map { Term(from: $0) }
             
+            guard !items.isEmpty else {
+                DispatchQueue.main.async { completion(.failure(.nonExistent)) }
+                return
+            }
+            
             DispatchQueue.main.async {
                 completion(.success(items))
             }

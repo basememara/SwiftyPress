@@ -19,15 +19,69 @@ public struct TaxonomyWorker: TaxonomyWorkerType {
 public extension TaxonomyWorker {
     
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
-        store.fetch(id: id, completion: completion)
+        store.fetch(id: id) { result in
+            // Retrieve missing cache data from cloud if applicable
+            if case .nonExistent? = result.error {
+                // Sync remote updates to cache if applicable
+                self.dataWorker.pull {
+                    // Validate if any updates that needs to be stored
+                    guard case .success(let value) = $0, value.terms.contains(where: { $0.id == id }) else {
+                        completion(result)
+                        return
+                    }
+
+                    self.store.fetch(id: id, completion: completion)
+                }
+
+                return
+            }
+       
+            completion(result)
+        }
     }
     
     func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
-        store.fetch(slug: slug, completion: completion)
+        store.fetch(slug: slug) { result in
+            // Retrieve missing cache data from cloud if applicable
+            if case .nonExistent? = result.error {
+                // Sync remote updates to cache if applicable
+                self.dataWorker.pull {
+                    // Validate if any updates that needs to be stored
+                    guard case .success(let value) = $0, value.terms.contains(where: { $0.slug == slug }) else {
+                        completion(result)
+                        return
+                    }
+
+                    self.store.fetch(slug: slug, completion: completion)
+                }
+
+                return
+            }
+
+            completion(result)
+         }
     }
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
-        store.fetch(ids: ids, completion: completion)
+        store.fetch(ids: ids) { result in
+            // Retrieve missing cache data from cloud if applicable
+            if case .nonExistent? = result.error {
+                // Sync remote updates to cache if applicable
+                self.dataWorker.pull {
+                    // Validate if any updates that needs to be stored
+                    guard case .success(let value) = $0, value.terms.contains(where: { ids.contains($0.id) }) else {
+                        completion(result)
+                        return
+                    }
+
+                    self.store.fetch(ids: ids, completion: completion)
+                }
+
+                return
+            }
+
+            completion(result)
+        }
     }
 }
 

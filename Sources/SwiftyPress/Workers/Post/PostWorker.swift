@@ -86,7 +86,25 @@ public extension PostWorker {
     }
     
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
-        store.fetch(slug: slug, completion: completion)
+        store.fetch(slug: slug) { result in
+            // Retrieve missing cache data from cloud if applicable
+            if case .nonExistent? = result.error {
+                // Sync remote updates to cache if applicable
+                self.dataWorker.pull {
+                    // Validate if any updates that needs to be stored
+                    guard case .success(let value) = $0, value.posts.contains(where: { $0.slug == slug }) else {
+                        completion(result)
+                        return
+                    }
+                    
+                    self.store.fetch(slug: slug, completion: completion)
+                }
+                
+                return
+            }
+            
+            completion(result)
+        }
     }
 }
 
