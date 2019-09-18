@@ -10,10 +10,11 @@ import SwiftyBeaver
 import ZamzamCore
 import ZamzamUI
 
-fileprivate final class Logger: AppInfo, HasDependencies {
+fileprivate final class Logger: AppInfo {
     static var shared = Logger()
     
-    private lazy var constants: ConstantsType = dependencies.resolve()
+    @Inject private var constants: ConstantsType
+    
     fileprivate lazy var minLogLevel: SwiftyBeaver.Level = constants
         .environment == .production ? .info : .verbose
     
