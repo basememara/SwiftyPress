@@ -9,7 +9,11 @@ import XCTest
 import SwiftyPress
 
 final class DependencyTests: XCTestCase {
-    private static let container = Container() // Dependency injection
+    
+    private static let modules: [Module] = [
+        WidgetModule(),
+        SampleModule()
+    ]
     
     @Inject private var widgetWorker: WidgetWorkerType
     @Inject private var someObject: SomeObjectType
@@ -17,11 +21,7 @@ final class DependencyTests: XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        
-        container.import {
-            WidgetModule.self
-            SampleModule.self
-        }
+        modules.register()
     }
 }
 
@@ -29,7 +29,7 @@ final class DependencyTests: XCTestCase {
 
 struct WidgetModule: Module {
     
-    func export() {
+    func register() {
         make { WidgetWorker() as WidgetWorkerType }
         make { WidgetNetworkRemote() as WidgetRemote }
         make { WidgetRealmStore() as WidgetStore }
@@ -39,7 +39,7 @@ struct WidgetModule: Module {
 
 struct SampleModule: Module {
     
-    func export() {
+    func register() {
         make { SomeObject() as SomeObjectType }
         make { AnotherObject(someObject: self.resolve()) as AnotherObjectType }
         make { SomeViewModel() as ViewModelObjectType }

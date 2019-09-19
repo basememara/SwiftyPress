@@ -14,7 +14,7 @@ public struct CoreModule: Module {
     
     public init() {}
     
-    public func export() {
+    public func register() {
         make { Constants(store: self.resolve()) as ConstantsType }
         make { Preferences(store: self.resolve()) as PreferencesType }
         make {

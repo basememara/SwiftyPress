@@ -12,7 +12,7 @@ import ZamzamCore
 
 struct TestModule: Module {
 
-    func export() {
+    func register() {
         make {
             ConstantsMemoryStore(
                 environment: {

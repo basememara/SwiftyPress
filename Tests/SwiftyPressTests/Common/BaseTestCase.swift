@@ -10,18 +10,18 @@ import SwiftyPress
 import ZamzamCore
 
 class BaseTestCase: XCTestCase {
-    private static let container = Container() // Dependency injection
+    
+    private static let modules: [Module] = [
+        CoreModule(),
+        TestModule()
+    ]
     
     @Inject private var dataWorker: DataWorkerType
     @Inject private var preferences: PreferencesType
     
     override class func setUp() {
         super.setUp()
-        
-        container.import {
-            CoreModule.self
-            TestModule.self
-        }
+        modules.register()
     }
     
     override func setUp() {
