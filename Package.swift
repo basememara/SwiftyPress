@@ -24,7 +24,8 @@ let package = Package(
         .package(url: "git@github.com:ZamzamInc/ZamzamNotification.git", .branch("master")),
         .package(url: "git@github.com:ZamzamInc/ZamzamUI.git", .branch("develop")),
         .package(url: "git@github.com:ZamzamInc/Stencil.git", .branch("lite")),
-        .package(url: "git@github.com:onevcat/Kingfisher.git", .branch("xcode11"))
+        .package(url: "git@github.com:onevcat/Kingfisher.git", .branch("xcode11")),
+        .package(url: "git@github.com:ZamzamInc/Shank.git", .branch("develop"))
     ],
     targets: [
         .target(
