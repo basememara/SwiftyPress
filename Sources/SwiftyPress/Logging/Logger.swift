@@ -7,6 +7,7 @@
 //
 
 import SwiftyBeaver
+import Shank
 import ZamzamCore
 import ZamzamUI
 

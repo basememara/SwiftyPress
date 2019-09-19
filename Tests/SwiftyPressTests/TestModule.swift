@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Shank
 import ZamzamCore
 @testable import SwiftyPress
 

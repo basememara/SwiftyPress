@@ -38,7 +38,8 @@ let package = Package(
                 "Stencil",
                 "ZamzamNotification",
                 "ZamzamUI",
-                "Kingfisher"
+                "Kingfisher",
+                "Shank"
             ]
         ),
         .testTarget(
