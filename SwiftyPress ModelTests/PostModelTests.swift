@@ -11,6 +11,10 @@ import XCTest
 
 class PostModelTests: XCTestCase {
     
+}
+
+extension PostModelTests {
+    
     func testDecoding() {
         do {
             let model = try JSONDecoder.default.decode(
@@ -30,6 +34,35 @@ class PostModelTests: XCTestCase {
             XCTAssertEqual(model.authorID, 2)
             XCTAssertEqual(model.mediaID, 41346)
             XCTAssertEqual(model.meta["_series_part"], "1")
+            XCTAssertEqual(model.terms, [80, 79, 53, 14, 62, 50, 55])
+            XCTAssertEqual(model.createdAt, DateFormatter.iso8601.date(from: "2018-04-22T22:03:20"))
+            XCTAssertEqual(model.modifiedAt, DateFormatter.iso8601.date(from: "2018-09-30T11:47:51"))
+        } catch {
+            XCTFail("Could not parse JSON: \(error)")
+        }
+    }
+}
+
+extension PostModelTests {
+    
+    func testNullDecoding() {
+        do {
+            let model = try JSONDecoder.default.decode(
+                Post.self,
+                forResource: "Post2.json",
+                inBundle: .test
+            )
+            
+            XCTAssertEqual(model.id, 41294)
+            XCTAssertEqual(model.title, "So Swift, So Clean Architecture for iOS")
+            XCTAssertEqual(model.slug, "swift-clean-architecture")
+            XCTAssertEqual(model.type, "post")
+            XCTAssertEqual(model.excerpt, "The topic of iOS app architecture has evolved a long way from MVC. Unfortunately, the conversation becomes a frameworks and patterns war. The reality is: Rx is a framework; MVVM is a presentation pattern; and so on. Frameworks and patterns always come and go, but architectures are timeless. In this post, we will examine the Clean Architecture for building scalable apps in iOS.")
+            XCTAssertEqual(model.content, "This is the content.")
+            XCTAssertEqual(model.commentCount, 10)
+            XCTAssertEqual(model.link, "https://staging1.basememara.com/swift-clean-architecture/")
+            XCTAssertEqual(model.authorID, 2)
+            XCTAssertNil(model.mediaID)
             XCTAssertEqual(model.terms, [80, 79, 53, 14, 62, 50, 55])
             XCTAssertEqual(model.createdAt, DateFormatter.iso8601.date(from: "2018-04-22T22:03:20"))
             XCTAssertEqual(model.modifiedAt, DateFormatter.iso8601.date(from: "2018-09-30T11:47:51"))

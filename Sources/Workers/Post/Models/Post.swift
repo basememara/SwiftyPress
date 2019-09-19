@@ -25,9 +25,9 @@ public struct Post: PostType, Decodable {
 
 // MARK: - For JSON decoding
 
-extension Post {
+private extension Post {
     
-    private enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id
         case slug
         case type
@@ -42,25 +42,6 @@ extension Post {
         case meta
         case createdAt = "created"
         case modifiedAt = "modified"
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.slug = try container.decode(String.self, forKey: .slug)
-        self.type = try container.decode(String.self, forKey: .type)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.content = try container.decode(String.self, forKey: .content)
-        self.excerpt = try container.decode(String.self, forKey: .excerpt)
-        self.link = try container.decode(String.self, forKey: .link)
-        self.commentCount = try container.decode(Int.self, forKey: .commentCount)
-        self.authorID = try container.decode(Int.self, forKey: .authorID)
-        self.mediaID = try container.decodeIfPresent(Int.self, forKey: .mediaID)
-        self.terms = try container.decode([Int].self, forKey: .terms)
-        self.meta = try container.decode([String: String].self, forKey: .meta)
-        self.createdAt = try container.decode(Date.self, forKey: .createdAt)
-        self.modifiedAt = try container.decode(Date.self, forKey: .modifiedAt)
     }
 }
 

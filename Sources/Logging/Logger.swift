@@ -13,9 +13,12 @@ fileprivate final class Logger: AppInfo, HasDependencies {
     static var shared = Logger()
     
     private lazy var constants: ConstantsType = dependencies.resolve()
+    fileprivate lazy var minLogLevel: SwiftyBeaver.Level = constants
+        .environment == .production ? .info : .verbose
+    
     fileprivate var logFileURL: URL?
     
-    let systemVersion: String = {
+    private let systemVersion: String = {
         #if os(iOS)
         return "\(UIDevice.current.systemName) \(UIDevice.current.systemVersion)"
         #else
@@ -23,9 +26,9 @@ fileprivate final class Logger: AppInfo, HasDependencies {
         #endif
     }()
     
-    lazy var version: String = "\(appVersion ?? "-") (\(appBuild ?? "-"))"
+    private lazy var version: String = "\(appVersion ?? "-") (\(appBuild ?? "-"))"
     
-    lazy var deviceModel: String = {
+    private lazy var deviceModel: String = {
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -61,7 +64,7 @@ private extension Logger {
                     .appendingPathComponent("\(constants.logFileName).dev")
                 
                 $0.format = "$Dyyyy-MM-dd HH:mm:ssZ$d $C$L$c $N.$F:$l - $M\nMeta: $X"
-                $0.minLevel = constants.environment == .production ? .info : .verbose
+                $0.minLevel = minLogLevel
                 
                 // Save log file location for later use
                 logFileURL = $0.logFileURL
@@ -114,6 +117,23 @@ extension Logger {
             
             output["protected_data_available"] = application.isProtectedDataAvailable
         }
+        #elseif os(watchOS)
+        if let application = Logger.application {
+            output["application_state"] = {
+                switch application.applicationState {
+                case .active:
+                    return "active"
+                case .background:
+                    return "background"
+                case .inactive:
+                    return "inactive"
+                @unknown default:
+                    return "unknown"
+                }
+            }()
+            
+            output["is_running_in_dock"] = application.isApplicationRunningInDock
+        }
         #endif
         
         return output
@@ -132,6 +152,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(verbose message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
+        guard SwiftyBeaver.Level.verbose.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         DispatchQueue.main.async {
             Logger.shared.log.verbose(message, path, function, line: line, context: Logger.shared.metaLog)
             
@@ -151,6 +173,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(debug message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
+        guard SwiftyBeaver.Level.debug.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         DispatchQueue.main.async {
             Logger.shared.log.debug(message, path, function, line: line, context: Logger.shared.metaLog)
             
@@ -170,6 +194,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(info message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
+        guard SwiftyBeaver.Level.info.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         DispatchQueue.main.async {
             Logger.shared.log.info(message, path, function, line: line, context: Logger.shared.metaLog)
             
@@ -189,6 +215,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(warn message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
+        guard SwiftyBeaver.Level.warning.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         DispatchQueue.main.async {
             Logger.shared.log.warning(message, path, function, line: line, context: Logger.shared.metaLog)
             
@@ -208,6 +236,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(error message: String, path: String = #file, function: String = #function, line: Int = #line, context: [String: Any]? = nil) {
+        guard SwiftyBeaver.Level.error.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         DispatchQueue.main.async {
             Logger.shared.log.error(message, path, function, line: line, context: Logger.shared.metaLog)
             
@@ -232,6 +262,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(request: URLRequest?, path: String = #file, function: String = #function, line: Int = #line) {
+        guard SwiftyBeaver.Level.debug.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         let message: String = {
             var output = "Request: {\n"
             guard let request = request else { return "Request: empty" }
@@ -271,6 +303,8 @@ public extension Loggable {
      - parameter line: Line of the caller.
      */
     func Log(response: NetworkModels.Response?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
+        guard SwiftyBeaver.Level.debug.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
+        
         let message: String = {
             var message = "Response: {\n"
             
@@ -324,6 +358,24 @@ public extension Loggable where Self: ApplicationModule {
     
     /// Configure logger with current application for state logging
     func setupLogger(for application: UIApplication, inject loggers: [Loggable]? = nil) {
+        Logger.application = application
+        
+        if let loggers = loggers {
+            self.inject(loggers: loggers)
+        }
+    }
+}
+#elseif os(watchOS)
+import WatchKit
+
+extension Logger {
+    fileprivate static var application: WKExtension?
+}
+
+public extension Loggable where Self: ApplicationModule {
+    
+    /// Configure logger with current application for state logging
+    func setupLogger(for application: WKExtension, inject loggers: [Loggable]? = nil) {
         Logger.application = application
         
         if let loggers = loggers {
