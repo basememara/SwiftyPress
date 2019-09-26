@@ -7,43 +7,46 @@
 //
 
 import Foundation
-import Shank
 import ZamzamCore
 @testable import SwiftyPress
 
-struct TestModule: Module {
-
-    func register() {
-        make {
-            ConstantsMemoryStore(
-                environment: {
-                    #if DEBUG
-                    return .development
-                    #elseif STAGING
-                    return .staging
-                    #else
-                    return .production
-                    #endif
-                }(),
-                itunesName: "",
-                itunesID: "0",
-                baseURL: URL(string: "https://basememara.com")!,
-                baseREST: "wp-json/swiftypress/v5",
-                wpREST: "wp-json/wp/v2",
-                email: "",
-                privacyURL: "",
-                disclaimerURL: nil,
-                styleSheet: "",
-                googleAnalyticsID: nil,
-                featuredCategoryID: 64,
-                defaultFetchModifiedLimit: 25,
-                taxonomies: ["category", "post_tag", "series"],
-                postMetaKeys: ["_edit_lock", "_series_part"],
-                logFileName: "test"
-            ) as ConstantsStore
-        }
-        make { PreferencesDefaultsStore(defaults: .test) as PreferencesStore }
-        make { SeedJSONStore(jsonString: jsonString) as SeedStore }
+struct TestModule: SwiftyPressModule {
+    
+    func componentStore() -> ConstantsStore {
+        ConstantsMemoryStore(
+            environment: {
+                #if DEBUG
+                return .development
+                #elseif STAGING
+                return .staging
+                #else
+                return .production
+                #endif
+            }(),
+            itunesName: "",
+            itunesID: "0",
+            baseURL: URL(string: "https://basememara.com")!,
+            baseREST: "wp-json/swiftypress/v5",
+            wpREST: "wp-json/wp/v2",
+            email: "test@example.com",
+            privacyURL: "",
+            disclaimerURL: nil,
+            styleSheet: "",
+            googleAnalyticsID: nil,
+            featuredCategoryID: 64,
+            defaultFetchModifiedLimit: 25,
+            taxonomies: ["category", "post_tag", "series"],
+            postMetaKeys: ["_edit_lock", "_series_part"],
+            logFileName: "test"
+        )
+    }
+    
+    func componentStore() -> PreferencesStore {
+        PreferencesDefaultsStore(defaults: .test)
+    }
+    
+    func componentStore() -> SeedStore {
+        SeedJSONStore(jsonString: jsonString)
     }
 }
 

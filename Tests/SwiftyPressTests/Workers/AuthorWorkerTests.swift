@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Shank
 import SwiftyPress
 
 final class AuthorWorkerTests: BaseTestCase {
-    @Inject private var authorWorker: AuthorWorkerType
+    private lazy var authorWorker: AuthorWorkerType = module.component()
 }
 
 extension AuthorWorkerTests {

@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Shank
 import SwiftyPress
 
 final class MediaWorkerTests: BaseTestCase {
-    @Inject private var mediaWorker: MediaWorkerType
+    private lazy var mediaWorker: MediaWorkerType = module.component()
 }
 
 extension MediaWorkerTests {

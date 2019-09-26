@@ -14,7 +14,8 @@ import ZamzamUI
 fileprivate final class Logger: AppInfo {
     static var shared = Logger()
     
-    @Inject private var constants: ConstantsType
+    @Inject private var module: SwiftyPressModule
+    private lazy var constants: ConstantsType = module.component()
     
     fileprivate lazy var minLogLevel: SwiftyBeaver.Level = constants
         .environment == .production ? .info : .verbose

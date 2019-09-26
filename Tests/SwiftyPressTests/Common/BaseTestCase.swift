@@ -7,22 +7,23 @@
 
 import XCTest
 import Shank
-import SwiftyPress
 import ZamzamCore
+import SwiftyPress
 
 class BaseTestCase: XCTestCase {
     
-    private static let modules: [Module] = [
-        CoreModule(),
-        TestModule()
-    ]
+    private static let container = Container {
+        Dependency { TestModule() as SwiftyPressModule }
+    }
     
-    @Inject private var dataWorker: DataWorkerType
-    @Inject private var preferences: PreferencesType
+    @Inject var module: SwiftyPressModule
+    
+    private lazy var dataWorker: DataWorkerType = module.component()
+    private lazy var preferences: PreferencesType = module.component()
     
     override class func setUp() {
         super.setUp()
-        modules.register()
+        container.build()
     }
     
     override func setUp() {

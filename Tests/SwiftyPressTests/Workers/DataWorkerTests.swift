@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Shank
 import SwiftyPress
 
 final class DataWorkerTests: BaseTestCase {
-    @Inject private var dataWorker: DataWorkerType
+    private lazy var dataWorker: DataWorkerType = module.component()
     
     func testPull() {
         // Given

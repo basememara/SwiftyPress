@@ -6,12 +6,11 @@
 //
 
 import XCTest
-import Shank
 import ZamzamCore
 @testable import SwiftyPress
 
 final class PreferencesTests: BaseTestCase {
-    @Inject private var preferences: PreferencesType
+    private lazy var preferences: PreferencesType = module.component()
 }
 
 extension PreferencesTests {

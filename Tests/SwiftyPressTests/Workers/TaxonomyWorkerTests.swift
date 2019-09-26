@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Shank
 import SwiftyPress
 
 final class TaxonomyWorkerTests: BaseTestCase {
-    @Inject private var taxonomyWorker: TaxonomyWorkerType
+    private lazy var taxonomyWorker: TaxonomyWorkerType = module.component()
 }
 
 extension TaxonomyWorkerTests {

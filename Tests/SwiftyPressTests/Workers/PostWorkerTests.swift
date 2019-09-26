@@ -6,11 +6,10 @@
 //
 
 import XCTest
-import Shank
 import SwiftyPress
 
 final class PostWorkerTests: BaseTestCase {
-    @Inject private var postWorker: PostWorkerType
+    private lazy var postWorker: PostWorkerType = module.component()
 }
 
 extension PostWorkerTests {
