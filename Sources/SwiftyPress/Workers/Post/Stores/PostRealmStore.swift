@@ -243,12 +243,12 @@ public extension PostRealmStore {
             
             do {
                 try realm.write {
-                    realm.add(PostRealmObject(from: request.post), update: true)
+                    realm.add(PostRealmObject(from: request.post), update: .modified)
                     realm.add(MediaRealmObject(from: request.media), update: true)
                     realm.add(AuthorRealmObject(from: request.author), update: true)
                     realm.add(
                         request.terms.map { TermRealmObject(from: $0) },
-                        update: true
+                        update: .modified
                     )
                 }
             } catch {
