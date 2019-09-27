@@ -18,10 +18,16 @@ public protocol PostsDataViewDelegate: class {
     func postsDataViewDidReloadData()
     
     @available(iOS 11.0, *)
-    func postsDataView(leadingSwipeActionsForModel model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
+    func postsDataView(leadingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
     
     @available(iOS 11.0, *)
-    func postsDataView(trailingSwipeActionsForModel model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
+    func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
+    
+    @available(iOS 13.0, *)
+    func postsDataView(contextMenuConfigurationFor model: PostsDataViewModel, at indexPath: IndexPath, point: CGPoint, from dataView: DataViewable) -> UIContextMenuConfiguration?
+    
+    @available(iOS 13.0, *)
+    func postsDataView(didPerformPreviewActionFor model: PostsDataViewModel, from dataView: DataViewable)
     
     func postsDataViewWillBeginDragging(_ scrollView: UIScrollView)
     func postsDataViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
@@ -34,10 +40,22 @@ public extension PostsDataViewDelegate {
     func postsDataViewDidReloadData() {}
     
     @available(iOS 11.0, *)
-    func postsDataView(leadingSwipeActionsForModel model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? { return UISwipeActionsConfiguration() }
+    func postsDataView(leadingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration()
+    }
     
     @available(iOS 11.0, *)
-    func postsDataView(trailingSwipeActionsForModel model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? { return UISwipeActionsConfiguration() }
+    func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration()
+    }
+    
+    @available(iOS 13.0, *)
+    func postsDataView(contextMenuConfigurationFor model: PostsDataViewModel, at indexPath: IndexPath, point: CGPoint, from dataView: DataViewable) -> UIContextMenuConfiguration? {
+        return nil
+    }
+    
+    @available(iOS 13.0, *)
+    func postsDataView(didPerformPreviewActionFor model: PostsDataViewModel, from dataView: DataViewable) {}
     
     func postsDataViewWillBeginDragging(_ scrollView: UIScrollView) {}
     func postsDataViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {}

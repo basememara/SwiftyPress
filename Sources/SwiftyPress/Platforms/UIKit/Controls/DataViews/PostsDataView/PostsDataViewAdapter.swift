@@ -61,13 +61,31 @@ extension PostsDataViewAdapter: UITableViewDelegate {
     @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
-        return delegate?.postsDataView(leadingSwipeActionsForModel: model, at: indexPath, from: tableView)
+        return delegate?.postsDataView(leadingSwipeActionsFor: model, at: indexPath, from: tableView)
     }
     
     @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
-        return delegate?.postsDataView(trailingSwipeActionsForModel: model, at: indexPath, from: tableView)
+        return delegate?.postsDataView(trailingSwipeActionsFor: model, at: indexPath, from: tableView)
+    }
+    
+    @available(iOS 13.0, *)
+    open func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let model = viewModels?[indexPath.row] else { return nil }
+        return delegate?.postsDataView(contextMenuConfigurationFor: model, at: indexPath, point: point, from: tableView)
+    }
+    
+    @available(iOS 13.0, *)
+    open func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion { [weak self] in
+            guard let id = configuration.identifier as? Int,
+                let model = self?.viewModels?.first(where: { $0.id == id }) else {
+                    return
+            }
+
+            self?.delegate?.postsDataView(didPerformPreviewActionFor: model, from: tableView)
+        }
     }
 }
 
@@ -103,6 +121,24 @@ extension PostsDataViewAdapter: UICollectionViewDelegate {
             at: indexPath,
             from: collectionView
         )
+    }
+    
+    @available(iOS 13.0, *)
+    open func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        guard let model = viewModels?[indexPath.row] else { return nil }
+        return delegate?.postsDataView(contextMenuConfigurationFor: model, at: indexPath, point: point, from: collectionView)
+    }
+    
+    @available(iOS 13.0, *)
+    open func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion { [weak self] in
+            guard let id = configuration.identifier as? Int,
+                let model = self?.viewModels?.first(where: { $0.id == id }) else {
+                    return
+            }
+
+            self?.delegate?.postsDataView(didPerformPreviewActionFor: model, from: collectionView)
+        }
     }
 }
 
