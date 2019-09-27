@@ -1,6 +1,0 @@
-github "SwiftyBeaver/SwiftyBeaver"
-github "Alamofire/Alamofire"
-github "realm/realm-cocoa"
-github "ZamzamInc/ZamzamKit"
-github "ZamzamInc/Stencil" "lite"
-github "onevcat/Kingfisher"
