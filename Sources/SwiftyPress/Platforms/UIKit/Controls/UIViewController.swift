@@ -32,25 +32,4 @@ public extension UIViewController {
             completion: completion
         )
     }
-    
-    /**
-     Open Safari view controller overlay.
-     
-     - parameter url: URL to display in the browser.
-     - parameter theme: The style of the Safari view controller.
-     */
-    func show(
-        safari url: String,
-        theme: Theme,
-        animated: Bool = true,
-        completion: (() -> Void)? = nil
-    ) {
-        show(
-            safari: url,
-            barTintColor: theme.backgroundColor,
-            preferredControlTintColor: theme.tint,
-            animated: animated,
-            completion: completion
-        )
-    }
 }
