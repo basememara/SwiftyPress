@@ -6,17 +6,17 @@
         "repositoryURL": "git@github.com:Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "a6241748b5c5f38ca53fa8286788d2f90fa9c666",
-          "version": "5.0.0-beta.7"
+          "revision": "c1d14588e5558a3669fd03510d135d88c5109069",
+          "version": "5.0.0-rc.2"
         }
       },
       {
         "package": "Kingfisher",
         "repositoryURL": "git@github.com:onevcat/Kingfisher.git",
         "state": {
-          "branch": "xcode11",
-          "revision": "58d878f85ad223a469ce1474e1c73e29a4012577",
-          "version": null
+          "branch": null,
+          "revision": "ea84ff22e8c6da676354b162476aad0efd013d7d",
+          "version": "5.8.1"
         }
       },
       {
@@ -32,9 +32,9 @@
         "package": "Realm",
         "repositoryURL": "git@github.com:realm/realm-cocoa.git",
         "state": {
-          "branch": "master",
-          "revision": "f29f26dd509b480fb6bcf360a6f281d0b7a98417",
-          "version": null
+          "branch": null,
+          "revision": "42bb79373687faa52b43eba7388152230a14e37a",
+          "version": "3.18.0"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "341ccfccbd9758171a3f2aaa78604ce60553b7ca",
-          "version": "5.23.1"
+          "revision": "3aa55b372577751f30a9aba8534b08e4229b556e",
+          "version": "5.23.3"
         }
       },
       {
@@ -68,9 +68,9 @@
         "package": "SwiftyBeaver",
         "repositoryURL": "git@github.com:SwiftyBeaver/SwiftyBeaver.git",
         "state": {
-          "branch": "master",
-          "revision": "c4d210691c1df769fa57527a472e11dc8baa5643",
-          "version": null
+          "branch": null,
+          "revision": "62d53165ce78738dfdcb4fc32fe47ecdae0e6899",
+          "version": "1.8.0"
         }
       },
       {
@@ -78,7 +78,16 @@
         "repositoryURL": "git@github.com:ZamzamInc/ZamzamCore.git",
         "state": {
           "branch": "develop",
-          "revision": "7d9a015b71d9b02e59978d9f0ec1dfec154392d2",
+          "revision": "e37cba8d47c349215f4829f33bf7cd1ae0aa27c1",
+          "version": null
+        }
+      },
+      {
+        "package": "ZamzamNotification",
+        "repositoryURL": "git@github.com:ZamzamInc/ZamzamNotification.git",
+        "state": {
+          "branch": "master",
+          "revision": "897ded968ae229d08dcf9c8b63d26ea16242c2f5",
           "version": null
         }
       },
@@ -87,7 +96,7 @@
         "repositoryURL": "git@github.com:ZamzamInc/ZamzamUI.git",
         "state": {
           "branch": "develop",
-          "revision": "2c7eabfcf8a8757af13a7bd0d5b994183006bcd7",
+          "revision": "4073b7346bd1a5d861f3a3958c2351020ed1c3f9",
           "version": null
         }
       }

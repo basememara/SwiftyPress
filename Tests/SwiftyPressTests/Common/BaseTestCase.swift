@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Shank
 import ZamzamCore
 import SwiftyPress
 
