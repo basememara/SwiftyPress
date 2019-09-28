@@ -11,8 +11,8 @@ import SwiftyPress
 
 class BaseTestCase: XCTestCase {
     
-    private static let container = Container {
-        Dependency { TestsModule() as SwiftyPressModule }
+    private static let container = Dependencies {
+        Module { TestsModule() as SwiftyPressModule }
     }
     
     @Inject var module: SwiftyPressModule
