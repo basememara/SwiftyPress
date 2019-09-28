@@ -58,13 +58,11 @@ extension PostsDataViewAdapter: UITableViewDelegate {
         )
     }
     
-    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
         return delegate?.postsDataView(leadingSwipeActionsFor: model, at: indexPath, from: tableView)
     }
     
-    @available(iOS 11.0, *)
     open func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
         return delegate?.postsDataView(trailingSwipeActionsFor: model, at: indexPath, from: tableView)

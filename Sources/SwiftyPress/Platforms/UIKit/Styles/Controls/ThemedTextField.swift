@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ZamzamCore
 import ZamzamUI
 
 open class ThemedTextField: NextResponderTextField {

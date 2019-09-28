@@ -17,10 +17,8 @@ public protocol PostsDataViewDelegate: class {
     func postsDataViewNumberOfSections(in dataView: DataViewable) -> Int
     func postsDataViewDidReloadData()
     
-    @available(iOS 11.0, *)
     func postsDataView(leadingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
     
-    @available(iOS 11.0, *)
     func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
     
     @available(iOS 13.0, *)
@@ -39,12 +37,10 @@ public extension PostsDataViewDelegate {
     func postsDataViewNumberOfSections(in dataView: DataViewable) -> Int { return 1 }
     func postsDataViewDidReloadData() {}
     
-    @available(iOS 11.0, *)
     func postsDataView(leadingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
         return UISwipeActionsConfiguration()
     }
     
-    @available(iOS 11.0, *)
     func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
         return UISwipeActionsConfiguration()
     }
