@@ -21,7 +21,7 @@ let package = Package(
         .package(url: "git@github.com:Alamofire/Alamofire.git", from: "5.0.0-rc.2"),
         .package(url: "git@github.com:realm/realm-cocoa.git", .upToNextMajor(from: "3.18.0")),
         .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .branch("develop")),
-        .package(url: "git@github.com:stencilproject/Stencil.git", .upToNextMajor(from: "0.13.1")),
+        .package(url: "git@github.com:ZamzamInc/Stencil.git", .branch("lite")),
         .package(url: "git@github.com:onevcat/Kingfisher.git", .upToNextMajor(from: "5.8.1"))
     ],
     targets: [
@@ -32,9 +32,10 @@ let package = Package(
                 "Alamofire",
                 "Realm",
                 "RealmSwift",
-                "Stencil",
+                "ZamzamCore",
                 "ZamzamNotification",
                 "ZamzamUI",
+                "Stencil",
                 "Kingfisher"
             ]
         ),
