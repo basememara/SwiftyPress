@@ -10,7 +10,7 @@ import Foundation
 import ZamzamCore
 @testable import SwiftyPress
 
-struct TestModule: SwiftyPressModule {
+struct TestsModule: SwiftyPressModule {
     
     func componentStore() -> ConstantsStore {
         ConstantsMemoryStore(
@@ -50,7 +50,7 @@ struct TestModule: SwiftyPressModule {
     }
 }
 
-private extension TestModule {
+private extension TestsModule {
     
     struct SeedJSONStore: SeedStore {
         private static var data: SeedPayloadType?

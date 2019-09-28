@@ -12,7 +12,7 @@ import SwiftyPress
 class BaseTestCase: XCTestCase {
     
     private static let container = Container {
-        Dependency { TestModule() as SwiftyPressModule }
+        Dependency { TestsModule() as SwiftyPressModule }
     }
     
     @Inject var module: SwiftyPressModule
