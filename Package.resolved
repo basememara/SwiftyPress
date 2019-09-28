@@ -57,11 +57,11 @@
       },
       {
         "package": "Stencil",
-        "repositoryURL": "git@github.com:ZamzamInc/Stencil.git",
+        "repositoryURL": "git@github.com:stencilproject/Stencil.git",
         "state": {
-          "branch": "lite",
-          "revision": "9cefa47a45d572d4f5ab197f88943ca53fac66d5",
-          "version": null
+          "branch": null,
+          "revision": "0e9a78d6584e3812cd9c09494d5c7b483e8f533c",
+          "version": "0.13.1"
         }
       },
       {
@@ -74,29 +74,11 @@
         }
       },
       {
-        "package": "ZamzamCore",
-        "repositoryURL": "git@github.com:ZamzamInc/ZamzamCore.git",
+        "package": "ZamzamKit",
+        "repositoryURL": "git@github.com:ZamzamInc/ZamzamKit.git",
         "state": {
           "branch": "develop",
-          "revision": "e37cba8d47c349215f4829f33bf7cd1ae0aa27c1",
-          "version": null
-        }
-      },
-      {
-        "package": "ZamzamNotification",
-        "repositoryURL": "git@github.com:ZamzamInc/ZamzamNotification.git",
-        "state": {
-          "branch": "master",
-          "revision": "897ded968ae229d08dcf9c8b63d26ea16242c2f5",
-          "version": null
-        }
-      },
-      {
-        "package": "ZamzamUI",
-        "repositoryURL": "git@github.com:ZamzamInc/ZamzamUI.git",
-        "state": {
-          "branch": "develop",
-          "revision": "4073b7346bd1a5d861f3a3958c2351020ed1c3f9",
+          "revision": "81ceaf334bef9d3f1a3b6d2bc3a7f3bde5610891",
           "version": null
         }
       }
