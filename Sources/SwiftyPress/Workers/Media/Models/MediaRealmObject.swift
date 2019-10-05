@@ -19,7 +19,7 @@ class MediaRealmObject: Object, MediaType {
     dynamic var thumbnailHeight: Int = 0
     
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
 }
 

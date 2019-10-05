@@ -31,13 +31,11 @@ public protocol ConstantsStore: AppInfo {
     var logFileName: String { get }
 }
 
-public protocol ConstantsType: ConstantsStore {
-    
-}
+public protocol ConstantsType: ConstantsStore {}
 
 public extension ConstantsType {
     
     var itunesURL: String {
-        return "https://itunes.apple.com/app/id\(itunesID)"
+        "https://itunes.apple.com/app/id\(itunesID)"
     }
 }

@@ -22,23 +22,23 @@ private extension CacheRealmStore {
     
     /// Name for isolated database per user or use anonymously
     var name: String {
-        return generateName(for: preferences.get(.userID) ?? 0)
+        generateName(for: preferences.get(.userID) ?? 0)
     }
     
     /// Used for referencing databases not associated with the current user
     func generateName(for userID: Int) -> String {
-        return "user_\(userID)"
+        "user_\(userID)"
     }
 }
 
 private extension CacheRealmStore {
     
     var fileURL: URL? {
-        return folderURL?.appendingPathComponent("\(name).realm")
+        folderURL?.appendingPathComponent("\(name).realm")
     }
     
     var folderURL: URL? {
-        return FileManager.default
+        FileManager.default
             .urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
             .appendingPathComponent("Realm")
     }
@@ -110,7 +110,7 @@ public extension CacheRealmStore {
 public extension CacheRealmStore {
     
     var lastPulledAt: Date? {
-        return getSyncActivity(for: SeedPayload.self)?.lastPulledAt
+        getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
     func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {

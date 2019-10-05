@@ -8,22 +8,8 @@
 
 import UIKit
 
-open class ThemedView: UIView {
-    
-}
-
-open class ThemedTintView: UIView {
-    
-}
-
-open class ThemedHeaderView: UIView {
-    
-}
-
-open class ThemedSeparator: UIView {
-    
-}
-
-open class ThemedErrorView: ThemedView {
-    
-}
+open class ThemedView: UIView {}
+open class ThemedTintView: UIView {}
+open class ThemedHeaderView: UIView {}
+open class ThemedSeparator: UIView {}
+open class ThemedErrorView: ThemedView {}

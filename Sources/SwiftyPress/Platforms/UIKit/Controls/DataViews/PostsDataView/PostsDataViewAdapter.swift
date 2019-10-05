@@ -90,11 +90,11 @@ extension PostsDataViewAdapter: UITableViewDelegate {
 extension PostsDataViewAdapter: UITableViewDataSource {
     
     open func numberOfSections(in tableView: UITableView) -> Int {
-        return delegate?.postsDataViewNumberOfSections(in: tableView) ?? 1
+        delegate?.postsDataViewNumberOfSections(in: tableView) ?? 1
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModels?.count ?? 0
+        viewModels?.count ?? 0
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,11 +143,11 @@ extension PostsDataViewAdapter: UICollectionViewDelegate {
 extension PostsDataViewAdapter: UICollectionViewDataSource {
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return delegate?.postsDataViewNumberOfSections(in: collectionView) ?? 1
+        delegate?.postsDataViewNumberOfSections(in: collectionView) ?? 1
     }
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels?.count ?? 0
+        viewModels?.count ?? 0
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

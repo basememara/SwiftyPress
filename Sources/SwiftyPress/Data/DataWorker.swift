@@ -43,15 +43,15 @@ public extension DataWorker {
     private static var isPulling = false
     
     func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
-        DataWorker.queue.async {
-            DataWorker.tasks.append(completion)
+        Self.queue.async {
+            Self.tasks.append(completion)
             
-            guard !DataWorker.isPulling else {
+            guard !Self.isPulling else {
                 self.Log(info: "Data pull already in progress, queuing...")
                 return
             }
             
-            DataWorker.isPulling = true
+            Self.isPulling = true
             self.Log(info: "Data pull requested...")
         
             // Determine if cache seeded before or just get latest from remote
@@ -165,10 +165,10 @@ public extension DataWorker {
     }
     
     private func executeTasks(_ result: Result<SeedPayloadType, DataError>) {
-        DataWorker.queue.async {
-            let tasks = DataWorker.tasks
-            DataWorker.tasks.removeAll()
-            DataWorker.isPulling = false
+        Self.queue.async {
+            let tasks = Self.tasks
+            Self.tasks.removeAll()
+            Self.isPulling = false
             
             self.Log(info: "Data pull request complete, now executing \(tasks.count) queued tasks...")
             

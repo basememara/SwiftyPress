@@ -51,7 +51,7 @@ open class SnapPagingLayout: UICollectionViewFlowLayout {
 private extension SnapPagingLayout {
     
     func calculateItemSize(from containerSize: CGSize) -> CGSize {
-        return CGSize(
+        CGSize(
             width: containerSize.width - peekWidth * 2,
             height: containerSize.height
         )

@@ -20,7 +20,7 @@ class AuthorRealmObject: Object, AuthorType {
     dynamic var modifiedAt: Date = .distantPast
     
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
 }
 

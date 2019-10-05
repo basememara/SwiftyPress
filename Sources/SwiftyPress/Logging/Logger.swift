@@ -11,7 +11,7 @@ import ZamzamCore
 import ZamzamUI
 
 fileprivate final class Logger: AppInfo {
-    static var shared = Logger()
+    static let shared = Logger()
     
     @Inject private var module: SwiftyPressModule
     private lazy var constants: ConstantsType = module.component()
@@ -305,7 +305,7 @@ public extension Loggable {
      - parameter function: Function of the caller.
      - parameter line: Line of the caller.
      */
-    func Log(response: NetworkModels.Response?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
+    func Log(response: NetworkAPI.Response?, url: String?, path: String = #file, function: String = #function, line: Int = #line) {
         guard SwiftyBeaver.Level.debug.rawValue >= Logger.shared.minLogLevel.rawValue else { return }
         
         let message: String = {
@@ -394,7 +394,5 @@ extension BaseDestination: With {}
 
 public extension ConstantsType {
     
-    var logFileURL: URL? {
-        return Logger.shared.logFileURL
-    }
+    var logFileURL: URL? { Logger.shared.logFileURL }
 }

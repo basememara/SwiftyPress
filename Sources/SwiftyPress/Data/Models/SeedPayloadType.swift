@@ -17,7 +17,7 @@ public extension SeedPayloadType {
     
     /// A Boolean value indicating whether the instance is empty.
     var isEmpty: Bool {
-        return posts.isEmpty
+        posts.isEmpty
             && authors.isEmpty
             && media.isEmpty
             && terms.isEmpty

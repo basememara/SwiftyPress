@@ -8,6 +8,4 @@
 
 import UIKit
 
-open class ThemedProgressView: UIProgressView {
-    
-}
+open class ThemedProgressView: UIProgressView {}

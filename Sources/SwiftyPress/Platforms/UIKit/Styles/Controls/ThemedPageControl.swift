@@ -8,6 +8,4 @@
 
 import UIKit
 
-open class ThemedPageControl: UIPageControl {
-    
-}
+open class ThemedPageControl: UIPageControl {}

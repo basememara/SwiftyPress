@@ -19,14 +19,11 @@ class TermRealmObject: Object, TermType {
     dynamic var count: Int = 0
     
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
     
     override static func indexedProperties() -> [String] {
-        return [
-            "slug",
-            "taxonomy"
-        ]
+        ["slug", "taxonomy"]
     }
 }
 
@@ -35,7 +32,7 @@ class TermRealmObject: Object, TermType {
 extension TermRealmObject {
     
     var taxonomy: Taxonomy {
-        get { return Taxonomy(rawValue: taxonomyRaw) }
+        get { Taxonomy(rawValue: taxonomyRaw) }
         set { taxonomyRaw = newValue.rawValue }
     }
 }

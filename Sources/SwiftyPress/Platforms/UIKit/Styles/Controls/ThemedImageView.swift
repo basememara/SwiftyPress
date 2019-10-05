@@ -8,6 +8,4 @@
 
 import UIKit
 
-open class ThemedImageView: UIImageView {
-    
-}
+open class ThemedImageView: UIImageView {}

@@ -15,6 +15,6 @@ class SyncActivity: Object {
     dynamic var lastPulledAt: Date?
     
     override static func primaryKey() -> String? {
-        return "type"
+        "type"
     }
 }

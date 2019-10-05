@@ -49,21 +49,21 @@ public protocol SwiftyPressModule {
 public extension SwiftyPressModule {
     
     func component() -> ConstantsType {
-        return Constants(store: componentStore())
+        Constants(store: componentStore())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> PreferencesType {
-        return Preferences(store: componentStore())
+        Preferences(store: componentStore())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> DataWorkerType {
-        return DataWorker(
+        DataWorker(
             constants: component(),
             seedStore: componentStore(),
             remoteStore: componentStore(),
@@ -72,18 +72,18 @@ public extension SwiftyPressModule {
     }
     
     func componentStore() -> RemoteStore {
-        return RemoteNetworkStore(apiSession: component())
+        RemoteNetworkStore(apiSession: component())
     }
     
     func componentStore() -> CacheStore {
-        return CacheRealmStore(preferences: component())
+        CacheRealmStore(preferences: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> PostWorkerType {
-        return PostWorker(
+        PostWorker(
             store: componentStore(),
             remote: componentRemote(),
             preferences: component(),
@@ -93,83 +93,83 @@ public extension SwiftyPressModule {
     }
     
     func componentStore() -> PostStore {
-        return PostRealmStore()
+        PostRealmStore()
     }
     
     func componentRemote() -> PostRemote {
-        return PostNetworkRemote(apiSession: component())
+        PostNetworkRemote(apiSession: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> AuthorWorkerType {
-        return AuthorWorker(
+        AuthorWorker(
             store: componentStore(),
             remote: componentRemote()
         )
     }
     
     func componentStore() -> AuthorStore {
-        return AuthorRealmStore()
+        AuthorRealmStore()
     }
     
     func componentRemote() -> AuthorRemote {
-        return AuthorNetworkRemote(apiSession: component())
+        AuthorNetworkRemote(apiSession: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> MediaWorkerType {
-        return MediaWorker(
+        MediaWorker(
             store: componentStore(),
             remote: componentRemote()
         )
     }
     
     func componentStore() -> MediaStore {
-        return MediaRealmStore()
+        MediaRealmStore()
     }
     
     func componentRemote() -> MediaRemote {
-        return MediaNetworkRemote(apiSession: component())
+        MediaNetworkRemote(apiSession: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> TaxonomyWorkerType {
-        return TaxonomyWorker(
+        TaxonomyWorker(
             store: componentStore(),
             dataWorker: component()
         )
     }
     
     func componentStore() -> TaxonomyStore {
-        return TaxonomyRealmStore()
+        TaxonomyRealmStore()
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> APISessionType {
-        return APISession(constants: component())
+        APISession(constants: component())
     }
     
     func component() -> HTTPServiceType {
-        return HTTPService()
+        HTTPService()
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> NotificationCenter {
-        return .default
+        .default
     }
     
     func component() -> Theme {
-        return SwiftyTheme()
+        SwiftyTheme()
     }
 }
 

@@ -11,14 +11,10 @@ import ZamzamCore
 public extension PreferencesType {
     
     /// Returns the current user's ID, or nil if an anonymous user.
-    var userID: Int? {
-        return get(.userID)
-    }
+    var userID: Int? { self.get(.userID) }
     
     /// Returns the current favorite posts.
-    var favorites: [Int] {
-        return get(.favorites) ?? []
-    }
+    var favorites: [Int] { self.get(.favorites) ?? [] }
     
     /// Removes all the user defaults items.
     func removeAll() {

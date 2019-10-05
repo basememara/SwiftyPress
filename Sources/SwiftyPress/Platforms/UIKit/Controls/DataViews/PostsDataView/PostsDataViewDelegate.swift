@@ -38,16 +38,16 @@ public extension PostsDataViewDelegate {
     func postsDataViewDidReloadData() {}
     
     func postsDataView(leadingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
-        return UISwipeActionsConfiguration()
+        UISwipeActionsConfiguration()
     }
     
     func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration? {
-        return UISwipeActionsConfiguration()
+        UISwipeActionsConfiguration()
     }
     
     @available(iOS 13.0, *)
     func postsDataView(contextMenuConfigurationFor model: PostsDataViewModel, at indexPath: IndexPath, point: CGPoint, from dataView: DataViewable) -> UIContextMenuConfiguration? {
-        return nil
+        nil
     }
     
     @available(iOS 13.0, *)

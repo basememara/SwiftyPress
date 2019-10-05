@@ -17,83 +17,35 @@ public struct Constants: ConstantsType {
 }
 
 public extension Constants {
-    
-    var environment: Environment {
-        return store.environment
-    }
+    var environment: Environment { store.environment}
 }
 
 public extension Constants {
-    
-    var itunesName: String {
-        return store.itunesName
-    }
-    
-    var itunesID: String {
-        return store.itunesID
-    }
+    var itunesName: String { store.itunesName }
+    var itunesID: String { store.itunesID }
 }
 
 public extension Constants {
-    
-    var baseURL: URL {
-        return store.baseURL
-    }
-    
-    var baseREST: String {
-        return store.baseREST
-    }
-    
-    var wpREST: String {
-        return store.wpREST
-    }
+    var baseURL: URL { store.baseURL }
+    var baseREST: String { store.baseREST }
+    var wpREST: String { store.wpREST }
 }
 
 public extension Constants {
-    
-    var email: String {
-        return store.email
-    }
-    
-    var privacyURL: String {
-        return store.privacyURL
-    }
-    
-    var disclaimerURL: String? {
-        return store.disclaimerURL
-    }
-    
-    var styleSheet: String {
-        return store.styleSheet
-    }
-    
-    var googleAnalyticsID: String? {
-        return store.googleAnalyticsID
-    }
+    var email: String { store.email }
+    var privacyURL: String { store.privacyURL }
+    var disclaimerURL: String? { store.disclaimerURL }
+    var styleSheet: String { store.styleSheet }
+    var googleAnalyticsID: String? { store.googleAnalyticsID }
 }
 
 public extension Constants {
-    
-    var featuredCategoryID: Int {
-        return store.featuredCategoryID
-    }
-    
-    var defaultFetchModifiedLimit: Int {
-        return store.defaultFetchModifiedLimit
-    }
-    
-    var taxonomies: [String] {
-        return store.taxonomies
-    }
-    
-    var postMetaKeys: [String] {
-        return store.postMetaKeys
-    }
+    var featuredCategoryID: Int { store.featuredCategoryID }
+    var defaultFetchModifiedLimit: Int { store.defaultFetchModifiedLimit }
+    var taxonomies: [String] { store.taxonomies }
+    var postMetaKeys: [String] { store.postMetaKeys }
 }
 
 public extension Constants {
-    
-    var logFileName: String {
-        return store.logFileName
-    }
+    var logFileName: String { store.logFileName }
 }

@@ -25,7 +25,7 @@ public enum DataError: Error {
 
 public extension DataError {
     
-    init(from error: NetworkModels.Error?) {
+    init(from error: NetworkAPI.Error?) {
         // Handle no internet
         if let internalError = error?.internalError as? URLError,
             internalError.code  == .notConnectedToInternet {

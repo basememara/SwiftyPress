@@ -9,6 +9,4 @@
 import UIKit
 import ZamzamUI
 
-open class ThemedTextField: NextResponderTextField {
-    
-}
+open class ThemedTextField: NextResponderTextField {}

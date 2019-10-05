@@ -199,7 +199,7 @@ public extension PostWorker {
 public extension PostWorker {
     
     func getID(bySlug slug: String) -> Int? {
-        return store.getID(bySlug: slug)
+        store.getID(bySlug: slug)
     }
 }
 
@@ -235,6 +235,6 @@ public extension PostWorker {
     }
     
     func hasFavorite(id: Int) -> Bool {
-        return preferences.get(.favorites)?.contains(id) == true
+        preferences.get(.favorites)?.contains(id) == true
     }
 }

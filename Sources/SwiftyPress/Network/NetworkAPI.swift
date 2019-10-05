@@ -1,5 +1,5 @@
 //
-//  NetworkModels.swift
+//  NetworkAPI.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2019-05-13.
@@ -9,11 +9,10 @@
 import Foundation
 import ZamzamCore
 
-public enum NetworkModels {
-    
-}
+// Namespace for module
+public enum NetworkAPI {}
 
-public extension NetworkModels {
+public extension NetworkAPI {
     
     struct Response {
         let data: Data
@@ -22,7 +21,7 @@ public extension NetworkModels {
     }
 }
 
-public extension NetworkModels {
+public extension NetworkAPI {
     
     struct Error: Swift.Error {
         let urlRequest: URLRequest?
@@ -66,7 +65,7 @@ public extension NetworkModels {
     }
 }
 
-extension NetworkModels.Error {
+extension NetworkAPI.Error {
     
     // Type used for decoding the server error
     struct Response: Decodable {
@@ -76,10 +75,10 @@ extension NetworkModels.Error {
     }
 }
 
-extension NetworkModels.Error: CustomStringConvertible {
+extension NetworkAPI.Error: CustomStringConvertible {
     
     public var description: String {
-        return """
+        """
         \(internalError ?? DataError.unknownReason(nil))
         Request: {
             url: \(urlRequest?.url?.absoluteString ?? ""),

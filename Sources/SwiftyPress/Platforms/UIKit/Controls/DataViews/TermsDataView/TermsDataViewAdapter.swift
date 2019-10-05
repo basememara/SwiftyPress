@@ -72,18 +72,18 @@ extension TermsDataViewAdapter: UITableViewDelegate {
     }
     
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return groupedSections.count > 1 ? groupedSections[section].localized : nil
+        groupedSections.count > 1 ? groupedSections[section].localized : nil
     }
 }
 
 extension TermsDataViewAdapter: UITableViewDataSource {
     
     open func numberOfSections(in tableView: UITableView) -> Int {
-        return groupedSections.count
+        groupedSections.count
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfElements(in: section)
+        numberOfElements(in: section)
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,11 +111,11 @@ extension TermsDataViewAdapter: UICollectionViewDelegate {
 extension TermsDataViewAdapter: UICollectionViewDataSource {
     
     open func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return groupedSections.count
+        groupedSections.count
     }
     
     open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return numberOfElements(in: section)
+        numberOfElements(in: section)
     }
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -130,14 +130,14 @@ extension TermsDataViewAdapter: UICollectionViewDataSource {
 private extension TermsDataViewAdapter {
     
     func elements(in section: Int) -> [TermsDataViewModel] {
-        return groupedViewModels[groupedSections[section]] ?? []
+        groupedViewModels[groupedSections[section]] ?? []
     }
     
     func element(in indexPath: IndexPath) -> TermsDataViewModel {
-        return elements(in: indexPath.section)[indexPath.row]
+        elements(in: indexPath.section)[indexPath.row]
     }
     
     func numberOfElements(in section: Int) -> Int {
-        return elements(in: section).count
+        elements(in: section).count
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 public protocol HTTPServiceType {
-    func get(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
-    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
+    func get(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
+    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
 }
 
 public struct HTTPService: HTTPServiceType {
@@ -24,9 +24,9 @@ public struct HTTPService: HTTPServiceType {
 
 public extension HTTPService {
     
-    func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+    func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         guard let url = URL(string: url) else {
-            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            completion(.failure(NetworkAPI.Error(statusCode: 400)))
             return
         }
         
@@ -37,7 +37,7 @@ public extension HTTPService {
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         } catch {
             completion(.failure(
-                NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
+                NetworkAPI.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
             ))
             
             return
@@ -53,9 +53,9 @@ public extension HTTPService {
 
 public extension HTTPService {
     
-    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         guard let url = URL(string: url) else {
-            completion(.failure(NetworkModels.Error(statusCode: 400)))
+            completion(.failure(NetworkAPI.Error(statusCode: 400)))
             return
         }
         
@@ -66,7 +66,7 @@ public extension HTTPService {
             urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
         } catch {
             completion(.failure(
-                NetworkModels.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
+                NetworkAPI.Error(urlRequest: urlRequest, statusCode: 0, internalError: error)
             ))
             
             return
@@ -89,7 +89,7 @@ public extension Session {
     /// - Parameters:
     ///   - urlRequest: The URL request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ urlRequest: URLRequest, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+    func request(_ urlRequest: URLRequest, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         request(urlRequest)
             .validate()
             .responseData {
@@ -101,7 +101,7 @@ public extension Session {
                 
                 // Handle errors
                 guard case .success(let value) = $0.result else {
-                    let error = NetworkModels.Error(
+                    let error = NetworkAPI.Error(
                         urlRequest: $0.request,
                         statusCode: statusCode,
                         headerValues: headers,
@@ -114,7 +114,7 @@ public extension Session {
                 }
                 
                 completion(.success(
-                    NetworkModels.Response(
+                    NetworkAPI.Response(
                         data: value,
                         headers: headers,
                         statusCode: statusCode)

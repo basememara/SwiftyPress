@@ -49,7 +49,7 @@ open class MultiRowLayout: UICollectionViewFlowLayout {
 private extension MultiRowLayout {
     
     func calculateItemSize(from containerSize: CGSize) -> CGSize {
-        return CGSize(
+        CGSize(
             width: containerSize.width - minimumLineSpacing * 2 - sectionInset.left,
             height: containerSize.height / rowsCount
         )
@@ -58,9 +58,7 @@ private extension MultiRowLayout {
 
 extension MultiRowLayout: ScrollableFlowLayout {
     
-    open func willBeginDragging() {
-        
-    }
+    open func willBeginDragging() {}
     
     open func willEndDragging(withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let collectionView = collectionView else { return }

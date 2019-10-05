@@ -11,7 +11,7 @@ import Alamofire
 import ZamzamCore
 
 public protocol APISessionType {
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void)
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
 }
 
 public struct APISession: APISessionType, Loggable {
@@ -31,14 +31,14 @@ public extension APISession {
     /// - Parameters:
     ///   - router: The router request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkModels.Response, NetworkModels.Error>) -> Void) {
+    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         let urlRequest: URLRequest
         
         // Construct request
         do {
             urlRequest = try route.asURLRequest(constants: constants)
         } catch {
-            return completion(.failure(NetworkModels.Error(urlRequest: nil, statusCode: 400)))
+            return completion(.failure(NetworkAPI.Error(urlRequest: nil, statusCode: 400)))
         }
         
         Log(request: urlRequest)

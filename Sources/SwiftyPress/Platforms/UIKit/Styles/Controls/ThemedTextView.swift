@@ -9,10 +9,5 @@
 import UIKit
 import ZamzamUI
 
-open class ThemedTextView: UITextView {
-    
-}
-
-open class ThemedLabelView: UILabelView {
-    
-}
+open class ThemedTextView: UITextView {}
+open class ThemedLabelView: UILabelView {}

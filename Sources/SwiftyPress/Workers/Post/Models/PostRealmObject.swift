@@ -28,13 +28,11 @@ class PostRealmObject: Object, PostType {
     let metaRaw = List<MetaRealmObject>()
     
     override static func primaryKey() -> String? {
-        return "id"
+        "id"
     }
     
     override static func indexedProperties() -> [String] {
-        return [
-            "slug"
-        ]
+        ["slug"]
     }
 }
 
@@ -43,12 +41,12 @@ class PostRealmObject: Object, PostType {
 extension PostRealmObject {
     
     var mediaID: Int? {
-        get { return mediaIDRaw.value }
+        get { mediaIDRaw.value }
         set { mediaIDRaw.value = newValue }
     }
     
     var terms: [Int] {
-        get { return termsRaw.map { $0.id } }
+        get { termsRaw.map { $0.id } }
         set {
             termsRaw.removeAll()
             termsRaw.append(objectsIn: newValue.map { id in
@@ -59,7 +57,7 @@ extension PostRealmObject {
     
     var meta: [String: String] {
         get {
-            return Dictionary(uniqueKeysWithValues: metaRaw.map { ($0.key, $0.value) })
+            Dictionary(uniqueKeysWithValues: metaRaw.map { ($0.key, $0.value) })
         }
         
         set {
@@ -79,7 +77,7 @@ extension PostRealmObject {
 class TermIDRealmObject: Object {
     // https://github.com/realm/realm-object-store/issues/513
     dynamic var id: Int = 0
-    override static func primaryKey() -> String? { return "id" }
+    override static func primaryKey() -> String? { "id" }
 }
 
 @objcMembers

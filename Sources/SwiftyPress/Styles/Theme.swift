@@ -45,15 +45,15 @@ public extension Theme {
     #if os(iOS)
     
     var statusBarStyle: UIStatusBarStyle {
-        return isDarkStyle ? .lightContent : .default
+        isDarkStyle ? .lightContent : .default
     }
     
     var barStyle: UIBarStyle {
-        return isDarkStyle ? .black : .default
+        isDarkStyle ? .black : .default
     }
     
     var keyboardAppearance: UIKeyboardAppearance {
-        return isDarkStyle ? .dark : .default
+        isDarkStyle ? .dark : .default
     }
     #endif
 }

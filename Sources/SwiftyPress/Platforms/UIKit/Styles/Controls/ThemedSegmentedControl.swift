@@ -8,6 +8,4 @@
 
 import UIKit
 
-open class ThemedSegmentedControl: UISegmentedControl {
-    
-}
+open class ThemedSegmentedControl: UISegmentedControl {}

@@ -69,7 +69,7 @@ public extension PostWorkerType {
 private extension PostWorkerType {
     
     func slug(from url: String) -> String? {
-        return URL(string: url)?.relativePath.lowercased()
+        URL(string: url)?.relativePath.lowercased()
             .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
             .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
