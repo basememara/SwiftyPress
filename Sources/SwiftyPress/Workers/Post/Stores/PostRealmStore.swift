@@ -173,7 +173,7 @@ public extension PostRealmStore {
             }
             
             // Construct predicate builder
-            var predicates = [NSPredicate]()
+            var predicates: [NSPredicate] = []
             
             // By title
             if request.scope.within([.title, .all]) {

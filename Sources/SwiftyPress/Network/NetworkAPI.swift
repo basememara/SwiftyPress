@@ -43,7 +43,7 @@ public extension NetworkAPI {
         init(
             urlRequest: URLRequest? = nil,
             statusCode: Int,
-            headerValues: [String: String] = [String: String](),
+            headerValues: [String: String] = [:],
             serverData: Data? = nil,
             internalError: Swift.Error? = nil
         ) {

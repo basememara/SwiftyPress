@@ -51,7 +51,7 @@ private extension APIRouter {
     var parameters: [String: Any] {
         switch self {
         case .modified(let after, let request):
-            var params = [String: Any]()
+            var params: [String: Any] = [:]
             
             if let timestamp = after?.timeIntervalSince1970 {
                 params["after"] = Int(timestamp)
@@ -73,7 +73,7 @@ private extension APIRouter {
             
             return params
         case .readPost(_, let request):
-            var params = [String: Any]()
+            var params: [String: Any] = [:]
             
             if !request.taxonomies.isEmpty {
                 params["taxonomies"] = request.taxonomies
