@@ -32,31 +32,4 @@ public protocol Theme {
     var negativeColor: UIColor { get }
     
     var isDarkStyle: Bool { get }
-    
-    func apply()
-    
-    #if os(iOS)
-    func apply(for application: UIApplication?)
-    #endif
-}
-
-public extension Theme {
-    
-    #if os(iOS)
-    var statusBarStyle: UIStatusBarStyle {
-        isDarkStyle ? .lightContent : .default
-    }
-    
-    var barStyle: UIBarStyle {
-        isDarkStyle ? .black : .default
-    }
-    
-    var keyboardAppearance: UIKeyboardAppearance {
-        isDarkStyle ? .dark : .default
-    }
-    
-    func apply() {
-        apply(for: nil)
-    }
-    #endif
 }

@@ -75,12 +75,14 @@ private extension Logger {
         )
         
         // Handle file protection so logging can occur in the locked background state
+        #if !os(OSX)
         if let url = logFileURL {
             _ = try? FileManager.default.setAttributes(
                 [.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication],
                 ofItemAtPath: url.absoluteString
             )
         }
+        #endif
         
         // Touch log file for setting security attributes
         log.info("Log file initialized")
@@ -393,6 +395,5 @@ public extension Loggable where Self: ExtensionModule {
 extension BaseDestination: With {}
 
 public extension ConstantsType {
-    
     var logFileURL: URL? { Logger.shared.logFileURL }
 }

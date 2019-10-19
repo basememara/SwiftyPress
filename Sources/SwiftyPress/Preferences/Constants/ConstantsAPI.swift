@@ -9,9 +9,6 @@
 import Foundation
 import ZamzamCore
 
-/// Constants request namespace
-public enum ConstantsAPI {}
-
 public protocol ConstantsStore: AppInfo {
     var environment: Environment { get }
     var itunesName: String { get }
@@ -34,8 +31,5 @@ public protocol ConstantsStore: AppInfo {
 public protocol ConstantsType: ConstantsStore {}
 
 public extension ConstantsType {
-    
-    var itunesURL: String {
-        "https://itunes.apple.com/app/id\(itunesID)"
-    }
+    var itunesURL: String { "https://itunes.apple.com/app/id\(itunesID)" }
 }

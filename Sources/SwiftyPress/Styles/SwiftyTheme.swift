@@ -34,12 +34,3 @@ struct SwiftyTheme: Theme {
     
     let isDarkStyle: Bool = false
 }
-
-extension SwiftyTheme {
-    
-    func apply(for application: UIApplication?) {
-        // Ensure existing views render when switching themes (not needed for iOS 13+ dark/light mode)
-        // https://developer.apple.com/documentation/uikit/uiappearance
-        application?.windows.reload()
-    }
-}
