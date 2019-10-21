@@ -11,4 +11,5 @@ import UIKit
 open class ThemedButton: UIButton {}
 open class ThemedPrimaryButton: UIButton {}
 open class ThemedSecondaryButton: UIButton {}
+open class ThemedLabelButton: UIButton {}
 open class ThemedImageButton: UIButton {}
