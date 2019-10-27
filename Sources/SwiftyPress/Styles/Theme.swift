@@ -6,7 +6,12 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#elseif canImport(AppKit)
+import AppKit
+public typealias UIColor = NSColor
+#endif
 
 public protocol Theme {
     var tint: UIColor { get }

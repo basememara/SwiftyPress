@@ -167,10 +167,6 @@ public extension SwiftyPressModule {
     func component() -> NotificationCenter {
         .default
     }
-    
-    func component() -> Theme {
-        SwiftyTheme()
-    }
 }
 
 public extension SwiftyPressModule {
