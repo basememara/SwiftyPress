@@ -8,10 +8,9 @@
 
 import Foundation
 import RealmSwift
+import ZamzamCore
 
-public struct AuthorRealmStore: AuthorStore, Loggable {
-    
-}
+public struct AuthorRealmStore: AuthorStore {}
 
 public extension AuthorRealmStore {
     

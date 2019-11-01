@@ -6,13 +6,18 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct AuthorWorker: AuthorWorkerType, Loggable {
+import Foundation
+import ZamzamCore
+
+public struct AuthorWorker: AuthorWorkerType {
     private let store: AuthorStore
     private let remote: AuthorRemote?
+    private let log: LogWorkerType
     
-    public init(store: AuthorStore, remote: AuthorRemote?) {
+    public init(store: AuthorStore, remote: AuthorRemote?, log: LogWorkerType) {
         self.store = store
         self.remote = remote
+        self.log = log
     }
 }
 
@@ -55,7 +60,7 @@ public extension AuthorWorker {
                 // Update local storage with updated data
                 self.store.createOrUpdate(element) {
                     guard case .success = $0 else {
-                        self.Log(error: "Could not save updated author locally from remote storage: \(String(describing: $0.error))")
+                        self.log.error("Could not save updated author locally from remote storage: \(String(describing: $0.error))")
                         return
                     }
                     

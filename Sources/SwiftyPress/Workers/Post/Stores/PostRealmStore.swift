@@ -10,8 +10,12 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct PostRealmStore: PostStore, Loggable {
+public struct PostRealmStore: PostStore {
+    private let log: LogWorkerType
     
+    public init(log: LogWorkerType) {
+        self.log = log
+    }
 }
 
 public extension PostRealmStore {

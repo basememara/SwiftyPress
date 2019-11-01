@@ -9,25 +9,28 @@
 import Foundation
 import ZamzamCore
 
-public struct PostWorker: PostWorkerType, Loggable {
+public struct PostWorker: PostWorkerType {
     private let store: PostStore
     private let remote: PostRemote?
     private let preferences: PreferencesType
     private let constants: ConstantsType
     private let dataWorker: DataWorkerType
+    private let log: LogWorkerType
     
     public init(
         store: PostStore,
         remote: PostRemote?,
         preferences: PreferencesType,
         constants: ConstantsType,
-        dataWorker: DataWorkerType
+        dataWorker: DataWorkerType,
+        log: LogWorkerType
     ) {
         self.store = store
         self.remote = remote
         self.preferences = preferences
         self.constants = constants
         self.dataWorker = dataWorker
+        self.log = log
     }
 }
 
@@ -75,7 +78,7 @@ public extension PostWorker {
                 // Update local storage with updated data
                 self.store.createOrUpdate(element) {
                     guard case .success = $0 else {
-                        self.Log(error: "Could not save updated post locally from remote storage: \(String(describing: $0.error))")
+                        self.log.error("Could not save updated post locally from remote storage: \(String(describing: $0.error))")
                         return
                     }
                     

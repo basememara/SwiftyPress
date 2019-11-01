@@ -39,6 +39,9 @@ public protocol SwiftyPressModule {
     func component() -> APISessionType
     func component() -> HTTPServiceType
     
+    func component() -> LogWorkerType
+    func componentStores() -> [LogStore]
+    
     func component() -> NotificationCenter
     func component() -> Theme
     
@@ -67,16 +70,23 @@ public extension SwiftyPressModule {
             constants: component(),
             seedStore: componentStore(),
             remoteStore: componentStore(),
-            cacheStore: componentStore()
+            cacheStore: componentStore(),
+            log: component()
         )
     }
     
     func componentStore() -> RemoteStore {
-        RemoteNetworkStore(apiSession: component())
+        RemoteNetworkStore(
+            apiSession: component(),
+            log: component()
+        )
     }
     
     func componentStore() -> CacheStore {
-        CacheRealmStore(preferences: component())
+        CacheRealmStore(
+            preferences: component(),
+            log: component()
+        )
     }
 }
 
@@ -88,16 +98,20 @@ public extension SwiftyPressModule {
             remote: componentRemote(),
             preferences: component(),
             constants: component(),
-            dataWorker: component()
+            dataWorker: component(),
+            log: component()
         )
     }
     
     func componentStore() -> PostStore {
-        PostRealmStore()
+        PostRealmStore(log: component())
     }
     
     func componentRemote() -> PostRemote {
-        PostNetworkRemote(apiSession: component())
+        PostNetworkRemote(
+            apiSession: component(),
+            log: component()
+        )
     }
 }
 
@@ -106,7 +120,8 @@ public extension SwiftyPressModule {
     func component() -> AuthorWorkerType {
         AuthorWorker(
             store: componentStore(),
-            remote: componentRemote()
+            remote: componentRemote(),
+            log: component()
         )
     }
     
@@ -115,7 +130,10 @@ public extension SwiftyPressModule {
     }
     
     func componentRemote() -> AuthorRemote {
-        AuthorNetworkRemote(apiSession: component())
+        AuthorNetworkRemote(
+            apiSession: component(),
+            log: component()
+        )
     }
 }
 
@@ -129,11 +147,14 @@ public extension SwiftyPressModule {
     }
     
     func componentStore() -> MediaStore {
-        MediaRealmStore()
+        MediaRealmStore(log: component())
     }
     
     func componentRemote() -> MediaRemote {
-        MediaNetworkRemote(apiSession: component())
+        MediaNetworkRemote(
+            apiSession: component(),
+            log: component()
+        )
     }
 }
 
@@ -147,18 +168,36 @@ public extension SwiftyPressModule {
     }
     
     func componentStore() -> TaxonomyStore {
-        TaxonomyRealmStore()
+        TaxonomyRealmStore(log: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> APISessionType {
-        APISession(constants: component())
+        APISession(
+            constants: component(),
+            log: component()
+        )
     }
     
     func component() -> HTTPServiceType {
         HTTPService()
+    }
+}
+
+public extension SwiftyPressModule {
+    
+    func component() -> LogWorkerType {
+        LogWorker(stores: componentStores())
+    }
+    
+    func componentStores() -> [LogStore] {
+        let constants: ConstantsType = component()
+        
+        return [
+            LogConsoleStore(minLevel: constants.minLogLevel)
+        ]
     }
 }
 

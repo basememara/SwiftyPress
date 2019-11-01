@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import ZamzamCore
 
-public struct PostNetworkRemote: PostRemote, Loggable {
+public struct PostNetworkRemote: PostRemote {
     private let apiSession: APISessionType
+    private let log: LogWorkerType
     
-    public init(apiSession: APISessionType) {
+    public init(apiSession: APISessionType, log: LogWorkerType) {
         self.apiSession = apiSession
+        self.log = log
     }
 }
 
@@ -27,7 +30,7 @@ public extension PostNetworkRemote {
                     return
                 }
                 
-                self.Log(error: "An error occured while fetching the post: \(String(describing: $0.error)).")
+                self.log.error("An error occured while fetching the post: \(String(describing: $0.error)).")
                 completion(.failure(DataError(from: $0.error)))
                 return
             }
@@ -47,7 +50,7 @@ public extension PostNetworkRemote {
                         completion(.success(payload))
                     }
                 } catch {
-                    self.Log(error: "An error occured while parsing the post: \(error).")
+                    self.log.error("An error occured while parsing the post: \(error).")
                     DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
                     return
                 }

@@ -9,11 +9,13 @@
 import Foundation
 import ZamzamCore
 
-public struct RemoteNetworkStore: RemoteStore, Loggable {
+public struct RemoteNetworkStore: RemoteStore {
     private let apiSession: APISessionType
+    private let log: LogWorkerType
     
-    public init(apiSession: APISessionType) {
+    public init(apiSession: APISessionType, log: LogWorkerType) {
         self.apiSession = apiSession
+        self.log = log
     }
 }
 
@@ -32,7 +34,7 @@ public extension RemoteNetworkStore {
                     return
                 }
                 
-                self.Log(error: "An error occured while fetching the modified payload: \(String(describing: $0.error)).")
+                self.log.error("An error occured while fetching the modified payload: \(String(describing: $0.error)).")
                 completion(.failure(DataError(from: $0.error)))
                 return
             }
@@ -43,7 +45,7 @@ public extension RemoteNetworkStore {
                     let payload = try JSONDecoder.default.decode(SeedPayload.self, from: value.data)
                     DispatchQueue.main.async { completion(.success(payload)) }
                 } catch {
-                    self.Log(error: "An error occured while parsing the modified payload: \(error).")
+                    self.log.error("An error occured while parsing the modified payload: \(error).")
                     DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
                     return
                 }

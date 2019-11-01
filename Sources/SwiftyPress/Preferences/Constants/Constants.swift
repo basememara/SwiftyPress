@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ZamzamCore
 
 public struct Constants: ConstantsType {
     private let store: ConstantsStore
@@ -47,5 +48,5 @@ public extension Constants {
 }
 
 public extension Constants {
-    var logFileName: String { store.logFileName }
+    var minLogLevel: LogAPI.Level { store.minLogLevel }
 }

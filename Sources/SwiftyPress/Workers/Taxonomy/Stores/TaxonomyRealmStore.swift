@@ -8,9 +8,14 @@
 
 import Foundation
 import RealmSwift
+import ZamzamCore
 
-public struct TaxonomyRealmStore: TaxonomyStore, Loggable {
+public struct TaxonomyRealmStore: TaxonomyStore {
+    private let log: LogWorkerType
     
+    public init(log: LogWorkerType) {
+        self.log = log
+    }
 }
 
 public extension TaxonomyRealmStore {

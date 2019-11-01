@@ -8,9 +8,14 @@
 
 import Foundation
 import RealmSwift
+import ZamzamCore
 
-public struct MediaRealmStore: MediaStore, Loggable {
+public struct MediaRealmStore: MediaStore {
+    private let log: LogWorkerType
     
+    public init(log: LogWorkerType) {
+        self.log = log
+    }
 }
 
 public extension MediaRealmStore {

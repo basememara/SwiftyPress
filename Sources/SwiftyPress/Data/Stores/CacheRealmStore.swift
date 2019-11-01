@@ -10,11 +10,13 @@ import Foundation
 import ZamzamCore
 import RealmSwift
 
-public struct CacheRealmStore: CacheStore, Loggable {
+public struct CacheRealmStore: CacheStore {
     private let preferences: PreferencesType
+    private let log: LogWorkerType
     
-    public init(preferences: PreferencesType) {
+    public init(preferences: PreferencesType, log: LogWorkerType) {
         self.preferences = preferences
+        self.log = log
     }
 }
 
@@ -65,7 +67,7 @@ public extension CacheRealmStore {
                     let shouldCompact = (totalBytes > maxSize) && (Double(usedBytes) / Double(totalBytes)) < 0.5
                     
                     if shouldCompact {
-                        self.Log(warn: "Compacting Realm database.")
+                        self.log.warn("Compacting Realm database.")
                     }
                     
                     return shouldCompact
@@ -77,13 +79,13 @@ public extension CacheRealmStore {
                 do {
                     _ = try Realm()
                 } catch {
-                    Log(error: "Could not initialize Realm database: \(error). Deleting database and recreating...")
+                    log.error("Could not initialize Realm database: \(error). Deleting database and recreating...")
                     _delete(for: preferences.get(.userID) ?? 0)
                     _ = try? Realm()
                 }
                 
-                Log(debug: "Realm database initialized at: \(fileURL).")
-                Log(info: "Realm database configured for \(name).")
+                log.debug("Realm database initialized at: \(fileURL).")
+                log.info("Realm database configured for \(name).")
             }
             
             // Create default location, set permissions, and seed if applicable
@@ -101,7 +103,7 @@ public extension CacheRealmStore {
                     ofItemAtPath: folderURL.path
                 )
             } catch {
-                Log(error: "Could not set permissions to Realm folder: \(error).")
+                log.error("Could not set permissions to Realm folder: \(error).")
             }
         }
     }
@@ -116,7 +118,7 @@ public extension CacheRealmStore {
     func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
         // Ensure there is data before proceeding
         guard !request.payload.isEmpty else {
-            Log(debug: "No modified data to cache.")
+            log.debug("No modified data to cache.")
             DispatchQueue.main.async { completion(.success(request.payload)) }
             return
         }
@@ -153,13 +155,13 @@ public extension CacheRealmStore {
                     with: realm
                 )
                 
-                self.Log(debug: "Cache modified data complete for "
+                self.log.debug("Cache modified data complete for "
                     + "\(post.count) posts, \(media.count) media, \(authors.count) authors, and \(terms.count) terms.")
                 
                 DispatchQueue.main.async { completion(.success(request.payload)) }
                 return
             } catch {
-                self.Log(error: "Could not write modified data to Realm from the source: \(error)")
+                self.log.error("Could not write modified data to Realm from the source: \(error)")
                 DispatchQueue.main.async { completion(.failure(.cacheFailure(error))) }
                 return
             }
@@ -189,9 +191,9 @@ public extension CacheRealmStore {
                     try FileManager.default.removeItem(atPath: "\(directory)/\(filename)")
             }
             
-            Log(warn: "Deleted Realm database at: \(directory)/\(currentName).realm")
+            log.warn("Deleted Realm database at: \(directory)/\(currentName).realm")
         } catch {
-            Log(error: "Could not delete user's database: \(error)")
+            log.error("Could not delete user's database: \(error)")
         }
     }
 }
@@ -208,7 +210,7 @@ private extension CacheRealmStore {
         do {
             realm = try Realm()
         } catch {
-            Log(error: "Could not initialize database: \(error)")
+            log.error("Could not initialize database: \(error)")
             return nil
         }
         

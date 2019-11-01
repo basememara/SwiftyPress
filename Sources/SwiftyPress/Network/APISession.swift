@@ -14,13 +14,15 @@ public protocol APISessionType {
     func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
 }
 
-public struct APISession: APISessionType, Loggable {
+public struct APISession: APISessionType {
     private let session: Session
     private let constants: ConstantsType
+    private let log: LogWorkerType
     
-    public init(constants: ConstantsType) {
+    public init(constants: ConstantsType, log: LogWorkerType) {
         self.session = .init(configuration: .default)
         self.constants = constants
+        self.log = log
     }
 }
 
@@ -41,11 +43,71 @@ public extension APISession {
             return completion(.failure(NetworkAPI.Error(urlRequest: nil, statusCode: 400)))
         }
         
-        Log(request: urlRequest)
+        log.request(urlRequest, environment: constants.environment)
         
         session.request(urlRequest) {
-            self.Log(response: try? $0.get(), url: urlRequest.url?.absoluteString)
+            self.log.response(
+                try? $0.get(), url: urlRequest.url?.absoluteString,
+                environment: self.constants.environment
+            )
+            
             completion($0)
         }
     }
 }
+
+// MARK: - Network logging helpers
+
+private extension LogWorkerType {
+    
+    /// Log URL request which help during debugging (low priority; not written to file)
+    func request(_ request: URLRequest?, environment: Environment, path: String = #file, function: String = #function, line: Int = #line) {
+        guard environment != .production else { return }
+        
+        let message: String = {
+            var output = "Request: {\n"
+            guard let request = request else { return "Request: empty" }
+            
+            if let value = request.url?.absoluteString {
+                output += "\turl: \(value),\n"
+            }
+            
+            if let value = request.httpMethod {
+                output += "\tmethod: \(value),\n"
+            }
+            
+            if let value = request.allHTTPHeaderFields?.scrubbed {
+                output += "\theaders: \(value)\n"
+            }
+            
+            output += "}"
+            return output
+        }()
+        
+        debug(message, path: path, function: function, line: line, context: nil)
+    }
+    
+    /// Log HTTP response which help during debugging (low priority; not written to file)
+    func response(_ response: NetworkAPI.Response?, url: String?, environment: Environment, path: String = #file, function: String = #function, line: Int = #line) {
+        guard environment != .production else { return }
+        
+        let message: String = {
+            var message = "Response: {\n"
+            
+            if let value = url {
+                message += "\turl: \(value),\n"
+            }
+            
+            if let response = response {
+                message += "\tstatus: \(response.statusCode),\n"
+                message += "\theaders: \(response.headers.scrubbed)\n"
+            }
+            
+            message += "}"
+            return message
+        }()
+        
+        debug(message, path: path, function: function, line: line, context: nil)
+    }
+}
+

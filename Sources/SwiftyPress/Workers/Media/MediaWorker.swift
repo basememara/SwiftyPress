@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct MediaWorker: MediaWorkerType, Loggable {
+public struct MediaWorker: MediaWorkerType {
     private let store: MediaStore
     private let remote: MediaRemote?
     

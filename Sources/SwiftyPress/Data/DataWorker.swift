@@ -9,17 +9,19 @@
 import Foundation
 import ZamzamCore
 
-public struct DataWorker: DataWorkerType, Loggable {
+public struct DataWorker: DataWorkerType {
     private let constants: ConstantsType
     private let seedStore: SeedStore
     private let remoteStore: RemoteStore
     private let cacheStore: CacheStore
+    private let log: LogWorkerType
     
-    init(constants: ConstantsType, seedStore: SeedStore, remoteStore: RemoteStore, cacheStore: CacheStore) {
+    init(constants: ConstantsType, seedStore: SeedStore, remoteStore: RemoteStore, cacheStore: CacheStore, log: LogWorkerType) {
         self.constants = constants
         self.seedStore = seedStore
         self.remoteStore = remoteStore
         self.cacheStore = cacheStore
+        self.log = log
     }
 }
 
@@ -47,21 +49,21 @@ public extension DataWorker {
             Self.tasks.append(completion)
             
             guard !Self.isPulling else {
-                self.Log(info: "Data pull already in progress, queuing...")
+                self.log.info("Data pull already in progress, queuing...")
                 return
             }
             
             Self.isPulling = true
-            self.Log(info: "Data pull requested...")
+            self.log.info("Data pull requested...")
         
             // Determine if cache seeded before or just get latest from remote
             guard let lastPulledAt = self.cacheStore.lastPulledAt else {
-                self.Log(info: "Seeding cache storage first time begins...")
+                self.log.info("Seeding cache storage first time begins...")
                 self.seedFromLocal()
                 return
             }
             
-            self.Log(info: "Pull remote into cache storage begins, last pulled at \(lastPulledAt)...")
+            self.log.info("Pull remote into cache storage begins, last pulled at \(lastPulledAt)...")
             self.seedFromRemote(after: lastPulledAt)
         }
     }
@@ -79,7 +81,7 @@ public extension DataWorker {
                 return
             }
             
-            self.Log(debug: "Found \(value.posts.count) posts to remotely pull into cache storage.")
+            self.log.debug("Found \(value.posts.count) posts to remotely pull into cache storage.")
             
             let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
             self.cacheStore.createOrUpdate(with: request, completion: self.executeTasks)
@@ -89,7 +91,7 @@ public extension DataWorker {
     private func seedFromLocal() {
         seedStore.fetch {
             guard case .success(let local) = $0, !local.isEmpty else {
-                self.Log(error: "Failed to retrieve seed data, falling back to remote server...")
+                self.log.error("Failed to retrieve seed data, falling back to remote server...")
                 
                 let request = DataAPI.ModifiedRequest(
                     taxonomies: self.constants.taxonomies,
@@ -103,7 +105,7 @@ public extension DataWorker {
                         return
                     }
                     
-                    self.Log(debug: "Found \(value.posts.count) posts to remotely pull into cache storage.")
+                    self.log.debug("Found \(value.posts.count) posts to remotely pull into cache storage.")
                     
                     let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
                     self.cacheStore.createOrUpdate(with: request, completion: self.executeTasks)
@@ -112,7 +114,7 @@ public extension DataWorker {
                 return
             }
             
-            self.Log(debug: "Found \(local.posts.count) posts to seed into cache storage.")
+            self.log.debug("Found \(local.posts.count) posts to seed into cache storage.")
             
             let lastSeedDate = local.posts.map { $0.modifiedAt }.max() ?? Date()
             let request = DataAPI.CacheRequest(payload: local, lastPulledAt: lastSeedDate)
@@ -123,7 +125,7 @@ public extension DataWorker {
                     return
                 }
                 
-                self.Log(debug: "Seeding cache storage complete, now pulling from remote storage.")
+                self.log.debug("Seeding cache storage complete, now pulling from remote storage.")
                 
                 // Fetch latest beyond seed
                 let request = DataAPI.ModifiedRequest(
@@ -138,7 +140,7 @@ public extension DataWorker {
                         return
                     }
                     
-                    self.Log(debug: "Found \(remote.posts.count) posts to remotely pull into cache storage.")
+                    self.log.debug("Found \(remote.posts.count) posts to remotely pull into cache storage.")
                     let request = DataAPI.CacheRequest(payload: remote, lastPulledAt: Date())
                     
                     self.cacheStore.createOrUpdate(with: request) {
@@ -154,7 +156,7 @@ public extension DataWorker {
                             terms: local.terms + remote.terms
                         )
                         
-                        self.Log(debug: "Seeded \(local.posts.count) posts from local "
+                        self.log.debug("Seeded \(local.posts.count) posts from local "
                             + "and \(remote.posts.count) posts from remote into cache storage.")
                         
                         self.executeTasks(.success(combinedSeed))
@@ -170,7 +172,7 @@ public extension DataWorker {
             Self.tasks.removeAll()
             Self.isPulling = false
             
-            self.Log(info: "Data pull request complete, now executing \(tasks.count) queued tasks...")
+            self.log.info("Data pull request complete, now executing \(tasks.count) queued tasks...")
             
             DispatchQueue.main.async {
                 tasks.forEach { $0(result) }

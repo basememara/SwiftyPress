@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import ZamzamCore
 
-public struct MediaNetworkRemote: MediaRemote, Loggable {
+public struct MediaNetworkRemote: MediaRemote {
     private let apiSession: APISessionType
+    private let log: LogWorkerType
     
-    public init(apiSession: APISessionType) {
+    public init(apiSession: APISessionType, log: LogWorkerType) {
         self.apiSession = apiSession
+        self.log = log
     }
 }
 
@@ -28,7 +31,7 @@ public extension MediaNetworkRemote {
                     return
                 }
                 
-                self.Log(error: "An error occured while fetching the media: \(String(describing: $0.error)).")
+                self.log.error("An error occured while fetching the media: \(String(describing: $0.error)).")
                 completion(.failure(DataError(from: $0.error)))
                 return
             }
@@ -53,7 +56,7 @@ public extension MediaNetworkRemote {
                         completion(.success(payload.media))
                     }
                 } catch {
-                    self.Log(error: "An error occured while parsing the media: \(error).")
+                    self.log.error("An error occured while parsing the media: \(error).")
                     DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
                     return
                 }
