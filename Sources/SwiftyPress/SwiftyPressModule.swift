@@ -191,14 +191,6 @@ public extension SwiftyPressModule {
     func component() -> LogWorkerType {
         LogWorker(stores: componentStores())
     }
-    
-    func componentStores() -> [LogStore] {
-        let constants: ConstantsType = component()
-        
-        return [
-            LogConsoleStore(minLevel: constants.minLogLevel)
-        ]
-    }
 }
 
 public extension SwiftyPressModule {
