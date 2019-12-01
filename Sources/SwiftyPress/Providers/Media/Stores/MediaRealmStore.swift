@@ -11,9 +11,9 @@ import RealmSwift
 import ZamzamCore
 
 public struct MediaRealmStore: MediaStore {
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    public init(log: LogWorkerType) {
+    public init(log: LogProviderType) {
         self.log = log
     }
 }

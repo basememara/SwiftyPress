@@ -9,32 +9,32 @@
 import Foundation
 import ZamzamCore
 
-public struct PostWorker: PostWorkerType {
+public struct PostProvider: PostProviderType {
     private let store: PostStore
     private let remote: PostRemote?
     private let preferences: PreferencesType
     private let constants: ConstantsType
-    private let dataWorker: DataWorkerType
-    private let log: LogWorkerType
+    private let dataProvider: DataProviderType
+    private let log: LogProviderType
     
     public init(
         store: PostStore,
         remote: PostRemote?,
         preferences: PreferencesType,
         constants: ConstantsType,
-        dataWorker: DataWorkerType,
-        log: LogWorkerType
+        dataProvider: DataProviderType,
+        log: LogProviderType
     ) {
         self.store = store
         self.remote = remote
         self.preferences = preferences
         self.constants = constants
-        self.dataWorker = dataWorker
+        self.dataProvider = dataProvider
         self.log = log
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
         store.fetch(id: id) {
@@ -43,7 +43,7 @@ public extension PostWorker {
                 return
             }
             
-            let request = PostsAPI.ItemRequest(
+            let request = PostAPI.ItemRequest(
                 taxonomies: self.constants.taxonomies,
                 postMetaKeys: self.constants.postMetaKeys
             )
@@ -94,7 +94,7 @@ public extension PostWorker {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
-                self.dataWorker.pull {
+                self.dataProvider.pull {
                     // Validate if any updates that needs to be stored
                     guard case .success(let value) = $0, value.posts.contains(where: { $0.slug == slug }) else {
                         completion(result)
@@ -112,9 +112,9 @@ public extension PostWorker {
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
-    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(with: request) {
             // Immediately return local response
             completion($0)
@@ -122,7 +122,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetch(with: request, completion: completion)
@@ -130,7 +130,7 @@ public extension PostWorker {
         }
     }
     
-    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetchPopular(with: request) {
             // Immediately return local response
             completion($0)
@@ -138,7 +138,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.store.fetchPopular(with: request, completion: completion)
@@ -146,12 +146,12 @@ public extension PostWorker {
         }
     }
     
-    func fetchTopPicks(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchTopPicks(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         fetch(byTermIDs: [constants.featuredCategoryID], with: request, completion: completion)
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(ids: ids) {
@@ -161,7 +161,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
                     value.posts.contains(where: { ids.contains($0.id) }) else {
@@ -173,7 +173,7 @@ public extension PostWorker {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.fetch(byTermIDs: ids, with: request) {
             // Immediately return local response
             completion($0)
@@ -181,7 +181,7 @@ public extension PostWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 guard case .success(let value) = $0 else { return }
                 
                 // Validate if any updates that needs to be stored
@@ -193,21 +193,21 @@ public extension PostWorker {
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
-    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         store.search(with: request, completion: completion)
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
     func getID(bySlug slug: String) -> Int? {
         store.getID(bySlug: slug)
     }
 }
 
-public extension PostWorker {
+public extension PostProvider {
     
     func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard let ids = preferences.get(.favorites), !ids.isEmpty else {

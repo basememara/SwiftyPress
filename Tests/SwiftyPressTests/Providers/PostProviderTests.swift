@@ -8,19 +8,19 @@
 import XCTest
 import SwiftyPress
 
-final class PostWorkerTests: BaseTestCase {
-    private lazy var postWorker: PostWorkerType = module.component()
+final class PostProviderTests: BaseTestCase {
+    private lazy var postProvider: PostProviderType = module.component()
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetch() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch all promise")
-        let request = PostsAPI.FetchRequest()
+        let request = PostAPI.FetchRequest()
         
         // When
-        postWorker.fetch(with: request) {
+        postProvider.fetch(with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -38,10 +38,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch max length promise")
         let maxLength = 2
-        let request = PostsAPI.FetchRequest(maxLength: maxLength)
+        let request = PostAPI.FetchRequest(maxLength: maxLength)
         
         // When
-        postWorker.fetch(with: request) {
+        postProvider.fetch(with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -56,7 +56,7 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetchByID() {
         // Given
@@ -64,7 +64,7 @@ extension PostWorkerTests {
         let id = 5568
         
         // When
-        postWorker.fetch(id: id) {
+        postProvider.fetch(id: id) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -84,7 +84,7 @@ extension PostWorkerTests {
         let id = 99999
         
         // When
-        postWorker.fetch(id: id) {
+        postProvider.fetch(id: id) {
             defer { promise.fulfill() }
             
             // Then
@@ -97,7 +97,7 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetchByIDs() {
         // Given
@@ -105,7 +105,7 @@ extension PostWorkerTests {
         let ids = [791, 26200]
         
         // When
-        postWorker.fetch(ids: Set(ids)) {
+        postProvider.fetch(ids: Set(ids)) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -120,7 +120,7 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetchBySlug() {
         // Given
@@ -128,7 +128,7 @@ extension PostWorkerTests {
         let slug = "protocol-oriented-router-in-swift"
         
         // When
-        postWorker.fetch(slug: slug) {
+        postProvider.fetch(slug: slug) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -143,7 +143,7 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetchByURL() {
         // Given
@@ -151,7 +151,7 @@ extension PostWorkerTests {
         let url = "http://example.com/swift-delegates-closure-pattern"
         
         // When
-        postWorker.fetch(url: url) {
+        postProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -171,7 +171,7 @@ extension PostWorkerTests {
         let url = "http://example.com/whats-new-ios-BEYond/?abc=123#test"
         
         // When
-        postWorker.fetch(url: url) {
+        postProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -191,7 +191,7 @@ extension PostWorkerTests {
         let url = "/protocol-oriented-THEmes-for-ios-apps/?abc=123#test"
         
         // When
-        postWorker.fetch(url: url) {
+        postProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -211,7 +211,7 @@ extension PostWorkerTests {
         let url = "memory-leaKS-resource-management-swift-ios"
         
         // When
-        postWorker.fetch(url: url) {
+        postProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -226,16 +226,16 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFetchByCategories() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by categories promise")
         let ids: Set = [4, 64]
-        let request = PostsAPI.FetchRequest()
+        let request = PostAPI.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids, with: request) {
+        postProvider.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -255,10 +255,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by tags promise")
         let ids: Set = [52]
-        let request = PostsAPI.FetchRequest()
+        let request = PostAPI.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids, with: request) {
+        postProvider.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -278,10 +278,10 @@ extension PostWorkerTests {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms promise")
         let ids: Set = [56, 58, 77]
-        let request = PostsAPI.FetchRequest()
+        let request = PostAPI.FetchRequest()
         
         // When
-        postWorker.fetch(byTermIDs: ids, with: request) {
+        postProvider.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -302,10 +302,10 @@ extension PostWorkerTests {
         var promise: XCTestExpectation? = expectation(description: "Posts fetch by terms max length promise")
         let ids: Set = [56, 58, 77]
         let maxLength = 1
-        let request = PostsAPI.FetchRequest(maxLength: maxLength)
+        let request = PostAPI.FetchRequest(maxLength: maxLength)
         
         // When
-        postWorker.fetch(byTermIDs: ids, with: request) {
+        postProvider.fetch(byTermIDs: ids, with: request) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -323,7 +323,7 @@ extension PostWorkerTests {
     }
 }
 
-extension PostWorkerTests {
+extension PostProviderTests {
     
     func testFavorites() {
         // Given
@@ -331,10 +331,10 @@ extension PostWorkerTests {
         let ids = [5568, 26200]
         
         // When
-        postWorker.addFavorite(id: ids[0])
-        postWorker.addFavorite(id: ids[1])
+        postProvider.addFavorite(id: ids[0])
+        postProvider.addFavorite(id: ids[1])
         
-        postWorker.fetchFavorites {
+        postProvider.fetchFavorites {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }

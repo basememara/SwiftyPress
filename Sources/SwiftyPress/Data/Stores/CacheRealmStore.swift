@@ -11,10 +11,16 @@ import ZamzamCore
 import RealmSwift
 
 public struct CacheRealmStore: CacheStore {
+    private let fileManager: FileManager
     private let preferences: PreferencesType
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    public init(preferences: PreferencesType, log: LogWorkerType) {
+    public init(
+        fileManager: FileManager,
+        preferences: PreferencesType,
+        log: LogProviderType
+    ) {
+        self.fileManager = fileManager
         self.preferences = preferences
         self.log = log
     }
@@ -40,7 +46,7 @@ private extension CacheRealmStore {
     }
     
     var folderURL: URL? {
-        FileManager.default
+        fileManager
             .urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
             .appendingPathComponent("Realm")
     }
@@ -67,7 +73,7 @@ public extension CacheRealmStore {
                     let shouldCompact = (totalBytes > maxSize) && (Double(usedBytes) / Double(totalBytes)) < 0.5
                     
                     if shouldCompact {
-                        self.log.warn("Compacting Realm database.")
+                        self.log.warning("Compacting Realm database.")
                     }
                     
                     return shouldCompact
@@ -89,16 +95,15 @@ public extension CacheRealmStore {
             }
             
             // Create default location, set permissions, and seed if applicable
-            let fileManager: FileManager = .default
-            guard !fileManager.fileExists(atPath: folderURL.path) else { return }
+            guard !self.fileManager.fileExists(atPath: folderURL.path) else { return }
 
             // Set permissions for database for background tasks
             do {
                 // Create directory if does not exist yet
-                try fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
+                try self.fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
                 
                 // Decrease file protection after first open for the parent directory
-                try fileManager.setAttributes(
+                try self.fileManager.setAttributes(
                     [.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication],
                     ofItemAtPath: folderURL.path
                 )
@@ -182,16 +187,16 @@ public extension CacheRealmStore {
         guard let directory = folderURL?.path else { return }
         
         do {
-            let filenames = try FileManager.default.contentsOfDirectory(atPath: directory)
+            let filenames = try fileManager.contentsOfDirectory(atPath: directory)
             let currentName = generateName(for: userID)
             
             try filenames
                 .filter { $0.hasPrefix("\(currentName).") }
                 .forEach { filename in
-                    try FileManager.default.removeItem(atPath: "\(directory)/\(filename)")
-            }
+                    try fileManager.removeItem(atPath: "\(directory)/\(filename)")
+                }
             
-            log.warn("Deleted Realm database at: \(directory)/\(currentName).realm")
+            log.warning("Deleted Realm database at: \(directory)/\(currentName).realm")
         } catch {
             log.error("Could not delete user's database: \(error)")
         }

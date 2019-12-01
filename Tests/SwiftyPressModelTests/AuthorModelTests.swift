@@ -7,7 +7,8 @@
 //
 
 import XCTest
-@testable import SwiftyPress
+import SwiftyPress
+import ZamzamCore
 
 final class AuthorModelTests: XCTestCase {
     

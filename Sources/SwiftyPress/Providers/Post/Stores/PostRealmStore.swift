@@ -11,9 +11,9 @@ import RealmSwift
 import ZamzamCore
 
 public struct PostRealmStore: PostStore {
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    public init(log: LogWorkerType) {
+    public init(log: LogProviderType) {
         self.log = log
     }
 }
@@ -71,7 +71,7 @@ public extension PostRealmStore {
 
 public extension PostRealmStore {
     
-    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -92,7 +92,7 @@ public extension PostRealmStore {
         }
     }
     
-    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -138,7 +138,7 @@ public extension PostRealmStore {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -163,7 +163,7 @@ public extension PostRealmStore {
 
 public extension PostRealmStore {
     
-    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
         guard !request.query.isEmpty else { return completion(.success([])) }
         
         DispatchQueue.database.async {

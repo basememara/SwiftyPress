@@ -1,5 +1,5 @@
 //
-//  TaxonomyWorkerTests.swift
+//  TaxonomyProviderTests.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-02.
@@ -8,18 +8,18 @@
 import XCTest
 import SwiftyPress
 
-final class TaxonomyWorkerTests: BaseTestCase {
-    private lazy var taxonomyWorker: TaxonomyWorkerType = module.component()
+final class TaxonomyProviderTests: BaseTestCase {
+    private lazy var taxonomyProvider: TaxonomyProviderType = module.component()
 }
 
-extension TaxonomyWorkerTests {
+extension TaxonomyProviderTests {
     
     func testFetch() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Terms fetch all promise")
         
         // When
-        taxonomyWorker.fetch {
+        taxonomyProvider.fetch {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -34,7 +34,7 @@ extension TaxonomyWorkerTests {
     }
 }
 
-extension TaxonomyWorkerTests {
+extension TaxonomyProviderTests {
     
     func testFetchByID() {
         // Given
@@ -42,7 +42,7 @@ extension TaxonomyWorkerTests {
         let id = 55
         
         // When
-        taxonomyWorker.fetch(id: id) {
+        taxonomyProvider.fetch(id: id) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -62,7 +62,7 @@ extension TaxonomyWorkerTests {
         let ids: Set = [4, 55, 64]
         
         // When
-        taxonomyWorker.fetch(ids: ids) {
+        taxonomyProvider.fetch(ids: ids) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -77,7 +77,7 @@ extension TaxonomyWorkerTests {
     }
 }
 
-extension TaxonomyWorkerTests {
+extension TaxonomyProviderTests {
     
     func testFetchBySlug() {
         // Given
@@ -85,7 +85,7 @@ extension TaxonomyWorkerTests {
         let slug = "swift"
         
         // When
-        taxonomyWorker.fetch(slug: slug) {
+        taxonomyProvider.fetch(slug: slug) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -100,7 +100,7 @@ extension TaxonomyWorkerTests {
     }
 }
 
-extension TaxonomyWorkerTests {
+extension TaxonomyProviderTests {
     
     func testFetchByURL() {
         // Given
@@ -108,7 +108,7 @@ extension TaxonomyWorkerTests {
         let url = "https://example.com/category/protocol-oriented-programming"
         
         // When
-        taxonomyWorker.fetch(url: url) {
+        taxonomyProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -128,7 +128,7 @@ extension TaxonomyWorkerTests {
         let url = "https://example.com/category/ios/?abc=123#test"
         
         // When
-        taxonomyWorker.fetch(url: url) {
+        taxonomyProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -148,7 +148,7 @@ extension TaxonomyWorkerTests {
         let url = "/tag/protocol-oriented-PROgramming/?abc=123#test"
         
         // When
-        taxonomyWorker.fetch(url: url) {
+        taxonomyProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -168,7 +168,7 @@ extension TaxonomyWorkerTests {
         let url = "taG/deleGAtes"
         
         // When
-        taxonomyWorker.fetch(url: url) {
+        taxonomyProvider.fetch(url: url) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -183,14 +183,14 @@ extension TaxonomyWorkerTests {
     }
 }
 
-extension TaxonomyWorkerTests {
+extension TaxonomyProviderTests {
     
     func testFetchByCategory() {
         // Given
         var promise: XCTestExpectation? = expectation(description: "Terms fetch by category promise")
         
         // When
-        taxonomyWorker.fetch(by: .category) {
+        taxonomyProvider.fetch(by: .category) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -209,7 +209,7 @@ extension TaxonomyWorkerTests {
         var promise: XCTestExpectation? = expectation(description: "Terms fetch by tag promise")
         
         // When
-        taxonomyWorker.fetch(by: .tag) {
+        taxonomyProvider.fetch(by: .tag) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -228,7 +228,7 @@ extension TaxonomyWorkerTests {
         var promise: XCTestExpectation? = expectation(description: "Terms fetch by other promise")
         
         // When
-        taxonomyWorker.fetch(by: .other("series")) {
+        taxonomyProvider.fetch(by: .other("series")) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -248,7 +248,7 @@ extension TaxonomyWorkerTests {
         let taxonomies: [Taxonomy] = [.category, .tag]
         
         // When
-        taxonomyWorker.fetch(by: taxonomies) {
+        taxonomyProvider.fetch(by: taxonomies) {
             // Handle double calls used for remote pulling
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }

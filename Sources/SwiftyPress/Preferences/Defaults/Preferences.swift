@@ -1,5 +1,5 @@
 //
-//  PreferencesWorker.swift
+//  PreferencesType.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-06.

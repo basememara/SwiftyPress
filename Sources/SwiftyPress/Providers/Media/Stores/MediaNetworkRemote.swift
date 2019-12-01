@@ -11,10 +11,12 @@ import ZamzamCore
 
 public struct MediaNetworkRemote: MediaRemote {
     private let apiSession: APISessionType
-    private let log: LogWorkerType
+    private let jsonDecoder: JSONDecoder
+    private let log: LogProviderType
     
-    public init(apiSession: APISessionType, log: LogWorkerType) {
+    public init(apiSession: APISessionType, jsonDecoder: JSONDecoder, log: LogProviderType) {
         self.apiSession = apiSession
+        self.jsonDecoder = jsonDecoder
         self.log = log
     }
 }
@@ -50,7 +52,7 @@ public extension MediaNetworkRemote {
                     }
                     
                     // Parse response data
-                    let payload = try JSONDecoder.default.decode(ServerResponse.self, from: value.data)
+                    let payload = try self.jsonDecoder.decode(ServerResponse.self, from: value.data)
                     
                     DispatchQueue.main.async {
                         completion(.success(payload.media))

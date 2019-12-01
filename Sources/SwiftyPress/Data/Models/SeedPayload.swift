@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+import Foundation
 import ZamzamCore
 
 public struct SeedPayload: SeedPayloadType, Decodable {

@@ -9,40 +9,40 @@
 import Foundation
 
 /// Post request namespace
-public enum PostsAPI {}
+public enum PostAPI {}
 
 public protocol PostStore {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
-    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?
     
     func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
 public protocol PostRemote {
-    func fetch(id: Int, with request: PostsAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
+    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
 }
 
-public protocol PostWorkerType {
+public protocol PostProviderType {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void)
     
-    func fetch(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchPopular(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetchTopPicks(with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetchTopPicks(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void)
-    func fetch(byTermIDs ids: Set<Int>, with request: PostsAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     
-    func search(with request: PostsAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void)
     func getID(bySlug slug: String) -> Int?
     func getID(byURL url: String) -> Int?
     
@@ -53,7 +53,7 @@ public protocol PostWorkerType {
     func hasFavorite(id: Int) -> Bool
 }
 
-public extension PostWorkerType {
+public extension PostProviderType {
     
     func fetch(url: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
         guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
@@ -66,7 +66,7 @@ public extension PostWorkerType {
     }
 }
 
-private extension PostWorkerType {
+private extension PostProviderType {
     
     func slug(from url: String) -> String? {
         URL(string: url)?.relativePath.lowercased()
@@ -77,7 +77,7 @@ private extension PostWorkerType {
 
 // MARK: Requests/Responses
 
-public extension PostsAPI {
+public extension PostAPI {
     
     struct FetchRequest {
         let maxLength: Int?

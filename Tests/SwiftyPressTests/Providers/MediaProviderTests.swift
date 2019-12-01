@@ -1,5 +1,5 @@
 //
-//  MediaWorkerTests.swift
+//  MediaProviderTests.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-03.
@@ -8,11 +8,11 @@
 import XCTest
 import SwiftyPress
 
-final class MediaWorkerTests: BaseTestCase {
-    private lazy var mediaWorker: MediaWorkerType = module.component()
+final class MediaProviderTests: BaseTestCase {
+    private lazy var mediaProvider: MediaProviderType = module.component()
 }
 
-extension MediaWorkerTests {
+extension MediaProviderTests {
     
     func testFetchByID() {
         // Given
@@ -20,7 +20,7 @@ extension MediaWorkerTests {
         let id = 41397
         
         // When
-        mediaWorker.fetch(id: id) {
+        mediaProvider.fetch(id: id) {
             defer { promise.fulfill() }
             
             // Then
@@ -38,7 +38,7 @@ extension MediaWorkerTests {
         let id = 999999
         
         // When
-        mediaWorker.fetch(id: id) {
+        mediaProvider.fetch(id: id) {
             defer { promise.fulfill() }
             
             // Then

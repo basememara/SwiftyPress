@@ -19,7 +19,7 @@ public protocol MediaRemote {
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
 }
 
-public protocol MediaWorkerType {
+public protocol MediaProviderType {
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
     func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void)
 }

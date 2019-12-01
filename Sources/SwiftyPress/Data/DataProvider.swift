@@ -1,5 +1,5 @@
 //
-//  CacheWorker.swift
+//  DataProvider.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-15.
@@ -9,14 +9,14 @@
 import Foundation
 import ZamzamCore
 
-public struct DataWorker: DataWorkerType {
+public struct DataProvider: DataProviderType {
     private let constants: ConstantsType
     private let seedStore: SeedStore
     private let remoteStore: RemoteStore
     private let cacheStore: CacheStore
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    init(constants: ConstantsType, seedStore: SeedStore, remoteStore: RemoteStore, cacheStore: CacheStore, log: LogWorkerType) {
+    init(constants: ConstantsType, seedStore: SeedStore, remoteStore: RemoteStore, cacheStore: CacheStore, log: LogProviderType) {
         self.constants = constants
         self.seedStore = seedStore
         self.remoteStore = remoteStore
@@ -25,7 +25,7 @@ public struct DataWorker: DataWorkerType {
     }
 }
 
-public extension DataWorker {
+public extension DataProvider {
     
     func configure() {
         seedStore.configure()
@@ -38,9 +38,9 @@ public extension DataWorker {
     }
 }
 
-public extension DataWorker {
+public extension DataProvider {
     // Handle simultanuous pull requests in a queue
-    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataWorker.sync")
+    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataProvider.sync")
     private static var tasks = [((Result<SeedPayloadType, DataError>) -> Void)]()
     private static var isPulling = false
     

@@ -29,7 +29,7 @@ public protocol CacheStore {
     func delete(for userID: Int)
 }
 
-public protocol DataWorkerType {
+public protocol DataProviderType {
     
     /// Setup the underlying storage for use.
     func configure()

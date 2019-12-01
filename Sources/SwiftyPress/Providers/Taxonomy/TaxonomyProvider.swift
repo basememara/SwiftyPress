@@ -6,24 +6,24 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct TaxonomyWorker: TaxonomyWorkerType {
+public struct TaxonomyProvider: TaxonomyProviderType {
     private let store: TaxonomyStore
-    private let dataWorker: DataWorkerType
+    private let dataProvider: DataProviderType
     
-    public init(store: TaxonomyStore, dataWorker: DataWorkerType) {
+    public init(store: TaxonomyStore, dataProvider: DataProviderType) {
         self.store = store
-        self.dataWorker = dataWorker
+        self.dataProvider = dataProvider
     }
 }
 
-public extension TaxonomyWorker {
+public extension TaxonomyProvider {
     
     func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
         store.fetch(id: id) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
-                self.dataWorker.pull {
+                self.dataProvider.pull {
                     // Validate if any updates that needs to be stored
                     guard case .success(let value) = $0, value.terms.contains(where: { $0.id == id }) else {
                         completion(result)
@@ -45,7 +45,7 @@ public extension TaxonomyWorker {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
-                self.dataWorker.pull {
+                self.dataProvider.pull {
                     // Validate if any updates that needs to be stored
                     guard case .success(let value) = $0, value.terms.contains(where: { $0.slug == slug }) else {
                         completion(result)
@@ -67,7 +67,7 @@ public extension TaxonomyWorker {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
-                self.dataWorker.pull {
+                self.dataProvider.pull {
                     // Validate if any updates that needs to be stored
                     guard case .success(let value) = $0, value.terms.contains(where: { ids.contains($0.id) }) else {
                         completion(result)
@@ -85,7 +85,7 @@ public extension TaxonomyWorker {
     }
 }
 
-public extension TaxonomyWorker {
+public extension TaxonomyProvider {
     
     func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
         store.fetch {
@@ -95,7 +95,7 @@ public extension TaxonomyWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.terms.isEmpty else {
                     return
@@ -114,7 +114,7 @@ public extension TaxonomyWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
                     value.terms.contains(where: { $0.taxonomy == taxonomy }) else {
@@ -134,7 +134,7 @@ public extension TaxonomyWorker {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataWorker.pull {
+            self.dataProvider.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
                     value.terms.contains(where: { taxonomies.contains($0.taxonomy) }) else {
@@ -147,7 +147,7 @@ public extension TaxonomyWorker {
     }
 }
 
-public extension TaxonomyWorker {
+public extension TaxonomyProvider {
     
     func getID(bySlug slug: String) -> Int? {
         store.getID(bySlug: slug)

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import XCTest
+import Foundation
 
 extension UserDefaults {
     static let test = UserDefaults(suiteName: Bundle.test.bundleIdentifier!)!

@@ -18,31 +18,36 @@ public protocol SwiftyPressModule {
     func component() -> PreferencesType
     func componentStore() -> PreferencesStore
     
-    func component() -> DataWorkerType
-    func componentStore() -> SeedStore
-    func componentStore() -> RemoteStore
-    func componentStore() -> CacheStore
+    func component() -> DataProviderType
+    func component() -> SeedStore
+    func component() -> RemoteStore
+    func component() -> CacheStore
     
-    func component() -> PostWorkerType
-    func componentStore() -> PostStore
-    func componentRemote() -> PostRemote
+    func component() -> PostProviderType
+    func component() -> PostStore
+    func component() -> PostRemote
     
-    func component() -> AuthorWorkerType
-    func componentStore() -> AuthorStore
+    func component() -> AuthorProviderType
+    func component() -> AuthorStore
+    func component() -> AuthorRemote
     
-    func component() -> MediaWorkerType
-    func componentStore() -> MediaStore
+    func component() -> MediaProviderType
+    func component() -> MediaStore
+    func component() -> MediaRemote
     
-    func component() -> TaxonomyWorkerType
+    func component() -> TaxonomyProviderType
     func componentStore() -> TaxonomyStore
     
     func component() -> APISessionType
     func component() -> HTTPServiceType
     
-    func component() -> LogWorkerType
-    func componentStores() -> [LogStore]
+    func component() -> LogProviderType
+    func component() -> [LogStore]
     
     func component() -> NotificationCenter
+    func component() -> FileManager
+    func component() -> JSONDecoder
+    
     func component() -> Theme
     
     @available(iOS 10.0, *)
@@ -65,25 +70,27 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> DataWorkerType {
-        DataWorker(
+    func component() -> DataProviderType {
+        DataProvider(
             constants: component(),
-            seedStore: componentStore(),
-            remoteStore: componentStore(),
-            cacheStore: componentStore(),
+            seedStore: component(),
+            remoteStore: component(),
+            cacheStore: component(),
             log: component()
         )
     }
     
-    func componentStore() -> RemoteStore {
+    func component() -> RemoteStore {
         RemoteNetworkStore(
             apiSession: component(),
+            jsonDecoder: component(),
             log: component()
         )
     }
     
-    func componentStore() -> CacheStore {
+    func component() -> CacheStore {
         CacheRealmStore(
+            fileManager: component(),
             preferences: component(),
             log: component()
         )
@@ -92,24 +99,25 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> PostWorkerType {
-        PostWorker(
-            store: componentStore(),
-            remote: componentRemote(),
+    func component() -> PostProviderType {
+        PostProvider(
+            store: component(),
+            remote: component(),
             preferences: component(),
             constants: component(),
-            dataWorker: component(),
+            dataProvider: component(),
             log: component()
         )
     }
     
-    func componentStore() -> PostStore {
+    func component() -> PostStore {
         PostRealmStore(log: component())
     }
     
-    func componentRemote() -> PostRemote {
+    func component() -> PostRemote {
         PostNetworkRemote(
             apiSession: component(),
+            jsonDecoder: component(),
             log: component()
         )
     }
@@ -117,21 +125,22 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> AuthorWorkerType {
-        AuthorWorker(
-            store: componentStore(),
-            remote: componentRemote(),
+    func component() -> AuthorProviderType {
+        AuthorProvider(
+            store: component(),
+            remote: component(),
             log: component()
         )
     }
     
-    func componentStore() -> AuthorStore {
+    func component() -> AuthorStore {
         AuthorRealmStore()
     }
     
-    func componentRemote() -> AuthorRemote {
+    func component() -> AuthorRemote {
         AuthorNetworkRemote(
             apiSession: component(),
+            jsonDecoder: component(),
             log: component()
         )
     }
@@ -139,20 +148,21 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> MediaWorkerType {
-        MediaWorker(
-            store: componentStore(),
-            remote: componentRemote()
+    func component() -> MediaProviderType {
+        MediaProvider(
+            store: component(),
+            remote: component()
         )
     }
     
-    func componentStore() -> MediaStore {
+    func component() -> MediaStore {
         MediaRealmStore(log: component())
     }
     
-    func componentRemote() -> MediaRemote {
+    func component() -> MediaRemote {
         MediaNetworkRemote(
             apiSession: component(),
+            jsonDecoder: component(),
             log: component()
         )
     }
@@ -160,10 +170,10 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> TaxonomyWorkerType {
-        TaxonomyWorker(
+    func component() -> TaxonomyProviderType {
+        TaxonomyProvider(
             store: componentStore(),
-            dataWorker: component()
+            dataProvider: component()
         )
     }
     
@@ -188,14 +198,22 @@ public extension SwiftyPressModule {
 
 public extension SwiftyPressModule {
     
-    func component() -> LogWorkerType {
-        LogWorker(stores: componentStores())
+    func component() -> LogProviderType {
+        LogProvider(stores: component())
     }
 }
 
 public extension SwiftyPressModule {
     
     func component() -> NotificationCenter {
+        .default
+    }
+    
+    func component() -> FileManager {
+        .default
+    }
+    
+    func component() -> JSONDecoder {
         .default
     }
 }

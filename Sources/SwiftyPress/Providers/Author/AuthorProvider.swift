@@ -9,19 +9,19 @@
 import Foundation
 import ZamzamCore
 
-public struct AuthorWorker: AuthorWorkerType {
+public struct AuthorProvider: AuthorProviderType {
     private let store: AuthorStore
     private let remote: AuthorRemote?
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    public init(store: AuthorStore, remote: AuthorRemote?, log: LogWorkerType) {
+    public init(store: AuthorStore, remote: AuthorRemote?, log: LogProviderType) {
         self.store = store
         self.remote = remote
         self.log = log
     }
 }
 
-public extension AuthorWorker {
+public extension AuthorProvider {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
         store.fetch(id: id) {

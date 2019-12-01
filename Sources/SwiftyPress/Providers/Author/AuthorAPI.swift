@@ -18,6 +18,6 @@ public protocol AuthorRemote {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
 }
 
-public protocol AuthorWorkerType {
+public protocol AuthorProviderType {
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
 }

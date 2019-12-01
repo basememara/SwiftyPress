@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ZamzamCore
 @testable import SwiftyPress
 
 final class ExtendedPostModelTests: XCTestCase {

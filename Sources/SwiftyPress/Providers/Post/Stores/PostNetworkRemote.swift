@@ -1,28 +1,29 @@
 //
-//  AuthorNetworkRemote.swift
+//  PostsNetworkStore.swift
 //  SwiftyPress
 //
-//  Created by Basem Emara on 2019-05-17.
-//  Copyright © 2019 Zamzam Inc. All rights reserved.
+//  Created by Basem Emara on 2018-10-10.
 //
 
 import Foundation
 import ZamzamCore
 
-public struct AuthorNetworkRemote: AuthorRemote {
+public struct PostNetworkRemote: PostRemote {
     private let apiSession: APISessionType
-    private let log: LogWorkerType
+    private let jsonDecoder: JSONDecoder
+    private let log: LogProviderType
     
-    public init(apiSession: APISessionType, log: LogWorkerType) {
+    public init(apiSession: APISessionType, jsonDecoder: JSONDecoder, log: LogProviderType) {
         self.apiSession = apiSession
+        self.jsonDecoder = jsonDecoder
         self.log = log
     }
 }
 
-public extension AuthorNetworkRemote {
+public extension PostNetworkRemote {
     
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
-        apiSession.request(APIRouter.readAuthor(id: id)) {
+    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+        apiSession.request(APIRouter.readPost(id: id, request)) {
             // Handle errors
             guard case .success = $0 else {
                 // Handle no existing data
@@ -31,7 +32,7 @@ public extension AuthorNetworkRemote {
                     return
                 }
                 
-                self.log.error("An error occured while fetching the author: \(String(describing: $0.error)).")
+                self.log.error("An error occured while fetching the post: \(String(describing: $0.error)).")
                 completion(.failure(DataError(from: $0.error)))
                 return
             }
@@ -44,19 +45,14 @@ public extension AuthorNetworkRemote {
             
             DispatchQueue.transform.async {
                 do {
-                    // Type used for decoding the server payload
-                    struct ServerResponse: Decodable {
-                        let author: Author
-                    }
-                    
                     // Parse response data
-                    let payload = try JSONDecoder.default.decode(ServerResponse.self, from: value.data)
+                    let payload = try self.jsonDecoder.decode(ExtendedPost.self, from: value.data)
                     
                     DispatchQueue.main.async {
-                        completion(.success(payload.author))
+                        completion(.success(payload))
                     }
                 } catch {
-                    self.log.error("An error occured while parsing the author: \(error).")
+                    self.log.error("An error occured while parsing the post: \(error).")
                     DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
                     return
                 }

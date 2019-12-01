@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct MediaWorker: MediaWorkerType {
+public struct MediaProvider: MediaProviderType {
     private let store: MediaStore
     private let remote: MediaRemote?
     
@@ -16,7 +16,7 @@ public struct MediaWorker: MediaWorkerType {
     }
 }
 
-public extension MediaWorker {
+public extension MediaProvider {
     
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
         store.fetch(id: id) {
@@ -45,7 +45,7 @@ public extension MediaWorker {
     }
 }
 
-public extension MediaWorker {
+public extension MediaProvider {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
         store.fetch(ids: ids, completion: completion)

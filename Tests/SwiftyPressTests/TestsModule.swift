@@ -37,7 +37,7 @@ struct TestsModule: SwiftyPressModule {
             defaultFetchModifiedLimit: 25,
             taxonomies: ["category", "post_tag", "series"],
             postMetaKeys: ["_edit_lock", "_series_part"],
-            logFileName: "test"
+            minLogLevel: .verbose
         )
     }
     
@@ -45,8 +45,16 @@ struct TestsModule: SwiftyPressModule {
         PreferencesDefaultsStore(defaults: .test)
     }
     
-    func componentStore() -> SeedStore {
+    func component() -> SeedStore {
         SeedJSONStore(jsonString: jsonString)
+    }
+    
+    func component() -> [LogStore] {
+        [LogConsoleStore(minLevel: .verbose)]
+    }
+    
+    func component() -> Theme {
+        fatalError("Not implemented")
     }
 }
 

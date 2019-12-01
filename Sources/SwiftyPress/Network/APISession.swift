@@ -11,15 +11,15 @@ import Alamofire
 import ZamzamCore
 
 public protocol APISessionType {
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
+    func request(_ route: APIRoutable, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
 }
 
 public struct APISession: APISessionType {
     private let session: Session
     private let constants: ConstantsType
-    private let log: LogWorkerType
+    private let log: LogProviderType
     
-    public init(constants: ConstantsType, log: LogWorkerType) {
+    public init(constants: ConstantsType, log: LogProviderType) {
         self.session = .init(configuration: .default)
         self.constants = constants
         self.log = log
@@ -33,7 +33,7 @@ public extension APISession {
     /// - Parameters:
     ///   - router: The router request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ route: APIRoutable, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
+    func request(_ route: APIRoutable, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         let urlRequest: URLRequest
         
         // Construct request
@@ -58,7 +58,7 @@ public extension APISession {
 
 // MARK: - Network logging helpers
 
-private extension LogWorkerType {
+private extension LogProviderType {
     
     /// Log URL request which help during debugging (low priority; not written to file)
     func request(_ request: URLRequest?, environment: Environment, path: String = #file, function: String = #function, line: Int = #line) {

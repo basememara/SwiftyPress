@@ -1,5 +1,5 @@
 //
-//  AuthorsWorkerTests.swift
+//  AuthorsProviderTests.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-03.
@@ -8,11 +8,11 @@
 import XCTest
 import SwiftyPress
 
-final class AuthorWorkerTests: BaseTestCase {
-    private lazy var authorWorker: AuthorWorkerType = module.component()
+final class AuthorProviderTests: BaseTestCase {
+    private lazy var authorProvider: AuthorProviderType = module.component()
 }
 
-extension AuthorWorkerTests {
+extension AuthorProviderTests {
     
     func testFetchByID() {
         // Given
@@ -20,7 +20,7 @@ extension AuthorWorkerTests {
         let id = 2
         
         // When
-        authorWorker.fetch(id: id) {
+        authorProvider.fetch(id: id) {
             // Handle double calls used for remote pulling
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
@@ -40,7 +40,7 @@ extension AuthorWorkerTests {
         let id = 99999
         
         // When
-        authorWorker.fetch(id: id) {
+        authorProvider.fetch(id: id) {
             defer { promise.fulfill() }
             
             // Then

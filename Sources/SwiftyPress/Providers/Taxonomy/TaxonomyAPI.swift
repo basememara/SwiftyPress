@@ -23,11 +23,11 @@ public protocol TaxonomyStore {
     func getID(bySlug slug: String) -> Int?
 }
 
-public protocol TaxonomyWorkerType: TaxonomyStore {
+public protocol TaxonomyProviderType: TaxonomyStore {
     func getID(byURL url: String) -> Int?
 }
 
-public extension TaxonomyWorkerType {
+public extension TaxonomyProviderType {
     
     func fetch(url: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
         guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
@@ -40,7 +40,7 @@ public extension TaxonomyWorkerType {
     }
 }
 
-private extension TaxonomyWorkerType {
+private extension TaxonomyProviderType {
     
     func slug(from url: String) -> String? {
         guard let url = URL(string: url) else { return nil }

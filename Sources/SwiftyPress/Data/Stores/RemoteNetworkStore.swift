@@ -11,10 +11,12 @@ import ZamzamCore
 
 public struct RemoteNetworkStore: RemoteStore {
     private let apiSession: APISessionType
-    private let log: LogWorkerType
+    private let jsonDecoder: JSONDecoder
+    private let log: LogProviderType
     
-    public init(apiSession: APISessionType, log: LogWorkerType) {
+    public init(apiSession: APISessionType, jsonDecoder: JSONDecoder, log: LogProviderType) {
         self.apiSession = apiSession
+        self.jsonDecoder = jsonDecoder
         self.log = log
     }
 }
@@ -42,7 +44,7 @@ public extension RemoteNetworkStore {
             DispatchQueue.transform.async {
                 do {
                     // Parse response data
-                    let payload = try JSONDecoder.default.decode(SeedPayload.self, from: value.data)
+                    let payload = try self.jsonDecoder.decode(SeedPayload.self, from: value.data)
                     DispatchQueue.main.async { completion(.success(payload)) }
                 } catch {
                     self.log.error("An error occured while parsing the modified payload: \(error).")
