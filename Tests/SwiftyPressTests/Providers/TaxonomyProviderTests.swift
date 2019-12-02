@@ -9,7 +9,7 @@ import XCTest
 import SwiftyPress
 
 final class TaxonomyProviderTests: BaseTestCase {
-    private lazy var taxonomyProvider: TaxonomyProviderType = module.component()
+    private lazy var taxonomyProvider: TaxonomyProviderType = core.dependency()
 }
 
 extension TaxonomyProviderTests {

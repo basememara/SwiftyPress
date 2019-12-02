@@ -10,7 +10,7 @@ import ZamzamCore
 @testable import SwiftyPress
 
 final class PreferencesTests: BaseTestCase {
-    private lazy var preferences: PreferencesType = module.component()
+    private lazy var preferences: PreferencesType = core.dependency()
 }
 
 extension PreferencesTests {

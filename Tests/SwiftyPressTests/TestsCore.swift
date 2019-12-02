@@ -10,9 +10,9 @@ import Foundation
 import ZamzamCore
 @testable import SwiftyPress
 
-struct TestsModule: SwiftyPressModule {
+struct TestsCore: SwiftyPressCore {
     
-    func componentStore() -> ConstantsStore {
+    func dependencyStore() -> ConstantsStore {
         ConstantsMemoryStore(
             environment: {
                 #if DEBUG
@@ -41,24 +41,24 @@ struct TestsModule: SwiftyPressModule {
         )
     }
     
-    func componentStore() -> PreferencesStore {
+    func dependencyStore() -> PreferencesStore {
         PreferencesDefaultsStore(defaults: .test)
     }
     
-    func component() -> SeedStore {
+    func dependency() -> SeedStore {
         SeedJSONStore(jsonString: jsonString)
     }
     
-    func component() -> [LogStore] {
+    func dependency() -> [LogStore] {
         [LogConsoleStore(minLevel: .verbose)]
     }
     
-    func component() -> Theme {
+    func dependency() -> Theme {
         fatalError("Not implemented")
     }
 }
 
-private extension TestsModule {
+private extension TestsCore {
     
     struct SeedJSONStore: SeedStore {
         private static var data: SeedPayloadType?

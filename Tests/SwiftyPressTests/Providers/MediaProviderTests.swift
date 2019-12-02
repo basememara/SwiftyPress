@@ -9,7 +9,7 @@ import XCTest
 import SwiftyPress
 
 final class MediaProviderTests: BaseTestCase {
-    private lazy var mediaProvider: MediaProviderType = module.component()
+    private lazy var mediaProvider: MediaProviderType = core.dependency()
 }
 
 extension MediaProviderTests {

@@ -9,7 +9,7 @@ import XCTest
 import SwiftyPress
 
 final class AuthorProviderTests: BaseTestCase {
-    private lazy var authorProvider: AuthorProviderType = module.component()
+    private lazy var authorProvider: AuthorProviderType = core.dependency()
 }
 
 extension AuthorProviderTests {

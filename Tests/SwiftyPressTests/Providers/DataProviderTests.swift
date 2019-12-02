@@ -9,7 +9,7 @@ import XCTest
 import SwiftyPress
 
 final class DataProviderTests: BaseTestCase {
-    private lazy var dataProvider: DataProviderType = module.component()
+    private lazy var dataProvider: DataProviderType = core.dependency()
     
     func testPull() {
         // Given

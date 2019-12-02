@@ -9,7 +9,7 @@ import XCTest
 import SwiftyPress
 
 final class PostProviderTests: BaseTestCase {
-    private lazy var postProvider: PostProviderType = module.component()
+    private lazy var postProvider: PostProviderType = core.dependency()
 }
 
 extension PostProviderTests {

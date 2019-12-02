@@ -12,13 +12,13 @@ import SwiftyPress
 class BaseTestCase: XCTestCase {
     
     private let container = Dependencies {
-        Module { TestsModule() as SwiftyPressModule }
+        Module { TestsCore() as SwiftyPressCore }
     }
     
-    @Inject var module: SwiftyPressModule
+    @Inject var core: SwiftyPressCore
     
-    private lazy var dataProvider: DataProviderType = module.component()
-    private lazy var preferences: PreferencesType = module.component()
+    private lazy var dataProvider: DataProviderType = core.dependency()
+    private lazy var preferences: PreferencesType = core.dependency()
     
     override func setUp() {
         super.setUp()
