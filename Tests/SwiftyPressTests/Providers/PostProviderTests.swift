@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-05-30.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyPress
 
@@ -348,3 +349,4 @@ extension PostProviderTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
+#endif

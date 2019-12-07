@@ -6,8 +6,10 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import ZamzamUI
 
 open class ThemedTextView: UITextView {}
 open class ThemedLabelView: UILabelView {}
+#endif

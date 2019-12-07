@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2019-05-11.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 
@@ -18,3 +19,4 @@ extension Bundle {
 extension DateFormatter {
     static let iso8601 = DateFormatter(iso8601Format: "yyyy-MM-dd'T'HH:mm:ss")
 }
+#endif

@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-12.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyPress
 
@@ -26,5 +27,4 @@ final class DataProviderTests: BaseTestCase {
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
-
-
+#endif

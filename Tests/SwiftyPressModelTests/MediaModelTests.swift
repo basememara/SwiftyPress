@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyPress
 import ZamzamCore
@@ -36,3 +37,4 @@ extension MediaModelTests {
         }
     }
 }
+#endif

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import ZamzamCore
 import ZamzamUI
 
@@ -50,8 +49,10 @@ public protocol SwiftyPressCore {
     
     func dependency() -> Theme
     
+    #if os(iOS)
     @available(iOS 10.0, *)
     func dependency(delegate: MailComposerDelegate?) -> MailComposerType
+    #endif
 }
 
 public extension SwiftyPressCore {
@@ -220,6 +221,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
+    #if os(iOS)
     @available(iOS 10.0, *)
     func dependency(delegate: MailComposerDelegate? = nil) -> MailComposerType {
         let theme: Theme = dependency()
@@ -231,4 +233,5 @@ public extension SwiftyPressCore {
             }
         )
     }
+    #endif
 }

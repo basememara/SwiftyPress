@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 @testable import SwiftyPress
@@ -109,3 +110,4 @@ extension ExtendedPostModelTests {
         }
     }
 }
+#endif

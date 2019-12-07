@@ -6,6 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 import UIKit
 import ZamzamCore
@@ -56,3 +57,4 @@ public extension PostsDataViewDelegate {
     func postsDataViewWillBeginDragging(_ scrollView: UIScrollView) {}
     func postsDataViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {}
 }
+#endif

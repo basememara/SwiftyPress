@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-12.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 import SwiftyPress
@@ -38,3 +39,4 @@ class BaseTestCase: XCTestCase {
         dataProvider.configure()
     }
 }
+#endif

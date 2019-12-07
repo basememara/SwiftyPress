@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import Kingfisher
 
@@ -87,3 +88,4 @@ public extension UIImageView {
         case aspectFill
     }
 }
+#endif

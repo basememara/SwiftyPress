@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if !os(watchOS)
 import Foundation
 
 extension UserDefaults {
@@ -30,3 +31,4 @@ extension Result {
         }
     }
 }
+#endif

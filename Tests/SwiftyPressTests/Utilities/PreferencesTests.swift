@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-10-06.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 @testable import SwiftyPress
@@ -49,3 +50,4 @@ private extension String.Keys {
     static let testFloat2 = String.Key<Float?>("testFloat2")
     static let testArray = String.Key<[Int]?>("testArray")
 }
+#endif

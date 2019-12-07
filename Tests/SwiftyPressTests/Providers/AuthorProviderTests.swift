@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-03.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyPress
 
@@ -52,3 +53,4 @@ extension AuthorProviderTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
+#endif

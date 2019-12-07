@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2018-06-02.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyPress
 
@@ -262,3 +263,4 @@ extension TaxonomyProviderTests {
         waitForExpectations(timeout: 10, handler: nil)
     }
 }
+#endif

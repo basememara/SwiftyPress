@@ -6,7 +6,9 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import ZamzamUI
 
 open class ThemedTextField: NextResponderTextField {}
+#endif

@@ -102,11 +102,13 @@ public extension CacheRealmStore {
                 // Create directory if does not exist yet
                 try self.fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
                 
+                #if !os(macOS)
                 // Decrease file protection after first open for the parent directory
                 try self.fileManager.setAttributes(
                     [.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication],
                     ofItemAtPath: folderURL.path
                 )
+                #endif
             } catch {
                 log.error("Could not set permissions to Realm folder: \(error).")
             }

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import ZamzamCore
 import ZamzamUI
@@ -141,3 +142,4 @@ private extension TermsDataViewAdapter {
         elements(in: section).count
     }
 }
+#endif

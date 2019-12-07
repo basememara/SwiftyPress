@@ -5,6 +5,7 @@
 //  Created by Basem Emara on 2019-09-16.
 //
 
+#if !os(watchOS)
 import Foundation
 
 let jsonString: String = """
@@ -766,3 +767,4 @@ let jsonString: String = """
         ]
     }
     """
+#endif
