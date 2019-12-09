@@ -15,15 +15,7 @@ struct TestsCore: SwiftyPressCore {
     
     func dependencyStore() -> ConstantsStore {
         ConstantsMemoryStore(
-            environment: {
-                #if DEBUG
-                return .development
-                #elseif STAGING
-                return .staging
-                #else
-                return .production
-                #endif
-            }(),
+            environment: .development,
             itunesName: "",
             itunesID: "0",
             baseURL: URL(string: "https://basememara.com")!,

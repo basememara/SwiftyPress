@@ -11,20 +11,13 @@ import ZamzamCore
 import SwiftyPress
 
 class BaseTestCase: XCTestCase {
-    
-    private let container = Dependencies {
-        Module { TestsCore() as SwiftyPressCore }
-    }
-    
-    @Inject var core: SwiftyPressCore
-    
     private lazy var dataProvider: DataProviderType = core.dependency()
     private lazy var preferences: PreferencesType = core.dependency()
     
+    lazy var core: SwiftyPressCore = TestsCore()
+    
     override func setUp() {
         super.setUp()
-        
-        container.build()
         
         // Apple bug: doesn't work when running tests in batches
         // https://bugs.swift.org/browse/SR-906
