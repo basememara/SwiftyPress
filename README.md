@@ -16,6 +16,8 @@ It promotes [Clean Architecture](http://basememara.com/swift-clean-architecture/
 
 `.package(url: "git@github.com:ZamzamInc/SwiftyPress.git", .upToNextMajor(from: "2.0.0"))`
 
+*A limitation with Swift Package Manager requires resources to be embedded manually. Drag `/Resources/SwiftyPress.bundle` to your Xcode project's `Build Phases > Copy Bundle` section.*
+
 ## Author
 
 * Zamzam Inc., https://zamzam.io

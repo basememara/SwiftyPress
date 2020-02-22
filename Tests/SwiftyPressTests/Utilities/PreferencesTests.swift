@@ -1,16 +1,17 @@
 //
-//  PreferencesWorkerTests.swift
+//  PreferencesProviderTests.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-06.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 @testable import SwiftyPress
 
 final class PreferencesTests: BaseTestCase {
-    private lazy var preferences: PreferencesType = module.component()
+    private lazy var preferences: PreferencesType = core.dependency()
 }
 
 extension PreferencesTests {
@@ -28,8 +29,8 @@ extension PreferencesTests {
         
         XCTAssertEqual(preferences.get(.testString1), "abc")
         XCTAssertEqual(preferences.get(.testString2), "xyz")
-        XCTAssertEqual(preferences.get(.testBool1), true)
-        XCTAssertEqual(preferences.get(.testBool2), false)
+        XCTAssert(preferences.get(.testBool1) ?? false)
+        XCTAssertFalse(preferences.get(.testBool2) ?? true)
         XCTAssertEqual(preferences.get(.testInt1), 123)
         XCTAssertEqual(preferences.get(.testInt2), 987)
         XCTAssertEqual(preferences.get(.testFloat1), 1.1)
@@ -49,3 +50,4 @@ private extension String.Keys {
     static let testFloat2 = String.Key<Float?>("testFloat2")
     static let testArray = String.Key<[Int]?>("testArray")
 }
+#endif

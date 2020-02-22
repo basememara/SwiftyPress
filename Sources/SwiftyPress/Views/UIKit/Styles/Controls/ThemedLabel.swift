@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 open class ThemedLabel: UILabel {}
@@ -19,3 +20,4 @@ open class ThemedSuccessLabel: UILabel {}
 open class ThemedWarningLabel: UILabel {}
 open class ThemedLightLabel: UILabel {}
 open class ThemedDarkLabel: UILabel {}
+#endif

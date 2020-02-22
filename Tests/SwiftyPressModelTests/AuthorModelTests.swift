@@ -6,8 +6,10 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if !os(watchOS)
 import XCTest
-@testable import SwiftyPress
+import SwiftyPress
+import ZamzamCore
 
 final class AuthorModelTests: XCTestCase {
     
@@ -35,3 +37,4 @@ extension AuthorModelTests {
         }
     }
 }
+#endif

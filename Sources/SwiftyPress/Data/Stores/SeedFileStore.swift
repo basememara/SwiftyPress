@@ -14,10 +14,12 @@ public struct SeedFileStore: SeedStore {
     
     private let name: String
     private let bundle: Bundle
+    private let jsonDecoder: JSONDecoder
     
-    public init(forResource name: String, inBundle bundle: Bundle) {
+    public init(forResource name: String, inBundle bundle: Bundle, jsonDecoder: JSONDecoder) {
         self.name = name
         self.bundle = bundle
+        self.jsonDecoder = jsonDecoder
     }
 }
 
@@ -26,7 +28,7 @@ public extension SeedFileStore {
     func configure() {
         guard Self.data == nil else { return }
         
-        Self.data = try? JSONDecoder.default.decode(
+        Self.data = try? jsonDecoder.decode(
             SeedPayload.self,
             forResource: name,
             inBundle: bundle

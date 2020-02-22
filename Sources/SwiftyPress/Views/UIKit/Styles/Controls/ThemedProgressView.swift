@@ -6,6 +6,8 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 open class ThemedProgressView: UIProgressView {}
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 import UIKit
 import ZamzamCore
@@ -170,3 +171,4 @@ extension PostsDataViewAdapter {
         delegate?.postsDataViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import ZamzamUI
 
@@ -18,3 +19,4 @@ public protocol TermsDataViewDelegate: class {
 public extension TermsDataViewDelegate {
     func termsDataViewDidReloadData() {}
 }
+#endif

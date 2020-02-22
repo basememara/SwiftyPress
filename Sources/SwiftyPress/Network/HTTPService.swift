@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 public protocol HTTPServiceType {
-    func get(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
-    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
+    func get(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
+    func post(url: String, parameters: [String: Any], headers: [String: String]?, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void)
 }
 
 public struct HTTPService: HTTPServiceType {
@@ -24,7 +24,7 @@ public struct HTTPService: HTTPServiceType {
 
 public extension HTTPService {
     
-    func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
+    func get(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(NetworkAPI.Error(statusCode: 400)))
             return
@@ -53,7 +53,7 @@ public extension HTTPService {
 
 public extension HTTPService {
     
-    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
+    func post(url: String, parameters: [String: Any], headers: [String: String]? = nil, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         guard let url = URL(string: url) else {
             completion(.failure(NetworkAPI.Error(statusCode: 400)))
             return
@@ -89,7 +89,7 @@ public extension Session {
     /// - Parameters:
     ///   - urlRequest: The URL request.
     ///   - completion: A handler to be called once the request has finished.
-    func request(_ urlRequest: URLRequest, completion: @escaping (Swift.Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
+    func request(_ urlRequest: URLRequest, completion: @escaping (Result<NetworkAPI.Response, NetworkAPI.Error>) -> Void) {
         request(urlRequest)
             .validate()
             .responseData {

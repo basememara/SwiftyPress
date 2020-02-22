@@ -6,7 +6,8 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import XCTest
+#if !os(watchOS)
+import Foundation
 
 extension UserDefaults {
     static let test = UserDefaults(suiteName: Bundle.test.bundleIdentifier!)!
@@ -30,3 +31,4 @@ extension Result {
         }
     }
 }
+#endif

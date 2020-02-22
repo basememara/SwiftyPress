@@ -6,6 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import Foundation
 
 public struct PostsDataViewModel {
@@ -45,3 +46,4 @@ public extension PostsDataViewCell {
         bind(model)
     }
 }
+#endif

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ZamzamCore
 
 public struct ConstantsMemoryStore: ConstantsStore {
     public let environment: Environment
@@ -24,7 +25,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
     public let defaultFetchModifiedLimit: Int
     public let taxonomies: [String]
     public let postMetaKeys: [String]
-    public let logFileName: String
+    public let minLogLevel: LogAPI.Level
     
     public init(
         environment: Environment,
@@ -42,7 +43,7 @@ public struct ConstantsMemoryStore: ConstantsStore {
         defaultFetchModifiedLimit: Int,
         taxonomies: [String],
         postMetaKeys: [String],
-        logFileName: String
+        minLogLevel: LogAPI.Level
     ) {
         self.environment = environment
         self.itunesName = itunesName
@@ -59,6 +60,6 @@ public struct ConstantsMemoryStore: ConstantsStore {
         self.defaultFetchModifiedLimit = defaultFetchModifiedLimit
         self.taxonomies = taxonomies
         self.postMetaKeys = postMetaKeys
-        self.logFileName = logFileName
+        self.minLogLevel = minLogLevel
     }
 }

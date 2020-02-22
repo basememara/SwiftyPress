@@ -5,25 +5,16 @@
 //  Created by Basem Emara on 2018-06-12.
 //
 
+#if !os(watchOS)
 import XCTest
 import ZamzamCore
 import SwiftyPress
 
 class BaseTestCase: XCTestCase {
+    private lazy var dataProvider: DataProviderType = core.dependency()
+    private lazy var preferences: PreferencesType = core.dependency()
     
-    private static let container = Dependencies {
-        Module { TestsModule() as SwiftyPressModule }
-    }
-    
-    @Inject var module: SwiftyPressModule
-    
-    private lazy var dataWorker: DataWorkerType = module.component()
-    private lazy var preferences: PreferencesType = module.component()
-    
-    override class func setUp() {
-        super.setUp()
-        container.build()
-    }
+    lazy var core: SwiftyPressCore = TestsCore()
     
     override func setUp() {
         super.setUp()
@@ -33,11 +24,12 @@ class BaseTestCase: XCTestCase {
         continueAfterFailure = false
         
         // Clear previous
-        dataWorker.resetCache(for: preferences.userID ?? 0)
+        dataProvider.resetCache(for: preferences.userID ?? 0)
         preferences.removeAll()
         UserDefaults.test.removeAll()
         
         // Setup database
-        dataWorker.configure()
+        dataProvider.configure()
     }
 }
+#endif

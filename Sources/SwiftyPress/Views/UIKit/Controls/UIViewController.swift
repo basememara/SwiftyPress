@@ -6,6 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 import ZamzamCore
 import ZamzamUI
@@ -33,3 +34,4 @@ public extension UIViewController {
         )
     }
 }
+#endif

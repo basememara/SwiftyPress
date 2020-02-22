@@ -25,7 +25,7 @@ public protocol ConstantsStore: AppInfo {
     var defaultFetchModifiedLimit: Int { get }
     var taxonomies: [String] { get }
     var postMetaKeys: [String] { get }
-    var logFileName: String { get }
+    var minLogLevel: LogAPI.Level { get }
 }
 
 public protocol ConstantsType: ConstantsStore {}

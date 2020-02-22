@@ -6,9 +6,11 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
 public protocol ScrollableFlowLayout {
     func willBeginDragging()
     func willEndDragging(withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
 }
+#endif
