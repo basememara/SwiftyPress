@@ -1,35 +1,16 @@
 //
-//  SeedStoreInterfaces.swift
+//  DataAPI.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import Foundation
+import Foundation.NSDate
 
-/// Data request namespace
-public enum DataAPI {}
+// MARK: - Respository
 
-public protocol SeedStore {
-    func configure()
-    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-}
-
-public protocol RemoteStore {
-    func configure()
-    func fetchModified(after date: Date?, with request: DataAPI.ModifiedRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-}
-
-public protocol CacheStore {
-    var lastPulledAt: Date? { get }
-    
-    func configure()
-    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-    func delete(for userID: Int)
-}
-
-public protocol DataProviderType {
+public protocol DataRepositoryType {
     
     /// Setup the underlying storage for use.
     func configure()
@@ -43,15 +24,37 @@ public protocol DataProviderType {
     func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
 }
 
-public extension DataAPI {
+// MARK: - Services
+
+public protocol SeedService {
+    func configure()
+    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+}
+
+public protocol RemoteService {
+    func configure()
+    func fetchModified(after date: Date?, with request: DataAPI.ModifiedRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+}
+
+public protocol CacheService {
+    var lastPulledAt: Date? { get }
     
-    struct ModifiedRequest {
+    func configure()
+    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func delete(for userID: Int)
+}
+
+// MARK: - Namespace
+
+public enum DataAPI {
+    
+    public struct ModifiedRequest {
         let taxonomies: [String]
         let postMetaKeys: [String]
         let limit: Int?
     }
     
-    struct CacheRequest {
+    public struct CacheRequest {
         let payload: SeedPayloadType
         let lastPulledAt: Date
     }

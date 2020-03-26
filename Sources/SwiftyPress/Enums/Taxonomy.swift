@@ -12,6 +12,25 @@ public enum Taxonomy: Decodable {
     case other(String)
 }
 
+// MARK: - Codable
+
+extension Taxonomy {
+    
+    private enum CodingKeys: String, CodingKey {
+        case category
+        case tag = "post_tag"
+        case other
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self = .init(rawValue: try container.decode(String.self))
+    }
+}
+
+
+// MARK: - Helpers
+
 public extension Taxonomy {
     
     var rawValue: String {
@@ -71,21 +90,5 @@ extension Taxonomy: Hashable {
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(rawValue)
-    }
-}
-
-// MARK: - For JSON decoding
-
-extension Taxonomy {
-    
-    private enum CodingKeys: String, CodingKey {
-        case category
-        case tag = "post_tag"
-        case other
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self = .init(rawValue: try container.decode(String.self))
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public protocol APIRoutable {
-    func asURLRequest(constants: ConstantsType) throws -> URLRequest
+    func asURLRequest(constants: ConstantsType) -> URLRequest
 }
 
 public enum APIRouter: APIRoutable {
@@ -96,7 +96,7 @@ private extension APIRouter {
 
 public extension APIRouter {
     
-    func asURLRequest(constants: ConstantsType) throws -> URLRequest {
+    func asURLRequest(constants: ConstantsType) -> URLRequest {
         var urlRequest = URLRequest(url:
             constants.baseURL
                 .appendingPathComponent(constants.baseREST)
@@ -119,9 +119,9 @@ public extension APIRouter {
         // Encode parameters accordingly
         switch method {
         case .get:
-            urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
+            urlRequest = try! URLEncoding.default.encode(urlRequest, with: parameters)
         default:
-            urlRequest = try JSONEncoding.default.encode(urlRequest, with: parameters)
+            urlRequest = try! JSONEncoding.default.encode(urlRequest, with: parameters)
         }
         
         return urlRequest

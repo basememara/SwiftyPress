@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import Foundation
+import Foundation.NSDate
 
 public protocol Dateable {
     var createdAt: Date { get }

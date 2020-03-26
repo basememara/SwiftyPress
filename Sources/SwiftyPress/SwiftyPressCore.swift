@@ -6,215 +6,220 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.v
 //
 
-import Foundation
+import Foundation.NSFileManager
+import Foundation.NSJSONSerialization
+import Foundation.NSNotification
 import ZamzamCore
 import ZamzamUI
 
 public protocol SwiftyPressCore {
-    func dependency() -> ConstantsType
-    func dependencyStore() -> ConstantsStore
+    func constants() -> ConstantsType
+    func constantsService() -> ConstantsService
     
-    func dependency() -> PreferencesType
-    func dependencyStore() -> PreferencesStore
+    func preferences() -> PreferencesType
+    func preferencesService() -> PreferencesService
     
-    func dependency() -> DataProviderType
-    func dependency() -> SeedStore
-    func dependency() -> RemoteStore
-    func dependency() -> CacheStore
+    func log() -> LogRepositoryType
+    func logServices() -> [LogService]
     
-    func dependency() -> PostProviderType
-    func dependency() -> PostStore
-    func dependency() -> PostRemote
+    func dataRepository() -> DataRepositoryType
+    func seedService() -> SeedService
+    func remoteService() -> RemoteService
+    func cacheService() -> CacheService
     
-    func dependency() -> AuthorProviderType
-    func dependency() -> AuthorStore
-    func dependency() -> AuthorRemote
+    func postRepository() -> PostRepositoryType
+    func postService() -> PostService
+    func postRemote() -> PostRemote
     
-    func dependency() -> MediaProviderType
-    func dependency() -> MediaStore
-    func dependency() -> MediaRemote
+    func authorRepository() -> AuthorRepositoryType
+    func authorService() -> AuthorService
+    func authorRemote() -> AuthorRemote
     
-    func dependency() -> TaxonomyProviderType
-    func dependencyStore() -> TaxonomyStore
+    func mediaRepository() -> MediaRepositoryType
+    func mediaService() -> MediaService
+    func mediaRemote() -> MediaRemote
     
-    func dependency() -> APISessionType
-    func dependency() -> HTTPServiceType
+    func taxonomyRepository() -> TaxonomyRepositoryType
+    func taxonomyService() -> TaxonomyService
     
-    func dependency() -> LogProviderType
-    func dependency() -> [LogStore]
+    func networkRepository() -> NetworkRepositoryType
+    func networkService() -> NetworkService
     
-    func dependency() -> NotificationCenter
-    func dependency() -> FileManager
-    func dependency() -> JSONDecoder
+    func notificationCenter() -> NotificationCenter
+    func fileManager() -> FileManager
+    func jsonDecoder() -> JSONDecoder
     
-    func dependency() -> Theme
+    func theme() -> Theme
     
     #if os(iOS)
     @available(iOS 10.0, *)
-    func dependency(delegate: MailComposerDelegate?) -> MailComposerType
+    func mailComposer(delegate: MailComposerDelegate?) -> MailComposerType
     #endif
 }
 
+// MARK: - Defaults
+
 public extension SwiftyPressCore {
     
-    func dependency() -> ConstantsType {
-        Constants(store: dependencyStore())
+    func constants() -> ConstantsType {
+        Constants(service: constantsService())
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> PreferencesType {
-        Preferences(store: dependencyStore())
+    func preferences() -> PreferencesType {
+        Preferences(service: preferencesService())
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> DataProviderType {
-        DataProvider(
-            constants: dependency(),
-            seedStore: dependency(),
-            remoteStore: dependency(),
-            cacheStore: dependency(),
-            log: dependency()
+    func dataRepository() -> DataRepositoryType {
+        DataRepository(
+            seedService: seedService(),
+            remoteService: remoteService(),
+            cacheService: cacheService(),
+            constants: constants(),
+            log: log()
         )
     }
     
-    func dependency() -> RemoteStore {
-        RemoteNetworkStore(
-            apiSession: dependency(),
-            jsonDecoder: dependency(),
-            log: dependency()
+    func remoteService() -> RemoteService {
+        RemoteNetworkService(
+            networkRepository: networkRepository(),
+            jsonDecoder: jsonDecoder(),
+            constants: constants(),
+            log: log()
         )
     }
     
-    func dependency() -> CacheStore {
-        CacheRealmStore(
-            fileManager: dependency(),
-            preferences: dependency(),
-            log: dependency()
+    func cacheService() -> CacheService {
+        CacheRealmService(
+            fileManager: fileManager(),
+            preferences: preferences(),
+            log: log()
         )
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> PostProviderType {
-        PostProvider(
-            store: dependency(),
-            remote: dependency(),
-            preferences: dependency(),
-            constants: dependency(),
-            dataProvider: dependency(),
-            log: dependency()
+    func postRepository() -> PostRepositoryType {
+        PostRepository(
+            service: postService(),
+            remote: postRemote(),
+            dataRepository: dataRepository(),
+            preferences: preferences(),
+            constants: constants(),
+            log: log()
         )
     }
     
-    func dependency() -> PostStore {
-        PostRealmStore(log: dependency())
+    func postService() -> PostService {
+        PostRealmService(log: log())
     }
     
-    func dependency() -> PostRemote {
+    func postRemote() -> PostRemote {
         PostNetworkRemote(
-            apiSession: dependency(),
-            jsonDecoder: dependency(),
-            log: dependency()
+            networkRepository: networkRepository(),
+            jsonDecoder: jsonDecoder(),
+            constants: constants(),
+            log: log()
         )
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> AuthorProviderType {
-        AuthorProvider(
-            store: dependency(),
-            remote: dependency(),
-            log: dependency()
+    func authorRepository() -> AuthorRepositoryType {
+        AuthorRepository(
+            service: authorService(),
+            remote: authorRemote(),
+            log: log()
         )
     }
     
-    func dependency() -> AuthorStore {
-        AuthorRealmStore()
+    func authorService() -> AuthorService {
+        AuthorRealmService()
     }
     
-    func dependency() -> AuthorRemote {
+    func authorRemote() -> AuthorRemote {
         AuthorNetworkRemote(
-            apiSession: dependency(),
-            jsonDecoder: dependency(),
-            log: dependency()
+            networkRepository: networkRepository(),
+            jsonDecoder: jsonDecoder(),
+            constants: constants(),
+            log: log()
         )
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> MediaProviderType {
-        MediaProvider(
-            store: dependency(),
-            remote: dependency()
+    func mediaRepository() -> MediaRepositoryType {
+        MediaRepository(
+            service: mediaService(),
+            remote: mediaRemote()
         )
     }
     
-    func dependency() -> MediaStore {
-        MediaRealmStore(log: dependency())
+    func mediaService() -> MediaService {
+        MediaRealmService(log: log())
     }
     
-    func dependency() -> MediaRemote {
+    func mediaRemote() -> MediaRemote {
         MediaNetworkRemote(
-            apiSession: dependency(),
-            jsonDecoder: dependency(),
-            log: dependency()
+            networkRepository: networkRepository(),
+            jsonDecoder: jsonDecoder(),
+            constants: constants(),
+            log: log()
         )
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> TaxonomyProviderType {
-        TaxonomyProvider(
-            store: dependencyStore(),
-            dataProvider: dependency()
+    func taxonomyRepository() -> TaxonomyRepositoryType {
+        TaxonomyRepository(
+            service: taxonomyService(),
+            dataRepository: dataRepository()
         )
     }
     
-    func dependencyStore() -> TaxonomyStore {
-        TaxonomyRealmStore(log: dependency())
+    func taxonomyService() -> TaxonomyService {
+        TaxonomyRealmService(log: log())
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> APISessionType {
-        APISession(
-            constants: dependency(),
-            log: dependency()
-        )
+    func networkRepository() -> NetworkRepositoryType {
+        NetworkRepository(service: networkService())
     }
     
-    func dependency() -> HTTPServiceType {
-        HTTPService()
+    func networkService() -> NetworkService {
+        NetworkFoundationService()
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> LogProviderType {
-        LogProvider(stores: dependency())
+    func log() -> LogRepositoryType {
+        LogRepository(services: logServices())
     }
 }
 
 public extension SwiftyPressCore {
     
-    func dependency() -> NotificationCenter {
+    func notificationCenter() -> NotificationCenter {
         .default
     }
     
-    func dependency() -> FileManager {
+    func fileManager() -> FileManager {
         .default
     }
     
-    func dependency() -> JSONDecoder {
+    func jsonDecoder() -> JSONDecoder {
         .default
     }
 }
@@ -223,8 +228,8 @@ public extension SwiftyPressCore {
     
     #if os(iOS)
     @available(iOS 10.0, *)
-    func dependency(delegate: MailComposerDelegate? = nil) -> MailComposerType {
-        let theme: Theme = dependency()
+    func mailComposer(delegate: MailComposerDelegate? = nil) -> MailComposerType {
+        let theme: Theme = self.theme()
         
         return MailComposer(
             delegate: delegate,

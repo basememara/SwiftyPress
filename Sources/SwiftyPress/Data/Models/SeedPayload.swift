@@ -6,9 +6,6 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import Foundation
-import ZamzamCore
-
 public struct SeedPayload: SeedPayloadType, Decodable {
     public let posts: [PostType]
     public let authors: [AuthorType]
@@ -28,7 +25,7 @@ public struct SeedPayload: SeedPayloadType, Decodable {
     }
 }
 
-// MARK: - For JSON decoding
+// MARK: - Codable
 
 extension SeedPayload {
     
