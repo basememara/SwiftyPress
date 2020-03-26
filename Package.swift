@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 
 import PackageDescription
 
@@ -17,11 +17,11 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "git@github.com:Alamofire/Alamofire.git", from: "5.0.0-rc.2"),
-        .package(url: "git@github.com:realm/realm-cocoa.git", .upToNextMajor(from: "3.18.0")),
-        .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .branch("develop")),
+        .package(url: "git@github.com:Alamofire/Alamofire.git", .branch("master")),
+        .package(name: "Realm", url: "git@github.com:realm/realm-cocoa.git", .branch("master")),
+        .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .branch("master")),
         .package(url: "git@github.com:ZamzamInc/Stencil.git", .branch("lite")),
-        .package(url: "git@github.com:onevcat/Kingfisher.git", .upToNextMajor(from: "5.8.1"))
+        .package(url: "git@github.com:onevcat/Kingfisher.git", .branch("master"))
     ],
     targets: [
         .target(
@@ -29,10 +29,10 @@ let package = Package(
             dependencies: [
                 "Alamofire",
                 "Realm",
-                "RealmSwift",
-                "ZamzamCore",
-                "ZamzamNotification",
-                "ZamzamUI",
+                .product(name: "RealmSwift", package: "Realm"),
+                .product(name: "ZamzamCore", package: "ZamzamKit"),
+                .product(name: "ZamzamNotification", package: "ZamzamKit"),
+                .product(name: "ZamzamUI", package: "ZamzamKit"),
                 "Stencil",
                 "Kingfisher"
             ]
