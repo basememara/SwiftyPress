@@ -39,7 +39,7 @@ public extension RemoteNetworkService {
         with request: DataAPI.ModifiedRequest,
         completion: @escaping (Result<SeedPayloadType, DataError>) -> Void
     ) {
-        let urlRequest = APIRouter.modified(after: date, request).asURLRequest(constants: constants)
+        let urlRequest: URLRequest = .modified(after: date, with: request, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             guard case .success(let value) = $0 else {
@@ -73,3 +73,42 @@ public extension RemoteNetworkService {
         }
     }
 }
+
+// MARK: - Requests
+
+private extension URLRequest {
+    
+    static func modified(after: Date?, with request: DataAPI.ModifiedRequest, constants: ConstantsType) -> URLRequest {
+        URLRequest(
+            url: constants.baseURL
+                .appendingPathComponent(constants.baseREST)
+                .appendingPathComponent("modified"),
+            method: .get,
+            parameters: {
+                var params: [String: Any] = [:]
+                
+                if let timestamp = after?.timeIntervalSince1970 {
+                    params["after"] = Int(timestamp)
+                }
+                
+                if !request.taxonomies.isEmpty {
+                    params["taxonomies"] = request.taxonomies
+                        .joined(separator: ",")
+                }
+                
+                if !request.postMetaKeys.isEmpty {
+                    params["meta_keys"] = request.postMetaKeys
+                        .joined(separator: ",")
+                }
+                
+                if let limit = request.limit {
+                    params["limit"] = limit
+                }
+                
+                return params
+            }(),
+            timeoutInterval: 30
+        )
+    }
+}
+

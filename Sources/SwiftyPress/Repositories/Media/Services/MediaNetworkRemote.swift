@@ -31,7 +31,7 @@ public struct MediaNetworkRemote: MediaRemote {
 public extension MediaNetworkRemote {
     
     func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
-        let urlRequest = APIRouter.readMedia(id: id).asURLRequest(constants: constants)
+        let urlRequest: URLRequest = .readMedia(id: id, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             // Handle errors
@@ -73,5 +73,19 @@ public extension MediaNetworkRemote {
                 }
             }
         }
+    }
+}
+
+// MARK: - Requests
+
+private extension URLRequest {
+    
+    static func readMedia(id: Int, constants: ConstantsType) -> URLRequest {
+        URLRequest(
+            url: constants.baseURL
+                .appendingPathComponent(constants.baseREST)
+                .appendingPathComponent("media/\(id)"),
+            method: .get
+        )
     }
 }

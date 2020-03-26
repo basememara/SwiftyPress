@@ -31,7 +31,7 @@ public struct AuthorNetworkRemote: AuthorRemote {
 public extension AuthorNetworkRemote {
     
     func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
-        let urlRequest = APIRouter.readAuthor(id: id).asURLRequest(constants: constants)
+        let urlRequest: URLRequest = .readAuthor(id: id, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             // Handle errors
@@ -75,3 +75,17 @@ public extension AuthorNetworkRemote {
         }
     }
 }
+
+// MARK: - Requests
+
+private extension URLRequest {
+    
+    static func readAuthor(id: Int, constants: ConstantsType) -> URLRequest {
+        URLRequest(
+            url: constants.baseURL
+                .appendingPathComponent(constants.baseREST)
+                .appendingPathComponent("author/\(id)"),
+            method: .get
+        )
+    }
+} 

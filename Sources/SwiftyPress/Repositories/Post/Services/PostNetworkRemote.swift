@@ -31,7 +31,7 @@ public struct PostNetworkRemote: PostRemote {
 public extension PostNetworkRemote {
     
     func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
-        let urlRequest = APIRouter.readPost(id: id, request).asURLRequest(constants: constants)
+        let urlRequest: URLRequest = .readPost(id: id, with: request, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             // Handle errors
@@ -68,5 +68,34 @@ public extension PostNetworkRemote {
                 }
             }
         }
+    }
+}
+
+// MARK: - Requests
+
+private extension URLRequest {
+    
+    static func readPost(id: Int, with request: PostAPI.ItemRequest, constants: ConstantsType) -> URLRequest {
+        URLRequest(
+            url: constants.baseURL
+                .appendingPathComponent(constants.baseREST)
+                .appendingPathComponent("post/\(id)"),
+            method: .get,
+            parameters: {
+                var params: [String: Any] = [:]
+                
+                if !request.taxonomies.isEmpty {
+                    params["taxonomies"] = request.taxonomies
+                        .joined(separator: ",")
+                }
+                
+                if !request.postMetaKeys.isEmpty {
+                    params["meta_keys"] = request.postMetaKeys
+                        .joined(separator: ",")
+                }
+                
+                return params
+            }()
+        )
     }
 }

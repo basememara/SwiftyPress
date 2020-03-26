@@ -17,7 +17,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "git@github.com:Alamofire/Alamofire.git", .branch("master")),
         .package(name: "Realm", url: "git@github.com:realm/realm-cocoa.git", .branch("master")),
         .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .branch("master")),
         .package(url: "git@github.com:ZamzamInc/Stencil.git", .branch("lite")),
@@ -27,7 +26,6 @@ let package = Package(
         .target(
             name: "SwiftyPress",
             dependencies: [
-                "Alamofire",
                 "Realm",
                 .product(name: "RealmSwift", package: "Realm"),
                 .product(name: "ZamzamCore", package: "ZamzamKit"),
