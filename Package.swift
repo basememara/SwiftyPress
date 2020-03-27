@@ -11,10 +11,7 @@ let package = Package(
         .watchOS(.v4)
     ],
     products: [
-        .library(
-            name: "SwiftyPress",
-            targets: ["SwiftyPress"]
-        )
+        .library(name: "SwiftyPress", type: .dynamic, targets: ["SwiftyPress"])
     ],
     dependencies: [
         .package(name: "Realm", url: "git@github.com:realm/realm-cocoa.git", .branch("master")),
