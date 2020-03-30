@@ -8,7 +8,7 @@
 
 import Foundation.NSURL
 
-public enum Social {
+public enum Social: String {
     case twitter
     case linkedIn
     case github
