@@ -8,12 +8,13 @@
 
 import Foundation.NSURL
 
-public enum Social: String {
+public enum Social: String, CaseIterable {
     case twitter
     case linkedIn
     case github
     case pinterest
     case instagram
+    case email
 }
 
 public extension Social {
@@ -34,6 +35,8 @@ public extension Social {
             return "http://pinterest.com/\(username)"
         case .instagram:
             return "http://instagram.com/\(username)"
+        case .email:
+            return "mailto:\(username)"
         }
     }
 }
@@ -56,6 +59,8 @@ public extension Social {
             return URL(string: "pinterest://user/\(username)")
         case .instagram:
             return URL(string: "instagram://user?username=\(username)")
+        case .email:
+            return URL(string: "mailto:\(username)")
         }
     }
 }
