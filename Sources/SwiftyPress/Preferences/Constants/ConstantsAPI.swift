@@ -6,10 +6,10 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import Foundation
+import Foundation.NSURL
 import ZamzamCore
 
-public protocol ConstantsStore: AppInfo {
+public protocol ConstantsService: AppInfo {
     var environment: Environment { get }
     var itunesName: String { get }
     var itunesID: String { get }
@@ -28,7 +28,7 @@ public protocol ConstantsStore: AppInfo {
     var minLogLevel: LogAPI.Level { get }
 }
 
-public protocol ConstantsType: ConstantsStore {}
+public protocol ConstantsType: ConstantsService {}
 
 public extension ConstantsType {
     var itunesURL: String { "https://itunes.apple.com/app/id\(itunesID)" }

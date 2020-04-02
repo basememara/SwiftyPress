@@ -6,47 +6,47 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-import Foundation
+import Foundation.NSURL
 import ZamzamCore
 
 public struct Constants: ConstantsType {
-    private let store: ConstantsStore
+    private let service: ConstantsService
     
-    public init(store: ConstantsStore) {
-        self.store = store
+    public init(service: ConstantsService) {
+        self.service = service
     }
 }
 
 public extension Constants {
-    var environment: Environment { store.environment}
+    var environment: Environment { service.environment}
 }
 
 public extension Constants {
-    var itunesName: String { store.itunesName }
-    var itunesID: String { store.itunesID }
+    var itunesName: String { service.itunesName }
+    var itunesID: String { service.itunesID }
 }
 
 public extension Constants {
-    var baseURL: URL { store.baseURL }
-    var baseREST: String { store.baseREST }
-    var wpREST: String { store.wpREST }
+    var baseURL: URL { service.baseURL }
+    var baseREST: String { service.baseREST }
+    var wpREST: String { service.wpREST }
 }
 
 public extension Constants {
-    var email: String { store.email }
-    var privacyURL: String { store.privacyURL }
-    var disclaimerURL: String? { store.disclaimerURL }
-    var styleSheet: String { store.styleSheet }
-    var googleAnalyticsID: String? { store.googleAnalyticsID }
+    var email: String { service.email }
+    var privacyURL: String { service.privacyURL }
+    var disclaimerURL: String? { service.disclaimerURL }
+    var styleSheet: String { service.styleSheet }
+    var googleAnalyticsID: String? { service.googleAnalyticsID }
 }
 
 public extension Constants {
-    var featuredCategoryID: Int { store.featuredCategoryID }
-    var defaultFetchModifiedLimit: Int { store.defaultFetchModifiedLimit }
-    var taxonomies: [String] { store.taxonomies }
-    var postMetaKeys: [String] { store.postMetaKeys }
+    var featuredCategoryID: Int { service.featuredCategoryID }
+    var defaultFetchModifiedLimit: Int { service.defaultFetchModifiedLimit }
+    var taxonomies: [String] { service.taxonomies }
+    var postMetaKeys: [String] { service.postMetaKeys }
 }
 
 public extension Constants {
-    var minLogLevel: LogAPI.Level { store.minLogLevel }
+    var minLogLevel: LogAPI.Level { service.minLogLevel }
 }

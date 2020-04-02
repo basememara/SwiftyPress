@@ -10,7 +10,7 @@
 import Foundation
 
 extension UserDefaults {
-    static let test = UserDefaults(suiteName: Bundle.test.bundleIdentifier!)!
+    static let test = UserDefaults(suiteName: "SwiftyPressTests")!
 }
 
 extension Bundle {

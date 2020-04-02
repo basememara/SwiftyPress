@@ -7,14 +7,15 @@
 //
 
 #if !os(watchOS)
-import Foundation
+import Foundation.NSJSONSerialization
+import Foundation.NSURL
 import ZamzamCore
 @testable import SwiftyPress
 
 struct TestsCore: SwiftyPressCore {
     
-    func dependencyStore() -> ConstantsStore {
-        ConstantsMemoryStore(
+    func constantsService() -> ConstantsService {
+        ConstantsMemoryService(
             environment: .development,
             itunesName: "",
             itunesID: "0",
@@ -34,26 +35,26 @@ struct TestsCore: SwiftyPressCore {
         )
     }
     
-    func dependencyStore() -> PreferencesStore {
-        PreferencesDefaultsStore(defaults: .test)
+    func preferencesService() -> PreferencesService {
+        PreferencesDefaultsService(defaults: .test)
     }
     
-    func dependency() -> SeedStore {
-        SeedJSONStore(jsonString: jsonString)
+    func logServices() -> [LogService] {
+        [LogConsoleService(minLevel: .verbose)]
     }
     
-    func dependency() -> [LogStore] {
-        [LogConsoleStore(minLevel: .verbose)]
+    func seedService() -> SeedService {
+        SeedJSONService(jsonString: jsonString)
     }
     
-    func dependency() -> Theme {
+    func theme() -> Theme {
         fatalError("Not implemented")
     }
 }
 
 private extension TestsCore {
     
-    struct SeedJSONStore: SeedStore {
+    struct SeedJSONService: SeedService {
         private static var data: SeedPayloadType?
         private let jsonString: String
         

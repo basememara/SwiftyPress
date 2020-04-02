@@ -26,7 +26,7 @@ public extension PostsDataViewModel {
         self.id = object.id
         self.title = object.title
         self.summary = !object.excerpt.isEmpty ? object.excerpt
-            : object.content.htmlStripped.htmlDecoded.prefix(150).string
+            : object.content.htmlStripped.htmlDecoded().prefix(150).string
         self.content = object.content
         self.link = object.link
         self.date = dateFormatter.string(from: object.createdAt)

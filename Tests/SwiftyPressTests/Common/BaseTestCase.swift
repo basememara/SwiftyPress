@@ -11,8 +11,8 @@ import ZamzamCore
 import SwiftyPress
 
 class BaseTestCase: XCTestCase {
-    private lazy var dataProvider: DataProviderType = core.dependency()
-    private lazy var preferences: PreferencesType = core.dependency()
+    private lazy var dataRepository: DataRepositoryType = core.dataRepository()
+    private lazy var preferences: PreferencesType = core.preferences()
     
     lazy var core: SwiftyPressCore = TestsCore()
     
@@ -24,12 +24,11 @@ class BaseTestCase: XCTestCase {
         continueAfterFailure = false
         
         // Clear previous
-        dataProvider.resetCache(for: preferences.userID ?? 0)
+        dataRepository.resetCache(for: preferences.userID ?? 0)
         preferences.removeAll()
-        UserDefaults.test.removeAll()
         
         // Setup database
-        dataProvider.configure()
+        dataRepository.configure()
     }
 }
 #endif
