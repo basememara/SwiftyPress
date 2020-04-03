@@ -14,10 +14,10 @@ let package = Package(
         .library(name: "SwiftyPress", type: .dynamic, targets: ["SwiftyPress"])
     ],
     dependencies: [
-        .package(name: "Realm", url: "git@github.com:realm/realm-cocoa.git", .branch("master")),
-        .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .branch("master")),
+        .package(name: "Realm", url: "git@github.com:realm/realm-cocoa.git", .exact("4.4.0")),
+        .package(url: "git@github.com:ZamzamInc/ZamzamKit.git", .exact("5.3.0")),
         .package(url: "git@github.com:ZamzamInc/Stencil.git", .branch("lite")),
-        .package(url: "git@github.com:onevcat/Kingfisher.git", .branch("master"))
+        .package(url: "git@github.com:onevcat/Kingfisher.git", .exact("5.13.3"))
     ],
     targets: [
         .target(
