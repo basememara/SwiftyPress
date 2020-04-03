@@ -42,8 +42,8 @@
         "repositoryURL": "git@github.com:ZamzamInc/ZamzamKit.git",
         "state": {
           "branch": null,
-          "revision": "0d2c731548ad88a889b0db3b6e235e2924307214",
-          "version": "5.3.0"
+          "revision": "7f07cc8e8bb33a0721c5d6887b8fbf78e01a1fe2",
+          "version": "5.3.1"
         }
       }
     ]

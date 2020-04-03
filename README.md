@@ -14,7 +14,7 @@ It promotes [Clean Architecture](http://basememara.com/swift-clean-architecture/
 
 ### Swift Package Manager
 
-`.package(url: "git@github.com:ZamzamInc/SwiftyPress.git", .upToNextMajor(from: "3.0.2"))`
+`.package(url: "git@github.com:ZamzamInc/SwiftyPress.git", .upToNextMajor(from: "3.0.3"))`
 
 *A limitation with Swift Package Manager requires resources to be embedded manually. Drag `/Resources/SwiftyPress.bundle` to your Xcode project's `Build Phases > Copy Bundle` section.*
 
