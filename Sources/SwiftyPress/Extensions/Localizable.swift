@@ -46,3 +46,7 @@ public extension Localizable {
         return Localizable(NSLocalizedString(key, bundle: bundle, comment: "Table section header for custom taxonomy"))
     }
 }
+
+public extension Localizable {
+    static let seeAllButton = Localizable(NSLocalizedString("see.all.button", bundle: .swiftyPress, comment: "Button title for seeing all results"))
+}
