@@ -36,14 +36,14 @@ public extension PostsDataViewModel {
 }
 
 public protocol PostsDataViewCell {
-    func bind(_ model: PostsDataViewModel)
-    func bind(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?)
+    func load(_ model: PostsDataViewModel)
+    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?)
 }
 
 public extension PostsDataViewCell {
     
-    func bind(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?) {
-        bind(model)
+    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?) {
+        load(state)
     }
 }
 #endif

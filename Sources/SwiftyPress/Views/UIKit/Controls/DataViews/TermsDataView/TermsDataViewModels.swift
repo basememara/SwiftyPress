@@ -22,6 +22,6 @@ public struct TermsDataViewModel {
 }
 
 public protocol TermsDataViewCell {
-    func bind(_ model: TermsDataViewModel)
+    func load(_ model: TermsDataViewModel)
 }
 #endif

@@ -101,7 +101,7 @@ extension PostsDataViewAdapter: UITableViewDataSource {
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
         guard let model = viewModels?[indexPath.row] else { return cell }
-        (cell as? PostsDataViewCell)?.bind(model, delegate: delegate)
+        (cell as? PostsDataViewCell)?.load(model, delegate: delegate)
         return cell
     }
 }
@@ -154,7 +154,7 @@ extension PostsDataViewAdapter: UICollectionViewDataSource {
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView[indexPath]
         guard let model = viewModels?[indexPath.row] else { return cell }
-        (cell as? PostsDataViewCell)?.bind(model, delegate: delegate)
+        (cell as? PostsDataViewCell)?.load(model, delegate: delegate)
         return cell
     }
 }

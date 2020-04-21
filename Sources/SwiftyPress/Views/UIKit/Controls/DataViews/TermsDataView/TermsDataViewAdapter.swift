@@ -89,7 +89,7 @@ extension TermsDataViewAdapter: UITableViewDataSource {
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView[indexPath]
-        (cell as? TermsDataViewCell)?.bind(element(in: indexPath))
+        (cell as? TermsDataViewCell)?.load(element(in: indexPath))
         return cell
     }
 }
@@ -121,7 +121,7 @@ extension TermsDataViewAdapter: UICollectionViewDataSource {
     
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView[indexPath]
-        (cell as? TermsDataViewCell)?.bind(element(in: indexPath))
+        (cell as? TermsDataViewCell)?.load(element(in: indexPath))
         return cell
     }
 }
