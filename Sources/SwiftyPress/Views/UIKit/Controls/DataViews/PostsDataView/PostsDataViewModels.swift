@@ -6,8 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
-#if os(iOS)
-import Foundation
+import Foundation.NSDateFormatter
 
 public struct PostsDataViewModel {
     public let id: Int
@@ -34,16 +33,3 @@ public extension PostsDataViewModel {
         self.favorite = favorite
     }
 }
-
-public protocol PostsDataViewCell {
-    func load(_ model: PostsDataViewModel)
-    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?)
-}
-
-public extension PostsDataViewCell {
-    
-    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?) {
-        load(state)
-    }
-}
-#endif

@@ -142,4 +142,10 @@ private extension TermsDataViewAdapter {
         elements(in: section).count
     }
 }
+
+// MARK: - Types
+
+public protocol TermsDataViewCell {
+    func load(_ model: TermsDataViewModel)
+}
 #endif

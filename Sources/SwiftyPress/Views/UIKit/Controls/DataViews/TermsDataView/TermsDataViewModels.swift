@@ -6,7 +6,6 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
-#if os(iOS)
 public struct TermsDataViewModel {
     public let id: Int
     public let name: String
@@ -20,8 +19,3 @@ public struct TermsDataViewModel {
         self.taxonomy = taxonomy
     }
 }
-
-public protocol TermsDataViewCell {
-    func load(_ model: TermsDataViewModel)
-}
-#endif

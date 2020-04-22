@@ -159,7 +159,7 @@ extension PostsDataViewAdapter: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionView delegates
+// MARK: - UIScrollView delegates
 
 extension PostsDataViewAdapter {
     
@@ -169,6 +169,20 @@ extension PostsDataViewAdapter {
     
     open func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         delegate?.postsDataViewWillEndDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+}
+
+// MARK: - Types
+
+public protocol PostsDataViewCell {
+    func load(_ model: PostsDataViewModel)
+    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?)
+}
+
+public extension PostsDataViewCell {
+    
+    func load(_ model: PostsDataViewModel, delegate: PostsDataViewDelegate?) {
+        load(model)
     }
 }
 #endif
