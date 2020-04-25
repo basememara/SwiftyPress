@@ -51,4 +51,5 @@ public extension Localizable {
     static let seeAllButton = Localizable(NSLocalizedString("see.all.button", bundle: .swiftyPress, comment: "Button title for seeing all results"))
     static let favoritesTitle = Localizable(NSLocalizedString("favorites.title", bundle: .swiftyPress, comment: "Navigation title of favorites"))
     static let emptyFavoritesMessage = Localizable(NSLocalizedString("empty.favorites.message", bundle: .swiftyPress, comment: "Table message for no favorites"))
+    static let listTermsTitle = Localizable(NSLocalizedString("list.terms.title", bundle: .swiftyPress, comment: "Navigation title of categories and tags"))
 }
