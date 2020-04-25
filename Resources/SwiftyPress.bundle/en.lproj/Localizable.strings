@@ -26,3 +26,6 @@
 "tag.section" = "Tags";
 
 "see.all.button" = "See All";
+
+"favorites.title" = "Favorites";
+"empty.favorites.message" = "Looks like you don't have any favorites yet.";
