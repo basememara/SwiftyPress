@@ -16,9 +16,9 @@ public class SocialButton: UIButton {
         self.init(type: .custom)
         
         self.setImage(UIImage(named: social.rawValue), for: .normal)
+        self.contentMode = .scaleAspectFit
         
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.contentMode = .scaleAspectFit
         self.heightAnchor.constraint(equalToConstant: size).isActive = true
         self.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
