@@ -30,4 +30,8 @@
 "favorites.title" = "Favorites";
 "empty.favorites.message" = "Looks like you don't have any favorites yet.";
 
+"search.title" = "Search";
+"empty.search.message" = "Looks like you don't have any search results.";
+
 "list.terms.title" = "Categories & Tags";
+"more.title" = "More";

@@ -19,11 +19,11 @@ public extension UIImage {
     
     enum ImageName: String {
         case placeholder
+        case emptyPlaceholder = "empty-set"
         case favoriteEmpty = "favorite-empty"
         case favoriteFilled = "favorite-filled"
         case more = "more-icon"
         case comments = "comments"
         case safariShare = "safari-share"
-        case emptyPlaceholder = "empty-set"
     }
 }
