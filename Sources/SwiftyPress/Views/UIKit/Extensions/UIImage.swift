@@ -25,5 +25,6 @@ public extension UIImage {
         case more = "more-icon"
         case comments = "comments"
         case safariShare = "safari-share"
+        case theme = "theme"
     }
 }

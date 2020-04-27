@@ -55,4 +55,5 @@ public extension Localizable {
     static let emptySearchMessage = Localizable(NSLocalizedString("empty.search.message", bundle: .swiftyPress, comment: "Table message for no search results"))
     static let listTermsTitle = Localizable(NSLocalizedString("list.terms.title", bundle: .swiftyPress, comment: "Navigation title of categories and tags"))
     static let moreTitle = Localizable(NSLocalizedString("more.title", bundle: .swiftyPress, comment: "Navigation title of more"))
+    static let settingsTitle = Localizable(NSLocalizedString("settings.title", bundle: .swiftyPress, comment: "Navigation title of settings"))
 }
