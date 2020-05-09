@@ -9,7 +9,7 @@
 import Foundation.NSURLRequest
 import ZamzamCore
 
-extension LogRepositoryType {
+extension LogRepository {
     
     /// Log URL request which help during debugging (low priority; not written to file)
     func request(

@@ -11,9 +11,9 @@ import RealmSwift
 import ZamzamCore
 
 public struct PostRealmService: PostService {
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
-    public init(log: LogRepositoryType) {
+    public init(log: LogRepository) {
         self.log = log
     }
 }

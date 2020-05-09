@@ -13,12 +13,12 @@ import ZamzamCore
 public struct CacheRealmService: CacheService {
     private let fileManager: FileManager
     private let preferences: PreferencesType
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
     public init(
         fileManager: FileManager,
         preferences: PreferencesType,
-        log: LogRepositoryType
+        log: LogRepository
     ) {
         self.fileManager = fileManager
         self.preferences = preferences

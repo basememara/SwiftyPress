@@ -14,7 +14,7 @@ public struct PostRepository: PostRepositoryType {
     private let dataRepository: DataRepositoryType
     private let preferences: PreferencesType
     private let constants: ConstantsType
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
     public init(
         service: PostService,
@@ -22,7 +22,7 @@ public struct PostRepository: PostRepositoryType {
         dataRepository: DataRepositoryType,
         preferences: PreferencesType,
         constants: ConstantsType,
-        log: LogRepositoryType
+        log: LogRepository
     ) {
         self.service = service
         self.remote = remote

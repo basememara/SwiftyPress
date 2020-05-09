@@ -11,9 +11,9 @@ import ZamzamCore
 public struct AuthorRepository: AuthorRepositoryType {
     private let service: AuthorService
     private let remote: AuthorRemote?
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
-    public init(service: AuthorService, remote: AuthorRemote?, log: LogRepositoryType) {
+    public init(service: AuthorService, remote: AuthorRemote?, log: LogRepository) {
         self.service = service
         self.remote = remote
         self.log = log

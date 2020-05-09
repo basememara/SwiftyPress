@@ -14,14 +14,14 @@ public struct DataRepository: DataRepositoryType {
     private let remoteService: RemoteService
     private let cacheService: CacheService
     private let constants: ConstantsType
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
     init(
         seedService: SeedService,
         remoteService: RemoteService,
         cacheService: CacheService,
         constants: ConstantsType,
-        log: LogRepositoryType
+        log: LogRepository
     ) {
         self.seedService = seedService
         self.remoteService = remoteService

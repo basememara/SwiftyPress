@@ -19,7 +19,7 @@ public protocol SwiftyPressCore {
     func preferences() -> PreferencesType
     func preferencesService() -> PreferencesService
     
-    func log() -> LogRepositoryType
+    func log() -> LogRepository
     func logServices() -> [LogService]
     
     func dataRepository() -> DataRepositoryType
@@ -42,7 +42,7 @@ public protocol SwiftyPressCore {
     func taxonomyRepository() -> TaxonomyRepositoryType
     func taxonomyService() -> TaxonomyService
     
-    func networkRepository() -> NetworkRepositoryType
+    func networkRepository() -> NetworkRepository
     func networkService() -> NetworkService
     
     func notificationCenter() -> NotificationCenter
@@ -193,7 +193,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func networkRepository() -> NetworkRepositoryType {
+    func networkRepository() -> NetworkRepository {
         NetworkRepository(service: networkService())
     }
     
@@ -204,7 +204,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func log() -> LogRepositoryType {
+    func log() -> LogRepository {
         LogRepository(services: logServices())
     }
 }

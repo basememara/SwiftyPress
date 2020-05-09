@@ -10,16 +10,16 @@ import Foundation
 import ZamzamCore
 
 public struct AuthorNetworkRemote: AuthorRemote {
-    private let networkRepository: NetworkRepositoryType
+    private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
     private let constants: ConstantsType
-    private let log: LogRepositoryType
+    private let log: LogRepository
     
     public init(
-        networkRepository: NetworkRepositoryType,
+        networkRepository: NetworkRepository,
         jsonDecoder: JSONDecoder,
         constants: ConstantsType,
-        log: LogRepositoryType
+        log: LogRepository
     ) {
         self.networkRepository = networkRepository
         self.jsonDecoder = jsonDecoder
