@@ -48,9 +48,9 @@ extension PostRealmObject {
     var terms: [Int] {
         get { termsRaw.map { $0.id } }
         set {
-            termsRaw = List<TermIDRealmObject>().with {
+            termsRaw = List<TermIDRealmObject>().apply {
                 $0.append(objectsIn: newValue.map { id in
-                    TermIDRealmObject().with { $0.id = id }
+                    TermIDRealmObject().apply { $0.id = id }
                 })
             }
         }
@@ -63,9 +63,9 @@ extension PostRealmObject {
         }
         
         set {
-            metaRaw = List<MetaRealmObject>().with {
+            metaRaw = List<MetaRealmObject>().apply {
                 $0.append(objectsIn: newValue.map { item in
-                    MetaRealmObject().with {
+                    MetaRealmObject().apply {
                         $0.key = item.key
                         $0.value = item.value
                     }

@@ -11,11 +11,11 @@ import UIKit
 
 public class EmptyPlaceholderView: UIView {
     
-    private lazy var image = UIImageView(imageNamed: .emptyPlaceholder).with {
+    private lazy var image = UIImageView(imageNamed: .emptyPlaceholder).apply {
         $0.contentMode = .scaleAspectFit
     }
     
-    private lazy var label = ThemedHeadline().with {
+    private lazy var label = ThemedHeadline().apply {
         $0.font = .preferredFont(forTextStyle: .headline)
         $0.textAlignment = .center
         $0.numberOfLines = 3
@@ -40,17 +40,17 @@ private extension EmptyPlaceholderView {
         
         // Compose layout
         let stackView = UIStackView(arrangedSubviews: [
-            UIView().with {
+            UIView().apply {
                 $0.backgroundColor = .clear
                 $0.addSubview(image)
             },
             label
-        ]).with {
+        ]).apply {
             $0.axis = .vertical
             $0.spacing = 10
         }
         
-        let contentView = UIView().with {
+        let contentView = UIView().apply {
             $0.addSubview(stackView)
         }
         

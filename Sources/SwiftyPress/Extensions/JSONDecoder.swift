@@ -11,7 +11,7 @@ import ZamzamCore
 
 public extension JSONDecoder {
     
-    static let `default` = JSONDecoder().with {
+    static let `default` = JSONDecoder().apply {
         $0.dateDecodingStrategy = .formatted(
             DateFormatter(iso8601Format: "yyyy-MM-dd'T'HH:mm:ss")
         )
