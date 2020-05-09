@@ -24,8 +24,8 @@ class PostRealmObject: Object, PostType {
     dynamic var modifiedAt: Date = .distantPast
     
     let mediaIDRaw = RealmOptional<Int>()
-    let termsRaw = List<TermIDRealmObject>()
-    let metaRaw = List<MetaRealmObject>()
+    var termsRaw = List<TermIDRealmObject>()
+    var metaRaw = List<MetaRealmObject>()
     
     override static func primaryKey() -> String? {
         "id"
@@ -48,10 +48,11 @@ extension PostRealmObject {
     var terms: [Int] {
         get { termsRaw.map { $0.id } }
         set {
-            termsRaw.removeAll()
-            termsRaw.append(objectsIn: newValue.map { id in
-                TermIDRealmObject().with { $0.id = id }
-            })
+            termsRaw = List<TermIDRealmObject>().with {
+                $0.append(objectsIn: newValue.map { id in
+                    TermIDRealmObject().with { $0.id = id }
+                })
+            }
         }
     }
     
@@ -62,13 +63,14 @@ extension PostRealmObject {
         }
         
         set {
-            metaRaw.removeAll()
-            metaRaw.append(objectsIn: newValue.map { item in
-                MetaRealmObject().with {
-                    $0.key = item.key
-                    $0.value = item.value
-                }
-            })
+            metaRaw = List<MetaRealmObject>().with {
+                $0.append(objectsIn: newValue.map { item in
+                    MetaRealmObject().with {
+                        $0.key = item.key
+                        $0.value = item.value
+                    }
+                })
+            }
         }
     }
 }
