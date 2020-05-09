@@ -1,5 +1,5 @@
 //
-//  ConstantsStoreInterfaces.swift
+//  ConstantsAPI.swift
 //  SwiftyPress iOS
 //
 //  Created by Basem Emara on 2018-10-03.
@@ -9,7 +9,7 @@
 import Foundation.NSURL
 import ZamzamCore
 
-public protocol ConstantsService: AppInfo {
+public protocol ConstantsService {
     var environment: Environment { get }
     var itunesName: String { get }
     var itunesID: String { get }
@@ -26,10 +26,4 @@ public protocol ConstantsService: AppInfo {
     var taxonomies: [String] { get }
     var postMetaKeys: [String] { get }
     var minLogLevel: LogAPI.Level { get }
-}
-
-public protocol ConstantsType: ConstantsService {}
-
-public extension ConstantsType {
-    var itunesURL: String { "https://itunes.apple.com/app/id\(itunesID)" }
 }

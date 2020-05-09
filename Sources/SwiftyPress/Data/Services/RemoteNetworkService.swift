@@ -12,13 +12,13 @@ import ZamzamCore
 public struct RemoteNetworkService: RemoteService {
     private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
-    private let constants: ConstantsType
+    private let constants: Constants
     private let log: LogRepository
     
     public init(
         networkRepository: NetworkRepository,
         jsonDecoder: JSONDecoder,
-        constants: ConstantsType,
+        constants: Constants,
         log: LogRepository
     ) {
         self.networkRepository = networkRepository
@@ -78,7 +78,7 @@ public extension RemoteNetworkService {
 
 private extension URLRequest {
     
-    static func modified(after: Date?, with request: DataAPI.ModifiedRequest, constants: ConstantsType) -> URLRequest {
+    static func modified(after: Date?, with request: DataAPI.ModifiedRequest, constants: Constants) -> URLRequest {
         URLRequest(
             url: constants.baseURL
                 .appendingPathComponent(constants.baseREST)

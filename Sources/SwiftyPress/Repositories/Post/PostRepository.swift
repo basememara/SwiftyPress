@@ -12,16 +12,16 @@ public struct PostRepository: PostRepositoryType {
     private let service: PostService
     private let remote: PostRemote?
     private let dataRepository: DataRepositoryType
-    private let preferences: PreferencesType
-    private let constants: ConstantsType
+    private let preferences: Preferences
+    private let constants: Constants
     private let log: LogRepository
     
     public init(
         service: PostService,
         remote: PostRemote?,
         dataRepository: DataRepositoryType,
-        preferences: PreferencesType,
-        constants: ConstantsType,
+        preferences: Preferences,
+        constants: Constants,
         log: LogRepository
     ) {
         self.service = service

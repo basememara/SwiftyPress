@@ -13,10 +13,10 @@ import ZamzamCore
 import ZamzamUI
 
 public protocol SwiftyPressCore {
-    func constants() -> ConstantsType
+    func constants() -> Constants
     func constantsService() -> ConstantsService
     
-    func preferences() -> PreferencesType
+    func preferences() -> Preferences
     func preferencesService() -> PreferencesService
     
     func log() -> LogRepository
@@ -61,14 +61,14 @@ public protocol SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func constants() -> ConstantsType {
+    func constants() -> Constants {
         Constants(service: constantsService())
     }
 }
 
 public extension SwiftyPressCore {
     
-    func preferences() -> PreferencesType {
+    func preferences() -> Preferences {
         Preferences(service: preferencesService())
     }
 }

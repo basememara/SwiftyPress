@@ -10,7 +10,7 @@ import XCTest
 import SwiftyPress
 
 final class AuthorRepositoryTests: BaseTestCase {
-    private lazy var authorRepository: AuthorRepositoryType = core.authorRepository()
+    private lazy var authorRepository = core.authorRepository()
 }
 
 extension AuthorRepositoryTests {

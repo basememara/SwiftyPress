@@ -12,13 +12,13 @@ import ZamzamCore
 public struct AuthorNetworkRemote: AuthorRemote {
     private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
-    private let constants: ConstantsType
+    private let constants: Constants
     private let log: LogRepository
     
     public init(
         networkRepository: NetworkRepository,
         jsonDecoder: JSONDecoder,
-        constants: ConstantsType,
+        constants: Constants,
         log: LogRepository
     ) {
         self.networkRepository = networkRepository
@@ -80,7 +80,7 @@ public extension AuthorNetworkRemote {
 
 private extension URLRequest {
     
-    static func readAuthor(id: Int, constants: ConstantsType) -> URLRequest {
+    static func readAuthor(id: Int, constants: Constants) -> URLRequest {
         URLRequest(
             url: constants.baseURL
                 .appendingPathComponent(constants.baseREST)

@@ -1,5 +1,5 @@
 //
-//  PreferencesType.swift
+//  Preferences.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-06.
@@ -8,7 +8,7 @@
 
 import ZamzamCore
 
-public extension PreferencesType {
+public extension Preferences {
     
     /// Returns the current user's ID, or nil if an anonymous user.
     var userID: Int? { self.get(.userID) }

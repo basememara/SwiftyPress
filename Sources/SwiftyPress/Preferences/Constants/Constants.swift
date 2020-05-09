@@ -9,7 +9,7 @@
 import Foundation.NSURL
 import ZamzamCore
 
-public struct Constants: ConstantsType {
+public struct Constants: AppInfo {
     private let service: ConstantsService
     
     public init(service: ConstantsService) {
@@ -49,4 +49,8 @@ public extension Constants {
 
 public extension Constants {
     var minLogLevel: LogAPI.Level { service.minLogLevel }
+}
+
+public extension Constants {
+    var itunesURL: String { "https://itunes.apple.com/app/id\(itunesID)" }
 }

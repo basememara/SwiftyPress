@@ -11,8 +11,8 @@ import ZamzamCore
 import SwiftyPress
 
 class BaseTestCase: XCTestCase {
-    private lazy var dataRepository: DataRepositoryType = core.dataRepository()
-    private lazy var preferences: PreferencesType = core.preferences()
+    private lazy var dataRepository = core.dataRepository()
+    private lazy var preferences = core.preferences()
     
     lazy var core: SwiftyPressCore = TestsCore()
     

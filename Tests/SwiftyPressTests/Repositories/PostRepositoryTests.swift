@@ -10,7 +10,7 @@ import XCTest
 import SwiftyPress
 
 final class PostRepositoryTests: BaseTestCase {
-    private lazy var postRepository: PostRepositoryType = core.postRepository()
+    private lazy var postRepository = core.postRepository()
 }
 
 extension PostRepositoryTests {
