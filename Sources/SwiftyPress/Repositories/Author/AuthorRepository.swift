@@ -10,12 +10,12 @@ import ZamzamCore
 
 public struct AuthorRepository {
     private let service: AuthorService
-    private let remote: AuthorRemote?
+    private let cache: AuthorCache
     private let log: LogRepository
     
-    public init(service: AuthorService, remote: AuthorRemote?, log: LogRepository) {
+    public init(service: AuthorService, cache: AuthorCache, log: LogRepository) {
         self.service = service
-        self.remote = remote
+        self.cache = cache
         self.log = log
     }
 }
@@ -23,21 +23,16 @@ public struct AuthorRepository {
 public extension AuthorRepository {
     
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
-        service.fetch(id: id) {
-            guard let remote = self.remote else {
-                completion($0)
-                return
-            }
-            
+        cache.fetch(id: id) {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
-                remote.fetch(id: id) {
+                self.service.fetch(id: id) {
                     guard case .success(let value) = $0 else {
                         completion($0)
                         return
                     }
                     
-                    self.service.createOrUpdate(value, completion: completion)
+                    self.cache.createOrUpdate(value, completion: completion)
                 }
                 
                 return
@@ -49,7 +44,7 @@ public extension AuthorRepository {
             guard case .success(let cacheElement) = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            remote.fetch(id: id) {
+            self.service.fetch(id: id) {
                 // Validate if any updates occurred and return
                 guard case .success(let element) = $0,
                     element.modifiedAt > cacheElement.modifiedAt else {
@@ -57,7 +52,7 @@ public extension AuthorRepository {
                 }
                 
                 // Update local storage with updated data
-                self.service.createOrUpdate(element) {
+                self.cache.createOrUpdate(element) {
                     guard case .success = $0 else {
                         self.log.error("Could not save updated author locally from remote storage: \(String(describing: $0.error))")
                         return

@@ -6,9 +6,13 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-// MARK: - Services
-
 public protocol PostService {
+    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void)
+}
+
+// MARK: - Cache
+
+public protocol PostCache {
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void)
     
@@ -22,10 +26,6 @@ public protocol PostService {
     func getID(bySlug slug: String) -> Int?
     
     func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void)
-}
-
-public protocol PostRemote {
-    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void)
 }
 
 // MARK: Namespace

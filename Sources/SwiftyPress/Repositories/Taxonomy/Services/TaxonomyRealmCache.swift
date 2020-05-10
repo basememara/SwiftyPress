@@ -1,5 +1,5 @@
 //
-//  TaxonomyRealmService.swift
+//  TaxonomyRealmCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-20.
@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct TaxonomyRealmService: TaxonomyService {
+public struct TaxonomyRealmCache: TaxonomyCache {
     private let log: LogRepository
     
     public init(log: LogRepository) {
@@ -18,7 +18,7 @@ public struct TaxonomyRealmService: TaxonomyService {
     }
 }
 
-public extension TaxonomyRealmService {
+public extension TaxonomyRealmCache {
     
     func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -69,7 +69,7 @@ public extension TaxonomyRealmService {
     }
 }
 
-public extension TaxonomyRealmService {
+public extension TaxonomyRealmCache {
     
     func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -94,7 +94,7 @@ public extension TaxonomyRealmService {
     }
 }
 
-public extension TaxonomyRealmService {
+public extension TaxonomyRealmCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -167,7 +167,7 @@ public extension TaxonomyRealmService {
     }
 }
 
-public extension TaxonomyRealmService {
+public extension TaxonomyRealmCache {
     
     func getID(bySlug slug: String) -> Int? {
         let realm: Realm

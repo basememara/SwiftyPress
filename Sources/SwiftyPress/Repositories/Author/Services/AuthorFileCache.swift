@@ -1,12 +1,12 @@
 //
-//  AuthorFileService.swift
+//  AuthorFileCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-04.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct AuthorFileService: AuthorService {
+public struct AuthorFileCache: AuthorCache {
     private let seedService: SeedService
     
     init(seedService: SeedService) {
@@ -14,7 +14,7 @@ public struct AuthorFileService: AuthorService {
     }
 }
 
-public extension AuthorFileService {
+public extension AuthorFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -34,7 +34,7 @@ public extension AuthorFileService {
     }
 }
 
-public extension AuthorFileService {
+public extension AuthorFileCache {
     
     func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         // Nothing to do

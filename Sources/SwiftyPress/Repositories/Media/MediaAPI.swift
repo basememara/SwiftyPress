@@ -10,12 +10,14 @@
 
 public protocol MediaService {
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void)
-    func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
 }
 
-public protocol MediaRemote {
+// MARK: - Cache
+
+public protocol MediaCache {
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void)
+    func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace

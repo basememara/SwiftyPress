@@ -1,15 +1,15 @@
 //
-//  AuthorNetworkRemote.swift
+//  PostsNetworkService.swift
 //  SwiftyPress
 //
-//  Created by Basem Emara on 2019-05-17.
-//  Copyright © 2019 Zamzam Inc. All rights reserved.
+//  Created by Basem Emara on 2018-10-10.
+//  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
 import Foundation
 import ZamzamCore
 
-public struct AuthorNetworkRemote: AuthorRemote {
+public struct PostNetworkService: PostService {
     private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
     private let constants: Constants
@@ -28,10 +28,10 @@ public struct AuthorNetworkRemote: AuthorRemote {
     }
 }
 
-public extension AuthorNetworkRemote {
+public extension PostNetworkService {
     
-    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
-        let urlRequest: URLRequest = .readAuthor(id: id, constants: constants)
+    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
+        let urlRequest: URLRequest = .readPost(id: id, with: request, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             // Handle errors
@@ -42,7 +42,7 @@ public extension AuthorNetworkRemote {
                     return
                 }
                 
-                self.log.error("An error occured while fetching the author: \(String(describing: $0.error)).")
+                self.log.error("An error occured while fetching the post: \(String(describing: $0.error)).")
                 completion(.failure(SwiftyPressError(from: $0.error)))
                 return
             }
@@ -55,19 +55,14 @@ public extension AuthorNetworkRemote {
             
             DispatchQueue.transform.async {
                 do {
-                    // Type used for decoding the server payload
-                    struct ServerResponse: Decodable {
-                        let author: Author
-                    }
-                    
                     // Parse response data
-                    let payload = try self.jsonDecoder.decode(ServerResponse.self, from: data)
+                    let payload = try self.jsonDecoder.decode(ExtendedPost.self, from: data)
                     
                     DispatchQueue.main.async {
-                        completion(.success(payload.author))
+                        completion(.success(payload))
                     }
                 } catch {
-                    self.log.error("An error occured while parsing the author: \(error).")
+                    self.log.error("An error occured while parsing the post: \(error).")
                     DispatchQueue.main.async { completion(.failure(.parseFailure(error))) }
                     return
                 }
@@ -80,12 +75,27 @@ public extension AuthorNetworkRemote {
 
 private extension URLRequest {
     
-    static func readAuthor(id: Int, constants: Constants) -> URLRequest {
+    static func readPost(id: Int, with request: PostAPI.ItemRequest, constants: Constants) -> URLRequest {
         URLRequest(
             url: constants.baseURL
                 .appendingPathComponent(constants.baseREST)
-                .appendingPathComponent("author/\(id)"),
-            method: .get
+                .appendingPathComponent("post/\(id)"),
+            method: .get,
+            parameters: {
+                var params: [String: Any] = [:]
+                
+                if !request.taxonomies.isEmpty {
+                    params["taxonomies"] = request.taxonomies
+                        .joined(separator: ",")
+                }
+                
+                if !request.postMetaKeys.isEmpty {
+                    params["meta_keys"] = request.postMetaKeys
+                        .joined(separator: ",")
+                }
+                
+                return params
+            }()
         )
     }
-} 
+}

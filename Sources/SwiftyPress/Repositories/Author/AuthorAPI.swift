@@ -10,11 +10,13 @@
 
 public protocol AuthorService {
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
-    func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
 }
 
-public protocol AuthorRemote {
+// MARK: - Cache
+
+public protocol AuthorCache {
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
+    func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace

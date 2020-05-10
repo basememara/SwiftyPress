@@ -11,7 +11,7 @@ import ZamzamCore
 
 public struct PostRepository {
     private let service: PostService
-    private let remote: PostRemote?
+    private let cache: PostCache
     private let dataRepository: DataRepository
     private let preferences: Preferences
     private let constants: Constants
@@ -19,14 +19,14 @@ public struct PostRepository {
     
     public init(
         service: PostService,
-        remote: PostRemote?,
+        cache: PostCache,
         dataRepository: DataRepository,
         preferences: Preferences,
         constants: Constants,
         log: LogRepository
     ) {
         self.service = service
-        self.remote = remote
+        self.cache = cache
         self.dataRepository = dataRepository
         self.preferences = preferences
         self.constants = constants
@@ -37,12 +37,7 @@ public struct PostRepository {
 public extension PostRepository {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
-        service.fetch(id: id) {
-            guard let remote = self.remote else {
-                completion($0)
-                return
-            }
-            
+        cache.fetch(id: id) {
             let request = PostAPI.ItemRequest(
                 taxonomies: self.constants.taxonomies,
                 postMetaKeys: self.constants.postMetaKeys
@@ -50,13 +45,13 @@ public extension PostRepository {
             
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
-                remote.fetch(id: id, with: request) {
+                self.service.fetch(id: id, with: request) {
                     guard case .success(let value) = $0 else {
                         completion($0)
                         return
                     }
                     
-                    self.service.createOrUpdate(value, completion: completion)
+                    self.cache.createOrUpdate(value, completion: completion)
                 }
                 
                 return 
@@ -68,7 +63,7 @@ public extension PostRepository {
             guard case .success(let cacheElement) = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            remote.fetch(id: id, with: request) {
+            self.service.fetch(id: id, with: request) {
                 // Validate if any updates occurred and return
                 guard case .success(let element) = $0,
                     element.post.modifiedAt > cacheElement.post.modifiedAt else {
@@ -76,7 +71,7 @@ public extension PostRepository {
                 }
                 
                 // Update local storage with updated data
-                self.service.createOrUpdate(element) {
+                self.cache.createOrUpdate(element) {
                     guard case .success = $0 else {
                         self.log.error("Could not save updated post locally from remote storage: \(String(describing: $0.error))")
                         return
@@ -90,7 +85,7 @@ public extension PostRepository {
     }
     
     func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
-        service.fetch(slug: slug) { result in
+        cache.fetch(slug: slug) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
@@ -101,7 +96,7 @@ public extension PostRepository {
                         return
                     }
                     
-                    self.service.fetch(slug: slug, completion: completion)
+                    self.cache.fetch(slug: slug, completion: completion)
                 }
                 
                 return
@@ -120,7 +115,7 @@ public extension PostRepository {
 public extension PostRepository {
     
     func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        service.fetch(with: request) {
+        cache.fetch(with: request) {
             // Immediately return local response
             completion($0)
             
@@ -130,13 +125,13 @@ public extension PostRepository {
             self.dataRepository.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
-                self.service.fetch(with: request, completion: completion)
+                self.cache.fetch(with: request, completion: completion)
             }
         }
     }
     
     func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        service.fetchPopular(with: request) {
+        cache.fetchPopular(with: request) {
             // Immediately return local response
             completion($0)
             
@@ -146,7 +141,7 @@ public extension PostRepository {
             self.dataRepository.pull {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
-                self.service.fetchPopular(with: request, completion: completion)
+                self.cache.fetchPopular(with: request, completion: completion)
             }
         }
     }
@@ -159,7 +154,7 @@ public extension PostRepository {
 public extension PostRepository {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        service.fetch(ids: ids) {
+        cache.fetch(ids: ids) {
             // Immediately return local response
             completion($0)
             
@@ -173,13 +168,13 @@ public extension PostRepository {
                         return
                 }
                 
-                self.service.fetch(ids: ids, completion: completion)
+                self.cache.fetch(ids: ids, completion: completion)
             }
         }
     }
     
     func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        service.fetch(byTermIDs: ids, with: request) {
+        cache.fetch(byTermIDs: ids, with: request) {
             // Immediately return local response
             completion($0)
             
@@ -192,7 +187,7 @@ public extension PostRepository {
                 // Validate if any updates that needs to be stored
                 let modifiedIDs = Set(value.posts.flatMap { $0.terms })
                 guard ids.contains(where: modifiedIDs.contains) else { return }
-                self.service.fetch(byTermIDs: ids, with: request, completion: completion)
+                self.cache.fetch(byTermIDs: ids, with: request, completion: completion)
             }
         }
     }
@@ -201,14 +196,14 @@ public extension PostRepository {
 public extension PostRepository {
     
     func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        service.search(with: request, completion: completion)
+        cache.search(with: request, completion: completion)
     }
 }
 
 public extension PostRepository {
     
     func getID(bySlug slug: String) -> Int? {
-        service.getID(bySlug: slug)
+        cache.getID(bySlug: slug)
     }
     
     func getID(byURL url: String) -> Int? {

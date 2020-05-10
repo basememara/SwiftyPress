@@ -1,5 +1,5 @@
 //
-//  MediaNetworkRemote.swift
+//  MediaNetworkService.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2019-05-17.
@@ -9,7 +9,7 @@
 import Foundation
 import ZamzamCore
 
-public struct MediaNetworkRemote: MediaRemote {
+public struct MediaNetworkService: MediaService {
     private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
     private let constants: Constants
@@ -28,7 +28,7 @@ public struct MediaNetworkRemote: MediaRemote {
     }
 }
 
-public extension MediaNetworkRemote {
+public extension MediaNetworkService {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         let urlRequest: URLRequest = .readMedia(id: id, constants: constants)

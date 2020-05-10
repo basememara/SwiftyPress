@@ -8,32 +8,27 @@
 
 public struct MediaRepository {
     private let service: MediaService
-    private let remote: MediaRemote?
+    private let cache: MediaCache
     
-    public init(service: MediaService, remote: MediaRemote?) {
+    public init(service: MediaService, cache: MediaCache) {
         self.service = service
-        self.remote = remote
+        self.cache = cache
     }
 }
 
 public extension MediaRepository {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
-        service.fetch(id: id) {
-            guard let remote = self.remote else {
-                completion($0)
-                return
-            }
-            
+        cache.fetch(id: id) {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
-                remote.fetch(id: id) {
+                self.service.fetch(id: id) {
                     guard case .success(let value) = $0 else {
                         completion($0)
                         return
                     }
                     
-                    self.service.createOrUpdate(value, completion: completion)
+                    self.cache.createOrUpdate(value, completion: completion)
                 }
                 
                 return
@@ -48,6 +43,6 @@ public extension MediaRepository {
 public extension MediaRepository {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
-        service.fetch(ids: ids, completion: completion)
+        cache.fetch(ids: ids, completion: completion)
     }
 }

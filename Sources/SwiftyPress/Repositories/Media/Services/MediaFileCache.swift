@@ -1,12 +1,12 @@
 //
-//  MediaFileService.swift
+//  MediaFileCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-04.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct MediaFileService: MediaService {
+public struct MediaFileCache: MediaCache {
     private let seedService: SeedService
     
     init(seedService: SeedService) {
@@ -14,7 +14,7 @@ public struct MediaFileService: MediaService {
     }
 }
 
-public extension MediaFileService {
+public extension MediaFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -34,7 +34,7 @@ public extension MediaFileService {
     }
 }
 
-public extension MediaFileService {
+public extension MediaFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -53,7 +53,7 @@ public extension MediaFileService {
     }
 }
 
-public extension MediaFileService {
+public extension MediaFileCache {
     
     func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         // Nothing to do

@@ -1,5 +1,5 @@
 //
-//  AuthorRealmService.swift
+//  AuthorRealmCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-20.
@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct AuthorRealmService: AuthorService {}
+public struct AuthorRealmCache: AuthorCache {}
 
-public extension AuthorRealmService {
+public extension AuthorRealmCache {
     
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -39,7 +39,7 @@ public extension AuthorRealmService {
     }
 }
 
-public extension AuthorRealmService {
+public extension AuthorRealmCache {
     
     func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {

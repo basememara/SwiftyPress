@@ -9,11 +9,11 @@
 import Foundation.NSURL
 
 public struct TaxonomyRepository {
-    private let service: TaxonomyService
+    private let cache: TaxonomyCache
     private let dataRepository: DataRepository
     
-    public init(service: TaxonomyService, dataRepository: DataRepository) {
-        self.service = service
+    public init(cache: TaxonomyCache, dataRepository: DataRepository) {
+        self.cache = cache
         self.dataRepository = dataRepository
     }
 }
@@ -21,7 +21,7 @@ public struct TaxonomyRepository {
 public extension TaxonomyRepository {
     
     func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
-        service.fetch(id: id) { result in
+        cache.fetch(id: id) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
@@ -32,7 +32,7 @@ public extension TaxonomyRepository {
                         return
                     }
 
-                    self.service.fetch(id: id, completion: completion)
+                    self.cache.fetch(id: id, completion: completion)
                 }
 
                 return
@@ -43,7 +43,7 @@ public extension TaxonomyRepository {
     }
     
     func fetch(slug: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
-        service.fetch(slug: slug) { result in
+        cache.fetch(slug: slug) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
@@ -54,7 +54,7 @@ public extension TaxonomyRepository {
                         return
                     }
 
-                    self.service.fetch(slug: slug, completion: completion)
+                    self.cache.fetch(slug: slug, completion: completion)
                 }
 
                 return
@@ -65,7 +65,7 @@ public extension TaxonomyRepository {
     }
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
-        service.fetch(ids: ids) { result in
+        cache.fetch(ids: ids) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
@@ -76,7 +76,7 @@ public extension TaxonomyRepository {
                         return
                     }
 
-                    self.service.fetch(ids: ids, completion: completion)
+                    self.cache.fetch(ids: ids, completion: completion)
                 }
 
                 return
@@ -90,7 +90,7 @@ public extension TaxonomyRepository {
 public extension TaxonomyRepository {
     
     func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
-        service.fetch {
+        cache.fetch {
             // Immediately return local response
             completion($0)
             
@@ -103,13 +103,13 @@ public extension TaxonomyRepository {
                     return
                 }
                 
-                self.service.fetch(completion: completion)
+                self.cache.fetch(completion: completion)
             }
         }
     }
     
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
-        service.fetch(by: taxonomy) {
+        cache.fetch(by: taxonomy) {
             // Immediately return local response
             completion($0)
             
@@ -123,13 +123,13 @@ public extension TaxonomyRepository {
                         return
                 }
                 
-                self.service.fetch(by: taxonomy, completion: completion)
+                self.cache.fetch(by: taxonomy, completion: completion)
             }
         }
     }
     
     func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
-        service.fetch(by: taxonomies) {
+        cache.fetch(by: taxonomies) {
             // Immediately return local response
             completion($0)
             
@@ -143,7 +143,7 @@ public extension TaxonomyRepository {
                         return
                 }
                 
-                self.service.fetch(by: taxonomies, completion: completion)
+                self.cache.fetch(by: taxonomies, completion: completion)
             }
         }
     }
@@ -164,7 +164,7 @@ public extension TaxonomyRepository {
 public extension TaxonomyRepository {
     
     func getID(bySlug slug: String) -> Int? {
-        service.getID(bySlug: slug)
+        cache.getID(bySlug: slug)
     }
     
     func getID(byURL url: String) -> Int? {

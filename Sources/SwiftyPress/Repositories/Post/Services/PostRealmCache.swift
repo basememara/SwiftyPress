@@ -1,5 +1,5 @@
 //
-//  PostRealmService.swift
+//  PostRealmCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-13.
@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct PostRealmService: PostService {
+public struct PostRealmCache: PostCache {
     private let log: LogRepository
     
     public init(log: LogRepository) {
@@ -18,7 +18,7 @@ public struct PostRealmService: PostService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -69,7 +69,7 @@ public extension PostRealmService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -115,7 +115,7 @@ public extension PostRealmService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -161,7 +161,7 @@ public extension PostRealmService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         guard !request.query.isEmpty else { return completion(.success([])) }
@@ -214,7 +214,7 @@ public extension PostRealmService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func getID(bySlug slug: String) -> Int? {
         let realm: Realm
@@ -232,7 +232,7 @@ public extension PostRealmService {
     }
 }
 
-public extension PostRealmService {
+public extension PostRealmCache {
     
     func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -277,7 +277,7 @@ public extension PostRealmService {
 
 // MARK: - Helpers
 
-private extension PostRealmService {
+private extension PostRealmCache {
     
     /// Extend post with linked objects
     func extend(post: PostType, with realm: Realm) -> ExtendedPost {

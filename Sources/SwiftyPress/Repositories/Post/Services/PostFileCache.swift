@@ -1,12 +1,12 @@
 //
-//  PostFileService.swift
+//  PostFileCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct PostFileService: PostService {
+public struct PostFileCache: PostCache {
     private let seedService: SeedService
     
     init(seedService: SeedService) {
@@ -14,7 +14,7 @@ public struct PostFileService: PostService {
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -61,7 +61,7 @@ public extension PostFileService {
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -91,7 +91,7 @@ public extension PostFileService {
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
@@ -125,7 +125,7 @@ public extension PostFileService {
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -180,14 +180,14 @@ public extension PostFileService {
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func getID(bySlug slug: String) -> Int? {
         fatalError("Not implemented")
     }
 }
 
-public extension PostFileService {
+public extension PostFileCache {
     
     func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {

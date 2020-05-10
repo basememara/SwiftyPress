@@ -1,5 +1,5 @@
 //
-//  MediaRealmService.swift
+//  MediaRealmCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-20.
@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct MediaRealmService: MediaService {
+public struct MediaRealmCache: MediaCache {
     private let log: LogRepository
     
     public init(log: LogRepository) {
@@ -18,7 +18,7 @@ public struct MediaRealmService: MediaService {
     }
 }
 
-public extension MediaRealmService {
+public extension MediaRealmCache {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -45,7 +45,7 @@ public extension MediaRealmService {
     }
 }
 
-public extension MediaRealmService {
+public extension MediaRealmCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
@@ -68,7 +68,7 @@ public extension MediaRealmService {
     }
 }
 
-public extension MediaRealmService {
+public extension MediaRealmCache {
     
     func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {

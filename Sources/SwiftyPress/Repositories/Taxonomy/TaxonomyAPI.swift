@@ -6,9 +6,9 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-// MARK: - Service
+// MARK: - Cache
 
-public protocol TaxonomyService {
+public protocol TaxonomyCache {
     func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void)
     func fetch(slug: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void)
     

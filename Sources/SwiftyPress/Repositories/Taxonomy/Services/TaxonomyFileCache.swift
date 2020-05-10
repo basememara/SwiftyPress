@@ -1,12 +1,12 @@
 //
-//  TaxonomyFileService.swift
+//  TaxonomyFileCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-04.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct TaxonomyFileService: TaxonomyService {
+public struct TaxonomyFileCache: TaxonomyCache {
     private let seedService: SeedService
     
     init(seedService: SeedService) {
@@ -14,7 +14,7 @@ public struct TaxonomyFileService: TaxonomyService {
     }
 }
 
-public extension TaxonomyFileService {
+public extension TaxonomyFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         fetch {
@@ -55,7 +55,7 @@ public extension TaxonomyFileService {
     }
 }
 
-public extension TaxonomyFileService {
+public extension TaxonomyFileCache {
     
     func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         seedService.fetch {
@@ -69,7 +69,7 @@ public extension TaxonomyFileService {
     }
 }
 
-public extension TaxonomyFileService {
+public extension TaxonomyFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
@@ -110,7 +110,7 @@ public extension TaxonomyFileService {
     }
 }
 
-public extension TaxonomyFileService {
+public extension TaxonomyFileCache {
     
     func getID(bySlug slug: String) -> Int? {
         fatalError("Not implemented")

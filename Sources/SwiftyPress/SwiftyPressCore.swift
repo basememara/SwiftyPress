@@ -22,6 +22,9 @@ public protocol SwiftyPressCore {
     func log() -> LogRepository
     func logServices() -> [LogService]
     
+    func networkRepository() -> NetworkRepository
+    func networkService() -> NetworkService
+    
     func dataRepository() -> DataRepository
     func seedService() -> SeedService
     func remoteService() -> RemoteService
@@ -29,21 +32,18 @@ public protocol SwiftyPressCore {
     
     func postRepository() -> PostRepository
     func postService() -> PostService
-    func postRemote() -> PostRemote
+    func postCache() -> PostCache
     
     func authorRepository() -> AuthorRepository
     func authorService() -> AuthorService
-    func authorRemote() -> AuthorRemote
+    func authorCache() -> AuthorCache
     
     func mediaRepository() -> MediaRepository
     func mediaService() -> MediaService
-    func mediaRemote() -> MediaRemote
+    func mediaCache() -> MediaCache
     
     func taxonomyRepository() -> TaxonomyRepository
-    func taxonomyService() -> TaxonomyService
-    
-    func networkRepository() -> NetworkRepository
-    func networkService() -> NetworkService
+    func taxonomyCache() -> TaxonomyCache
     
     func notificationCenter() -> NotificationCenter
     func fileManager() -> FileManager
@@ -70,6 +70,24 @@ public extension SwiftyPressCore {
     
     func preferences() -> Preferences {
         Preferences(service: preferencesService())
+    }
+}
+
+public extension SwiftyPressCore {
+    
+    func log() -> LogRepository {
+        LogRepository(services: logServices())
+    }
+}
+
+public extension SwiftyPressCore {
+    
+    func networkRepository() -> NetworkRepository {
+        NetworkRepository(service: networkService())
+    }
+    
+    func networkService() -> NetworkService {
+        NetworkFoundationService()
     }
 }
 
@@ -108,7 +126,7 @@ public extension SwiftyPressCore {
     func postRepository() -> PostRepository {
         PostRepository(
             service: postService(),
-            remote: postRemote(),
+            cache: postCache(),
             dataRepository: dataRepository(),
             preferences: preferences(),
             constants: constants(),
@@ -117,16 +135,16 @@ public extension SwiftyPressCore {
     }
     
     func postService() -> PostService {
-        PostRealmService(log: log())
-    }
-    
-    func postRemote() -> PostRemote {
-        PostNetworkRemote(
+        PostNetworkService(
             networkRepository: networkRepository(),
             jsonDecoder: jsonDecoder(),
             constants: constants(),
             log: log()
         )
+    }
+    
+    func postCache() -> PostCache {
+        PostRealmCache(log: log())
     }
 }
 
@@ -135,22 +153,22 @@ public extension SwiftyPressCore {
     func authorRepository() -> AuthorRepository {
         AuthorRepository(
             service: authorService(),
-            remote: authorRemote(),
+            cache: authorCache(),
             log: log()
         )
     }
     
     func authorService() -> AuthorService {
-        AuthorRealmService()
-    }
-    
-    func authorRemote() -> AuthorRemote {
-        AuthorNetworkRemote(
+        AuthorNetworkService(
             networkRepository: networkRepository(),
             jsonDecoder: jsonDecoder(),
             constants: constants(),
             log: log()
         )
+    }
+    
+    func authorCache() -> AuthorCache {
+        AuthorRealmCache()
     }
 }
 
@@ -159,21 +177,21 @@ public extension SwiftyPressCore {
     func mediaRepository() -> MediaRepository {
         MediaRepository(
             service: mediaService(),
-            remote: mediaRemote()
+            cache: mediaCache()
         )
     }
     
     func mediaService() -> MediaService {
-        MediaRealmService(log: log())
-    }
-    
-    func mediaRemote() -> MediaRemote {
-        MediaNetworkRemote(
+        MediaNetworkService(
             networkRepository: networkRepository(),
             jsonDecoder: jsonDecoder(),
             constants: constants(),
             log: log()
         )
+    }
+    
+    func mediaCache() -> MediaCache {
+        MediaRealmCache(log: log())
     }
 }
 
@@ -181,31 +199,13 @@ public extension SwiftyPressCore {
     
     func taxonomyRepository() -> TaxonomyRepository {
         TaxonomyRepository(
-            service: taxonomyService(),
+            cache: taxonomyCache(),
             dataRepository: dataRepository()
         )
     }
     
-    func taxonomyService() -> TaxonomyService {
-        TaxonomyRealmService(log: log())
-    }
-}
-
-public extension SwiftyPressCore {
-    
-    func networkRepository() -> NetworkRepository {
-        NetworkRepository(service: networkService())
-    }
-    
-    func networkService() -> NetworkService {
-        NetworkFoundationService()
-    }
-}
-
-public extension SwiftyPressCore {
-    
-    func log() -> LogRepository {
-        LogRepository(services: logServices())
+    func taxonomyCache() -> TaxonomyCache {
+        TaxonomyRealmCache(log: log())
     }
 }
 
