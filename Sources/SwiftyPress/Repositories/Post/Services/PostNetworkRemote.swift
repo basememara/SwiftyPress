@@ -30,7 +30,7 @@ public struct PostNetworkRemote: PostRemote {
 
 public extension PostNetworkRemote {
     
-    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func fetch(id: Int, with request: PostAPI.ItemRequest, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         let urlRequest: URLRequest = .readPost(id: id, with: request, constants: constants)
         
         networkRepository.send(with: urlRequest) {
@@ -43,7 +43,7 @@ public extension PostNetworkRemote {
                 }
                 
                 self.log.error("An error occured while fetching the post: \(String(describing: $0.error)).")
-                completion(.failure(DataError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error)))
                 return
             }
             

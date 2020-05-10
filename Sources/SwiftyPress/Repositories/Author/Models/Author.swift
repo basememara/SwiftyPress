@@ -8,7 +8,19 @@
 
 import Foundation.NSDate
 
-public struct Author: AuthorType, Identifiable, Decodable {
+// MARK: - Protocol
+
+public protocol AuthorType: Dateable {
+    var id: Int { get }
+    var name: String { get }
+    var link: String { get }
+    var avatar: String { get }
+    var content: String { get }
+}
+
+// MARK: - Model
+
+public struct Author: AuthorType, Identifiable, Codable, Equatable {
     public let id: Int
     public let name: String
     public let link: String

@@ -6,11 +6,13 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct TaxonomyRepository: TaxonomyRepositoryType {
+import Foundation.NSURL
+
+public struct TaxonomyRepository {
     private let service: TaxonomyService
-    private let dataRepository: DataRepositoryType
+    private let dataRepository: DataRepository
     
-    public init(service: TaxonomyService, dataRepository: DataRepositoryType) {
+    public init(service: TaxonomyService, dataRepository: DataRepository) {
         self.service = service
         self.dataRepository = dataRepository
     }
@@ -18,7 +20,7 @@ public struct TaxonomyRepository: TaxonomyRepositoryType {
 
 public extension TaxonomyRepository {
     
-    func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         service.fetch(id: id) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
@@ -40,7 +42,7 @@ public extension TaxonomyRepository {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         service.fetch(slug: slug) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
@@ -62,7 +64,7 @@ public extension TaxonomyRepository {
          }
     }
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         service.fetch(ids: ids) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
@@ -87,7 +89,7 @@ public extension TaxonomyRepository {
 
 public extension TaxonomyRepository {
     
-    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         service.fetch {
             // Immediately return local response
             completion($0)
@@ -106,7 +108,7 @@ public extension TaxonomyRepository {
         }
     }
     
-    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         service.fetch(by: taxonomy) {
             // Immediately return local response
             completion($0)
@@ -126,7 +128,7 @@ public extension TaxonomyRepository {
         }
     }
     
-    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         service.fetch(by: taxonomies) {
             // Immediately return local response
             completion($0)
@@ -149,7 +151,41 @@ public extension TaxonomyRepository {
 
 public extension TaxonomyRepository {
     
+    func fetch(url: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
+        guard let slug = slug(from: url) else {
+            completion(.failure(.nonExistent))
+            return
+        }
+        
+        fetch(slug: slug, completion: completion)
+    }
+}
+
+public extension TaxonomyRepository {
+    
     func getID(bySlug slug: String) -> Int? {
         service.getID(bySlug: slug)
+    }
+    
+    func getID(byURL url: String) -> Int? {
+        guard let slug = slug(from: url) else { return nil }
+        return getID(bySlug: slug)
+    }
+}
+
+// MARK: - Helpers
+
+private extension TaxonomyRepository {
+    
+    func slug(from url: String) -> String? {
+        guard let url = URL(string: url) else { return nil }
+        
+        let slug = url.lastPathComponent.lowercased()
+        let relativePath = url.relativePath
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+            .lowercased()
+        
+        return relativePath.hasPrefix("category/") || relativePath .hasPrefix("tag/")
+            ? slug : nil
     }
 }

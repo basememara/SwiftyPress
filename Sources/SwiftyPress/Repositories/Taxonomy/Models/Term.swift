@@ -6,7 +6,21 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct Term: TermType, Identifiable, Decodable {
+// MARK: - Protocol
+
+public protocol TermType {
+    var id: Int { get }
+    var parentID: Int { get }
+    var slug: String { get }
+    var name: String { get }
+    var content: String? { get }
+    var taxonomy: Taxonomy { get }
+    var count: Int { get }
+}
+
+// MARK: - Model
+
+public struct Term: TermType, Identifiable, Codable, Equatable {
     public let id: Int
     public let parentID: Int
     public let slug: String

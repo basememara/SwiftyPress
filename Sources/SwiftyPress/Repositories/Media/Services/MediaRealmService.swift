@@ -20,7 +20,7 @@ public struct MediaRealmService: MediaService {
 
 public extension MediaRealmService {
     
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -47,7 +47,7 @@ public extension MediaRealmService {
 
 public extension MediaRealmService {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -58,7 +58,7 @@ public extension MediaRealmService {
                 return
             }
             
-            let items: [MediaType] = realm.objects(MediaRealmObject.self, forPrimaryKeys: ids)
+            let items: [Media] = realm.objects(MediaRealmObject.self, forPrimaryKeys: ids)
                 .map { Media(from: $0) }
             
             DispatchQueue.main.async {
@@ -70,7 +70,7 @@ public extension MediaRealmService {
 
 public extension MediaRealmService {
     
-    func createOrUpdate(_ request: MediaType, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+    func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             

@@ -20,7 +20,7 @@ public struct TaxonomyRealmService: TaxonomyService {
 
 public extension TaxonomyRealmService {
     
-    func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -44,7 +44,7 @@ public extension TaxonomyRealmService {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -71,7 +71,7 @@ public extension TaxonomyRealmService {
 
 public extension TaxonomyRealmService {
     
-    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -82,7 +82,7 @@ public extension TaxonomyRealmService {
                 return
             }
             
-            let items: [TermType] = realm.objects(TermRealmObject.self)
+            let items: [Term] = realm.objects(TermRealmObject.self)
                 .filter("count > 0")
                 .sorted(byKeyPath: "count", ascending: false)
                 .map { Term(from: $0) }
@@ -96,7 +96,7 @@ public extension TaxonomyRealmService {
 
 public extension TaxonomyRealmService {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -107,7 +107,7 @@ public extension TaxonomyRealmService {
                 return
             }
             
-            let items: [TermType] = realm.objects(TermRealmObject.self, forPrimaryKeys: ids)
+            let items: [Term] = realm.objects(TermRealmObject.self, forPrimaryKeys: ids)
                 .sorted(byKeyPath: "count", ascending: false)
                 .map { Term(from: $0) }
             
@@ -122,7 +122,7 @@ public extension TaxonomyRealmService {
         }
     }
     
-    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -133,7 +133,7 @@ public extension TaxonomyRealmService {
                 return
             }
             
-            let items: [TermType] = realm.objects(TermRealmObject.self)
+            let items: [Term] = realm.objects(TermRealmObject.self)
                 .filter("taxonomyRaw == %@ && count > 0", taxonomy.rawValue)
                 .sorted(byKeyPath: "count", ascending: false)
                 .map { Term(from: $0) }
@@ -144,7 +144,7 @@ public extension TaxonomyRealmService {
         }
     }
     
-    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -155,7 +155,7 @@ public extension TaxonomyRealmService {
                 return
             }
             
-            let items: [TermType] = realm.objects(TermRealmObject.self)
+            let items: [Term] = realm.objects(TermRealmObject.self)
                 .filter("taxonomyRaw IN %@ && count > 0", taxonomies.map { $0.rawValue })
                 .sorted(byKeyPath: "count", ascending: false)
                 .map { Term(from: $0) }

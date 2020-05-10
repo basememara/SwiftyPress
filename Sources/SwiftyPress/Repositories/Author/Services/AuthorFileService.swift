@@ -16,7 +16,7 @@ public struct AuthorFileService: AuthorService {
 
 public extension AuthorFileService {
     
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
@@ -36,7 +36,7 @@ public extension AuthorFileService {
 
 public extension AuthorFileService {
     
-    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         // Nothing to do
     }
 }

@@ -16,7 +16,7 @@ public struct PostFileService: PostService {
 
 public extension PostFileService {
     
-    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -33,7 +33,7 @@ public extension PostFileService {
                 post: post,
                 author: value.authors.first { $0.id == post.authorID },
                 media: value.media.first { $0.id == post.mediaID },
-                terms: post.terms.reduce(into: [TermType]()) { result, next in
+                terms: post.terms.reduce(into: [Term]()) { result, next in
                     guard let element = value.terms.first(where: { $0.id == next }) else { return }
                     result.append(element)
                 }
@@ -43,7 +43,7 @@ public extension PostFileService {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
@@ -63,7 +63,7 @@ public extension PostFileService {
 
 public extension PostFileService {
     
-    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -75,7 +75,7 @@ public extension PostFileService {
         }
     }
     
-    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
@@ -93,14 +93,14 @@ public extension PostFileService {
 
 public extension PostFileService {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = ids.reduce(into: [PostType]()) { result, next in
+            let model = ids.reduce(into: [Post]()) { result, next in
                 guard let element = value.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
@@ -109,7 +109,7 @@ public extension PostFileService {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
             guard case .success(let value) = $0 else {
                 completion($0)
@@ -127,7 +127,7 @@ public extension PostFileService {
 
 public extension PostFileService {
     
-    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -135,13 +135,13 @@ public extension PostFileService {
             }
             
             let query = request.query.lowercased()
-            let isIncluded: (PostType) -> Bool
+            let isIncluded: (Post) -> Bool
             
-            let titlePredicate: (PostType) -> Bool = {
+            let titlePredicate: (Post) -> Bool = {
                 $0.title.lowercased().contains(query)
             }
             
-            let contentPredicate: (PostType) -> Bool = {
+            let contentPredicate: (Post) -> Bool = {
                 $0.content.lowercased().contains(query)
             }
             
@@ -152,7 +152,7 @@ public extension PostFileService {
                     .map { $0.id }
                 : []
             
-            let termsPredicate: (PostType) -> Bool = {
+            let termsPredicate: (Post) -> Bool = {
                 $0.terms.contains(where: termIDs.contains)
             }
             
@@ -189,7 +189,7 @@ public extension PostFileService {
 
 public extension PostFileService {
     
-    func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
@@ -198,15 +198,14 @@ public extension PostFileService {
             
             let model = SeedPayload(
                 posts: value.posts + {
-                    guard let post = request.post as? Post,
-                        !value.posts.contains(where: { $0.id == post.id }) else {
-                            return []
+                    guard !value.posts.contains(where: { $0.id == request.post.id }) else {
+                        return []
                     }
                     
-                    return [post]
+                    return [request.post]
                 }(),
                 authors: value.authors + {
-                    guard let author = request.author as? Author,
+                    guard let author = request.author,
                         !value.authors.contains(where: { $0.id == author.id }) else {
                             return []
                     }
@@ -214,7 +213,7 @@ public extension PostFileService {
                     return [author]
                 }(),
                 media: value.media + {
-                    guard let media = request.media as? Media,
+                    guard let media = request.media,
                         !value.media.contains(where: { $0.id == media.id }) else {
                             return []
                     }
@@ -223,7 +222,7 @@ public extension PostFileService {
                 }(),
                 terms: value.terms.compactMap { term in
                     guard !value.terms.contains(where: { $0.id == term.id }) else { return nil }
-                    return term as? Term
+                    return term
                 }
             )
             

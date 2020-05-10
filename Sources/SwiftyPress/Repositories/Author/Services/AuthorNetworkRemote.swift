@@ -30,7 +30,7 @@ public struct AuthorNetworkRemote: AuthorRemote {
 
 public extension AuthorNetworkRemote {
     
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         let urlRequest: URLRequest = .readAuthor(id: id, constants: constants)
         
         networkRepository.send(with: urlRequest) {
@@ -43,7 +43,7 @@ public extension AuthorNetworkRemote {
                 }
                 
                 self.log.error("An error occured while fetching the author: \(String(describing: $0.error)).")
-                completion(.failure(DataError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error)))
                 return
             }
             

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct MediaRepository: MediaRepositoryType {
+public struct MediaRepository {
     private let service: MediaService
     private let remote: MediaRemote?
     
@@ -18,7 +18,7 @@ public struct MediaRepository: MediaRepositoryType {
 
 public extension MediaRepository {
     
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         service.fetch(id: id) {
             guard let remote = self.remote else {
                 completion($0)
@@ -47,7 +47,7 @@ public extension MediaRepository {
 
 public extension MediaRepository {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         service.fetch(ids: ids, completion: completion)
     }
 }

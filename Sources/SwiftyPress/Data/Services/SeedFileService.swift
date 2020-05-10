@@ -10,7 +10,7 @@ import Foundation.NSBundle
 import ZamzamCore
 
 public struct SeedFileService: SeedService {
-    private static var data: SeedPayloadType?
+    private static var data: SeedPayload?
     
     private let name: String
     private let bundle: Bundle
@@ -38,14 +38,14 @@ public extension SeedFileService {
 
 public extension SeedFileService {
     
-    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
         completion(.success(Self.data ?? SeedPayload()))
     }
 }
 
 public extension SeedFileService {
     
-    func set(data: SeedPayloadType) {
+    func set(data: SeedPayload) {
         Self.data = data
     }
 }

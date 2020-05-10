@@ -9,7 +9,7 @@
 import Foundation
 import ZamzamCore
 
-public struct DataRepository: DataRepositoryType {
+public struct DataRepository {
     private let seedService: SeedService
     private let remoteService: RemoteService
     private let cacheService: CacheService
@@ -47,10 +47,10 @@ public extension DataRepository {
 public extension DataRepository {
     // Handle simultanuous pull requests in a queue
     private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataRepository.pull")
-    private static var tasks = [((Result<SeedPayloadType, DataError>) -> Void)]()
+    private static var tasks = [((Result<SeedPayload, SwiftyPressError>) -> Void)]()
     private static var isPulling = false
     
-    func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+    func pull(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
         Self.queue.async {
             Self.tasks.append(completion)
             
@@ -181,7 +181,7 @@ private extension DataRepository {
 
 private extension DataRepository {
     
-    func executeTasks(_ result: Result<SeedPayloadType, DataError>) {
+    func executeTasks(_ result: Result<SeedPayload, SwiftyPressError>) {
         Self.queue.async {
             let tasks = Self.tasks
             Self.tasks.removeAll()

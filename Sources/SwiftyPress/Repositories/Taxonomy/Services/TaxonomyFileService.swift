@@ -16,7 +16,7 @@ public struct TaxonomyFileService: TaxonomyService {
 
 public extension TaxonomyFileService {
     
-    func fetch(id: Int, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         fetch {
             // Handle errors
             guard case .success = $0 else {
@@ -35,7 +35,7 @@ public extension TaxonomyFileService {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<TermType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Term, SwiftyPressError>) -> Void) {
         fetch {
             // Handle errors
             guard case .success = $0 else {
@@ -57,7 +57,7 @@ public extension TaxonomyFileService {
 
 public extension TaxonomyFileService {
     
-    func fetch(completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let value) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
@@ -71,14 +71,14 @@ public extension TaxonomyFileService {
 
 public extension TaxonomyFileService {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
             guard case .success(let value) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = ids.reduce(into: [TermType]()) { result, next in
+            let model = ids.reduce(into: [Term]()) { result, next in
                 guard let element = value.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
@@ -87,7 +87,7 @@ public extension TaxonomyFileService {
         }
     }
     
-    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
             guard case .success(let value) = $0 else {
                 completion($0)
@@ -98,7 +98,7 @@ public extension TaxonomyFileService {
         }
     }
     
-    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[TermType], DataError>) -> Void) {
+    func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
             guard case .success(let value) = $0 else {
                 completion($0)

@@ -6,23 +6,16 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-// MARK: - Repository
-
-public protocol MediaRepositoryType {
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void)
-}
-
 // MARK: - Services
 
 public protocol MediaService {
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[MediaType], DataError>) -> Void)
-    func createOrUpdate(_ request: MediaType, completion: @escaping (Result<MediaType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void)
+    func createOrUpdate(_ request: Media, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
 }
 
 public protocol MediaRemote {
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace

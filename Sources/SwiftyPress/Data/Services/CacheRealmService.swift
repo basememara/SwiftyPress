@@ -122,7 +122,7 @@ public extension CacheRealmService {
         getSyncActivity(for: SeedPayload.self)?.lastPulledAt
     }
     
-    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
         // Ensure there is data before proceeding
         guard !request.payload.isEmpty else {
             log.debug("No modified data to cache.")

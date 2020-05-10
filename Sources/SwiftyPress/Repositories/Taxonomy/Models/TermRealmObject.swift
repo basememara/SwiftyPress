@@ -32,7 +32,7 @@ class TermRealmObject: Object, TermType {
 extension TermRealmObject {
     
     var taxonomy: Taxonomy {
-        get { Taxonomy(rawValue: taxonomyRaw) }
+        get { Taxonomy(rawValue: taxonomyRaw) ?? .category }
         set { taxonomyRaw = newValue.rawValue }
     }
 }

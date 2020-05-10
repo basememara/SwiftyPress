@@ -1,12 +1,12 @@
 //
-//  DataError.swift
+//  SwiftyPressError.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-01.
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public enum DataError: Error {
+public enum SwiftyPressError: Error {
     case duplicateFailure
     case nonExistent
     case incomplete
@@ -21,7 +21,7 @@ public enum DataError: Error {
     case unknownReason(Error?)
 }
 
-public extension DataError {
+public extension SwiftyPressError {
     
     /// Get the localized description for this error
     var localizedDescription: String {

@@ -37,7 +37,7 @@ public extension RemoteNetworkService {
     func fetchModified(
         after date: Date?,
         with request: DataAPI.ModifiedRequest,
-        completion: @escaping (Result<SeedPayloadType, DataError>) -> Void
+        completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void
     ) {
         let urlRequest: URLRequest = .modified(after: date, with: request, constants: constants)
         
@@ -50,7 +50,7 @@ public extension RemoteNetworkService {
                 }
                 
                 self.log.error("An error occured while fetching the modified payload: \(String(describing: $0.error)).")
-                completion(.failure(DataError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error)))
                 return
             }
             

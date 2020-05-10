@@ -14,7 +14,7 @@ public struct AuthorRealmService: AuthorService {}
 
 public extension AuthorRealmService {
     
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -41,7 +41,7 @@ public extension AuthorRealmService {
 
 public extension AuthorRealmService {
     
-    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             

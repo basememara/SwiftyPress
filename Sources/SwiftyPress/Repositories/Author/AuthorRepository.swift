@@ -8,7 +8,7 @@
 
 import ZamzamCore
 
-public struct AuthorRepository: AuthorRepositoryType {
+public struct AuthorRepository {
     private let service: AuthorService
     private let remote: AuthorRemote?
     private let log: LogRepository
@@ -22,7 +22,7 @@ public struct AuthorRepository: AuthorRepositoryType {
 
 public extension AuthorRepository {
     
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         service.fetch(id: id) {
             guard let remote = self.remote else {
                 completion($0)

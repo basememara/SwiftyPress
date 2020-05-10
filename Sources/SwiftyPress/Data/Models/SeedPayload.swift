@@ -6,17 +6,17 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct SeedPayload: SeedPayloadType, Decodable {
-    public let posts: [PostType]
-    public let authors: [AuthorType]
-    public let media: [MediaType]
-    public let terms: [TermType]
+public struct SeedPayload: Codable, Equatable {
+    public let posts: [Post]
+    public let authors: [Author]
+    public let media: [Media]
+    public let terms: [Term]
     
     init(
-        posts: [PostType] = [],
-        authors: [AuthorType] = [],
-        media: [MediaType] = [],
-        terms: [TermType] = []
+        posts: [Post] = [],
+        authors: [Author] = [],
+        media: [Media] = [],
+        terms: [Term] = []
     ) {
         self.posts = posts
         self.authors = authors
@@ -25,23 +25,13 @@ public struct SeedPayload: SeedPayloadType, Decodable {
     }
 }
 
-// MARK: - Codable
-
-extension SeedPayload {
+public extension SeedPayload {
     
-    private enum CodingKeys: String, CodingKey {
-        case posts
-        case authors
-        case media
-        case terms
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.posts = try container.decode([Post].self, forKey: .posts)
-        self.authors = try container.decode([Author].self, forKey: .authors)
-        self.media = try container.decode([Media].self, forKey: .media)
-        self.terms = try container.decode([Term].self, forKey: .terms)
+    /// A Boolean value indicating whether the instance is empty.
+    var isEmpty: Bool {
+        posts.isEmpty
+            && authors.isEmpty
+            && media.isEmpty
+            && terms.isEmpty
     }
 }

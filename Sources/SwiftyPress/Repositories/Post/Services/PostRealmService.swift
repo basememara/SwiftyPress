@@ -20,7 +20,7 @@ public struct PostRealmService: PostService {
 
 public extension PostRealmService {
     
-    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -44,7 +44,7 @@ public extension PostRealmService {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -71,7 +71,7 @@ public extension PostRealmService {
 
 public extension PostRealmService {
     
-    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -82,7 +82,7 @@ public extension PostRealmService {
                 return
             }
             
-            let items: [PostType] = realm.objects(PostRealmObject.self)
+            let items: [Post] = realm.objects(PostRealmObject.self)
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .prefixMap(request.maxLength) { Post(from: $0) }
             
@@ -92,7 +92,7 @@ public extension PostRealmService {
         }
     }
     
-    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -103,7 +103,7 @@ public extension PostRealmService {
                 return
             }
             
-            let items: [PostType] = realm.objects(PostRealmObject.self)
+            let items: [Post] = realm.objects(PostRealmObject.self)
                 .filter("commentCount > 1")
                 .sorted(byKeyPath: "commentCount", ascending: false)
                 .prefixMap(request.maxLength) { Post(from: $0) }
@@ -117,7 +117,7 @@ public extension PostRealmService {
 
 public extension PostRealmService {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -128,7 +128,7 @@ public extension PostRealmService {
                 return
             }
             
-            let items: [PostType] = realm.objects(PostRealmObject.self, forPrimaryKeys: ids)
+            let items: [Post] = realm.objects(PostRealmObject.self, forPrimaryKeys: ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .map { Post(from: $0) }
             
@@ -138,7 +138,7 @@ public extension PostRealmService {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -149,7 +149,7 @@ public extension PostRealmService {
                 return
             }
             
-            let items: [PostType] = realm.objects(PostRealmObject.self)
+            let items: [Post] = realm.objects(PostRealmObject.self)
                 .filter("ANY termsRaw.id IN %@", ids, ids)
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .prefixMap(request.maxLength) { Post(from: $0) }
@@ -163,7 +163,7 @@ public extension PostRealmService {
 
 public extension PostRealmService {
     
-    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         guard !request.query.isEmpty else { return completion(.success([])) }
         
         DispatchQueue.database.async {
@@ -202,7 +202,7 @@ public extension PostRealmService {
                 }
             }
             
-            let items: [PostType] = realm.objects(PostRealmObject.self)
+            let items: [Post] = realm.objects(PostRealmObject.self)
                 .filter(NSCompoundPredicate(orPredicateWithSubpredicates: predicates))
                 .sorted(byKeyPath: "createdAt", ascending: false)
                 .prefixMap(request.maxLength) { Post(from: $0) }
@@ -234,7 +234,7 @@ public extension PostRealmService {
 
 public extension PostRealmService {
     
-    func createOrUpdate(_ request: ExtendedPostType, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         DispatchQueue.database.async {
             let realm: Realm
             
@@ -280,7 +280,7 @@ public extension PostRealmService {
 private extension PostRealmService {
     
     /// Extend post with linked objects
-    func extend(post: PostType, with realm: Realm) -> ExtendedPostType {
+    func extend(post: PostType, with realm: Realm) -> ExtendedPost {
         return ExtendedPost(
             post: Post(from: post),
             author: Author(

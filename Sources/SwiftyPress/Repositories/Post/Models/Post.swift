@@ -8,7 +8,26 @@
 
 import Foundation.NSDate
 
-public struct Post: PostType, Identifiable, Decodable {
+// MARK: - Protocol
+
+public protocol PostType: Dateable {
+    var id: Int { get }
+    var slug: String { get }
+    var type: String { get }
+    var title: String { get }
+    var content: String { get }
+    var excerpt: String { get }
+    var link: String { get }
+    var commentCount: Int { get }
+    var authorID: Int { get }
+    var mediaID: Int? { get }
+    var terms: [Int] { get }
+    var meta: [String: String] { get }
+}
+
+// MARK: - Model
+
+public struct Post: PostType, Identifiable, Codable, Equatable {
     public let id: Int
     public let slug: String
     public let type: String

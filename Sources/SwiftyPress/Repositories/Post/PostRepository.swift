@@ -6,12 +6,13 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+import Foundation.NSURL
 import ZamzamCore
 
-public struct PostRepository: PostRepositoryType {
+public struct PostRepository {
     private let service: PostService
     private let remote: PostRemote?
-    private let dataRepository: DataRepositoryType
+    private let dataRepository: DataRepository
     private let preferences: Preferences
     private let constants: Constants
     private let log: LogRepository
@@ -19,7 +20,7 @@ public struct PostRepository: PostRepositoryType {
     public init(
         service: PostService,
         remote: PostRemote?,
-        dataRepository: DataRepositoryType,
+        dataRepository: DataRepository,
         preferences: Preferences,
         constants: Constants,
         log: LogRepository
@@ -35,7 +36,7 @@ public struct PostRepository: PostRepositoryType {
 
 public extension PostRepository {
     
-    func fetch(id: Int, completion: @escaping (Result<ExtendedPostType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         service.fetch(id: id) {
             guard let remote = self.remote else {
                 completion($0)
@@ -88,7 +89,7 @@ public extension PostRepository {
         }
     }
     
-    func fetch(slug: String, completion: @escaping (Result<PostType, DataError>) -> Void) {
+    func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
         service.fetch(slug: slug) { result in
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
@@ -109,11 +110,16 @@ public extension PostRepository {
             completion(result)
         }
     }
+    
+    func fetch(url: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
+        guard let slug = slug(from: url) else { return completion(.failure(.nonExistent)) }
+        fetch(slug: slug, completion: completion)
+    }
 }
 
 public extension PostRepository {
     
-    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         service.fetch(with: request) {
             // Immediately return local response
             completion($0)
@@ -129,7 +135,7 @@ public extension PostRepository {
         }
     }
     
-    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         service.fetchPopular(with: request) {
             // Immediately return local response
             completion($0)
@@ -145,14 +151,14 @@ public extension PostRepository {
         }
     }
     
-    func fetchTopPicks(with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchTopPicks(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(byTermIDs: [constants.featuredCategoryID], with: request, completion: completion)
     }
 }
 
 public extension PostRepository {
     
-    func fetch(ids: Set<Int>, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         service.fetch(ids: ids) {
             // Immediately return local response
             completion($0)
@@ -172,7 +178,7 @@ public extension PostRepository {
         }
     }
     
-    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         service.fetch(byTermIDs: ids, with: request) {
             // Immediately return local response
             completion($0)
@@ -194,7 +200,7 @@ public extension PostRepository {
 
 public extension PostRepository {
     
-    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         service.search(with: request, completion: completion)
     }
 }
@@ -204,11 +210,16 @@ public extension PostRepository {
     func getID(bySlug slug: String) -> Int? {
         service.getID(bySlug: slug)
     }
+    
+    func getID(byURL url: String) -> Int? {
+        guard let slug = slug(from: url) else { return nil }
+        return getID(bySlug: slug)
+    }
 }
 
 public extension PostRepository {
     
-    func fetchFavorites(completion: @escaping (Result<[PostType], DataError>) -> Void) {
+    func fetchFavorites(completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         guard let ids = preferences.get(.favorites), !ids.isEmpty else {
             completion(.success([]))
             return
@@ -239,5 +250,16 @@ public extension PostRepository {
     
     func hasFavorite(id: Int) -> Bool {
         preferences.get(.favorites)?.contains(id) == true
+    }
+}
+
+// MARK: - Helpers
+
+private extension PostRepository {
+    
+    func slug(from url: String) -> String? {
+        URL(string: url)?.relativePath.lowercased()
+            .replacing(regex: "\\d{4}/\\d{2}/\\d{2}/", with: "") // Handle legacy permalinks
+            .trimmingCharacters(in: CharacterSet(charactersIn: "/"))
     }
 }

@@ -6,15 +6,15 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public enum Taxonomy: Decodable {
+public enum Taxonomy: Codable, Equatable, Hashable {
     case category
     case tag
     case other(String)
 }
 
-// MARK: - Codable
+// MARK: - Conversions
 
-extension Taxonomy {
+extension Taxonomy: RawRepresentable {
     
     private enum CodingKeys: String, CodingKey {
         case category
@@ -22,29 +22,18 @@ extension Taxonomy {
         case other
     }
     
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        self = .init(rawValue: try container.decode(String.self))
-    }
-}
-
-
-// MARK: - Helpers
-
-public extension Taxonomy {
-    
-    var rawValue: String {
+    public var rawValue: String {
         switch self {
         case .category:
             return CodingKeys.category.rawValue
         case .tag:
             return CodingKeys.tag.rawValue
-        case .other(let value):
-            return value
+        case .other(let item):
+            return item
         }
     }
     
-    init(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue {
         case CodingKeys.category.rawValue:
             self = .category
@@ -55,6 +44,8 @@ public extension Taxonomy {
         }
     }
 }
+
+// MARK: - Helpers
 
 public extension Taxonomy {
     
@@ -70,25 +61,25 @@ public extension Taxonomy {
     }
 }
 
-extension Taxonomy: Equatable {
-    
-    public static func == (lhs: Taxonomy, rhs: Taxonomy) -> Bool {
-        switch (lhs, rhs) {
-        case (.category, .category):
-            return true
-        case (.tag, .tag):
-            return true
-        case (let .other(lhsValue), let .other(rhsValue)):
-            return lhsValue == rhsValue
-        default:
-            return false
-        }
-    }
-}
-
-extension Taxonomy: Hashable {
-    
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(rawValue)
-    }
-}
+//extension Taxonomy: Equatable {
+//
+//    public static func == (lhs: Taxonomy, rhs: Taxonomy) -> Bool {
+//        switch (lhs, rhs) {
+//        case (.category, .category):
+//            return true
+//        case (.tag, .tag):
+//            return true
+//        case (let .other(lhsValue), let .other(rhsValue)):
+//            return lhsValue == rhsValue
+//        default:
+//            return false
+//        }
+//    }
+//}
+//
+//extension Taxonomy: Hashable {
+//
+//    public func hash(into hasher: inout Hasher) {
+//        hasher.combine(rawValue)
+//    }
+//}

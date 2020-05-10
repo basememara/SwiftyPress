@@ -9,7 +9,7 @@
 import Foundation.NSURLError
 import ZamzamCore
 
-public extension DataError {
+public extension SwiftyPressError {
     
     init(from error: NetworkAPI.Error?) {
         // Handle no internet

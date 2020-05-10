@@ -22,24 +22,24 @@ public protocol SwiftyPressCore {
     func log() -> LogRepository
     func logServices() -> [LogService]
     
-    func dataRepository() -> DataRepositoryType
+    func dataRepository() -> DataRepository
     func seedService() -> SeedService
     func remoteService() -> RemoteService
     func cacheService() -> CacheService
     
-    func postRepository() -> PostRepositoryType
+    func postRepository() -> PostRepository
     func postService() -> PostService
     func postRemote() -> PostRemote
     
-    func authorRepository() -> AuthorRepositoryType
+    func authorRepository() -> AuthorRepository
     func authorService() -> AuthorService
     func authorRemote() -> AuthorRemote
     
-    func mediaRepository() -> MediaRepositoryType
+    func mediaRepository() -> MediaRepository
     func mediaService() -> MediaService
     func mediaRemote() -> MediaRemote
     
-    func taxonomyRepository() -> TaxonomyRepositoryType
+    func taxonomyRepository() -> TaxonomyRepository
     func taxonomyService() -> TaxonomyService
     
     func networkRepository() -> NetworkRepository
@@ -75,7 +75,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func dataRepository() -> DataRepositoryType {
+    func dataRepository() -> DataRepository {
         DataRepository(
             seedService: seedService(),
             remoteService: remoteService(),
@@ -105,7 +105,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func postRepository() -> PostRepositoryType {
+    func postRepository() -> PostRepository {
         PostRepository(
             service: postService(),
             remote: postRemote(),
@@ -132,7 +132,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func authorRepository() -> AuthorRepositoryType {
+    func authorRepository() -> AuthorRepository {
         AuthorRepository(
             service: authorService(),
             remote: authorRemote(),
@@ -156,7 +156,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func mediaRepository() -> MediaRepositoryType {
+    func mediaRepository() -> MediaRepository {
         MediaRepository(
             service: mediaService(),
             remote: mediaRemote()
@@ -179,7 +179,7 @@ public extension SwiftyPressCore {
 
 public extension SwiftyPressCore {
     
-    func taxonomyRepository() -> TaxonomyRepositoryType {
+    func taxonomyRepository() -> TaxonomyRepository {
         TaxonomyRepository(
             service: taxonomyService(),
             dataRepository: dataRepository()

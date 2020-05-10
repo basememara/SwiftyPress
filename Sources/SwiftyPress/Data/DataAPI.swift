@@ -8,39 +8,23 @@
 
 import Foundation.NSDate
 
-// MARK: - Respository
-
-public protocol DataRepositoryType {
-    
-    /// Setup the underlying storage for use.
-    func configure()
-    
-    /// Destroys the cache storage to start fresh.
-    func resetCache(for userID: Int)
-    
-    /// Retrieves the latest changes from the remote source.
-    ///
-    /// - Parameter completion: The completion block that returns the latest changes.
-    func pull(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
-}
-
 // MARK: - Services
 
 public protocol SeedService {
     func configure()
-    func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
 }
 
 public protocol RemoteService {
     func configure()
-    func fetchModified(after date: Date?, with request: DataAPI.ModifiedRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func fetchModified(after date: Date?, with request: DataAPI.ModifiedRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
 }
 
 public protocol CacheService {
     var lastPulledAt: Date? { get }
     
     func configure()
-    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayloadType, DataError>) -> Void)
+    func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
     func delete(for userID: Int)
 }
 
@@ -55,7 +39,7 @@ public enum DataAPI {
     }
     
     public struct CacheRequest {
-        let payload: SeedPayloadType
+        let payload: SeedPayload
         let lastPulledAt: Date
     }
 }

@@ -9,11 +9,11 @@
 import ZamzamCore
 
 // Type used for decoding the server payload
-struct ExtendedPost: ExtendedPostType, Decodable {
-    let post: PostType
-    let author: AuthorType?
-    let media: MediaType?
-    let terms: [TermType]
+public struct ExtendedPost: Codable, Equatable {
+    public let post: Post
+    public let author: Author?
+    public let media: Media?
+    public let terms: [Term]
 }
 
 // MARK: - Codable
@@ -27,7 +27,7 @@ extension ExtendedPost {
         case terms
     }
     
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.post = try container.decode(Post.self, forKey: .post)

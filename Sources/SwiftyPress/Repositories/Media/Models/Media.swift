@@ -6,7 +6,21 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-public struct Media: MediaType, Identifiable, Decodable {
+// MARK: - Protocol
+
+public protocol MediaType {
+    var id: Int { get }
+    var link: String { get }
+    var width: Int { get }
+    var height: Int { get }
+    var thumbnailLink: String { get }
+    var thumbnailWidth: Int { get }
+    var thumbnailHeight: Int { get }
+}
+
+// MARK: - Model
+
+public struct Media: MediaType, Identifiable, Codable, Equatable {
     public let id: Int
     public let link: String
     public let width: Int

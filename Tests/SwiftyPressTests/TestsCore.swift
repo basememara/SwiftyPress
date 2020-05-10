@@ -55,7 +55,7 @@ struct TestsCore: SwiftyPressCore {
 private extension TestsCore {
     
     struct SeedJSONService: SeedService {
-        private static var data: SeedPayloadType?
+        private static var data: SeedPayload?
         private let jsonString: String
         
         init(jsonString: String) {
@@ -74,7 +74,7 @@ private extension TestsCore {
             )
         }
         
-        func fetch(completion: @escaping (Result<SeedPayloadType, DataError>) -> Void) {
+        func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
             completion(.success(Self.data ?? SeedPayload()))
         }
     }

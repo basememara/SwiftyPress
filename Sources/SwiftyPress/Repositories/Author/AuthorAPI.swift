@@ -6,21 +6,15 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
-// MARK: - Respository
-
-public protocol AuthorRepositoryType {
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
-}
-
 // MARK: - Services
 
 public protocol AuthorService {
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
-    func createOrUpdate(_ request: AuthorType, completion: @escaping (Result<AuthorType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
+    func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
 }
 
 public protocol AuthorRemote {
-    func fetch(id: Int, completion: @escaping (Result<AuthorType, DataError>) -> Void)
+    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace

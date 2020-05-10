@@ -30,7 +30,7 @@ public struct MediaNetworkRemote: MediaRemote {
 
 public extension MediaNetworkRemote {
     
-    func fetch(id: Int, completion: @escaping (Result<MediaType, DataError>) -> Void) {
+    func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         let urlRequest: URLRequest = .readMedia(id: id, constants: constants)
         
         networkRepository.send(with: urlRequest) {
@@ -43,7 +43,7 @@ public extension MediaNetworkRemote {
                 }
                 
                 self.log.error("An error occured while fetching the media: \(String(describing: $0.error)).")
-                completion(.failure(DataError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error)))
                 return
             }
             
