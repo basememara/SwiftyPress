@@ -12,12 +12,12 @@ import SwiftyPress
 final class DataRepositoryTests: BaseTestCase {
     private lazy var dataRepository = core.dataRepository()
     
-    func testPull() {
+    func testFetch() {
         // Given
         let promise = expectation(description: #function)
         
         // When
-        dataRepository.pull {
+        dataRepository.fetch {
             defer { promise.fulfill() }
             
             // Then

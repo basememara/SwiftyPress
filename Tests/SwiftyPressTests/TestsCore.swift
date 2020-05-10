@@ -43,8 +43,8 @@ struct TestsCore: SwiftyPressCore {
         [LogConsoleService(minLevel: .verbose)]
     }
     
-    func seedService() -> SeedService {
-        SeedJSONService(jsonString: jsonString)
+    func dataSeed() -> DataSeed {
+        DataJSONSeed(jsonString: jsonString)
     }
     
     func theme() -> Theme {
@@ -54,7 +54,7 @@ struct TestsCore: SwiftyPressCore {
 
 private extension TestsCore {
     
-    struct SeedJSONService: SeedService {
+    struct DataJSONSeed: DataSeed {
         private static var data: SeedPayload?
         private let jsonString: String
         

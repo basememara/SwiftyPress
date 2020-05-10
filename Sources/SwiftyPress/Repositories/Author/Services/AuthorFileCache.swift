@@ -7,9 +7,9 @@
 //
 
 public struct AuthorFileCache: AuthorCache {
-    private let seedService: SeedService
+    private let seedService: DataSeed
     
-    init(seedService: SeedService) {
+    init(seedService: DataSeed) {
         self.seedService = seedService
     }
 }

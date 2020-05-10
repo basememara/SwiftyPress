@@ -22,7 +22,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -43,7 +43,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -66,7 +66,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(id: id) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -107,7 +107,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(ids: Set(ids)) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -130,7 +130,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(slug: slug) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -153,7 +153,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -173,7 +173,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -193,7 +193,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -213,7 +213,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -237,7 +237,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(byTermIDs: ids, with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -260,7 +260,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(byTermIDs: ids, with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -283,7 +283,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(byTermIDs: ids, with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -307,7 +307,7 @@ extension PostRepositoryTests {
         
         // When
         postRepository.fetch(byTermIDs: ids, with: request) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -336,7 +336,7 @@ extension PostRepositoryTests {
         postRepository.addFavorite(id: ids[1])
         
         postRepository.fetchFavorites {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             

@@ -89,7 +89,7 @@ public extension PostRepository {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = result.error {
                 // Sync remote updates to cache if applicable
-                self.dataRepository.pull {
+                self.dataRepository.fetch {
                     // Validate if any updates that needs to be stored
                     guard case .success(let value) = $0, value.posts.contains(where: { $0.slug == slug }) else {
                         completion(result)
@@ -122,7 +122,7 @@ public extension PostRepository {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataRepository.pull {
+            self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.cache.fetch(with: request, completion: completion)
@@ -138,7 +138,7 @@ public extension PostRepository {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataRepository.pull {
+            self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0, !value.posts.isEmpty else { return }
                 self.cache.fetchPopular(with: request, completion: completion)
@@ -161,7 +161,7 @@ public extension PostRepository {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataRepository.pull {
+            self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
                 guard case .success(let value) = $0,
                     value.posts.contains(where: { ids.contains($0.id) }) else {
@@ -181,7 +181,7 @@ public extension PostRepository {
             guard case .success = $0 else { return }
             
             // Sync remote updates to cache if applicable
-            self.dataRepository.pull {
+            self.dataRepository.fetch {
                 guard case .success(let value) = $0 else { return }
                 
                 // Validate if any updates that needs to be stored

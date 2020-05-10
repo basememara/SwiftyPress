@@ -7,9 +7,9 @@
 //
 
 public struct PostFileCache: PostCache {
-    private let seedService: SeedService
+    private let seedService: DataSeed
     
-    init(seedService: SeedService) {
+    init(seedService: DataSeed) {
         self.seedService = seedService
     }
 }
@@ -226,7 +226,7 @@ public extension PostFileCache {
                 }
             )
             
-            guard let seedFileStore = self.seedService as? SeedFileService else {
+            guard let seedFileStore = self.seedService as? DataFileSeed else {
                 completion(.failure(.databaseFailure(nil)))
                 return
             }

@@ -12,7 +12,7 @@ import RealmSwift
 @objcMembers
 class SyncActivity: Object {
     dynamic var type: String = ""
-    dynamic var lastPulledAt: Date?
+    dynamic var lastFetchedAt: Date?
     
     override static func primaryKey() -> String? {
         "type"

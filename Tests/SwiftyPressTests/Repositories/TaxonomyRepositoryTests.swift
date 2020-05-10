@@ -21,7 +21,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -44,7 +44,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(id: id) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -64,7 +64,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(ids: ids) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -87,7 +87,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(slug: slug) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -110,7 +110,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -130,7 +130,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -150,7 +150,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -170,7 +170,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(url: url) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -192,7 +192,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(by: .category) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -211,7 +211,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(by: .tag) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -230,7 +230,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(by: .other("series")) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             
@@ -250,7 +250,7 @@ extension TaxonomyRepositoryTests {
         
         // When
         taxonomyRepository.fetch(by: taxonomies) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             guard $0.value?.isEmpty == false else { return }
             defer { promise?.fulfill(); promise = nil }
             

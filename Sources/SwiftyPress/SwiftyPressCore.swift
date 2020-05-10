@@ -26,9 +26,9 @@ public protocol SwiftyPressCore {
     func networkService() -> NetworkService
     
     func dataRepository() -> DataRepository
-    func seedService() -> SeedService
-    func remoteService() -> RemoteService
-    func cacheService() -> CacheService
+    func dataService() -> DataService
+    func dataCache() -> DataCache
+    func dataSeed() -> DataSeed
     
     func postRepository() -> PostRepository
     func postService() -> PostService
@@ -95,16 +95,16 @@ public extension SwiftyPressCore {
     
     func dataRepository() -> DataRepository {
         DataRepository(
-            seedService: seedService(),
-            remoteService: remoteService(),
-            cacheService: cacheService(),
+            dataService: dataService(),
+            dataCache: dataCache(),
+            dataSeed: dataSeed(),
             constants: constants(),
             log: log()
         )
     }
     
-    func remoteService() -> RemoteService {
-        RemoteNetworkService(
+    func dataService() -> DataService {
+        DataNetworkService(
             networkRepository: networkRepository(),
             jsonDecoder: jsonDecoder(),
             constants: constants(),
@@ -112,8 +112,8 @@ public extension SwiftyPressCore {
         )
     }
     
-    func cacheService() -> CacheService {
-        CacheRealmService(
+    func dataCache() -> DataCache {
+        DataRealmCache(
             fileManager: fileManager(),
             preferences: preferences(),
             log: log()

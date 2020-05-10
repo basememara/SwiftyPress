@@ -1,5 +1,5 @@
 //
-//  CacheRealmService.swift
+//  DataRealmCache.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-16.
@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import ZamzamCore
 
-public struct CacheRealmService: CacheService {
+public struct DataRealmCache: DataCache {
     private let fileManager: FileManager
     private let preferences: Preferences
     private let log: LogRepository
@@ -26,7 +26,7 @@ public struct CacheRealmService: CacheService {
     }
 }
 
-private extension CacheRealmService {
+private extension DataRealmCache {
     
     /// Name for isolated database per user or use anonymously
     var name: String {
@@ -39,7 +39,7 @@ private extension CacheRealmService {
     }
 }
 
-private extension CacheRealmService {
+private extension DataRealmCache {
     
     var fileURL: URL? {
         folderURL?.appendingPathComponent("\(name).realm")
@@ -52,7 +52,7 @@ private extension CacheRealmService {
     }
 }
 
-public extension CacheRealmService {
+public extension DataRealmCache {
     
     func configure() {
         DispatchQueue.database.sync {
@@ -116,10 +116,10 @@ public extension CacheRealmService {
     }
 }
 
-public extension CacheRealmService {
+public extension DataRealmCache {
     
-    var lastPulledAt: Date? {
-        getSyncActivity(for: SeedPayload.self)?.lastPulledAt
+    var lastFetchedAt: Date? {
+        getSyncActivity(for: SeedPayload.self)?.lastFetchedAt
     }
     
     func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
@@ -158,7 +158,7 @@ public extension CacheRealmService {
                 // Persist sync date for next use if applicable
                 try self.updateSyncActivity(
                     for: SeedPayload.self,
-                    lastPulledAt: request.lastPulledAt,
+                    lastFetchedAt: request.lastFetchedAt,
                     with: realm
                 )
                 
@@ -176,7 +176,7 @@ public extension CacheRealmService {
     }
 }
 
-public extension CacheRealmService {
+public extension DataRealmCache {
     
     func delete(for userID: Int) {
         DispatchQueue.database.sync {
@@ -207,7 +207,7 @@ public extension CacheRealmService {
 
 // MARK: - Helpers
 
-private extension CacheRealmService {
+private extension DataRealmCache {
     
     /// Get sync activity for type.
     func getSyncActivity<T>(for type: T.Type) -> SyncActivity? {
@@ -224,14 +224,14 @@ private extension CacheRealmService {
         return realm.object(ofType: SyncActivity.self, forPrimaryKey: typeName)
     }
     
-    /// Update or create last pulled at date for sync activity.
-    func updateSyncActivity<T>(for type: T.Type, lastPulledAt: Date, with realm: Realm) throws {
+    /// Update or create last fetched at date for sync activity.
+    func updateSyncActivity<T>(for type: T.Type, lastFetchedAt: Date, with realm: Realm) throws {
         let typeName = String(describing: type)
         
         try realm.write {
             realm.create(SyncActivity.self, value: [
                 "type": typeName,
-                "lastPulledAt": lastPulledAt
+                "lastFetchedAt": lastFetchedAt
             ], update: .modified)
         }
     }

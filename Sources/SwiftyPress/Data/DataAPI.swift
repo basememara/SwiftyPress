@@ -10,22 +10,25 @@ import Foundation.NSDate
 
 // MARK: - Services
 
-public protocol SeedService {
-    func configure()
-    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
-}
-
-public protocol RemoteService {
-    func configure()
+public protocol DataService {
     func fetchModified(after date: Date?, with request: DataAPI.ModifiedRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
 }
 
-public protocol CacheService {
-    var lastPulledAt: Date? { get }
+// MARK: - Cache
+
+public protocol DataCache {
+    var lastFetchedAt: Date? { get }
     
     func configure()
     func createOrUpdate(with request: DataAPI.CacheRequest, completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
     func delete(for userID: Int)
+}
+
+// MARK: - Seed
+
+public protocol DataSeed {
+    func configure()
+    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace
@@ -40,6 +43,6 @@ public enum DataAPI {
     
     public struct CacheRequest {
         let payload: SeedPayload
-        let lastPulledAt: Date
+        let lastFetchedAt: Date
     }
 }

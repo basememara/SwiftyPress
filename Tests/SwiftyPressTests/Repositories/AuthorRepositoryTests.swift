@@ -22,7 +22,7 @@ extension AuthorRepositoryTests {
         
         // When
         authorRepository.fetch(id: id) {
-            // Handle double calls used for remote pulling
+            // Handle double calls used for remote fetching
             // $0.value != nil else { return }
             defer { promise?.fulfill(); promise = nil }
             

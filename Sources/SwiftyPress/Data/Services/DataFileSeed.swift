@@ -1,5 +1,5 @@
 //
-//  SeedFileService.swift
+//  DataFileSeed.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
@@ -9,7 +9,7 @@
 import Foundation.NSBundle
 import ZamzamCore
 
-public struct SeedFileService: SeedService {
+public struct DataFileSeed: DataSeed {
     private static var data: SeedPayload?
     
     private let name: String
@@ -23,7 +23,7 @@ public struct SeedFileService: SeedService {
     }
 }
 
-public extension SeedFileService {
+public extension DataFileSeed {
     
     func configure() {
         guard Self.data == nil else { return }
@@ -36,14 +36,14 @@ public extension SeedFileService {
     }
 }
 
-public extension SeedFileService {
+public extension DataFileSeed {
     
     func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
         completion(.success(Self.data ?? SeedPayload()))
     }
 }
 
-public extension SeedFileService {
+public extension DataFileSeed {
     
     func set(data: SeedPayload) {
         Self.data = data

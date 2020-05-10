@@ -1,5 +1,5 @@
 //
-//  RemoteNetworkService.swift
+//  DataNetworkService.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-09.
@@ -9,7 +9,7 @@
 import Foundation
 import ZamzamCore
 
-public struct RemoteNetworkService: RemoteService {
+public struct DataNetworkService: DataService {
     private let networkRepository: NetworkRepository
     private let jsonDecoder: JSONDecoder
     private let constants: Constants
@@ -28,11 +28,7 @@ public struct RemoteNetworkService: RemoteService {
     }
 }
 
-public extension RemoteNetworkService {
-    
-    func configure() {
-        // No configure needed
-    }
+public extension DataNetworkService {
     
     func fetchModified(
         after date: Date?,

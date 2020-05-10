@@ -10,22 +10,22 @@ import Foundation
 import ZamzamCore
 
 public struct DataRepository {
-    private let seedService: SeedService
-    private let remoteService: RemoteService
-    private let cacheService: CacheService
+    private let dataService: DataService
+    private let dataCache: DataCache
+    private let dataSeed: DataSeed
     private let constants: Constants
     private let log: LogRepository
     
     init(
-        seedService: SeedService,
-        remoteService: RemoteService,
-        cacheService: CacheService,
+        dataService: DataService,
+        dataCache: DataCache,
+        dataSeed: DataSeed,
         constants: Constants,
         log: LogRepository
     ) {
-        self.seedService = seedService
-        self.remoteService = remoteService
-        self.cacheService = cacheService
+        self.dataService = dataService
+        self.dataCache = dataCache
+        self.dataSeed = dataSeed
         self.constants = constants
         self.log = log
     }
@@ -34,74 +34,73 @@ public struct DataRepository {
 public extension DataRepository {
     
     func configure() {
-        seedService.configure()
-        remoteService.configure()
-        cacheService.configure()
+        dataCache.configure()
+        dataSeed.configure()
     }
     
     func resetCache(for userID: Int) {
-        cacheService.delete(for: userID)
+        dataCache.delete(for: userID)
     }
 }
 
 public extension DataRepository {
-    // Handle simultanuous pull requests in a queue
-    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataRepository.pull")
+    // Handle simultanuous fetch requests in a queue
+    private static let queue = DispatchQueue(label: "\(DispatchQueue.labelPrefix).DataRepository.fetch")
     private static var tasks = [((Result<SeedPayload, SwiftyPressError>) -> Void)]()
-    private static var isPulling = false
+    private static var isFetching = false
     
-    func pull(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
+    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
         Self.queue.async {
             Self.tasks.append(completion)
             
-            guard !Self.isPulling else {
-                self.log.info("Data pull already in progress, queuing...")
+            guard !Self.isFetching else {
+                self.log.info("Data fetch already in progress, queuing...")
                 return
             }
             
-            Self.isPulling = true
-            self.log.info("Data pull requested...")
+            Self.isFetching = true
+            self.log.info("Data fetch requested...")
         
             // Determine if cache seeded before or just get latest from remote
-            guard let lastPulledAt = self.cacheService.lastPulledAt else {
+            guard let lastFetchedAt = self.dataCache.lastFetchedAt else {
                 self.log.info("Seeding cache storage first time begins...")
-                self.seedFromLocal()
+                self.refreshFromSeed()
                 return
             }
             
-            self.log.info("Pull remote into cache storage begins, last pulled at \(lastPulledAt)...")
-            self.seedFromRemote(after: lastPulledAt)
+            self.log.info("Fetch remote into cache storage begins, last fetched at \(lastFetchedAt)...")
+            self.refreshFromService(after: lastFetchedAt)
         }
     }
 }
 
 private extension DataRepository {
     
-    func seedFromRemote(after date: Date) {
+    func refreshFromService(after date: Date) {
         let request = DataAPI.ModifiedRequest(
             taxonomies: constants.taxonomies,
             postMetaKeys: constants.postMetaKeys,
             limit: nil
         )
         
-        remoteService.fetchModified(after: date, with: request) {
+        dataService.fetchModified(after: date, with: request) {
             guard case .success(let value) = $0 else {
                 self.executeTasks($0)
                 return
             }
             
-            self.log.debug("Found \(value.posts.count) posts to remotely pull into cache storage.")
+            self.log.debug("Found \(value.posts.count) posts to remotely fetch into cache storage.")
             
-            let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
-            self.cacheService.createOrUpdate(with: request, completion: self.executeTasks)
+            let request = DataAPI.CacheRequest(payload: value, lastFetchedAt: Date())
+            self.dataCache.createOrUpdate(with: request, completion: self.executeTasks)
         }
     }
 }
 
 private extension DataRepository {
     
-    func seedFromLocal() {
-        seedService.fetch {
+    func refreshFromSeed() {
+        dataSeed.fetch {
             guard case .success(let local) = $0, !local.isEmpty else {
                 self.log.error("Failed to retrieve seed data, falling back to remote server...")
                 
@@ -111,16 +110,16 @@ private extension DataRepository {
                     limit: self.constants.defaultFetchModifiedLimit
                 )
                 
-                self.remoteService.fetchModified(after: nil, with: request) {
+                self.dataService.fetchModified(after: nil, with: request) {
                     guard case .success(let value) = $0 else {
                         self.executeTasks($0)
                         return
                     }
                     
-                    self.log.debug("Found \(value.posts.count) posts to remotely pull into cache storage.")
+                    self.log.debug("Found \(value.posts.count) posts to remotely fetch into cache storage.")
                     
-                    let request = DataAPI.CacheRequest(payload: value, lastPulledAt: Date())
-                    self.cacheService.createOrUpdate(with: request, completion: self.executeTasks)
+                    let request = DataAPI.CacheRequest(payload: value, lastFetchedAt: Date())
+                    self.dataCache.createOrUpdate(with: request, completion: self.executeTasks)
                 }
                 
                 return
@@ -129,15 +128,15 @@ private extension DataRepository {
             self.log.debug("Found \(local.posts.count) posts to seed into cache storage.")
             
             let lastSeedDate = local.posts.map { $0.modifiedAt }.max() ?? Date()
-            let request = DataAPI.CacheRequest(payload: local, lastPulledAt: lastSeedDate)
+            let request = DataAPI.CacheRequest(payload: local, lastFetchedAt: lastSeedDate)
             
-            self.cacheService.createOrUpdate(with: request) {
+            self.dataCache.createOrUpdate(with: request) {
                 guard case .success = $0 else {
                     self.executeTasks($0)
                     return
                 }
                 
-                self.log.debug("Seeding cache storage complete, now pulling from remote storage.")
+                self.log.debug("Seeding cache storage complete, now fetching from remote storage.")
                 
                 // Fetch latest beyond seed
                 let request = DataAPI.ModifiedRequest(
@@ -146,16 +145,16 @@ private extension DataRepository {
                     limit: nil
                 )
                 
-                self.remoteService.fetchModified(after: lastSeedDate, with: request) {
+                self.dataService.fetchModified(after: lastSeedDate, with: request) {
                     guard case .success(let remote) = $0 else {
                         self.executeTasks(.success(local))
                         return
                     }
                     
-                    self.log.debug("Found \(remote.posts.count) posts to remotely pull into cache storage.")
-                    let request = DataAPI.CacheRequest(payload: remote, lastPulledAt: Date())
+                    self.log.debug("Found \(remote.posts.count) posts to remotely fetch into cache storage.")
+                    let request = DataAPI.CacheRequest(payload: remote, lastFetchedAt: Date())
                     
-                    self.cacheService.createOrUpdate(with: request) {
+                    self.dataCache.createOrUpdate(with: request) {
                         guard case .success = $0 else {
                             self.executeTasks(.success(local))
                             return
@@ -185,9 +184,9 @@ private extension DataRepository {
         Self.queue.async {
             let tasks = Self.tasks
             Self.tasks.removeAll()
-            Self.isPulling = false
+            Self.isFetching = false
             
-            self.log.info("Data pull request complete, now executing \(tasks.count) queued tasks...")
+            self.log.info("Data fetch request complete, now executing \(tasks.count) queued tasks...")
             
             DispatchQueue.main.async {
                 tasks.forEach { $0(result) }
