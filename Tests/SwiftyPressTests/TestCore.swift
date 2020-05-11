@@ -12,7 +12,7 @@ import Foundation.NSURL
 import ZamzamCore
 @testable import SwiftyPress
 
-struct TestsCore: SwiftyPressCore {
+struct TestCore: SwiftyPressCore {
     
     func constantsService() -> ConstantsService {
         ConstantsMemoryService(
@@ -44,39 +44,11 @@ struct TestsCore: SwiftyPressCore {
     }
     
     func dataSeed() -> DataSeed {
-        DataJSONSeed(jsonString: jsonString)
+        DataJSONSeed()
     }
     
     func theme() -> Theme {
         fatalError("Not implemented")
-    }
-}
-
-private extension TestsCore {
-    
-    struct DataJSONSeed: DataSeed {
-        private static var data: SeedPayload?
-        private let jsonString: String
-        
-        init(jsonString: String) {
-            self.jsonString = jsonString
-        }
-        
-        func configure() {
-            guard Self.data == nil,
-                let data = jsonString.data(using: .utf8) else {
-                    return
-            }
-            
-            Self.data = try? JSONDecoder.default.decode(
-                SeedPayload.self,
-                from: data
-            )
-        }
-        
-        func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
-            completion(.success(Self.data ?? SeedPayload()))
-        }
     }
 }
 #endif

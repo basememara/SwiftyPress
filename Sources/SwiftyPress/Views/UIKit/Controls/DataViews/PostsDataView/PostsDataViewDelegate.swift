@@ -12,7 +12,7 @@ import UIKit
 import ZamzamCore
 import ZamzamUI
 
-public protocol PostsDataViewDelegate: class {
+public protocol PostsDataViewDelegate: AnyObject {
     func postsDataView(didSelect model: PostsDataViewModel, at indexPath: IndexPath, from dataView: DataViewable)
     func postsDataView(toggleFavorite model: PostsDataViewModel)
     func postsDataViewNumberOfSections(in dataView: DataViewable) -> Int

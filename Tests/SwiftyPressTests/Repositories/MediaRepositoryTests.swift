@@ -9,7 +9,7 @@
 import XCTest
 import SwiftyPress
 
-final class MediaRepositoryTests: BaseTestCase {
+final class MediaRepositoryTests: TestCase {
     private lazy var mediaRepository = core.mediaRepository()
 }
 

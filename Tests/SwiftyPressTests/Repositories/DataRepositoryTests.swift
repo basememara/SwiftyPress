@@ -9,7 +9,7 @@
 import XCTest
 import SwiftyPress
 
-final class DataRepositoryTests: BaseTestCase {
+final class DataRepositoryTests: TestCase {
     private lazy var dataRepository = core.dataRepository()
     
     func testFetch() {

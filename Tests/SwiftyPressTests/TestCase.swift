@@ -1,5 +1,5 @@
 //
-//  BaseTestCase.swift
+//  TestCase.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-06-12.
@@ -10,11 +10,11 @@ import XCTest
 import ZamzamCore
 import SwiftyPress
 
-class BaseTestCase: XCTestCase {
+class TestCase: XCTestCase {
     private lazy var dataRepository = core.dataRepository()
     private lazy var preferences = core.preferences()
     
-    lazy var core: SwiftyPressCore = TestsCore()
+    lazy var core: SwiftyPressCore = TestCore()
     
     override func setUp() {
         super.setUp()

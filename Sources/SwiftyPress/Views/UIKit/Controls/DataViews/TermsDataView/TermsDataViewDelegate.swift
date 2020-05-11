@@ -10,7 +10,7 @@
 import UIKit
 import ZamzamUI
 
-public protocol TermsDataViewDelegate: class {
+public protocol TermsDataViewDelegate: AnyObject {
     func termsDataView(didSelect model: TermsDataViewModel, at indexPath: IndexPath, from dataView: DataViewable)
     func termsDataViewDidReloadData()
 }

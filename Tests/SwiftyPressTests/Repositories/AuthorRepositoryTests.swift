@@ -9,7 +9,7 @@
 import XCTest
 import SwiftyPress
 
-final class AuthorRepositoryTests: BaseTestCase {
+final class AuthorRepositoryTests: TestCase {
     private lazy var authorRepository = core.authorRepository()
 }
 

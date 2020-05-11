@@ -9,7 +9,7 @@
 import XCTest
 import SwiftyPress
 
-final class TaxonomyRepositoryTests: BaseTestCase {
+final class TaxonomyRepositoryTests: TestCase {
     private lazy var taxonomyRepository = core.taxonomyRepository()
 }
 

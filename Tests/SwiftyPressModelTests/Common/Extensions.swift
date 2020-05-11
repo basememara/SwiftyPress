@@ -37,23 +37,6 @@ extension JSONDecoder {
     }
 }
 
-extension FileManager {
-    
-    /// Returns the JSON contents at the path with the same name as the class type.
-    func json(from file: String, suffix: String? = nil) throws -> Data {
-        let path = URL(fileURLWithPath: file)
-            .replacingPathExtension("json")
-            .appendingToFileName(suffix ?? "")
-            .path
-        
-        guard let data = FileManager.default.contents(atPath: path) else {
-            throw NSError(domain: "SwiftyPressModelTests.FileManager", code: NSFileReadUnknownError)
-        }
-        
-        return data
-    }
-}
-
 extension XCTestCase {
     
     /// Asserts that all values are equal.
