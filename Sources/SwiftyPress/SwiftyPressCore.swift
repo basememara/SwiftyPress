@@ -53,7 +53,7 @@ public protocol SwiftyPressCore {
     
     #if os(iOS)
     @available(iOS 10.0, *)
-    func mailComposer(delegate: MailComposerDelegate?) -> MailComposerType
+    func mailComposer(delegate: MailComposerDelegate?) -> MailComposer
     #endif
 }
 
@@ -228,7 +228,7 @@ public extension SwiftyPressCore {
     
     #if os(iOS)
     @available(iOS 10.0, *)
-    func mailComposer(delegate: MailComposerDelegate? = nil) -> MailComposerType {
+    func mailComposer(delegate: MailComposerDelegate? = nil) -> MailComposer {
         let theme: Theme = self.theme()
         
         return MailComposer(
