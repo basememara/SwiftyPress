@@ -30,7 +30,7 @@ private extension DataRealmCache {
     
     /// Name for isolated database per user or use anonymously
     var name: String {
-        generateName(for: preferences.get(.userID) ?? 0)
+        generateName(for: preferences.userID ?? 0)
     }
     
     /// Used for referencing databases not associated with the current user
@@ -86,7 +86,7 @@ public extension DataRealmCache {
                     _ = try Realm()
                 } catch {
                     log.error("Could not initialize Realm database: \(error). Deleting database and recreating...")
-                    _delete(for: preferences.get(.userID) ?? 0)
+                    _delete(for: preferences.userID ?? 0)
                     _ = try? Realm()
                 }
                 

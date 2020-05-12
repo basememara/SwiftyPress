@@ -15,10 +15,30 @@ public extension Preferences {
     
     /// Returns the current favorite posts.
     var favorites: [Int] { self.get(.favorites) ?? [] }
+}
+
+// MARK: - Mutating
+
+extension Preferences {
+    
+    func set(userID value: Int) {
+        set(value, forKey: .userID)
+    }
+    
+    func set(favorites value: [Int]) {
+        set(value, forKey: .favorites)
+    }
     
     /// Removes all the user defaults items.
     func removeAll() {
         remove(.userID)
         remove(.favorites)
     }
+}
+
+// MARK: - Helpers
+
+private extension PreferencesAPI.Keys {
+    static let userID = PreferencesAPI.Key<Int?>("userID")
+    static let favorites = PreferencesAPI.Key<[Int]?>("favorites")
 }

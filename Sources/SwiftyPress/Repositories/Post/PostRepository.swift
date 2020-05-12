@@ -215,28 +215,22 @@ public extension PostRepository {
 public extension PostRepository {
     
     func fetchFavorites(completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        guard let ids = preferences.get(.favorites), !ids.isEmpty else {
+        guard !preferences.favorites.isEmpty else {
             completion(.success([]))
             return
         }
         
-        fetch(ids: Set(ids), completion: completion)
+        fetch(ids: Set(preferences.favorites), completion: completion)
     }
     
     func addFavorite(id: Int) {
         guard !hasFavorite(id: id) else { return }
-        
-        preferences.set(
-            (preferences.get(.favorites) ?? []) + [id],
-            forKey: .favorites
-        )
+        preferences.set(favorites: preferences.favorites + [id])
     }
     
     func removeFavorite(id: Int) {
-        preferences.set(
-            preferences.get(.favorites)?.filter { $0 != id },
-            forKey: .favorites
-        )
+        let updated = preferences.favorites.filter { $0 != id }
+        preferences.set(favorites: updated)
     }
     
     func toggleFavorite(id: Int) {
@@ -244,7 +238,7 @@ public extension PostRepository {
     }
     
     func hasFavorite(id: Int) -> Bool {
-        preferences.get(.favorites)?.contains(id) == true
+        preferences.favorites.contains(id)
     }
 }
 
