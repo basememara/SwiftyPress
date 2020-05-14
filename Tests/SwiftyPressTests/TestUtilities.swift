@@ -1,5 +1,5 @@
 //
-//  TestHelpers.swift
+//  TestUtilities.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2019-05-11.
