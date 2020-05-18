@@ -6,7 +6,7 @@
 //  Copyright © 2018 Zamzam Inc. All rights reserved.
 //
 
-public struct TermsDataViewModel {
+public struct TermsDataViewModel: Equatable {
     public let id: Int
     public let name: String
     public let count: String
