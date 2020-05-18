@@ -18,23 +18,23 @@ public extension PostFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
         
             // Find match
-            guard let post = value.posts.first(where: { $0.id == id }) else {
+            guard let post = item.posts.first(where: { $0.id == id }) else {
                 completion(.failure(.nonExistent))
                 return
             }
             
             let model = ExtendedPost(
                 post: post,
-                author: value.authors.first { $0.id == post.authorID },
-                media: value.media.first { $0.id == post.mediaID },
+                author: item.authors.first { $0.id == post.authorID },
+                media: item.media.first { $0.id == post.mediaID },
                 terms: post.terms.reduce(into: [Term]()) { result, next in
-                    guard let element = value.terms.first(where: { $0.id == next }) else { return }
+                    guard let element = item.terms.first(where: { $0.id == next }) else { return }
                     result.append(element)
                 }
             )
@@ -45,13 +45,13 @@ public extension PostFileCache {
     
     func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
             
             // Find match
-            guard let model = value.first(where: { $0.slug == slug }) else {
+            guard let model = item.first(where: { $0.slug == slug }) else {
                 completion(.failure(.nonExistent))
                 return
             }
@@ -65,24 +65,24 @@ public extension PostFileCache {
     
     func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
             
-            let data = value.posts.sorted { $0.createdAt > $1.createdAt }
+            let data = item.posts.sorted { $0.createdAt > $1.createdAt }
             completion(.success(data))
         }
     }
     
     func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = value
+            let model = item
                 .filter { $0.commentCount > 1 }
                 .sorted { $0.commentCount > $1.commentCount }
             
@@ -95,13 +95,13 @@ public extension PostFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion($0)
                 return
             }
             
             let model = ids.reduce(into: [Post]()) { result, next in
-                guard let element = value.first(where: { $0.id == next }) else { return }
+                guard let element = item.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
@@ -111,12 +111,12 @@ public extension PostFileCache {
     
     func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = value.filter {
+            let model = item.filter {
                 $0.terms.contains(where: ids.contains)
             }
             
@@ -129,7 +129,7 @@ public extension PostFileCache {
     
     func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
@@ -147,7 +147,7 @@ public extension PostFileCache {
             
             // Only perform necesary filtering if applicable
             let termIDs: [Int] = request.scope.within([.all, .terms])
-                ? value.terms
+                ? item.terms
                     .filter { $0.name.lowercased().contains(query) }
                     .map { $0.id }
                 : []
@@ -171,7 +171,7 @@ public extension PostFileCache {
                 }
             }
             
-            let results = value.posts
+            let results = item.posts
                 .filter(isIncluded)
                 .sorted { $0.commentCount > $1.commentCount }
             
@@ -191,37 +191,37 @@ public extension PostFileCache {
     
     func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
             
             let model = SeedPayload(
-                posts: value.posts + {
-                    guard !value.posts.contains(where: { $0.id == request.post.id }) else {
+                posts: item.posts + {
+                    guard !item.posts.contains(where: { $0.id == request.post.id }) else {
                         return []
                     }
                     
                     return [request.post]
                 }(),
-                authors: value.authors + {
+                authors: item.authors + {
                     guard let author = request.author,
-                        !value.authors.contains(where: { $0.id == author.id }) else {
+                        !item.authors.contains(where: { $0.id == author.id }) else {
                             return []
                     }
                     
                     return [author]
                 }(),
-                media: value.media + {
+                media: item.media + {
                     guard let media = request.media,
-                        !value.media.contains(where: { $0.id == media.id }) else {
+                        !item.media.contains(where: { $0.id == media.id }) else {
                             return []
                     }
                     
                     return [media]
                 }(),
-                terms: value.terms.compactMap { term in
-                    guard !value.terms.contains(where: { $0.id == term.id }) else { return nil }
+                terms: item.terms.compactMap { term in
+                    guard !item.terms.contains(where: { $0.id == term.id }) else { return nil }
                     return term
                 }
             )

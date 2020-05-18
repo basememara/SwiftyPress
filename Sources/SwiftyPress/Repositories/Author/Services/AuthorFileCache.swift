@@ -18,13 +18,13 @@ public extension AuthorFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
             
             // Find match
-            guard let model = value.authors.first(where: { $0.id == id }) else {
+            guard let model = item.authors.first(where: { $0.id == id }) else {
                 completion(.failure(.nonExistent))
                 return
             }

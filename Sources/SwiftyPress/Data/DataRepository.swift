@@ -84,14 +84,14 @@ private extension DataRepository {
         )
         
         dataService.fetchModified(after: date, with: request) {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 self.executeTasks($0)
                 return
             }
             
-            self.log.debug("Found \(value.posts.count) posts to remotely fetch into cache storage.")
+            self.log.debug("Found \(item.posts.count) posts to remotely fetch into cache storage.")
             
-            let request = DataAPI.CacheRequest(payload: value, lastFetchedAt: Date())
+            let request = DataAPI.CacheRequest(payload: item, lastFetchedAt: Date())
             self.dataCache.createOrUpdate(with: request, completion: self.executeTasks)
         }
     }
@@ -111,14 +111,14 @@ private extension DataRepository {
                 )
                 
                 self.dataService.fetchModified(after: nil, with: request) {
-                    guard case .success(let value) = $0 else {
+                    guard case .success(let item) = $0 else {
                         self.executeTasks($0)
                         return
                     }
                     
-                    self.log.debug("Found \(value.posts.count) posts to remotely fetch into cache storage.")
+                    self.log.debug("Found \(item.posts.count) posts to remotely fetch into cache storage.")
                     
-                    let request = DataAPI.CacheRequest(payload: value, lastFetchedAt: Date())
+                    let request = DataAPI.CacheRequest(payload: item, lastFetchedAt: Date())
                     self.dataCache.createOrUpdate(with: request, completion: self.executeTasks)
                 }
                 

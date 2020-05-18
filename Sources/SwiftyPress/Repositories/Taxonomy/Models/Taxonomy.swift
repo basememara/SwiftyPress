@@ -55,8 +55,8 @@ public extension Taxonomy {
             return .localized(.categorySection)
         case .tag:
             return .localized(.tagSection)
-        case .other(let value):
-            return .localized(.taxonomy(for: value))
+        case .other(let item):
+            return .localized(.taxonomy(for: item))
         }
     }
 }

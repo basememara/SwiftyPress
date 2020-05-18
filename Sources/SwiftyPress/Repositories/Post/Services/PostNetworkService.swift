@@ -48,7 +48,7 @@ public extension PostNetworkService {
             }
             
             // Ensure available
-            guard case .success(let value) = $0, let data = value.data else {
+            guard case .success(let item) = $0, let data = item.data else {
                 completion(.failure(.nonExistent))
                 return
             }

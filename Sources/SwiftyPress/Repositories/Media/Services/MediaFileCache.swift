@@ -18,13 +18,13 @@ public extension MediaFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
             
             // Find match
-            guard let model = value.media.first(where: { $0.id == id }) else {
+            guard let model = item.media.first(where: { $0.id == id }) else {
                 completion(.failure(.nonExistent))
                 return
             }
@@ -38,13 +38,13 @@ public extension MediaFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let value) = $0 else {
+            guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
             
             let model = ids.reduce(into: [Media]()) { result, next in
-                guard let element = value.media.first(where: { $0.id == next }) else { return }
+                guard let element = item.media.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
