@@ -73,13 +73,13 @@ public extension TaxonomyFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
             let model = ids.reduce(into: [Term]()) { result, next in
-                guard let element = item.first(where: { $0.id == next }) else { return }
+                guard let element = items.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
@@ -89,23 +89,23 @@ public extension TaxonomyFileCache {
     
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
-            completion(.success(item.filter { $0.taxonomy == taxonomy }))
+            completion(.success(items.filter { $0.taxonomy == taxonomy }))
         }
     }
     
     func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
-            completion(.success(item.filter { taxonomies.contains($0.taxonomy) }))
+            completion(.success(items.filter { taxonomies.contains($0.taxonomy) }))
         }
     }
 }

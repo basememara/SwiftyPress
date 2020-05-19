@@ -77,12 +77,12 @@ public extension PostFileCache {
     
     func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = item
+            let model = items
                 .filter { $0.commentCount > 1 }
                 .sorted { $0.commentCount > $1.commentCount }
             
@@ -95,13 +95,13 @@ public extension PostFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
             let model = ids.reduce(into: [Post]()) { result, next in
-                guard let element = item.first(where: { $0.id == next }) else { return }
+                guard let element = items.first(where: { $0.id == next }) else { return }
                 result.append(element)
             }
             
@@ -111,12 +111,12 @@ public extension PostFileCache {
     
     func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let item) = $0 else {
+            guard case .success(let items) = $0 else {
                 completion($0)
                 return
             }
             
-            let model = item.filter {
+            let model = items.filter {
                 $0.terms.contains(where: ids.contains)
             }
             
