@@ -8,7 +8,7 @@
 
 import Foundation.NSDateFormatter
 
-public struct PostsDataViewModel: Equatable {
+public struct PostsDataViewModel: Identifiable, Equatable {
     public let id: Int
     public let title: String
     public let summary: String
@@ -17,6 +17,22 @@ public struct PostsDataViewModel: Equatable {
     public let date: String
     public let imageURL: String?
     public let favorite: Bool?
+}
+
+public extension PostsDataViewModel {
+    
+    func toggled(favorite: Bool) -> Self {
+        PostsDataViewModel(
+            id: id,
+            title: title,
+            summary: summary,
+            content: content,
+            link: link,
+            date: date,
+            imageURL: imageURL,
+            favorite: favorite
+        )
+    }
 }
 
 public extension PostsDataViewModel {

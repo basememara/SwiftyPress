@@ -8,7 +8,7 @@
 #if !os(watchOS)
 import XCTest
 import ZamzamCore
-import SwiftyPress
+@testable import SwiftyPress
 
 class TestCase: XCTestCase {
     private lazy var dataRepository = core.dataRepository()
