@@ -16,7 +16,7 @@ public struct PostsDataViewModel: Identifiable, Equatable {
     public let link: String
     public let date: String
     public let imageURL: String?
-    public let favorite: Bool?
+    public let favorite: Bool
 }
 
 public extension PostsDataViewModel {
@@ -37,7 +37,7 @@ public extension PostsDataViewModel {
 
 public extension PostsDataViewModel {
     
-    init(from object: PostType, mediaURL: String?, favorite: Bool? = nil, dateFormatter: DateFormatter) {
+    init(from object: PostType, mediaURL: String?, favorite: Bool, dateFormatter: DateFormatter) {
         self.id = object.id
         self.title = object.title
         self.summary = !object.excerpt.isEmpty ? object.excerpt
