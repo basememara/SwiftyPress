@@ -1,5 +1,5 @@
 //
-//  PostsDataViewModels.swift
+//  PostsDataViewModel.swift
 //  Basem Emara
 //
 //  Created by Basem Emara on 2018-06-21.

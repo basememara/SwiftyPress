@@ -1,5 +1,5 @@
 //
-//  TagsDataViewModels.swift
+//  TagsDataViewModel.swift
 //  Basem Emara
 //
 //  Created by Basem Emara on 2018-06-25.
