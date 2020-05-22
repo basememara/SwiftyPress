@@ -50,6 +50,7 @@
 "empty.search.message" = "Looks like you don't have any search results.";
 
 "list.terms.title" = "Categories & Tags";
+"favorite.title" = "Favorite";
 "unfavor.title" = "Unfavor";
 "unfavorite.title" = "Unfavorite";
 "comments.title" = "Comments";
