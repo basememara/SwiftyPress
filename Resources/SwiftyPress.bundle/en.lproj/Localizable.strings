@@ -1,9 +1,9 @@
-/* 
+/*
   Localizable.strings
   SwiftyPress
-
-  Created by Basem Emara on 2018-09-07.
   
+  Created by Basem Emara on 2018-09-07.
+  Copyright © 2020 Zamzam Inc. All rights reserved.
 */
 
 "duplicate.failure.error.message" = "The data you submitted already exists.";
@@ -22,6 +22,23 @@
 
 "generic.incomplete.form.error.message" = "The form is incomplete. Please fill out the form and try again.";
 
+"latest.posts.error.title" = "Latest Posts Error";
+"popular.posts.error.title" = "Popular Posts Error";
+"top.pick.posts.error.title" = "Top Pick Posts Error";
+"posts.by.terms.error.title" = "Posts by Terms Error";
+"terms.error.title" = "Terms Error";
+"blog.post.error.title" = "Blog Post Error";
+"search.error.title" = "Search Error";
+"could.not.send.email" = "Could Not Send Email";
+"could.not.send.email.message" = "Your device could not send e-mail.";
+
+"browser.not.available.error.title" = "Browser Not Available";
+"comments.not.available.error.title" = "Comments Not Available";
+"not.connected.to.internet.error.message" = "You are not connected to the Internet.";
+"no.post.in.history.error.message" = "No previous post in history";
+"disclaimer.not.available.error.title" = "Disclaimer Not Available";
+"disclaimer.not.available.error.message" = "No disclaimer information is available.";
+
 "category.section" = "Categories";
 "tag.section" = "Tags";
 
@@ -30,9 +47,49 @@
 "favorites.title" = "Favorites";
 "empty.favorites.message" = "Looks like you don't have any favorites yet.";
 
-"search.title" = "Search";
 "empty.search.message" = "Looks like you don't have any search results.";
 
 "list.terms.title" = "Categories & Tags";
-"more.title" = "More";
-"settings.title" = "Settings";
+"unfavor.title" = "Unfavor";
+"unfavorite.title" = "Unfavorite";
+"comments.title" = "Comments";
+
+"latest.posts.title" = "Latest Posts";
+"popular.posts.title" = "Popular Posts";
+"top.picks.title" = "Top Picks";
+"posts.by.terms.title" = "Posts by Terms";
+
+"search.placeholder" = "Search Blog Posts";
+"search.all.scope" = "All";
+"search.title.scope" = "Title";
+"search.content.scope" = "Content";
+"search.keywords.scope" = "Keywords";
+
+"email.feedback.subject" = "Feedback: %@";
+"share.app.message" = "%@ is awesome! Check out the app!";
+
+"tab.home.title" = "Home";
+"tab.blog.title" = "Blog";
+"tab.favorites.title" = "Favorites";
+"tab.search.title" = "Search";
+"tab.more.title" = "More";
+
+"github.social.title" = "GitHub";
+"linkedIn.social.title" = "LinkedIn";
+"twitter.social.title" = "Twitter";
+"pinterest.social.title" = "Pinterest";
+"instagram.social.title" = "Instagram";
+"email.social.title" = "Email";
+
+"more.menu.subscribe.title" = "Subscribe";
+"more.menu.feedback.title" = "Send us an email";
+"more.menu.work.title" = "Work with us";
+"more.menu.rate.title" = "Rate our app";
+"more.menu.share.title" = "Share our app";
+"more.social.section.title" = "Social";
+"more.other.section.title" = "Other";
+"more.menu.developed.by.title" = "Developed by Zamzam";
+
+"settings.menu.theme.title" = "Use iOS theme";
+"settings.menu.notifications.title" = "Get notifications";
+"settings.menu.phone.settings.title" = "iOS Settings";
