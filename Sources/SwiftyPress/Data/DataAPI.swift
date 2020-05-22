@@ -28,7 +28,7 @@ public protocol DataCache {
 
 public protocol DataSeed {
     func configure()
-    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void)
+    func fetch(completion: (Result<SeedPayload, SwiftyPressError>) -> Void)
 }
 
 // MARK: - Namespace

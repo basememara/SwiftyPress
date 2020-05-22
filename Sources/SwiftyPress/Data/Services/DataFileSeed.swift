@@ -38,7 +38,7 @@ public extension DataFileSeed {
 
 public extension DataFileSeed {
     
-    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
+    func fetch(completion: (Result<SeedPayload, SwiftyPressError>) -> Void) {
         completion(.success(Self.data ?? SeedPayload()))
     }
 }
