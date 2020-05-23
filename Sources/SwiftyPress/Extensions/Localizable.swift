@@ -78,6 +78,9 @@ public extension Localizable {
     static let commentsTitle = Localizable(NSLocalizedString("comments.title", bundle: bundle(forKey: "comments.title", fallback: .swiftyPress), comment: "Comments title for buttons and dialogs"))
     static let emailFeedbackSubject = Localizable(NSLocalizedString("email.feedback.subject", bundle: bundle(forKey: "email.feedback.subject", fallback: .swiftyPress), comment: "Email subject for sending feedback"))
     static let shareAppMessage = Localizable(NSLocalizedString("share.app.message", bundle: bundle(forKey: "share.app.message", fallback: .swiftyPress), comment: "Message for sharing the app"))
+    static let disclaimerButtonTitle = Localizable(NSLocalizedString("disclaimer.button.title", bundle: bundle(forKey: "disclaimer.button.title", fallback: .swiftyPress), comment: "Button title for the disclaimer page"))
+    static let privacyButtonTitle = Localizable(NSLocalizedString("privacy.button.title", bundle: bundle(forKey: "privacy.button.title", fallback: .swiftyPress), comment: "Button title for the privacy page"))
+    static let contactButtonTitle = Localizable(NSLocalizedString("contact.button.title", bundle: bundle(forKey: "contact.button.title", fallback: .swiftyPress), comment: "Button title for the contact"))
 }
 
 // Posts

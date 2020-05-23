@@ -54,6 +54,9 @@
 "unfavor.title" = "Unfavor";
 "unfavorite.title" = "Unfavorite";
 "comments.title" = "Comments";
+"disclaimer.button.title" = "Disclaimer";
+"privacy.button.title" = "Privacy";
+"contact.button.title" = "Contact";
 
 "latest.posts.title" = "Latest Posts";
 "popular.posts.title" = "Popular Posts";
