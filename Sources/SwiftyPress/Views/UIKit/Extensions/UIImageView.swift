@@ -8,7 +8,7 @@
 
 #if os(iOS)
 import UIKit
-import Kingfisher
+import Nuke
 
 public extension UIImageView {
     
@@ -33,11 +33,10 @@ public extension UIImageView {
         from url: String?,
         placeholder: String? = "placeholder",
         referenceSize: CGSize? = nil,
-        tintColor: UIColor? = nil,
         contentMode: ResizingContentMode? = nil
     ) {
         let placeholder = placeholder != nil ? UIImage(named: placeholder ?? "") : nil
-        setImage(from: url, placeholder: placeholder, referenceSize: referenceSize, tintColor: tintColor, contentMode: contentMode)
+        setImage(from: url, placeholder: placeholder, referenceSize: referenceSize, contentMode: contentMode)
     }
     
     /// Set an image asynchrously with a URL and placeholder using caching.
@@ -49,7 +48,6 @@ public extension UIImageView {
         from url: String?,
         placeholder: UIImage?,
         referenceSize: CGSize? = nil,
-        tintColor: UIColor? = nil,
         contentMode: ResizingContentMode? = nil
     ) {
         guard let url = url, !url.isEmpty, let urlResource = URL(string: url) else {
@@ -58,35 +56,33 @@ public extension UIImageView {
         }
         
         // Build options if applicable
-        var options: KingfisherOptionsInfo = [.transition(.fade(0.2))]
-        var processor: ImageProcessor?
+        let options = ImageLoadingOptions(
+            placeholder: placeholder,
+            transition: .fadeIn(duration: 0.33),
+            contentModes: {
+                switch contentMode {
+                case .aspectFit:
+                    return .init(success: .scaleAspectFit, failure: .scaleAspectFit, placeholder: .scaleAspectFill)
+                case .aspectFill:
+                    return .init(success: .scaleAspectFill, failure: .scaleAspectFit, placeholder: .scaleAspectFill)
+                default:
+                    return nil
+                }
+            }()
+        )
+        
+        var processors = [ImageProcessing]()
         
         if let referenceSize = referenceSize {
-            let resizeProcessor = ResizingImageProcessor(referenceSize: referenceSize, mode: {
-                // Convert from Kingfisher enum to prevent leaking dependency through function signature
-                guard let contentMode = contentMode else { return .none }
-                switch contentMode {
-                case .none:
-                    return .none
-                case .aspectFit:
-                    return .aspectFit
-                case .aspectFill:
-                    return .aspectFill
-                }
-            }())
-            processor = processor?.append(another: resizeProcessor) ?? resizeProcessor
+            processors.append(ImageProcessors.Resize(size: referenceSize))
         }
         
-        if let processor = processor {
-            options.append(.processor(processor))
-        }
+        let request = ImageRequest(
+            url: urlResource,
+            processors: processors
+        )
         
-        kf.setImage(with: urlResource, placeholder: placeholder, options: options) {
-            guard case .success = $0 else { return }
-            guard let tintColor = tintColor else { return }
-            self.tintColor = tintColor
-            self.image = self.image?.withRenderingMode(.alwaysTemplate)
-        }
+        Nuke.loadImage(with: request, options: options, into: self)
     }
     
     /// Specify how a size adjusts itself to fit a target size.
