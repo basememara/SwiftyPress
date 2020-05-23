@@ -15,7 +15,7 @@ struct DataJSONSeed: DataSeed {
     
     func configure() {}
     
-    func fetch(completion: @escaping (Result<SeedPayload, SwiftyPressError>) -> Void) {
+    func fetch(completion: (Result<SeedPayload, SwiftyPressError>) -> Void) {
         if Self.seed == nil {
             do {
                 Self.seed = try JSONDecoder.default.decode(
