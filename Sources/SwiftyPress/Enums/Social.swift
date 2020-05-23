@@ -54,7 +54,7 @@ public extension Social {
         case .linkedIn:
             return URL(string: "linkedin://profile/\(username)")
         case .github:
-            return nil
+            return URL(string: "https://github.com/\(username)")
         case .pinterest:
             return URL(string: "pinterest://user/\(username)")
         case .instagram:
