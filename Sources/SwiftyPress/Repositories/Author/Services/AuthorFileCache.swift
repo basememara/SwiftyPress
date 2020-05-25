@@ -6,6 +6,8 @@
 //  Copyright © 2019 Zamzam Inc. All rights reserved.
 //
 
+import ZamzamCore
+
 public struct AuthorFileCache: AuthorCache {
     private let seedService: DataSeed
     
@@ -16,7 +18,7 @@ public struct AuthorFileCache: AuthorCache {
 
 public extension AuthorFileCache {
     
-    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
+    func fetch(with request: AuthorAPI.FetchRequest, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         seedService.fetch {
             guard case .success(let item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
@@ -24,7 +26,7 @@ public extension AuthorFileCache {
             }
             
             // Find match
-            guard let model = item.authors.first(where: { $0.id == id }) else {
+            guard let model = item.authors.first(where: { $0.id == request.id }) else {
                 completion(.failure(.nonExistent))
                 return
             }
@@ -37,6 +39,13 @@ public extension AuthorFileCache {
 public extension AuthorFileCache {
     
     func createOrUpdate(_ request: Author, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
-        // Nothing to do
+        completion(.failure(.cacheFailure(nil)))
+    }
+}
+
+public extension AuthorFileCache {
+    
+    func subscribe(with request: AuthorAPI.FetchRequest, in cancellable: inout Cancellable?, change block: @escaping (ChangeResult<Author, SwiftyPressError>) -> Void) {
+        block(.failure(.cacheFailure(nil)))
     }
 }

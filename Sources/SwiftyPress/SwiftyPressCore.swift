@@ -36,7 +36,7 @@ public protocol SwiftyPressCore {
     
     func authorRepository() -> AuthorRepository
     func authorService() -> AuthorService
-    func authorCache() -> AuthorCache
+    func authorCache() -> AuthorCache?
     
     func mediaRepository() -> MediaRepository
     func mediaService() -> MediaService
@@ -167,8 +167,8 @@ public extension SwiftyPressCore {
         )
     }
     
-    func authorCache() -> AuthorCache {
-        AuthorRealmCache()
+    func authorCache() -> AuthorCache? {
+        AuthorRealmCache(log: log())
     }
 }
 

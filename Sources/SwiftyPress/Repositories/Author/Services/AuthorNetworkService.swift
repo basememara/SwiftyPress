@@ -30,8 +30,8 @@ public struct AuthorNetworkService: AuthorService {
 
 public extension AuthorNetworkService {
     
-    func fetch(id: Int, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
-        let urlRequest: URLRequest = .readAuthor(id: id, constants: constants)
+    func fetch(with request: AuthorAPI.FetchRequest, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
+        let urlRequest: URLRequest = .readAuthor(id: request.id, constants: constants)
         
         networkRepository.send(with: urlRequest) {
             // Handle errors
