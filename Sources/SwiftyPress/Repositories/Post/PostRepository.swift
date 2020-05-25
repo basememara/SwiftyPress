@@ -212,40 +212,6 @@ public extension PostRepository {
     }
 }
 
-public extension PostRepository {
-    
-    func fetchFavorites(completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
-        guard !preferences.favorites.isEmpty else {
-            completion(.success([]))
-            return
-        }
-        
-        fetch(ids: Set(preferences.favorites), completion: completion)
-    }
-    
-    func fetchFavoriteIDs(completion: @escaping (Result<[Int], SwiftyPressError>) -> Void) {
-        completion(.success(preferences.favorites))
-    }
-    
-    func addFavorite(id: Int) {
-        guard !hasFavorite(id: id) else { return }
-        preferences.set(favorites: preferences.favorites + [id])
-    }
-    
-    func removeFavorite(id: Int) {
-        let updated = preferences.favorites.filter { $0 != id }
-        preferences.set(favorites: updated)
-    }
-    
-    func toggleFavorite(id: Int) {
-        hasFavorite(id: id) ? removeFavorite(id: id) : addFavorite(id: id)
-    }
-    
-    func hasFavorite(id: Int) -> Bool {
-        preferences.favorites.contains(id)
-    }
-}
-
 // MARK: - Helpers
 
 private extension PostRepository {

@@ -45,6 +45,8 @@ public protocol SwiftyPressCore {
     func taxonomyRepository() -> TaxonomyRepository
     func taxonomyCache() -> TaxonomyCache
     
+    func favoriteRepository() -> FavoriteRepository
+    
     func notificationCenter() -> NotificationCenter
     func fileManager() -> FileManager
     func jsonDecoder() -> JSONDecoder
@@ -206,6 +208,16 @@ public extension SwiftyPressCore {
     
     func taxonomyCache() -> TaxonomyCache {
         TaxonomyRealmCache(log: log())
+    }
+}
+
+public extension SwiftyPressCore {
+    
+    func favoriteRepository() -> FavoriteRepository {
+        FavoriteRepository(
+            postRepository: postRepository(),
+            preferences: preferences()
+        )
     }
 }
 
