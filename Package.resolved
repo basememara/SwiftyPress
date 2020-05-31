@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Nuke",
-        "repositoryURL": "git@github.com:kean/Nuke.git",
+        "repositoryURL": "https://github.com/kean/Nuke.git",
         "state": {
           "branch": null,
           "revision": "e901272a7cc5a28734d4f196d543edcf7efd8f4c",
@@ -12,11 +12,11 @@
       },
       {
         "package": "Realm",
-        "repositoryURL": "git@github.com:realm/realm-cocoa.git",
+        "repositoryURL": "https://github.com/realm/realm-cocoa.git",
         "state": {
           "branch": null,
-          "revision": "07734d6ee4b49b5656c51dab51c20a2d59b9de45",
-          "version": "4.4.0"
+          "revision": "fa43b8e2909334c79f233ce472332c136ca108da",
+          "version": "4.4.1"
         }
       },
       {
@@ -30,7 +30,7 @@
       },
       {
         "package": "Stencil",
-        "repositoryURL": "git@github.com:ZamzamInc/Stencil.git",
+        "repositoryURL": "https://github.com/ZamzamInc/Stencil.git",
         "state": {
           "branch": null,
           "revision": "2ad923ba172ace3c38a3995eedbec03e322c828b",
@@ -39,11 +39,11 @@
       },
       {
         "package": "ZamzamKit",
-        "repositoryURL": "git@github.com:ZamzamInc/ZamzamKit.git",
+        "repositoryURL": "https://github.com/ZamzamInc/ZamzamKit.git",
         "state": {
           "branch": null,
-          "revision": "86201210a0ae8ff7b89c65304067aee98eea5f6d",
-          "version": "6.0.2"
+          "revision": "d7a9fe5682b66a422b53deb4cdc042651e6c86a8",
+          "version": "6.0.4"
         }
       }
     ]

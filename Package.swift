@@ -14,8 +14,8 @@ let package = Package(
         .library(name: "SwiftyPress", type: .dynamic, targets: ["SwiftyPress"])
     ],
     dependencies: [
-        .package(name: "Realm", url: "https://github.com/realm/realm-cocoa.git", .upToNextMinor(from: "4.4.0")),
-        .package(url: "https://github.com/ZamzamInc/ZamzamKit.git", .upToNextMinor(from: "6.0.3")),
+        .package(name: "Realm", url: "https://github.com/realm/realm-cocoa.git", .upToNextMinor(from: "4.4.1")),
+        .package(url: "https://github.com/ZamzamInc/ZamzamKit.git", .upToNextMinor(from: "6.0.4")),
         .package(url: "https://github.com/ZamzamInc/Stencil.git", .upToNextMinor(from: "0.13.2")),
         .package(url: "https://github.com/kean/Nuke.git", .upToNextMinor(from: "9.0.0"))
     ],
