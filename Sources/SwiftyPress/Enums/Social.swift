@@ -14,6 +14,8 @@ public enum Social: String, CaseIterable {
     case github
     case pinterest
     case instagram
+    case youtube
+    case facebook
     case email
 }
 
@@ -35,6 +37,10 @@ public extension Social {
             return "http://pinterest.com/\(username)"
         case .instagram:
             return "http://instagram.com/\(username)"
+        case .youtube:
+            return "https://youtube.com/\(username)"
+        case .facebook:
+            return "https://facebook.com/\(username)"
         case .email:
             return "mailto:\(username)"
         }
@@ -59,6 +65,10 @@ public extension Social {
             return URL(string: "pinterest://user/\(username)")
         case .instagram:
             return URL(string: "instagram://user?username=\(username)")
+        case .youtube:
+            return URL(string: "youtube://www.youtube.com/user/\(username)")
+        case .facebook:
+            return URL(string: "fb://profile?id=\(username)")
         case .email:
             return URL(string: "mailto:\(username)")
         }
