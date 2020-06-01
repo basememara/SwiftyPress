@@ -1,0 +1,99 @@
+/*
+ Localizable.strings
+ SwiftyPress
+ 
+ Created by Basem Emara on 2018-09-07.
+ Copyright © 2020 Zamzam Inc. All rights reserved.
+ */
+
+"duplicate.failure.error.message" = "The data you submitted already exists.";
+"non.existent.error.message" = "No data was found for your request.";
+"unauthorized.error.title" = "Unauthorized Access";
+"unauthorized.error.message" = "You must log in to view this content.  Please log in or sign up.";
+"no.internet.error.message" = "No internet connection is available.";
+"server.timeout.error.message" = "The server could not be reached. Please try again shortly.";
+
+"parse.failure.error.message" = "The response from the server could not be read.";
+"database.failure.error.message" = "An unexpected database error has occurred.";
+"cache.failure.error.message" = "An unexpected error has occurred with the local database, but may have succeeded in the cloud.";
+"server.failure.error.message" = "An unexpected server error has occurred.";
+"bad.request.error.message" = "The server did not recognize your request.";
+"unknown.reason.error.message" = "There was an error with your request.";
+
+"generic.incomplete.form.error.message" = "The form is incomplete. Please fill out the form and try again.";
+
+"latest.posts.error.title" = "خطأ في الحصول على أحدث المقالات";
+"popular.posts.error.title" = "خطأ في الحصول على المقالات المشورة";
+"top.pick.posts.error.title" = "خطأ في الحصول على المقالات المختارة";
+"posts.by.terms.error.title" = "خطأ في الحصول على التصنيفات";
+"terms.error.title" = "خطأ اثناء الحصول على التصنيف";
+"blog.post.error.title" = "حدث خطأ اثناء عرض المقال";
+"search.error.title" = "حدث خطأ اثناء البحث";
+"could.not.send.email" = "لم نتمكن من إرسال البريد";
+"could.not.send.email.message" = "لم يتم إعداد البريد على جهازك";
+
+"browser.not.available.error.title" = "المتصفح غير متاح";
+"comments.not.available.error.title" = "التعليقات غير متاحة";
+"not.connected.to.internet.error.message" = "انت غير متصل بالانترنت";
+"no.post.in.history.error.message" = "لا يوجد مقالات سابقة";
+"disclaimer.not.available.error.title" = "الصفحة غير متاحة";
+"disclaimer.not.available.error.message" = "المعلومات غير متاحة";
+
+"tag.section" = "الوسوم";
+"category.section" = "التصنيفات";
+
+"see.all.button" = "See All";
+
+"favorites.title" = "Favorites";
+"empty.favorites.message" = "Looks like you don't have any favorites yet.";
+
+"empty.search.message" = "Looks like you don't have any search results.";
+
+"list.terms.title" = "Categories & Tags";
+"favorite.title" = "المفضلة";
+"unfavor.title" = "حذف المفضل";
+"unfavorite.title" = "حذف المفضل";
+"comments.title" = "التعليقات";
+"disclaimer.button.title" = "Disclaimer";
+"privacy.button.title" = "Privacy";
+"contact.button.title" = "Contact";
+
+"latest.posts.title" = "احدث المقالات";
+"popular.posts.title" = "مقالات مشهورة";
+"top.picks.title" = "مقالات مختارة";
+"posts.by.terms.title" = "مقالات بالتصنيف";
+
+"search.placeholder" = "أبحث في المقالات";
+"search.all.scope" = "الكل";
+"search.title.scope" = "العنوان";
+"search.content.scope" = "المحتوى";
+"search.keywords.scope" = "كلمات مفتاحية";
+
+"email.feedback.subject" = "من تطبيق %@";
+"share.app.message" = "%@ is awesome! Check out the app!";
+
+"tab.home.title" = "الرئيسية";
+"tab.blog.title" = "مدونة";
+"tab.favorites.title" = "المفضلة";
+"tab.search.title" = "البحث";
+"tab.more.title" = "المزيد";
+
+"github.social.title" = "GitHub";
+"linkedIn.social.title" = "LinkedIn";
+"twitter.social.title" = "Twitter";
+"pinterest.social.title" = "Pinterest";
+"instagram.social.title" = "Instagram";
+"email.social.title" = "Email";
+
+"more.menu.subscribe.title" = "Subscribe";
+"more.menu.feedback.title" = "Send us an email";
+"more.menu.work.title" = "Work with us";
+"more.menu.rate.title" = "Rate our app";
+"more.menu.share.title" = "Share our app";
+"more.social.section.title" = "Social";
+"more.other.section.title" = "Other";
+"more.menu.developed.by.title" = "Developed by Zamzam";
+
+"settings.menu.theme.title" = "Use iOS theme";
+"settings.menu.notifications.title" = "Get notifications";
+"settings.menu.phone.settings.title" = "iOS Settings";
