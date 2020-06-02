@@ -69,13 +69,13 @@ extension PostsDataViewAdapter: UITableViewDelegate {
         return delegate?.postsDataView(trailingSwipeActionsFor: model, at: indexPath, from: tableView)
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     open func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
         return delegate?.postsDataView(contextMenuConfigurationFor: model, at: indexPath, point: point, from: tableView)
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     open func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         animator.addCompletion { [weak self] in
             guard let id = configuration.identifier as? Int,
@@ -122,13 +122,13 @@ extension PostsDataViewAdapter: UICollectionViewDelegate {
         )
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     open func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         guard let model = viewModels?[indexPath.row] else { return nil }
         return delegate?.postsDataView(contextMenuConfigurationFor: model, at: indexPath, point: point, from: collectionView)
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     open func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         animator.addCompletion { [weak self] in
             guard let id = configuration.identifier as? Int,

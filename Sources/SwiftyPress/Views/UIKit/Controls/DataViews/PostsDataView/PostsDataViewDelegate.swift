@@ -22,10 +22,10 @@ public protocol PostsDataViewDelegate: AnyObject {
     
     func postsDataView(trailingSwipeActionsFor model: PostsDataViewModel, at indexPath: IndexPath, from tableView: UITableView) -> UISwipeActionsConfiguration?
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     func postsDataView(contextMenuConfigurationFor model: PostsDataViewModel, at indexPath: IndexPath, point: CGPoint, from dataView: DataViewable) -> UIContextMenuConfiguration?
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     func postsDataView(didPerformPreviewActionFor model: PostsDataViewModel, from dataView: DataViewable)
     
     func postsDataViewWillBeginDragging(_ scrollView: UIScrollView)
@@ -46,12 +46,12 @@ public extension PostsDataViewDelegate {
         UISwipeActionsConfiguration()
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     func postsDataView(contextMenuConfigurationFor model: PostsDataViewModel, at indexPath: IndexPath, point: CGPoint, from dataView: DataViewable) -> UIContextMenuConfiguration? {
         nil
     }
     
-    @available(iOS 13.0, *)
+    @available(iOS 13, *)
     func postsDataView(didPerformPreviewActionFor model: PostsDataViewModel, from dataView: DataViewable) {}
     
     func postsDataViewWillBeginDragging(_ scrollView: UIScrollView) {}
