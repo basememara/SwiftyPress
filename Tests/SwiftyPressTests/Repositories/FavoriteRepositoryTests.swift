@@ -21,8 +21,8 @@ extension FavoriteRepositoryTests {
         let ids = [5568, 26200]
         
         // When
-        favoriteRepository.addFavorite(id: ids[0])
-        favoriteRepository.addFavorite(id: ids[1])
+        favoriteRepository.add(id: ids[0])
+        favoriteRepository.add(id: ids[1])
         
         favoriteRepository.fetch {
             // Handle double calls used for remote fetching

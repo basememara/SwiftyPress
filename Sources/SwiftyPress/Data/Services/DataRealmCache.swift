@@ -66,6 +66,7 @@ public extension DataRealmCache {
             // Set the configuration used for user's Realm
             Realm.Configuration.defaultConfiguration = Realm.Configuration(
                 fileURL: fileURL,
+                deleteRealmIfMigrationNeeded: true,
                 shouldCompactOnLaunch: { totalBytes, usedBytes in
                     // Compact if the file is over X MB in size and less than 50% 'used'
                     // https://realm.io/docs/swift/latest/#compacting-realms
@@ -95,16 +96,16 @@ public extension DataRealmCache {
             }
             
             // Create default location, set permissions, and seed if applicable
-            guard !self.fileManager.fileExists(atPath: folderURL.path) else { return }
+            guard !fileManager.fileExists(atPath: folderURL.path) else { return }
 
             // Set permissions for database for background tasks
             do {
                 // Create directory if does not exist yet
-                try self.fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: folderURL.path, withIntermediateDirectories: true, attributes: nil)
                 
                 #if !os(macOS)
                 // Decrease file protection after first open for the parent directory
-                try self.fileManager.setAttributes(
+                try fileManager.setAttributes(
                     [.protectionKey: FileProtectionType.completeUntilFirstUserAuthentication],
                     ofItemAtPath: folderURL.path
                 )
