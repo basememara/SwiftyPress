@@ -16,7 +16,7 @@ struct TestCore: SwiftyPressCore {
     
     func constantsService() -> ConstantsService {
         ConstantsMemoryService(
-            environment: .development,
+            isDebug: true,
             itunesName: "",
             itunesID: "0",
             baseURL: URL(string: "https://basememara.com")!,

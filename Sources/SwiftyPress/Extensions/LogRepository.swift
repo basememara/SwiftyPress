@@ -14,12 +14,12 @@ extension LogRepository {
     /// Log URL request which help during debugging (low priority; not written to file)
     func request(
         _ request: URLRequest?,
-        environment: Environment,
+        isDebug: Bool,
         path: String = #file,
         function: String = #function,
         line: Int = #line
     ) {
-        guard environment != .production else { return }
+        guard isDebug else { return }
         
         let message: String = {
             var output = "Request: {\n"
@@ -48,12 +48,12 @@ extension LogRepository {
     func response(
         _ response: NetworkAPI.Response?,
         url: String?,
-        environment: Environment,
+        isDebug: Bool,
         path: String = #file,
         function: String = #function,
         line: Int = #line
     ) {
-        guard environment != .production else { return }
+        guard isDebug else { return }
         
         let message: String = {
             var message = "Response: {\n"

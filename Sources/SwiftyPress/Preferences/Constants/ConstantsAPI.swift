@@ -10,7 +10,7 @@ import Foundation.NSURL
 import ZamzamCore
 
 public protocol ConstantsService {
-    var environment: Environment { get }
+    var isDebug: Bool { get }
     var itunesName: String { get }
     var itunesID: String { get }
     var baseURL: URL { get }

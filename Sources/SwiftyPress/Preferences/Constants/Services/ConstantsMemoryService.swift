@@ -10,7 +10,7 @@ import Foundation.NSURL
 import ZamzamCore
 
 public struct ConstantsMemoryService: ConstantsService {
-    public let environment: Environment
+    public let isDebug: Bool
     public let itunesName: String
     public let itunesID: String
     public let baseURL: URL
@@ -28,7 +28,7 @@ public struct ConstantsMemoryService: ConstantsService {
     public let minLogLevel: LogAPI.Level
     
     public init(
-        environment: Environment,
+        isDebug: Bool,
         itunesName: String,
         itunesID: String,
         baseURL: URL,
@@ -45,7 +45,7 @@ public struct ConstantsMemoryService: ConstantsService {
         postMetaKeys: [String],
         minLogLevel: LogAPI.Level
     ) {
-        self.environment = environment
+        self.isDebug = isDebug
         self.itunesName = itunesName
         self.itunesID = itunesID
         self.baseURL = baseURL

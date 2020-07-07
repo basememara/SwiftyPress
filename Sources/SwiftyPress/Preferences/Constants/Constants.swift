@@ -18,7 +18,7 @@ public struct Constants: AppInfo {
 }
 
 public extension Constants {
-    var environment: Environment { service.environment}
+    var isDebug: Bool { service.isDebug }
 }
 
 public extension Constants {
