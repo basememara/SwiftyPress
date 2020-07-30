@@ -15,7 +15,7 @@ import ZamzamCore
 struct TestCore: SwiftyPressCore {
     
     func constantsService() -> ConstantsService {
-        ConstantsMemoryService(
+        ConstantsStaticService(
             isDebug: true,
             itunesName: "",
             itunesID: "0",

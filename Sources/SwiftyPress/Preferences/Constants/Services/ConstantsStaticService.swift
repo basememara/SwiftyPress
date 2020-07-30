@@ -1,5 +1,5 @@
 //
-//  ConstantsMemoryService.swift
+//  ConstantsStaticService.swift
 //  SwiftyPress
 //
 //  Created by Basem Emara on 2018-10-03.
@@ -9,7 +9,7 @@
 import Foundation.NSURL
 import ZamzamCore
 
-public struct ConstantsMemoryService: ConstantsService {
+public struct ConstantsStaticService: ConstantsService {
     public let isDebug: Bool
     public let itunesName: String
     public let itunesID: String
