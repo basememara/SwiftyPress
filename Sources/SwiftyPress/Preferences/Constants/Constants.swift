@@ -9,7 +9,7 @@
 import Foundation.NSURL
 import ZamzamCore
 
-public struct Constants: AppInfo {
+public struct Constants: AppContext {
     private let service: ConstantsService
     
     public init(service: ConstantsService) {
