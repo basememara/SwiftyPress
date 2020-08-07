@@ -15,7 +15,7 @@ extension LogRepository {
     func request(
         _ request: URLRequest?,
         isDebug: Bool,
-        path: String = #file,
+        file: String = #file,
         function: String = #function,
         line: Int = #line
     ) {
@@ -41,7 +41,7 @@ extension LogRepository {
             return output
         }()
         
-        debug(message, path: path, function: function, line: line, context: nil)
+        debug(message, file: file, function: function, line: line, context: [:])
     }
     
     /// Log HTTP response which help during debugging (low priority; not written to file)
@@ -49,7 +49,7 @@ extension LogRepository {
         _ response: NetworkAPI.Response?,
         url: String?,
         isDebug: Bool,
-        path: String = #file,
+        file: String = #file,
         function: String = #function,
         line: Int = #line
     ) {
@@ -71,7 +71,6 @@ extension LogRepository {
             return message
         }()
         
-        debug(message, path: path, function: function, line: line, context: nil)
+        debug(message, file: file, function: function, line: line, context: [:])
     }
 }
-

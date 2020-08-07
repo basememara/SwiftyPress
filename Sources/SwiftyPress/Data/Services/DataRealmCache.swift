@@ -91,7 +91,7 @@ public extension DataRealmCache {
                     _ = try? Realm()
                 }
                 
-                log.debug("Realm database initialized at: \(fileURL).")
+                log.debug("Realm database initialized at: ~/\(fileURL.pathComponents.dropFirst(3).joined(separator: "/")).")
                 log.info("Realm database configured for \(name).")
             }
             
