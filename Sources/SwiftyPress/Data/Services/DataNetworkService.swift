@@ -46,7 +46,7 @@ public extension DataNetworkService {
                 }
                 
                 self.log.error("An error occured while fetching the modified payload: \(String(describing: $0.error)).")
-                completion(.failure(SwiftyPressError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error ?? .init(request: urlRequest))))
                 return
             }
             

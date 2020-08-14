@@ -43,7 +43,7 @@ public extension PostNetworkService {
                 }
                 
                 self.log.error("An error occured while fetching the post: \(String(describing: $0.error)).")
-                completion(.failure(SwiftyPressError(from: $0.error)))
+                completion(.failure(SwiftyPressError(from: $0.error ?? .init(request: urlRequest))))
                 return
             }
             
