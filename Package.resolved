@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/kean/Nuke.git",
         "state": {
           "branch": null,
-          "revision": "e901272a7cc5a28734d4f196d543edcf7efd8f4c",
-          "version": "9.0.0"
+          "revision": "998588c80611e4fe9b71dd4323fa938ee62f4ff7",
+          "version": "9.1.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/realm/realm-cocoa.git",
         "state": {
           "branch": null,
-          "revision": "fa43b8e2909334c79f233ce472332c136ca108da",
-          "version": "4.4.1"
+          "revision": "381de6c8eea4cee147d2b79d28cfc64a408d18b4",
+          "version": "5.3.3"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "35662ff940e340bf630ad1d1d88acfc7af18bee6",
-          "version": "5.23.8"
+          "revision": "60c12a79b86a2a5278364fbf8c76d6062289e79e",
+          "version": "6.0.14"
         }
       },
       {
@@ -42,8 +42,8 @@
         "repositoryURL": "https://github.com/ZamzamInc/ZamzamKit.git",
         "state": {
           "branch": null,
-          "revision": "b18edcb8c53787a25f746bda32c046f0f015a3e7",
-          "version": "6.0.5"
+          "revision": "dde038a672aa92dbdd8f1bc9d4566b37e82384e5",
+          "version": "6.1.1"
         }
       }
     ]
