@@ -15,7 +15,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Realm", url: "https://github.com/realm/realm-cocoa.git", .exact("5.3.4")),
-        .package(url: "https://github.com/ZamzamInc/ZamzamKit.git", .exact("6.1.2")),
+        .package(url: "https://github.com/ZamzamInc/ZamzamKit.git", .exact("6.1.3")),
         .package(url: "https://github.com/ZamzamInc/Stencil.git", .exact("0.13.2")),
         .package(url: "https://github.com/kean/Nuke.git", .exact("9.1.1"))
     ],
