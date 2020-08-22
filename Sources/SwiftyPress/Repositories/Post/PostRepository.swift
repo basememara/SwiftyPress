@@ -46,7 +46,7 @@ public extension PostRepository {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
                 self.service.fetch(id: id, with: request) {
-                    guard case .success(let item) = $0 else {
+                    guard case let .success(item) = $0 else {
                         completion($0)
                         return
                     }
@@ -60,12 +60,12 @@ public extension PostRepository {
             // Immediately return local response
             completion($0)
             
-            guard case .success(let cacheElement) = $0 else { return }
+            guard case let .success(cacheElement) = $0 else { return }
             
             // Sync remote updates to cache if applicable
             self.service.fetch(id: id, with: request) {
                 // Validate if any updates occurred and return
-                guard case .success(let element) = $0,
+                guard case let .success(element) = $0,
                     element.post.modifiedAt > cacheElement.post.modifiedAt else {
                         return
                 }
@@ -91,7 +91,7 @@ public extension PostRepository {
                 // Sync remote updates to cache if applicable
                 self.dataRepository.fetch {
                     // Validate if any updates that needs to be stored
-                    guard case .success(let item) = $0, item.posts.contains(where: { $0.slug == slug }) else {
+                    guard case let .success(item) = $0, item.posts.contains(where: { $0.slug == slug }) else {
                         completion(result)
                         return
                     }
@@ -124,7 +124,7 @@ public extension PostRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0, !item.posts.isEmpty else { return }
+                guard case let .success(item) = $0, !item.posts.isEmpty else { return }
                 self.cache.fetch(with: request, completion: completion)
             }
         }
@@ -140,7 +140,7 @@ public extension PostRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0, !item.posts.isEmpty else { return }
+                guard case let .success(item) = $0, !item.posts.isEmpty else { return }
                 self.cache.fetchPopular(with: request, completion: completion)
             }
         }
@@ -163,7 +163,7 @@ public extension PostRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0,
+                guard case let .success(item) = $0,
                     item.posts.contains(where: { ids.contains($0.id) }) else {
                         return
                 }
@@ -182,7 +182,7 @@ public extension PostRepository {
             
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
-                guard case .success(let item) = $0 else { return }
+                guard case let .success(item) = $0 else { return }
                 
                 // Validate if any updates that needs to be stored
                 let modifiedIDs = Set(item.posts.flatMap { $0.terms })

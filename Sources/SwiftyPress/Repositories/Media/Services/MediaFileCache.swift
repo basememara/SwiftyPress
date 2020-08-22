@@ -18,7 +18,7 @@ public extension MediaFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<Media, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
@@ -38,7 +38,7 @@ public extension MediaFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Media], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }

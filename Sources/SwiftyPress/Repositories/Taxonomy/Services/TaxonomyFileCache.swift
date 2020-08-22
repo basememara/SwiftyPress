@@ -25,7 +25,7 @@ public extension TaxonomyFileCache {
             }
             
             // Find match
-            guard case .success(let item) = $0,
+            guard case let .success(item) = $0,
                 let model = item.first(where: { $0.id == id }) else {
                     completion(.failure(.nonExistent))
                     return
@@ -44,7 +44,7 @@ public extension TaxonomyFileCache {
             }
             
             // Find match
-            guard case .success(let item) = $0,
+            guard case let .success(item) = $0,
                 let model = item.first(where: { $0.slug == slug }) else {
                     completion(.failure(.nonExistent))
                     return
@@ -59,7 +59,7 @@ public extension TaxonomyFileCache {
     
     func fetch(completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
@@ -73,7 +73,7 @@ public extension TaxonomyFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }
@@ -89,7 +89,7 @@ public extension TaxonomyFileCache {
     
     func fetch(by taxonomy: Taxonomy, completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }
@@ -100,7 +100,7 @@ public extension TaxonomyFileCache {
     
     func fetch(by taxonomies: [Taxonomy], completion: @escaping (Result<[Term], SwiftyPressError>) -> Void) {
         fetch {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }

@@ -27,7 +27,7 @@ public extension TaxonomyRepository {
                 // Sync remote updates to cache if applicable
                 self.dataRepository.fetch {
                     // Validate if any updates that needs to be stored
-                    guard case .success(let item) = $0, item.terms.contains(where: { $0.id == id }) else {
+                    guard case let .success(item) = $0, item.terms.contains(where: { $0.id == id }) else {
                         completion(result)
                         return
                     }
@@ -49,7 +49,7 @@ public extension TaxonomyRepository {
                 // Sync remote updates to cache if applicable
                 self.dataRepository.fetch {
                     // Validate if any updates that needs to be stored
-                    guard case .success(let item) = $0, item.terms.contains(where: { $0.slug == slug }) else {
+                    guard case let .success(item) = $0, item.terms.contains(where: { $0.slug == slug }) else {
                         completion(result)
                         return
                     }
@@ -71,7 +71,7 @@ public extension TaxonomyRepository {
                 // Sync remote updates to cache if applicable
                 self.dataRepository.fetch {
                     // Validate if any updates that needs to be stored
-                    guard case .success(let item) = $0, item.terms.contains(where: { ids.contains($0.id) }) else {
+                    guard case let .success(item) = $0, item.terms.contains(where: { ids.contains($0.id) }) else {
                         completion(result)
                         return
                     }
@@ -99,7 +99,7 @@ public extension TaxonomyRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0, !item.terms.isEmpty else {
+                guard case let .success(item) = $0, !item.terms.isEmpty else {
                     return
                 }
                 
@@ -118,7 +118,7 @@ public extension TaxonomyRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0,
+                guard case let .success(item) = $0,
                     item.terms.contains(where: { $0.taxonomy == taxonomy }) else {
                         return
                 }
@@ -138,7 +138,7 @@ public extension TaxonomyRepository {
             // Sync remote updates to cache if applicable
             self.dataRepository.fetch {
                 // Validate if any updates that needs to be stored
-                guard case .success(let item) = $0,
+                guard case let .success(item) = $0,
                     item.terms.contains(where: { taxonomies.contains($0.taxonomy) }) else {
                         return
                 }

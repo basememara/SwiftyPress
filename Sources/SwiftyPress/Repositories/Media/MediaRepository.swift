@@ -23,7 +23,7 @@ public extension MediaRepository {
             // Retrieve missing cache data from cloud if applicable
             if case .nonExistent? = $0.error {
                 self.service.fetch(id: id) {
-                    guard case .success(let item) = $0 else {
+                    guard case let .success(item) = $0 else {
                         completion($0)
                         return
                     }

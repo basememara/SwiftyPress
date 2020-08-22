@@ -20,7 +20,7 @@ public extension AuthorFileCache {
     
     func fetch(with request: AuthorAPI.FetchRequest, completion: @escaping (Result<Author, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }

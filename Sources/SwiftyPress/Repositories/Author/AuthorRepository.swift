@@ -58,7 +58,7 @@ public extension AuthorRepository {
                 return
             }
             
-            guard case .success(let cacheItem) = result else {
+            guard case let .success(cacheItem) = result else {
                 completion(.failure(result.error ?? .cacheFailure(nil)))
                 return
             }
@@ -67,7 +67,7 @@ public extension AuthorRepository {
             completion(.initial(cacheItem))
             
             self.service.fetch(with: request) { result in
-                guard case .success(let item) = result else { return }
+                guard case let .success(item) = result else { return }
                 
                 // Validate if any updates occurred and return
                 guard item != cacheItem else { return }
@@ -158,7 +158,7 @@ private extension AuthorRepository {
         }
         
         service.fetch(with: request) { result in
-            guard case .success(let item) = result else {
+            guard case let .success(item) = result else {
                 completion?(result)
                 return
             }

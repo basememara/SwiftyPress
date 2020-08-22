@@ -38,7 +38,7 @@ public extension DataNetworkService {
         let urlRequest: URLRequest = .modified(after: date, with: request, constants: constants)
         
         networkRepository.send(with: urlRequest) {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 // Handle no modified data and return success
                 if $0.error?.statusCode == 304 {
                     completion(.success(SeedPayload()))

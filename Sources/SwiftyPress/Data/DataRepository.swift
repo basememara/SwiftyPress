@@ -84,7 +84,7 @@ private extension DataRepository {
         )
         
         dataService.fetchModified(after: date, with: request) {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 self.executeTasks($0)
                 return
             }
@@ -101,7 +101,7 @@ private extension DataRepository {
     
     func refreshFromSeed() {
         dataSeed.fetch {
-            guard case .success(let local) = $0, !local.isEmpty else {
+            guard case let .success(local) = $0, !local.isEmpty else {
                 self.log.error("Failed to retrieve seed data, falling back to remote server...")
                 
                 let request = DataAPI.ModifiedRequest(
@@ -111,7 +111,7 @@ private extension DataRepository {
                 )
                 
                 self.dataService.fetchModified(after: nil, with: request) {
-                    guard case .success(let item) = $0 else {
+                    guard case let .success(item) = $0 else {
                         self.executeTasks($0)
                         return
                     }
@@ -146,7 +146,7 @@ private extension DataRepository {
                 )
                 
                 self.dataService.fetchModified(after: lastSeedDate, with: request) {
-                    guard case .success(let remote) = $0 else {
+                    guard case let .success(remote) = $0 else {
                         self.executeTasks(.success(local))
                         return
                     }

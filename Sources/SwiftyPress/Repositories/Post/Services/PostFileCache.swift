@@ -18,7 +18,7 @@ public extension PostFileCache {
     
     func fetch(id: Int, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
@@ -45,7 +45,7 @@ public extension PostFileCache {
     
     func fetch(slug: String, completion: @escaping (Result<Post, SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .unknownReason(nil)))
                 return
             }
@@ -65,7 +65,7 @@ public extension PostFileCache {
     
     func fetch(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
@@ -77,7 +77,7 @@ public extension PostFileCache {
     
     func fetchPopular(with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }
@@ -95,7 +95,7 @@ public extension PostFileCache {
     
     func fetch(ids: Set<Int>, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: PostAPI.FetchRequest()) {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }
@@ -111,7 +111,7 @@ public extension PostFileCache {
     
     func fetch(byTermIDs ids: Set<Int>, with request: PostAPI.FetchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         fetch(with: request) {
-            guard case .success(let items) = $0 else {
+            guard case let .success(items) = $0 else {
                 completion($0)
                 return
             }
@@ -129,7 +129,7 @@ public extension PostFileCache {
     
     func search(with request: PostAPI.SearchRequest, completion: @escaping (Result<[Post], SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
@@ -191,7 +191,7 @@ public extension PostFileCache {
     
     func createOrUpdate(_ request: ExtendedPost, completion: @escaping (Result<ExtendedPost, SwiftyPressError>) -> Void) {
         seedService.fetch {
-            guard case .success(let item) = $0 else {
+            guard case let .success(item) = $0 else {
                 completion(.failure($0.error ?? .databaseFailure(nil)))
                 return
             }
