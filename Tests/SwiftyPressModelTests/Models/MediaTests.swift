@@ -14,7 +14,7 @@ import ZamzamCore
 final class MediaModelTests: XCTestCase {
     
     func testDecoding() throws {
-        let model = try JSONDecoder.default.decode(Media.self, fromJSON: #file)
+        let model = try JSONDecoder.default.decode(Media.self, fromJSON: #fileID)
         
         XCTAssertEqual(model.id, 41346)
         XCTAssertEqual(model.link, "https://staging1.basememara.com/wp-content/uploads/2018/04/Clean-Architecture-Cycle-2.png")

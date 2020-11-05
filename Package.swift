@@ -1,9 +1,10 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "SwiftyPress",
+    defaultLocalization: "en",
     platforms: [
         .macOS(.v10_14),
         .iOS(.v11),
@@ -34,11 +35,13 @@ let package = Package(
         ),
         .testTarget(
             name: "SwiftyPressTests",
-            dependencies: ["SwiftyPress"]
+            dependencies: ["SwiftyPress"],
+            resources: [.process("Resources")]
         ),
         .testTarget(
             name: "SwiftyPressModelTests",
-            dependencies: ["SwiftyPress"]
+            dependencies: ["SwiftyPress"],
+            resources: [.process("Resources")]
         )
     ]
 )

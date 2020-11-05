@@ -20,7 +20,7 @@ struct DataJSONSeed: DataSeed {
             do {
                 Self.seed = try JSONDecoder.default.decode(
                     SeedPayload.self,
-                    fromJSON: #file
+                    fromJSON: #fileID
                 )
             } catch {
                 completion(.failure(.parseFailure(error)))

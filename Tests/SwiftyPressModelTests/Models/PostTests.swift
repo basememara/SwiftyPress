@@ -18,7 +18,7 @@ final class PostModelTests: XCTestCase {
 extension PostModelTests {
     
     func testDecoding() throws {
-        let model = try JSONDecoder.default.decode(Post.self, fromJSON: #file)
+        let model = try JSONDecoder.default.decode(Post.self, fromJSON: #fileID)
         
         XCTAssertEqual(model.id, 41294)
         XCTAssertEqual(model.title, "So Swift, So Clean Architecture for iOS")
@@ -40,7 +40,7 @@ extension PostModelTests {
 extension PostModelTests {
     
     func testNullDecoding() throws {
-        let model = try JSONDecoder.default.decode(Post.self, fromJSON: #file, suffix: "2")
+        let model = try JSONDecoder.default.decode(Post.self, fromJSON: #fileID, suffix: "2")
             
         XCTAssertEqual(model.id, 41294)
         XCTAssertEqual(model.title, "So Swift, So Clean Architecture for iOS")

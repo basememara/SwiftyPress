@@ -9,13 +9,6 @@
 import XCTest
 import ZamzamCore
 
-extension Bundle {
-    private class TempClassForBundle {}
-    
-    /// A representation of the code and resources stored in bundle directory on disk.
-    static let test = Bundle(for: TempClassForBundle.self)
-}
-
 extension DateFormatter {
     static let iso8601 = DateFormatter(iso8601Format: "yyyy-MM-dd'T'HH:mm:ss")
 }
@@ -24,12 +17,14 @@ extension JSONDecoder {
     
     /// Decodes the given type from the given JSON representation of the current file.
     func decode<T>(_ type: T.Type, fromJSON file: String, suffix: String? = nil) throws -> T where T : Decodable {
-        let path = URL(fileURLWithPath: file)
-            .replacingPathExtension("json")
+        let fileName = URL(fileURLWithPath: file)
             .appendingToFileName(suffix ?? "")
-            .path
+            .deletingPathExtension()
+            .lastPathComponent
         
-        guard let data = FileManager.default.contents(atPath: path) else {
+        guard let url = Bundle.module.url(forResource: fileName, withExtension: "json"),
+              let data = try? Data(contentsOf: url)
+        else {
             throw NSError(domain: "SwiftyPressModelTests.JSONDecoder", code: NSFileReadUnknownError)
         }
         
@@ -46,7 +41,12 @@ extension XCTestCase {
     ///   - message: An optional description of the failure.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func XCTAssertAllEqual<T: Equatable>(_ values: T?..., message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+    func XCTAssertAllEqual<T: Equatable>(
+        _ values: T?...,
+        message: @autoclosure () -> String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
         _ = values.reduce(values.first) { current, next in
             XCTAssertEqual(current, next, message(), file: file, line: line)
             return next
@@ -61,7 +61,13 @@ extension XCTestCase {
     ///   - expression2: An optional description of the failure.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func XCTAssertEqualAndNotNil<T: Equatable>(_ expression1: @autoclosure () -> T?, _ expression2: @autoclosure () -> T?, message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) {
+    func XCTAssertEqualAndNotNil<T: Equatable>(
+        _ expression1: @autoclosure () -> T?,
+        _ expression2: @autoclosure () -> T?,
+        message: @autoclosure () -> String = "",
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
         XCTAssertNotNil(expression1(), message(), file: file, line: line)
         XCTAssertNotNil(expression2(), message(), file: file, line: line)
         XCTAssertEqual(expression1(), expression2(), message(), file: file, line: line)

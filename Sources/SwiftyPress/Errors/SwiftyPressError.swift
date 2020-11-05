@@ -23,7 +23,7 @@ public enum SwiftyPressError: Error {
 
 public extension SwiftyPressError {
     
-    /// Get the localized description for this error
+    /// Get the localized description for this error.
     var localizedDescription: String {
         switch self {
         case .duplicateFailure:

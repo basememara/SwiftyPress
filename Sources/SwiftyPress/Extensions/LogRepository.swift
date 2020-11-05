@@ -15,7 +15,7 @@ extension LogRepository {
     func request(
         _ request: URLRequest?,
         isDebug: Bool,
-        file: String = #file,
+        file: String = #fileID,
         function: String = #function,
         line: Int = #line
     ) {
@@ -49,7 +49,7 @@ extension LogRepository {
         _ response: NetworkAPI.Response?,
         url: String?,
         isDebug: Bool,
-        file: String = #file,
+        file: String = #fileID,
         function: String = #function,
         line: Int = #line
     ) {

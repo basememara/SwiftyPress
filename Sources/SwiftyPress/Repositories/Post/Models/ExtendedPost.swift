@@ -9,16 +9,16 @@
 import ZamzamCore
 
 // Type used for decoding the server payload
-public struct ExtendedPost: Codable, Equatable {
+public struct ExtendedPost: Equatable {
     public let post: Post
     public let author: Author?
     public let media: Media?
     public let terms: [Term]
 }
 
-// MARK: - Codable
+// MARK: - Conversions
 
-extension ExtendedPost {
+extension ExtendedPost: Codable {
     
     private enum CodingKeys: String, CodingKey {
         case post

@@ -14,7 +14,7 @@ import ZamzamCore
 final class SeedPayloadModelTests: XCTestCase {
     
     func testDecoding() throws {
-        let model = try JSONDecoder.default.decode(SeedPayload.self, fromJSON: #file)
+        let model = try JSONDecoder.default.decode(SeedPayload.self, fromJSON: #fileID)
             
         XCTAssertEqual(model.posts[0].id, 41276)
         XCTAssertEqual(model.posts[0].title, "Swifty Protocol-Oriented Dependency Injection")

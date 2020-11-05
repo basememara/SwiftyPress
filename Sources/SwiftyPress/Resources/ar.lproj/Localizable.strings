@@ -9,7 +9,7 @@
 "duplicate.failure.error.message" = "The data you submitted already exists.";
 "non.existent.error.message" = "No data was found for your request.";
 "unauthorized.error.title" = "Unauthorized Access";
-"unauthorized.error.message" = "You must log in to view this content.  Please log in or sign up.";
+"unauthorized.error.message" = "You must log in to view this content. Please log in or sign up.";
 "no.internet.error.message" = "No internet connection is available.";
 "server.timeout.error.message" = "The server could not be reached. Please try again shortly.";
 

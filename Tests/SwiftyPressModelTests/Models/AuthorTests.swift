@@ -14,7 +14,7 @@ import ZamzamCore
 final class AuthorModelTests: XCTestCase {
     
     func testDecoding() throws {
-        let model = try JSONDecoder.default.decode(Author.self, fromJSON: #file)
+        let model = try JSONDecoder.default.decode(Author.self, fromJSON: #fileID)
         
         XCTAssertEqual(model.id, 2)
         XCTAssertEqual(model.name, "Basem Emara")

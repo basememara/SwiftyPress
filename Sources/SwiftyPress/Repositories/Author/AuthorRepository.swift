@@ -140,7 +140,7 @@ public extension AuthorRepository {
 // MARK: - Helpers
 
 private extension AuthorRepository {
-    static var lastFetchPageRefreshed = Synchronized<[AnyHashable: Date]>([:])
+    static var lastFetchPageRefreshed = Atomic<[AnyHashable: Date]>([:])
     
     func refresh(with request: AuthorAPI.FetchRequest, cacheExpiry: Int = 0, completion: ((Result<Author, SwiftyPressError>) -> Void)? = nil) {
         // Skip if cache refreshed from server within expiry time window

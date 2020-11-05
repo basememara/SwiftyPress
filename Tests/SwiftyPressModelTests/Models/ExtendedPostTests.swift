@@ -14,7 +14,7 @@ import ZamzamCore
 final class ExtendedPostModelTests: XCTestCase {
     
     func testDecoding() throws {
-        let model = try JSONDecoder.default.decode(ExtendedPost.self, fromJSON: #file)
+        let model = try JSONDecoder.default.decode(ExtendedPost.self, fromJSON: #fileID)
         
         XCTAssertEqual(model.post.id, 41294)
         XCTAssertEqual(model.post.title, "So Swift, So Clean Architecture for iOS")
