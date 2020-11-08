@@ -24,7 +24,6 @@ public extension UIImage {
         case favoriteFilled = "favorite-filled"
         case more = "more-icon"
         case comments = "comments"
-        case safariShare = "safari-share"
         case theme = "theme"
         case tabHome = "tab-home"
         case tabBlog = "tab-megaphone"
